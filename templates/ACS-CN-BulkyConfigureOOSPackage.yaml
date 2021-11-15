@@ -1,0 +1,102 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Use this template to configure oos package on ECS
+  zh-cn: 使用这个模板批量的在ECS安装OOS自定义软件包
+  name-en: ACS-CN-BulkyConfigureOOSPackage
+  name-zh-cn: 批量安装OOS自定义软件包
+  categories:
+    - run_command
+Parameters:
+  PackageInfos:
+    Description:
+      en: >
+        The infos of package.
+
+        [{"PackageName": "oos","PackageVersion": "v1","Targets": {"RegionId":
+        "cn-hangzhou","Type": "ResourceId","ResourceIds": [ "i-xxx" ]}]
+      zh-cn: |
+        安装包信息，格式：
+        <pre id="jsonShow">[
+            {
+                "PackageName": "oos",
+                "PackageVersion": "v1",
+                "RegionId": "cn-hangzhou",
+                "Targets": {
+                    "Type": "ResourceIds",
+                    "RegionId": "cn-hangzhou",
+                    "ResourceIds": [
+                        "i-xxxxxxxxx1",
+                        "i-xxxxxxxxx2"
+                    ]
+                }
+            }
+        ]</pre>
+    Type: Json
+  Action:
+    Description:
+      en: The action to configure package
+      zh-cn: 配置的软件包的方式
+    Type: String
+    AllowedValues:
+      - install
+      - uninstall
+    Default: install
+  RateControl:
+    Description:
+      en: Concurrency ratio of task execution
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 1
+  OOSAssumeRole:
+    Description:
+      en: The RAM role to be assumed by OOS
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: configurePackage
+    Description:
+      en: Configure Package
+      zh-cn: 配置软件包
+    Action: 'ACS::Template'
+    Properties:
+      TemplateName: ACS-ECS-BulkyConfigureOOSPackage
+      Parameters:
+        action: '{{ Action }}'
+        regionId:
+          'Fn::Select':
+            - RegionId
+            - '{{ ACS::TaskLoopItem }}'
+        packageName:
+          'Fn::Select':
+            - PackageName
+            - '{{ ACS::TaskLoopItem }}'
+        packageVersion:
+          'Fn::Select':
+            - PackageVersion
+            - '{{ ACS::TaskLoopItem }}'
+        targets:
+          'Fn::Select':
+            - Targets
+            - '{{ ACS::TaskLoopItem }}'
+    Loop:
+      Items: '{{ PackageInfos }}'
+      RateControl: '{{ RateControl }}'
+      Outputs:
+        commandOutputs:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: commandOutput
+    Outputs:
+      commandOutput:
+        Type: String
+        ValueSelector: commandOutput
+Outputs:
+  commandOutput:
+    Type: String
+    Value: '{{ configurePackage.commandOutputs }}'
+

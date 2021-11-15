@@ -1,0 +1,79 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ECS-BulkyTagInstances
+  name-zh-cn: 批量为ECS实例绑定标签
+  en: Bulky tag ECS instances
+  zh-cn: 批量为ECS实例绑定标签
+Parameters:
+  regionId:
+    Description:
+      name-en: The id of region
+      name-zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  targets:
+    Description:
+      name-en: Target instance
+      name-zh-cn: 目标实例
+    Type: Json
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: regionId
+  tags:
+    Description:
+      name-en: The tags to add to ECS instance
+      name-zh-cn: 要为ECS实例绑定的标签
+    Type: Json
+    AssociationProperty: Tags
+  rateControl:
+    Description:
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Description:
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstance
+    Description:
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
+    Action: 'ACS::SelectTargets'
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: tagResources
+    Action: 'ACS::ExecuteApi'
+    Description:
+      en: Creates and attaches tag to ECS instance
+      zh-cn: 创建并挂载标签到ECS实例
+    Properties:
+      Service: ECS
+      API: TagResources
+      Parameters:
+        RegionId: '{{ regionId }}'
+        ResourceIds:
+          - '{{ ACS::TaskLoopItem }}'
+        ResourceType: Instance
+        Tags: '{{ tags }}'
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items: '{{ getInstance.instanceIds }}'
+

@@ -1,0 +1,241 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: ''
+  zh-cn: SAP AAS(Additional application server)自动扩展服务，基于已有SAP系统的PAS(Primary application server)创建弹性伸缩组，自动或手动扩展ECS实例并部署AAS，并将AAS自动加入SAP Logon groups
+  name-en: ACS-SAP-AutoScalingService
+  name-zh-cn: SAP AAS自动扩展
+Parameters:
+  PASInstanceId:
+    Type: Json
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+    Description:
+      zh-cn: 请选择已有的SAP AS ABAP系统PAS所在的ECS
+      en: ''
+      name-zh-cn: 选择SAP系统PAS
+      name-en: ''
+  AASInstanceId:
+    Type: Json
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+    Description:
+      zh-cn: 请选择已有的SAP AS ABAP系统AAS所在的ECS。选中实例的CPU负载也会参于计算CPU平均使用率。如果没有其他AAS，或已有的AAS和PAS在同一台ECS实例，则无需选择
+      en: ''
+      name-zh-cn: 选择SAP系统AAS
+      name-en: ''
+    Default: 
+      Type: ResourceIds
+      ResourceIds:
+        - ""
+      RegionId: '{{ ACS::RegionId }}'
+  RootPassword:
+    Type: String
+    Description:
+      zh-cn: PAS所在实例root用户的密码，为保障数据安全，仅支持使用参数仓库的加密参数功能，请先点击输入框右侧的按钮，创建并选择加密参数。更多详细过程请参考<a href='https://help.aliyun.com/document_detail/186828.html' target='_blank'>创建加密参数</a>和<a href='https://help.aliyun.com/document_detail/193238.html' target='_blank'>使用加密参数</a>
+      en: ''
+      name-zh-cn: root用户密码
+      name-en: ''
+    AllowedPattern: '^\{\{oos-secret:.*$'
+  SAPSID:
+    Type: String
+    Description:
+      zh-cn: SAP AS ABAP系统的SID
+      en: ''
+      name-zh-cn: SAP系统SID
+      name-en: ''
+  Username:
+    Type: String
+    Description:
+      zh-cn: SAP AS ABAP系统SAP GUI的登陆用户名
+      en: ''
+      name-zh-cn: SAP系统用户名
+      name-en: ''
+  UserPassword:
+    Type: String
+    Description:
+      zh-cn: SAP GUI的登陆用户密码，为保障数据安全，仅支持使用参数仓库的加密参数功能，请先点击输入框右侧的按钮，创建并选择加密参数。更多详细过程请参考<a href='https://help.aliyun.com/document_detail/186828.html' target='_blank'>创建加密参数</a>和<a href='https://help.aliyun.com/document_detail/193238.html' target='_blank'>使用加密参数</a>
+      en: ''
+      name-zh-cn: SAP系统用户密码
+      name-en: ''
+    AllowedPattern: '^\{\{oos-secret:.*$'
+  ClientNumber:
+    Type: String
+    Description:
+      zh-cn: SAP GUI的登陆Client，如800、600
+      en: ''
+      name-zh-cn: SAP CLIENT
+      name-en: ''
+  ClassName:
+    Type: String
+    Description:
+      zh-cn: SMLG登录组名。扩展出来的AAS将自动加入到SMLG登陆组中，如果不填写，则会自动加入到默认的'SPACE'组中，如果没有设置SMLG组，则不需要填写。为方便灵活的调整AAS加入的组，建议您使用<a href='https://help.aliyun.com/document_detail/193238.html' target='_blank'>加密参数</a>
+      en: ''
+      name-zh-cn: SMLG登陆组名
+      name-en: ''
+    Default: 'SPACE'
+  AASCount:
+    Type: Number
+    Description:
+      zh-cn: 可以扩展的AAS最大数量
+      en: ''
+      name-zh-cn: 可扩展的AAS数量
+      name-en: ''
+    MinValue: 1
+    MaxValue: 2000
+  CpuTargetValue:
+    Type: String
+    Description:
+      zh-cn: PAS和AAS所在ECS的期望平均CPU使用率，平均CPU使用率=（PAS所在ECS实例+添加的AAS所在ECS实例+自动扩展的AAS所在ECS实例）CPU利用率总和/所有实例CPU总核数x100%。每分钟统计一次实际平均CPU使用率，当实际值连续超过期望值三次，则会触发自动扩展AAS动作。如果需要自定义统计周期和触发次数，请在执行完成后，在<a href='https://ess.console.aliyun.com/#/v3/welcome' target='_blank'>弹性伸缩控制台</a>添加相应的报警任务，详细内容请参考<a href='https://help.aliyun.com/document_detail/25907.html' target='_blank'>创建报警任务</a>
+      en: ''
+      name-zh-cn: 期望平均CPU使用率
+      name-en: ''
+    Default: 80
+  Cooldown:
+    Type: Number
+    Description:
+      zh-cn: 触发自动扩展AAS的间隔时间，单位：秒。例如：指定间隔时间为300秒，则在扩展一台AAS后的300秒内，即使平均CPU使用率超过'期望平均CPU使用率'，也不会再次触发扩展动作
+      en: ''
+      name-zh-cn: 触发扩展间隔时间
+      name-en: ''
+    Default: 300
+    MinValue: 0
+    MaxValue: 86400
+  KeyPairName:
+    Type: String
+    Description:
+      zh-cn: 扩展出的AAS所在ECS实例所绑定的密钥对名称，用于登录ECS实例，请预先在<a href='https://ecs.console.aliyun.com/#/keyPair/region/' target='_blank'>密钥对控制台</a>创建和管理密钥对
+      en: ''
+      name-zh-cn: 密钥对名称
+      name-en: ''
+  UsrsapDiskSize:
+    Type: String
+    Description:
+      zh-cn: 扩展出的AAS所在ECS实例的'/usr/sap'文件系统大小，单位GB
+      en: ''
+      name-zh-cn: /usr/sap文件系统大小
+      name-en: ''
+  SwapDiskSize:
+    Type: String
+    Description:
+      zh-cn: 扩展出的AAS所在ECS实例的Swap分区大小，单位GB
+      en: ''
+      name-zh-cn: Swap大小
+      name-en: ''
+Tasks:
+  - Name: getPASInstance
+    Action: 'ACS::SelectTargets'
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      Filters:
+        - '{{ PASInstanceId }}'
+    Outputs:
+      PASInstanceId:
+        ValueSelector: 'Instances.Instance[0].InstanceId'
+        Type: String
+      VSwitchId:
+        ValueSelector: 'Instances.Instance[0].VpcAttributes.VSwitchId'
+        Type: String
+      PASIP:
+        ValueSelector: 'Instances.Instance[0].VpcAttributes.PrivateIpAddress.IpAddress[0]'
+        Type: String
+  - Name: getAASInstance
+    Action: 'ACS::SelectTargets'
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      Filters:
+        - '{{ AASInstanceId }}'
+    Outputs:
+      AASInstanceId:
+        ValueSelector: 'Instances.Instance[].InstanceId'
+        Type: List
+  - Name: createStack
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: 'Create scaling group, scaling rule, scaling configuration and lifecycle hook.'
+      zh-cn: 创建弹性伸缩组、弹性伸缩规则、弹性伸缩配置和生命周期挂钩等云资源
+    Properties:
+      Service: ROS
+      API: CreateStack
+      Parameters:
+        StackName: 'AutoScaling-{{ACS::ExecutionId}}'
+        TimeoutInMinutes: 10
+        DisableRollback: true
+        Parameters:
+          - ParameterKey: ClassName
+            ParameterValue: '{{ ClassName }}'
+          - ParameterKey: ClientNumber
+            ParameterValue: '{{ ClientNumber }}'
+          - ParameterKey: UserPassword
+            ParameterValue: '{{ UserPassword }}'
+          - ParameterKey: Username
+            ParameterValue: '{{ Username }}'
+          - ParameterKey: SAPSID
+            ParameterValue: '{{ SAPSID }}'
+          - ParameterKey: PASInstanceId
+            ParameterValue: '{{ getPASInstance.PASInstanceId }}'
+          - ParameterKey: ExistingAASInstances
+            ParameterValue: 
+              'Fn::If':
+                - 'Fn::Equals':
+                  - []
+                  - '{{ getAASInstance.AASInstanceId }}'
+                - '[]'
+                - 'Fn::Jq':
+                  - First
+                  - 'tostring'
+                  - '{{ getAASInstance.AASInstanceId }}'
+          - ParameterKey: RootPassword
+            ParameterValue: '{{ RootPassword }}'
+          - ParameterKey: PASIP
+            ParameterValue: '{{ getPASInstance.PASIP }}'
+          - ParameterKey: VSwitchId
+            ParameterValue: '{{ getPASInstance.VSwitchId }}'
+          - ParameterKey: AASCount
+            ParameterValue: '{{ AASCount }}'
+          - ParameterKey: Cooldown
+            ParameterValue: '{{ Cooldown }}'
+          - ParameterKey: CpuTargetValue
+            ParameterValue: '{{ CpuTargetValue }}'
+          - ParameterKey: UsrsapDiskSize
+            ParameterValue: '{{ UsrsapDiskSize }}'
+          - ParameterKey: SwapDiskSize
+            ParameterValue: '{{ SwapDiskSize }}'
+          - ParameterKey: KeyPairName
+            ParameterValue: '{{ KeyPairName }}'
+        TemplateURL: 'http://ros-template.cn-hangzhou.oss.aliyun-inc.com/S4HANA_Auto_Scaling.json'
+    Outputs:
+      StackId:
+        Type: String
+        ValueSelector: StackId
+  - Name: untilStackReady
+    Action: 'ACS::WaitFor'
+    Description:
+      en: Wait the stack status util CREATE_COMPLETE.
+      zh-cn: 等待资源栈至创建成功状态
+    Retries: 10
+    Properties:
+      Service: ROS
+      API: GetStack
+      Parameters:
+        StackId: '{{createStack.StackId}}'
+      DesiredValues:
+        - CREATE_COMPLETE
+      StopRetryValues:
+        - CREATE_FAILED
+        - CHECK_FAILED
+        - ROLLBACK_FAILED
+        - ROLLBACK_COMPLETE
+        - CREATE_ROLLBACK_COMPLETE
+        - CREATE_ROLLBACK_FAILED
+      PropertySelector: Status
+    Outputs:
+      ScalingGroupId:
+        Type: String
+        ValueSelector: '.Outputs[] | select(.OutputKey == "ScalingGroupId") | .OutputValue'
+Outputs:
+  ScalingGroupId:
+    Type: String
+    Value: '{{ untilStackReady.ScalingGroupId }}'
+

@@ -1,0 +1,300 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ECS-CreateAndCopyImage
+  name-zh-cn: 创建ECS镜像并同步到其它地域
+  en: Creates an ECS image and copy new image.
+  zh-cn: 创建一个新ECS镜像并且克隆新镜像到其他地域。
+  categories:
+    - image_manage
+Parameters:
+  regionId:
+    Type: String
+    Description:
+      en: The id of region.
+      zh-cn: 地域ID。
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceId:
+    Description:
+      en: The id of ECS instance.
+      zh-cn: ECS实例ID。
+    Type: String
+  targetImageName:
+    Description:
+      en: The name of new image.
+      zh-cn: 新镜像的名称。
+    Type: String
+    MinLength: 1
+    AllowedPattern: '[A-Za-z0-9\_\-\:\{\}\.]*'
+    Default: CreateImage_from_{{ACS::ExecutionId}}
+  commandType:
+    Description:
+      en: The type of cloud assistant command.
+      zh-cn: 云助手执行的运维脚本的语言类型。
+    Type: String
+    AllowedValues:
+      - RunShellScript
+      - RunBatScript
+      - RunPowerShellScript
+    Default: RunShellScript
+  commandContent:
+    Description:
+      en: The command to run.Command is not executed when value is empty
+      zh-cn: 云助手要执行的命令。命令为空时不会执行命令。
+    Type: String
+    AssociationProperty: Code
+    Default: ''
+  targetRegionIds:
+    Description:
+      en: The Target Region Ids.
+      zh-cn: 目标地域ID。
+    Type: List
+    AllowedValues:
+      - all-regions
+      - cn-beijing
+      - cn-qingdao
+      - cn-zhangjiakou
+      - cn-huhehaote
+      - cn-hangzhou
+      - cn-shanghai
+      - cn-shenzhen
+      - cn-chengdu
+      - cn-hongkong
+      - cn-heyuan
+      - cn-wulanchabu
+      - ap-northeast-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-southeast-3
+      - ap-southeast-5
+      - ap-south-1
+      - us-east-1
+      - us-west-1
+      - eu-west-1
+      - me-east-1
+      - eu-central-1
+    Default: []
+  accountIds:
+    Description:
+      en: The IDs of the Alibaba Cloud accounts to which the image is shared.
+      zh-cn: 授权共享镜像的阿里云账号ID。
+    Type: List
+    Default: []
+  scalingConfigurationIds:
+    Description:
+      en: The ID list of the scaling configuration to be modified.Must correspond to the selected region.
+      zh-cn: 待修改的伸缩配置IDs，必须要与所选的地域对应。
+    Type: List
+    Default: []
+  launchTemplateNames:
+    Description:
+      en: The name list of the instance launchTemplate to be updated.Must correspond to the selected region.
+      zh-cn: 待更新的实例启动模版名称列表，必须要与所选的地域对应。
+    Type: List
+    Default: []
+  tags:
+    Description:
+      en: The image tag.
+      zh-cn: 镜像标签。
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      ShowSystem: false
+    Default: []
+  rateControl:
+    Description:
+      en: Concurrency ratio of task execution.
+      zh-cn: 任务执行的并发比率。
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 5
+  OOSAssumeRole:
+    Description:
+      en: The RAM role to be assumed by OOS.
+      zh-cn: OOS扮演的RAM角色。
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+- Name: whetherToRunCommand
+  Action: 'ACS::Choice'
+  Description:
+    en: Choose next task.
+    zh-cn: 选择下一个任务。
+  Properties:
+    DefaultTask: runCommand
+    Choices:
+      - When:
+          'Fn::Equals':
+            - ''
+            - '{{ commandContent }}'
+        NextTask: createImage
+- Name: runCommand
+  Action: 'ACS::ECS::RunCommand'
+  Description:
+    en: Run cloud assistant command on ECS instance.
+    zh-cn: 在实例中运行云助手命令。
+  Properties:
+    regionId: '{{ regionId }}'
+    instanceId: '{{ instanceId }}'
+    commandContent: '{{ commandContent }}'
+    commandType: '{{ commandType }}'
+  Outputs:
+    commandOutput:
+      Type: String
+      ValueSelector: invocationOutput
+- Name: createImage
+  Action: 'ACS::ECS::CreateImage'
+  Description:
+    en: Create new image with the specified image name and instance ID.
+    zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
+  Properties:
+    regionId: '{{ regionId }}'
+    instanceId: '{{ instanceId }}'
+    imageName: '{{ targetImageName }}-{{ ACS::CurrentUTCTime }}'
+    tags: '{{tags}}'
+  Outputs:
+    imageId:
+      ValueSelector: imageId
+      Type: String
+- Name: queryAllAvailableRegions
+  Action: 'ACS::ExecuteAPI'
+  Description:
+    en: View all available regions.
+    zh-cn: 查询当前所有可用地域。
+  Properties:
+    Service: ECS
+    API: DescribeRegions
+    Parameters:
+      RegionId: '{{ regionId }}'
+  Outputs:
+    regionIds:
+      Type: List
+      ValueSelector: 'Regions.Region[]|.RegionId|select([scan("{{ACS::RegionId}}|test")]|length<1)'
+    allRegionsChosen:
+      Type: String
+      ValueSelector: '.|{{targetRegionIds}}|sort|.[0]'
+- Name: whetherCloneToAllRegions
+  Action: 'ACS::Choice'
+  Description:
+    en: Choose next task by targetRegionIds Chosen.
+    zh-cn: 根据所选目的地域判断下一步执行。
+  Properties:
+    DefaultTask: copyImage
+    Choices:
+      - When:
+          'Fn::Equals':
+            - all-regions
+            - '{{ queryAllAvailableRegions.allRegionsChosen }}'
+        NextTask: copyImageToAllRegions
+- Name: copyImage
+  Action: 'ACS::ECS::CopyImage'
+  OnSuccess: whetherToShareImage
+  Description:
+    en: Copy image to regions chosen.
+    zh-cn: 复制镜像到被指定的地域。
+  Properties:
+    regionId: '{{ regionId }}'
+    imageId: '{{ createImage.imageId }}'
+    targetImageName: '{{ targetImageName }}-{{ ACS::CurrentUTCTime }}'
+    targetRegionId: '{{ ACS::TaskLoopItem }}'
+  Loop:
+    Items: '{{ targetRegionIds }}'
+    RateControl: '{{ rateControl }}'
+    Outputs:
+      imageIdsWithRegion:
+        AggregateType: 'Fn::ListJoin'
+        AggregateField: imageIdWithRegion
+  Outputs:
+    imageIdWithRegion:
+      ValueSelector: '.|(.imageId),"{{ ACS::TaskLoopItem }}"'
+      Type: List
+- Name: copyImageToAllRegions
+  Action: 'ACS::ECS::CopyImage'
+  Description:
+    en: Copy image to all available regions.
+    zh-cn: 复制镜像到所有可用地域。
+  Properties:
+    regionId: '{{ regionId }}'
+    imageId: '{{ createImage.imageId }}'
+    targetImageName: '{{ targetImageName }}-{{ ACS::CurrentUTCTime }}'
+    targetRegionId: '{{ ACS::TaskLoopItem }}'
+  Loop:
+    Items: '{{ queryAllAvailableRegions.regionIds }}'
+    RateControl: '{{ rateControl }}'
+    Outputs:
+      imageIdsWithRegion:
+        AggregateType: 'Fn::ListJoin'
+        AggregateField: imageIdWithRegion
+  Outputs:
+    imageIdWithRegion:
+      ValueSelector: '.|(.imageId),"{{ ACS::TaskLoopItem }}"'
+      Type: List
+- Name: whetherToShareImage
+  Action: 'ACS::Choice'
+  Description:
+    en: Choose next task by accountIds.
+    zh-cn: 根据输入账户值判断下一步执行。
+  Properties:
+    DefaultTask: shareImage
+    Choices:
+      - When:
+          'Fn::Equals':
+            - []
+            - '{{ accountIds }}'
+        NextTask: modifyScalingConfiguration
+- Name: shareImage
+  Action: 'ACS::ExecuteAPI'
+  Description:
+    en: Shares a custom image to other Alibaba Cloud accounts.
+    zh-cn: 共享自定义镜像到其他阿里云账号。
+  Properties:
+    Service: ECS
+    API: ModifyImageSharePermission
+    Parameters:
+      RegionId: '{{ regionId }}'
+      ImageId: '{{ createImage.imageId }}'
+      AddAccount: '{{ accountIds }}'
+- Name: modifyScalingConfiguration
+  Action: 'ACS::ExecuteAPI'
+  OnError: ACS::NEXT
+  Description:
+    en: Modify scaling configuration.
+    zh-cn: 修改伸缩配置。
+  Properties:
+    Service: ESS
+    API: ModifyScalingConfiguration
+    Parameters:
+      RegionId: '{{ regionId }}'
+      ScalingConfigurationId: '{{ ACS::TaskLoopItem }}'
+      ImageId: '{{ createImage.imageId }}'
+  Loop:
+    Items: '{{ scalingConfigurationIds }}'
+- Name: updateLaunchTemplate
+  Action: 'ACS::ECS::UpdateLaunchTemplate'
+  Description:
+    en: Update instance launch template.
+    zh-cn: 更新实例启动模版。
+  Properties:
+    regionId: '{{ regionId }}'
+    imageId: '{{ createImage.imageId }}'
+    launchTemplateName: '{{ ACS::TaskLoopItem }}'
+  Loop:
+    Items: '{{ launchTemplateNames }}'
+Outputs:
+  imageIds:
+    Type: List
+    Value: '{{ createImage.imageId }}'
+  imageIdAndRegion:
+    Type: List
+    Value:
+      'Fn::If':
+        - 'Fn::Equals':
+            - all-regions
+            - '{{ queryAllAvailableRegions.allRegionsChosen }}'
+        - '{{ copyImageToAllRegions.imageIdsWithRegion }}'
+        - '{{ copyImage.imageIdsWithRegion }}'
+

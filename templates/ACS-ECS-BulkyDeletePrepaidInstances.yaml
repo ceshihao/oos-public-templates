@@ -1,0 +1,64 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Bulky delete prepaid instances.
+  zh-cn: 批量删除ECS预付费实例。
+  name-en: ACS-ECS-BulkyDeletePrepaidInstances
+  name-zh-cn: 批量删除ECS预付费实例
+  categories:
+    - instance_manage
+Parameters:
+  regionId:
+    Type: String
+    Description:
+      en: The id of region.
+      zh-cn: 地域ID。
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::ECS::Instance
+  rateControl:
+    Description:
+      en: Concurrency ratio of task execution.
+      zh-cn: 任务执行的并发比率。
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Description:
+      en: The RAM role to be assumed by OOS.
+      zh-cn: OOS扮演的RAM角色。
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+- Name: getInstance
+  Description:
+    en: Views the ECS instances.
+    zh-cn: 获取ECS实例。
+  Action: ACS::SelectTargets
+  Properties:
+    ResourceType: ALIYUN::ECS::Instance
+    Filters:
+      - '{{ targets }}'
+  Outputs:
+    instanceIds:
+      Type: List
+      ValueSelector: Instances.Instance[].InstanceId
+- Name: deletePrepaidInstance
+  Action: ACS::ECS::DeletePrepaidInstance
+  Description:
+    en: Deletes the prepaid ECS instance by instance ID.
+    zh-cn: 通过实例ID删除包年包月实例。
+  Properties:
+    regionId: '{{ regionId }}'
+    instanceId: '{{ ACS::TaskLoopItem }}'
+  Loop:
+    RateControl: '{{ rateControl }}'
+    Items: '{{ getInstance.instanceIds }}'
+

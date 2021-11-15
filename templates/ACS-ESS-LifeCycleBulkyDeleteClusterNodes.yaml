@@ -1,0 +1,191 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: >-
+    Use lifecyclehook to delete cluster nodes (only supports elastic contraction
+    activities)
+  zh-cn: 使用生命周期挂钩批量移除CS集群节点（仅支持弹性收缩活动）
+  name-en: ACS-ESS-LifeCycleBulkyDeleteClusterNodes
+  name-zh-cn: 使用生命周期挂钩批量移除CS集群节点
+  categories:
+    - elastic_manage
+Parameters:
+  clusterId:
+    Description:
+      name-en: clusterId
+      name-zh-cn: 集群ID
+      en: The Id of cluster
+      zh-cn: 集群ID
+    Type: String
+  drainNode:
+    Description:
+      name-en: drainNode
+      name-zh-cn: 是否自动排空节点上的Pod
+      en: Whether to drain node
+      zh-cn: 是否自动排空节点上的Pod
+    Type: Boolean
+  releaseNode:
+    Description:
+      name-en: releaseNode
+      name-zh-cn: 是否同时移除ECS
+      en: Whether to delete ECS
+      zh-cn: 是否同时移除ECS
+    Type: Boolean
+  pageSize:
+    Description:
+      name-en: pageSize
+      name-zh-cn: 分页大小
+      en: The number of page size.
+      zh-cn: 分页大小
+    Type: String
+    Default: 10
+  regionId:
+    Description:
+      name-en: regionId
+      name-zh-cn: 地域ID
+      en: The ID of region.
+      zh-cn: '地域ID，请使用弹性伸缩系统默认值 ${regionId}'
+    Type: String
+    Default: '${regionId}'
+  instanceIds:
+    Description:
+      name-en: instanceIds
+      name-zh-cn: ECS实例ID列表
+      en: The ID list of the ECS instance.
+      zh-cn: 'ECS实例ID列表,请使用弹性伸缩系统默认值 ["${instanceId}"]'
+    Type: List
+    Default:
+      - '${instanceIds}'
+  lifecycleHookId:
+    Description:
+      name-en: lifecycleHookId
+      name-zh-cn: 生命周期挂钩ID
+      en: The ID of the lifecycle hook.
+      zh-cn: '生命周期挂钩ID,请使用弹性伸缩系统默认值 ${lifecycleHookId}'
+    Type: String
+    Default: '${lifecycleHookId}'
+  lifecycleActionToken:
+    Description:
+      name-en: lifecycleActionToken
+      name-zh-cn: 实例关联的特定伸缩活动的令牌
+      en: >-
+        The token that indicates a specific scaling activity associated with an
+        instance.
+      zh-cn: '实例关联的特定伸缩活动的令牌,请使用弹性伸缩系统默认值 ${lifecycleActionToken}'
+    Type: String
+    Default: '${lifecycleActionToken}'
+  OOSAssumeRole:
+    Description:
+      name-en: OOSAssumeRole
+      name-zh-cn: OOS扮演的RAM角色
+      en: The RAM role to be assumed by OOS.
+      zh-cn: OOS扮演的RAM角色。
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: describeClusterNodes
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      name-en: Gets node names
+      name-zh-cn: 获取节点名称
+    OnError: CompleteLifecycleActionForAbandon
+    Properties:
+      Service: CS
+      API: DescribeClusterNodes
+      Method: GET
+      Headers:
+        Content-Type: application/json
+      URI: '/clusters/{{clusterId}}/nodes'
+      Parameters:
+        pageSize: '{{ pageSize }}'
+        instanceIds:
+          'Fn::Join':
+            - ','
+            - '{{ instanceIds }}'
+    Outputs:
+      nodeNames:
+        Type: List
+        ValueSelector: '.nodes[].node_name'
+  - Name: whetherNodeIsReady
+    Action: 'ACS::Choice'
+    Description:
+      name-en: Choose next task by nodes
+      name-zh-cn: 根据节点状态选择下一个任务
+    Properties:
+      DefaultTask: deleteClusterNodes
+      Choices:
+        - When:
+            'Fn::Equals':
+              - []
+              - '{{ describeClusterNodes.nodeNames }}'
+          NextTask: CompleteLifecycleActionForContinue
+  - Name: deleteClusterNodes
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      name-en: Delete the specified nodes of cluster
+      name-zh-cn: 移除集群中指定节点
+    OnError: CompleteLifecycleActionForAbandon
+    Properties:
+      Service: CS
+      API: DeleteClusterNodes
+      Method: POST
+      Headers:
+        Content-Type: application/json
+      URI: '/clusters/{{clusterId}}/nodes'
+      Body: >-
+        {"drain_node": {{ drainNode }}, "release_node": {{ releaseNode }},
+        "nodes": {{ describeClusterNodes.nodeNames }}, "call_back": true}
+    Outputs:
+      taskId:
+        Type: String
+        ValueSelector: .task_id
+  - Name: untilNodesRemovedSuccessfully
+    Action: 'ACS::WaitFor'
+    Description:
+      name-en: Wait for the node to be removed successfully
+      name-zh-cn: 等待节点移除成功
+    Retries: 26
+    Delay: 30
+    OnError: CompleteLifecycleActionForAbandon
+    OnSuccess: CompleteLifecycleActionForContinue
+    Properties:
+      Service: CS
+      API: DescribeTaskInfo
+      Method: GET
+      Headers:
+        Content-Type: application/json
+      URI: '/tasks/{{deleteClusterNodes.taskId}}'
+      Parameters: {}
+      DesiredValues:
+        - success
+      StopRetryValues:
+        - fail
+      PropertySelector: .state
+  - Name: CompleteLifecycleActionForContinue
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
+    OnSuccess: 'ACS::END'
+    Properties:
+      Service: ESS
+      API: CompleteLifecycleAction
+      Parameters:
+        RegionId: '{{ regionId }}'
+        LifecycleHookId: '{{ lifecycleHookId }}'
+        LifecycleActionToken: '{{ lifecycleActionToken }}'
+        LifecycleActionResult: CONTINUE
+  - Name: CompleteLifecycleActionForAbandon
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
+    Properties:
+      Service: ESS
+      API: CompleteLifecycleAction
+      Parameters:
+        RegionId: '{{ regionId }}'
+        LifecycleHookId: '{{ lifecycleHookId }}'
+        LifecycleActionToken: '{{ lifecycleActionToken }}'
+        LifecycleActionResult: ABANDON
+
