@@ -14,16 +14,16 @@ Parameters:
     AssociationProperty: TemplateName
   templateParameters:
     Description:
-      en: Template paremeters to execute with.
-      zh-cn: 触发执行模板的参数。
+      name-en: Template paremeters to execute with.
+      name-zh-cn: 触发执行模板的参数。
     Type: Json
     AssociationProperty: TemplateParameter
     AssociationPropertyMetadata:
-      TemplateName: $templateName
+      TemplateName: templateName
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -31,8 +31,8 @@ Tasks:
   - Name: timerTrigger
     Action: 'ACS::TimerTrigger'
     Description:
-      en: Triggers a task as scheduled by specifying type and expression.
-      zh-cn: 通过指定触发类型和表达式按计划触发任务。
+      name-en: Triggers a task as scheduled by specifying type and expression.
+      name-zh-cn: 通过指定触发类型和表达式按计划触发任务。
     Properties:
       Type:
         'Fn::Select':
@@ -53,8 +53,8 @@ Tasks:
   - Name: executeTemplate
     Action: 'ACS::Template'
     Description:
-      en: Execute template.
-      zh-cn: 执行模板。
+      name-en: Execute template.
+      name-zh-cn: 执行模板。
     Properties:
       TemplateName: '{{ templateName }}'
       Parameters: '{{ templateParameters }}'

@@ -51,6 +51,8 @@ Parameters:
       - eu-west-1
       - me-east-1
       - eu-central-1
+      - cn-guangzhou
+      - ap-southeast-6
     Default:
       - all-regions
   rateControl:

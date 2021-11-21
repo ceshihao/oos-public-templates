@@ -1,0 +1,36 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Modify action event policy
+  zh-cn: 开启RDS历史事件功能
+  name-en: ACS-RDS-BulkyModifyActionEventPolicy
+  name-zh-cn: 开启RDS历史事件功能
+  categories:
+    - security
+Parameters:
+  regionId:
+    Description:
+      name-en: The id of region
+      name-zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  OOSAssumeRole:
+    Description:
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: modifyActionEventPolicy
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Modify action event policy
+      zh-cn: 开启RDS历史事件功能
+    Properties:
+      Service: RDS
+      API: ModifyActionEventPolicy
+      Parameters:
+        RegionId: '{{ regionId }}'
+        EnableEventLog: true
+

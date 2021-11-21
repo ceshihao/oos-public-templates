@@ -1,0 +1,62 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Modify protection module status
+  zh-cn: 开启WAF防护功能模块模块
+  name-en: ACS-WAF-BulkyModifyProtectionModuleStatus
+  name-zh-cn: 开启WAF防护功能模块
+  categories:
+    - security
+Parameters:
+  domains:
+    Type: List
+    Description:
+      name-en: The domain name
+      name-zh-cn: 要操作的网站域名
+  instanceId:
+    Description:
+      name-en: The WAF instance id
+      name-zh-cn: 要操作的WAF实例的ID
+    Type: String
+  defenseType:
+    Description:
+      name-en: The WAF protection module that you want to manage
+      name-zh-cn: 要操作的WAF防护功能模块
+    Type: String
+    AllowedValues:
+      - waf
+      - ac_cc
+  rateControl:
+    Description:
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Description:
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: modifyProtectionModuleStatus
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Modify protection module status
+      zh-cn: 开启WAF防护功能模块-规则防护引擎
+    Properties:
+      Service: WAF-OPENAPI
+      API: ModifyProtectionModuleStatus
+      Parameters:
+        DefenseType: '{{ defenseType }}'
+        Domain: '{{ ACS::TaskLoopItem }}'
+        InstanceId: '{{ instanceId }}'
+        ModuleStatus: 1
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items: '{{ domains }}'
+

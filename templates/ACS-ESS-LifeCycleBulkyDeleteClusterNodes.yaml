@@ -37,7 +37,7 @@ Parameters:
       en: The number of page size.
       zh-cn: 分页大小
     Type: String
-    Default: 10
+    Default: '100'
   regionId:
     Description:
       name-en: regionId
