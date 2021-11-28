@@ -1,0 +1,46 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Enable the versioning state of a bucket
+  zh-cn: 开启指定存储空间（Bucket）的版本控制
+  name-en: ACS-OSS-PutBucketVersioning
+  name-zh-cn: 开启指定存储空间（Bucket）的版本控制
+  categories:
+    - security
+Parameters:
+  regionId:
+    Type: String
+    Description:
+      name-en: The id of region
+      name-zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  bucketName:
+    Description:
+      name-en: The bucket name
+      name-zh-cn: OSS bucket 名称
+    Type: String
+  OOSAssumeRole:
+    Description:
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: putBucketVersioning
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Enable the versioning state of a bucket
+      zh-cn: 开启指定存储空间（Bucket）的版本控制
+    Properties:
+      Service: OSS
+      API: PutBucketVersioning
+      Method: PUT
+      URI: '?versioning'
+      Parameters:
+        RegionId: '{{ regionId }}'
+        BucketName: '{{ bucketName }}'
+      Body: >-
+        <?xml version="1.0" encoding="UTF-8"?> <VersioningConfiguration>
+        <Status>Enabled</Status></VersioningConfiguration>
+

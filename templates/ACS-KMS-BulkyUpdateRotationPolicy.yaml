@@ -7,6 +7,13 @@ Description:
   categories:
     - security
 Parameters:
+  regionId:
+    Description:
+      name-en: regionId
+      name-zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
   keyIds:
     Description:
       name-en: The ids list of the Key
@@ -44,6 +51,7 @@ Tasks:
       Service: KMS
       API: UpdateRotationPolicy
       Parameters:
+        RegionId: '{{ regionId }}'
         KeyId: '{{ ACS::TaskLoopItem }}'
         EnableAutomaticRotation: true
         RotationInterval: '{{ rotationInterval }}'
