@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region
-      zh-cn: 地域ID
+      name-en: The id of region
+      name-zh-cn: 地域ID
     Label:
       en: Region
       zh-cn: 地域
@@ -28,8 +28,8 @@ Parameters:
       RegionId: regionId
   rateControl:
     Description:
-      en: Concurrency ratio of task execution
-      zh-cn: 任务执行的并发比率
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
     Label:
       en: RateControl
       zh-cn: 任务执行的并发比率
@@ -41,8 +41,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS
-      zh-cn: OOS扮演的RAM角色
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Label:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
@@ -52,23 +52,23 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Query the ECS instances
-      zh-cn: 获取ECS实例
-    Action: 'ACS::SelectTargets'
+      name-en: Query the ECS instances
+      name-zh-cn: 获取ECS实例
+    Action: ACS::SelectTargets
     Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: describeDisk
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
-      en: Query the disk info
-      zh-cn: 获取磁盘信息
+      name-en: Query the disk info
+      name-zh-cn: 获取磁盘信息
     Properties:
       Service: ECS
       API: DescribeDisks
@@ -79,14 +79,12 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
       Outputs:
         diskInfos:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: diskInfo
     Outputs:
       diskInfo:
         Type: Json
-        ValueSelector: >-
-          .Disks.Disk[] | {"InstanceId": "{{ACS::TaskLoopItem}}", "DiskId":
-          .DiskId, "Size": .Size, "Category": .Category}
+        ValueSelector: '.Disks.Disk[] | {"InstanceId": "{{ACS::TaskLoopItem}}", "DiskId": .DiskId, "Size": .Size, "Category": .Category}'
 Outputs:
   diskInfos:
     Type: Json

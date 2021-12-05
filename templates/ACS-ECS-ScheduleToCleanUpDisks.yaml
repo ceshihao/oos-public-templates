@@ -12,7 +12,7 @@ Parameters:
     Label:
       en: TimerTrigger
       zh-cn: 时间触发器
-    AssociationProperty: 'ALIYUN::OOS::Component::TimerTrigger'
+    AssociationProperty: ALIYUN::OOS::Component::TimerTrigger
   regionId:
     Type: String
     Description:
@@ -34,16 +34,13 @@ Parameters:
       RegionId: regionId
   cleanUpInfos:
     Description:
-      name-en: >-
-        The infos of disk to clean up.Format:
-        3d|/root/log/|*.log,3h|/root/log/|*.access,30m|C:\Users\Administrator\log\|*.log.
-      name-zh-cn: >-
-        磁盘清理信息。格式：3d|/root/log/|*.log,3h|/root/log/|*.access,30m|C:\Users\Administrator\log\|*.log
+      name-en: 'The infos of disk to clean up.Format: 3d|/root/log/|*.log,3h|/root/log/|*.access,30m|C:\Users\Administrator\log\|*.log.'
+      name-zh-cn: 磁盘清理信息。格式：3d|/root/log/|*.log,3h|/root/log/|*.access,30m|C:\Users\Administrator\log\|*.log
     Label:
       en: CleanUpInfos
       zh-cn: 磁盘清理信息
     Type: String
-    AssociationProperty: 'ALIYUN::OOS::Component::CleanUpInfo'
+    AssociationProperty: ALIYUN::OOS::Component::CleanUpInfo
   rateControl:
     Description:
       name-en: Concurrency ratio of task execution
@@ -118,7 +115,7 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
       Outputs:
         commandOutputs:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: commandOutput
     Outputs:
       commandOutput:

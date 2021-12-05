@@ -153,8 +153,8 @@ Tasks:
   - Name: createStack
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: 'Create scaling group, scaling rule, scaling configuration and lifecycle hook.'
-      zh-cn: 创建弹性伸缩组、弹性伸缩规则、弹性伸缩配置和生命周期挂钩等云资源
+      name-en: 'Create scaling group, scaling rule, scaling configuration and lifecycle hook.'
+      name-zh-cn: 创建弹性伸缩组、弹性伸缩规则、弹性伸缩配置和生命周期挂钩等云资源
     Properties:
       Service: ROS
       API: CreateStack
@@ -212,8 +212,8 @@ Tasks:
   - Name: untilStackReady
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait the stack status util CREATE_COMPLETE.
-      zh-cn: 等待资源栈至创建成功状态
+      name-en: Wait the stack status util CREATE_COMPLETE.
+      name-zh-cn: 等待资源栈至创建成功状态
     Retries: 10
     Properties:
       Service: ROS

@@ -9,20 +9,20 @@ Description:
 Parameters:
   regionId:
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Type: String
     Default: '{{ ACS::RegionId }}'
   domainName:
     Description:
-      en: The name of the CDN domain for which the certificate is enabled.
-      zh-cn: 域名。
+      name-en: The name of the CDN domain for which the certificate is enabled.
+      name-zh-cn: 域名。
     Type: String
   serverCertificateStatus:
     Description:
-      en: Specifies whether to enable the SSL certificate.
-      zh-cn: HTTPS证书是否启用。
+      name-en: Specifies whether to enable the SSL certificate.
+      name-zh-cn: HTTPS证书是否启用。
     Type: String
     AllowedValues:
       - 'on'
@@ -30,8 +30,8 @@ Parameters:
     Default: 'on'
   certType:
     Description:
-      en: The type of cert.
-      zh-cn: 证书类型。当证书类型为cas时，PrivateKey无需传参。
+      name-en: The type of cert.
+      name-zh-cn: 证书类型。当证书类型为cas时，PrivateKey无需传参。
     Type: String
     AllowedValues:
       - cas
@@ -39,31 +39,31 @@ Parameters:
       - upload
   certName:
     Description:
-      en: The name of the certificate.
-      zh-cn: 证书名称
+      name-en: The name of the certificate.
+      name-zh-cn: 证书名称
     Type: String
   serverCertificate:
     Description:
-      en: The content of the certificate. Specify the content of the certificate only if you enable the SSL certificate.
-      zh-cn: 安全证书内容，不启用证书则无需输入，配置证书请输入证书内容。
+      name-en: The content of the certificate. Specify the content of the certificate only if you enable the SSL certificate.
+      name-zh-cn: 安全证书内容，不启用证书则无需输入，配置证书请输入证书内容。
     Type: String
     Default: ''
   privateKey:
     Description:
-      en: The private key. Specify the private key only if you enable the SSL certificate.
-      zh-cn: 私钥内容，不启用证书则无需输入，配置证书请输入私钥内容。
+      name-en: The private key. Specify the private key only if you enable the SSL certificate.
+      name-zh-cn: 私钥内容，不启用证书则无需输入，配置证书请输入私钥内容。
     Type: String
     Default: ''
   forceSet:
     Description:
-      en: If you set the value to 1, the system does not check the certificate name for duplicates and overwrites the information of the existing certificate with the same name.
-      zh-cn: 设置为1时，忽略证书名称重复的校验，覆盖原有同名证书信息。
+      name-en: If you set the value to 1, the system does not check the certificate name for duplicates and overwrites the information of the existing certificate with the same name.
+      name-zh-cn: 设置为1时，忽略证书名称重复的校验，覆盖原有同名证书信息。
     Type: String
     Default: 1
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -71,8 +71,8 @@ Tasks:
 - Name: getDomainDetail
   Action: ACS::ExecuteApi
   Description:
-    en: get domain detail.
-    zh-cn: 获取域名详情。
+    name-en: get domain detail.
+    name-zh-cn: 获取域名详情。
   Properties:
     Service: CDN
     API: DescribeCdnDomainDetail
@@ -86,8 +86,8 @@ Tasks:
 - Name: whetherDomainIsReady
   Action: 'ACS::Choice'
   Description:
-    en: Choose next task by server eertificate status.
-    zh-cn: 根据证书的状态选择下一个任务。
+    name-en: Choose next task by server eertificate status.
+    name-zh-cn: 根据证书的状态选择下一个任务。
   Properties:
     DefaultTask: SetDomainServerCertificate
     Choices:
@@ -99,8 +99,8 @@ Tasks:
 - Name: SetDomainServerCertificate
   Action: ACS::ExecuteApi
   Description:
-    en: Set domain server certificate
-    zh-cn: 设置指定域名下证书功能。
+    name-en: Set domain server certificate
+    name-zh-cn: 设置指定域名下证书功能。
   Properties:
     Service: CDN
     API: SetDomainServerCertificate

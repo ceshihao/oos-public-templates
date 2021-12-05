@@ -8,30 +8,30 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   serviceName:
     Description:
-      en: Service name To Invoke.
-      zh-cn: 需要被执行函数的服务名称。
+      name-en: Service name To Invoke.
+      name-zh-cn: 需要被执行函数的服务名称。
     Type: String
   functionName:
     Description:
-      en: Function name To Invoke.
-      zh-cn: 需要被执行函数的函数名称。
+      name-en: Function name To Invoke.
+      name-zh-cn: 需要被执行函数的函数名称。
     Type: String
   parameters:
     Description:
-      en: The parameters required by the function to invoke.
-      zh-cn: 函数计算内部的执行函数需要的参数。
+      name-en: The parameters required by the function to invoke.
+      name-zh-cn: 函数计算内部的执行函数需要的参数。
     Type: String
     Default: ''
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -39,8 +39,8 @@ Tasks:
   - Name: invokeFunction
     Action: ACS::FC::InvokeFunction
     Description:
-      en: Invoke the function.
-      zh-cn: 执行函数计算。
+      name-en: Invoke the function.
+      name-zh-cn: 执行函数计算。
     Properties:
       functionName: '{{ functionName }}'
       serviceName: '{{ serviceName }}'

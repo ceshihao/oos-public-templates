@@ -10,29 +10,33 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   cron:
     Description:
-      en: 'The cron expression, refer them here: https://help.aliyun.com/document_detail/169784.html'
-      zh-cn: 'cron表达式，详情参考：https://help.aliyun.com/document_detail/169784.html'
+      name-en: The cron expression
+      name-zh-cn: cron表达式
+      en: 'refer them here: https://help.aliyun.com/document_detail/169784.html'
+      zh-cn: '详情参考：https://help.aliyun.com/document_detail/169784.html'
     Type: String
     AssociationProperty: Cron
     Default: 0 0 12 ? * *
   endDate:
     Description:
-      en: 'The end date of time trigger. Format: yyyy-MM-ddTHH:mm:ssZ.'
-      zh-cn: '时间触发器结束时间。格式：yyyy-MM-ddTHH:mm:ssZ'
+      name-en: The end date of time trigger.
+      name-zh-cn: 时间触发器结束时间
+      en: 'Format: yyyy-MM-ddTHH:mm:ssZ.'
+      zh-cn: '格式：yyyy-MM-ddTHH:mm:ssZ'
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
       Format: 'YYYY-MM-DDTHH:mm:ssZ'
   timeZone:
     Description:
-      en: The time zone.
-      zh-cn: 时区。
+      name-en: The time zone.
+      name-zh-cn: 时区。
     Type: String
     AssociationProperty: TimeZone
     Default: UTC
@@ -44,8 +48,8 @@ Parameters:
       RegionId: regionId
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -54,8 +58,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -63,8 +67,8 @@ Tasks:
 - Name: timerTrigger
   Action: ACS::TimerTrigger
   Description:
-    en: Triggers a task as scheduled by specifying Cron expression.
-    zh-cn: 通过指定Cron表达式按计划触发任务。
+    name-en: Triggers a task as scheduled by specifying Cron expression.
+    name-zh-cn: 通过指定Cron表达式按计划触发任务。
   Properties:
     Type: cron
     Expression: '{{ cron }}'
@@ -72,8 +76,8 @@ Tasks:
     TimeZone: '{{ timeZone }}'
 - Name: getInstance
   Description:
-    en: Views the ECS instances.
-    zh-cn: 获取ECS实例。
+    name-en: Views the ECS instances.
+    name-zh-cn: 获取ECS实例。
   Action: ACS::SelectTargets
   Properties:
     ResourceType: ALIYUN::ECS::Instance
@@ -87,8 +91,8 @@ Tasks:
 - Name: rebootInstance
   Action: ACS::ECS::RebootInstance
   Description:
-    en: Restarts the ECS instances.
-    zh-cn: 重启实例。
+    name-en: Restarts the ECS instances.
+    name-zh-cn: 重启实例。
   Properties:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'

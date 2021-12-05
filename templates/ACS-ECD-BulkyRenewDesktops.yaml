@@ -17,7 +17,7 @@ Parameters:
       en: The id of desktop
       zh-cn: 云桌面ID
     Type: List
-    Default: []
+    Default: [ ]
   periodUnit:
     Description:
       en: The unit of the renewal duration specified by the Period parameter.
@@ -30,12 +30,12 @@ Parameters:
   period:
     Description:
       en: >-
-        The renewal duration. The valid values of this parameter are determined
-        by the PeriodUnit value. If PeriodUnit is set to Month, the valid values
-        of the Period parameter are 1, 2, 3, and 6. If PeriodUnit is set to
-        Year, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
+        The renewal duration. The valid values of this parameter are determined by the PeriodUnit value.
+        If PeriodUnit is set to Month, the valid values of the Period parameter are 1, 2, 3, and 6.
+        If PeriodUnit is set to Year, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
       zh-cn: >-
-        续费时长。取值范围由参数PeriodUnit的值决定。 PeriodUnit为Month时，取值范围为：1、2、3、6。
+        续费时长。取值范围由参数PeriodUnit的值决定。
+        PeriodUnit为Month时，取值范围为：1、2、3、6。
         PeriodUnit为Year时，取值范围为：1~5。
     Type: Number
     Default: 1
@@ -44,13 +44,12 @@ Parameters:
   autoPay:
     Description:
       en: >-
-        Specifies whether to enable automatic payment. Valid values: true:
-        enables automatic payment. Make sure that you have sufficient balance in
-        your account. Otherwise, abnormal orders are generated. false: generates
-        the order with no payment made. You can log on to the EDS console and
-        complete the payment based on the order number.
+        Specifies whether to enable automatic payment. Valid values:
+        true: enables automatic payment. Make sure that you have sufficient balance in your account. Otherwise, abnormal orders are generated.
+        false: generates the order with no payment made. You can log on to the EDS console and complete the payment based on the order number.
       zh-cn: >-
-        是否自动支付。取值范围： true：自动支付。请确保账户余额充足，否则会产生异常订单。
+        是否自动支付。取值范围：
+        true：自动支付。请确保账户余额充足，否则会产生异常订单。
         false：只产生订单，不支付。您可以根据返回的订单号登录控制台进行支付。
     Type: Boolean
   rateControl:
@@ -89,4 +88,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-

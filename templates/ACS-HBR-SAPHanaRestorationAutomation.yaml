@@ -356,8 +356,8 @@ Tasks:
   - Name: checkHanaInstanceType
     Action: 'ACS::CheckFor'
     Description:
-      zh-cn: 查询SAP HANA实例规格在当前可用区是否可用
-      en: Check SAP HANA instance type availability in current available zones
+      name-zh-cn: 查询SAP HANA实例规格在当前可用区是否可用
+      name-en: Check SAP HANA instance type availability in current available zones
     Properties:
       Service: ECS
       API: DescribeAvailableResource
@@ -378,8 +378,8 @@ Tasks:
   - Name: checkHanaBackupSetting
     Action: 'ACS::CheckFor'
     Description:
-      zh-cn: 查询源实例SAP HANA数据库备份设置
-      en: Check source SAP HANA backup settings
+      name-zh-cn: 查询源实例SAP HANA数据库备份设置
+      name-en: Check source SAP HANA backup settings
     Properties:
       Service: HBR
       API: DescribeHanaBackupSetting
@@ -405,8 +405,8 @@ Tasks:
   - Name: createStack
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Create a SAP HANA single node stack.
-      zh-cn: 创建SAP HANA单节点资源栈
+      name-en: Create a SAP HANA single node stack.
+      name-zh-cn: 创建SAP HANA单节点资源栈
     Properties:
       Service: ROS
       API: CreateStack
@@ -476,8 +476,8 @@ Tasks:
     Action: 'ACS::WaitFor'
     OnError: getExecutionFaildMessage
     Description:
-      en: Wait the stack status util CREATE_COMPLETE.
-      zh-cn: 等待资源栈至创建成功状态。
+      name-en: Wait the stack status util CREATE_COMPLETE.
+      name-zh-cn: 等待资源栈至创建成功状态。
     DelayType: Constant
     Delay: 300
     Retries: 12
@@ -507,8 +507,8 @@ Tasks:
     Action: 'ACS::CheckFor'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 检查SAP HANA安装日志
-      en: Check SAP HANA installation log
+      name-zh-cn: 检查SAP HANA安装日志
+      name-en: Check SAP HANA installation log
     Properties:
       Service: ROS
       API: GetStack
@@ -522,8 +522,8 @@ Tasks:
     Action: 'ACS::ExecuteAPI'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 创建HBR SAP HANA实例
-      en: Create HBR SAP HANA instance
+      name-zh-cn: 创建HBR SAP HANA实例
+      name-en: Create HBR SAP HANA instance
     Properties:
       Service: HBR
       API: CreateHanaInstance
@@ -544,8 +544,8 @@ Tasks:
     Action: 'ACS::ExecuteAPI'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 创建HBR SAP HANA实例客户端
-      en: Create HBR SAP HANA instance client
+      name-zh-cn: 创建HBR SAP HANA实例客户端
+      name-en: Create HBR SAP HANA instance client
     Properties:
       Service: HBR
       API: CreateClients
@@ -567,8 +567,8 @@ Tasks:
     Action: 'ACS::WaitFor'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 等待客户端创建完成
-      en: Wait for the client to be created
+      name-zh-cn: 等待客户端创建完成
+      name-en: Wait for the client to be created
     DelayType: Constant
     Delay: 5
     Retries: 15
@@ -586,8 +586,8 @@ Tasks:
     Action: 'ACS::WaitFor'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 等待HBR客户端激活完成
-      en: Wait for client activation to complete
+      name-zh-cn: 等待HBR客户端激活完成
+      name-en: Wait for client activation to complete
     Properties:
       Service: HBR
       API: DescribeClients
@@ -611,8 +611,8 @@ Tasks:
     Action: 'ACS::HBR::RestoreHanaDatabaseBackup'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 恢复并验证备份
-      en: Restore and verify backup
+      name-zh-cn: 恢复并验证备份
+      name-en: Restore and verify backup
     Properties:
       vaultId: '{{ vaultId }}'
       sourceClusterId: '{{ sourceClusterId }}'
@@ -643,8 +643,8 @@ Tasks:
     OnSuccess: DingTalkNotify
     OnError: getExecutionFaildMessage
     Description:
-      en: Verify the running status of the SAP HANA instance
-      zh-cn: 校验SAP HANA实例运行状态
+      name-en: Verify the running status of the SAP HANA instance
+      name-zh-cn: 校验SAP HANA实例运行状态
     Properties:
       regionId: '{{ ACS::RegionId }}'
       commandContent:
@@ -668,8 +668,8 @@ Tasks:
   - Name: getExecutionFaildMessage
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Get execution failure information
-      zh-cn: 获取执行失败信息
+      name-en: Get execution failure information
+      name-zh-cn: 获取执行失败信息
     Properties:
       Service: OOS
       API: ListExecutions
@@ -683,8 +683,8 @@ Tasks:
     Action: 'ACS::Notify'
     OnSuccess: sleepTask
     Description:
-      en: Notification execution failure message
-      zh-cn: 通知执行失败消息
+      name-en: Notification execution failure message
+      name-zh-cn: 通知执行失败消息
     Properties:
       NotifyType: WebHook
       WebHook:
@@ -710,8 +710,8 @@ Tasks:
   - Name: DingTalkNotify
     Action: 'ACS::Notify'
     Description:
-      en: Notify test results
-      zh-cn: 钉钉通知测试结果
+      name-en: Notify test results
+      name-zh-cn: 钉钉通知测试结果
     Properties:
       NotifyType: WebHook
       WebHook:
@@ -751,8 +751,8 @@ Tasks:
     Action: 'ACS::ExecuteApi'
     OnError: getCleanupFaildMessage
     Description:
-      en: Delete the stack.
-      zh-cn: 删除资源栈
+      name-en: Delete the stack.
+      name-zh-cn: 删除资源栈
     Properties:
       Service: ROS
       API: DeleteStack
@@ -762,8 +762,8 @@ Tasks:
     Action: 'ACS::ExecuteAPI'
     OnError: getCleanupFaildMessage
     Description:
-      zh-cn: 查询HBR SAP HANA实例
-      en: Query HBR SAP HANA instance
+      name-zh-cn: 查询HBR SAP HANA实例
+      name-en: Query HBR SAP HANA instance
     Properties:
       Service: HBR
       API: DescribeHanaInstances
@@ -790,8 +790,8 @@ Tasks:
     Action: 'ACS::ExecuteApi'
     OnError: getCleanupFaildMessage
     Description:
-      en: Delete the stack.
-      zh-cn: 删除测试SAP HANA实例
+      name-en: Delete the stack.
+      name-zh-cn: 删除测试SAP HANA实例
     Properties:
       Service: HBR
       API: DeleteHanaInstance
@@ -804,8 +804,8 @@ Tasks:
     OnError: getCleanupFaildMessage
     OnSuccess: 'ACS::END'
     Description:
-      en: Wait the stack status util DELETE_COMPLETE.
-      zh-cn: 等待资源栈至删除成功状态。
+      name-en: Wait the stack status util DELETE_COMPLETE.
+      name-zh-cn: 等待资源栈至删除成功状态。
     DelayType: Constant
     Delay: 300
     Retries: 12
@@ -823,8 +823,8 @@ Tasks:
   - Name: getCleanupFaildMessage
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Get cleanup failure information
-      zh-cn: 获取清理失败信息
+      name-en: Get cleanup failure information
+      name-zh-cn: 获取清理失败信息
     Properties:
       Service: OOS
       API: ListExecutions
@@ -837,8 +837,8 @@ Tasks:
   - Name: DingTalkNotifyCleanupFailed
     Action: 'ACS::Notify'
     Description:
-      en: Notification cleanup failed
-      zh-cn: 清理失败通知
+      name-en: Notification cleanup failed
+      name-zh-cn: 清理失败通知
     Properties:
       NotifyType: WebHook
       WebHook:

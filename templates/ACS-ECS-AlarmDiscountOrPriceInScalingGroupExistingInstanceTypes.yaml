@@ -41,13 +41,15 @@ Parameters:
     Type: Number
   webhook:
     Description:
-      en: 'DingTalk webhook(example:https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx).'
-      zh-cn: '钉钉接收信息的地址（例：https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx）。'
+      name-en: 'DingTalk webhook'
+      name-zh-cn: '钉钉接收信息的地址'
+      en: 'example:https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.'
+      zh-cn: '例：https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx。'
     Type: String
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -56,8 +58,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -65,8 +67,8 @@ Tasks:
   - Name: describeScalingGroups
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Describe the scaling groups.
-      zh-cn: 查询弹性伸缩组。
+      name-en: Describe the scaling groups.
+      name-zh-cn: 查询弹性伸缩组。
     Properties:
       Service: ESS
       API: DescribeScalingGroups
@@ -87,8 +89,8 @@ Tasks:
   - Name: wetherOutPutPriceInfo
     Action: 'ACS::Choice'
     Description:
-      en: Check if the scaling group exists.
-      zh-cn: 检测伸缩组是否存在。
+      name-en: Check if the scaling group exists.
+      name-zh-cn: 检测伸缩组是否存在。
     Properties:
       DefaultTask: scalingGroupMonitorInfos
       Choices:
@@ -100,8 +102,8 @@ Tasks:
   - Name: scalingGroupMonitorInfos
     Action: 'ACS::ECS::AlarmSpotPriceOrDiscountBySingleScalingGroup'
     Description:
-      en: Monitor the discount or price of the instance type popped up under the scaling group.
-      zh-cn: 监控弹性伸缩组下弹出已实例类型的折扣或价格。
+      name-en: Monitor the discount or price of the instance type popped up under the scaling group.
+      name-zh-cn: 监控弹性伸缩组下弹出已实例类型的折扣或价格。
     Properties:
       regionId: '{{region}}'
       threshold: '{{ threshold }}'
@@ -121,8 +123,8 @@ Tasks:
   - Name: wetherNodifyWebhook
     Action: 'ACS::Choice'
     Description:
-      en: Detect if an alarm notification is required.
-      zh-cn: 检测是否需要发报警通知。
+      name-en: Detect if an alarm notification is required.
+      name-zh-cn: 检测是否需要发报警通知。
     Properties:
       DefaultTask: alarmNotify
       Choices:
@@ -135,8 +137,8 @@ Tasks:
   - Name: alarmNotify
     Action: 'ACS::Notify'
     Description:
-      en: Instance discount / spot price exceeds threshold alarm notification.
-      zh-cn: 实例的折扣/现价超出阈值报警通知。
+      name-en: Instance discount / spot price exceeds threshold alarm notification.
+      name-zh-cn: 实例的折扣/现价超出阈值报警通知。
     Properties:
       NotifyType: WebHook
       WebHook:

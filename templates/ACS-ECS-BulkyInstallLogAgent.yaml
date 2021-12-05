@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   action:
@@ -23,8 +23,8 @@ Parameters:
     Default: install
   overwrite:
     Description:
-      en: 'If logAgent exists in the instance, choose whether to overwrite LogAgent(Default no).'
-      zh-cn: 如果实例内存在logAgent时，选择是否覆盖LogAgent(默认不覆盖)。
+      name-en: 'If logAgent exists in the instance, choose whether to overwrite LogAgent(Default no).'
+      name-zh-cn: 如果实例内存在logAgent时，选择是否覆盖LogAgent(默认不覆盖)。
     Type: Boolean
     Default: false
   targets:
@@ -35,8 +35,8 @@ Parameters:
       RegionId: regionId
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -51,8 +51,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'

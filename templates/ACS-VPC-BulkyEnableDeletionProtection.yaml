@@ -10,14 +10,14 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region
-      zh-cn: 地域ID
+      name-en: The id of region
+      name-zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   type:
     Description:
-      en: The type of instance
-      zh-cn: 要设置删除保护功能的实例类型
+      name-en: The type of instance
+      name-zh-cn: 要设置删除保护功能的实例类型
     Type: String
     AllowedValues:
       - EIP
@@ -26,21 +26,19 @@ Parameters:
     Default: NATGW
   instanceIds:
     Description:
-      en: >-
-        The IDs of the instance for which you want to enable deletion
-        protection.
-      zh-cn: 要设置删除保护功能的实例IDs
+      name-en: The IDs of the instance for which you want to enable deletion protection.
+      name-zh-cn: 要设置删除保护功能的实例IDs
     Type: List
   protectionEnable:
     Description:
-      en: Specifies whether to enable deletion protection
-      zh-cn: 是否开启删除保护功能
+      name-en: Specifies whether to enable deletion protection
+      name-zh-cn: 是否开启删除保护功能
     Type: Boolean
     Default: true
   rateControl:
     Description:
-      en: Concurrency ratio of task execution
-      zh-cn: 任务执行的并发比率
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -49,8 +47,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS
-      zh-cn: OOS扮演的RAM角色
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -58,8 +56,8 @@ Tasks:
   - Name: enableDeletionProtection
     Action: 'ACS::ExecuteApi'
     Description:
-      en: Enables deletion protection for an instance
-      zh-cn: 设置实例删除保护功能
+      name-en: Enables deletion protection for an instance
+      name-zh-cn: 设置实例删除保护功能
     Properties:
       Service: VPC
       API: DeletionProtection

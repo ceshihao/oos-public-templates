@@ -44,7 +44,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: modifyProtectionModuleStatus
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify protection module status
       zh-cn: 开启WAF防护功能模块-规则防护引擎

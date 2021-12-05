@@ -28,7 +28,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: putBucketVersioning
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Enable the versioning state of a bucket
       zh-cn: 开启指定存储空间（Bucket）的版本控制
@@ -40,7 +40,4 @@ Tasks:
       Parameters:
         RegionId: '{{ regionId }}'
         BucketName: '{{ bucketName }}'
-      Body: >-
-        <?xml version="1.0" encoding="UTF-8"?> <VersioningConfiguration>
-        <Status>Enabled</Status></VersioningConfiguration>
-
+      Body: <?xml version="1.0" encoding="UTF-8"?> <VersioningConfiguration> <Status>Enabled</Status></VersioningConfiguration>

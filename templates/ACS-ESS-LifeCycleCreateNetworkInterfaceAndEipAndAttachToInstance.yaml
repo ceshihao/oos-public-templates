@@ -86,8 +86,8 @@ Tasks:
     OnSuccess: CompleteLifecycleActionForContinue
     OnError: CompleteLifecycleActionForAbandon
     Description:
-      en: Create network interface and eip and attach to instace.
-      zh-cn: 创建弹性网卡与弹性IP并将其绑定到实例上。
+      name-en: Create network interface and eip and attach to instace.
+      name-zh-cn: 创建弹性网卡与弹性IP并将其绑定到实例上。
     Properties:
       regionId: '{{ regionId }}'
       internetChargeType: '{{ internetChargeType }}'
@@ -99,8 +99,8 @@ Tasks:
   - Name: CompleteLifecycleActionForContinue
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Modify lifecycle action for continue.
-      zh-cn: 修改伸缩活动的等待状态为继续完成。
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
     OnSuccess: 'ACS::END'
     Properties:
       Service: ESS
@@ -113,8 +113,8 @@ Tasks:
   - Name: CompleteLifecycleActionForAbandon
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Complete lifecycle action for Abandon.
-      zh-cn: 修改伸缩活动的等待状态为弃用。
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
     Properties:
       Service: ESS
       API: CompleteLifecycleAction

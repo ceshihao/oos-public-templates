@@ -5,13 +5,13 @@ Description:
   name-en: ACS-ECS-BulkyModifyInstanceChargeType
   name-zh-cn: 批量修改实例的计费方式
   categories:
-    - instance_manage
+      - instance_manage
 Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -22,8 +22,8 @@ Parameters:
       RegionId: regionId
   instanceChargeType:
     Description:
-      en: The instance ChargeType.
-      zh-cn: 实例需要修改的目标计费方式。
+      name-en: The instance ChargeType.
+      name-zh-cn: 实例需要修改的目标计费方式。
     Type: String
     AllowedValues:
       - PostPaid
@@ -31,16 +31,14 @@ Parameters:
     Default: PostPaid
   period:
     Description:
-      en: The period of the instance
-      zh-cn: >-
-        续费时长,PeriodUnit=Week时，Period取值：1~4，PeriodUnit=Month时，Period取值：1~12,24,
-        36, 48, 60
+      name-en: The period of the instance
+      name-zh-cn: 续费时长,PeriodUnit=Week时，Period取值：1~4，PeriodUnit=Month时，Period取值：1~12,24, 36, 48, 60
     Type: Number
     Default: 1
   periodUnit:
     Description:
-      en: The unit of the renewal period (Period).
-      zh-cn: 续费时长的时间单位，即参数Period的单位。
+      name-en: The unit of the renewal period (Period).
+      name-zh-cn: 续费时长的时间单位，即参数Period的单位。
     Type: String
     AllowedValues:
       - Week
@@ -48,26 +46,24 @@ Parameters:
     Default: Month
   includeDataDisks:
     Description:
-      en: >-
-        Specifies whether to change the billing method of all data disks
-        attached to the instance from pay-as-you-go to subscription
-      zh-cn: 是否将实例挂载的所有按量付费数据盘一起转换为包年包月数据盘
+      name-en: Specifies whether to change the billing method of all data disks attached to the instance from pay-as-you-go to subscription
+      name-zh-cn: 是否将实例挂载的所有按量付费数据盘一起转换为包年包月数据盘
     Type: Boolean
     Default: false
   networkChargeType:
     Description:
-      en: The network ChargeType.
-      zh-cn: 网络需要修改的目标计费方式。
+      name-en: The network ChargeType.
+      name-zh-cn: 网络需要修改的目标计费方式。
     Type: String
     AllowedValues:
       - PayByBandwidth
       - PayByTraffic
-      - ''
+      - ""
     Default: PayByTraffic
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -76,16 +72,16 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -98,9 +94,9 @@ Tasks:
         ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: modifyInstanceChargeType
     Description:
-      en: Modify instance charge type.
-      zh-cn: 修改实例计费方式。
-    Action: 'ACS::ECS::ModifyInstanceChargeType'
+      name-en: Modify instance charge type.
+      name-zh-cn: 修改实例计费方式。
+    Action: ACS::ECS::ModifyInstanceChargeType
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -112,4 +108,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
-

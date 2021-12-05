@@ -8,10 +8,10 @@ Description:
     - security
 Parameters:
   regionId:
-    Description:
-      name-en: regionId
-      name-zh-cn: 地域ID
     Type: String
+    Description:
+      name-en: The id of region
+      name-zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   keyIds:

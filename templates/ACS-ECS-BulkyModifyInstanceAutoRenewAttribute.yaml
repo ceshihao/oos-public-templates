@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region
-      zh-cn: 地域ID
+      name-en: The id of region
+      name-zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -22,8 +22,8 @@ Parameters:
       RegionId: regionId
   periodUnit:
     Description:
-      en: The auto-renewal period
-      zh-cn: 实例续费时长的时间单位
+      name-en: The auto-renewal period
+      name-zh-cn: 实例续费时长的时间单位
     Type: String
     AllowedValues:
       - Month
@@ -32,35 +32,36 @@ Parameters:
     Default: Month
   duration:
     Description:
+      name-en: The duration of instance
+      name-zh-cn: 实例续费时长
       en: >-
-        The duration of instance When PeriodUnit is set to Year, valid values of
-        Duration are 1, 2, and 3 When PeriodUnit is set to Month, valid values
-        of Duration are 1, 2, 3, 6, 12 When PeriodUnit is set to Week, valid
-        values of Duration are 1, 2, 3, 4
+        When PeriodUnit is set to Year, valid values of Duration are 1, 2, and 3
+        When PeriodUnit is set to Month, valid values of Duration are 1, 2, 3, 6, 12
+        When PeriodUnit is set to Week, valid values of Duration are 1, 2, 3, 4
       zh-cn: >-
-        实例续费时长， PeriodUnit为Year（年）时，Duration的取值范围为：{"1", "2", "3"}
+        PeriodUnit为Year（年）时，Duration的取值范围为：{"1", "2", "3"}
         PeriodUnit为Month（月）时，Duration的取值范围为：{"1", "2", "3", "6", "12"}
         PeriodUnit为Week（周）时，Duration的取值范围为：{"1", "2", "3", "4"}
     Type: Number
   autoRenew:
     Description:
-      en: Specifies whether to enable auto-renewal
-      zh-cn: 实例到期前是否自动续费
+      name-en: Specifies whether to enable auto-renewal
+      name-zh-cn: 实例到期前是否自动续费
     Type: Boolean
     Default: false
   renewalStatus:
     Description:
+      name-en: The auto-renewal status of the instance
+      name-zh-cn: 实例的自动续费状态
       en: >-
-        The auto-renewal status of the instance. Valid values: AutoRenewal:
-        Auto-renewal is enabled for the instance. Normal: Auto-renewal is
-        disabled for the instance. NotRenewal: The instance will not be renewed
-        upon expiration. The system no longer sends an expiration reminder, but
-        sends only a non-renewal reminder three days before the expiration date.
-        You can change the value of this parameter from NotRenewal to Normal for
-        an instance, and then manually renew the instance. Alternatively, you
-        can set the RenewalStatus parameter to AutoRenewal.
+        Valid values:
+        AutoRenewal: Auto-renewal is enabled for the instance.
+        Normal: Auto-renewal is disabled for the instance.
+        NotRenewal: The instance will not be renewed upon expiration. The system no longer sends an expiration reminder, but sends only a non-renewal reminder three days before the expiration date. You can change the value of this parameter from NotRenewal to Normal for an instance, and then manually renew the instance. Alternatively, you can set the RenewalStatus parameter to AutoRenewal.
       zh-cn: >-
-        实例的自动续费状态。取值范围： AutoRenewal：设置为自动续费。 Normal：取消自动续费。
+        取值范围：
+        AutoRenewal：设置为自动续费。
+        Normal：取消自动续费。
         NotRenewal：不再续费。传入该值后，系统不再发送到期提醒，只在到期前第三天发送不续费提醒。不再续费的ECS实例可以更改成待续费（Normal）后，再自行续费或设置为自动续费。
     Type: String
     AllowedValues:
@@ -70,8 +71,8 @@ Parameters:
     Default: AutoRenewal
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -80,16 +81,16 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -103,8 +104,8 @@ Tasks:
   - Name: modifyInstanceAutoRenewAttribute
     Action: 'ACS::ECS::ModifyInstanceAutoRenewAttribute'
     Description:
-      en: Modifies instance auto renew attr
-      zh-cn: 修改实例自动续费属性
+      name-en: Modifies instance auto renew attr
+      name-zh-cn: 修改实例自动续费属性
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

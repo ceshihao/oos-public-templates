@@ -7,20 +7,20 @@ Description:
 Parameters:
   regionId:
     Description:
-      en: The ID of region
-      zh-cn: 地域ID
+      name-en: The ID of region
+      name-zh-cn: 地域ID
     Type: String
     Default: '{{ ACS::RegionId }}'
   targets:
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
   action:
     Description:
-      en: The action to apply patch baseline
-      zh-cn: 配置补丁基线的方式
+      name-en: The action to apply patch baseline
+      name-zh-cn: 配置补丁基线的方式
     Type: String
     AllowedValues:
       - install
@@ -28,14 +28,14 @@ Parameters:
     Default: install
   rebootIfNeed:
     Description:
-      en: Whether to reboot
-      zh-cn: 是否重启
+      name-en: Whether to reboot
+      name-zh-cn: 是否重启
     Type: Boolean
     Default: false
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -44,38 +44,36 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
   timeout:
     Description:
-      en: >-
-        The value of the invocation timeout period of a command on ECS
-        instances.
-      zh-cn: ECS实例中执行命令的超时时间。
+      name-en: The value of the invocation timeout period of a command on ECS instances.
+      name-zh-cn: ECS实例中执行命令的超时时间。
     Type: Number
     Default: 1800
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
-    Action: 'ACS::SelectTargets'
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
+    Action: ACS::SelectTargets
     Properties:
       RegionId: '{{ regionId }}'
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: applyPatchBaseline
     Description:
-      en: Apply patch baseline on ECS instance
-      zh-cn: 在ECS实例中配置补丁基线
-    Action: 'ACS::ECS::ApplyPatchBaseline'
+      name-en: Apply patch baseline on ECS instance
+      name-zh-cn: 在ECS实例中配置补丁基线
+    Action: ACS::ECS::ApplyPatchBaseline
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -87,7 +85,7 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
       Outputs:
         commandOutputs:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: commandOutput
     Outputs:
       commandOutput:

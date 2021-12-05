@@ -1,0 +1,206 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Extend ecs instance tags by input params
+  zh-cn: 通过输入条件继承Ecs实例的标签
+  name-en: ACS-TAG-ExtendEcsInstanceTagsByInputParams
+  name-zh-cn: 通过输入条件继承Ecs实例的标签
+Parameters:
+  regionId:
+    Description:
+      name-en: The id of region
+      name-zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  targets:
+    Description:
+      name-en: TargetInstance
+      name-zh-cn: 目标实例
+    Type: Json
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: regionId
+  tagKeys:
+    Description:
+      name-en: The list of tag keys
+      name-zh-cn: 所需继承的标签键
+    Type: List
+  resourceType:
+    Description:
+      name-en: The resourcetype to extend tag
+      name-zh-cn: 继承标签的资源类型
+    Type: String
+    AllowedValues:
+      - disk
+      - snapshot
+      - eni
+      - eip
+  isUpdate:
+    Description:
+      name-en: Whether to overwrite the tag value if the tag key is the same
+      name-zh-cn: 如果标签键相同，是否覆盖标签值
+    Type: Boolean
+    Default: false
+  OOSAssumeRole:
+    Description:
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstanceTagResources
+    Description:
+      en: Query the ECS instances
+      zh-cn: 获取ECS实例以及标签信息
+    Action: 'ACS::SelectTargets'
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      desData:
+        Type: List
+        ValueSelector: >-
+          .Instances.Instance[] | {"Tags": .Tags.Tag | map(select( .TagKey |
+          test("^(?!acs).*"))) | map(select(.TagKey as $tagKey | {{tagKeys}} |
+          index($tagKey) !=-1)) , "InstanceId": .InstanceId}
+  - Name: chooseReferenceResources
+    Action: 'ACS::Choice'
+    Description:
+      en: Choose next task by resource type
+      zh-cn: 根据资源类型选择下一个任务
+    Properties:
+      DefaultTask: 'ACS::END'
+      Choices:
+        - When:
+            'Fn::Equals':
+              - disk
+              - '{{ resourceType }}'
+          NextTask: tagDisk
+        - When:
+            'Fn::Equals':
+              - snapshot
+              - '{{ resourceType }}'
+          NextTask: tagSnapshot
+        - When:
+            'Fn::Equals':
+              - eni
+              - '{{ resourceType }}'
+          NextTask: tagENI
+        - When:
+            'Fn::Equals':
+              - eip
+              - '{{ resourceType }}'
+          NextTask: tagEIP
+  - Name: tagDisk
+    Action: 'ACS::Template'
+    Description:
+      en: Update disk tags by ecs instance tags
+      zh-cn: 通过云服务器标签同步更新磁盘标签
+    OnSuccess: 'ACS::END'
+    Properties:
+      TemplateName: 'ACS::ECS::UpdateDiskTagsByEcsInstanceTags'
+      Parameters:
+        regionId: '{{ regionId }}'
+        instanceId:
+          'Fn::Jq':
+            - First
+            - .InstanceId
+            - '{{ACS::TaskLoopItem}}'
+        tagKeys: '{{tagKeys}}'
+        isUpdate: '{{isUpdate}}'
+    Loop:
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 100
+        Concurrency: 1
+      Items: '{{getInstanceTagResources.desData}}'
+      Outputs:
+        tagResult:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: reqResult
+  - Name: tagSnapshot
+    Action: 'ACS::Template'
+    Description:
+      en: Update snapshot tags by ecs instance tags
+      zh-cn: 通过云服务器标签同步更新快照标签
+    OnSuccess: 'ACS::END'
+    Properties:
+      TemplateName: 'ACS::ECS::UpdateSnapshotTagsByEcsInstanceTags'
+      Parameters:
+        regionId: '{{ regionId }}'
+        instanceId:
+          'Fn::Jq':
+            - First
+            - .InstanceId
+            - '{{ACS::TaskLoopItem}}'
+        tagKeys: '{{tagKeys}}'
+        isUpdate: '{{isUpdate}}'
+    Loop:
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 100
+        Concurrency: 1
+      Items: '{{getInstanceTagResources.desData}}'
+      Outputs:
+        tagResult:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: reqResult
+  - Name: tagENI
+    Action: 'ACS::Template'
+    Description:
+      en: Update eni tags by ecs instance tags
+      zh-cn: 通过云服务器标签同步更新eni标签
+    OnSuccess: 'ACS::END'
+    Properties:
+      TemplateName: 'ACS::ECS::UpdateEniTagsByEcsInstanceTags'
+      Parameters:
+        regionId: '{{ regionId }}'
+        instanceId:
+          'Fn::Jq':
+            - First
+            - .InstanceId
+            - '{{ACS::TaskLoopItem}}'
+        tagKeys: '{{tagKeys}}'
+        isUpdate: '{{isUpdate}}'
+    Loop:
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 100
+        Concurrency: 1
+      Items: '{{getInstanceTagResources.desData}}'
+      Outputs:
+        tagResult:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: reqResult
+  - Name: tagEIP
+    Action: 'ACS::Template'
+    Description:
+      en: Update eip tags By ecs instance tags
+      zh-cn: 通过云服务器标签同步更新EIP标签
+    OnSuccess: 'ACS::END'
+    Properties:
+      TemplateName: 'ACS::ECS::UpdateEipTagsByEcsInstanceTags'
+      Parameters:
+        regionId: '{{ regionId }}'
+        instanceId:
+          'Fn::Jq':
+            - First
+            - .InstanceId
+            - '{{ACS::TaskLoopItem}}'
+        tagKeys: '{{tagKeys}}'
+        isUpdate: '{{isUpdate}}'
+    Loop:
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 100
+        Concurrency: 1
+      Items: '{{getInstanceTagResources.desData}}'
+      Outputs:
+        tagResult:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: reqResult
+

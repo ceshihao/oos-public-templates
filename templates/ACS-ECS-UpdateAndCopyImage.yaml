@@ -10,46 +10,46 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targetImageName:
     Description:
-      en: The name of new image.
-      zh-cn: 新镜像的名称。
+      name-en: The name of new image.
+      name-zh-cn: 新镜像的名称。
     Type: String
     MinLength: 1
     AllowedPattern: '[A-Za-z0-9\_\-\:\{\}\.]*'
     Default: 'UpdateImage_from_{{sourceImageId}}_on_{{ACS::ExecutionId}}'
   sourceImageId:
     Description:
-      en: The image ID for the ECS instance.
-      zh-cn: 源镜像ID。
+      name-en: The image ID for the ECS instance.
+      name-zh-cn: 源镜像ID。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
   instanceType:
     Description:
-      en: The instance type for the ECS instances.
-      zh-cn: 实例类型。
+      name-en: The instance type for the ECS instances.
+      name-zh-cn: 实例类型。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Instance::InstanceType'
     AllowedPattern: ecs\.[A-Za-z0-9\.\-]*
     Default: 'ecs.g5.large'
   securityGroupId:
     Description:
-      en: The security group ID for the ECS instances.
-      zh-cn: 安全组ID。
+      name-en: The security group ID for the ECS instances.
+      name-zh-cn: 安全组ID。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::SecurityGroup::SecurityGroupId'
     AssociationPropertyMetadata:
       RegionId: regionId
   vSwitchId:
     Description:
-      en: The virtual switch ID for the ECS instances。
-      zh-cn: 交换机ID。
+      name-en: The virtual switch ID for the ECS instances。
+      name-zh-cn: 交换机ID。
     Type: String
     AssociationProperty: 'ALIYUN::VPC::VSwitch::VSwitchId'
     AssociationPropertyMetadata:
@@ -58,14 +58,14 @@ Parameters:
         - SecurityGroupId: securityGroupId
   ramRoleName:
     Description:
-      en: The ram role for the ECS instances.
-      zh-cn: 实例的RAM角色。
+      name-en: The ram role for the ECS instances.
+      name-zh-cn: 实例的RAM角色。
     Type: String
     Default: ''
   tags:
     Description:
-      en: The image tag.
-      zh-cn: 镜像标签。
+      name-en: The image tag.
+      name-zh-cn: 镜像标签。
     Type: Json
     AssociationProperty: Tags
     AssociationPropertyMetadata:
@@ -73,8 +73,8 @@ Parameters:
     Default: []
   commandType:
     Description:
-      en: The type of command.
-      zh-cn: 云助手命令类型。
+      name-en: The type of command.
+      name-zh-cn: 云助手命令类型。
     Type: String
     AllowedValues:
       - RunBatScript
@@ -83,15 +83,15 @@ Parameters:
     Default: RunShellScript
   commandContent:
     Description:
-      en: Command content to run in ECS instance.
-      zh-cn: 在ECS实例中执行的云助手命令。
+      name-en: Command content to run in ECS instance.
+      name-zh-cn: 在ECS实例中执行的云助手命令。
     Type: String
     AssociationProperty: Code
     Default: 'echo hello'
   targetRegionIds:
     Description:
-      en: The Target Region Ids.
-      zh-cn: 目标地域ID。
+      name-en: The Target Region Ids.
+      name-zh-cn: 目标地域ID。
     Type: List
     AllowedValues:
       - all-regions
@@ -120,26 +120,26 @@ Parameters:
     Default: []
   accountIds:
     Description:
-      en: The IDs of the Alibaba Cloud accounts to which the image is shared.
-      zh-cn: 授权共享镜像的阿里云账号ID。
+      name-en: The IDs of the Alibaba Cloud accounts to which the image is shared.
+      name-zh-cn: 授权共享镜像的阿里云账号ID。
     Type: List
     Default: []
   scalingConfigurationIds:
     Description:
-      en: The ID list of the scaling configuration to be modified.Must correspond to the selected region.
-      zh-cn: 待修改的伸缩配置IDs，必须要与所选的地域对应。
+      name-en: The ID list of the scaling configuration to be modified.Must correspond to the selected region.
+      name-zh-cn: 待修改的伸缩配置IDs，必须要与所选的地域对应。
     Type: List
     Default: []
   launchTemplateNames:
     Description:
-      en: The name list of the instance launchTemplate to be updated.Must correspond to the selected region.
-      zh-cn: 待更新的实例启动模版名称列表，必须要与所选的地域对应。
+      name-en: The name list of the instance launchTemplate to be updated.Must correspond to the selected region.
+      name-zh-cn: 待更新的实例启动模版名称列表，必须要与所选的地域对应。
     Type: List
     Default: []
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -148,8 +148,8 @@ Parameters:
       Concurrency: 5
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -157,8 +157,8 @@ Tasks:
 - Name: runInstances
   Action: ACS::ECS::RunInstances
   Description:
-    en: Create a ECS instance with source image.
-    zh-cn: 用源镜像创建一台ECS实例。
+    name-en: Create a ECS instance with source image.
+    name-zh-cn: 用源镜像创建一台ECS实例。
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ sourceImageId }}'
@@ -173,8 +173,8 @@ Tasks:
 - Name: installCloudAssistant
   Action: ACS::ECS::InstallCloudAssistant
   Description:
-    en: Install cloud assostant for ECS instance.
-    zh-cn: 给实例安装云助手。
+    name-en: Install cloud assostant for ECS instance.
+    name-zh-cn: 给实例安装云助手。
   OnError: deleteInstance
   Properties:
     regionId: '{{ regionId }}'
@@ -182,8 +182,8 @@ Tasks:
 - Name: runCommand
   Action: ACS::ECS::RunCommand
   Description:
-    en: Run cloud assostant command on ECS instance.
-    zh-cn: 在实例中运行云助手命令。
+    name-en: Run cloud assostant command on ECS instance.
+    name-zh-cn: 在实例中运行云助手命令。
   OnError: deleteInstance
   Properties:
     regionId: '{{ regionId }}'
@@ -193,16 +193,16 @@ Tasks:
 - Name: stopInstance
   Action: ACS::ECS::StopInstance
   Description:
-    en: Stops the ECS instance.
-    zh-cn: 停止ECS实例。
+    name-en: Stops the ECS instance.
+    name-zh-cn: 停止ECS实例。
   Properties:
     regionId: '{{ regionId }}'
     instanceId: '{{ runInstances.instanceId }}'
 - Name: createImage
   Action: ACS::ECS::CreateImage
   Description:
-    en: Create new image with the specified image name and instance ID.
-    zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
+    name-en: Create new image with the specified image name and instance ID.
+    name-zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
   OnError: deleteInstance
   Properties:
     regionId: '{{ regionId }}'
@@ -216,8 +216,8 @@ Tasks:
 - Name: deleteInstanceAfterUpdateImageSuccessfully
   Action: ACS::ExecuteAPI
   Description:
-    en: Release the instance after updating the image successfully。
-    zh-cn: 删除ECS实例。
+    name-en: Release the instance after updating the image successfully。
+    name-zh-cn: 删除ECS实例。
   Properties:
     Service: ECS
     API: DeleteInstance
@@ -229,8 +229,8 @@ Tasks:
 - Name: queryAllAvailableRegions
   Action: 'ACS::ExecuteAPI'
   Description:
-    en: View all available regions.
-    zh-cn: 查询当前所有可用地域。
+    name-en: View all available regions.
+    name-zh-cn: 查询当前所有可用地域。
   Properties:
     Service: ECS
     API: DescribeRegions
@@ -247,8 +247,8 @@ Tasks:
 - Name: whetherCloneToAllRegions
   Action: 'ACS::Choice'
   Description:
-    en: Choose next task by targetRegionIds Chosen.
-    zh-cn: 根据所选目的地域判断下一步执行。
+    name-en: Choose next task by targetRegionIds Chosen.
+    name-zh-cn: 根据所选目的地域判断下一步执行。
   Properties:
     DefaultTask: copyImage
     Choices:
@@ -262,8 +262,8 @@ Tasks:
   OnSuccess: whetherToShareImage
   OnError: 'ACS::END'
   Description:
-    en: Copy image to regions chosen.
-    zh-cn: 复制镜像到被指定的地域。
+    name-en: Copy image to regions chosen.
+    name-zh-cn: 复制镜像到被指定的地域。
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ createImage.imageId }}'
@@ -283,8 +283,8 @@ Tasks:
 - Name: copyImageToAllRegions
   Action: 'ACS::ECS::CopyImage'
   Description:
-    en: Copy image to all available regions.
-    zh-cn: 复制镜像到所有可用地域。
+    name-en: Copy image to all available regions.
+    name-zh-cn: 复制镜像到所有可用地域。
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ createImage.imageId }}'
@@ -304,8 +304,8 @@ Tasks:
 - Name: whetherToShareImage
   Action: 'ACS::Choice'
   Description:
-    en: Choose next task by accountIds.
-    zh-cn: 根据输入账户值判断下一步执行。
+    name-en: Choose next task by accountIds.
+    name-zh-cn: 根据输入账户值判断下一步执行。
   Properties:
     DefaultTask: shareImage
     Choices:
@@ -317,8 +317,8 @@ Tasks:
 - Name: shareImage
   Action: 'ACS::ExecuteAPI'
   Description:
-    en: Shares a custom image to other Alibaba Cloud accounts.
-    zh-cn: 共享自定义镜像到其他阿里云账号。
+    name-en: Shares a custom image to other Alibaba Cloud accounts.
+    name-zh-cn: 共享自定义镜像到其他阿里云账号。
   Properties:
     Service: ECS
     API: ModifyImageSharePermission
@@ -330,8 +330,8 @@ Tasks:
   Action: 'ACS::ExecuteAPI'
   OnError: ACS::NEXT
   Description:
-    en: Modify scaling configuration.
-    zh-cn: 修改伸缩配置。
+    name-en: Modify scaling configuration.
+    name-zh-cn: 修改伸缩配置。
   Properties:
     Service: ESS
     API: ModifyScalingConfiguration
@@ -345,8 +345,8 @@ Tasks:
   Action: 'ACS::ECS::UpdateLaunchTemplate'
   OnSuccess: ACS::END
   Description:
-    en: Update instance launch template.
-    zh-cn: 更新实例启动模版。
+    name-en: Update instance launch template.
+    name-zh-cn: 更新实例启动模版。
   Properties:
     regionId: '{{ ACS::RegionId }}'
     imageId: '{{ createImage.imageId }}'
@@ -356,8 +356,8 @@ Tasks:
 - Name: deleteInstance
   Action: ACS::ExecuteAPI
   Description:
-    en: Deletes the ECS instance after updating the image failure.
-    zh-cn: 删除ECS实例。
+    name-en: Deletes the ECS instance after updating the image failure.
+    name-zh-cn: 删除ECS实例。
   Properties:
     Service: ECS
     API: DeleteInstance

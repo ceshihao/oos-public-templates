@@ -38,7 +38,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: modifySQLCollectorRetention
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify SQL collector retention
       zh-cn: 设置RDS实例的SQL洞察日志保存时长为180天

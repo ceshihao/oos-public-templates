@@ -58,13 +58,15 @@ Parameters:
     Type: Number
   webhook:
     Description:
-      en: 'DingTalk webhook(example:https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx).'
-      zh-cn: '钉钉接收信息的地址（例：https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx）。'
+      en: 'DingTalk webhook'
+      zh-cn: '钉钉接收信息的地址'
+      name-en: '(example:https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx).'
+      name-zh-cn: '（例：https://oapi.dingtalk.com/robot/send?access_token=bac51db2e39418ec6c2dbb27fd111bc7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx）。'
     Type: String
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -73,8 +75,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -82,8 +84,8 @@ Tasks:
   - Name: alarmThresholdInfo
     Action: 'ACS::ECS::AlarmSpotPriceByDiscountThresholdWithMultiTypes'
     Description:
-      en: Alarm when monitoring the discount and spot price of multi-instance types under multi-availability zone exceeding the threshold.
-      zh-cn: 监控多可用区下的多实例类型的折扣与现价超出阈值时报警。
+      name-en: Alarm when monitoring the discount and spot price of multi-instance types under multi-availability zone exceeding the threshold.
+      name-zh-cn: 监控多可用区下的多实例类型的折扣与现价超出阈值时报警。
     Properties:
         regionId: '{{ region }}'
         zoneId: '{{ ACS::TaskLoopItem }}'
@@ -104,8 +106,8 @@ Tasks:
   - Name: wetherNodifyWebhook
     Action: 'ACS::Choice'
     Description:
-      en: Detect if an alarm notification is required.
-      zh-cn: 检测是否需要发报警通知。
+      name-en: Detect if an alarm notification is required.
+      name-zh-cn: 检测是否需要发报警通知。
     Properties:
       DefaultTask: alarmNotify
       Choices:
@@ -118,8 +120,8 @@ Tasks:
   - Name: alarmNotify
     Action: 'ACS::Notify'
     Description:
-      en: Instance discount / spot price exceeds threshold alarm notification.
-      zh-cn: 实例的折扣/现价超出阈值报警通知。
+      name-en: Instance discount / spot price exceeds threshold alarm notification.
+      name-zh-cn: 实例的折扣/现价超出阈值报警通知。
     Properties:
       NotifyType: WebHook
       WebHook:

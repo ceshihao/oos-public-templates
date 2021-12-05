@@ -10,31 +10,31 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   trailName:
     Description:
-      en: The name for trail.
-      zh-cn: 创建的跟踪名称。
+      name-en: The name for trail.
+      name-zh-cn: 创建的跟踪名称。
     Type: String
   ossBucketName:
     Description:
-      en: The OOS Bucket name for creating trail.
-      zh-cn: 跟踪写入的 OSS bucket 名称。
+      name-en: The OOS Bucket name for creating trail.
+      name-zh-cn: 跟踪写入的 OSS bucket 名称。
     Type: String
     Default: ''
   roleName:
     Description:
-      en: The name of the ram role that the user allows the actiontrail service to play.
-      zh-cn: 用户允许 ActionTrail服务扮演的RAM角色名称。
+      name-en: The name of the ram role that the user allows the actiontrail service to play.
+      name-zh-cn: 用户允许 ActionTrail服务扮演的RAM角色名称。
     Type: String
     Default: aliyunactiontraildefaultrole
   eventRW:
     Description:
-      en: Read and write type of delivery event.
-      zh-cn: 投递事件的读写类型。
+      name-en: Read and write type of delivery event.
+      name-zh-cn: 投递事件的读写类型。
     Type: String
     Default: All
     AllowedValues:
@@ -43,14 +43,14 @@ Parameters:
       - Read
   trailRegion:
     Description:
-      en: The trail region(for example:All、cn-hangzhou).
-      zh-cn: 跟踪的地域(例如：All、cn-hangzhou)。
+      name-en: The trail region(for example:All、cn-hangzhou).
+      name-zh-cn: 跟踪的地域(例如：All、cn-hangzhou)。
     Type: String
     Default: All
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -58,8 +58,8 @@ Tasks:
   - Name: createTrail
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Create trail.
-      zh-cn: 创建跟踪。
+      name-en: Create trail.
+      name-zh-cn: 创建跟踪。
     Properties:
       Service: Actiontrail
       API: CreateTrail

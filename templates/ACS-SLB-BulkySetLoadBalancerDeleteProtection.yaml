@@ -9,20 +9,20 @@ Description:
 Parameters:
   regionId:
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Type: String
     Default: '{{ ACS::RegionId }}'
   loadBalancerIds:
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     Type: List
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -31,8 +31,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -40,8 +40,8 @@ Tasks:
 - Name: enableLoadBalancerDeletionProtection
   Action: ACS::SLB::SetLoadBalancerDeleteProtection
   Description:
-    en: Set loadBalancer deletion protection.
-    zh-cn: 负载均衡实例启用实例保护。
+    name-en: Set loadBalancer deletion protection.
+    name-zh-cn: 负载均衡实例启用实例保护。
   Properties:
     regionId: '{{ regionId }}'
     loadBalancerId: '{{ ACS::TaskLoopItem }}'

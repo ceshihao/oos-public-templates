@@ -14,18 +14,20 @@ Parameters:
     Default: '{{ ACS::RegionId }}'
   bucketName:
     Description:
-      en: The OSS bucket name.
-      zh-cn: OSS bucket 名称。
+      name-en: The OSS bucket name.
+      name-zh-cn: OSS bucket 名称。
     Type: String
   bucketPolicy:
     Description:
-      en: The bucket policy(for example:{"Version":"1","Statement":[{"Action":["oss:PutObject","oss:GetObject"],"Effect":"Deny","Principal":["1234567890"],"Resource":["acs:oss:*:1234567890:*/*"]}]}).
-      zh-cn: 存储空间授权策略（例子：{"Version":"1","Statement":[{"Action":["oss:PutObject","oss:GetObject"],"Effect":"Deny","Principal":["1234567890"],"Resource":["acs:oss:*:1234567890:*/*"]}]}）。
+      name-en: The bucket policy
+      name-zh-cn: 存储空间授权策略
+      en: (for example:{"Version":"1","Statement":[{"Action":["oss:PutObject","oss:GetObject"],"Effect":"Deny","Principal":["1234567890"],"Resource":["acs:oss:*:1234567890:*/*"]}]}).
+      zh-cn: （例子：{"Version":"1","Statement":[{"Action":["oss:PutObject","oss:GetObject"],"Effect":"Deny","Principal":["1234567890"],"Resource":["acs:oss:*:1234567890:*/*"]}]}）。
     Type: Json
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -33,8 +35,8 @@ Tasks:
   - Name: putBucketPolicy
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Put the bucket policy.
-      zh-cn: 设置存储空间的授权策略。
+      name-en: Put the bucket policy.
+      name-zh-cn: 设置存储空间的授权策略。
     Properties:
       Service: OSS
       API: PutBucketPolicy
@@ -50,8 +52,8 @@ Tasks:
   - Name: waitBucketPolicy
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for the authorization policy of the storage space to take effect.
-      zh-cn: 等待存储空间的授权策略生效。
+      name-en: Wait for the authorization policy of the storage space to take effect.
+      name-zh-cn: 等待存储空间的授权策略生效。
     Properties:
       Service: OSS
       API: GetBucketPolicy

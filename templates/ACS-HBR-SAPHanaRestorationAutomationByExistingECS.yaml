@@ -79,8 +79,8 @@ Tasks:
   - Name: checkHanaBackupSetting
     Action: 'ACS::CheckFor'
     Description:
-      zh-cn: 查询源实例SAP HANA数据库备份设置
-      en: Check source SAP HANA backup settings
+      name-zh-cn: 查询源实例SAP HANA数据库备份设置
+      name-en: Check source SAP HANA backup settings
     Properties:
       Service: HBR
       API: DescribeHanaBackupSetting
@@ -107,8 +107,8 @@ Tasks:
     Action: 'ACS::CheckFor'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 检查客户端是否为激活状态
-      en: Check for client status(activated)
+      name-zh-cn: 检查客户端是否为激活状态
+      name-en: Check for client status(activated)
     Properties:
       Service: HBR
       API: DescribeClients
@@ -132,8 +132,8 @@ Tasks:
     Action: 'ACS::HBR::RestoreHanaDatabaseBackup'
     OnError: getExecutionFaildMessage
     Description:
-      zh-cn: 恢复并验证备份
-      en: Restore and verify backup
+      name-zh-cn: 恢复并验证备份
+      name-en: Restore and verify backup
     Properties:
       vaultId: '{{ vaultId }}'
       sourceClusterId: '{{ sourceClusterId }}'
@@ -164,8 +164,8 @@ Tasks:
     OnSuccess: DingTalkNotify
     OnError: getExecutionFaildMessage
     Description:
-      en: Verify the running status of the SAP HANA instance
-      zh-cn: 校验SAP HANA实例运行状态
+      name-en: Verify the running status of the SAP HANA instance
+      name-zh-cn: 校验SAP HANA实例运行状态
     Properties:
       regionId: '{{ ACS::RegionId }}'
       commandContent:
@@ -189,8 +189,8 @@ Tasks:
   - Name: getExecutionFaildMessage
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Get execution failure information
-      zh-cn: 获取执行失败信息
+      name-en: Get execution failure information
+      name-zh-cn: 获取执行失败信息
     Properties:
       Service: OOS
       API: ListExecutions
@@ -204,8 +204,8 @@ Tasks:
     Action: 'ACS::Notify'
     OnSuccess: 'ACS::END'
     Description:
-      en: Notification execution failure message
-      zh-cn: 通知执行失败消息
+      name-en: Notification execution failure message
+      name-zh-cn: 通知执行失败消息
     Properties:
       NotifyType: WebHook
       WebHook:
@@ -231,8 +231,8 @@ Tasks:
   - Name: DingTalkNotify
     Action: 'ACS::Notify'
     Description:
-      en: Notify test results
-      zh-cn: 钉钉通知测试结果
+      name-en: Notify test results
+      name-zh-cn: 钉钉通知测试结果
     Properties:
       NotifyType: WebHook
       WebHook:

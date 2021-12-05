@@ -37,7 +37,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: rebuildDesktop
-    Action: 'ACS::ECD::RebuildDesktop'
+    Action: ACS::ECD::RebuildDesktop
     Description:
       en: Rebuild desktops
       zh-cn: 重建云桌面
@@ -47,4 +47,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-

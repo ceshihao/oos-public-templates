@@ -37,7 +37,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: startDesktop
-    Action: 'ACS::ECD::StartDesktop'
+    Action: ACS::ECD::StartDesktop
     Description:
       en: Start desktops
       zh-cn: 启动云桌面
@@ -47,4 +47,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-

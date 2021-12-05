@@ -24,13 +24,13 @@ Parameters:
     Type: String
     AllowedValues:
       - M
-      - 'Y'
+      - Y
   renewalPeriod:
     Description:
       name-en: The duration of desktop
       namme-zh-cn: 实例续费时长
       en: 'Valid values: 1, 2, 3, 6, 12'
-      zh-cn: '取值范围为：{"1", "2", "3", "6", "12"}'
+      zh-cn: 取值范围为：{"1", "2", "3", "6", "12"}
     Type: Number
     AllowedValues:
       - 1
@@ -43,10 +43,15 @@ Parameters:
       name-en: The auto-renewal status of the desktop
       name-zh-cn: 云桌面自动续费状态
       en: >-
-        Valid values: AutoRenewal: Auto-renewal is enabled for the instance.
-        Normal: Auto-renewal is disabled for the instance. NotRenewal: The
-        instance will not be renewed upon expiration.
-      zh-cn: 取值范围： AutoRenewal：设置为自动续费。 Normal：取消自动续费。 NotRenewal：不再续费。
+        Valid values:
+        AutoRenewal: Auto-renewal is enabled for the instance.
+        Normal: Auto-renewal is disabled for the instance.
+        NotRenewal: The instance will not be renewed upon expiration.
+      zh-cn: >-
+        取值范围：
+        AutoRenewal：设置为自动续费。
+        Normal：取消自动续费。
+        NotRenewal：不再续费。
     Type: String
     AllowedValues:
       - AutoRenewal
@@ -71,7 +76,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: modifyDesktopAutoRenewAttribute
-    Action: 'ACS::ECD::SetRenewal'
+    Action: ACS::ECD::SetRenewal
     Description:
       name-en: Modifies desktop auto renew attr
       name-zh-cn: 修改云桌面自动续费属性

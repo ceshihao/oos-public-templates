@@ -10,72 +10,75 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of target region.
-      zh-cn: 将创建资源的目标地域ID。
+      name-en: The id of target region.
+      name-zh-cn: 将创建资源的目标地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   imageId:
     Description:
-      en: The image id of ECS instance to create.
-      zh-cn: 将创建实例的镜像ID。
+      name-en: The image id of ECS instance to create.
+      name-zh-cn: 将创建实例的镜像ID。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
   instanceType:
     Description:
-      en:  The instance type of ECS instance to create.
-      zh-cn: 将创建实例的规格。
+      name-en:  The instance type of ECS instance to create.
+      name-zh-cn: 将创建实例的规格。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Instance::InstanceType'
   zoneId:
     Description:
-      en: The target zone id of VSwitch to create..
-      zh-cn: 将创建交换机的目标可用区ID。
+      name-en: The target zone id of VSwitch to create..
+      name-zh-cn: 将创建交换机的目标可用区ID。
     AssociationProperty: 'ALIYUN::ECS::Instance::ZoneId'
     Type: String
     AssociationPropertyMetadata:
       RegionId: regionId
   webHookUrl:
     Description:
+      name-en: The webhook url of dingtalk group assistant
+      name-zh-cn: 钉钉群助手的webhook地址
       en: >-
-        The webhook url of dingtalk group assistant,
         e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414,acquiring DingTalk webhook please refer to second appendix in https://help.aliyun.com/document_detail/144679.html.
       zh-cn: >-
-        钉钉群助手的webhook地址，形如https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414，具体钉钉WebHook获取请参考https://help.aliyun.com/document_detail/144679.html#h2--2-webhook-5。
+        形如https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414，具体钉钉WebHook获取请参考https://help.aliyun.com/document_detail/144679.html#h2--2-webhook-5。
     Type: String
   atMobiles:
     Description:
-      en: The dingtalk phone numbers of who be @ in notification,e.g.138ALBB1234.
-      zh-cn: 审批通知中被@的群成员的钉钉手机号，比如138ALBB1234。
+      name-en: The dingtalk phone numbers of who be @ in notification,e.g.138ALBB1234.
+      name-zh-cn: 审批通知中被@的群成员的钉钉手机号，比如138ALBB1234。
     Type: List
   atAll:
     Description:
-      en: 'Whether assistant @ all members in dingtalk group or not notification comes'
-      zh-cn: 当群助手向钉钉群中发送审批通知时是否@所有人。
+      name-en: 'Whether assistant @ all members in dingtalk group or not notification comes'
+      name-zh-cn: 当群助手向钉钉群中发送审批通知时是否@所有人。
     Type: String
     Default: 'false'
   approvers:
     Description:
-      en: The names of users that have the authority to approve task. the name to fill is the front part of @ in the RAM user name,if  RAM user is user001@companyAlias.onaliyun.com, then fill  user001  in list.
-      zh-cn: 可以审批任务的用户。用户名是RAM子用户名称中@前面的部分，比如RAM子用户为user001@companyAlias.onaliyun.com,那么列表中填写user001即可。
+      name-en: The names of users that have the authority to approve task.
+      name-zh-cn: 可以审批任务的用户
+      en: the name to fill is the front part of @ in the RAM user name,if  RAM user is user001@companyAlias.onaliyun.com, then fill  user001  in list.
+      zh-cn: 用户名是RAM子用户名称中@前面的部分，比如RAM子用户为user001@companyAlias.onaliyun.com,那么列表中填写user001即可。
     Type: List
     AssociationProperty: ALIYUN::RAM::User
   minRequiredApprovals:
     Description:
-          en: The min required count of approvals.
-          zh-cn: 最低需要通过审批的数量
+          name-en: The min required count of approvals.
+          name-zh-cn: 最低需要通过审批的数量
     Type: Number
     Default: 1
   instancesCount:
     Description:
-      en: The count of ECS instance to create.
-      zh-cn: 将创建实例的数量。
+      name-en: The count of ECS instance to create.
+      name-zh-cn: 将创建实例的数量。
     Type: Number
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 
@@ -84,8 +87,8 @@ Tasks:
   - Name: approveCreateInstances
     Action: 'ACS::Approve'
     Description:
-      en: Approve task creating ECS instances.
-      zh-cn: 审批后批量创建ECS实例。
+      name-en: Approve task creating ECS instances.
+      name-zh-cn: 审批后批量创建ECS实例。
     Properties:
       Approvers: '{{approvers}}'
       MinRequiredApprovals: '{{minRequiredApprovals}}'
@@ -107,8 +110,8 @@ Tasks:
   - Name: createStack
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Create a resource stack.
-      zh-cn: 创建资源栈。
+      name-en: Create a resource stack.
+      name-zh-cn: 创建资源栈。
     Properties:
       Service: ROS
       API: CreateStack
@@ -314,8 +317,8 @@ Tasks:
     OnError: queryStackStatusReason
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for the stack status CREATE_COMPLETE.
-      zh-cn: 等待资源栈至创建成功状态。
+      name-en: Wait for the stack status CREATE_COMPLETE.
+      name-zh-cn: 等待资源栈至创建成功状态。
     Properties:
       Service: ROS
       API: GetStack
@@ -341,8 +344,8 @@ Tasks:
     OnError: deleteStack
     OnSuccess: deleteStack
     Description:
-      en: Query the reson of failed created stack.
-      zh-cn: 查询资源栈未创建成功的原因。
+      name-en: Query the reson of failed created stack.
+      name-zh-cn: 查询资源栈未创建成功的原因。
     Properties:
       Service: ROS
       API: GetStack
@@ -357,8 +360,8 @@ Tasks:
   - Name: deleteStack
     Action: 'ACS::ExecuteApi'
     Description:
-      en: Delete the stack.
-      zh-cn: 删除资源栈。
+      name-en: Delete the stack.
+      name-zh-cn: 删除资源栈。
     Properties:
       Service: ROS
       API: DeleteStack

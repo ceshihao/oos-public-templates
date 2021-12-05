@@ -14,14 +14,14 @@ Parameters:
       ResourceType: ALIYUN::ECS::Instance
   accessToken:
     Description:
-      en: Dingtalk access_token to be notified.
-      zh-cn: 用于通知的钉钉安全令牌。
+      name-en: Dingtalk access_token to be notified.
+      name-zh-cn: 用于通知的钉钉安全令牌。
     Type: String
     AllowedPattern: '[A-Za-z0-9]*'
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -30,16 +30,16 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
 - Name: getInstance
   Description:
-    en: Views the ECS instances.
-    zh-cn: 获取ECS实例。
+    name-en: Views the ECS instances.
+    name-zh-cn: 获取ECS实例。
   Action: ACS::SelectTargets
   Properties:
     ResourceType: ALIYUN::ECS::Instance
@@ -52,8 +52,8 @@ Tasks:
 - Name: approvalForDeleteInstances
   Action: ACS::Approve
   Description:
-    en: Approval to delete ECS instances.
-    zh-cn: 审批。
+    name-en: Approval to delete ECS instances.
+    name-zh-cn: 审批。
   Properties:
     NotifyType: WebHook
     WebHook:
@@ -67,8 +67,8 @@ Tasks:
 - Name: deleteInstance
   Action: ACS::ECS::DeleteInstance
   Description:
-    en: Deletes the ECS instances.
-    zh-cn: 删除ECS实例。
+    name-en: Deletes the ECS instances.
+    name-zh-cn: 删除ECS实例。
   Properties:
     instanceId: '{{ ACS::TaskLoopItem }}'
   Loop:

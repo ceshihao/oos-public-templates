@@ -19,9 +19,6 @@ Parameters:
     Default: '{{ ACS::RegionId }}'
   targets:
     Type: Json
-    Description:
-      name-en: Targets
-      name-zh-cn: 目标实例
     Label:
       en: TargetInstance
       zh-cn: 目标实例
@@ -55,17 +52,13 @@ Parameters:
     Default: echo hello
   workingDir:
     Description:
-      en: >-
-        Linux instances: under the home directory of the administrator (root
-        user): /root.Windows instances: under the directory where the process of
-        the Cloud Assistant client is located, such asC:\Windows\System32.
-      zh-cn: >-
-        Linux系统实例默认在管理员（root用户）的home目录下，即/root。Windows系统实例默认在云助手客户端进程所在目录，例如C:\Windows\System32。
       name-en: The directory where the created command runs on the ECS instances
       name-zh-cn: 脚本在ECS实例中的运行目录
+      en: 'Linux instances: under the home directory of the administrator (root user): /root.Windows instances: under the directory where the process of the Cloud Assistant client is located, such asC:\Windows\System32.'
+      zh-cn: 'Linux系统实例默认在管理员（root用户）的home目录下，即/root。Windows系统实例默认在云助手客户端进程所在目录，例如C:\Windows\System32。'
     Label:
-      name-en: WorkingDir
-      name-zh-cn: 运行目录
+      en: WorkingDir
+      zh-cn: 运行目录
     Type: String
     Default: ''
   timeout:
@@ -94,7 +87,7 @@ Parameters:
       en: Username
       zh-cn: 执行命令的用户名称
     Type: String
-    Default: ''
+    Default: ""
   windowsPasswordName:
     Description:
       name-en: The name of the password used to run the command on a Windows instance
@@ -103,7 +96,7 @@ Parameters:
       en: WindowsPasswordName
       zh-cn: 在Windows实例中执行命令的用户的密码名称
     Type: String
-    Default: ''
+    Default: ""
     AssociationProperty: SecretParameterName
   rateControl:
     Description:
@@ -133,18 +126,18 @@ Tasks:
     Description:
       name-en: Views the ECS instances.
       name-zh-cn: 获取ECS实例。
-    Action: 'ACS::SelectTargets'
+    Action: ACS::SelectTargets
     Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: runCommand
-    Action: 'ACS::ECS::RunCommand'
+    Action: ACS::ECS::RunCommand
     Description:
       name-en: Execute cloud assistant command.
       name-zh-cn: 执行云助手命令。
@@ -163,7 +156,7 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
       Outputs:
         commandOutputs:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: commandOutput
     Outputs:
       commandOutput:
@@ -173,4 +166,3 @@ Outputs:
   commandOutputs:
     Type: List
     Value: '{{ runCommand.commandOutputs }}'
-

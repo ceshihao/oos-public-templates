@@ -96,8 +96,8 @@ Tasks:
     Action: ACS::ECS::RunCommand
     OnError: runCommand
     Description:
-      en: Update cloud assistant.
-      zh-cn: 更新云助手
+      name-en: Update cloud assistant.
+      name-zh-cn: 更新云助手
     Properties:
       regionId: '{{ ACS::RegionId }}'
       commandContent: 'rpm -ivh --force "https://aliyun-client-assist-{{ ACS::RegionId }}.oss-{{ ACS::RegionId }}-internal.aliyuncs.com/linux/aliyun_assist_latest.rpm"'
@@ -122,8 +122,8 @@ Tasks:
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
     Description:
-      en: Execute install script.
-      zh-cn: 执行安装脚本
+      name-en: Execute install script.
+      name-zh-cn: 执行安装脚本
     Properties:
       regionId: '{{ ACS::RegionId }}'
       commandContent: 'mkdir -p /tmp/sap-auto-scaling && cd /tmp/sap-auto-scaling; wget -q https://sh-test-hangzhou.oss-cn-hangzhou.aliyuncs.com/sap-utilities/sap-auto-scaling/sap_auto_scaling.sh -O /tmp/sap-auto-scaling/sap_auto_scaling.sh && bash sap_auto_scaling.sh --UsrsapDiskName vdb --SwapDiskName vdc --PASIP {{ PASIP }} --RootPassword {{ rootPassword }} --SID {{ SAPSID }} --UserName {{ userName }} --UserPassword {{ userPassword }}  --ClientNumber {{ clientNumber }} --ClassName {{ className }}'
@@ -147,8 +147,8 @@ Tasks:
   - Name: CompleteLifecycleActionForContinue
     Action: ACS::ExecuteAPI
     Description:
-      en: Modify lifecycle action for continue.
-      zh-cn: 修改伸缩活动的等待状态为继续完成。
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
     OnSuccess: ACS::END
     Properties:
       Service: ESS
@@ -161,8 +161,8 @@ Tasks:
   - Name: CompleteLifecycleActionForAbandon
     Action: ACS::ExecuteAPI
     Description:
-      en: Complete lifecycle action for Abandon.
-      zh-cn: 修改伸缩活动的等待状态为弃用。
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
     Properties:
       Service: ESS
       API: CompleteLifecycleAction

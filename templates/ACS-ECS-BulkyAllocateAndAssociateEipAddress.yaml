@@ -70,8 +70,8 @@ Parameters:
       Concurrency: 15
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -79,8 +79,8 @@ Tasks:
   - Name: associateEipAddressToENI
     Action: ACS::ECS::AllocateAndAssociateEipAddress
     Description:
-      en: Associate Eip address to instance.
-      zh-cn: 将弹性公网IP（EIP）绑定到云产品实例上。
+      name-en: Associate Eip address to instance.
+      name-zh-cn: 将弹性公网IP（EIP）绑定到云产品实例上。
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

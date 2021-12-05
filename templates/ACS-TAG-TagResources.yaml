@@ -1,103 +1,102 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Tag the resources it manages through resource management.
-  zh-cn: 通过资源管理给其管理的资源打标签。
-  name-en: ACS-TAG-TagResources
-  name-zh-cn: 通过资源管理给资源打标签
-  categories:
-    - security
+    en: Tag the resources it manages through resource management.
+    zh-cn: 通过资源管理给其管理的资源打标签。
+    name-en: ACS-TAG-TagResources
+    name-zh-cn: 通过资源管理给资源打标签
+    categories:
+      - security
 Parameters:
   regionId:
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     Type: String
     Default: '{{ ACS::RegionId }}'
   resourceIds:
     Description:
-      en: The resource ids.
-      zh-cn: 资源ID。
+      name-en: The resource ids.
+      name-zh-cn: 资源ID。
     Type: List
   resourceType:
     Description:
-      en: The resource type.
-      zh-cn: 资源类型。
+      name-en: The resource type.
+      name-zh-cn: 资源类型。
     Type: String
     AllowedValues:
-      - 'ALIYUN::ECS::INSTANCE'
-      - 'ALIYUN::ECS::DISK'
-      - 'ALIYUN::ECS::SNAPSHOT'
-      - 'ALIYUN::ECS::IMAGE'
-      - 'ALIYUN::ECS::SECURITYGROUP'
-      - 'ALIYUN::ECS::VOLUME'
-      - 'ALIYUN::ECS::ENI'
-      - 'ALIYUN::ECS::DDH'
-      - 'ALIYUN::ECS::KEYPAIR'
-      - 'ALIYUN::ECS::LAUNCHTEMPLATE'
-      - 'ALIYUN::ECS::SNAPSHOTPOLICY'
-      - 'ALIYUN::ECS::DDHCLUSTER'
-      - 'ALIYUN::VPC::VPC'
-      - 'ALIYUN::VPC::VSWITCH'
-      - 'ALIYUN::VPC::ROUTETABLE'
-      - 'ALIYUN::VPC::EIP'
-      - 'ALIYUN::VPC::COMMONBANDWIDTHPACKAGE'
-      - 'ALIYUN::VPC::NATGATEWAY'
-      - 'ALIYUN::VPC::IPV6GATEWAY'
-      - 'ALIYUN::VPC::IPV6INSTANCE'
-      - 'ALIYUN::VPC::VPNGATEWAY'
-      - 'ALIYUN::VPC::IPV6BANDWIDTH'
-      - 'ALIYUN::SLB::INSTANCE'
-      - 'ALIYUN::SLB::ACL'
-      - 'ALIYUN::SLB::CERTIFICATE'
-      - 'ALIYUN::RDS::INSTANCE'
-      - 'ALIYUN::APIGATEWAY::APP'
-      - 'ALIYUN::APIGATEWAY::APIGROUP'
-      - 'ALIYUN::APIGATEWAY::PLUGIN'
-      - 'ALIYUN::APIGATEWAY::INSTANCE'
-      - 'ALIYUN::APIGATEWAY::API'
-      - 'ALIYUN::ALIKAFKA::INSTANCE'
-      - 'ALIYUN::ALIKAFKA::TOPIC'
-      - 'ALIYUN::ALIKAFKA::CONSUMERGROUP'
-      - 'ALIYUN::ROS::STACK'
-      - 'ALIYUN::ROS::TEMPLATE'
-      - 'ALIYUN::ALIDNS::DOMAIN'
-      - 'ALIYUN::ESS::SCALINGGROUP'
-      - 'ALIYUN::SMC::SOURCESERVER'
-      - 'ALIYUN::SMC::REPLICATIONJOB'
-      - 'ALIYUN::POLARDB::CLUSTER'
-      - 'ALIYUN::KVSTORE::INSTANCE'
-      - 'ALIYUN::DDS::INSTANCE'
-      - 'ALIYUN::CAS::INSTANCE'
-      - 'ALIYUN::BASTIONHOST::INSTANCE'
-      - 'ALIYUN::ELASTICSEARCH::INSTANCE'
-      - 'ALIYUN::OSS::BUCKET'
-      - 'ALIYUN::DDOSCOO::INSTANCE'
-      - 'ALIYUN::DDOSBGP::INSTANCE'
-      - 'ALIYUN::DRDS::INSTANCE'
-      - 'ALIYUN::GPDB::INSTANCE'
-      - 'ALIYUN::CEN::CEN'
-      - 'ALIYUN::BAAS::ORGANIZATION'
-      - 'ALIYUN::BAAS::CONSORTIUM'
-      - 'ALIYUN::ADB::CLUSTER'
-      - 'ALIYUN::HCS_SGW::GATEWAY'
-      - 'ALIYUN::IMAGESEARCH::INSTANCE'
-      - 'ALIYUN::CDN::DOMAIN'
-      - 'ALIYUN::OOS::TEMPLATE'
-      - 'ALIYUN::OOS::EXECUTION'
-      - 'ALIYUN::MULTIMOD::CLUSTER'
-      - 'ALIYUN::DBAUDIT::INSTANCE'
-      - 'ALIYUN::CS::CLUSTER'
+      - ALIYUN::ECS::INSTANCE
+      - ALIYUN::ECS::DISK
+      - ALIYUN::ECS::SNAPSHOT
+      - ALIYUN::ECS::IMAGE
+      - ALIYUN::ECS::SECURITYGROUP
+      - ALIYUN::ECS::VOLUME
+      - ALIYUN::ECS::ENI
+      - ALIYUN::ECS::DDH
+      - ALIYUN::ECS::KEYPAIR
+      - ALIYUN::ECS::LAUNCHTEMPLATE
+      - ALIYUN::ECS::SNAPSHOTPOLICY
+      - ALIYUN::ECS::DDHCLUSTER
+      - ALIYUN::VPC::VPC
+      - ALIYUN::VPC::VSWITCH
+      - ALIYUN::VPC::ROUTETABLE
+      - ALIYUN::VPC::EIP
+      - ALIYUN::VPC::COMMONBANDWIDTHPACKAGE
+      - ALIYUN::VPC::NATGATEWAY
+      - ALIYUN::VPC::IPV6GATEWAY
+      - ALIYUN::VPC::IPV6INSTANCE
+      - ALIYUN::VPC::VPNGATEWAY
+      - ALIYUN::VPC::IPV6BANDWIDTH
+      - ALIYUN::SLB::INSTANCE
+      - ALIYUN::SLB::ACL
+      - ALIYUN::SLB::CERTIFICATE
+      - ALIYUN::RDS::INSTANCE
+      - ALIYUN::APIGATEWAY::APP
+      - ALIYUN::APIGATEWAY::APIGROUP
+      - ALIYUN::APIGATEWAY::PLUGIN
+      - ALIYUN::APIGATEWAY::INSTANCE
+      - ALIYUN::APIGATEWAY::API
+      - ALIYUN::ALIKAFKA::INSTANCE
+      - ALIYUN::ALIKAFKA::TOPIC
+      - ALIYUN::ALIKAFKA::CONSUMERGROUP
+      - ALIYUN::ROS::STACK
+      - ALIYUN::ROS::TEMPLATE
+      - ALIYUN::ALIDNS::DOMAIN
+      - ALIYUN::ESS::SCALINGGROUP
+      - ALIYUN::SMC::SOURCESERVER
+      - ALIYUN::SMC::REPLICATIONJOB
+      - ALIYUN::POLARDB::CLUSTER
+      - ALIYUN::KVSTORE::INSTANCE
+      - ALIYUN::DDS::INSTANCE
+      - ALIYUN::CAS::INSTANCE
+      - ALIYUN::BASTIONHOST::INSTANCE
+      - ALIYUN::ELASTICSEARCH::INSTANCE
+      - ALIYUN::OSS::BUCKET
+      - ALIYUN::DDOSCOO::INSTANCE
+      - ALIYUN::DDOSBGP::INSTANCE
+      - ALIYUN::DRDS::INSTANCE
+      - ALIYUN::GPDB::INSTANCE
+      - ALIYUN::CEN::CEN
+      - ALIYUN::BAAS::ORGANIZATION
+      - ALIYUN::BAAS::CONSORTIUM
+      - ALIYUN::ADB::CLUSTER
+      - ALIYUN::HCS_SGW::GATEWAY
+      - ALIYUN::IMAGESEARCH::INSTANCE
+      - ALIYUN::CDN::DOMAIN
+      - ALIYUN::OOS::TEMPLATE
+      - ALIYUN::OOS::EXECUTION
+      - ALIYUN::MULTIMOD::CLUSTER
+      - ALIYUN::DBAUDIT::INSTANCE
+      - ALIYUN::CS::CLUSTER
   tags:
     Description:
-      en: 'The resource tag(example:{"k1":"v1","k2":"v2"}).'
-      zh-cn: '资源标签（例：{"k1":"v1","k2":"v2"}）。'
+      name-en: The resource tag(example:{"k1":"v1","k2":"v2"}).
+      name-zh-cn: 资源标签（例：{"k1":"v1","k2":"v2"}）。
     Type: Json
-    Default:
-      oosGenerate: oosGenerate
+    Default: {"oosGenerate":"oosGenerate"}
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -106,17 +105,17 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: tagResource
-    Action: 'ACS::CheckFor'
+    Action: ACS::CheckFor
     Description:
-      en: Tag the resources it manages through resource management.
-      zh-cn: 通过资源管理给其管理的资源打标签。
+      name-en: Tag the resources it manages through resource management.
+      name-zh-cn: 通过资源管理给其管理的资源打标签。
     Properties:
       Service: TAG
       API: TagResources
@@ -125,15 +124,12 @@ Tasks:
         ResourceARN:
           - 'Fn::Jq':
               - First
-              - >-
-                .resourceType | ascii_downcase |split("::") |
-                "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId
-                }}:"+.[2]+"/{{ ACS::TaskLoopItem }}"
+              - '.resourceType | ascii_downcase |split("::") | "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId }}:"+.[2]+"/{{ ACS::TaskLoopItem }}"'
               - '{"resourceType":"{{resourceType}}"}'
-        Tags: '{{ tags }}'
+        Tags: "{{ tags }}"
       DesiredValues:
-        - Null
-      PropertySelector: '.FailedResources.FailedResource[]'
+        - null
+      PropertySelector: .FailedResources.FailedResource[]
     Loop:
       Items: '{{ resourceIds }}'
       RateControl: '{{ rateControl }}'
@@ -144,12 +140,12 @@ Tasks:
     Outputs:
       errorMessage:
         Type: String
-        ValueSelector: '.FailedResources.FailedResource[]'
+        ValueSelector: .FailedResources.FailedResource[]
   - Name: listTagResources
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
-      en: Query the resource tags.
-      zh-cn: 查询资源标签信息。
+      name-en: Query the resource tags.
+      name-zh-cn: 查询资源标签信息。
     Properties:
       Service: TAG
       API: ListTagResources
@@ -158,10 +154,7 @@ Tasks:
         ResourceARN:
           - 'Fn::Jq':
               - First
-              - >-
-                .resourceType | ascii_downcase |split("::") |
-                "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId
-                }}:"+.[2]+"/{{ ACS::TaskLoopItem }}"
+              - '.resourceType | ascii_downcase |split("::") | "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId }}:"+.[2]+"/{{ ACS::TaskLoopItem }}"'
               - '{"resourceType":"{{resourceType}}"}'
     Outputs:
       tagAndResourceId:
@@ -172,7 +165,7 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Outputs:
         tagAndResourceIds:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: tagAndResourceId
 Outputs:
   resourceIdsAndTag:

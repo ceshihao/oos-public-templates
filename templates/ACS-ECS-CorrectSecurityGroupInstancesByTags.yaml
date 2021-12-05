@@ -7,22 +7,22 @@ Description:
 Parameters:
   regionId:
     Description:
-      en: The ID of region
-      zh-cn: 地域ID
+      name-en: The ID of region
+      name-zh-cn: 地域ID
     Type: String
     Default: '{{ ACS::RegionId }}'
   tags:
     Description:
-      en: The tags of new ECS instance to add on
-      zh-cn: 要添加的新ECS实例的标记
+      name-en: The tags of new ECS instance to add on
+      name-zh-cn: 要添加的新ECS实例的标记
     Type: Json
     AssociationProperty: Tags
 Tasks:
   - Name: describeInstances
     Action: ACS::ExecuteAPI
     Description:
-      en: Queries the ECS instances by specifying tag
-      zh-cn: 通过指定标签查看ECS实例
+      name-en: Queries the ECS instances by specifying tag
+      name-zh-cn: 通过指定标签查看ECS实例
     Properties:
       Service: ECS
       API: DescribeInstances

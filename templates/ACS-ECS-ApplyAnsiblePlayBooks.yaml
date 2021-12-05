@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -23,8 +23,8 @@ Parameters:
   sourceType:
     Type: String
     Description:
-      en: The type of playbook storage.
-      zh-cn: playbook存储的类型。
+      name-en: The type of playbook storage.
+      name-zh-cn: playbook存储的类型。
     AllowedValues:
       - oss
       - https
@@ -32,55 +32,63 @@ Parameters:
   sourcePath:
     Type: String
     Description:
-      en: 'You must specify a URL where the playbook is stored.You can specify the URL in the following formats: https://example.com/playbook.yml'
-      zh-cn: '您必须指定用于存储playbook的URL。可以按以下格式指定URL：https://example.com/playbook.yml'
+      name-en: 'You must specify a URL where the playbook is stored'
+      name-zh-cn: '您必须指定用于存储playbook的URL'
+      en: 'You can specify the URL in the following formats: https://example.com/playbook.yml'
+      zh-cn: '可以按以下格式指定URL：https://example.com/playbook.yml'
   playbookFile:
     Description:
-      en: 'The name of playbook to apply. For example: example.yml'
-      zh-cn: '执行的playbook名称。例如: example.yml'
+      name-en: 'The name of playbook to apply. For example: example.yml'
+      name-zh-cn: '执行的playbook名称。例如: example.yml'
     Type: String
   tokenInfo:
     Type: String
     Description:
-      en: Specify a token to download ansible playbook.It is only required when downloading palybook from GitHub.
-      zh-cn: 指定令牌以下载playbook，只有从GitHub上下载palybook时需要填。
+      name-en: Specify a token to download ansible playbook.It is only required when downloading palybook from GitHub.
+      name-zh-cn: 指定令牌以下载playbook，只有从GitHub上下载palybook时需要填。
     Default: ""
   hosts:
     Type: String
     Description:
-      en: The hosts used to execute  palybook.
-      zh-cn: 用于执行palybook的hosts。
+      name-en: The hosts used to execute  palybook.
+      name-zh-cn: 用于执行palybook的hosts。
     Default: /etc/ansible/hosts
   installDependencies:
     Description:
+      name-en: 'OOS installs Ansible and its dependencies'
+      name-zh-cn: OOS从PyPI存储库中是否安装Ansible及其依赖项
       en: 'If set to True,  OOS installs Ansible and its dependencies, including Python, from the PyPI repo.  If set to False, then verify that Ansible and its dependencies are installed on the target instances.'
       zh-cn: 如果设置为True，则OOS从PyPI存储库中安装Ansible及其依赖项，包括Python。如果设置为False，则需要验证目标实例上是否安装了Ansible及其依赖项。
     Type: Boolean
     Default: true
   workingDir:
     Description:
-      en: The directory to apply playbook.
-      zh-cn: 执行playbook的目录。
+      name-en: The directory to apply playbook.
+      name-zh-cn: 执行playbook的目录。
     Type: String
     Default: /root/ansible-workspace
   check:
     Description:
-      en: Use the check parameter to perform a dry run of the Ansible execution.
-      zh-cn: 使用check参数运行Ansible执行检查。
+      name-en: Use the check parameter to perform a dry run of the Ansible execution.
+      name-zh-cn: 使用check参数运行Ansible执行检查。
     Type: Boolean
     Default: true
   extraVariables:
     Type: String
     Description:
-      en: 'Additional variables to pass to Ansible at runtime. Enter a space separated list of key/value pairs. For example: color=red flavor=lime'
-      zh-cn: 其他变量在运行时传递给Ansible。 输入以空格分隔的键/值对列表。 例如：color=red flavour=lime
+      name-en: Additional variables to pass to Ansible at runtime
+      name-zh-cn: 其他变量在运行时传递给Ansible
+      en: 'Enter a space separated list of key/value pairs. For example: color=red flavor=lime'
+      zh-cn: 输入以空格分隔的键/值对列表。 例如：color=red flavour=lime
     Default: color=red
     AllowedPattern: ^$|^\w+\=\S+(\s\w+\=\S+)*$
   verbose:
     Type: String
     Description:
-      en: 'Set the verbosity level for logging Playbook executions. Specify -v for low verbosity, -vv or –vvv for medium verbosity, and -vvvv for debug level.'
-      zh-cn: 设置用于记录Playbook执行情况的详细程度。 指定-v表示低级别，-vv或–vvv表示中等级别，-vvvv表示调试级别。
+      en: Set the verbosity level for logging Playbook executions
+      zh-cn: 设置用于记录Playbook执行情况的详细程度
+      name-en: 'Specify -v for low verbosity, -vv or –vvv for medium verbosity, and -vvvv for debug level.'
+      name-zh-cn: 指定-v表示低级别，-vv或–vvv表示中等级别，-vvvv表示调试级别。
     AllowedValues:
       - '-v'
       - '-vv'
@@ -89,8 +97,8 @@ Parameters:
     Default: '-v'
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -105,8 +113,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -120,8 +128,8 @@ Tasks:
   - Name: applyPlaybook
     Action: 'ACS::ECS::ApplyAnsiblePlayBook'
     Description:
-      en: Apply the specified playbook.
-      zh-cn: 运行指定的playbook。
+      name-en: Apply the specified playbook.
+      name-zh-cn: 运行指定的playbook。
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

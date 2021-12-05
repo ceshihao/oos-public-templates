@@ -21,9 +21,7 @@ Parameters:
     Description:
       name-en: The ECD desktop charge type
       name-zh-cn: 云桌面要转换成的计费方式
-      en: >-
-        Currently only supports conversion from postpaid to monthly prepaid, and
-        the value is PrePaid
+      en: Currently only supports conversion from postpaid to monthly prepaid, and the value is PrePaid
       zh-cn: 目前仅支持由按量付费转换为包年包月，取值为PrePaid
     Type: String
     AllowedValues:
@@ -42,12 +40,12 @@ Parameters:
     Description:
       name-en: The subscription period of the instance
       name-zh-cn: 购买包年包月资源的时长
-      en: >-
-        Valid values: Valid values when PeriodUnit is set to Week: 1. Valid
-        values when PeriodUnit is set to Month: 1, 2, 3, and 6. Valid values
-        when PeriodUnit is set to Month: 1, 2, 3, 4, and 5.
-      zh-cn: >-
-        取值范围： 如果PeriodUnit为Week，该参数的取值范围为{“1”}。
+      en: "Valid values:
+          Valid values when PeriodUnit is set to Week: 1.
+          Valid values when PeriodUnit is set to Month: 1, 2, 3, and 6.
+          Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, and 5."
+      zh-cn: 取值范围：
+        如果PeriodUnit为Week，该参数的取值范围为{“1”}。
         如果PeriodUnit为Month，该参数的取值范围为{“1”, “2”, “3”, “6”}。
         如果PeriodUnit为Year，该参数的取值范围为{“1”, “2”, “3”, “4”, “5”}。
     Type: Number
@@ -63,13 +61,12 @@ Parameters:
       name-en: Specifies whether to enable automatic payment
       name-zh-cn: 是否自动支付
       en: >-
-        Valid values: true: enables automatic payment. Make sure that you have
-        sufficient balance in your account. Otherwise, abnormal orders are
-        generated. false: generates the order with no payment made. You can log
-        on to the EDS console and complete the payment based on the order
-        number.
+        Valid values:
+        true: enables automatic payment. Make sure that you have sufficient balance in your account. Otherwise, abnormal orders are generated.
+        false: generates the order with no payment made. You can log on to the EDS console and complete the payment based on the order number.
       zh-cn: >-
-        取值范围： true：自动支付。请确保账户余额充足，否则会产生异常订单。
+        取值范围：
+        true：自动支付。请确保账户余额充足，否则会产生异常订单。
         false：只产生订单，不支付。您可以根据返回的订单号登录控制台进行支付。
     Type: Boolean
     Default: true
@@ -95,7 +92,7 @@ Tasks:
     Description:
       name-en: Modify desktop charge type
       name-zh-cn: 修改云桌面计费方式
-    Action: 'ACS::ECD::ModifyDesktopChargeType'
+    Action: ACS::ECD::ModifyDesktopChargeType
     Properties:
       regionId: '{{ regionId }}'
       desktopId: '{{ ACS::TaskLoopItem }}'
@@ -106,4 +103,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-

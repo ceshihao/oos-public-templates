@@ -34,7 +34,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: putBucketLogging
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Enable logging for a bucket
       zh-cn: 为存储空间（Bucket）开启日志转存功能
@@ -46,9 +46,4 @@ Tasks:
       Parameters:
         RegionId: '{{ regionId }}'
         BucketName: '{{ bucketName }}'
-      Body: >-
-        <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus>
-        <LoggingEnabled> <TargetBucket>{{ bucketName }}</TargetBucket>
-        <TargetPrefix>{{ logPrefix }}</TargetPrefix> </LoggingEnabled>
-        </BucketLoggingStatus>
-
+      Body: <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus> <LoggingEnabled> <TargetBucket>{{ bucketName }}</TargetBucket> <TargetPrefix>{{ logPrefix }}</TargetPrefix> </LoggingEnabled> </BucketLoggingStatus>

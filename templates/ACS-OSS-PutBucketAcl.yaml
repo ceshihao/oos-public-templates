@@ -14,13 +14,13 @@ Parameters:
     Default: '{{ ACS::RegionId }}'
   bucketName:
     Description:
-      en: The OSS bucket name.
-      zh-cn: OSS bucket 名称。
+      name-en: The OSS bucket name.
+      name-zh-cn: OSS bucket 名称。
     Type: String
   permissionName:
     Description:
-      en: The acl permission name.
-      zh-cn: Acl权限名称。
+      name-en: The acl permission name.
+      name-zh-cn: Acl权限名称。
     Type: String
     AllowedValues:
       - public-read-write
@@ -28,8 +28,8 @@ Parameters:
       - private
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -37,8 +37,8 @@ Tasks:
   - Name: putBucketAcl
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Set or modify the access permission (ACL) of the bucket.
-      zh-cn: 设置或修改存储空间（Bucket）的访问权限（ACL）。
+      name-en: Set or modify the access permission (ACL) of the bucket.
+      name-zh-cn: 设置或修改存储空间（Bucket）的访问权限（ACL）。
     Properties:
       Service: OSS
       API: PutBucketACL

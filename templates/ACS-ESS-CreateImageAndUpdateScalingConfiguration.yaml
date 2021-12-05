@@ -9,26 +9,26 @@ Description:
 Parameters:
   instanceId:
     Description:
-      en: The id of ECS instance.
-      zh-cn: ECS实例ID。
+      name-en: The id of ECS instance.
+      name-zh-cn: ECS实例ID。
     Type: String
   targetImageName:
     Description:
-      en: The name of new image.
-      zh-cn: 新镜像的名称。
+      name-en: The name of new image.
+      name-zh-cn: 新镜像的名称。
     Type: String
     MinLength: 1
     AllowedPattern: '[A-Za-z0-9\_\-\:\{\}\.]*'
     Default: CreateImage_from_{{instanceId}}
   scalingConfigurationIds:
     Description:
-      en: The ID list of the scaling configuration to be modified.
-      zh-cn: 待修改的伸缩配置IDs。
+      name-en: The ID list of the scaling configuration to be modified.
+      name-zh-cn: 待修改的伸缩配置IDs。
     Type: List
   tags:
     Description:
-      en: The image tag.
-      zh-cn: 镜像标签。
+      name-en: The image tag.
+      name-zh-cn: 镜像标签。
     Type: Json
     AssociationProperty: Tags
     AssociationPropertyMetadata:
@@ -36,8 +36,8 @@ Parameters:
     Default: []
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -45,8 +45,8 @@ Tasks:
 - Name: createImage
   Action: ACS::ECS::CreateImage
   Description:
-    en: Create new image with the specified image name and instance ID.
-    zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
+    name-en: Create new image with the specified image name and instance ID.
+    name-zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
   Properties:
     imageName: '{{ targetImageName }}_on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
     instanceId: '{{ instanceId }}'
@@ -58,8 +58,8 @@ Tasks:
 - Name: modifyScalingConfiguration
   Action: ACS::ExecuteAPI
   Description:
-    en: Modify scaling configuration.
-    zh-cn: 修改伸缩配置。
+    name-en: Modify scaling configuration.
+    name-zh-cn: 修改伸缩配置。
   Properties:
     Service: ESS
     API: ModifyScalingConfiguration

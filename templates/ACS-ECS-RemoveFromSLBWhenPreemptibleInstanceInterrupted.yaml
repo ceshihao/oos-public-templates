@@ -9,23 +9,23 @@ Description:
 Parameters:
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
   tags:
     Type: Json
     Description:
-      en: The tags to select ECS instances.
-      zh-cn: 实例的标签。
+      name-en: The tags to select ECS instances.
+      name-zh-cn: 实例的标签。
     AssociationProperty: Tags
     Default: []
 RamRole: '{{OOSAssumeRole}}'
 Tasks:
   - Name: eventTrigger
     Description:
-      en: Monitor the preemptible instance interruption event.
-      zh-cn: 监控抢占式实例的释放事件。
+      name-en: Monitor the preemptible instance interruption event.
+      name-zh-cn: 监控抢占式实例的释放事件。
     Action: 'ACS::EventTrigger'
     Properties:
       Tags: '{{ tags }}'
@@ -44,8 +44,8 @@ Tasks:
         Type: String
   - Name: describeSLB
     Description:
-      en: Views the SLB id of preemptible instance interrupted.
-      zh-cn: 查询释放的抢占实例所在负载均衡ID。
+      name-en: Views the SLB id of preemptible instance interrupted.
+      name-zh-cn: 查询释放的抢占实例所在负载均衡ID。
     Action: 'ACS::ExecuteAPI'
     Properties:
       Service: SLB
@@ -58,8 +58,8 @@ Tasks:
         Type: String
   - Name: setBackendServers
     Description:
-      en: Set the weight of interrupted instance zero on SLB.
-      zh-cn: 将释放的实例在负载均衡上的权重设置为0。
+      name-en: Set the weight of interrupted instance zero on SLB.
+      name-zh-cn: 将释放的实例在负载均衡上的权重设置为0。
     Action: 'ACS::ExecuteAPI'
     Properties:
       Service: SLB
@@ -71,15 +71,15 @@ Tasks:
         LoadBalancerId: '{{describeSLB.loadBalancerId}}'
   - Name: waitConnectionExpire
     Description:
-      en: Wait created connection expire.
-      zh-cn: 等待已经建立的网络连接断开。
+      name-en: Wait created connection expire.
+      name-zh-cn: 等待已经建立的网络连接断开。
     Action: 'ACS::Sleep'
     Properties:
       Duration: 'PT1M'
   - Name: removeBackendServers
     Description:
-      en: Remove the interrupted instance from SLB backend servers list.
-      zh-cn: 将释放的实例从负载均衡后端服务器列表上移除。
+      name-en: Remove the interrupted instance from SLB backend servers list.
+      name-zh-cn: 将释放的实例从负载均衡后端服务器列表上移除。
     Action: 'ACS::ExecuteAPI'
     Properties:
       Service: SLB

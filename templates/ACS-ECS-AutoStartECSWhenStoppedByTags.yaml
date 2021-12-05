@@ -10,22 +10,22 @@ Parameters:
   tags:
     Type: Json
     Description:
-      en: The tags to select ECS instances.
-      zh-cn: 实例的标签。
+      name-en: The tags to select ECS instances.
+      name-zh-cn: 实例的标签。
     AssociationProperty: Tags
     Default: []
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: eventTrigger
     Description:
-      en: Monitor the ECS instance enter Stopped status.
-      zh-cn: 监控变为停止状态ECS实例。
+      name-en: Monitor the ECS instance enter Stopped status.
+      name-zh-cn: 监控变为停止状态ECS实例。
     Action: 'ACS::EventTrigger'
     Properties:
       Product: ECS
@@ -45,8 +45,8 @@ Tasks:
   - Name: startInstance
     Action: 'ACS::ECS::StartInstance'
     Description:
-      en: Starts the ECS instance.
-      zh-cn: 启动实例。
+      name-en: Starts the ECS instance.
+      name-zh-cn: 启动实例。
     Properties:
       instanceId: '{{ eventTrigger.instanceId }}'
 Outputs:

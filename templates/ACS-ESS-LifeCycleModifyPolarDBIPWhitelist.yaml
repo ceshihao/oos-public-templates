@@ -18,10 +18,7 @@ Parameters:
     Description:
       name-en: modifyMode
       name-zh-cn: 修改IP白名单的方式
-      en: >-
-        The method to modify the IP whitelist, Delete is used for elastic
-        contraction activities, and Append is used for elastic expansion
-        activities.
+      en: The method to modify the IP whitelist, Delete is used for elastic contraction activities, and Append is used for elastic expansion activities.
       zh-cn: 修改IP白名单的方式，Append用于弹性扩张活动，Delete用于弹性收缩活动。
     Type: String
     AllowedValues:
@@ -56,9 +53,7 @@ Parameters:
     Description:
       name-en: lifecycleActionToken
       name-zh-cn: 实例关联的特定伸缩活动的令牌
-      en: >-
-        The token that indicates a specific scaling activity associated with an
-        instance.
+      en: The token that indicates a specific scaling activity associated with an instance.
       zh-cn: '实例关联的特定伸缩活动的令牌,请使用弹性伸缩系统默认值 ${lifecycleActionToken}'
     Type: String
     Default: '${lifecycleActionToken}'
@@ -75,8 +70,8 @@ Tasks:
   - Name: getInstanceIpAddress
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Gets ECS instance network type and ip address.
-      zh-cn: 获取ECS实例的网络类型和Ip地址。
+      name-en: Gets ECS instance network type and ip address.
+      name-zh-cn: 获取ECS实例的网络类型和Ip地址。
     OnError: CompleteLifecycleActionForAbandon
     Properties:
       Service: ECS
@@ -87,13 +82,12 @@ Tasks:
     Outputs:
       ipAddress:
         Type: List
-        ValueSelector: >-
-          .Instances.Instance[]|.VpcAttributes.PrivateIpAddress.IpAddress+.InnerIpAddress.IpAddress|.[]
+        ValueSelector: '.Instances.Instance[]|.VpcAttributes.PrivateIpAddress.IpAddress+.InnerIpAddress.IpAddress|.[]'
   - Name: modifyPolarDBIPWhitelist
     Action: 'ACS::ESS::ModifyPolarDBIPWhitelist'
     Description:
-      en: Modify the ip whitelist.
-      zh-cn: 修改IP白名单。
+      name-en: Modify the ip whitelist.
+      name-zh-cn: 修改IP白名单。
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
     Properties:
@@ -106,8 +100,8 @@ Tasks:
   - Name: CompleteLifecycleActionForContinue
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Modify lifecycle action for continue.
-      zh-cn: 修改伸缩活动的等待状态为继续完成。
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
     OnSuccess: 'ACS::END'
     Properties:
       Service: ESS
@@ -120,8 +114,8 @@ Tasks:
   - Name: CompleteLifecycleActionForAbandon
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Complete lifecycle action for Abandon.
-      zh-cn: 修改伸缩活动的等待状态为弃用。
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
     Properties:
       Service: ESS
       API: CompleteLifecycleAction

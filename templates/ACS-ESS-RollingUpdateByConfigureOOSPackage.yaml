@@ -9,21 +9,21 @@ Description:
 Parameters:
   invokeType:
     Description:
-      en: The type of invoke.
-      zh-cn: 执行操作类型。
+      name-en: The type of invoke.
+      name-zh-cn: 执行操作类型。
     Type: String
     AllowedValues:
       - invoke
       - rollback
   scalingGroupId:
     Description:
-      en: The id of scaling group.
-      zh-cn: 伸缩组ID。
+      name-en: The id of scaling group.
+      name-zh-cn: 伸缩组ID。
     Type: String
   enterProcess:
     Description:
-      en: The enter process of scaling group.
-      zh-cn: 执行开始要暂停的伸缩组流程。
+      name-en: The enter process of scaling group.
+      name-zh-cn: 执行开始要暂停的伸缩组流程。
     Type: List
     Default:
       - ScaleIn
@@ -33,8 +33,8 @@ Parameters:
       - ScheduledAction
   exitProcess:
     Description:
-      en: The exit process of scaling group.
-      zh-cn: 执行结束要恢复的伸缩组流程。
+      name-en: The exit process of scaling group.
+      name-zh-cn: 执行结束要恢复的伸缩组流程。
     Type: List
     Default:
       - ScaleIn
@@ -44,8 +44,8 @@ Parameters:
       - ScheduledAction
   action:
     Description:
-      en: The action to configure package.
-      zh-cn: 配置的软件包的方式。
+      name-en: The action to configure package.
+      name-zh-cn: 配置的软件包的方式。
     Type: String
     AllowedValues:
       - install
@@ -53,25 +53,25 @@ Parameters:
     Default: install
   packageName:
     Description:
-      en: The name of package to configure.
-      zh-cn: 要配置的软件包名称。
+      name-en: The name of package to configure.
+      name-zh-cn: 要配置的软件包名称。
     Type: String
   packageVersion:
     Description:
-      en: The version of package to configure.
-      zh-cn: 要配置的软件包版本。
+      name-en: The version of package to configure.
+      name-zh-cn: 要配置的软件包版本。
     Type: String
     Default: ''
   sourceExecutionId:
     Description:
-      en: The id of source execution.
-      zh-cn: 回滚操作执行的目标OOS执行ID。
+      name-en: The id of source execution.
+      name-zh-cn: 回滚操作执行的目标OOS执行ID。
     Type: String
     Default: ''
   batchPauseOption:
     Description:
-      en: The type of batches in batch execution.
-      zh-cn: 分批模式。
+      name-en: The type of batches in batch execution.
+      name-zh-cn: 分批模式。
     Type: String
     AllowedValues:
       - Automatic
@@ -80,16 +80,16 @@ Parameters:
     Default: Automatic
   batchNumber:
     Description:
-      en: The number of batches in batch execution.
-      zh-cn: 分批执行中的批次。
+      name-en: The number of batches in batch execution.
+      name-zh-cn: 分批执行中的批次。
     Type: Number
     MinValue: 1
     MaxValue: 100
     Default: 5
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -97,8 +97,8 @@ Tasks:
   - Name: choiceNextTask
     Action: 'ACS::Choice'
     Description: 
-      en: Choose next task by invoke type.
-      zh-cn: 根据执行的类型选择执行的任务。
+      name-en: Choose next task by invoke type.
+      name-zh-cn: 根据执行的类型选择执行的任务。
     Properties:
       DefaultTask: getInstance
       Choices:
@@ -109,8 +109,8 @@ Tasks:
           NextTask: getExecutionInstanceIds
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::ExecuteApi'
     Properties:
       Service: ESS
@@ -125,8 +125,8 @@ Tasks:
   - Name: whetherTheScalingGroupInstanceIsEmpty
     Action: 'ACS::Choice'
     Description:
-      en: Check whether the instances in the services in the scaling group are empty.
-      zh-cn: 检查伸缩组内服务中的实例是否为空。
+      name-en: Check whether the instances in the services in the scaling group are empty.
+      name-zh-cn: 检查伸缩组内服务中的实例是否为空。
     Properties:
       DefaultTask: whetherToSuspendProcess
       Choices:
@@ -138,8 +138,8 @@ Tasks:
   - Name: whetherToSuspendProcess
     Action: 'ACS::Choice'
     Description:
-      en: Choose next task by process.
-      zh-cn: 根据流程值判断是否暂停流程。
+      name-en: Choose next task by process.
+      name-zh-cn: 根据流程值判断是否暂停流程。
     Properties:
       DefaultTask: suspendProcess
       Choices:
@@ -151,8 +151,8 @@ Tasks:
   - Name: suspendProcess
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Suspend process.
-      zh-cn: 暂停伸缩组流程。
+      name-en: Suspend process.
+      name-zh-cn: 暂停伸缩组流程。
     Properties:
       Service: ESS
       API: SuspendProcesses
@@ -162,8 +162,8 @@ Tasks:
   - Name: invokeByConfigureOOSPackage
     Action: 'ACS::ESS::ConfigureOOSPackage'
     Description:
-      en: Configure OOS package.
-      zh-cn: 安装OOS软件包。
+      name-en: Configure OOS package.
+      name-zh-cn: 安装OOS软件包。
     Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
       action: '{{ action }}'
@@ -188,8 +188,8 @@ Tasks:
   - Name: tagInstance
     Action: ACS::ExecuteApi
     Description:
-      en: Creates and attaches tag to ECS instance.
-      zh-cn: 创建并挂载标签到ECS实例。
+      name-en: Creates and attaches tag to ECS instance.
+      name-zh-cn: 创建并挂载标签到ECS实例。
     Properties:
       Service: ECS
       API: TagResources
@@ -208,8 +208,8 @@ Tasks:
   - Name: whetherToResumeProcesses
     Action: 'ACS::Choice'
     Description:
-      en: Choose next task by process.
-      zh-cn: 根据流程值判断是否恢复流程。
+      name-en: Choose next task by process.
+      name-zh-cn: 根据流程值判断是否恢复流程。
     Properties:
       DefaultTask: resumeProcesses
       Choices:
@@ -222,8 +222,8 @@ Tasks:
     Action: 'ACS::ExecuteAPI'
     OnSuccess: 'ACS::END'
     Description:
-      en: Resume process.
-      zh-cn: 恢复伸缩组流程。
+      name-en: Resume process.
+      name-zh-cn: 恢复伸缩组流程。
     Properties:
       Service: ESS
       API: ResumeProcesses
@@ -233,8 +233,8 @@ Tasks:
   - Name: getExecutionInstanceIds
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Get the instance that has been installed package.
-      zh-cn: 获取已经安装过软件包的实例。
+      name-en: Get the instance that has been installed package.
+      name-zh-cn: 获取已经安装过软件包的实例。
     Properties:
       Service: OOS
       API: ListExecutions
@@ -246,8 +246,8 @@ Tasks:
         ValueSelector: 'Executions[].Parameters.instanceId'
   - Name: getExistInstanceIds
     Description:
-      en: Views the ECS existed instances.
-      zh-cn: 获取存在ECS实例。
+      name-en: Views the ECS existed instances.
+      name-zh-cn: 获取存在ECS实例。
     Action: ACS::SelectTargets
     Properties:
       ResourceType: ALIYUN::ECS::Instance
@@ -261,8 +261,8 @@ Tasks:
   - Name: getRollbackProcess
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Views resource parameters.
-      zh-cn: 获取源执行的参数。
+      name-en: Views resource parameters.
+      name-zh-cn: 获取源执行的参数。
     Properties:
       Service: OOS
       API: ListExecutions
@@ -278,8 +278,8 @@ Tasks:
   - Name: suspendProcessWithRollBack
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Suspend process.
-      zh-cn: 暂停伸缩组流程。
+      name-en: Suspend process.
+      name-zh-cn: 暂停伸缩组流程。
     Properties:
       Service: ESS
       API: SuspendProcesses
@@ -289,8 +289,8 @@ Tasks:
   - Name: rollbackByConfigureOOSPackage
     Action: 'ACS::ESS::ConfigureOOSPackage'
     Description:
-      en: Configure OOS package.
-      zh-cn: 安装OOS软件包。
+      name-en: Configure OOS package.
+      name-zh-cn: 安装OOS软件包。
     Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
       action: '{{ action }}'
@@ -315,8 +315,8 @@ Tasks:
   - Name: whetherToResumeProcessesWithRollback
     Action: 'ACS::Choice'
     Description:
-      en: Choose next task by process.
-      zh-cn: 根据流程值判断是否恢复流程。
+      name-en: Choose next task by process.
+      name-zh-cn: 根据流程值判断是否恢复流程。
     Properties:
       DefaultTask: resumeProcessesWithRollback
       Choices:
@@ -328,8 +328,8 @@ Tasks:
   - Name: resumeProcessesWithRollback
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Resume process.
-      zh-cn: 恢复伸缩组流程。
+      name-en: Resume process.
+      name-zh-cn: 恢复伸缩组流程。
     Properties:
       Service: ESS
       API: ResumeProcesses

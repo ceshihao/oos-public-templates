@@ -88,8 +88,8 @@ Tasks:
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
     Description:
-      en: Execute cloud assistant command.
-      zh-cn: 执行云助手命令。
+      name-en: Execute cloud assistant command.
+      name-zh-cn: 执行云助手命令。
     Properties:
       regionId: '{{ regionId }}'
       commandContent: '{{ commandContent }}'
@@ -109,8 +109,8 @@ Tasks:
   - Name: CompleteLifecycleActionForContinue
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Modify lifecycle action for continue.
-      zh-cn: 修改伸缩活动的等待状态为继续完成。
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
     OnSuccess: 'ACS::END'
     Properties:
       Service: ESS
@@ -123,8 +123,8 @@ Tasks:
   - Name: CompleteLifecycleActionForAbandon
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Complete lifecycle action for Abandon.
-      zh-cn: 修改伸缩活动的等待状态为弃用。
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
     Properties:
       Service: ESS
       API: CompleteLifecycleAction

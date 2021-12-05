@@ -9,8 +9,8 @@ Description:
 Parameters:
   regionId:
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
@@ -18,42 +18,42 @@ Parameters:
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
   maxBandwidthIn:
     Description:
-      en: The maximum public network bandwidth for in-direction.
-      zh-cn: 公网入带宽最大值。
+      name-en: The maximum public network bandwidth for in-direction.
+      name-zh-cn: 公网入带宽最大值。
     Type: Number
     MinValue: 1
     MaxValue: 200
   maxBandwidthOut:
     Description:
-      en: The maximum public network bandwidth for out-direction.
-      zh-cn: 公网出带宽最大值。
+      name-en: The maximum public network bandwidth for out-direction.
+      name-zh-cn: 公网出带宽最大值。
     Type: Number
     MinValue: 0
     MaxValue: 100
   startTime:
     Description:
-      en: The start time of upgrade.
-      zh-cn: 临时带宽升级开始时间。
+      name-en: The start time of upgrade.
+      name-zh-cn: 临时带宽升级开始时间。
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
       Format: 'YYYY-MM-DDTHH:mmZ'
   endTime:
     Description:
-      en: The end time of upgrade.
-      zh-cn: 临时带宽升级结束时间。
+      name-en: The end time of upgrade.
+      name-zh-cn: 临时带宽升级结束时间。
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
-      Format: YYYY-MM-DDTHHZ
+      Format: 'YYYY-MM-DDTHHZ'
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -62,44 +62,42 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: getInstance
-    Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
-    Action: 'ACS::SelectTargets'
-    Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+- Name: getInstance
+  Description:
+    name-en: Views the ECS instances.
+    name-zh-cn: 获取ECS实例。
+  Action: ACS::SelectTargets
+  Properties:
+    ResourceType: ALIYUN::ECS::Instance
+    RegionId: '{{ regionId }}'
+    Filters:
+      - '{{ targets }}'
+  Outputs:
+    instanceIds:
+      Type: List
+      ValueSelector: Instances.Instance[].InstanceId
+- Name: modifyInstanceNetworkSpec
+  Action: ACS::ExecuteAPI
+  Description:
+    name-en: Modifies the temporary bandwidth of the ECS instance with the specified parameters.
+    name-zh-cn: 通过指定参数升级ECS实例临时带宽。
+  Properties:
+    Service: ECS
+    API: ModifyInstanceNetworkSpec
+    Parameters:
       RegionId: '{{ regionId }}'
-      Filters:
-        - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
-  - Name: modifyInstanceNetworkSpec
-    Action: 'ACS::ExecuteAPI'
-    Description:
-      en: >-
-        Modifies the temporary bandwidth of the ECS instance with the specified
-        parameters.
-      zh-cn: 通过指定参数升级ECS实例临时带宽。
-    Properties:
-      Service: ECS
-      API: ModifyInstanceNetworkSpec
-      Parameters:
-        RegionId: '{{ regionId }}'
-        InstanceId: '{{ ACS::TaskLoopItem }}'
-        InternetMaxBandwidthIn: '{{ maxBandwidthIn }}'
-        InternetMaxBandwidthOut: '{{ maxBandwidthOut }}'
-        StartTime: '{{ startTime }}'
-        EndTime: '{{ endTime }}'
-    Loop:
-      RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      InstanceId: '{{ ACS::TaskLoopItem }}'
+      InternetMaxBandwidthIn: '{{ maxBandwidthIn }}'
+      InternetMaxBandwidthOut: '{{ maxBandwidthOut }}'
+      StartTime: '{{ startTime }}'
+      EndTime: '{{ endTime }}'
+  Loop:
+    RateControl: '{{ rateControl }}'
+    Items: '{{ getInstance.instanceIds }}'
 

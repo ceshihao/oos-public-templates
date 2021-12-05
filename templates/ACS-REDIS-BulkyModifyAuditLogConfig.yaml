@@ -7,6 +7,13 @@ Description:
   categories:
     - security
 Parameters:
+  regionId:
+    Description:
+      name-en: The id of region
+      name-zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
   instanceId:
     Description:
       name-en: The list of redis id
@@ -39,6 +46,7 @@ Tasks:
       Service: R-KVSTORE
       API: ModifyAuditLogConfig
       Parameters:
+        RegionId: '{{ regionId }}'
         InstanceId: '{{ ACS::TaskLoopItem }}'
         DbAudit: true
         Retention: 180

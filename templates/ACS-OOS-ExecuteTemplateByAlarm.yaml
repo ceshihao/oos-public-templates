@@ -9,31 +9,31 @@ Description:
 Parameters:
   alarmTriggerProperties:
     Description:
-      en: The properties of alarm trigger task.
-      zh-cn: 告警触发任务的属性。
+      name-en: The properties of alarm trigger task.
+      name-zh-cn: 告警触发任务的属性。
     Type: Json
   alarmOutputTransformer:
     Description:
-      en: The transformer from alarm message to template parameters.
-      zh-cn: 告警消息体到调用模板参数的转换器。
+      name-en: The transformer from alarm message to template parameters.
+      name-zh-cn: 告警消息体到调用模板参数的转换器。
     Type: Json
   templateName:
     Description:
-      en: The name of template to trigger.
-      zh-cn: 触发的模板名称。
+      name-en: The name of template to trigger.
+      name-zh-cn: 触发的模板名称。
     Type: String
     AssociationProperty: TemplateName
   tags:
     Type: Json
     Description:
-      en: The tags to select ECS instances.
-      zh-cn: 实例的标签。
+      name-en: The tags to select ECS instances.
+      name-zh-cn: 实例的标签。
     AssociationProperty: Tags
     Default: []
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -94,8 +94,8 @@ Tasks:
   - Name: executeTemplate
     Action: 'ACS::Template'
     Description:
-      en: Execute template.
-      zh-cn: 执行模板。
+      name-en: Execute template.
+      name-zh-cn: 执行模板。
     Properties:
       TemplateName: '{{ templateName }}'
       Parameters: '{{ alarmTrigger.templateParameters }}'

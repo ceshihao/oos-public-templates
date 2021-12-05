@@ -37,7 +37,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: rebootDesktop
-    Action: 'ACS::ECD::RebootDesktop'
+    Action: ACS::ECD::RebootDesktop
     Description:
       en: Reboot desktops
       zh-cn: 重启云桌面
@@ -47,4 +47,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-

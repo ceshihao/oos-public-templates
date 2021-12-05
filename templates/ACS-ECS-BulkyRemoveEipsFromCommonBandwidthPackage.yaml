@@ -9,13 +9,13 @@ Description:
 Parameters:
   eipAddresses:
     Description:
-      en: The list of Eip address.
-      zh-cn: EIP地址。
+      name-en: The list of Eip address.
+      name-zh-cn: EIP地址。
     Type: List
   rateControl:
     Description:
-      en: Concurrency rate of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency rate of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -24,8 +24,8 @@ Parameters:
       Concurrency: 15
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -33,8 +33,8 @@ Tasks:
   - Name: removeCommonBandwidthPackageEip
     Action: ACS::ECS::RemoveEipFromCommonBandwidthPackage
     Description:
-      en: Removes Eip from CommonBandwidthPackage.
-      zh-cn: 把EIP移出共享带宽包。
+      name-en: Removes Eip from CommonBandwidthPackage.
+      name-zh-cn: 把EIP移出共享带宽包。
     Properties:
         eipAddress: '{{ ACS::TaskLoopItem }}'
     Loop:

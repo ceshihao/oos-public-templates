@@ -67,8 +67,8 @@ Tasks:
     OnSuccess: CompleteLifecycleActionForContinue
     OnError: CompleteLifecycleActionForAbandon
     Description:
-      en: Detach and delete the network interface and eip from the instance.
-      zh-cn: 将弹性IP从实例上分离出来并删除。
+      name-en: Detach and delete the network interface and eip from the instance.
+      name-zh-cn: 将弹性IP从实例上分离出来并删除。
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -78,8 +78,8 @@ Tasks:
   - Name: CompleteLifecycleActionForContinue
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Modify lifecycle action for continue.
-      zh-cn: 修改伸缩活动的等待状态为继续完成。
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
     OnSuccess: 'ACS::END'
     Properties:
       Service: ESS
@@ -92,8 +92,8 @@ Tasks:
   - Name: CompleteLifecycleActionForAbandon
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Complete lifecycle action for Abandon.
-      zh-cn: 修改伸缩活动的等待状态为弃用。
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
     Properties:
       Service: ESS
       API: CompleteLifecycleAction

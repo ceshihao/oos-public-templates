@@ -29,7 +29,7 @@ Parameters:
         otherwise, it must be empty(Default No is empty)
       name-zh-cn: 当SSEAlgorithm值为KMS时，需输入KMSMasterKeyID，其他情况下，必须为空(No 代表为空)
     Type: String
-    Default: 'No'
+    Default: No
   bucketName:
     Description:
       name-en: The bucket name
@@ -61,7 +61,7 @@ Tasks:
   - Name: putBucketEncryptionNoKeyId
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Encryption rules for configuring buckets(AES256).
+      name-en: 'Encryption rules for configuring buckets(AES256).'
       name-zh-cn: 用于配置Bucket的加密规则（AES256）。
     OnSuccess: 'ACS::END'
     Properties:
@@ -70,16 +70,18 @@ Tasks:
       Method: PUT
       URI: '?encryption'
       Headers:
-        Content-MD5: ''
+        Content-MD5: ""
         Content-Type: application/xml
       Parameters:
         RegionId: '{{ regionId }}'
         BucketName: '{{ bucketName }}'
-      Body: >-
-        <?xml version="1.0" encoding="UTF-8"?> <ServerSideEncryptionRule>
-        <ApplyServerSideEncryptionByDefault> <SSEAlgorithm>{{ SSEAlgorithm
-        }}</SSEAlgorithm> <KMSMasterKeyID></KMSMasterKeyID>
-        </ApplyServerSideEncryptionByDefault> </ServerSideEncryptionRule>
+      Body: '<?xml version="1.0" encoding="UTF-8"?>
+             <ServerSideEncryptionRule>
+               <ApplyServerSideEncryptionByDefault>
+                 <SSEAlgorithm>{{ SSEAlgorithm }}</SSEAlgorithm>
+                 <KMSMasterKeyID></KMSMasterKeyID>
+               </ApplyServerSideEncryptionByDefault>
+             </ServerSideEncryptionRule>'
   - Name: putBucketEncryption
     Action: 'ACS::ExecuteAPI'
     Description:
@@ -91,14 +93,16 @@ Tasks:
       Method: PUT
       URI: '?encryption'
       Headers:
-        Content-MD5: ''
+        Content-MD5: ""
         Content-Type: application/xml
       Parameters:
         RegionId: '{{ regionId }}'
         BucketName: '{{ bucketName }}'
-      Body: >-
-        <?xml version="1.0" encoding="UTF-8"?> <ServerSideEncryptionRule>
-        <ApplyServerSideEncryptionByDefault> <SSEAlgorithm>{{ SSEAlgorithm
-        }}</SSEAlgorithm> <KMSMasterKeyID>{{ KMSMasterKeyID }}</KMSMasterKeyID>
-        </ApplyServerSideEncryptionByDefault> </ServerSideEncryptionRule>
+      Body: '<?xml version="1.0" encoding="UTF-8"?>
+             <ServerSideEncryptionRule>
+               <ApplyServerSideEncryptionByDefault>
+                 <SSEAlgorithm>{{ SSEAlgorithm }}</SSEAlgorithm>
+                 <KMSMasterKeyID>{{ KMSMasterKeyID }}</KMSMasterKeyID>
+               </ApplyServerSideEncryptionByDefault>
+             </ServerSideEncryptionRule>'
 

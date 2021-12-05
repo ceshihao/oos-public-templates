@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -23,44 +23,46 @@ Parameters:
   sourceType:
     Type: String
     Description:
-      en: The type of file storage.
-      zh-cn: 文件存储的类型。
+      name-en: The type of file storage.
+      name-zh-cn: 文件存储的类型。
     AllowedValues:
       - oss
       - https
   sourcePath:
     Type: String
     Description:
-      en: You must specify a URL where the file is stored.
-      zh-cn: 您必须指定用于存储文件的URL。
+      name-en: You must specify a URL where the file is stored.
+      name-zh-cn: 您必须指定用于存储文件的URL。
   destinationDir:
     Description:
-      en: Target directory for file copy in instance.
-      zh-cn: 实例中文件复制的目标目录。
+      name-en: Target directory for file copy in instance.
+      name-zh-cn: 实例中文件复制的目标目录。
     Type: String
   commandContent:
     Description:
-      en: Command content to run in ECS instance.
-      zh-cn: 在ECS实例中执行的云助手命令。
+      name-en: Command content to run in ECS instance.
+      name-zh-cn: 在ECS实例中执行的云助手命令。
     Type: String
     AssociationProperty: Code
     Default: echo hello
   workingDir:
     Description:
+      name-en: 'The directory where the created command runs on the ECS instances'
+      name-zh-cn: 脚本在ECS实例中的运行目录
       en: 'The directory where the created command runs on the ECS instances.Linux instances: under the home directory of the administrator (root user): /root.Windows instances: under the directory where the process of the Cloud Assistant client is located, such asC:\Windows\System32.'
       zh-cn: '脚本在ECS实例中的运行目录。Linux系统实例默认在管理员（root用户）的home目录下，即/root。Windows系统实例默认在云助手客户端进程所在目录，例如C:\Windows\System32。'
     Type: String
     Default: ''
   timeout:
     Description:
-      en: The value of the invocation timeout period of a command on ECS instances.
-      zh-cn: ECS实例中执行命令的超时时间。
+      name-en: The value of the invocation timeout period of a command on ECS instances.
+      name-zh-cn: ECS实例中执行命令的超时时间。
     Type: Number
     Default: 600
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -75,8 +77,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -90,8 +92,8 @@ Tasks:
   - Name: downloadFileAndRunCommand
     Action: ACS::ECS::DownloadFileAndRunCommand
     Description:
-      en: Downloads file to the ECS instances adn run command.
-      zh-cn: 下载文件到实例并执行命令。
+      name-en: Downloads file to the ECS instances adn run command.
+      name-zh-cn: 下载文件到实例并执行命令。
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

@@ -1,0 +1,74 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Del 0.0.0.0/0 from the ip white list array of rds instances
+  zh-cn: 从RDS实例IP白名单分组里删除0.0.0.0/0
+  name-en: ACS-RDS-BulkyModifySecurityIpsByInstanceIPArray
+  name-zh-cn: 从RDS实例IP白名单分组里删除0.0.0.0/0
+  categories:
+    - security
+Parameters:
+  regionId:
+    Description:
+      name-en: region id of instances
+      name-zh-cn: 实例所在地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceId:
+    Description:
+      name-en: The id of rds instances
+      name-zh-cn: rds实例ID
+    Type: String
+    AssociationProperty: 'ALIYUN::RDS::Instance::InstanceId'
+    AssociationPropertyMetadata:
+      RegionId: regionId
+  OOSAssumeRole:
+    Description:
+      en: The RAM role to be assumed by OOS
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: OOSServiceRole
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: describeDBInstanceIPArray
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Query SecurityIPList of a rds instance
+      zh-cn: 查询一个RDS实例包含的SecurityIPList
+    Properties:
+      Service: RDS
+      API: DescribeDBInstanceIPArrayList
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBInstanceId: '{{ instanceId }}'
+    Outputs:
+      DBInstanceIPArray:
+        Type: List
+        ValueSelector: >-
+          .Items.DBInstanceIPArray[] | {"SecurityIPList": .SecurityIPList,
+          "DBInstanceIPArrayName": .DBInstanceIPArrayName}
+  - Name: modifySecurityByDBInstanceIPArray
+    Action: 'ACS::Template'
+    Description:
+      en: Query SecurityIPList of a rds instance
+      zh-cn: 查询一个RDS实例包含的SecurityIPList
+    Properties:
+      TemplateName: 'ACS::RDS::ModifySecurityIpsByInstanceIPArray'
+      Parameters:
+        regionId: '{{ regionId }}'
+        instanceId: '{{ instanceId }}'
+        securityIps:
+          'Fn::Select':
+            - SecurityIPList
+            - '{{ ACS::TaskLoopItem }}'
+        instanceIPArrayName:
+          'Fn::Select':
+            - DBInstanceIPArrayName
+            - '{{ ACS::TaskLoopItem }}'
+    Loop:
+      Items: '{{ describeDBInstanceIPArray.DBInstanceIPArray }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+

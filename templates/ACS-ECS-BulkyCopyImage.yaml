@@ -10,22 +10,22 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   imageId:
     Description:
-      en: The ID of the image to clone.
-      zh-cn: 源镜像ID。
+      name-en: The ID of the image to clone.
+      name-zh-cn: 源镜像ID。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
   targetRegionIds:
     Description:
-      en: The Target Region Ids.
-      zh-cn: 目标地域ID。
+      name-en: The Target Region Ids.
+      name-zh-cn: 目标地域ID。
     Type: List
     AllowedValues:
       - all-regions
@@ -57,8 +57,8 @@ Parameters:
       - all-regions
   rateControl:
     Description:
-      en: Concurrency rate of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency rate of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -67,8 +67,8 @@ Parameters:
       Concurrency: 5
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -76,8 +76,8 @@ Tasks:
   - Name: queryAllAvailableRegions
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: View all available regions.
-      zh-cn: 查询当前所有可用地域。
+      name-en: View all available regions.
+      name-zh-cn: 查询当前所有可用地域。
     Properties:
       Service: ECS
       API: DescribeRegions
@@ -94,8 +94,8 @@ Tasks:
   - Name: whetherCloneToAllRegions
     Action: 'ACS::Choice'
     Description:
-      en: Choose next task by targetRegionIds Chosen.
-      zh-cn: 根据所选目的地域判断下一步执行。
+      name-en: Choose next task by targetRegionIds Chosen.
+      name-zh-cn: 根据所选目的地域判断下一步执行。
     Properties:
       DefaultTask: copyImage
       Choices:
@@ -109,8 +109,8 @@ Tasks:
     OnSuccess: 'ACS::END'
     OnError: 'ACS::END'
     Description:
-      en: Copy image to regions chosen.
-      zh-cn: 复制镜像到被指定的地域。
+      name-en: Copy image to regions chosen.
+      name-zh-cn: 复制镜像到被指定的地域。
     Properties:
       regionId: '{{ regionId }}'
       imageId: '{{ imageId }}'
@@ -129,8 +129,8 @@ Tasks:
   - Name: copyImageToAllRegions
     Action: 'ACS::ECS::CopyImage'
     Description:
-      en: Copy image to all available regions.
-      zh-cn: 复制镜像到所有可用地域。
+      name-en: Copy image to all available regions.
+      name-zh-cn: 复制镜像到所有可用地域。
     Properties:
       regionId: '{{ regionId }}'
       imageId: '{{ imageId }}'

@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -22,13 +22,13 @@ Parameters:
       RegionId: regionId
   clusterId:
     Description:
-      en: The ID of cluster.
-      zh-cn: 集群ID。
+      name-en: The ID of cluster.
+      name-zh-cn: 集群ID。
     Type: String
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -43,8 +43,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -58,8 +58,8 @@ Tasks:
   - Name: getAttachScript
     Action: 'ACS::ExecuteApi'
     Description:
-      en: Get command content of attach instance to cluster.
-      zh-cn: 获取挂载ECS实例到集群的命令。
+      name-en: Get command content of attach instance to cluster.
+      name-zh-cn: 获取挂载ECS实例到集群的命令。
     Properties:
       Service: CS
       API: DescribeClusterAttachScripts
@@ -75,8 +75,8 @@ Tasks:
   - Name: runCommand
     Action: 'ACS::ECS::RunCommand'
     Description:
-      en: Execute cloud assistant command.
-      zh-cn: 执行云助手命令。
+      name-en: Execute cloud assistant command.
+      name-zh-cn: 执行云助手命令。
     Properties:
       regionId: '{{ regionId }}'
       commandContent: '{{ getAttachScript.attachScript }}'

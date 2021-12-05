@@ -70,8 +70,8 @@ Tasks:
   - Name: getInstanceIpAddress
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Gets ECS instance network type and ip address.
-      zh-cn: 获取ECS实例的网络类型和Ip地址。
+      name-en: Gets ECS instance network type and ip address.
+      name-zh-cn: 获取ECS实例的网络类型和Ip地址。
     OnError: CompleteLifecycleActionForAbandon
     Properties:
       Service: ECS
@@ -87,8 +87,8 @@ Tasks:
   - Name: modifySecurityIps
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Modifies the whitelist.
-      zh-cn: 修改白名单。
+      name-en: Modifies the whitelist.
+      name-zh-cn: 修改白名单。
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
     Properties:
@@ -105,8 +105,8 @@ Tasks:
   - Name: CompleteLifecycleActionForContinue
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Modify lifecycle action for continue.
-      zh-cn: 修改伸缩活动的等待状态为继续完成。
+      name-en: Modify lifecycle action for continue.
+      name-zh-cn: 修改伸缩活动的等待状态为继续完成。
     OnSuccess: 'ACS::END'
     Properties:
       Service: ESS
@@ -119,8 +119,8 @@ Tasks:
   - Name: CompleteLifecycleActionForAbandon
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Complete lifecycle action for Abandon.
-      zh-cn: 修改伸缩活动的等待状态为弃用。
+      name-en: Complete lifecycle action for Abandon.
+      name-zh-cn: 修改伸缩活动的等待状态为弃用。
     Properties:
       Service: ESS
       API: CompleteLifecycleAction

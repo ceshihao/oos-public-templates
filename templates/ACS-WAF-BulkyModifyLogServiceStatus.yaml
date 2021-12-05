@@ -36,7 +36,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: modifyLogServiceStatus
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify log service status
       zh-cn: 开启指定域名配置的日志采集功能

@@ -9,58 +9,58 @@ Description:
 Parameters:
   instanceIds:
     Description:
-      en: The ID list of the ECS instance.
-      zh-cn: ECS实例ID列表。
+      name-en: The ID list of the ECS instance.
+      name-zh-cn: ECS实例ID列表。
     Type: List
   regionId:
     Description:
-      en: The Source Region Id.
-      zh-cn: 源地域ID。
+      name-en: The Source Region Id.
+      name-zh-cn: 源地域ID。
     Type: String
     MinLength: 1
     MaxLength: 30
   targetRegionId:
     Description:
-      en: The Target Region Id.
-      zh-cn: 目标地域ID。
+      name-en: The Target Region Id.
+      name-zh-cn: 目标地域ID。
     Type: String
     MinLength: 1
     MaxLength: 30
   targetZoneId:
     Description:
-      en: The Target Zone Id.
-      zh-cn: 目标可用区ID。
+      name-en: The Target Zone Id.
+      name-zh-cn: 目标可用区ID。
     Type: String
     MinLength: 1
     MaxLength: 30
   targetInstanceType:
     Description:
-      en: The instance type for the ECS instances, ecs.g5.large, for example.
-      zh-cn: 实例类型。
+      name-en: The instance type for the ECS instances, ecs.g5.large, for example.
+      name-zh-cn: 实例类型。
     Type: String
     AllowedPattern: 'ecs\.[A-Za-z0-9\.\-]*'
     MinLength: 1
     MaxLength: 30
   targetSecurityGroupId:
     Description:
-      en: The security group ID for the ECS instances, sg-xxxxxxxxxxxxxxxxxxxx, for example.
-      zh-cn: 安全组ID。
+      name-en: The security group ID for the ECS instances, sg-xxxxxxxxxxxxxxxxxxxx, for example.
+      name-zh-cn: 安全组ID。
     Type: String
     AllowedPattern: 'sg-[A-Za-z0-9]*'
     MinLength: 1
     MaxLength: 30
   targetVSwitchId:
     Description:
-      en: The virtual switch ID for the ECS instances, vsw-xxxxxxxxxxxxxxxxxxxx, for example.
-      zh-cn: 交换机ID。
+      name-en: The virtual switch ID for the ECS instances, vsw-xxxxxxxxxxxxxxxxxxxx, for example.
+      name-zh-cn: 交换机ID。
     Type: String
     AllowedPattern: 'vsw-[A-Za-z0-9]*'
     MinLength: 1
     MaxLength: 30
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -68,8 +68,8 @@ Tasks:
   - Name: queryDisks
     Action: ACS::ExecuteAPI
     Description:
-      en: Views disk info of the ECS instance
-      zh-cn: 查看实例的磁盘信息
+      name-en: Views disk info of the ECS instance
+      name-zh-cn: 查看实例的磁盘信息
     Properties:
       Service: ECS
       API: DescribeDisks
@@ -95,8 +95,8 @@ Tasks:
   - Name: createImage
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Create Image.
-      zh-cn: 创建镜像。
+      name-en: Create Image.
+      name-zh-cn: 创建镜像。
     Properties:
       Service: ECS
       API: CreateImage
@@ -117,8 +117,8 @@ Tasks:
   - Name: untilCreateImageReady
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait For created images available.
-      zh-cn: 等待镜像创建成功。
+      name-en: Wait For created images available.
+      name-zh-cn: 等待镜像创建成功。
     Properties:
       Service: ECS
       API: DescribeImages
@@ -134,8 +134,8 @@ Tasks:
   - Name: copyImage
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Copy image.
-      zh-cn: 复制镜像。
+      name-en: Copy image.
+      name-zh-cn: 复制镜像。
     Properties:
       Service: ECS
       API: CopyImage
@@ -156,8 +156,8 @@ Tasks:
   - Name: untilCopyImageReady
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for copied images available.
-      zh-cn: 等待镜像复制成功。
+      name-en: Wait for copied images available.
+      name-zh-cn: 等待镜像复制成功。
     Properties:
       Service: ECS
       API: DescribeImages
@@ -172,8 +172,8 @@ Tasks:
   - Name: runInstances
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: run instances.
-      zh-cn: 创建实例。
+      name-en: run instances.
+      name-zh-cn: 创建实例。
     Properties:
       Service: ECS
       API: RunInstances
@@ -232,8 +232,8 @@ Tasks:
   - Name: untilInstanceReady
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for instances running
-      zh-cn: 等待实例创建成功。
+      name-en: Wait for instances running
+      name-zh-cn: 等待实例创建成功。
     Properties:
       Service: ECS
       API: DescribeInstances

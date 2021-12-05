@@ -9,8 +9,8 @@ Description:
 Parameters:
   creditSpecification:
     Description:
-      en: The creditSpecification of ECS isntance.
-      zh-cn: 性能模式。
+      name-en: The creditSpecification of ECS isntance.
+      name-zh-cn: 性能模式。
     Type: String
     AllowedValues:
       - Standard
@@ -22,8 +22,8 @@ Parameters:
       ResourceType: 'ALIYUN::ECS::Instance'
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -33,8 +33,8 @@ Parameters:
 Tasks:
 - Name: getInstance
   Description:
-    en: Views the ECS instances.
-    zh-cn: 获取ECS实例。
+    name-en: Views the ECS instances.
+    name-zh-cn: 获取ECS实例。
   Action: ACS::SelectTargets
   Properties:
     ResourceType: ALIYUN::ECS::Instance
@@ -47,8 +47,8 @@ Tasks:
 - Name: modifyCreditSpecification
   Action: ACS::ECS::ModifyCreditSpecification
   Description:
-    en: Modifies CreditSpecification of instance.
-    zh-cn: 修改性能模式。
+    name-en: Modifies CreditSpecification of instance.
+    name-zh-cn: 修改性能模式。
   Properties:
     instanceId: '{{ ACS::TaskLoopItem }}'
     creditSpecification: '{{ creditSpecification }}'

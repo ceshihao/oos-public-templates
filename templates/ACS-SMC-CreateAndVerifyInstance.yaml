@@ -8,70 +8,70 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of target region.
-      zh-cn: 将创建资源的目标地域ID。
+      name-en: The id of target region.
+      name-zh-cn: 将创建资源的目标地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   zoneId:
     Description:
-      en: The target zone id of VSwitch to create..
-      zh-cn: 将创建交换机的目标可用区ID。
+      name-en: The target zone id of VSwitch to create..
+      name-zh-cn: 将创建交换机的目标可用区ID。
     AssociationProperty: 'ALIYUN::ECS::Instance::ZoneId'
     Type: String
     AssociationPropertyMetadata:
       RegionId: regionId
   hostName:
     Description:
-      en: The hostname of ECS instance to create.
-      zh-cn: 将创建实例的主机名。
+      name-en: The hostname of ECS instance to create.
+      name-zh-cn: 将创建实例的主机名。
     Type: String
     AllowedPattern: '^(?!\.|\-)(?!.*\.\.|.*\-\-)(?!.*_).*(?<!\.|\-)$'
     MinLength: 2
   imageId:
     Description:
-      en: The image id of ECS instance to create.
-      zh-cn: 将创建实例的镜像ID。
+      name-en: The image id of ECS instance to create.
+      name-zh-cn: 将创建实例的镜像ID。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
   instanceType:
     Description:
-      en: The instance type of ECS instance to create.
-      zh-cn: 将创建实例的规格。
+      name-en: The instance type of ECS instance to create.
+      name-zh-cn: 将创建实例的规格。
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Instance::InstanceType'
   privateIp:
     Description:
-      en: The private IP of ECS instance to create, (for example:172.16.2.100).
-      zh-cn: 将创建实例的内网IP，（例如：172.16.2.100）。
+      name-en: The private IP of ECS instance to create, (for example:172.16.2.100).
+      name-zh-cn: 将创建实例的内网IP，（例如：172.16.2.100）。
     Type: String
   systemDiskSize:
     Description:
-      en: System disk size(This parameter does not take effect when the default value of 39 is used).
-      zh-cn: 系统盘大小（使用默认值19时此参数不生效）。
+      name-en: System disk size(This parameter does not take effect when the default value of 39 is used).
+      name-zh-cn: 系统盘大小（使用默认值19时此参数不生效）。
     Type: Number
     Default: 19
     MinValue: 19
     MaxValue: 500
   instancesCount:
     Description:
-      en: The count of ECS instance to create.
-      zh-cn: 将创建实例的数量。
+      name-en: The count of ECS instance to create.
+      name-zh-cn: 将创建实例的数量。
     Type: Number
     Default: 1
     MinValue: 1
     MaxValue: 999
   isDeleteInstance:
     Description:
-      en: Whether delete ECS instance after check.
-      zh-cn: 检查实例完成后是否删除实例。
+      name-en: Whether delete ECS instance after check.
+      name-zh-cn: 检查实例完成后是否删除实例。
     Type: Boolean
     Default: true
   commandType:
     Description:
-      en: The type of command.
-      zh-cn: 实例自定义检查云助手命令类型。
+      name-en: The type of command.
+      name-zh-cn: 实例自定义检查云助手命令类型。
     Type: String
     AllowedValues:
       - RunBatScript
@@ -80,33 +80,35 @@ Parameters:
     Default: RunShellScript
   commandContent:
     Description:
-      en: Custome instance check command content.
-      zh-cn: 实例自定义检查预云助手命令内容。
+      name-en: Custome instance check command content.
+      name-zh-cn: 实例自定义检查预云助手命令内容。
     Type: String
     AssociationProperty: Code
     Default: ''
   timeout:
     Description:
-      en: Timeout for executing script.
-      zh-cn: 执行脚本的超时时间。
+      name-en: Timeout for executing script.
+      name-zh-cn: 执行脚本的超时时间。
     Type: Number
     Default: 600
   workingDir:
     Description:
-      en: The directory where the created command runs on the ECS instances.
-      zh-cn: 在实例中运行命令的目录。
+      name-en: The directory where the created command runs on the ECS instances.
+      name-zh-cn: 在实例中运行命令的目录。
     Type: String
     Default: /root
   passwordInherit:
     Description:
-      en: Specifies whether to use the password preset in the image. To use the PasswordInherit parameter, the Password parameter must be empty and you must make sure that the selected image has a password configured(default:false).
-      zh-cn: 是否使用镜像预设的密码（使用该参数时，Password参数必须为空，同时您需要确保使用的镜像已经设置了密码，默认为false）。
+      en:  To use the PasswordInherit parameter, the Password parameter must be empty and you must make sure that the selected image has a password configured(default:false).
+      zh-cn: （使用该参数时，Password参数必须为空，同时您需要确保使用的镜像已经设置了密码，默认为false）。
+      name-en: Specifies whether to use the password preset in the image
+      name-zh-cn: 是否使用镜像预设的密码
     Type: Boolean
     Default: false
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -115,8 +117,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -124,8 +126,8 @@ Tasks:
   - Name: describeImages
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Query the image ostype by image id.
-      zh-cn: 查询镜像的操作系统。
+      name-en: Query the image ostype by image id.
+      name-zh-cn: 查询镜像的操作系统。
     Properties:
       Service: ECS
       API: DescribeImages
@@ -139,8 +141,8 @@ Tasks:
   - Name: converConstant
     Action: 'ACS::ECS::SMCConversionConstantByJqScript'
     Description:
-      en: Automatically convert to available CidrBlock according to PrivateIp.
-      zh-cn: 根据PrivateIp自动转换成可用的CidrBlock。
+      name-en: Automatically convert to available CidrBlock according to PrivateIp.
+      name-zh-cn: 根据PrivateIp自动转换成可用的CidrBlock。
     Properties:
       parameter: '{{ privateIp }}'
       jqScript:
@@ -156,8 +158,8 @@ Tasks:
   - Name: createStack
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Create a resource stack.
-      zh-cn: 创建资源栈。
+      name-en: Create a resource stack.
+      name-zh-cn: 创建资源栈。
     Properties:
       Service: ROS
       API: CreateStack
@@ -649,8 +651,8 @@ Tasks:
   - Name: untilStackReady
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for the stack status CREATE_COMPLETE.
-      zh-cn: 等待资源栈至创建成功状态。
+      name-en: Wait for the stack status CREATE_COMPLETE.
+      name-zh-cn: 等待资源栈至创建成功状态。
     OnSuccess: doInstanceCheck
     OnError: queryStackStatusReason
     Properties:
@@ -677,8 +679,8 @@ Tasks:
     OnSuccess: 'ACS::END'
     OnError: deleteStack
     Description:
-      en: Execute cloud assistant command to check Instance.
-      zh-cn: 执行云助手命令检查实例。
+      name-en: Execute cloud assistant command to check Instance.
+      name-zh-cn: 执行云助手命令检查实例。
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -701,8 +703,8 @@ Tasks:
   - Name: queryStackStatusReason
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Query the reson of failed created stack.
-      zh-cn: 查询资源栈未创建成功的原因。
+      name-en: Query the reson of failed created stack.
+      name-zh-cn: 查询资源栈未创建成功的原因。
     OnError: deleteStack
     OnSuccess: deleteStack
     Properties:
@@ -717,8 +719,8 @@ Tasks:
         ValueSelector: StatusReason
   - Name: deleteStack
     Description:
-      en: Delete the stack.
-      zh-cn: 删除资源栈。
+      name-en: Delete the stack.
+      name-zh-cn: 删除资源栈。
     OnSuccess: 'ACS::END'
     Action: 'ACS::ExecuteApi'
     Properties:

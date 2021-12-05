@@ -8,27 +8,29 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   threshold:
     Description:
-      en: 'The threshold of resource usage alarm(example:10 is 10%,50 is 50%).'
-      zh-cn: 资源使用率警报的阈值（例如：10为10％，50为50％）。
+      name-en: 'The threshold of resource usage alarm(example:10 is 10%,50 is 50%).'
+      name-zh-cn: 资源使用率警报的阈值（例如：10为10％，50为50％）。
     Type: Number
     Default: 80
     MinValue: 20
     MaxValue: 99
   webHookUrl:
     Description:
-      en: 'The webhook url of dingtalk group assistant, e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414,acquiring DingTalk webhook please refer to second appendix in https://help.aliyun.com/document_detail/144679.html.'
-      zh-cn: '钉钉群助手的webhook地址，形如https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414，具体钉钉WebHook获取请参考https://help.aliyun.com/document_detail/144679.html#h2--2-webhook-5。'
+      name-en: 'The webhook url of dingtalk group assistant'
+      name-zh-ch: '钉钉群助手的webhook地址'
+      en: 'e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414,acquiring DingTalk webhook please refer to second appendix in https://help.aliyun.com/document_detail/144679.html.'
+      zh-cn: '形如https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414，具体钉钉WebHook获取请参考https://help.aliyun.com/document_detail/144679.html#h2--2-webhook-5。'
     Type: String
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -36,8 +38,8 @@ Tasks:
   - Name: timerTrigger
     Action: 'ACS::TimerTrigger'
     Description:
-      en: Triggers a task as scheduled by specifying Cron expression.
-      zh-cn: 通过指定Cron表达式按计划触发任务。
+      name-en: Triggers a task as scheduled by specifying Cron expression.
+      name-zh-cn: 通过指定Cron表达式按计划触发任务。
     Properties:
       Type: rate
       Expression: 30 minutes
@@ -45,8 +47,8 @@ Tasks:
   - Name: getAccountAttributes
     Action: 'ACS::ExecuteApi'
     Description:
-      en: Query the quotas of ECS resources that you can create in a region.
-      zh-cn: 查询指定地域下能创建的ECS资源配额。
+      name-en: Query the quotas of ECS resources that you can create in a region.
+      name-zh-cn: 查询指定地域下能创建的ECS资源配额。
     Properties:
       Service: ECS
       API: DescribeAccountAttributes
@@ -86,8 +88,8 @@ Tasks:
   - Name: checkResourceUsage
     Action: 'ACS::Choice'
     Description:
-      en: Choose the notification task by usage.
-      zh-cn: 通过使用率选择通知任务。
+      name-en: Choose the notification task by usage.
+      name-zh-cn: 通过使用率选择通知任务。
     Properties:
       DefaultTask: 'ACS::END'
       Choices:
@@ -135,8 +137,8 @@ Tasks:
     Action: 'ACS::Notify'
     OnSuccess: 'ACS::END'
     Description:
-      en: Resource usage exceeds threshold alarm notification.
-      zh-cn: 资源使用率超出阈值报警通知。
+      name-en: Resource usage exceeds threshold alarm notification.
+      name-zh-cn: 资源使用率超出阈值报警通知。
     Properties:
       NotifyType: WebHook
       WebHook:

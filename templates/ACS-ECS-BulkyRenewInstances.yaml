@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region
-      zh-cn: 地域ID
+      name-en: The id of region
+      name-zh-cn: 地域ID
     Label:
       en: Region
       zh-cn: 地域
@@ -25,9 +25,11 @@ Parameters:
       RegionId: regionId
   periodUnit:
     Description:
+      name-en: The unit of the renewal period
+      name-zh-cn: 续费时长的时间单位
       en: The unit of the renewal period (Period).
       zh-cn: >-
-        续费时长的时间单位，即参数Period的单位。PeriodUnit=Week时，Period取值：1~4，PeriodUnit=Month时，Period取值：1~12,
+        即参数Period的单位。PeriodUnit=Week时，Period取值：1~4，PeriodUnit=Month时，Period取值：1~12,
         24, 36, 48, 60
     Type: String
     AllowedValues:
@@ -36,16 +38,16 @@ Parameters:
     Default: Month
   period:
     Description:
-      en: The renewal period of the subscription instance.
-      zh-cn: 包年包月续费时长。
+      name-en: The renewal period of the subscription instance.
+      name-zh-cn: 包年包月续费时长。
     Type: Number
     Default: 1
     MinValue: 1
     MaxValue: 60
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -54,16 +56,16 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -76,8 +78,8 @@ Tasks:
   - Name: renewInstance
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Renew ECS instance with the specified instance ID.
-      zh-cn: 通过指定实例ID续费实例。
+      name-en: Renew ECS instance with the specified instance ID.
+      name-zh-cn: 通过指定实例ID续费实例。
     Properties:
       Service: ECS
       API: RenewInstance
@@ -89,4 +91,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
-

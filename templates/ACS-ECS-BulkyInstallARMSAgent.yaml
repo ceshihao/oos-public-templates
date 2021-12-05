@@ -10,15 +10,15 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The ID of region
-      zh-cn: 地域ID
+      name-en: The ID of region
+      name-zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   action:
     Type: String
     Description:
-      en: The operation type
-      zh-cn: 操作类型
+      name-en: The operation type
+      name-zh-cn: 操作类型
     AllowedValues:
       - install
       - upgrade
@@ -27,26 +27,26 @@ Parameters:
   appName:
     Type: String
     Description:
-      en: The name of app to monitor
-      zh-cn: 要监控的应用名称
+      name-en: The name of app to monitor
+      name-zh-cn: 要监控的应用名称
   licenseKey:
     Type: String
     Description:
-      en: The License Key of app monitor
-      zh-cn: 应用监控功能的License Key
+      name-en: The License Key of app monitor
+      name-zh-cn: 应用监控功能的License Key
   targets:
     Type: Json
     Description:
-      en: The target resource
-      zh-cn: 目标资源
+      name-en: The target resource
+      name-zh-cn: 目标资源
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
   rateControl:
     Description:
-      en: Concurrency ratio of task execution
-      zh-cn: 任务执行的并发比率
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -55,16 +55,16 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS
-      zh-cn: OOS扮演的RAM角色
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances
-      zh-cn: 获取ECS实例
+      name-en: Views the ECS instances
+      name-zh-cn: 获取ECS实例
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -88,8 +88,8 @@ Tasks:
             - '{{ getInstance.instanceInfos }}'
         - linux
     Description:
-      en: Execute cloud assistant command
-      zh-cn: 执行云助手命令
+      name-en: Execute cloud assistant command
+      name-zh-cn: 执行云助手命令
     Properties:
       commandContent: |-
         #!/usr/bin/env bash

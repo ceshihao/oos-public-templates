@@ -10,14 +10,14 @@ Parameters:
   regionId:
     Type: String
     Description:
-      en: The id of region.
-      zh-cn: 地域ID。
+      name-en: The id of region.
+      name-zh-cn: 地域ID。
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   action:
     Description:
-      en: The action to configure package.
-      zh-cn: 配置的软件包的方式。
+      name-en: The action to configure package.
+      name-zh-cn: 配置的软件包的方式。
     Type: String
     AllowedValues:
       - install
@@ -25,16 +25,16 @@ Parameters:
     Default: install
   packageName:
     Description:
-      en: The name of package to configure.
-      zh-cn: 要配置的软件包名称。
+      name-en: The name of package to configure.
+      name-zh-cn: 要配置的软件包名称。
     Type: String
     AssociationProperty: 'ALIYUN::OOS::Package::PackageName'
     AssociationPropertyMetadata:
       RegionId: regionId
   packageVersion:
     Description:
-      en: The version of package to configure.
-      zh-cn: 要配置的软件包版本。
+      name-en: The version of package to configure.
+      name-zh-cn: 要配置的软件包版本。
     Type: String
     AssociationProperty: 'ALIYUN::OOS::Package::PackageVersion'
     AssociationPropertyMetadata:
@@ -48,8 +48,8 @@ Parameters:
       RegionId: regionId
   rateControl:
     Description:
-      en: Concurrency ratio of task execution.
-      zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution.
+      name-zh-cn: 任务执行的并发比率。
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -64,8 +64,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      en: Views the ECS instances.
-      zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances.
+      name-zh-cn: 获取ECS实例。
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -78,8 +78,8 @@ Tasks:
         ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: configurePackage
     Description:
-      en: Configure Package.
-      zh-cn: 配置软件包。
+      name-en: Configure Package.
+      name-zh-cn: 配置软件包。
     Action: 'ACS::ECS::ConfigureOOSPackage'
     Properties:
       regionId: '{{ regionId }}'
@@ -97,11 +97,10 @@ Tasks:
     Outputs:
       commandOutput:
         Type: String
-        ValueSelector: >-
-          .|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult":
-          .commandOutput}
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult": .commandOutput}'
 Outputs:
   commandOutput:
     Type: List
     Value: '{{ configurePackage.commandOutputs }}'
+
 

@@ -14,13 +14,13 @@ Parameters:
     Default: '{{ ACS::RegionId }}'
   bucketName:
     Description:
-      en: The  OSS bucket names.
-      zh-cn: OSS bucket 名称。
+      name-en: The  OSS bucket names.
+      name-zh-cn: OSS bucket 名称。
     Type: String
   allowEmptyReferer:
     Description:
-      en: Specify whether to allow access to requests whose Referer field is empty.
-      zh-cn: 指定是否允许Referer字段为空的请求访问。
+      name-en: Specify whether to allow access to requests whose Referer field is empty.
+      name-zh-cn: 指定是否允许Referer字段为空的请求访问。
     Type: String
     Default: 'true'
     AllowedValues:
@@ -28,14 +28,16 @@ Parameters:
       - 'false'
   refererList:
     Description:
-      en: Save Referer access whitelist URL(for example:[http://www.aliyun.com, https://www.aliyun.com]).
-      zh-cn: 保存Referer访问白名单的网址（例如：[http://www.aliyun.com, https://www.aliyun.com]）。
+      en: (for example:[http://www.aliyun.com, https://www.aliyun.com]).
+      zh-cn: （例如：[http://www.aliyun.com, https://www.aliyun.com]）。
+      name-en: Save Referer access whitelist URL
+      name-zh-cn: 保存Referer访问白名单的网址
     Type: List
     Default: []
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS.
+      name-zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -43,8 +45,8 @@ Tasks:
   - Name: convertXmlParameters
     Action: 'ACS::ECS::SMCConversionConstantByJqScript'
     Description:
-      en: Automatically make bucket referer configuration.
-      zh-cn: 自动生成存储空间防盗链规则。
+      name-en: Automatically make bucket referer configuration.
+      name-zh-cn: 自动生成存储空间防盗链规则。
     Properties:
       parameter: '{{ refererList }}'
       jqScript:
@@ -57,8 +59,8 @@ Tasks:
   - Name: putBucketReferer
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: 'Enable the bucket referer.'
-      zh-cn: 开启存储空间防盗链。
+      name-en: 'Enable the bucket referer.'
+      name-zh-cn: 开启存储空间防盗链。
     Properties:
       Service: OSS
       API: PutBucketReferer
@@ -74,8 +76,8 @@ Tasks:
   - Name: waitBucketRefererNoRefererList
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for the bucket referer modification to complete when referer is allowed to be empty.
-      zh-cn: 等待存储空间防盗链允许为空时修改完成。
+      name-en: Wait for the bucket referer modification to complete when referer is allowed to be empty.
+      name-zh-cn: 等待存储空间防盗链允许为空时修改完成。
     When:
       'Fn::Equals':
         - '{{ refererList }}'
@@ -96,8 +98,8 @@ Tasks:
   - Name: waitBucketReferer
     Action: 'ACS::WaitFor'
     Description:
-      en: Wait for the bucket referer modification to complete.
-      zh-cn: 等待存储空间防盗链修改完成。
+      name-en: Wait for the bucket referer modification to complete.
+      name-zh-cn: 等待存储空间防盗链修改完成。
     Properties:
       Service: OSS
       API: GetBucketReferer

@@ -37,7 +37,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: stopDesktop
-    Action: 'ACS::ECD::StopDesktop'
+    Action: ACS::ECD::StopDesktop
     Description:
       en: Stop desktops
       zh-cn: 停止云桌面
@@ -47,4 +47,3 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-
