@@ -139,6 +139,18 @@ Parameters:
       RegionId: regionId
       ZoneId: targetZoneId
       InstanceType: targetInstanceType
+      InstanceChargeType: targetInstanceChargeType
+  targetDataDiskCategory:
+    Description:
+      name-en: The category of data disk
+      name-zh-cn: 数据盘的种类
+    Type: String
+    AssociationProperty: ALIYUN::ECS::Disk::DataDiskCategory
+    AssociationPropertyMetadata:
+      RegionId: regionId
+      ZoneId: targetZoneId
+      InstanceType: targetInstanceType
+      InstanceChargeType: targetInstanceChargeType
   targetPassword:
     Description:
       name-en: The password of the new ECS instance
@@ -174,6 +186,7 @@ Tasks:
         targetPeriodUnit: '{{ targetPeriodUnit }}'
         targetPeriod: '{{ targetPeriod }}'
         targetSystemDiskCategory: '{{ targetSystemDiskCategory }}'
+        targetDataDiskCategory: '{{ targetDataDiskCategory }}'
     Loop:
       Items: '{{ instanceIds }}'
       RateControl:

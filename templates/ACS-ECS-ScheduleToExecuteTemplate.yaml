@@ -9,6 +9,7 @@ Description:
 Parameters:
   timerTrigger:
     Type: Json
+    AssociationProperty: 'ALIYUN::OOS::Component::TimerTrigger'
   templateName:
     Type: String
     AssociationProperty: TemplateName

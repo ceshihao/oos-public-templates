@@ -15,10 +15,11 @@ Parameters:
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
   timerTrigger:
     Type: Json
+    AssociationProperty: 'ALIYUN::OOS::Component::TimerTrigger'
   action:
     Description:
       name-en: The action to apply patch baseline
@@ -51,53 +52,55 @@ Parameters:
     Type: String
   timeout:
     Description:
-      name-en: The value of the invocation timeout period of a command on ECS instances.
+      name-en: >-
+        The value of the invocation timeout period of a command on ECS
+        instances.
       name-zh-cn: ECS实例中执行命令的超时时间。
     Type: Number
     Default: 1800
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: timerTrigger
-    Action: ACS::TimerTrigger
+    Action: 'ACS::TimerTrigger'
     Description:
       name-en: Triggers a task as scheduled by specifying type and expression.
       name-zh-cn: 通过指定触发类型和表达式按计划触发任务。
     Properties:
       Type:
-        Fn::Select:
+        'Fn::Select':
           - type
           - '{{timerTrigger}}'
       Expression:
-        Fn::Select:
+        'Fn::Select':
           - expression
           - '{{timerTrigger}}'
       EndDate:
-        Fn::Select:
+        'Fn::Select':
           - endDate
           - '{{ timerTrigger }}'
       TimeZone:
-        Fn::Select:
+        'Fn::Select':
           - timeZone
           - '{{ timerTrigger }}'
   - Name: getInstance
     Description:
       name-en: Views the ECS instances.
       name-zh-cn: 获取ECS实例。
-    Action: ACS::SelectTargets
+    Action: 'ACS::SelectTargets'
     Properties:
       RegionId: '{{ regionId }}'
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: Instances.Instance[].InstanceId
+        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: applyPatchBaseline
     Description:
       name-en: Apply patch baseline on ECS instance
       name-zh-cn: 在ECS实例中配置补丁基线
-    Action: ACS::ECS::ApplyPatchBaseline
+    Action: 'ACS::ECS::ApplyPatchBaseline'
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -109,7 +112,7 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
       Outputs:
         commandOutputs:
-          AggregateType: Fn::ListJoin
+          AggregateType: 'Fn::ListJoin'
           AggregateField: commandOutput
     Outputs:
       commandOutput:
@@ -119,3 +122,4 @@ Outputs:
   commandOutputs:
     Type: List
     Value: '{{ applyPatchBaseline.commandOutputs }}'
+

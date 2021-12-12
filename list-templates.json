@@ -6,7 +6,7 @@
       "CreatedDate": "2019-09-23T09:38:46Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances.\", \"zh-cn\": \"批量在多台ECS实例上运行云助手命令。\", \"name-en\": \"ACS-ECS-BulkyRunCommand\", \"name-zh-cn\": \"批量在ECS实例上运行命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "a5124de6f407ae105fa09314b803ce5627609b9a9afd62960a31fa9bae297637",
+      "Hash": "dbb944b9427acd563808dddfab854cdc8360d0c08c7ced83962daa166ede5886",
       "Popularity": 10,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -15,10 +15,10 @@
       "TemplateId": "t-89fb84c218e84fd58e14",
       "TemplateName": "ACS-ECS-BulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v40",
+      "TemplateVersion": "v42",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:56Z"
+      "UpdatedDate": "2021-12-07T08:42:42Z"
     },
     {
       "Category": "Other",
@@ -384,9 +384,9 @@
       "Category": "TimerTrigger",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-11-24T06:21:49Z",
-      "Description": "{\"en\": \"Schedule to clean up disks.\", \"zh-cn\": \"定时清理磁盘。\", \"name-en\": \"ACS-ECS-ScheduleToCleanUpDisks\", \"name-zh-cn\": \"定时清理磁盘\", \"categories\": [\"time_trigger\"]}",
+      "Description": "{\"en\": \"Schedule to clean up disks\", \"zh-cn\": \"定时清理磁盘\", \"name-en\": \"ACS-ECS-ScheduleToCleanUpDisks\", \"name-zh-cn\": \"定时清理磁盘\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "600dd4373f8dfc04803bacc3082017fbe8d78c33865c01f8a6f8e8d579d6ab12",
+      "Hash": "ac1fab6f24db263e6ddb0f6d7a9a4839b2b7d8caaeed180b46bc587024a1b885",
       "Popularity": 8.13,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -395,10 +395,10 @@
       "TemplateId": "t-ba9eef0913e24cc081c6",
       "TemplateName": "ACS-ECS-ScheduleToCleanUpDisks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:34Z"
+      "UpdatedDate": "2021-12-07T10:16:04Z"
     },
     {
       "Category": "Other",
@@ -906,7 +906,7 @@
       "CreatedDate": "2019-12-19T11:35:22Z",
       "Description": "{\"en\": \"Schedules to execute specified template.\", \"zh-cn\": \"定时执行指定模板。\", \"name-en\": \"ACS-ECS-ScheduleToExecuteTemplate\", \"name-zh-cn\": \"定时执行指定模板\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "103a0a9d051acf35a1aed0b528aaead903ef79093ec6c82efacd0970bc8e16cd",
+      "Hash": "545f756eb6a4a485a5a7bc26f3a1885d9ec6ac6fa692f2a585f76d5c5fd43262",
       "Popularity": 6.05,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -915,10 +915,10 @@
       "TemplateId": "t-09d56d4bdc0040f3bba8",
       "TemplateName": "ACS-ECS-ScheduleToExecuteTemplate",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:54Z"
+      "UpdatedDate": "2021-12-08T11:35:26Z"
     },
     {
       "Category": "Other",
@@ -1523,6 +1523,26 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2021-11-05T07:42:09Z",
+      "Description": "{\"en\": \"Bulky clone ECS instance\", \"zh-cn\": \"批量克隆ECS实例\", \"name-en\": \"ACS-ECS-BulkyCloneInstances\", \"name-zh-cn\": \"批量克隆ECS实例\", \"categories\": [\"cross_region\"]}",
+      "HasTrigger": false,
+      "Hash": "c54262fcb280d78ef49cc2ce4f89bd40cef603617eefb2a6f74ea520d2cacf56",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-db586b6e686547dc8cfc",
+      "TemplateName": "ACS-ECS-BulkyCloneInstances",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v8",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2021-12-09T09:26:54Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2021-11-10T12:53:51Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyTagInstances\", \"name-zh-cn\": \"批量为ECS实例绑定标签\", \"en\": \"Bulky tag ECS instances\", \"zh-cn\": \"批量为ECS实例绑定标签\"}",
       "HasTrigger": false,
@@ -1886,7 +1906,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleToApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "47c4cd93e600bdfdfadf5c199bc7969f7c505a20395299818d75c3f4ef57f8e8",
+      "Hash": "fdd82e36156b898c96a7a6f08bf2518ff29b1322f417352718979bb54bb533e6",
       "Popularity": 50,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -1895,10 +1915,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:53Z"
+      "UpdatedDate": "2021-12-08T11:36:10Z"
     },
     {
       "Category": "Other",
@@ -2344,9 +2364,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-07-09T09:04:56Z",
-      "Description": "{\"en\": \"Bulky modify instance charge type.\", \"zh-cn\": \"批量修改实例的计费方式。\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeType\", \"name-zh-cn\": \"批量修改实例的计费方式\", \"categories\": [\"instance_manage\"]}",
+      "Description": "{\"en\": \"Bulky modify instance charge type\", \"zh-cn\": \"批量修改实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeType\", \"name-zh-cn\": \"批量修改实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "c112eeb92259fa8a429e2e2fc945a5229da2d94b30a6b7308a13987b7b48e087",
+      "Hash": "4e507922cf3600d5db87843c76175e18c531dfe96da8ddc52b2413cf813fe0bc",
       "Popularity": 7,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2355,10 +2375,10 @@
       "TemplateId": "t-e4f861b5d66447158e56",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:55Z"
+      "UpdatedDate": "2021-12-07T09:54:39Z"
     },
     {
       "Category": "Other",
@@ -3203,26 +3223,6 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2021-11-05T07:42:09Z",
-      "Description": "{\"en\": \"Bulky clone ECS instance\", \"zh-cn\": \"批量克隆ECS实例\", \"name-en\": \"ACS-ECS-BulkyCloneInstances\", \"name-zh-cn\": \"批量克隆ECS实例\", \"categories\": [\"cross_region\"]}",
-      "HasTrigger": false,
-      "Hash": "612a59963663cb49b24b9a5a23239f916cb9af553cfb9bf8f56af00e2ec46b10",
-      "Popularity": 5,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-db586b6e686547dc8cfc",
-      "TemplateName": "ACS-ECS-BulkyCloneInstances",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v6",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:47Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
       "CreatedDate": "2019-09-06T06:01:22Z",
       "Description": "{\"en\": \"Run remote shell script.\", \"zh-cn\": \"运行远端shell脚本。\", \"name-en\": \"ACS-ECS-RunRemoteShellScript\", \"name-zh-cn\": \"运行远端shell脚本\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
@@ -3419,6 +3419,26 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2021-08-26T09:52:07Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2021-12-06T08:12:43Z",
+      "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "89e6f74733ac63bee396d2dd6d3ff94771e7101f0bd08bca10af1bdcd4483521",
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-28fa369cb3994e71b4b4",
+      "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2021-12-08T03:55:05Z"
     }
   ]
 }
