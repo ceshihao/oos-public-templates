@@ -25,6 +25,7 @@ Parameters:
     AllowedValues:
       - waf
       - ac_cc
+      - tamperproof
   rateControl:
     Description:
       name-en: Concurrency ratio of task execution
@@ -37,8 +38,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'

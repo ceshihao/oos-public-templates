@@ -1,11 +1,12 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky downLoad files to instances.
-  zh-cn: 批量下载文件到多个ECS实例。
+  en: Bulky downLoad files to instances
+  zh-cn: 批量下载文件到多个ECS实例
   name-en: ACS-ECS-BulkyDownloadFile
   name-zh-cn: 批量下载文件到多个ECS实例
   categories:
     - instance_manage
+    - application_manage
 Parameters:
   regionId:
     Type: String
@@ -49,8 +50,8 @@ Parameters:
   tokenInfo:
     Type: String
     Description:
-      name-en: Specify a token to download file.It is only required when downloading file from GitHub.
-      name-zh-cn: 指定令牌以下载文件，只有从GitHub上下载文件时需要填。
+      name-en: Specify a token to download file.It is only required when downloading file from GitHub
+      name-zh-cn: 指定令牌以下载文件，只有从GitHub上下载文件时需要填
     Label:
       en: TokenInfo
       zh-cn: 下载文件所需令牌
@@ -89,8 +90,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      name-en: Views the ECS instances
+      name-zh-cn: 获取ECS实例
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -104,8 +105,8 @@ Tasks:
   - Name: downloadFileToInstances
     Action: 'ACS::ECS::DownloadFile'
     Description:
-      name-en: Downloads file to the ECS instances.
-      name-zh-cn: 下载文件到实例。
+      name-en: Downloads file to the ECS instances
+      name-zh-cn: 下载文件到实例
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

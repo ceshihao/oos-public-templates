@@ -1,17 +1,18 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky starts the ECS instances.
-  zh-cn: 批量启动ECS实例。
+  en: Bulky starts the ECS instances
+  zh-cn: 批量启动ECS实例
   name-en: ACS-ECS-BulkyStartInstances
   name-zh-cn: 批量启动ECS实例
   categories:
     - instance_manage
+    - application_manage
 Parameters:
   regionId:
     Type: String
     Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+      name-en: The id of region
+      name-zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -22,8 +23,8 @@ Parameters:
       RegionId: regionId
   rateControl:
     Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -32,16 +33,16 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
 - Name: getInstance
   Description:
-    name-en: Views the ECS instances.
-    name-zh-cn: 获取ECS实例。
+    name-en: Views the ECS instances
+    name-zh-cn: 获取ECS实例
   Action: ACS::SelectTargets
   Properties:
     ResourceType: ALIYUN::ECS::Instance
@@ -55,8 +56,8 @@ Tasks:
 - Name: startInstance
   Action: ACS::ECS::StartInstance
   Description:
-    name-en: Starts the ECS instances.
-    name-zh-cn: 启动实例。
+    name-en: Starts the ECS instances
+    name-zh-cn: 启动实例
   Properties:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
