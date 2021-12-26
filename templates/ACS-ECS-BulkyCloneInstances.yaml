@@ -1,15 +1,10 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: >-
-    Bulky clone ECS instance.Notice: 1. Please check whether the driver is
-    missing before you migrate, so as not to cause the new instance to fail to
-    start 2. Based on mirrored snapshot migration, if you need to retain
-    complete data, please stop the machine before performing the next operation.
-    If you don't need to retain the data generated during the migration process,
-    you don't need to stop the machine, just migrate directly according to the
-    instructions.
-  zh-cn: >-
-    批量克隆ECS实例。注意： 1、您在迁移之前请检查是否缺少驱动，以免造成新的实例无法启动
+  en: "Bulky clone ECS instance.Notice:
+    1. Please check whether the driver is missing before you migrate, so as not to cause the new instance to fail to start
+    2. Based on mirrored snapshot migration, if you need to retain complete data, please stop the machine before performing the next operation. If you don't need to retain the data generated during the migration process, you don't need to stop the machine, just migrate directly according to the instructions."
+  zh-cn: 批量克隆ECS实例。注意：
+    1、您在迁移之前请检查是否缺少驱动，以免造成新的实例无法启动
     2、基于镜像快照迁移，如果需要要保留完整数据，请先停机再执行下一步操作，如果不需要保留迁移过程中产生的数据，无需停机，直接根据指引迁移即可。
   name-en: ACS-ECS-BulkyCloneInstances
   name-zh-cn: 批量克隆ECS实例
@@ -28,19 +23,17 @@ Parameters:
       name-en: Target instance to clone
       name-zh-cn: 将要克隆的ECS实例
     Type: List
-    AssociationProperty: 'ALIYUN::ECS::Instance::InstanceId'
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
   targetZoneId:
     Description:
       name-en: The target zone id of new instance
       name-zh-cn: 可用区
-      en: >-
-        For more instance purchase information, please refer to the ECS purchase
-        page
-      zh-cn: '更多实例购买信息请查看ECS购买页：https://ecs-buy.aliyun.com/'
+      en: For more instance purchase information, please refer to the ECS purchase page
+      zh-cn: 更多实例购买信息请查看ECS购买页：https://ecs-buy.aliyun.com/
     Type: String
-    AssociationProperty: 'ALIYUN::ECS::Instance::ZoneId'
+    AssociationProperty: ALIYUN::ECS::Instance::ZoneId
     AssociationPropertyMetadata:
       RegionId: regionId
   targetInstanceChargeType:
@@ -69,14 +62,12 @@ Parameters:
     Description:
       name-en: The subscription period of the instance
       name-zh-cn: 购买包年包月资源的时长
-      en: >-
-        Valid values: Valid values when PeriodUnit is set to Week: 1, 2, 3, and
-        4. Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8,
-        9, 12, 24, 36, 48, and 60.
-      zh-cn: >-
-        取值范围： PeriodUnit=Week时，Period取值：{“1”, “2”, “3”, “4”}。
-        PeriodUnit=Month时，Period取值：{“1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”,
-        “12”, “24”, “36”, ”48”, ”60”}。
+      en: "Valid values:
+          Valid values when PeriodUnit is set to Week: 1, 2, 3, and 4.
+          Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60."
+      zh-cn: 取值范围：
+             PeriodUnit=Week时，Period取值：{“1”, “2”, “3”, “4”}。
+             PeriodUnit=Month时，Period取值：{“1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”, ”48”, ”60”}。
     Type: Number
     AssociationPropertyMetadata:
       Visible:
@@ -106,7 +97,7 @@ Parameters:
       name-en: The instance type for the new ECS instances
       name-zh-cn: 资源规格
     Type: String
-    AssociationProperty: 'ALIYUN::ECS::Instance::InstanceType'
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceType
     AssociationPropertyMetadata:
       RegionId: regionId
       ZoneId: targetZoneId
@@ -116,19 +107,17 @@ Parameters:
       name-en: VPC ID of new ECS instances
       name-zh-cn: 专有网络
     Type: String
-    AssociationProperty: 'ALIYUN::ECS::VPC::VPCId'
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
     AssociationPropertyMetadata:
       RegionId: regionId
   targetVSwitchId:
     Description:
       name-en: The virtual switch id for the new ECS instances
       name-zh-cn: 虚拟交换机
-      en: >-
-        Please confirm whether the switch is in the selected zone. If not,
-        please reselect or create a new switch
+      en: Please confirm whether the switch is in the selected zone. If not, please reselect or create a new switch
       zh-cn: 请确认交换机是否在所选可用区内，若不在请重新选择或新建交换机
     Type: String
-    AssociationProperty: 'ALIYUN::VPC::VSwitch::VSwitchId'
+    AssociationProperty: ALIYUN::VPC::VSwitch::VSwitchId
     AssociationPropertyMetadata:
       RegionId: regionId
       ZoneId: targetZoneId
@@ -140,7 +129,7 @@ Parameters:
       en: The vSwitch and the security group must belong to the same VPC
       zh-cn: 安全组和虚拟交换机必须在同一个专有网络VPC中
     Type: List
-    AssociationProperty: 'ALIYUN::ECS::SecurityGroup::SecurityGroupId'
+    AssociationProperty: ALIYUN::ECS::SecurityGroup::SecurityGroupId
     AssociationPropertyMetadata:
       RegionId: regionId
       VpcId: targetVPCId
@@ -149,7 +138,7 @@ Parameters:
       name-en: The category of system disk
       name-zh-cn: 系统盘的种类
     Type: String
-    AssociationProperty: 'ALIYUN::ECS::Disk::SystemDiskCategory'
+    AssociationProperty: ALIYUN::ECS::Disk::SystemDiskCategory
     AssociationPropertyMetadata:
       RegionId: regionId
       ZoneId: targetZoneId
@@ -160,7 +149,7 @@ Parameters:
       name-en: The category of data disk
       name-zh-cn: 数据盘的种类
     Type: String
-    AssociationProperty: 'ALIYUN::ECS::Disk::DataDiskCategory'
+    AssociationProperty: ALIYUN::ECS::Disk::DataDiskCategory
     AssociationPropertyMetadata:
       RegionId: regionId
       ZoneId: targetZoneId
@@ -170,16 +159,12 @@ Parameters:
     Description:
       name-en: The password of the new ECS instance
       name-zh-cn: 实例密码
-      en: >-
-        The password must be 8 to 30 characters in length and include at least
-        three of the following character types: uppercase letters, lowercase
-        letters, digits, and special characters. Special characters include:
-        ()`~!@#$%^&*-_+=|{}[]:;'<>,.?/  Passwords of Windows instances cannot
-        start with a forward slash (/).
-      zh-cn: >-
-        长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号中的三类字符。特殊符号可以是：
-        ()`~!@#$%^&*-_+=|{}[]:;'<>,.?/ ，其中，Windows实例不能以正斜线（/）为密码首字符。
+      en: "<font color='red'><b>The password must be 8 to 30 characters in length and include at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.</b></font>Special characters include: ()`~!@#$%^&*-_+=|{}[]:;''<>,.?/  Passwords of Windows instances cannot start with a forward slash (/)."
+      zh-cn: <font color='red'><b>长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号中的三类字符。</b></font>特殊符号可以是： ()`~!@#$%^&*-_+=|{}[]:;'<>,.?/ ，其中，Windows实例不能以正斜线（/）为密码首字符
     Type: String
+    AllowedPattern: '[0-9A-Za-z\_\-\&:;''<>,=%`~!@#\(\)\$\^\*\+\|\{\}\[\]\.\?\/]+$'
+    MinLength: 8
+    MaxLength: 30
     NoEcho: true
   OOSAssumeRole:
     Description:
@@ -190,15 +175,15 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: cloneInstances
-    Action: 'ACS::Template'
+    Action: ACS::Template
     Description:
       en: Clone ECS instances
       zh-cn: 克隆ECS实例
     Properties:
-      TemplateName: 'ACS::ECS::CloneInstance'
+      TemplateName: ACS::ECS::CloneInstance
       Parameters:
         regionId: '{{ regionId }}'
-        imageName: 'img-{{ ACS::TaskLoopItem }}-{{ACS::ExecutionId}}'
+        imageName: img-{{ ACS::TaskLoopItem }}-{{ACS::ExecutionId}}
         instanceId: '{{ ACS::TaskLoopItem }}'
         targetVSwitchId: '{{ targetVSwitchId }}'
         targetInstanceType: '{{ targetInstanceType }}'
