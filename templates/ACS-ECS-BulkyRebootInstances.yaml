@@ -10,21 +10,24 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
     Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution
-      name-zh-cn: 任务执行的并发比率
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -32,17 +35,17 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
 - Name: getInstance
   Description:
-    name-en: Views the ECS instances
-    name-zh-cn: 获取ECS实例
+    en: Views the ECS instances
+    zh-cn: 获取ECS实例
   Action: ACS::SelectTargets
   Properties:
     ResourceType: ALIYUN::ECS::Instance
@@ -56,8 +59,8 @@ Tasks:
 - Name: rebootInstance
   Action: ACS::ECS::RebootInstance
   Description:
-    name-en: Restarts the ECS instances
-    name-zh-cn: 重启实例
+    en: Restarts the ECS instances
+    zh-cn: 重启实例
   Properties:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
@@ -68,4 +71,21 @@ Outputs:
   instanceIds:
     Type: List
     Value: '{{ getInstance.instanceIds }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - targets
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Ecs Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
 

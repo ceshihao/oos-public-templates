@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Release the public address of Redis instance
-  zh-cn: 释放Redis实例的外网地址
-  name-en: ACS-Redis-ReleaseInstancePublicConnection
-  name-zh-cn: 释放Redis实例的外网地址
+  en: Release the public address of RDS instance
+  zh-cn: 释放RDS实例的外网地址
+  name-en: ACS-RDS-ReleaseInstancePublicConnection
+  name-zh-cn: 释放RDS实例的外网地址
   categories:
     - security
 Parameters:
@@ -16,8 +16,8 @@ Parameters:
     Default: '{{ ACS::RegionId }}'
   instanceId:
     Label:
-      en: The id of Redis instances
-      zh-cn: Redis实例ID
+      en: InstanceId
+      zh-cn: RDS实例ID
     Type: String
   OOSAssumeRole:
     Label:
@@ -30,23 +30,23 @@ Tasks:
   - Name: describeDBInstanceNetInfo
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Query the ip type and address of a Redis instance
-      zh-cn: 查询Redis的连接地址和地址类型
+      en: Query the ip type and address of a RDS instance
+      zh-cn: 查询RDS的连接地址和地址类型
     Properties:
-      Service: R-KVSTORE
+      Service: RDS
       API: DescribeDBInstanceNetInfo
       Parameters:
         RegionId: '{{ regionId }}'
-        InstanceId: '{{ instanceId }}'
+        DBInstanceId: '{{ instanceId }}'
     Outputs:
       connectionString:
         Type: String
-        ValueSelector: '.NetInfoItems.InstanceNetInfo[] | select(.IPType=="Public") | .ConnectionString'
+        ValueSelector: '.DBInstanceNetInfos.DBInstanceNetInfo[] | select(.IPType=="Public") | .ConnectionString'
   - Name: checkPublicAddress
     Action: 'ACS::Choice'
     Description:
       En: Whether to release instance public connection
-      Zh-cn: 是否释放Redis实例的外网地址
+      Zh-cn: 是否释放RDS实例的外网地址
     Properties:
       DefaultTask: releaseInstancePublicConnection
       Choices:
@@ -58,14 +58,14 @@ Tasks:
   - Name: releaseInstancePublicConnection
     Action: 'ACS::ExecuteAPI'
     Description:
-      En: Release the public address of Redis instances
-      Zh-cn: 释放Redis实例的外网地址
+      En: Release the public address of RDS instances
+      Zh-cn: 释放RDS实例的外网地址
     Properties:
-      Service: R-KVSTORE
+      Service: RDS
       API: ReleaseInstancePublicConnection
       Parameters:
         RegionId: '{{ regionId }}'
-        InstanceId: '{{ instanceId }}'
+        DBInstanceId: '{{ instanceId }}'
         CurrentConnectionString: '{{ describeDBInstanceNetInfo.connectionString }}'
 Metadata:
   ALIYUN::OOS::Interface:

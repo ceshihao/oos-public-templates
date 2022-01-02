@@ -10,23 +10,23 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   imageId:
-    Description:
-      name-en: The ID of the image
-      name-zh-cn: 镜像ID
+    Label:
+      en: ImageId
+      zh-cn: 镜像ID
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -34,8 +34,8 @@ Tasks:
 - Name: deleteImage
   Action: ACS::ECS::DeleteImage
   Description:
-    name-en: Deletes the specified ECS image
-    name-zh-cn: 删除指定的ECS镜像
+    en: Deletes the specified ECS image
+    zh-cn: 删除指定的ECS镜像
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ imageId }}'
@@ -43,3 +43,19 @@ Tasks:
     imageId:
       ValueSelector: imageId
       Type: String
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - imageId
+        Label:
+          default:
+            zh-cn: 选择镜像
+            en: Select Image
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

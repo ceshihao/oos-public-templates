@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Enable deletion protection for CMK
-  zh-cn: 开启CMK删除保护
-  name-en: ACS-KMS-BulkySetDeletionProtection
-  name-zh-cn: 开启CMK删除保护
+  en: Modify API to private
+  zh-cn: 修改API为私有类型
+  name-en: ACS-ApiGateway-BulkyModifyApi
+  name-zh-cn: 修改API为私有类型
   categories:
     - security
 Parameters:
@@ -14,10 +14,10 @@ Parameters:
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  keyId:
+  instanceId:
     Label:
-      en: The ids of key
-      zh-cn: 密钥ID
+      en: InstanceId
+      zh-cn: API网关实例ID
     Type: String
   rateControl:
     Label:
@@ -37,46 +37,52 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: describeKey
-    Action: ACS::ExecuteAPI
+  - Name: describeApi
+    Action: 'ACS::ExecuteAPI'
     Description:
-      en: Query the arn of key
-      zh-cn: 查询密钥的arn
+      en: Query parameters
+      zh-cn: 查询API参数信息
     Properties:
-      Service: KMS
-      API: DescribeKey
+      Service: CLOUDAPI
+      API: DescribeApi
       Parameters:
         RegionId: '{{ regionId }}'
-        KeyId: '{{ keyId }}'
+        ApiId: '{{ instanceId }}'
     Outputs:
-      arn:
-        Type: List
-        ValueSelector: '.KeyMetadata.Arn'
-  - Name: setDeletionProtection
-    Action: ACS::ExecuteAPI
+      ApiName:
+        Type: String
+        ValueSelector: '.ApiName'
+      RequestConfig:
+        Type: String
+        ValueSelector: '.RequestConfig'
+      ServiceConfig:
+        Type: String
+        ValueSelector: '.ServiceConfig'
+  - Name: modifyApi
+    Action: 'ACS::ExecuteAPI'
     Description:
-      en: Enable deletion protection for CMK.
-      zh-cn: 开启CMK删除保护。
+      en: Modify API to private
+      zh-cn: 修改API为私有类型
     Properties:
-      Service: KMS
-      API: SetDeletionProtection
+      Service: CLOUDAPI
+      API: ModifyApi
       Parameters:
         RegionId: '{{ regionId }}'
-        ProtectedResourceArn: '{{ ACS::TaskLoopItem }}'
-        EnableDeletionProtection: true
-    Loop:
-      RateControl: '{{ rateControl }}'
-      Items: '{{ describeKey.arn }}'
+        ApiId: '{{ instanceId }}'
+        ApiName: '{{ describeApi.ApiName }}'
+        RequestConfig: '{{ describeApi.RequestConfig }}'
+        ServiceConfig: '{{ describeApi.ServiceConfig }}'
+        Visibility: PRIVATE
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - regionId
-          - keyId
+          - instanceId
         Label:
           default:
-            zh-cn: 选择密钥
-            en: Select KMS Key
+            zh-cn: 选择实例
+            en: Select instance
       - Parameters:
           - rateControl
           - OOSAssumeRole

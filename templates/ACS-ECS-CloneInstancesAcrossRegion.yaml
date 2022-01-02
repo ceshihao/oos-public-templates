@@ -8,59 +8,59 @@ Description:
     - cross_region
 Parameters:
   instanceIds:
-    Description:
-      name-en: The ID list of the ECS instance
-      name-zh-cn: ECS实例ID列表
+    Label:
+      en: InstanceIds
+      zh-cn: ECS实例ID列表
     Type: List
   regionId:
-    Description:
-      name-en: The Source Region Id
-      name-zh-cn: 源地域ID
+    Label:
+      en: RegionId
+      zh-cn: 源地域ID
     Type: String
     MinLength: 1
     MaxLength: 30
   targetRegionId:
-    Description:
-      name-en: The Target Region Id
-      name-zh-cn: 目标地域ID
+    Label:
+      en: TargetRegionId
+      zh-cn: 目标地域ID
     Type: String
     MinLength: 1
     MaxLength: 30
   targetZoneId:
-    Description:
-      name-en: The Target Zone Id
-      name-zh-cn: 目标可用区ID
+    Label:
+      en: TargetZoneId
+      zh-cn: 目标可用区ID
     Type: String
     MinLength: 1
     MaxLength: 30
   targetInstanceType:
-    Description:
-      name-en: The instance type for the ECS instances, ecs.g5.large, for example
-      name-zh-cn: 实例类型
+    Label:
+      en: TargetInstanceType
+      zh-cn: 实例类型
     Type: String
     AllowedPattern: 'ecs\.[A-Za-z0-9\.\-]*'
     MinLength: 1
     MaxLength: 30
   targetSecurityGroupId:
-    Description:
-      name-en: The security group ID for the ECS instances, sg-xxxxxxxxxxxxxxxxxxxx, for example
-      name-zh-cn: 安全组ID
+    Label:
+      en: TargetSecurityGroupId
+      zh-cn: 安全组ID
     Type: String
     AllowedPattern: 'sg-[A-Za-z0-9]*'
     MinLength: 1
     MaxLength: 30
   targetVSwitchId:
-    Description:
-      name-en: The virtual switch ID for the ECS instances, vsw-xxxxxxxxxxxxxxxxxxxx, for example
-      name-zh-cn: 交换机ID
+    Label:
+      en: TargetVSwitchId
+      zh-cn: 交换机ID
     Type: String
     AllowedPattern: 'vsw-[A-Za-z0-9]*'
     MinLength: 1
     MaxLength: 30
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -247,4 +247,30 @@ Outputs:
   instanceIds:
     Value: '{{ runInstances.instanceIds }}'
     Type: List
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - targetRegionId
+          - targetZoneId
+          - targetInstanceType
+          - targetSecurityGroupId
+          - targetVSwitchId
+        Label:
+          default:
+            zh-cn: 设置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - instanceIds
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Ecs Instances
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
 

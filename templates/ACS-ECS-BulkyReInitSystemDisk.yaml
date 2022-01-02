@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky resets system disks to its initial state.The ECS instances must be in stopped status.
-  zh-cn: 批量初始化系统盘。磁盘所在实例必须为停止状态。
+  en: Bulky resets system disks to its initial state.The ECS instances must be in stopped status
+  zh-cn: 批量初始化系统盘，磁盘所在实例必须为停止状态
   name-en: ACS-ECS-BulkyReInitSystemDisk
   name-zh-cn: 批量初始化系统盘
   categories:
@@ -9,21 +9,24 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
     Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -31,17 +34,17 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
 - Name: getInstance
   Description:
-    name-en: Views the ECS instances.
-    name-zh-cn: 获取ECS实例。
+    en: Views the ECS instances
+    zh-cn: 获取ECS实例
   Action: ACS::SelectTargets
   Properties:
     ResourceType: ALIYUN::ECS::Instance
@@ -55,8 +58,8 @@ Tasks:
 - Name: reInitSystemDisk
   Action: ACS::ECS::ReInitDisk
   Description:
-    name-en: Resets a disk to its initial state.
-    name-zh-cn: 初始化系统盘。
+    en: Resets a disk to its initial state
+    zh-cn: 初始化系统盘
   Properties:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
@@ -75,4 +78,21 @@ Outputs:
   diskIdAndInstanceIds:
     Type: List
     Value: '{{ reInitSystemDisk.diskIdAndInstanceIds }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - targets
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Ecs Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
 

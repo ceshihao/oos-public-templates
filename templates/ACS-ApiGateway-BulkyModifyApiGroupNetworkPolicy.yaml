@@ -9,19 +9,19 @@ Description:
 Parameters:
   regionId:
     Label:
-      en: region id of instances
-      zh-cn: 实例所在地域ID
+      en: RegionId
+      zh-cn: 地域ID
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  instanceId:
+  groupId:
     Label:
-      en: The id of apigateway instance
-      zh-cn: API网关实例ID
+      en: GroupId
+      zh-cn: API网关实例分组ID
     Type: String
   httpsPolicy:
     Label:
-      en: httpsPolicy.
+      en: HttpsPolicy
       zh-cn: HTTPS安全策略
     Type: String
     AllowedValues:
@@ -46,21 +46,6 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: describeApi
-    Action: ACS::ExecuteAPI
-    Description:
-      en: Query groupid of the apigateway instance
-      zh-cn: 查询分组信息
-    Properties:
-      Service: CLOUDAPI
-      API: DescribeApi
-      Parameters:
-        RegionId: '{{ regionId }}'
-        ApiId: '{{ instanceId }}'
-    Outputs:
-      groupId:
-        Type: String
-        ValueSelector: .GroupId
   - Name: describeApiGroups
     Action: ACS::ExecuteAPI
     Description:
@@ -71,7 +56,7 @@ Tasks:
       API: DescribeApiGroups
       Parameters:
         RegionId: '{{ regionId }}'
-        GroupId: '{{ describeApi.groupId }}'
+        GroupId: '{{ groupId }}'
     Outputs:
       instanceType:
         Type: String
@@ -99,6 +84,7 @@ Tasks:
           NextTask: modifyApiGroupNetworkPolicyForDedicated
   - Name: modifyApiGroupNetworkPolicyForShared
     Action: ACS::ExecuteAPI
+    OnSuccess: ACS::END
     Description:
       en: Modify the https version of shared apigateway instance to support tls1.2
       zh-cn: 修改共享实例类型的API网关https版本支持tls1.2版本
@@ -107,10 +93,11 @@ Tasks:
       API: ModifyApiGroupNetworkPolicy
       Parameters:
         RegionId: '{{ regionId }}'
-        GroupId: '{{ describeApi.groupId }}'
+        GroupId: '{{ groupId }}'
         HttpsPolicy: '{{ httpsPolicy }}'
   - Name: modifyApiGroupNetworkPolicyForDedicated
     Action: ACS::ExecuteAPI
+    OnSuccess: ACS::END
     Description:
       en: Modify the https version of dedicated apigateway instance to support tls1.2
       zh-cn: 修改专享实例类型的API网关https版本支持tls1.2版本
@@ -128,11 +115,11 @@ Metadata:
           - httpsPolicy
         Label:
           default:
-            zh-cn: 参数配置
-            en: Parameters Configure
+            zh-cn: 设置参数
+            en: Configure Parameters
       - Parameters:
           - regionId
-          - instanceId
+          - groupId
         Label:
           default:
             zh-cn: 选择实例

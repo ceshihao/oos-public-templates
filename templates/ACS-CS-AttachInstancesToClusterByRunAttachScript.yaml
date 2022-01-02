@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Attach ECS instances to cluster.
-  zh-cn: 添加已有ECS节点到集群。
+  en: Attach ECS instances to cluster
+  zh-cn: 添加已有ECS节点到集群
   name-en: ACS-CS-AttackInstancesToACKCluster
   name-zh-cn: 添加已有ECS节点到集群
   categories:
@@ -9,26 +9,29 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
   clusterId:
-    Description:
-      name-en: The ID of cluster.
-      name-zh-cn: 集群ID。
+    Label:
+      en: ClusterId
+      zh-cn: 集群ID
     Type: String
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -36,15 +39,17 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description: The RAM role to be assumed by OOS.
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -58,8 +63,8 @@ Tasks:
   - Name: getAttachScript
     Action: 'ACS::ExecuteApi'
     Description:
-      name-en: Get command content of attach instance to cluster.
-      name-zh-cn: 获取挂载ECS实例到集群的命令。
+      en: Get command content of attach instance to cluster
+      zh-cn: 获取挂载ECS实例到集群的命令
     Properties:
       Service: CS
       API: DescribeClusterAttachScripts
@@ -75,8 +80,8 @@ Tasks:
   - Name: runCommand
     Action: 'ACS::ECS::RunCommand'
     Description:
-      name-en: Execute cloud assistant command.
-      name-zh-cn: 执行云助手命令。
+      name-en: Execute cloud assistant command
+      name-zh-cn: 执行云助手命令
     Properties:
       regionId: '{{ regionId }}'
       commandContent: '{{ getAttachScript.attachScript }}'
@@ -97,4 +102,27 @@ Outputs:
   commandOutputs:
     Type: List
     Value: '{{ runCommand.commandOutputs }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - clusterId
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - targets
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
 

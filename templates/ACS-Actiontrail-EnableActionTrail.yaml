@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Enable action trail.
-  zh-cn: 开启跟踪。
+  en: Enable action trail
+  zh-cn: 开启跟踪
   name-en: ACS-Actiontrail-EnableActionTrail
   name-zh-cn: 开启操作审计跟踪
   categories:
@@ -9,32 +9,32 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   trailName:
-    Description:
-      name-en: The name for trail.
-      name-zh-cn: 创建的跟踪名称。
+    Label:
+      en: TrailName
+      zh-cn: 创建的跟踪名称
     Type: String
   ossBucketName:
-    Description:
-      name-en: The OOS Bucket name for creating trail.
-      name-zh-cn: 跟踪写入的 OSS bucket 名称。
+    Label:
+      en: OSSBucketName
+      zh-cn: 跟踪写入的 OSS bucket 名称
     Type: String
     Default: ''
   roleName:
-    Description:
-      name-en: The name of the ram role that the user allows the actiontrail service to play.
-      name-zh-cn: 用户允许 ActionTrail服务扮演的RAM角色名称。
+    Label:
+      en: RoleName
+      zh-cn: 用户允许ActionTrail服务扮演的RAM角色名称
     Type: String
     Default: aliyunactiontraildefaultrole
   eventRW:
-    Description:
-      name-en: Read and write type of delivery event.
-      name-zh-cn: 投递事件的读写类型。
+    Label:
+      en: EventRW
+      zh-cn: 投递事件的读写类型
     Type: String
     Default: All
     AllowedValues:
@@ -43,14 +43,17 @@ Parameters:
       - Read
   trailRegion:
     Description:
-      name-en: The trail region(for example:All、cn-hangzhou).
-      name-zh-cn: 跟踪的地域(例如：All、cn-hangzhou)。
+      en: Example：All、cn-hangzhou
+      zh-cn: 例如：All、cn-hangzhou
+    Label:
+      en: TrailRegion
+      zh-cn: 跟踪的地域
     Type: String
     Default: All
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -58,8 +61,8 @@ Tasks:
   - Name: createTrail
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Create trail.
-      name-zh-cn: 创建跟踪。
+      en: Create trail
+      zh-cn: 创建跟踪
     Properties:
       Service: Actiontrail
       API: CreateTrail
@@ -78,4 +81,23 @@ Outputs:
   trails:
     Type: Json
     Value: '{{ createTrail.trail }}'
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - trailName
+          - ossBucketName
+          - roleName
+          - eventRW
+          - trailRegion
+          - regionId
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

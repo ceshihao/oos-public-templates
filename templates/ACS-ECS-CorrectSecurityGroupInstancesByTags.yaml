@@ -1,28 +1,29 @@
 FormatVersion: OOS-2019-06-01
 Description:
   name-en: ACS-ECS-CorrectSecurityGroupInstancesByTags
-  name-zh-cn: 正确的安全组实例标签
+  name-zh-cn: 纠正安全组实例标签
   en: Gets an instance from a label and adds the acquired instance to the security group under the specified label
   zh-cn: 根据标签获取实例并把获取的到的实例加入到指定标签下的安全组中
 Parameters:
   regionId:
-    Description:
-      name-en: The ID of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
     Type: String
     Default: '{{ ACS::RegionId }}'
   tags:
-    Description:
-      name-en: The tags of new ECS instance to add on
-      name-zh-cn: 要添加的新ECS实例的标记
+    Label:
+      en: Tags
+      zh-cn: 要添加的新ECS实例的标签
     Type: Json
     AssociationProperty: Tags
 Tasks:
   - Name: describeInstances
     Action: ACS::ExecuteAPI
     Description:
-      name-en: Queries the ECS instances by specifying tag
-      name-zh-cn: 通过指定标签查看ECS实例
+      en: Queries the ECS instances by specifying tag
+      zh-cn: 通过指定标签查看ECS实例
     Properties:
       Service: ECS
       API: DescribeInstances
@@ -65,4 +66,13 @@ Tasks:
         MaxErrors: 0
         Mode: Concurrency
         Concurrency: 1
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - tags
+        Label:
+          default:
+            zh-cn: 选择标签
+            en: Select Tags

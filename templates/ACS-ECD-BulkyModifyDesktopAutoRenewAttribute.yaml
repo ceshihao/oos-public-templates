@@ -7,30 +7,31 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   desktopIds:
-    Description:
-      name-en: The id of desktop
-      name-zh-cn: 云桌面ID
+    Label:
+      en: DesktopIds
+      zh-cn: 云桌面ID
     Type: List
   renewalPeriodUnit:
-    Description:
-      name-en: The auto-renewal period
-      name-zh-cn: 实例续费时长的时间单位
+    Label:
+      en: RenewalPeriodUnit
+      zh-cn: 实例续费时长的时间单位
     Type: String
     AllowedValues:
       - M
       - Y
   renewalPeriod:
     Description:
-      name-en: The duration of desktop
-      namme-zh-cn: 实例续费时长
       en: 'Valid values: 1, 2, 3, 6, 12'
       zh-cn: 取值范围为：{"1", "2", "3", "6", "12"}
+    Label:
+      en: RenewalPeriod
+      zh-cn: 实例续费时长
     Type: Number
     AllowedValues:
       - 1
@@ -40,8 +41,6 @@ Parameters:
       - 12
   renewalStatus:
     Description:
-      name-en: The auto-renewal status of the desktop
-      name-zh-cn: 云桌面自动续费状态
       en: >-
         Valid values:
         AutoRenewal: Auto-renewal is enabled for the instance.
@@ -52,15 +51,18 @@ Parameters:
         AutoRenewal：设置为自动续费。
         Normal：取消自动续费。
         NotRenewal：不再续费。
+    Label:
+      en: RenewalStatus
+      zh-cn: 云桌面自动续费状态
     Type: String
     AllowedValues:
       - AutoRenewal
       - Normal
       - NotRenewal
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution
-      name-zh-cn: 任务执行的并发比率
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -68,9 +70,9 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -78,8 +80,8 @@ Tasks:
   - Name: modifyDesktopAutoRenewAttribute
     Action: ACS::ECD::SetRenewal
     Description:
-      name-en: Modifies desktop auto renew attr
-      name-zh-cn: 修改云桌面自动续费属性
+      en: Modifies desktop auto renew attr
+      zh-cn: 修改云桌面自动续费属性
     Properties:
       regionId: '{{ regionId }}'
       desktopId: '{{ ACS::TaskLoopItem }}'
@@ -89,4 +91,28 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ desktopIds }}'
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - renewalPeriodUnit
+          - renewalPeriod
+          - renewalStatus
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - desktopIds
+        Label:
+          default:
+            zh-cn: 选择云桌面
+            en: Select ECD Desktops
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

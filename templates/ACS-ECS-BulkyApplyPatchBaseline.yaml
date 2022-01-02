@@ -6,36 +6,40 @@ Description:
   zh-cn: 批量在ECS实例中配置补丁基线
 Parameters:
   regionId:
-    Description:
-      name-en: The ID of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
     Type: String
     Default: '{{ ACS::RegionId }}'
   targets:
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
   action:
-    Description:
-      name-en: The action to apply patch baseline
-      name-zh-cn: 配置补丁基线的方式
+    Label:
+      en: Action
+      zh-cn: 配置补丁基线的方式
     Type: String
     AllowedValues:
       - install
       - scan
     Default: install
   rebootIfNeed:
-    Description:
-      name-en: Whether to reboot
-      name-zh-cn: 是否重启
+    Label:
+      en: RebootIfNeed
+      zh-cn: 是否重启
     Type: Boolean
     Default: false
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -43,22 +47,22 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
   timeout:
-    Description:
-      name-en: The value of the invocation timeout period of a command on ECS instances.
-      name-zh-cn: ECS实例中执行命令的超时时间。
+    Label:
+      en: Timeout
+      zh-cn: ECS实例中执行命令的超时时间
     Type: Number
     Default: 1800
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: ACS::SelectTargets
     Properties:
       RegionId: '{{ regionId }}'
@@ -71,8 +75,8 @@ Tasks:
         ValueSelector: Instances.Instance[].InstanceId
   - Name: applyPatchBaseline
     Description:
-      name-en: Apply patch baseline on ECS instance
-      name-zh-cn: 在ECS实例中配置补丁基线
+      en: Apply patch baseline on ECS instance
+      zh-cn: 在ECS实例中配置补丁基线
     Action: ACS::ECS::ApplyPatchBaseline
     Properties:
       regionId: '{{ regionId }}'
@@ -95,4 +99,28 @@ Outputs:
   commandOutputs:
     Type: List
     Value: '{{ applyPatchBaseline.commandOutputs }}'
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - action
+          - rebootIfNeed
+          - timeout
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - targets
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

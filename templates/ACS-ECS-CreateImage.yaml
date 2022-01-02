@@ -10,38 +10,38 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   instanceId:
-    Description:
-      name-en: The ID of ECS instance
-      name-zh-cn: ECS实例ID
+    Label:
+      en: InstanceId
+      zh-cn: ECS实例ID
     Type: String
     AssociationProperty: ALIYUN::ECS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
   imageName:
-    Description:
-      name-en: The name of new image
-      name-zh-cn: 新镜像的名称
+    Label:
+      en: ImageName
+      zh-cn: 新镜像的名称
     Type: String
     AllowedPattern: '[A-Za-z0-9\_\-\:\{\}\.]*'
   tags:
-    Description:
-      name-en: The image tag
-      name-zh-cn: 镜像标签
+    Label:
+      en: Tags
+      zh-cn: 镜像标签
     Type: Json
     AssociationProperty: Tags
     AssociationPropertyMetadata:
       ShowSystem: false
     Default: []
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -49,8 +49,8 @@ Tasks:
 - Name: createImage
   Action: ACS::ECS::CreateImage
   Description:
-    name-en: Create new image with the specified image name and instance ID
-    name-zh-cn: 通过指定实例ID和镜像名称创建新的镜像
+    en: Create new image with the specified image name and instance ID
+    zh-cn: 通过指定实例ID和镜像名称创建新的镜像
   Properties:
     regionId: '{{ regionId }}'
     imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
@@ -64,3 +64,26 @@ Outputs:
   imageId:
     Type: String
     Value: '{{ createImage.imageId }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - instanceId
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Ecs Instances
+      - Parameters:
+          - imageName
+          - tags
+        Label:
+          default:
+            zh-cn: 镜像设置
+            en: Image Configure
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

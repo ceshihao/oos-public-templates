@@ -8,57 +8,59 @@ Description:
     - time_trigger
 Parameters:
   regionId:
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   desktopIds:
-    Description:
-      name-en: The id of desktop
-      name-zh-cn: 云桌面ID
+    Label:
+      en: DesktopIds
+      zh-cn: 云桌面ID
     Type: List
     Default: []
   dailyStartTime:
-    Description:
-      name-en: Daily start instance time
-      name-zh-cn: 每天开启实例的时间
+    Label:
+      en: DailyStartTime
+      zh-cn: 每天开启实例的时间
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
       Format: HH:mm:ssZ
   dailyStopTime:
-    Description:
-      name-en: Daily stop instance time
-      name-zh-cn: 每天停止实例的时间
+    Label:
+      en: DailyStopTime
+      zh-cn: 每天停止实例的时间
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
       Format: HH:mm:ssZ
   weekdays:
     Description:
-      name-en: The Cycle of task
-      name-zh-cn: 任务执行的周期
       en: '* indicates daily, MON indicates Monday only, MON-FRI indicates Monday to Friday，refer them here: https://help.aliyun.com/document_detail/169784.html'
       zh-cn: '*表示每天，MON表示仅周一，MON-FRI表示周一到周五。详情参考：https://help.aliyun.com/document_detail/169784.html'
+    Label:
+      en: Weekdays
+      zh-cn: 任务执行的周期
     Type: String
     Default: MON-FRI
   triggerEndDate:
-    Description:
-      en: The end date of time trigger
+    Label:
+      en: TriggerEndDate
       zh-cn: 时间触发器结束时间
-      name-en: 'Format: yyyy-MM-ddTHH:mm:ssZ.'
-      name-zh-cn: 格式：yyyy-MM-ddTHH:mm:ssZ
+    Description:
+      en: 'Format: yyyy-MM-ddTHH:mm:ssZ.'
+      zh-cn: 格式：yyyy-MM-ddTHH:mm:ssZ
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
       Format: YYYY-MM-DDTHH:mm:ssZ
     Default: '2099-12-01T00:00:00Z'
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -66,9 +68,9 @@ Parameters:
       MaxErrors: 100%
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -76,8 +78,8 @@ Tasks:
   - Name: timerTrigger
     Action: ACS::TimerTrigger
     Description:
-      name-en: Triggers a task as scheduled by specifying Cron expression.
-      name-zh-cn: 通过指定Cron表达式按计划触发任务。
+      en: Triggers a task as scheduled by specifying Cron expression
+      zh-cn: 通过指定Cron表达式按计划触发任务
     Properties:
       Type: cron
       EndDate: '{{ triggerEndDate }}'
@@ -100,8 +102,8 @@ Tasks:
             - '{{ weekdays }}'
   - Name: getDesktop
     Description:
-      name-en: Query the ECD desktops
-      name-zh-cn: 获取云桌面
+      en: Query the ECD desktops
+      zh-cn: 获取云桌面
     Action: ACS::ExecuteApi
     Properties:
       Service: ECD
@@ -116,8 +118,8 @@ Tasks:
   - Name: startDesktops
     Action: ACS::ECD::StartDesktop
     Description:
-      name-en: Start the desktops
-      name-zh-cn: 开启云桌面
+      en: Start the desktops
+      zh-cn: 开启云桌面
     Properties:
       regionId: '{{ regionId }}'
       desktopId: '{{ ACS::TaskLoopItem }}'
@@ -126,8 +128,8 @@ Tasks:
       Items: '{{ getDesktop.desktopIds }}'
   - Name: sleepToSpecifiedTime
     Description:
-      name-en: Sleep to desktop stop time
-      name-zh-cn: 睡眠到实例停止时间
+      en: Sleep to desktop stop time
+      zh-cn: 睡眠到实例停止时间
     Action: ACS::Sleep
     Properties:
       EndDate:
@@ -139,12 +141,37 @@ Tasks:
   - Name: stopDesktop
     Action: ACS::ECD::StopDesktop
     Description:
-      name-en: Stop the desktops
-      name-zh-cn: 停止云桌面
+      en: Stop the desktops
+      zh-cn: 停止云桌面
     Properties:
       regionId: '{{ regionId }}'
       desktopId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getDesktop.desktopIds }}'
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - dailyStartTime
+          - dailyStopTime
+          - weekdays
+          - triggerEndDate
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - desktopIds
+        Label:
+          default:
+            zh-cn: 选择云桌面
+            en: Select ECD Desktops
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

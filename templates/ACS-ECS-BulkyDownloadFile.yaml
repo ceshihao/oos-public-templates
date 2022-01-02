@@ -10,9 +10,6 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
     Label:
       en: Region
       zh-cn: 地域ID
@@ -29,9 +26,6 @@ Parameters:
       RegionId: regionId
   sourceType:
     Type: String
-    Description:
-      name-en: The type of file storage
-      name-zh-cn: 文件存储的类型
     Label:
       en: SourceType
       zh-cn: 文件存储的类型
@@ -41,33 +35,24 @@ Parameters:
       - github
   sourcePath:
     Type: String
-    Description:
-      name-en: You must specify a URL where the file is stored
-      name-zh-cn: 您必须指定用于存储文件的URL
     Label:
       en: SourcePath
       zh-cn: 存储文件的URL
   tokenInfo:
     Type: String
     Description:
-      name-en: Specify a token to download file.It is only required when downloading file from GitHub
-      name-zh-cn: 指定令牌以下载文件，只有从GitHub上下载文件时需要填
+      en: Specify a token to download file.It is only required when downloading file from GitHub
+      zh-cn: 指定令牌以下载文件，只有从GitHub上下载文件时需要填
     Label:
       en: TokenInfo
       zh-cn: 下载文件所需令牌
     Default: ''
   destinationDir:
-    Description:
-      name-en: Target directory for file copy in instance
-      name-zh-cn: 实例中文件复制的目标目录
     Label:
       en: DestinationDir
       zh-cn: 文件在实例中下载的目录
     Type: String
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution
-      name-zh-cn: 任务执行的并发比率
     Label:
       en: RateControl
       zh-cn: 任务执行的并发比率
@@ -78,9 +63,6 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
     Label:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
@@ -90,8 +72,8 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances
-      name-zh-cn: 获取ECS实例
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -105,8 +87,8 @@ Tasks:
   - Name: downloadFileToInstances
     Action: 'ACS::ECS::DownloadFile'
     Description:
-      name-en: Downloads file to the ECS instances
-      name-zh-cn: 下载文件到实例
+      en: Downloads file to the ECS instances
+      zh-cn: 下载文件到实例
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -129,4 +111,29 @@ Outputs:
   commandOutput:
     Type: String
     Value: '{{ downloadFileToInstances.commandOutputs }}'
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - sourceType
+          - sourcePath
+          - tokenInfo
+          - destinationDir
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - targets
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

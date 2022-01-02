@@ -13,23 +13,24 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The region of instance to clone
-      name-zh-cn: 将要克隆的ECS实例所在地域
+    Label:
+      en: RegionId
+      zh-cn: 将要克隆的ECS实例所在地域
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   instanceIds:
-    Description:
-      name-en: Target instance to clone
-      name-zh-cn: 将要克隆的ECS实例
+    Label:
+      en: InstanceIds
+      zh-cn: 将要克隆的ECS实例
     Type: List
     AssociationProperty: ALIYUN::ECS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
   targetZoneId:
+    Label:
+      en: TargetZoneId
+      zh-cn: 可用区
     Description:
-      name-en: The target zone id of new instance
-      name-zh-cn: 可用区
       en: For more instance purchase information, please refer to the ECS purchase page
       zh-cn: 更多实例购买信息请查看ECS购买页：https://ecs-buy.aliyun.com/
     Type: String
@@ -37,15 +38,15 @@ Parameters:
     AssociationPropertyMetadata:
       RegionId: regionId
   targetInstanceChargeType:
-    Description:
-      name-en: targetInstanceChargeType
-      name-zh-cn: 付费方式
+    Label:
+      en: TargetInstanceChargeType
+      zh-cn: 付费方式
     Type: String
     AssociationProperty: ChargeType
   targetPeriodUnit:
-    Description:
-      name-en: The unit of the subscription period
-      name-zh-cn: 包年包月计费方式的时长单位
+    Label:
+      en: The unit of the subscription period
+      zh-cn: 包年包月计费方式的时长单位
     Type: String
     AssociationPropertyMetadata:
       Visible:
@@ -59,9 +60,10 @@ Parameters:
       - Month
     Default: Month
   targetPeriod:
+    Label:
+      en: TargetPeriod
+      zh-cn: 购买包年包月资源的时长
     Description:
-      name-en: The subscription period of the instance
-      name-zh-cn: 购买包年包月资源的时长
       en: "Valid values:
           Valid values when PeriodUnit is set to Week: 1, 2, 3, and 4.
           Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60."
@@ -93,9 +95,9 @@ Parameters:
       - 60
     Default: 1
   targetInstanceType:
-    Description:
-      name-en: The instance type for the new ECS instances
-      name-zh-cn: 资源规格
+    Label:
+      en: TargetInstanceType
+      zh-cn: 资源规格
     Type: String
     AssociationProperty: ALIYUN::ECS::Instance::InstanceType
     AssociationPropertyMetadata:
@@ -103,17 +105,18 @@ Parameters:
       ZoneId: targetZoneId
       InstanceChargeType: targetInstanceChargeType
   targetVPCId:
-    Description:
-      name-en: VPC ID of new ECS instances
-      name-zh-cn: 专有网络
+    Label:
+      en: TargetVPCId
+      zh-cn: 专有网络
     Type: String
     AssociationProperty: ALIYUN::ECS::VPC::VPCId
     AssociationPropertyMetadata:
       RegionId: regionId
   targetVSwitchId:
+    Label:
+      en: TargetVSwitchId
+      zh-cn: 虚拟交换机
     Description:
-      name-en: The virtual switch id for the new ECS instances
-      name-zh-cn: 虚拟交换机
       en: Please confirm whether the switch is in the selected zone. If not, please reselect or create a new switch
       zh-cn: 请确认交换机是否在所选可用区内，若不在请重新选择或新建交换机
     Type: String
@@ -123,9 +126,10 @@ Parameters:
       ZoneId: targetZoneId
       VpcId: targetVPCId
   targetSecurityGroupIds:
+    Label:
+      en: TargetSecurityGroupIds
+      zh-cn: 安全组
     Description:
-      name-en: The security group id for the new ECS instances
-      name-zh-cn: 安全组
       en: The vSwitch and the security group must belong to the same VPC
       zh-cn: 安全组和虚拟交换机必须在同一个专有网络VPC中
     Type: List
@@ -134,9 +138,9 @@ Parameters:
       RegionId: regionId
       VpcId: targetVPCId
   targetSystemDiskCategory:
-    Description:
-      name-en: The category of system disk
-      name-zh-cn: 系统盘的种类
+    Label:
+      en: TargetSystemDiskCategory
+      zh-cn: 系统盘的种类
     Type: String
     AssociationProperty: ALIYUN::ECS::Disk::SystemDiskCategory
     AssociationPropertyMetadata:
@@ -145,9 +149,9 @@ Parameters:
       InstanceType: targetInstanceType
       InstanceChargeType: targetInstanceChargeType
   targetDataDiskCategory:
-    Description:
-      name-en: The category of data disk
-      name-zh-cn: 数据盘的种类
+    Label:
+      en: TargetDataDiskCategory
+      zh-cn: 数据盘的种类
     Type: String
     AssociationProperty: ALIYUN::ECS::Disk::DataDiskCategory
     AssociationPropertyMetadata:
@@ -156,9 +160,10 @@ Parameters:
       InstanceType: targetInstanceType
       InstanceChargeType: targetInstanceChargeType
   targetPassword:
+    Label:
+      en: TargetPassword
+      zh-cn: 实例密码
     Description:
-      name-en: The password of the new ECS instance
-      name-zh-cn: 实例密码
       en: "<font color='red'><b>The password must be 8 to 30 characters in length and include at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.</b></font>Special characters include: ()`~!@#$%^&*-_+=|{}[]:;''<>,.?/  Passwords of Windows instances cannot start with a forward slash (/)."
       zh-cn: <font color='red'><b>长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号中的三类字符。</b></font>特殊符号可以是： ()`~!@#$%^&*-_+=|{}[]:;'<>,.?/ ，其中，Windows实例不能以正斜线（/）为密码首字符
     Type: String
@@ -167,9 +172,9 @@ Parameters:
     MaxLength: 30
     NoEcho: true
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -200,4 +205,35 @@ Tasks:
         Mode: Concurrency
         MaxErrors: 0
         Concurrency: 10
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - instanceIds
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Instances
+      - Parameters:
+          - targetZoneId
+          - targetInstanceChargeType
+          - targetPeriodUnit
+          - targetPeriod
+          - targetInstanceType
+          - targetVPCId
+          - targetVSwitchId
+          - targetSecurityGroupIds
+          - targetSystemDiskCategory
+          - targetDataDiskCategory
+          - targetPassword
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

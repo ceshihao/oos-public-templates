@@ -7,6 +7,13 @@ Description:
   categories:
     - security
 Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
   domains:
     Type: List
     Description:
@@ -29,8 +36,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      en: The RAM role to be assumed by OOS
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -44,6 +51,7 @@ Tasks:
       Service: WAF-OPENAPI
       API: ModifyLogServiceStatus
       Parameters:
+        RegionId: '{{ regionId }}'
         Domain: '{{ ACS::TaskLoopItem }}'
         Enabled: 1
         InstanceId: '{{ instanceId }}'

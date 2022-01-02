@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Start ECS instance when instance enter stopped status with specified tag.
-  zh-cn: 当标签下实例关机时，自动启动该实例。
+  en: Start ECS instance when instance enter stopped status with specified tag
+  zh-cn: 当标签下实例关机时，自动启动该实例
   name-en: ACS-ECS-AutoStartECSWhenStoppedByTags
   name-zh-cn: 指定标签下的实例关机时自动重启
   categories:
@@ -9,23 +9,23 @@ Description:
 Parameters:
   tags:
     Type: Json
-    Description:
-      name-en: The tags to select ECS instances.
-      name-zh-cn: 实例的标签。
+    Label:
+      en: Tags
+      zh-cn: 实例的标签
     AssociationProperty: Tags
     Default: []
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: eventTrigger
     Description:
-      name-en: Monitor the ECS instance enter Stopped status.
-      name-zh-cn: 监控变为停止状态ECS实例。
+      en: Monitor the ECS instance enter Stopped status
+      zh-cn: 监控变为停止状态ECS实例
     Action: 'ACS::EventTrigger'
     Properties:
       Product: ECS
@@ -45,12 +45,26 @@ Tasks:
   - Name: startInstance
     Action: 'ACS::ECS::StartInstance'
     Description:
-      name-en: Starts the ECS instance.
-      name-zh-cn: 启动实例。
+      en: Starts the ECS instance
+      zh-cn: 启动实例
     Properties:
       instanceId: '{{ eventTrigger.instanceId }}'
 Outputs:
   instanceId:
     Value: '{{ eventTrigger.instanceId  }}'
     Type: String
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - tags
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

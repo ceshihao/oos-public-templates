@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky add EIPs to common bandwidth package.
-  zh-cn: 批量创建并绑定弹性公网IP（EIP）到同地域的云产品实例上。
+  en: Bulky add EIPs to common bandwidth package
+  zh-cn: 批量创建并绑定弹性公网IP（EIP）到同地域的云产品实例上
   name-en: ACS-ECS-BulkyAllocateAndAssociateEipAddress
   name-zh-cn: 批量创建并绑定弹性公网IP（EIP）到同地域的云产品实例上
   categories:
@@ -9,26 +9,29 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: regionId
-      name-zh-cn: 地域ID
-      en: The id of region.
-      zh-cn: 地域ID。
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   instanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: 要绑定EIP的实例ID列表
     Description:
-      name-en: instanceIds
-      name-zh-cn: 要绑定EIP的实例ID列表
-      en: The ID list of the instance to be associated with the Elastic IP address.
-      zh-cn: 要绑定EIP的实例ID列表。
+      en: The ID list of the instance to be associated with the Elastic IP address
+      zh-cn: 要绑定EIP的实例ID列表
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
+    AssociationPropertyMetadata:
+      RegionId: regionId
     Type: List
   instanceType:
+    Label:
+      en: InstanceType
+      zh-cn: 要绑定EIP的实例的类型
     Description:
-      name-en: instanceType
-      name-zh-cn: 要绑定EIP的实例的类型
-      en: The type of the cloud product instance to associate.
-      zh-cn: 要绑定EIP的实例的类型.
+      en: The type of the cloud product instance to associate
+      zh-cn: 要绑定EIP的实例的类型
     Type: String
     AllowedValues:
       - Nat
@@ -38,30 +41,30 @@ Parameters:
       - HaVip
     Default: NetworkInterface
   internetChargeType:
+    Label:
+      en: InternetChargeType
+      zh-cn: EIP的计量方式
     Description:
-      name-en: internetChargeType
-      name-zh-cn: EIP的计量方式
-      en: EIP measurement method.
-      zh-cn: 'EIP的计量方式（PayByBandwidth：按带宽计费，PayByTraffic：按流量计费）。'
+      en: EIP measurement method
+      zh-cn: EIP的计量方式（PayByBandwidth：按带宽计费，PayByTraffic：按流量计费）
     Type: String
     AllowedValues:
       - PayByBandwidth
       - PayByTraffic
     Default: PayByBandwidth
   bandwidth:
+    Label:
+      en: Bandwidth
+      zh-cn: EIP的带宽峰值
     Description:
-      name-en: bandwidth
-      name-zh-cn: EIP的带宽峰值
-      en: 'Peak bandwidth of eip, unit: Mbps.'
-      zh-cn: 'EIP的带宽峰值（Mbps）。'
+      en: 'Peak bandwidth of eip, unit: Mbps'
+      zh-cn: EIP的带宽峰值（Mbps）
     Type: Number
     Default: 5
   rateControl:
-    Description:
-      name-en: rateControl
-      name-zh-cn: 任务执行的并发比率
-      en: Concurrency rate of task execution.
-      zh-cn: 任务执行的并发比率。
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -69,9 +72,9 @@ Parameters:
       MaxErrors: 0
       Concurrency: 15
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -79,8 +82,8 @@ Tasks:
   - Name: associateEipAddressToENI
     Action: ACS::ECS::AllocateAndAssociateEipAddress
     Description:
-      name-en: Associate Eip address to instance.
-      name-zh-cn: 将弹性公网IP（EIP）绑定到云产品实例上。
+      en: Associate Eip address to instance
+      zh-cn: 将弹性公网IP（EIP）绑定到云产品实例上
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -90,4 +93,23 @@ Tasks:
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ instanceIds }}'
-
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - instanceIds
+          - instanceType
+          - internetChargeType
+          - bandwidth
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

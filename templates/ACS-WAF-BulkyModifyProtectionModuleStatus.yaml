@@ -7,6 +7,13 @@ Description:
   categories:
     - security
 Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
   domains:
     Type: List
     Description:
@@ -53,6 +60,7 @@ Tasks:
       Service: WAF-OPENAPI
       API: ModifyProtectionModuleStatus
       Parameters:
+        RegionId: '{{ regionId }}'
         DefenseType: '{{ defenseType }}'
         Domain: '{{ ACS::TaskLoopItem }}'
         InstanceId: '{{ instanceId }}'
