@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky starts the ECS instances
   zh-cn: 批量启动ECS实例
-  name-en: ACS-ECS-BulkyStartInstances
-  name-zh-cn: 批量启动ECS实例
+  name-en: Bulky Start Instances
+  name-zh-cn: 批量启动实例
   categories:
     - instance_manage
     - application_manage

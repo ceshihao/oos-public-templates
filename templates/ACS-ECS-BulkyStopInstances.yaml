@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky stops the ECS instances
   zh-cn: 批量停止ECS实例
-  name-en: ACS-ECS-BulkyStopInstances
-  name-zh-cn: 批量停止ECS实例
+  name-en: Bulky Stop Instances
+  name-zh-cn: 批量停止实例
   categories:
     - instance_manage
     - application_manage
@@ -26,13 +26,18 @@ Parameters:
       RegionId: regionId
   stoppedMode:
     Description:
-      en: About StoppedMode details please refer to https://www.alibabacloud.com/help/doc-detail/25501.htm
-      zh-cn: 有关StoppedMode详情请参考https://help.aliyun.com/document_detail/25501.html
+      en: About StoppedMode details please refer to <a href="https://help.aliyun.com/document_detail/25501.html" target="_blank">document</a>
+      zh-cn: 停止按量付费ECS实例后，是否继续计费，有关StoppedMode详情请<a href="https://help.aliyun.com/document_detail/25501.html" target="_blank">参考</a>
     Label:
       en: StoppedMode
-      zh-cn: 停止按量付费ECS实例后，是否继续计费
+      zh-cn: 停止模式
     Type: String
-    Default: ''
+    AllowedValues:
+      - StopCharging
+      - KeepCharging
+    Default: KeepCharging
+    AssociationPropertyMetadata:
+      LocaleKey: ECSStoppedMode
   rateControl:
     Label:
       en: RateControl

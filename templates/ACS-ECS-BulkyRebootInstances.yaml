@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky restarts the ECS instances
   zh-cn: 批量重启ECS实例
-  name-en: ACS-ECS-BulkyRebootInstances
-  name-zh-cn: 批量重启ECS实例
+  name-en: Bulky Reboot Instances
+  name-zh-cn: 批量重启实例
   categories:
     - instance_manage
     - application_manage

@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image
   zh-cn: 通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像
-  name-en: ACS-ECS-UpdateImage
-  name-zh-cn: 更新ECS镜像
+  name-en: Update Image
+  name-zh-cn: 更新镜像
   categories:
     - image_manage
     - application_manage
@@ -31,6 +31,8 @@ Parameters:
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
+      ImageOwnerAlias:
+        - self
   instanceType:
     Label:
       en: InstanceType
@@ -68,6 +70,8 @@ Parameters:
       en: CommandType
       zh-cn: 云助手命令类型
     Type: String
+    AssociationPropertyMetadata:
+      LocaleKey: PricingCycle
     AllowedValues:
       - RunBatScript
       - RunPowerShellScript

@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky downLoad files to instances
   zh-cn: 批量下载文件到多个ECS实例
-  name-en: ACS-ECS-BulkyDownloadFile
-  name-zh-cn: 批量下载文件到多个ECS实例
+  name-en: Download File
+  name-zh-cn: 下载文件
   categories:
     - instance_manage
     - application_manage
@@ -26,32 +26,38 @@ Parameters:
       RegionId: regionId
   sourceType:
     Type: String
+    Description:
+      en: Local uploaded files cannot exceed 500M
+      zh-cn: 本地上传文件不能超过500M
     Label:
       en: SourceType
-      zh-cn: 文件存储的类型
+      zh-cn: 文件类型
     AllowedValues:
+      - local
       - oss
       - https
-      - github
+    Default: local
+    AssociationPropertyMetadata:
+      LocaleKey: DownloadFileType
+      RegionId: ${regionId}
   sourcePath:
     Type: String
     Label:
       en: SourcePath
-      zh-cn: 存储文件的URL
-  tokenInfo:
-    Type: String
-    Description:
-      en: Specify a token to download file.It is only required when downloading file from GitHub
-      zh-cn: 指定令牌以下载文件，只有从GitHub上下载文件时需要填
-    Label:
-      en: TokenInfo
-      zh-cn: 下载文件所需令牌
-    Default: ''
+      zh-cn: 选择文件
+    AssociationProperty: ALIYUN::OOS::File::FileUrl
+    AssociationPropertyMetadata:
+      FileType: ${sourceType}
+      RegionId: ${regionId}
   destinationDir:
     Label:
       en: DestinationDir
-      zh-cn: 文件在实例中下载的目录
+      zh-cn: 文件保存路径
+    Description:
+      en: The full path of destination directory
+      zh-cn: 文件在目标机器的完整路径
     Type: String
+    Default: /root
   rateControl:
     Label:
       en: RateControl
@@ -94,7 +100,6 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
       sourceType: '{{ sourceType }}'
       sourcePath: '{{ sourcePath }}'
-      tokenInfo: '{{ tokenInfo }}'
       destinationDir: '{{ destinationDir }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'
@@ -117,7 +122,6 @@ Metadata:
       - Parameters:
           - sourceType
           - sourcePath
-          - tokenInfo
           - destinationDir
         Label:
           default:
@@ -137,3 +141,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

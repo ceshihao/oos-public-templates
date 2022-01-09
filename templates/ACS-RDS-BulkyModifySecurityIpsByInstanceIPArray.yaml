@@ -19,7 +19,7 @@ Parameters:
       name-en: The id of rds instances
       name-zh-cn: rds实例ID
     Type: String
-    AssociationProperty: 'ALIYUN::RDS::Instance::InstanceId'
+    AssociationProperty: ALIYUN::RDS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
   OOSAssumeRole:
@@ -44,31 +44,30 @@ Tasks:
     Outputs:
       DBInstanceIPArray:
         Type: List
-        ValueSelector: >-
-          .Items.DBInstanceIPArray[] | {"SecurityIPList": .SecurityIPList,
-          "DBInstanceIPArrayName": .DBInstanceIPArrayName}
+        ValueSelector: '.Items.DBInstanceIPArray[] | {"SecurityIPList": .SecurityIPList, "DBInstanceIPArrayName": .DBInstanceIPArrayName, "WhitelistNetworkType": .WhitelistNetworkType}'
   - Name: modifySecurityByDBInstanceIPArray
-    Action: 'ACS::Template'
+    Action: ACS::RDS::ModifySecurityIpsByInstanceIPArray
     Description:
       en: Query SecurityIPList of a rds instance
       zh-cn: 查询一个RDS实例包含的SecurityIPList
     Properties:
-      TemplateName: 'ACS::RDS::ModifySecurityIpsByInstanceIPArray'
-      Parameters:
-        regionId: '{{ regionId }}'
-        instanceId: '{{ instanceId }}'
-        securityIps:
-          'Fn::Select':
-            - SecurityIPList
-            - '{{ ACS::TaskLoopItem }}'
-        instanceIPArrayName:
-          'Fn::Select':
-            - DBInstanceIPArrayName
-            - '{{ ACS::TaskLoopItem }}'
+      regionId: '{{ regionId }}'
+      instanceId: '{{ instanceId }}'
+      securityIps:
+        'Fn::Select':
+          - SecurityIPList
+          - '{{ ACS::TaskLoopItem }}'
+      instanceIPArrayName:
+        'Fn::Select':
+          - DBInstanceIPArrayName
+          - '{{ ACS::TaskLoopItem }}'
+      whitelistNetworkType:
+        'Fn::Select':
+          - WhitelistNetworkType
+          - '{{ ACS::TaskLoopItem }}'
     Loop:
       Items: '{{ describeDBInstanceIPArray.DBInstanceIPArray }}'
       RateControl:
         Mode: Concurrency
         MaxErrors: 0
         Concurrency: 1
-

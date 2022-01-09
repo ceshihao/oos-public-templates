@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Schedule to clean up disks
   zh-cn: 定时清理磁盘
-  name-en: ACS-ECS-ScheduleToCleanUpDisks
-  name-zh-cn: 定时清理磁盘
+  name-en: Cleanup Disks
+  name-zh-cn: 清理磁盘
   categories:
     - time_trigger
     - application_manage

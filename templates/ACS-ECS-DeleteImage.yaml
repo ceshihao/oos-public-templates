@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en:  Deletes an ECS image
   zh-cn: 删除一个ECS镜像
-  name-en: ACS-ECS-DeleteImage
-  name-zh-cn: 删除ECS镜像
+  name-en: Delete Image
+  name-zh-cn: 删除镜像
   categories:
     - image_manage
     - application_manage
@@ -23,6 +23,8 @@ Parameters:
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
+      ImageOwnerAlias:
+        - self
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole

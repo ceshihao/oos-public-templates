@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en:  Creates an ECS image
   zh-cn: 创建一个ECS镜像
-  name-en: ACS-ECS-CreateImage
-  name-zh-cn: 创建ECS镜像
+  name-en: Create Image
+  name-zh-cn: 创建镜像
   categories:
     - image_manage
     - application_manage

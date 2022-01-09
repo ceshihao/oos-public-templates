@@ -2,8 +2,8 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky renew ECS prepaid instances
   zh-cn: 批量续费ECS预付费实例
-  name-en: ACS-ECS-BulkyRenewInstances
-  name-zh-cn: 批量续费ECS实例
+  name-en: Bulky Renew Instances
+  name-zh-cn: 批量续费实例
   categories:
     - instance_manage
     - application_manage
@@ -34,6 +34,8 @@ Parameters:
       en: PeriodUnit
       zh-cn: 续费时长的时间单位
     Type: String
+    AssociationPropertyMetadata:
+      LocaleKey: PricingCycle
     AllowedValues:
       - Week
       - Month
