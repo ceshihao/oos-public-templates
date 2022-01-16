@@ -1366,7 +1366,7 @@
       "CreatedDate": "2020-05-19T09:32:01Z",
       "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackage\", \"name-zh-cn\": \"批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "713a69881eddd28108f224a613ed39313bb853c3a22c053bff855872d688299f",
+      "Hash": "2856e8f446c7de8265c6071249f1eb0d31c938f3e021eb5485307214ccfa8ebd",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1375,10 +1375,10 @@
       "TemplateId": "t-ee71820191514ce498d2",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:02Z"
+      "UpdatedDate": "2022-01-11T09:16:34Z"
     },
     {
       "Category": "Other",
