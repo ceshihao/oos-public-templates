@@ -2204,9 +2204,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2021-11-05T07:42:09Z",
-      "Description": "{\"en\": \"Bulky clone ECS instance.Notice: 1. Please check whether the driver is missing before you migrate, so as not to cause the new instance to fail to start 2. Based on mirrored snapshot migration, if you need to retain complete data, please stop the machine before performing the next operation. If you don't need to retain the data generated during the migration process, you don't need to stop the machine, just migrate directly according to the instructions.\", \"zh-cn\": \"批量克隆ECS实例。注意： 1、您在迁移之前请检查是否缺少驱动，以免造成新的实例无法启动 2、基于镜像快照迁移，如果需要要保留完整数据，请先停机再执行下一步操作，如果不需要保留迁移过程中产生的数据，无需停机，直接根据指引迁移即可。\", \"name-en\": \"ACS-ECS-BulkyCloneInstances\", \"name-zh-cn\": \"批量克隆ECS实例\", \"categories\": [\"cross_region\"]}",
+      "Description": "{\"en\": \"<p class=\\\"p\\\">Clone ECS instances in batches. Note:</p> <ul class=\\\"ul\\\"><li class=\\\"li\\\">Please check for missing drivers before migrating, so as not to cause the new instance to fail to start. </li> <li class=\\\"li\\\">Based on mirror snapshot migration, if you need to retain complete data, please stop the operation before performing the next operation. If you do not need to retain the data generated during the migration process, you can migrate directly according to the guidelines without stopping. </li> <li class=\\\"li\\\">Based on mirror snapshot migration, if you need to retain complete data, please select <Downtime Incremental Snapshot> as Yes, and then go to the next step; if you do not need to retain the data generated during the migration process, select No , you can migrate directly according to the instructions. It is recommended that you first select No to test whether the new instance is normal, and then select Yes to ensure complete data </li> </ul>\", \"zh-cn\": \"<p class=\\\"p\\\">批量克隆ECS实例。注意：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">您在迁移之前请检查是否缺少驱动，以免造成新的实例无法启动。</li> <li class=\\\"li\\\">基于镜像快照迁移，如果需要保留完整数据，请选择<停机增量快照>为是，再执行下一步操作；如果不需要保留迁移过程中产生的数据，则选择否，直接根据指引迁移即可。<font color='red'>建议您先选择否来测试新实例是否业务正常，测试新实例业务正常后再选择是来保证完整数据。</li> <li class=\\\"li\\\"><font color='#666666'>创建快照的所需时间为分钟级别，并取决于云盘容量大小。云盘的第一份快照为全量快照，耗时较久，有可能在小时级别。再次创建快照，相对耗时较短，但依然取决于和上一份快照之间的数据变化量。变化越大，耗时越久。</li> <li class=\\\"li\\\"><font color='red'>因机器会重新启动，请您务必确认数据盘等已设置为自动挂载否则重启后将无法挂载数据盘。</li> <li class=\\\"li\\\">当前操作为高风险操作，如果选择停机快照迁移为是，请您确认关机业务影响可控。</li> <li class=\\\"li\\\">公网IP和弹性IP需要您手动重新绑定到新实例上。</li> <li class=\\\"li\\\"><font color='#666666'>执行前先打对实例打一个快照，将极大缩短执行时间。</li> </ul>\", \"name-en\": \"ACS-ECS-BulkyCloneInstances\", \"name-zh-cn\": \"批量克隆ECS实例\", \"categories\": [\"cross_region\"]}",
       "HasTrigger": false,
-      "Hash": "2bf946ca41a9a38306984207c5edd6ab1a1d3b44aae90e9af9a8111aa95e1de9",
+      "Hash": "57e88463ea2ff40a8a8932e0abb57e69450161e05597b424a02af6d9fb53dffd",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2215,10 +2215,10 @@
       "TemplateId": "t-db586b6e686547dc8cfc",
       "TemplateName": "ACS-ECS-BulkyCloneInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:02Z"
+      "UpdatedDate": "2022-02-09T09:47:22Z"
     },
     {
       "Category": "Other",
