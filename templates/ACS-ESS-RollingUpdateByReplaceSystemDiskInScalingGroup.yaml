@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Rolling update ECS instances that in scaling group by replace system disk.
-  zh-cn: 通过更换系统盘的方式滚动更新伸缩组内的ECS实例。
+  en: Rolling update ECS instances that in scaling group by replace system disk
+  zh-cn: 通过更换系统盘的方式滚动更新伸缩组内的ECS实例
   name-en: ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup
   name-zh-cn: 通过更换系统盘的方式滚动更新伸缩组内的ECS实例
   categories:
@@ -9,21 +9,21 @@ Description:
 Parameters:
   invokeType:
     Description:
-      name-en: The type of invoke.
-      name-zh-cn: 执行操作类型。
+      name-en: The type of invoke
+      name-zh-cn: 执行操作类型
     Type: String
     AllowedValues:
       - invoke
       - rollback
   scalingGroupId:
     Description:
-      name-en: The id of scaling group.
-      name-zh-cn: 伸缩组ID.
+      name-en: The id of scaling group
+      name-zh-cn: 伸缩组ID
     Type: String
   enterProcess:
     Description:
-      name-en: The enter process of scaling group.
-      name-zh-cn: 执行开始要暂停的伸缩组流程。
+      name-en: The enter process of scaling group
+      name-zh-cn: 执行开始要暂停的伸缩组流程
     Type: List
     Default:
       - ScaleIn
@@ -33,8 +33,8 @@ Parameters:
       - ScheduledAction
   exitProcess:
     Description:
-      name-en: The exit process of scaling group.
-      name-zh-cn: 执行结束要恢复的伸缩组流程。
+      name-en: The exit process of scaling group
+      name-zh-cn: 执行结束要恢复的伸缩组流程
     Type: List
     Default:
       - ScaleIn
@@ -44,32 +44,32 @@ Parameters:
       - ScheduledAction
   imageId:
     Description:
-      name-en: The id of image.
-      name-zh-cn: 执行操作的目标镜像id。
+      name-en: The id of image
+      name-zh-cn: 执行操作的目标镜像id
     Type: String
     Default: ''
   sourceImageId:
     Description:
-      name-en: The id of source image.
-      name-zh-cn: 回滚操作执行的目标镜像。
+      name-en: The id of source image
+      name-zh-cn: 回滚操作执行的目标镜像
     Type: String
     Default: ''
   sourceExecutionId:
     Description:
-      name-en: The id of source execution.
-      name-zh-cn: 回滚操作执行的目标OOS执行ID。
+      name-en: The id of source execution
+      name-zh-cn: 回滚操作执行的目标OOS执行ID
     Type: String
     Default: ''
   scalingConfigurationId:
     Description:
-      name-en: The ID of the scaling configuration to be modified.
-      name-zh-cn: 待修改的伸缩配置ID。
+      name-en: The ID of the scaling configuration to be modified
+      name-zh-cn: 待修改的伸缩配置ID
     Type: String
     Default: ''
   batchPauseOption:
     Description:
-      name-en: The type of batches in batch execution.
-      name-zh-cn: 分批模式。
+      name-en: The type of batches in batch execution
+      name-zh-cn: 分批模式
     Type: String
     AllowedValues:
       - Automatic
@@ -78,16 +78,22 @@ Parameters:
     Default: Automatic
   batchNumber:
     Description:
-      name-en: The number of batches in batch execution.
-      name-zh-cn: 分批执行中的批次。
+      name-en: The number of batches in batch execution
+      name-zh-cn: 分批执行中的批次
     Type: Number
     MinValue: 1
     MaxValue: 100
     Default: 5
+  maxErrors:
+    Description:
+      name-en: Maximum number of errors in rolling upgrade
+      name-zh-cn: 滚动升级中的最大错误次数
+    Type: Number
+    Default: 0
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -95,8 +101,8 @@ Tasks:
   - Name: choiceNextTask
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by invoke type.
-      name-zh-cn: 根据执行类型选择下一个任务。
+      en: Choose next task by invoke type
+      zh-cn: 根据执行类型选择下一个任务
     Properties:
       DefaultTask: getInstance
       Choices:
@@ -107,8 +113,8 @@ Tasks:
           NextTask: getExecutionInstanceIds
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: 'ACS::ExecuteApi'
     Properties:
       Service: ESS
@@ -123,21 +129,23 @@ Tasks:
   - Name: whetherTheScalingGroupInstanceIsEmpty
     Action: 'ACS::Choice'
     Description:
-      name-en: Check whether the instances in the services in the scaling group are empty.
-      name-zh-cn: 检查伸缩组内服务中的实例是否为空。
+      en: >-
+        Check whether the instances in the services in the scaling group are
+        empty
+      zh-cn: 检查伸缩组内服务中的实例是否为空
     Properties:
       DefaultTask: whetherTosuspendProcess
       Choices:
         - When:
             'Fn::Equals':
-              - [ ]
+              - []
               - '{{ getInstance.instanceIds }}'
           NextTask: 'ACS::END'
   - Name: whetherTosuspendProcess
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by process.
-      name-zh-cn: 根据流程值判断是否暂停流程。
+      en: Choose next task by process
+      zh-cn: 根据流程值判断是否暂停流程
     Properties:
       DefaultTask: suspendProcess
       Choices:
@@ -149,8 +157,8 @@ Tasks:
   - Name: suspendProcess
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Suspend process.
-      name-zh-cn: 暂停伸缩组流程。
+      en: Suspend process
+      zh-cn: 暂停伸缩组流程
     Properties:
       Service: ESS
       API: SuspendProcesses
@@ -160,8 +168,8 @@ Tasks:
   - Name: whetherToModifyScalingConfiguration
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by ScalingConfigurationId.
-      name-zh-cn: 根据伸缩配置ID判断是否修改伸缩配置。
+      en: Choose next task by ScalingConfigurationId
+      zh-cn: 根据伸缩配置ID判断是否修改伸缩配置
     Properties:
       DefaultTask: modifyScalingConfiguration
       Choices:
@@ -173,8 +181,8 @@ Tasks:
   - Name: modifyScalingConfiguration
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Modify scaling configuration.
-      name-zh-cn: 修改伸缩配置。
+      en: Modify scaling configuration
+      zh-cn: 修改伸缩配置
     Properties:
       Service: ESS
       API: ModifyScalingConfiguration
@@ -184,8 +192,8 @@ Tasks:
   - Name: invokeByReplaceImage
     Action: 'ACS::ESS::ReplaceSystemDisk'
     Description:
-      name-en: Replaces the system disk of ECS instances.
-      name-zh-cn: 更换系统盘。
+      en: Replaces the system disk of ECS instances
+      zh-cn: 更换系统盘
     Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
       imageId: '{{ imageId }}'
@@ -193,6 +201,7 @@ Tasks:
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'
+      MaxErrors: '{{ maxErrors }}'
       Concurrency:
         'Fn::CalculateBatch':
           - '{{ batchNumber }}'
@@ -206,10 +215,10 @@ Tasks:
         Type: String
         ValueSelector: newSystemDiskId
   - Name: tagInstance
-    Action: ACS::ExecuteApi
+    Action: 'ACS::ExecuteApi'
     Description:
-      name-en: Creates and attaches tag to ECS instance.
-      name-zh-cn: 创建并挂载标签到ECS实例。
+      en: Creates and attaches tag to ECS instance
+      zh-cn: 创建并挂载标签到ECS实例
     Properties:
       Service: ECS
       API: TagResources
@@ -218,8 +227,8 @@ Tasks:
           - '{{ ACS::TaskLoopItem }}'
         ResourceType: Instance
         Tags:
-        - Key: 'ess:rollingupdate'
-          Value: 'oos:{{ ACS::ExecutionId }}'
+          - Key: 'ess:rollingupdate'
+            Value: 'oos:{{ ACS::ExecutionId }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       Mode: Concurrency
@@ -228,8 +237,8 @@ Tasks:
   - Name: whetherToResumeProcesses
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by process.
-      name-zh-cn: 根据流程值判断是否恢复流程。
+      en: Choose next task by process
+      zh-cn: 根据流程值判断是否恢复流程
     Properties:
       DefaultTask: resumeProcesses
       Choices:
@@ -242,8 +251,8 @@ Tasks:
     Action: 'ACS::ExecuteAPI'
     OnSuccess: 'ACS::END'
     Description:
-      name-en: Resume process.
-      name-zh-cn: 恢复伸缩组流程。
+      en: Resume process
+      zh-cn: 恢复伸缩组流程
     Properties:
       Service: ESS
       API: ResumeProcesses
@@ -253,8 +262,8 @@ Tasks:
   - Name: getExecutionInstanceIds
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Get the instance that has been executed.
-      name-zh-cn: 获取已经执行过执行脚本的实例。
+      en: Get the instance that has been executed
+      zh-cn: 获取已经执行过执行脚本的实例
     Properties:
       Service: OOS
       API: ListExecutions
@@ -266,23 +275,23 @@ Tasks:
         ValueSelector: 'Executions[].Parameters.instanceId'
   - Name: getExistInstanceIds
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
-    Action: ACS::SelectTargets
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: 'ACS::SelectTargets'
     Properties:
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       Filters:
         - Type: ResourceIds
           ResourceIds: '{{ getExecutionInstanceIds.instanceIds }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: Instances.Instance[].InstanceId
+        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: getRollbackProcess
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Views resource parameters.
-      name-zh-cn: 获取源执行的参数。
+      en: Views resource parameters
+      zh-cn: 获取源执行的参数
     Properties:
       Service: OOS
       API: ListExecutions
@@ -298,8 +307,8 @@ Tasks:
   - Name: suspendProcessWithRollBack
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Suspend process.
-      name-zh-cn: 暂停伸缩组流程。
+      en: Suspend process
+      zh-cn: 暂停伸缩组流程
     Properties:
       Service: ESS
       API: SuspendProcesses
@@ -309,8 +318,8 @@ Tasks:
   - Name: rollbackByReplaceImage
     Action: 'ACS::ESS::ReplaceSystemDisk'
     Description:
-      name-en: Replaces the system disk of ECS instances.
-      name-zh-cn: 更换系统盘。
+      en: Replaces the system disk of ECS instances
+      zh-cn: 更换系统盘
     Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
       imageId: '{{ sourceImageId }}'
@@ -319,6 +328,7 @@ Tasks:
     Loop:
       Items: '{{ getExistInstanceIds.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'
+      MaxErrors: '{{ maxErrors }}'
       Concurrency:
         'Fn::CalculateBatch':
           - '{{ batchNumber }}'
@@ -334,8 +344,8 @@ Tasks:
   - Name: whetherToResumeProcessesWithRollback
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by process.
-      name-zh-cn: 根据流程值判断是否恢复流程。
+      en: Choose next task by process
+      zh-cn: 根据流程值判断是否恢复流程
     Properties:
       DefaultTask: resumeProcessesWithRollback
       Choices:
@@ -347,8 +357,8 @@ Tasks:
   - Name: resumeProcessesWithRollback
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Resume process.
-      name-zh-cn: 恢复伸缩组流程。
+      en: Resume process
+      zh-cn: 恢复伸缩组流程
     Properties:
       Service: ESS
       API: ResumeProcesses
