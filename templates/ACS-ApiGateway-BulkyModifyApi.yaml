@@ -51,15 +51,81 @@ Tasks:
     Outputs:
       ApiName:
         Type: String
-        ValueSelector: '.ApiName'
+        ValueSelector: .ApiName
       RequestConfig:
         Type: String
-        ValueSelector: '.RequestConfig'
+        ValueSelector: .RequestConfig
       ServiceConfig:
         Type: String
-        ValueSelector: '.ServiceConfig'
+        ValueSelector: .ServiceConfig
+      GroupId:
+        Type: String
+        ValueSelector: .GroupId
+      Description:
+        Type: String
+        ValueSelector: .Description
+      AuthType:
+        Type: String
+        ValueSelector: .AuthType
+      ForceNonceCheck:
+        Type: Boolean
+        ValueSelector: .ForceNonceCheck
+      RequestParameters:
+        Type: String
+        ValueSelector: .RequestParameters.RequestParameter
+      ServiceParameters:
+        Type: String
+        ValueSelector: .ServiceParameters.ServiceParameter
+      ServiceParametersMap:
+        Type: String
+        ValueSelector: .ServiceParametersMap.ServiceParameterMap
+      ResultType:
+        Type: String
+        ValueSelector: .ResultType
+      ResultSample:
+        Type: String
+        ValueSelector: .ResultSample
+      FailResultSample:
+        Type: String
+        ValueSelector: .FailResultSample
+      ErrorCodeSamples:
+        Type: String
+        ValueSelector: .ErrorCodeSamples.ErrorCodeSample
+      AllowSignatureMethod:
+        Type: String
+        ValueSelector: .AllowSignatureMethod
+      WebSocketApiType:
+        Type: String
+        ValueSelector: .WebSocketApiType
+      DisableInternet:
+        Type: Boolean
+        ValueSelector: .DisableInternet
+      AppCodeAuthType:
+        Type: String
+        ValueSelector: .AppCodeAuthType
+      SystemParameters:
+        Type: String
+        ValueSelector: .SystemParameters.SystemParameter
+      ConstantParameters:
+        Type: String
+        ValueSelector: .ConstantParameters.ConstantParameter
+      ResultDescriptions:
+        Type: String
+        ValueSelector: .ResultDescriptions.ResultDescription
+      OpenIdConnectConfig:
+        Type: String
+        ValueSelector: .OpenIdConnectConfig
+      ResultBodyModel:
+        Type: String
+        ValueSelector: .ResultBodyModel
+      BackendId:
+        Type: String
+        ValueSelector: .BackendConfig.BackendId
+      BackendEnable:
+        Type: Boolean
+        ValueSelector: .BackendEnable
   - Name: modifyApi
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify API to private
       zh-cn: 修改API为私有类型
@@ -73,6 +139,28 @@ Tasks:
         RequestConfig: '{{ describeApi.RequestConfig }}'
         ServiceConfig: '{{ describeApi.ServiceConfig }}'
         Visibility: PRIVATE
+        GroupId: '{{ describeApi.GroupId }}'
+        Description: '{{ describeApi.Description }}'
+        AuthType: '{{ describeApi.AuthType }}'
+        RequestParameters: '{{ describeApi.RequestParameters }}'
+        ServiceParameters: '{{ describeApi.ServiceParameters }}'
+        ServiceParametersMap: '{{ describeApi.ServiceParametersMap }}'
+        ResultType: '{{ describeApi.ResultType }}'
+        ResultSample: '{{ describeApi.ResultSample }}'
+        FailResultSample: '{{ describeApi.FailResultSample }}'
+        ErrorCodeSamples: '{{ describeApi.ErrorCodeSamples }}'
+        AllowSignatureMethod: '{{ describeApi.AllowSignatureMethod }}'
+        WebSocketApiType: '{{ describeApi.WebSocketApiType }}'
+        ForceNonceCheck: '{{ describeApi.ForceNonceCheck }}'
+        DisableInternet: '{{ describeApi.DisableInternet }}'
+        AppCodeAuthType: '{{ describeApi.AppCodeAuthType }}'
+        SystemParameters: '{{ describeApi.SystemParameters }}'
+        ConstantParameters: '{{ describeApi.ConstantParameters }}'
+        ResultDescriptions: '{{ describeApi.ResultDescriptions }}'
+        OpenIdConnectConfig: '{{ describeApi.OpenIdConnectConfig }}'
+        ResultBodyModel: '{{ describeApi.ResultBodyModel }}'
+        BackendId: '{{ describeApi.BackendId }}'
+        BackendEnable: '{{ describeApi.BackendEnable }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

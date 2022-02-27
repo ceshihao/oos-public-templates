@@ -104,12 +104,12 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:
-          AggregateType: Fn::ListJoin
-          AggregateField: invocationOutput
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: commandOutput
     Outputs:
       commandOutput:
         Type: String
-        ValueSelector: commandOutputs
+        ValueSelector: invocationOutput
 Outputs:
   commandOutput:
     Type: String
