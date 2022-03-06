@@ -1,0 +1,110 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Run command in ComputeNest service instance‘s Upgrade stage
+  zh-cn: 计算巢服务实例升级阶段运行云助手命令
+  name-en: ACS-CN-UpgradeServiceInstance
+  name-zh-cn: 执行升级阶段命令
+  categories:
+    - run_command
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: Region
+      zh-cn: 地域
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  serviceInstanceId:
+    Description:
+      en: The ID of the ComputeNest service instance
+      zh-cn: 计算巢服务实例ID
+    Type: String
+  artifactsUrl:
+    Description:
+      en: 软件包地址
+      zh-cn: The URL of artifacts
+    Type: String
+    Default: ''
+  upgradeSteps:
+    Type: List
+    Label:
+      en: UpgradeData of upgrading service instance
+      zh-cn: 服务实例更新配置
+  parameters:
+    Description:
+      en: The parameters of the command
+      zh-cn: 命令参数
+    Type: Json
+    Default: {}
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 1
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: upgradeServiceInstanceByResouceName
+    Action: 'ACS::Template'
+    Properties:
+      TemplateName: ACS-CN-UpgradeServiceInstanceByResourceName
+      Parameters:
+        regionId: '{{ regionId }}'
+        serviceInstanceId: '{{ serviceInstanceId }}'
+        resourceName:
+          'Fn::Select':
+            - ResourceName
+            - '{{ ACS::TaskLoopItem }}'
+        artifactsUrl: '{{ artifactsUrl }}'
+        artifactsDownloadDirectory:
+          'Fn::Select':
+            - ArtifactsDownloadDirectory
+            - '{{ ACS::TaskLoopItem }}'
+        commandType:
+          'Fn::Select':
+            - CommandType
+            - '{{ ACS::TaskLoopItem }}'
+        commandContent:
+          'Fn::Select':
+            - CommandContent
+            - '{{ ACS::TaskLoopItem }}'
+        enableParameter: true
+        parameters: '{{ parameters }}'
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items: '{{ upgradeSteps }}'
+Metadata:
+  'ALIYUN::OOS::Interface':
+    ParameterGroups:
+      - Parameters:
+          - upgradeSteps
+          - parameters
+        Label:
+          default:
+            zh-cn: 执行命令选型
+            en: run command options
+      - Parameters:
+          - regionId
+          - serviceInstanceId
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Ecs Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
+
