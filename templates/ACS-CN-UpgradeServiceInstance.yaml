@@ -30,12 +30,6 @@ Parameters:
     Label:
       en: UpgradeData of upgrading service instance
       zh-cn: 服务实例更新配置
-  parameters:
-    Description:
-      en: The parameters of the command
-      zh-cn: 命令参数
-    Type: Json
-    Default: {}
   rateControl:
     Label:
       en: RateControl
@@ -79,7 +73,10 @@ Tasks:
             - CommandContent
             - '{{ ACS::TaskLoopItem }}'
         enableParameter: true
-        parameters: '{{ parameters }}'
+        parameters:
+          'Fn::Select':
+            - Parameters
+            - '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ upgradeSteps }}'
@@ -88,7 +85,6 @@ Metadata:
     ParameterGroups:
       - Parameters:
           - upgradeSteps
-          - parameters
         Label:
           default:
             zh-cn: 执行命令选型

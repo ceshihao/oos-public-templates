@@ -2786,7 +2786,7 @@
       "CreatedDate": "2022-02-24T07:10:38Z",
       "Description": "{\"en\": \"Adjust the number of instances in a scaling group by creating and executing scaling group rules,Note: If the scaling group has been configured with the desired number of instances, when the number of instances in the scaling group is not equal to the expected number of instances, the auto scaling service will automatically scale and shrink to ensure that the number of instances in the scaling group is always maintained. Go to the ESS console to view the adjustment results.\", \"zh-cn\": \"通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果\", \"name-en\": \"ACS-ESS-AdjustScalingGroupInstanceCount\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f124ae55507917aa5995a0a9783617a660b61f2577faaa719ac450682c6c83e7",
+      "Hash": "7bdc302e97cc1bebdbd02e60bd8874f66df3062f7a6e3ef9fafd2fd77cdc279b",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2795,10 +2795,10 @@
       "TemplateId": "t-f1cf351427fb43eb8d87",
       "TemplateName": "ACS-ESS-AdjustScalingGroupInstanceCount",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-24T07:25:23Z"
+      "UpdatedDate": "2022-03-08T11:28:19Z"
     },
     {
       "Category": "Other",
@@ -3846,7 +3846,7 @@
       "CreatedDate": "2022-02-28T11:52:26Z",
       "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Upgrade stage\", \"zh-cn\": \"计算巢服务实例升级阶段运行云助手命令\", \"name-en\": \"ACS-CN-UpgradeServiceInstance\", \"name-zh-cn\": \"执行升级阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "e657579f1cb48c6f86abdb17e1f7b9d683be6a27163cdc8e6e998664b5a6d539",
+      "Hash": "c1ef213f25fde6e7044ce5be90ea610db08d2d455b7a54280f8038d710a938ef",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3855,10 +3855,10 @@
       "TemplateId": "t-3d16d5de99be4de3bcb6",
       "TemplateName": "ACS-CN-UpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-03-01T04:19:13Z"
+      "UpdatedDate": "2022-03-11T07:15:41Z"
     }
   ]
 }

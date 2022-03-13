@@ -28,13 +28,13 @@ Parameters:
     Label:
       en: AdjustmentType
       zh-cn: 伸缩规则的调整方式
-    Description:
-      en: <ul class="ul"> <li class="li">ScaleOut:扩容</li><li class="li">ScaleIn:缩容</li><li class="li">TotalCapacity:调整至指定数量</li> </ul>
-      zh-cn: <ul class="ul"> <li class="li">ScaleOut:扩容</li><li class="li">ScaleIn:缩容</li><li class="li">TotalCapacity:调整至指定数量</li> </ul>
+    AssociationPropertyMetadata:
+      LocaleKey: ESSGroupAdjustmentType
     AllowedValues:
       - ScaleOut
       - ScaleIn
       - TotalCapacity
+    Default: ScaleOut
   adjustmentCount:
     Type: Number
     Label:
