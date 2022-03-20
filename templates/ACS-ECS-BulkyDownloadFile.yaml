@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky downLoad files to instances
-  zh-cn: 批量下载文件到多个ECS实例
-  name-en: Download File
-  name-zh-cn: 下载文件
+  en: Bulky upload files to instances
+  zh-cn: 批量上传文件到多个ECS实例
+  name-en: Upload File
+  name-zh-cn: 上传文件
   categories:
     - instance_manage
     - application_manage
