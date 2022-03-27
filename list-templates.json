@@ -2046,7 +2046,7 @@
       "CreatedDate": "2021-08-17T08:22:34Z",
       "Description": "{\"en\": \"Use lifecyclehook to delete cluster nodes (only supports elastic contraction activities)\", \"zh-cn\": \"使用生命周期挂钩批量移除CS集群节点（仅支持弹性收缩活动）\", \"name-en\": \"ACS-ESS-LifeCycleBulkyDeleteClusterNodes\", \"name-zh-cn\": \"使用生命周期挂钩批量移除CS集群节点\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "34e8045cf1b87ce95c4da100ca9b99aed286d5730d616d53f99bb568212ecd8c",
+      "Hash": "869f20f9c02e5ef781e55efba2c082e1799171e027ad0e92481bc542c41c5021",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2055,10 +2055,10 @@
       "TemplateId": "t-e4c99fda4d1f4fe3bb7a",
       "TemplateName": "ACS-ESS-LifeCycleBulkyDeleteClusterNodes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:47Z"
+      "UpdatedDate": "2022-03-22T11:31:03Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2215,10 +2215,10 @@
       "TemplateId": "t-db586b6e686547dc8cfc",
       "TemplateName": "ACS-ECS-BulkyCloneInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-03-16T06:21:05Z"
+      "UpdatedDate": "2022-03-22T06:18:58Z"
     },
     {
       "Category": "Other",
