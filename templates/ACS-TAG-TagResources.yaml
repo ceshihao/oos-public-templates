@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-    en: Tag the resources it manages through resource management.
-    zh-cn: 通过资源管理给其管理的资源打标签。
+    en: Tag the resources it manages through resource management
+    zh-cn: 通过资源管理给其管理的资源打标签
     name-en: ACS-TAG-TagResources
     name-zh-cn: 通过资源管理给资源打标签
     categories:
@@ -9,19 +9,19 @@ Description:
 Parameters:
   regionId:
     Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+      name-en: The id of region
+      name-zh-cn: 地域ID
     Type: String
     Default: '{{ ACS::RegionId }}'
   resourceIds:
     Description:
-      name-en: The resource ids.
-      name-zh-cn: 资源ID。
+      name-en: The resource ids
+      name-zh-cn: 资源ID
     Type: List
   resourceType:
     Description:
-      name-en: The resource type.
-      name-zh-cn: 资源类型。
+      name-en: The resource type
+      name-zh-cn: 资源类型
     Type: String
     AllowedValues:
       - ALIYUN::ECS::INSTANCE
@@ -87,16 +87,19 @@ Parameters:
       - ALIYUN::MULTIMOD::CLUSTER
       - ALIYUN::DBAUDIT::INSTANCE
       - ALIYUN::CS::CLUSTER
+      - ALIYUN::NAS::FILESYSTEM
+      - ALIYUN::KMS::KEY
+      - ALIYUN::KMS::SECRET
   tags:
     Description:
-      name-en: The resource tag(example:{"k1":"v1","k2":"v2"}).
-      name-zh-cn: 资源标签（例：{"k1":"v1","k2":"v2"}）。
+      name-en: The resource tag(example:{"k1":"v1","k2":"v2"})
+      name-zh-cn: 资源标签（例：{"k1":"v1","k2":"v2"}）
     Type: Json
     Default: {"oosGenerate":"oosGenerate"}
   rateControl:
     Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -105,8 +108,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -114,8 +117,8 @@ Tasks:
   - Name: tagResource
     Action: ACS::CheckFor
     Description:
-      name-en: Tag the resources it manages through resource management.
-      name-zh-cn: 通过资源管理给其管理的资源打标签。
+      en: Tag the resources it manages through resource management
+      zh-cn: 通过资源管理给其管理的资源打标签
     Properties:
       Service: TAG
       API: TagResources
@@ -144,8 +147,8 @@ Tasks:
   - Name: listTagResources
     Action: ACS::ExecuteAPI
     Description:
-      name-en: Query the resource tags.
-      name-zh-cn: 查询资源标签信息。
+      en: Query the resource tags
+      zh-cn: 查询资源标签信息
     Properties:
       Service: TAG
       API: ListTagResources
