@@ -53,6 +53,7 @@ Parameters:
       - eu-central-1
       - cn-guangzhou
       - ap-southeast-6
+      - cn-nanjing
     Default:
       - all-regions
   rateControl:
@@ -157,7 +158,7 @@ Outputs:
         - '{{ copyImageToAllRegions.imageIdsWithRegion }}'
         - '{{ copyImage.imageIdsWithRegion }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - regionId
@@ -174,3 +175,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

@@ -846,7 +846,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "545a3d4a66ae2e4c7305cf9ebe19eb918f31d349f97e7611368ad53ab04965d4",
+      "Hash": "d3968ccaa0bb8d3dbbbcf22697634631ed62cf0f84e984e7b909f2877455cd6b",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -855,10 +855,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:03Z"
+      "UpdatedDate": "2022-04-08T07:38:31Z"
     },
     {
       "Category": "Other",
