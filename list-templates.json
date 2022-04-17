@@ -1735,10 +1735,10 @@
       "TemplateId": "t-bb622b95ba2348278d5a",
       "TemplateName": "ACS-CS-DedicatedMigration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:58Z"
+      "UpdatedDate": "2022-04-11T12:57:22Z"
     },
     {
       "Category": "Other",
@@ -2804,9 +2804,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2022-02-24T07:10:38Z",
-      "Description": "{\"en\": \"Adjust the number of instances in a scaling group by creating and executing scaling group rules,Note: If the scaling group has been configured with the desired number of instances, when the number of instances in the scaling group is not equal to the expected number of instances, the auto scaling service will automatically scale and shrink to ensure that the number of instances in the scaling group is always maintained. Go to the ESS console to view the adjustment results.\", \"zh-cn\": \"通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果\", \"name-en\": \"ACS-ESS-AdjustScalingGroupInstanceCount\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\"]}",
+      "Description": "{\"en\": \"<p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Note:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">If the desired number of instances is configured in the scaling group, when the number of instances in the scaling group is not equal to the desired number of instances, the auto scaling service will automatically Expand or shrink the capacity to ensure that the number of instances in the scaling group is always maintained. After the execution is complete, go to the ESS console to view the adjustment results. </li><li class=\\\"li\\\">The number of cluster nodes after scaling down the nodes cannot be less than the minimum node requirement of the component, otherwise the scaling operation may return an error of code IncorrectCapacity. </li><li class=\\\"li\\\">'Ensure that your account balance is greater than the cost of the newly purchased instance, otherwise an error of code InvalidAccountStatus.NotEnoughBalance will be returned.</li><li class=\\\"li\\\">If it is a multi-zone, please expand the multiple of the number of zones. </li></ul>\", \"zh-cn\": \"<p class=\\\"p\\\">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果。</li><li class=\\\"li\\\">缩容节点后的集群节点数量，不能小于组件最低节点要求，否则缩容操作可能会返回 code：IncorrectCapacity 的错误。</li><li class=\\\"li\\\">执行请确保您的账号余额大于新购实例的费用，否则会返回 code：InvalidAccountStatus.NotEnoughBalance 的错误。</li><li class=\\\"li\\\">如果是多可用区请扩容可用区数的倍数。</li></ul>\", \"name-en\": \"ACS-ESS-AdjustScalingGroupInstanceCount\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "7bdc302e97cc1bebdbd02e60bd8874f66df3062f7a6e3ef9fafd2fd77cdc279b",
+      "Hash": "a451a664ac68de95afdcf41430f0ab3928e63dd340533402e2fec5ce70e41687",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2815,10 +2815,10 @@
       "TemplateId": "t-f1cf351427fb43eb8d87",
       "TemplateName": "ACS-ESS-AdjustScalingGroupInstanceCount",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-03-08T11:28:19Z"
+      "UpdatedDate": "2022-04-13T06:49:53Z"
     },
     {
       "Category": "Other",
@@ -3695,10 +3695,10 @@
       "TemplateId": "t-c7b0682e184541c98748",
       "TemplateName": "ACS-CS-RunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:58Z"
+      "UpdatedDate": "2022-04-11T12:57:22Z"
     },
     {
       "Category": "Other",
