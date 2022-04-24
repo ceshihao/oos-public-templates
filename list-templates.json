@@ -46,7 +46,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "edcd1c1e46f73f0ca4d585a8ef36396dcfc789ccba6f9d423b1f293fcd8ae47a",
+      "Hash": "ac0b92c74116ce4dd5126413ab21e2205cdaf87b3d6a041e6690977443b6428b",
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -55,10 +55,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v40",
+      "TemplateVersion": "v41",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-01-06T10:22:55Z"
+      "UpdatedDate": "2022-04-22T05:11:46Z"
     },
     {
       "Category": "Other",
@@ -86,7 +86,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copy new image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "7aa55aa206725219d4369120dfb666432a4d77e68b27a27c3845795da63fbe66",
+      "Hash": "f92f6f7e9e3c41b8f925a2a8dca2f7ea5089f5b399bd69893300e9c51924242b",
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -95,10 +95,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v24",
+      "TemplateVersion": "v25",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:17Z"
+      "UpdatedDate": "2022-04-22T05:11:46Z"
     },
     {
       "Category": "Other",
@@ -306,7 +306,7 @@
       "CreatedDate": "2020-03-05T06:41:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateAndCopyImage\", \"name-zh-cn\": \"创建ECS镜像并同步到其它地域\", \"en\": \"Creates an ECS image and copy new image\", \"zh-cn\": \"创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "4a8ec7d22498f746fdf519bdab37b68d0ef9f06d2c12a004bb56bd6bef434dea",
+      "Hash": "2658b0d451875954ad2afa5091d6b6b4513e9ab0cd289da1b6dd8bbf56e9cff9",
       "Popularity": 8.24,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -315,10 +315,10 @@
       "TemplateId": "t-de8b0d697efe4224a902",
       "TemplateName": "ACS-ECS-CreateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:12Z"
+      "UpdatedDate": "2022-04-22T05:11:46Z"
     },
     {
       "Category": "Other",
@@ -326,7 +326,7 @@
       "CreatedDate": "2019-10-22T08:17:08Z",
       "Description": "{\"en\": \"Creates an ECS image\", \"zh-cn\": \"创建一个ECS镜像\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "0ab34214ba4f0a938104782592008c881da799b88f098cdfa8f24ac56aac821b",
+      "Hash": "40fb5e3e08ef6c8a499ff7cd8441194f518028ad08338a84cb70c023a64576f1",
       "Popularity": 8.23,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -335,10 +335,10 @@
       "TemplateId": "t-4bdb1745c171401883a2",
       "TemplateName": "ACS-ECS-CreateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-01-06T10:22:54Z"
+      "UpdatedDate": "2022-04-22T05:11:46Z"
     },
     {
       "Category": "Other",
@@ -2804,9 +2804,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2022-02-24T07:10:38Z",
-      "Description": "{\"en\": \"<p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Note:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">If the desired number of instances is configured in the scaling group, when the number of instances in the scaling group is not equal to the desired number of instances, the auto scaling service will automatically Expand or shrink the capacity to ensure that the number of instances in the scaling group is always maintained. After the execution is complete, go to the ESS console to view the adjustment results. </li><li class=\\\"li\\\">The number of cluster nodes after scaling down the nodes cannot be less than the minimum node requirement of the component, otherwise the scaling operation may return an error of code IncorrectCapacity. </li><li class=\\\"li\\\">'Ensure that your account balance is greater than the cost of the newly purchased instance, otherwise an error of code InvalidAccountStatus.NotEnoughBalance will be returned.</li><li class=\\\"li\\\">If it is a multi-zone, please expand the multiple of the number of zones. </li></ul>\", \"zh-cn\": \"<p class=\\\"p\\\">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果。</li><li class=\\\"li\\\">缩容节点后的集群节点数量，不能小于组件最低节点要求，否则缩容操作可能会返回 code：IncorrectCapacity 的错误。</li><li class=\\\"li\\\">执行请确保您的账号余额大于新购实例的费用，否则会返回 code：InvalidAccountStatus.NotEnoughBalance 的错误。</li><li class=\\\"li\\\">如果是多可用区请扩容可用区数的倍数。</li></ul>\", \"name-en\": \"ACS-ESS-AdjustScalingGroupInstanceCount\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\"]}",
+      "Description": "{\"en\": \"<p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Description:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">If the scaling group has been configured with the desired number of instances, when the number of instances in the scaling group is not equal to the expected number of instances, the auto scaling service will automatically scale to ensure that the number of instances in the scaling group is always maintained After the execution is complete, please go to the ESS console to view the adjustment results. </li> <li class=\\\"li\\\">The number of cluster nodes after scaling down the nodes cannot be less than the minimum node requirements of the component, otherwise the scaling operation may return an error of code:IncorrectCapacity. </li> <li class=\\\"li\\\">Please ensure that your account balance is greater than the cost of the newly purchased instance, otherwise an error of code:InvalidAccountStatus.NotEnoughBalance will be returned. </li> <li class=\\\"li\\\">If it is multi-zone, please expand the multiple of the number of zones. </li> <li class=\\\"li\\\">The payment method for the expanded ECS is pay-as-you-go. If necessary, customers need to <a href=\\\"https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101. help.dexternal.6ecb4df5sxWQrt\\\">Manual subcontracting yearly and monthly. </a></li> <li class=\\\"li\\\">The scaling cannot be less than the number initially opened in the scaling group. </li> </ul>\", \"zh-cn\": \"<p class=\\\"p\\\">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果。</li> <li class=\\\"li\\\">缩容节点后的集群节点数量，不能小于组件最低节点要求，否则缩容操作可能会返回 code：IncorrectCapacity 的错误。</li> <li class=\\\"li\\\">执行请确保您的账号余额大于新购实例的费用，否则会返回 code：InvalidAccountStatus.NotEnoughBalance 的错误。</li> <li class=\\\"li\\\">如果是多可用区请扩容可用区数的倍数。</li> <li class=\\\"li\\\">扩容的ECS付费方式为按量付费，如有需要，客户需要手动<a href=\\\"https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101.help.dexternal.6ecb4df5sxWQrt\\\">转包年包月。</a></li> <li class=\\\"li\\\">缩容数量不能少于伸缩组内最开始开出来的数量。</li> </ul>\", \"name-en\": \"ACS-ESS-AdjustScalingGroupInstanceCount\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "a451a664ac68de95afdcf41430f0ab3928e63dd340533402e2fec5ce70e41687",
+      "Hash": "592515b724a5744fb42559838a1c237b08d01e119e13e1d7cb7090138ed49ee1",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2815,10 +2815,10 @@
       "TemplateId": "t-f1cf351427fb43eb8d87",
       "TemplateName": "ACS-ESS-AdjustScalingGroupInstanceCount",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-13T06:49:53Z"
+      "UpdatedDate": "2022-04-20T06:43:53Z"
     },
     {
       "Category": "Other",
@@ -3419,6 +3419,26 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2021-11-29T08:01:35Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2022-04-18T10:24:15Z",
+      "Description": "{\"en\": \"Bulky modify postpaid instance spec\", \"zh-cn\": \"批量修改按量付费ECS实例的实例规格\", \"name-en\": \"ACS-ECS-BulkyModifyPostPaidInstanceSpec\", \"name-zh-cn\": \"批量修改按量付费ECS实例的实例规格\", \"categories\": [\"instance_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "a0e74c998755a5e6e79feb43884cd561e016227f8c1a8b0f0a7166b95ce66550",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-a85ed6a21c0b422eaff2",
+      "TemplateName": "ACS-ECS-BulkyModifyPostPaidInstanceSpec",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2022-04-18T10:24:15Z"
     },
     {
       "Category": "Other",

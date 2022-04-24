@@ -19,8 +19,9 @@ Parameters:
       en: TargetImageName
       zh-cn: 新镜像的名称
     Type: String
-    MinLength: 1
-    AllowedPattern: '[A-Za-z0-9\_\-\:\{\}\.]*'
+    Description:
+      en: <p class="p">Note:</p> <ul class="ul"> <li class="li">Length is 2~128 English or Chinese characters</li> <li class="li"><font color='red'>must start with big or small letters or Chinese, not http:// and https://. </font></li> <li class="li">Can contain numbers, colons (:), underscores (_), or dashes (-). </li> </ul>
+      zh-cn: <p class="p">注意：</p> <ul class="ul"> <li class="li">长度为2~128个英文或中文字符</li> <li class="li"><font color='red'>必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li class="li">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>
     Default: 'UpdateImage_from_{{sourceImageId}}_on_{{ACS::ExecutionId}}'
   sourceImageId:
     Label:
