@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Run command in ComputeNest service instance‘s Upgrade stage
-  zh-cn: 计算巢服务实例升级阶段运行云助手命令
+  en: Run command in ComputeNest service instance‘s artifact Upgrade stage
+  zh-cn: 计算巢服务实例升级阶段部署物运行云助手命令
   name-en: ACS-CN-UpgradeServiceInstance
   name-zh-cn: 执行升级阶段命令
   categories:
@@ -21,7 +21,7 @@ Parameters:
     Type: String
   artifactsUrl:
     Description:
-      en: 软件包地址
+      en: 部署物地址
       zh-cn: The URL of artifacts
     Type: String
     Default: ''
@@ -59,7 +59,19 @@ Tasks:
           'Fn::Select':
             - ResourceName
             - '{{ ACS::TaskLoopItem }}'
-        artifactsUrl: '{{ artifactsUrl }}'
+        applicationGroupName:
+          'Fn::Select':
+            - ApplicationGroupName
+            - '{{ ACS::TaskLoopItem }}'
+        artifactsUrl:
+          'Fn::If':
+            - 'Fn::Equals':
+                - ''
+                - '{{ artifactsUrl }}'
+            - 'Fn::Select':
+                - ArtifactsUrl
+                - '{{ ACS::TaskLoopItem }}'
+            - '{{ artifactsUrl }}'
         artifactsDownloadDirectory:
           'Fn::Select':
             - ArtifactsDownloadDirectory

@@ -24,10 +24,17 @@ Parameters:
       en: The resource name of ECS instance
       zh-cn: 运行命令的ECS实例资源名称
     Type: String
+    Default: ''
+  applicationGroupName:
+    Description:
+      en: The applicationGroup name of ECS instance
+      zh-cn: 运行命令的ECS实例应用分组名称
+    Type: String
+    Default: ''
   artifactsUrl:
     Description:
       en: 软件包地址
-      zh-cn: The URL of artifacts
+      zh-cn: The URL of file artifacts
     Type: String
     Default: ''
   artifactsDownloadDirectory:
@@ -135,8 +142,14 @@ Tasks:
           Tags:
             - Key: 'acs:computenest:serviceInstanceId'
               Value: '{{ serviceInstanceId }}'
-            - Key: 'acs:computenest:resourceName'
-              Value: '{{ resourceName }}'
+            - 'Fn::If':
+                - 'Fn::Equals':
+                    - ''
+                    - '{{ resourceName }}'
+                - Key: 'acs:computenest:applicationGroup'
+                  Value: '{{ applicationGroupName }}'
+                - Key: 'acs:computenest:resourceName'
+                  Value: '{{ resourceName }}'
     Outputs:
       instanceIds:
         Type: List

@@ -55,10 +55,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v41",
+      "TemplateVersion": "v42",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-22T05:11:46Z"
+      "UpdatedDate": "2022-04-26T08:37:08Z"
     },
     {
       "Category": "Other",
@@ -95,10 +95,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v25",
+      "TemplateVersion": "v26",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-22T05:11:46Z"
+      "UpdatedDate": "2022-04-26T08:37:07Z"
     },
     {
       "Category": "Other",
@@ -264,9 +264,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-02-18T08:12:15Z",
-      "Description": "{\"en\": \"Creates an ECS image and updates scaling configuration image ID.\", \"zh-cn\": \"创建一个新ECS镜像并更新伸缩配置中的镜像ID。\", \"name-en\": \"ACS-ESS-CreateImageAndUpdateScalingConfiguration\", \"name-zh-cn\": \"创建一个新ECS镜像并更新弹性伸缩配置\", \"categories\": [\"elastic_manage\"]}",
+      "Description": "{\"en\": \"Creates an ECS image and updates scaling configuration image ID\", \"zh-cn\": \"创建一个新ECS镜像并更新伸缩配置中的镜像ID\", \"name-en\": \"ACS-ESS-CreateImageAndUpdateScalingConfiguration\", \"name-zh-cn\": \"创建一个新ECS镜像并更新弹性伸缩配置\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "4ec2cf8f52335b2e551348981b9e6dac5a0533b7b25468164f18a99f3c9690aa",
+      "Hash": "4de71a06ddf7c9a93926667b6038861a487eb0f205bb132ef782d5c31bb6a8b1",
       "Popularity": 8.4,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -275,10 +275,10 @@
       "TemplateId": "t-57900f64c9f54d6a8bf2",
       "TemplateName": "ACS-ESS-CreateImageAndUpdateScalingConfiguration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:27Z"
+      "UpdatedDate": "2022-04-27T07:50:53Z"
     },
     {
       "Category": "TimerTrigger",
@@ -315,10 +315,10 @@
       "TemplateId": "t-de8b0d697efe4224a902",
       "TemplateName": "ACS-ECS-CreateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v21",
+      "TemplateVersion": "v22",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-22T05:11:46Z"
+      "UpdatedDate": "2022-04-26T08:37:07Z"
     },
     {
       "Category": "Other",
@@ -335,10 +335,10 @@
       "TemplateId": "t-4bdb1745c171401883a2",
       "TemplateName": "ACS-ECS-CreateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-22T05:11:46Z"
+      "UpdatedDate": "2022-04-26T08:37:07Z"
     },
     {
       "Category": "Other",
@@ -1686,7 +1686,7 @@
       "CreatedDate": "2021-01-27T08:57:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateImageAndUpdateLaunchTemplates\", \"name-zh-cn\": \"创建ECS镜像并更新启动模版\", \"en\": \"Creates an ECS image and update launch template\", \"zh-cn\": \"创建ECS镜像并更新启动模版\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "c552059208d3dab96805be26b9b971f8aa8800733075fd95493cb41a1e176cd3",
+      "Hash": "3f2a7a5ec9b2cdda9be9a91c5cb15bbc99632cfa26e74c0e4baf93936adb4988",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1695,10 +1695,10 @@
       "TemplateId": "t-aaa35aa635194e2c888d",
       "TemplateName": "ACS-ECS-CreateImageAndUpdateLaunchTemplates",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:12Z"
+      "UpdatedDate": "2022-04-27T07:48:49Z"
     },
     {
       "Category": "Other",
@@ -2766,7 +2766,7 @@
       "CreatedDate": "2022-02-16T07:39:11Z",
       "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩到指定实例中执行命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCommandOnSpecifiedInstance\", \"name-zh-cn\": \"使用生命周期挂钩到指定实例中执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "6a4f71279989ffaf607232aaea9c46119f273faa8d1d69558e7ef24a06de7ba2",
+      "Hash": "177bca6497524874f0923ee4053a5da33c8f4b4370c171ce582c659c48589435",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2775,10 +2775,10 @@
       "TemplateId": "t-2f941c41f43b48f9ba57",
       "TemplateName": "ACS-ESS-LifeCycleRunCommandOnSpecifiedInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-16T07:39:11Z"
+      "UpdatedDate": "2022-04-28T08:03:10Z"
     },
     {
       "Category": "Other",
@@ -3866,7 +3866,7 @@
       "CreatedDate": "2022-02-28T09:02:28Z",
       "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Upgrade stage\", \"zh-cn\": \"计算巢服务实例升级阶段运行云助手命令\", \"name-en\": \"ACS-CN-UpgradeServiceInstanceByResourceName\", \"name-zh-cn\": \"执行升级阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "80f0a741e0807447d1bbb2e42891002e2bd98742a73d93c86cf2c71aba86bcb6",
+      "Hash": "99353c51fac4a25043004866512394744d5775bbe423a43625036071449b0242",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3875,18 +3875,18 @@
       "TemplateId": "t-6230fcad88df464e8c1e",
       "TemplateName": "ACS-CN-UpgradeServiceInstanceByResourceName",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-28T09:02:28Z"
+      "UpdatedDate": "2022-04-27T07:30:44Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2022-02-28T11:52:26Z",
-      "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Upgrade stage\", \"zh-cn\": \"计算巢服务实例升级阶段运行云助手命令\", \"name-en\": \"ACS-CN-UpgradeServiceInstance\", \"name-zh-cn\": \"执行升级阶段命令\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Run command in ComputeNest service instance‘s artifact Upgrade stage\", \"zh-cn\": \"计算巢服务实例升级阶段部署物运行云助手命令\", \"name-en\": \"ACS-CN-UpgradeServiceInstance\", \"name-zh-cn\": \"执行升级阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "c1ef213f25fde6e7044ce5be90ea610db08d2d455b7a54280f8038d710a938ef",
+      "Hash": "f79c4460be67eb60088800543325763b3cb4637043c462c75e3e3343d493953c",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3895,10 +3895,10 @@
       "TemplateId": "t-3d16d5de99be4de3bcb6",
       "TemplateName": "ACS-CN-UpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-03-11T07:15:41Z"
+      "UpdatedDate": "2022-04-27T07:20:01Z"
     }
   ]
 }

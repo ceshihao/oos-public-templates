@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Creates an ECS image and updates scaling configuration image ID.
-  zh-cn: 创建一个新ECS镜像并更新伸缩配置中的镜像ID。
+  en: Creates an ECS image and updates scaling configuration image ID
+  zh-cn: 创建一个新ECS镜像并更新伸缩配置中的镜像ID
   name-en: ACS-ESS-CreateImageAndUpdateScalingConfiguration
   name-zh-cn: 创建一个新ECS镜像并更新弹性伸缩配置
   categories:
@@ -9,26 +9,33 @@ Description:
 Parameters:
   instanceId:
     Description:
-      name-en: The id of ECS instance.
-      name-zh-cn: ECS实例ID。
+      name-en: The id of ECS instance
+      name-zh-cn: ECS实例ID
     Type: String
   targetImageName:
     Description:
-      name-en: The name of new image.
-      name-zh-cn: 新镜像的名称。
+      en: >-
+        <p class="p">Note:</p> <ul class="ul"> <li class="li">Length is 2~128
+        English or Chinese characters</li> <li class="li"><font color='red'>must
+        start with big or small letters or Chinese, not http:// and https://.
+        </font></li> <li class="li">Can contain numbers, colons (:), underscores
+        (_), or dashes (-). </li> </ul>
+      zh-cn: >-
+        <p class="p">注意：</p> <ul class="ul"> <li
+        class="li">长度为2~128个英文或中文字符</li> <li class="li"><font
+        color='red'>必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li
+        class="li">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>
     Type: String
-    MinLength: 1
-    AllowedPattern: '[A-Za-z0-9\_\-\:\{\}\.]*'
-    Default: CreateImage_from_{{instanceId}}
+    Default: 'CreateImage_from_{{instanceId}}'
   scalingConfigurationIds:
     Description:
-      name-en: The ID list of the scaling configuration to be modified.
-      name-zh-cn: 待修改的伸缩配置IDs。
+      name-en: The ID list of the scaling configuration to be modified
+      name-zh-cn: 待修改的伸缩配置IDs
     Type: List
   tags:
     Description:
-      name-en: The image tag.
-      name-zh-cn: 镜像标签。
+      name-en: The image tag
+      name-zh-cn: 镜像标签
     Type: Json
     AssociationProperty: Tags
     AssociationPropertyMetadata:
@@ -36,39 +43,42 @@ Parameters:
     Default: []
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-- Name: createImage
-  Action: ACS::ECS::CreateImage
-  Description:
-    name-en: Create new image with the specified image name and instance ID.
-    name-zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
-  Properties:
-    imageName: '{{ targetImageName }}_on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
-    instanceId: '{{ instanceId }}'
-    tags: '{{tags}}'
-  Outputs:
-    imageId:
-      ValueSelector: imageId
-      Type: String
-- Name: modifyScalingConfiguration
-  Action: ACS::ExecuteAPI
-  Description:
-    name-en: Modify scaling configuration.
-    name-zh-cn: 修改伸缩配置。
-  Properties:
-    Service: ESS
-    API: ModifyScalingConfiguration
-    Parameters:
-      ScalingConfigurationId: '{{ ACS::TaskLoopItem }}'
-      ImageId: '{{ createImage.imageId }}'
-  Loop:
-    Items: '{{ scalingConfigurationIds }}'
+  - Name: createImage
+    Action: 'ACS::ECS::CreateImage'
+    Description:
+      en: Create new image with the specified image name and instance ID
+      zh-cn: 通过指定实例ID和镜像名称创建新的镜像
+    Properties:
+      imageName: >-
+        {{ targetImageName }}_on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate
+        }}
+      instanceId: '{{ instanceId }}'
+      tags: '{{tags}}'
+    Outputs:
+      imageId:
+        ValueSelector: imageId
+        Type: String
+  - Name: modifyScalingConfiguration
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Modify scaling configuration
+      zh-cn: 修改伸缩配置
+    Properties:
+      Service: ESS
+      API: ModifyScalingConfiguration
+      Parameters:
+        ScalingConfigurationId: '{{ ACS::TaskLoopItem }}'
+        ImageId: '{{ createImage.imageId }}'
+    Loop:
+      Items: '{{ scalingConfigurationIds }}'
 Outputs:
   imageId:
     Type: String
     Value: '{{ createImage.imageId }}'
+

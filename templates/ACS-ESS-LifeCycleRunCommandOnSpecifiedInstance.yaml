@@ -127,7 +127,6 @@ Tasks:
         RegionId: '{{ regionId }}'
         LifecycleHookId: '{{ lifecycleHookId }}'
         LifecycleActionToken: '{{ lifecycleActionToken }}'
-        LifecycleActionResult: ABANDON
 Outputs:
   commandOutputs:
     Type: List
