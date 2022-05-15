@@ -132,12 +132,10 @@ Tasks:
       zh-cn: 睡眠到实例停止时间
     Action: ACS::Sleep
     Properties:
-      EndDate:
-        Fn::FormatUTCTime:
-          - Fn::CalculateTimeByOpsWindow:
-              - '{{ dailyStopTime }}'
-              - '{{ dailyStopTime }}'
-          - '%Y-%m-%dT%H:%M:%SZ'
+      Duration:
+        'Fn::DurationBetween':
+          - '{{ dailyStartTime }}'
+          - '{{ dailyStopTime }}'
   - Name: stopDesktop
     Action: ACS::ECD::StopDesktop
     Description:

@@ -10,22 +10,22 @@ Parameters:
   regionId:
     Type: String
     Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+      name-en: The id of region
+      name-zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   dailyStopTime:
     Description:
-      name-en: Daily stop instance time.
-      name-zh-cn: 每天停止实例的时间。
+      name-en: Daily stop instance time
+      name-zh-cn: 每天停止实例的时间
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
       Format: 'HH:mm:ssZ'
   dailyStartTime:
     Description:
-      name-en: Daily start instance time.
-      name-zh-cn: 每天开启实例的时间。
+      name-en: Daily start instance time
+      name-zh-cn: 每天开启实例的时间
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
@@ -57,8 +57,8 @@ Parameters:
       RegionId: regionId
   stoppedMode:
     Description:
-      name-en: Indicates whether the ECS instance is still charged after it is stopped.
-      name-zh-cn: 停止按量付费ECS实例后，是否继续计费.
+      name-en: Indicates whether the ECS instance is still charged after it is stopped
+      name-zh-cn: 停止按量付费ECS实例后，是否继续计费
     Type: String
     AllowedValues:
       - StopCharging
@@ -67,14 +67,14 @@ Parameters:
     Default: ''
   hibernate:
     Description:
-      name-en: Whether to hibernate the instance.
-      name-zh-cn: 实例是否休眠。
+      name-en: Whether to hibernate the instance
+      name-zh-cn: 实例是否休眠
     Type: Boolean
     Default: false
   rateControl:
     Description:
-      name-en: Concurrency ratio of task execution.
-      name-zh-cn: 任务执行的并发比率。
+      name-en: Concurrency ratio of task execution
+      name-zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -83,8 +83,8 @@ Parameters:
       Concurrency: 10
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -92,8 +92,8 @@ Tasks:
   - Name: timerTrigger
     Action: 'ACS::TimerTrigger'
     Description:
-      name-en: Triggers a task as scheduled by specifying Cron expression.
-      name-zh-cn: 通过指定Cron表达式按计划触发任务。
+      en: Triggers a task as scheduled by specifying Cron expression
+      zh-cn: 通过指定Cron表达式按计划触发任务
     Properties:
       Type: cron
       EndDate: '{{ triggerEndDate }}'
@@ -116,8 +116,8 @@ Tasks:
             - '{{ weekdays }}'
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: 'ACS::SelectTargets'
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -131,8 +131,8 @@ Tasks:
   - Name: stopInstance
     Action: 'ACS::ECS::StopInstance'
     Description:
-      name-en: Stops the ECS instances.
-      name-zh-cn: 停止实例。
+      en: Stops the ECS instances
+      zh-cn: 停止实例
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -143,21 +143,19 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
   - Name: sleepToSpecifiedTime
     Description:
-      name-en: Sleep to instance start time.
-      name-zh-cn: 睡眠到实例开启时间。
+      en: Sleep to instance start time
+      zh-cn: 睡眠到实例开启时间
     Action: 'ACS::Sleep'
     Properties:
-      EndDate:
-        'Fn::FormatUTCTime':
-          - 'Fn::CalculateTimeByOpsWindow':
-              - '{{ dailyStartTime }}'
-              - '{{ dailyStartTime }}'
-          - '%Y-%m-%dT%H:%M:%SZ'
+      Duration:
+        'Fn::DurationBetween':
+          - '{{ dailyStopTime }}'
+          - '{{ dailyStartTime }}'
   - Name: startInstance
     Action: 'ACS::ECS::StartInstance'
     Description:
-      name-en: Starts the ECS instances.
-      name-zh-cn: 开启实例。
+      en: Starts the ECS instances
+      zh-cn: 开启实例
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

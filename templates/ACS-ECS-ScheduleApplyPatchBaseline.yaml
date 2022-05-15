@@ -1,6 +1,6 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  name-en: ACS-ECS-ScheduleToApplyPatchBaseline
+  name-en: ACS-ECS-ScheduleApplyPatchBaseline
   name-zh-cn: 定时在ECS实例中配置补丁基线
   en: Schedule to apply patch baseline on ECS instance
   zh-cn: 定时在ECS实例中配置补丁基线
@@ -30,18 +30,26 @@ Parameters:
   action:
     Label:
       en: Action
-      zh-cn: 配置补丁基线的方式
+      zh-cn: 执行方式
     Type: String
     AllowedValues:
       - install
       - scan
     Default: install
+    AssociationPropertyMetadata:
+      LocaleKey: OOSPatchExecuteType
   rebootIfNeed:
     Label:
       en: RebootIfNeed
       zh-cn: 是否重启
     Type: Boolean
     Default: false
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+            'Fn::Equals':
+              - '${action}'
+              - install
   timeout:
     Label:
       en: Timeout
@@ -128,34 +136,3 @@ Outputs:
   commandOutputs:
     Type: List
     Value: '{{ applyPatchBaseline.commandOutputs }}'
-Metadata:
-  ALIYUN::OOS::Interface:
-    ParameterGroups:
-      - Parameters:
-          - timerTrigger
-        Label:
-          default:
-            zh-cn: 定时设置
-            en: Timer Trigger Configure
-      - Parameters:
-          - action
-          - rebootIfNeed
-          - timeout
-        Label:
-          default:
-            zh-cn: 设置参数
-            en: Configure Parameters
-      - Parameters:
-          - regionId
-          - targets
-        Label:
-          default:
-            zh-cn: 选择实例
-            en: Select ECS Instances
-      - Parameters:
-          - rateControl
-          - OOSAssumeRole
-        Label:
-          default:
-            zh-cn: 高级选项
-            en: Control Options
