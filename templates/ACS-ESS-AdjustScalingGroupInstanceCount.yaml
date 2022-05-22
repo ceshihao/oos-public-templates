@@ -161,10 +161,29 @@ Tasks:
       detail:
         Type: String
         ValueSelector: .Detail
+  - Name: getOOSExecutionOutput
+    Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Get the lifecycle hook OOS execution output
+      zh-cn: 获取生命周期挂钩OOS执行的输出
+    Properties:
+      Service: OOS
+      API: ListExecutions
+      Parameters:
+        RegionId: '{{ regionId }}'
+        Tags:
+          ESS:ScalingActivityId: '{{ executeScalingRule.scalingActivityId }}'
+    Outputs:
+      lifecycleHookOOSExecutionResult:
+        Type: String
+        ValueSelector: 'Executions[].Outputs'
 Outputs:
   adjustDetail:
     Type: String
     Value: '{{ describeScalingActivityDetail.detail }}'
+  lifecycleHookOOSExecutionResult:
+    Type: String
+    Value: '{{ getOOSExecutionOutput.lifecycleHookOOSExecutionResult }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
