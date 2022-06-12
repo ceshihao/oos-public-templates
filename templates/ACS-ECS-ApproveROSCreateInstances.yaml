@@ -306,6 +306,13 @@ Tasks:
                     ]
                   }
                 }
+              },
+              "Metadata": {
+                "ALIYUN::ROS::Interface": {
+                  "TemplateTags": [
+                    "acs:integrate:oos:ecs_approve_ros_create_instances"
+                  ]
+                }
               }
             }
     Outputs:
@@ -403,3 +410,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

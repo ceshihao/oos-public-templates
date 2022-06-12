@@ -18,6 +18,9 @@ Parameters:
     Label:
       en: LoadBalancerIds
       zh-cn: 负载均衡实例ID
+    AssociationProperty: ALIYUN::SLB::Instance::InstanceId
+    AssociationPropertyMetadata:
+      RegionId: regionId
     Type: List
   loadBalancerSpec:
     Label:

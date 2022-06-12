@@ -19,6 +19,9 @@ Parameters:
     Label:
       en: DiskIds
       zh-cn: 云盘ID
+    AssociationProperty: ALIYUN::ECS::Disk::DiskId
+    AssociationPropertyMetadata:
+      RegionId: regionId
     Type: List
   newSize:
     Label:

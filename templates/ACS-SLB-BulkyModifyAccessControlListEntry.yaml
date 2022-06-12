@@ -26,25 +26,24 @@ Parameters:
     Label:
       en: AclIds
       zh-cn: 访问控制策略组ID
+    AssociationProperty: ALIYUN::SLB::ACL::ACLId
+    AssociationPropertyMetadata:
+      RegionId: regionId
     Type: List
   aclEntrys:
     Label:
       en: AclEntrys
       zh-cn: 设置访问控制策略组
     Description:
-      en: >-
-        <ul class= "UL" > <li class= "li" > format:[{"entry":"10.0.******/24",
-        "comment":"privaterule1" },{
-        "entry":"192.168.******/16","comment":"privaterule2" } ]</li> <li class=
-        "li" >entry:IP entries to be added in the access control policy group.
-        You can specify IP address segments (CIDR blocks). Multiple IP address
-        segments are separated by commas</ Li> <li class= "li" >comment:notes of
-        access control policy group</ Li> </ul>
-      zh-cn: >-
-        <ul class="ul"> <li
-        class="li">格式：[{"entry":"10.0.**.**/24","comment":"privaterule1"},{"entry":"192.168.**.**/16","comment":"privaterule2"}]</li>
-        <li class="li">entry：访问控制策略组中要添加的IP条目，可以指定IP地址段（CIDR
-        block），多个IP地址段之间用逗号隔开。</li> <li class="li">comment：访问控制策略组备注说明。</li>
+      en: <ul class= "UL" >
+        <li class= "li" > format:[{"entry":"10.0.******/24", "comment":"privaterule1" },{ "entry":"192.168.******/16","comment":"privaterule2" } ]</li>
+        <li class= "li" >entry:IP entries to be added in the access control policy group. You can specify IP address segments (CIDR blocks). Multiple IP address segments are separated by commas</ Li>
+        <li class= "li" >comment:notes of access control policy group</ Li>
+        </ul>
+      zh-cn: <ul class="ul">
+        <li class="li">格式：[{"entry":"10.0.**.**/24","comment":"privaterule1"},{"entry":"192.168.**.**/16","comment":"privaterule2"}]</li>
+        <li class="li">entry：访问控制策略组中要添加的IP条目，可以指定IP地址段（CIDR block），多个IP地址段之间用逗号隔开。</li>
+        <li class="li">comment：访问控制策略组备注说明。</li>
         </ul>
     Type: String
   rateControl:
@@ -65,46 +64,46 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: addAccessControlListEntrys
-    When:
-      'Fn::Equals':
-        - '{{ action }}'
-        - Add
-    Action: 'ACS::ExecuteApi'
-    Description:
-      en: Add access control list entry
-      zh-cn: 添加访问控制策略组中的IP条目
-    Properties:
-      Service: SLB
-      API: AddAccessControlListEntry
-      Parameters:
-        RegionId: '{{ regionId }}'
-        AclId: '{{ ACS::TaskLoopItem }}'
-        AclEntrys: '{{ aclEntrys }}'
-    Loop:
-      RateControl: '{{ rateControl }}'
-      Items: '{{ aclIds }}'
-  - Name: removeAccessControlListEntry
-    When:
-      'Fn::Equals':
-        - '{{ action }}'
-        - Remove
-    Action: 'ACS::ExecuteApi'
-    Description:
-      en: Remove access control list entry
-      zh-cn: 删除访问控制策略组中的IP条目
-    Properties:
-      Service: SLB
-      API: RemoveAccessControlListEntry
-      Parameters:
-        RegionId: '{{ regionId }}'
-        AclId: '{{ ACS::TaskLoopItem }}'
-        AclEntrys: '{{ aclEntrys }}'
-    Loop:
-      RateControl: '{{ rateControl }}'
-      Items: '{{ aclIds }}'
+- Name: addAccessControlListEntrys
+  When:
+    'Fn::Equals':
+      - '{{ action }}'
+      - Add
+  Action: ACS::ExecuteApi
+  Description:
+    en: Add access control list entry
+    zh-cn: 添加访问控制策略组中的IP条目
+  Properties:
+    Service: SLB
+    API: AddAccessControlListEntry
+    Parameters:
+      RegionId: '{{ regionId }}'
+      AclId: '{{ ACS::TaskLoopItem }}'
+      AclEntrys: '{{ aclEntrys }}'
+  Loop:
+    RateControl: '{{ rateControl }}'
+    Items: '{{ aclIds }}'
+- Name: removeAccessControlListEntry
+  When:
+    'Fn::Equals':
+      - '{{ action }}'
+      - Remove
+  Action: ACS::ExecuteApi
+  Description:
+    en: Remove access control list entry
+    zh-cn: 删除访问控制策略组中的IP条目
+  Properties:
+    Service: SLB
+    API: RemoveAccessControlListEntry
+    Parameters:
+      RegionId: '{{ regionId }}'
+      AclId: '{{ ACS::TaskLoopItem }}'
+      AclEntrys: '{{ aclEntrys }}'
+  Loop:
+    RateControl: '{{ rateControl }}'
+    Items: '{{ aclIds }}'
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - regionId
@@ -122,4 +121,3 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
-

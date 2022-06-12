@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Run command in ComputeNest service instance‘s artifact Upgrade stage
-  zh-cn: 计算巢服务实例升级阶段部署物运行云助手命令
+  en: ComputeNest service instance‘s Upgrade stage
+  zh-cn: 计算巢服务实例升级
   name-en: ACS-CN-UpgradeServiceInstance
-  name-zh-cn: 执行升级阶段命令
+  name-zh-cn: 执行升级阶段步骤
   categories:
     - run_command
 Parameters:
@@ -15,12 +15,12 @@ Parameters:
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   serviceInstanceId:
-    Description:
+    Label:
       en: The ID of the ComputeNest service instance
       zh-cn: 计算巢服务实例ID
     Type: String
   artifactsUrl:
-    Description:
+    Label:
       en: 部署物地址
       zh-cn: The URL of artifacts
     Type: String
@@ -30,6 +30,11 @@ Parameters:
     Label:
       en: UpgradeData of upgrading service instance
       zh-cn: 服务实例更新配置
+    Description:
+      zh-cn: >-
+        upgradeStep包括参数
+        Description/ApplicationGroupName/Type/ArtifactsDownloadDirectory/ArtifactsUrl/CommandType/Parameters/CommandContent/ImageId
+        等, 通过Json格式传入
   rateControl:
     Label:
       en: RateControl
@@ -48,47 +53,58 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: upgradeServiceInstanceByResouceName
-    Action: 'ACS::Template'
+  - Name: determineUpgradeServiceInstanceTypeAndPerformUpgrade
+    Action: 'ACS::CN::DetermineUpgradeServiceInstanceTypeAndPerformUpgrade'
+    Description:
+      en: >-
+        Determine computeNest service instance‘s upgrade type and perform the
+        upgrade
+      zh-cn: '通过Type判断服务实例升级类型并执行对应升级操作, 循环获取upgradeSteps（升级步骤）中的每一个步骤的参数'
     Properties:
-      TemplateName: ACS-CN-UpgradeServiceInstanceByResourceName
-      Parameters:
-        regionId: '{{ regionId }}'
-        serviceInstanceId: '{{ serviceInstanceId }}'
-        resourceName:
-          'Fn::Select':
-            - ResourceName
-            - '{{ ACS::TaskLoopItem }}'
-        applicationGroupName:
-          'Fn::Select':
-            - ApplicationGroupName
-            - '{{ ACS::TaskLoopItem }}'
-        artifactsUrl:
-          'Fn::If':
-            - 'Fn::Equals':
-                - ''
-                - '{{ artifactsUrl }}'
-            - 'Fn::Select':
-                - ArtifactsUrl
-                - '{{ ACS::TaskLoopItem }}'
-            - '{{ artifactsUrl }}'
-        artifactsDownloadDirectory:
-          'Fn::Select':
-            - ArtifactsDownloadDirectory
-            - '{{ ACS::TaskLoopItem }}'
-        commandType:
-          'Fn::Select':
-            - CommandType
-            - '{{ ACS::TaskLoopItem }}'
-        commandContent:
-          'Fn::Select':
-            - CommandContent
-            - '{{ ACS::TaskLoopItem }}'
-        enableParameter: true
-        parameters:
-          'Fn::Select':
-            - Parameters
-            - '{{ ACS::TaskLoopItem }}'
+      regionId: '{{ regionId }}'
+      serviceInstanceId: '{{ serviceInstanceId }}'
+      resourceName:
+        'Fn::Select':
+          - ResourceName
+          - '{{ ACS::TaskLoopItem }}'
+      applicationGroupName:
+        'Fn::Select':
+          - ApplicationGroupName
+          - '{{ ACS::TaskLoopItem }}'
+      artifactsUrl:
+        'Fn::If':
+          - 'Fn::Equals':
+              - ''
+              - '{{ artifactsUrl }}'
+          - 'Fn::Select':
+              - ArtifactsUrl
+              - '{{ ACS::TaskLoopItem }}'
+          - '{{ artifactsUrl }}'
+      artifactsDownloadDirectory:
+        'Fn::Select':
+          - ArtifactsDownloadDirectory
+          - '{{ ACS::TaskLoopItem }}'
+      commandType:
+        'Fn::Select':
+          - CommandType
+          - '{{ ACS::TaskLoopItem }}'
+      commandContent:
+        'Fn::Select':
+          - CommandContent
+          - '{{ ACS::TaskLoopItem }}'
+      enableParameter: true
+      parameters:
+        'Fn::Select':
+          - Parameters
+          - '{{ ACS::TaskLoopItem }}'
+      imageId:
+        'Fn::Select':
+          - ImageId
+          - '{{ ACS::TaskLoopItem }}'
+      type:
+        'Fn::Select':
+          - Type
+          - '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ upgradeSteps }}'

@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Attach custom policy to user that template executed by after approving.
-  zh-cn: 审批通过后授予自定义权限给创建执行的子用户。
+  en: Attach custom policy to user that template executed by after approving
+  zh-cn: 审批通过后授予自定义权限给创建执行的子用户
   name-en: ACS-RAM-ApproveAttachCustomPolicyToUser
   name-zh-cn: 审批通过后授予自定义权限给创建执行的子用户
   categories:
@@ -9,16 +9,16 @@ Description:
 Parameters:
   policyDocument:
     Description:
-      name-en: 'The json document of custom policy to attach.'
-      name-zh-cn: '将授权的自定义权限策略的json脚本。'
+      name-en: The json document of custom policy to attach
+      name-zh-cn: 将授权的自定义权限策略的json脚本'
       en: 'e.g.{ "Version": "1", "Statement": [ { "Action": [ "oos:List*", "oos:Get*" ], "Resource": "*", "Effect": "Allow" } ] }'
       zh-cn: '如{ "Version": "1", "Statement": [ { "Action": [ "oos:List*", "oos:Get*" ], "Resource": "*", "Effect": "Allow" } ] }'
     Type: String
     AssociationProperty: Code
   policyName:
     Description:
-      name-en: The custom ploicy to create and add.
-      name-zh-cn: 将新建并授予的自定义权限策略名称。
+      name-en: The custom ploicy to create and add
+      name-zh-cn: 将新建并授予的自定义权限策略名称
     Type: String
   webHookUrl:
     Description:
@@ -31,33 +31,33 @@ Parameters:
     Type: String
   atMobiles:
     Description:
-      name-en: The dingtalk phone numbers of who be @ in notification,e.g.138ALBB1234.
-      name-zh-cn: 审批通知中被@的群成员的钉钉手机号，比如138ALBB1234。
+      name-en: The dingtalk phone numbers of who be @ in notification,e.g.138ALBB1234
+      name-zh-cn: 审批通知中被@的群成员的钉钉手机号，比如138ALBB1234
     Type: List
   atAll:
     Description:
       name-en: 'Whether assistant @ all members in dingtalk group or not notification comes'
-      name-zh-cn: 当群助手向钉钉群中发送审批通知时是否@所有人。
+      name-zh-cn: 当群助手向钉钉群中发送审批通知时是否@所有人
     Type: String
     Default: 'false'
   approvers:
     Description:
       name-en: The names of users that have the authority to approve task
       name-zh-cn: 可以审批授权的用户
-      en: The name to fill is the front part of @ in the RAM user name,if  RAM user is user001@companyAlias.onaliyun.com, then fill  user001  in list.
-      zh-cn: 用户名是RAM子用户名称中@前面的部分，比如RAM子用户为user001@companyAlias.onaliyun.com,那么列表中填写user001即可。
+      en: The name to fill is the front part of @ in the RAM user name,if  RAM user is user001@companyAlias.onaliyun.com, then fill  user001  in list
+      zh-cn: 用户名是RAM子用户名称中@前面的部分，比如RAM子用户为user001@companyAlias.onaliyun.com,那么列表中填写user001即可
     Type: List
     AssociationProperty: ALIYUN::RAM::User
   minRequiredApprovals:
     Description:
-      name-en: The min required count of approvals.
+      name-en: The min required count of approvals
       name-zh-cn: 最低需要通过审批的数量
     Type: Number
     Default: 1
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -65,8 +65,8 @@ Tasks:
   - Name: approveAttachPolicy
     Action: 'ACS::Approve'
     Description:
-      name-en: Approve task add policy.
-      name-zh-cn: 审批后授权。
+      en: Approve task add policy
+      zh-cn: 审批后授权
     Properties:
       Approvers: '{{approvers}}'
       MinRequiredApprovals: '{{minRequiredApprovals}}'
@@ -89,8 +89,8 @@ Tasks:
   - Name: checkPolicyExist
     Action:  ACS::CheckFor
     Description:
-      name-en: Check for the inexistence of policy.
-      name-zh-cn: 判断自定义权限策略名称存在性。
+      en: Check for the inexistence of policy
+      zh-cn: 判断自定义权限策略名称存在性
     Properties:
       Service: RAM
       API: GetPolicy
@@ -112,8 +112,8 @@ Tasks:
         - '{{ checkPolicyExist.existed }}'
         - 'false'
     Description:
-      name-en: Attach policy by Ros resource stack.
-      name-zh-cn: 通过Ros资源栈为角色授权。
+      en: Attach policy by Ros resource stack
+      zh-cn: 通过Ros资源栈为角色授权
     Properties:
       TemplateName: 'ACS::ROS::CreateStack'
       Parameters:
@@ -172,8 +172,8 @@ Tasks:
         - '{{ checkPolicyExist.existed }}'
         - 'true'
     Description:
-      name-en: Attach policy by Ros resource stack when policy is not exist.
-      name-zh-cn: 当policy不存在时，通过Ros资源栈为角色授权。
+      en: Attach policy by Ros resource stack when policy is not exist
+      zh-cn: 当policy不存在时，通过Ros资源栈为角色授权
     Properties:
       TemplateName: 'ACS::ROS::CreateStack'
       Parameters:
@@ -229,6 +229,13 @@ Tasks:
                   ]
                 }
               }
+            },
+            "Metadata": {
+              "ALIYUN::ROS::Interface": {
+                "TemplateTags": [
+                  "acs:integrate:oos:ram_approve_attach_custom_policy_to_user"
+                ]
+              }
             }
           }
     Outputs:
@@ -239,3 +246,5 @@ Outputs:
   stackId:
     Type: String
     Value: '{{createStack.stackId}}'
+
+
