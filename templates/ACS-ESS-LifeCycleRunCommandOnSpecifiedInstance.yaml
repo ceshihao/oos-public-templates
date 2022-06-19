@@ -83,7 +83,7 @@ Tasks:
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
     Description:
-      en: Execute cloud assistant command
+      en: Execute cloud  assistant command
       zh-cn: 执行云助手命令
     Properties:
       regionId: '{{ regionId }}'

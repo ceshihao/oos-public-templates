@@ -2,7 +2,7 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Run command in ComputeNest service instance‘s Pre/PostUpgrade stage
   zh-cn: 计算巢服务实例Pre/PostUpgrade阶段运行云助手命令
-  name-en: Run Command in Pre/PostUpgrade Stage
+  name-en: ACS-CN-PrePostUpgradeServiceInstance
   name-zh-cn: 执行Pre/PostUpgrade阶段命令
   categories:
     - run_command
@@ -24,6 +24,13 @@ Parameters:
       en: The resource name of ECS instance
       zh-cn: 运行命令的ECS实例资源名称
     Type: String
+    Default: ''
+  applicationGroupName:
+    Description:
+      en: The application group name of ECS instance
+      zh-cn: 运行命令的ECS实例应用分组名称
+    Type: String
+    Default: ''
   commandType:
     Label:
       en: CommandType
@@ -121,10 +128,16 @@ Tasks:
         - Type: Tags
           RegionId: '{{ regionId }}'
           Tags:
-            - Key: 'acs:computenest:serviceInstanceId'
+            - Key: acs:computenest:serviceInstanceId
               Value: '{{ serviceInstanceId }}'
-            - Key: 'acs:computenest:resourceName'
-              Value: '{{ resourceName }}'
+            - Fn::If:
+                - Fn::Equals:
+                    - ''
+                    - '{{ resourceName }}'
+                - Key: acs:computenest:applicationGroup
+                  Value: '{{ applicationGroupName }}'
+                - Key: acs:computenest:resourceName
+                  Value: '{{ resourceName }}'
     Outputs:
       instanceId:
         Type: String

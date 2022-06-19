@@ -2846,7 +2846,7 @@
       "CreatedDate": "2022-02-16T07:39:11Z",
       "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩到指定实例中执行命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCommandOnSpecifiedInstance\", \"name-zh-cn\": \"使用生命周期挂钩到指定实例中执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "177bca6497524874f0923ee4053a5da33c8f4b4370c171ce582c659c48589435",
+      "Hash": "18ca632a22b6bdf05f3126382a02b94f2e035ad1eb29b2b73525a070f0204e0d",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2855,10 +2855,10 @@
       "TemplateId": "t-2f941c41f43b48f9ba57",
       "TemplateName": "ACS-ESS-LifeCycleRunCommandOnSpecifiedInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-28T08:03:10Z"
+      "UpdatedDate": "2022-06-14T14:39:23Z"
     },
     {
       "Category": "Other",
@@ -3159,6 +3159,26 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2022-06-10T07:36:26Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2022-06-13T02:10:25Z",
+      "Description": "{\"en\": \"Rolling update ECI instances in scaling group by update container group\", \"zh-cn\": \"通过更新容器组的方式滚动更新伸缩组内的ECI实例\", \"name-en\": \"ACS-ESS-RollingUpdateByUpdateContainerGroup\", \"name-zh-cn\": \"通过更新容器组的方式滚动更新伸缩组内的ECI实例\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "3c697c186a711ac69800a27cc816134d5b46da394bd06014d203666c3b785c95",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-cce7cfe87b8b45b6ade7",
+      "TemplateName": "ACS-ESS-RollingUpdateByUpdateContainerGroup",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2022-06-13T02:10:25Z"
     },
     {
       "Category": "Other",
@@ -4004,9 +4024,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2022-02-22T03:15:04Z",
-      "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Pre/PostUpgrade stage\", \"zh-cn\": \"计算巢服务实例Pre/PostUpgrade阶段运行云助手命令\", \"name-en\": \"Run Command in Pre/PostUpgrade Stage\", \"name-zh-cn\": \"执行Pre/PostUpgrade阶段命令\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Pre/PostUpgrade stage\", \"zh-cn\": \"计算巢服务实例Pre/PostUpgrade阶段运行云助手命令\", \"name-en\": \"ACS-CN-PrePostUpgradeServiceInstance\", \"name-zh-cn\": \"执行Pre/PostUpgrade阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "184feac71155927b2100af2aa4bf4a1e400693255099fc093cd542c0928d7640",
+      "Hash": "673d619c4ca78d8b88adbd227af35fed231b0483662fea099b35cc0bf8e38758",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4015,10 +4035,10 @@
       "TemplateId": "t-65a866c62e50493c9af1",
       "TemplateName": "ACS-CN-PrePostUpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-22T03:15:04Z"
+      "UpdatedDate": "2022-06-16T12:15:03Z"
     },
     {
       "Category": "Other",
