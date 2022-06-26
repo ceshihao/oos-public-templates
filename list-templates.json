@@ -3046,7 +3046,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "ec346b822b92dc4c6803a8946c7e0a73d9d37ae6ddab26989d61d03ce3ca0d99",
+      "Hash": "5478fb644faecbb59aae8afb39937a214852cf753a122254549502a9196dad01",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3055,10 +3055,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-05-11T07:58:12Z"
+      "UpdatedDate": "2022-06-23T02:35:10Z"
     },
     {
       "Category": "Other",
@@ -3895,10 +3895,10 @@
       "TemplateId": "t-c7b0682e184541c98748",
       "TemplateName": "ACS-CS-RunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-11T12:57:22Z"
+      "UpdatedDate": "2022-06-21T02:56:49Z"
     },
     {
       "Category": "Other",
