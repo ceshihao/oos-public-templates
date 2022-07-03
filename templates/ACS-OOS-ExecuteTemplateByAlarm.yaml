@@ -1,7 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Execute specified template when alarm is raised according to alarm rule. AlarmTrigger will always run until being canceled.
-  zh-cn: 指定告警规则，当告警发生时执行指定的模板。在主动取消前告警触发器会一直运行。
+  en: >-
+    Execute specified template when alarm is raised according to alarm rule.
+    AlarmTrigger will always run until being canceled
+  zh-cn: 指定告警规则，当告警发生时执行指定的模板。在主动取消前告警触发器会一直运行
   name-en: ACS-OOS-ExecuteTemplateByAlarm
   name-zh-cn: 在告警发生时执行指定的模板
   categories:
@@ -9,31 +11,32 @@ Description:
 Parameters:
   alarmTriggerProperties:
     Description:
-      name-en: The properties of alarm trigger task.
-      name-zh-cn: 告警触发任务的属性。
+      name-en: The properties of alarm trigger task
+      name-zh-cn: 告警触发任务的属性
     Type: Json
+    AssociationProperty: 'ALIYUN::OOS::Alarm::AlarmTrigger'
   alarmOutputTransformer:
     Description:
-      name-en: The transformer from alarm message to template parameters.
-      name-zh-cn: 告警消息体到调用模板参数的转换器。
+      name-en: The transformer from alarm message to template parameters
+      name-zh-cn: 告警消息体到调用模板参数的转换器
     Type: Json
   templateName:
     Description:
-      name-en: The name of template to trigger.
-      name-zh-cn: 触发的模板名称。
+      name-en: The name of template to trigger
+      name-zh-cn: 触发的模板名称
     Type: String
     AssociationProperty: TemplateName
   tags:
     Type: Json
     Description:
-      name-en: The tags to select ECS instances.
-      name-zh-cn: 实例的标签。
+      name-en: The tags to select ECS instances
+      name-zh-cn: 实例的标签
     AssociationProperty: Tags
     Default: []
   OOSAssumeRole:
     Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -94,8 +97,8 @@ Tasks:
   - Name: executeTemplate
     Action: 'ACS::Template'
     Description:
-      name-en: Execute template.
-      name-zh-cn: 执行模板。
+      en: Execute template
+      zh-cn: 执行模板
     Properties:
       TemplateName: '{{ templateName }}'
       Parameters: '{{ alarmTrigger.templateParameters }}'

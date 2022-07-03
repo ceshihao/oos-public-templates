@@ -1,7 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Execute specified template when system event happens. EventTrigger will always run until being canceled.
-  zh-cn: 指定系统事件订阅规则，当系统事件发生时执行指定的模板。在主动取消前事件触发器会一直运行。
+  en: >-
+    Execute specified template when system event happens. EventTrigger will
+    always run until being canceled
+  zh-cn: 指定系统事件订阅规则，当系统事件发生时执行指定的模板。在主动取消前事件触发器会一直运行
   name-en: ACS-OOS-ExecuteTemplateBySystemEvent
   name-zh-cn: 在系统事件发生时执行指定的模板
   categories:
@@ -9,31 +11,32 @@ Description:
 Parameters:
   eventTriggerProperties:
     Description:
-      en: The properties of event trigger task.
-      zh-cn: 事件触发任务的属性。
+      name-en: The properties of event trigger task
+      name-zh-cn: 事件触发任务的属性
     Type: Json
+    AssociationProperty: 'ALIYUN::OOS::Event::EventTrigger'
   eventOutputTransformer:
     Description:
-      en: The transformer from system event message to template parameters.
-      zh-cn: 系统事件消息体到模板调用参数的转换器。
+      name-en: The transformer from system event message to template parameters
+      name-zh-cn: 系统事件消息体到模板调用参数的转换器
     Type: Json
   templateName:
     Description:
-      en: The name of template to trigger.
-      zh-cn: 触发的模板名称。
+      name-en: The name of template to trigger
+      name-zh-cn: 触发的模板名称
     Type: String
     AssociationProperty: TemplateName
   tags:
     Type: Json
     Description:
-      en: The tags to select ECS instances.
-      zh-cn: 实例的标签。
+      name-en: The tags to select ECS instances
+      name-zh-cn: 实例的标签
     AssociationProperty: Tags
     Default: []
   OOSAssumeRole:
     Description:
-      en: The RAM role to be assumed by OOS.
-      zh-cn: OOS扮演的RAM角色。
+      name-en: The RAM role to be assumed by OOS
+      name-zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -68,8 +71,8 @@ Tasks:
   - Name: executeTemplate
     Action: 'ACS::Template'
     Description:
-      en: Execute template.
-      zh-cn: 执行模板。
+      en: Execute template
+      zh-cn: 执行模板
     Properties:
       TemplateName: '{{ templateName }}'
       Parameters: '{{ eventTrigger.templateParameters }}'

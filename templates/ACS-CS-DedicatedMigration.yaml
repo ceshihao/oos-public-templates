@@ -102,15 +102,32 @@ Tasks:
                 mv -f /etc/kubernetes/manifests/* /etc/kubernetes/manifests.backup/
             fi
             is_ok=0
-            for ((integer = 0; integer < 150; integer++)); do
-                conut=$(docker ps | grep kube-apiserver | wc -l)
-                if [ "$conut" = "0" ]; then
-                    is_ok=1
-                    break
-                else
-                    sleep 2
-                fi
-            done
+            set +e
+            ps -o cmd -p `pidof kubelet` | grep 'container-runtime-endpoint=/var/run/containerd/containerd.sock'
+            if [ $? -ne 0 ]; then
+                echo "容器运行时不为containerd"
+                for ((integer = 0; integer < 150; integer++)); do
+                    count=$(docker ps | grep kube-apiserver | wc -l)
+                    if [ "$count" = "0" ]; then
+                        is_ok=1
+                        break
+                    else
+                        sleep 2
+                    fi
+                done
+            else
+                echo "容器运行时为containerd"
+                for ((integer = 0; integer < 150; integer++)); do
+                    count=$(crictl --runtime-endpoint /var/run/containerd/containerd.sock  ps |grep kube-apiserver | wc -l)
+                    if [ "$count" = "0" ]; then
+                        is_ok=1
+                        break
+                    else
+                        sleep 2
+                    fi
+                done
+            fi
+            set -e
             if [ "$is_ok" == "0" ]; then
                 mv -f /etc/kubernetes/manifests.backup/* /etc/kubernetes/manifests/
                 echo "Rollback finish"
@@ -208,6 +225,7 @@ Tasks:
         AccessKeySecret=$(echo $ROLERES | python -c "import sys, json; print json.load(sys.stdin)['AccessKeySecret']")
         SecurityToken=$(echo $ROLERES | python -c "import sys, json; print json.load(sys.stdin)['SecurityToken']")
         # put object to oss
+        echo "begin put object to oss"
         /tmp/ossutil64 -t $SecurityToken -i $AccessKeyId -k $AccessKeySecret -e {{OSSEndpoint}} cp /tmp/etcdsnap/$SNAP_NAME oss://{{BucketName}}/$SNAP_NAME
         # sign
         oss_url=$(/tmp/ossutil64 -t $SecurityToken -i $AccessKeyId -k $AccessKeySecret -e {{OSSEndpoint}} sign --timeout 2400 oss://{{BucketName}}/$SNAP_NAME | grep -v "elapsed" | tr -d '\n')
