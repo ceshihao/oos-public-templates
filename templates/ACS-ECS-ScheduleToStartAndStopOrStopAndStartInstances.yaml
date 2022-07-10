@@ -21,7 +21,7 @@ Parameters:
       zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
   startFirstOrStopFirst:
     Type: String
@@ -48,7 +48,7 @@ Parameters:
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
-      Format: 'HH:mm:ssZ'
+      Format: HH:mm:ssZ
   dailyStopTime:
     Label:
       en: DailyStopTime
@@ -56,7 +56,7 @@ Parameters:
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
-      Format: 'HH:mm:ssZ'
+      Format: HH:mm:ssZ
   triggerEndDate:
     Label:
       en: The end date of time trigger
@@ -64,28 +64,15 @@ Parameters:
     Type: String
     AssociationProperty: DateTime
     AssociationPropertyMetadata:
-      Format: 'YYYY-MM-DDTHH:mm:ssZ'
+      Format: YYYY-MM-DDTHH:mm:ssZ
     Default: '2099-12-01T00:00:00Z'
   stoppedMode:
     Label:
       en: StoppedMode
       zh-cn: 停止模式
     Description:
-      en: >-
-        <p class="p">The stop mode that is set when stopping a pay-as-you-go ECS
-        instance. Value:</p> <ul class="ul"> <li class="li"Save downtime mode.
-        For the conditions for <code class="ph codeph">StopCharging</code> to
-        take effect, please refer to <span><a target="_blank"
-        href="https://help.aliyun.com/document_detail/63353.html" >Enable
-        Conditions for Pay-As-You-Go Instance Savings Downtime Mode</a></span>.
-        </li> <li class="li">Normal shutdown mode. Charges continue even after
-        the instance is stopped. </li> </ul>
-      zh-cn: >-
-        <p class="p">停止按量付费ECS实例时，设置的停止模式。取值：</p> <ul class="ul"> <li
-        class="li">节省停机模式：有关<code class="ph
-        codeph">StopCharging</code>生效的条件，请参见<span><a target="_blank"
-        href="https://help.aliyun.com/document_detail/63353.html">按量付费实例节省停机模式</a></span>的启用条件章节。</li>
-        <li class="li">普通停机模式：实例停止后仍继续收费。</li> </ul>
+      en: <p class="p">The stop mode that is set when stopping a pay-as-you-go ECS instance. Value:</p> <ul class="ul"> <li class="li"Save downtime mode. For the conditions for <code class="ph codeph">StopCharging</code> to take effect, please refer to <span><a target="_blank" href="https://help.aliyun.com/document_detail/63353.html" >Enable Conditions for Pay-As-You-Go Instance Savings Downtime Mode</a></span>. </li> <li class="li">Normal shutdown mode. Charges continue even after the instance is stopped. </li> </ul>
+      zh-cn: <p class="p">停止按量付费ECS实例时，设置的停止模式。取值：</p> <ul class="ul"> <li class="li">节省停机模式：有关<code class="ph codeph">StopCharging</code>生效的条件，请参见<span><a target="_blank" href="https://help.aliyun.com/document_detail/63353.html">按量付费实例节省停机模式</a></span>的启用条件章节。</li> <li class="li">普通停机模式：实例停止后仍继续收费。</li> </ul>
     Type: String
     AllowedValues:
       - StopCharging
@@ -112,7 +99,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: timerTrigger
-    Action: 'ACS::TimerTrigger'
+    Action: ACS::TimerTrigger
     Description:
       en: Triggers a task as scheduled by specifying Cron expression
       zh-cn: 通过指定Cron表达式按计划触发任务
@@ -120,25 +107,25 @@ Tasks:
       Type: cron
       EndDate: '{{ triggerEndDate }}'
       Expression:
-        'Fn::Join':
+        Fn::Join:
           - ' '
           - - '0'
-            - 'Fn::Select':
+            - Fn::Select:
                 - 1
-                - 'Fn::Split':
+                - Fn::Split:
                     - ':'
-                    - 'Fn::If':
-                        - 'Fn::Equals':
+                    - Fn::If:
+                        - Fn::Equals:
                             - StartFirst
                             - '{{startFirstOrStopFirst}}'
                         - '{{ dailyStartTime }}'
                         - '{{ dailyStopTime }}'
-            - 'Fn::Select':
+            - Fn::Select:
                 - 0
-                - 'Fn::Split':
+                - Fn::Split:
                     - ':'
-                    - 'Fn::If':
-                        - 'Fn::Equals':
+                    - Fn::If:
+                        - Fn::Equals:
                             - StartFirst
                             - '{{startFirstOrStopFirst}}'
                         - '{{ dailyStartTime }}'
@@ -150,23 +137,23 @@ Tasks:
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
-    Action: 'ACS::SelectTargets'
+    Action: ACS::SelectTargets
     Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: '{{regionId}}'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: startInstanceFirst
-    Action: 'ACS::ECS::StartInstance'
+    Action: ACS::ECS::StartInstance
     Description:
       en: Starts the ECS instances
       zh-cn: 首先开启实例
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - StartFirst
         - '{{startFirstOrStopFirst}}'
     Properties:
@@ -176,28 +163,26 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
   - Name: sleepToStopTime
-    Action: 'ACS::Sleep'
+    Action: ACS::Sleep
     Description:
       en: Sleep to instance stop time
       zh-cn: 睡眠到实例停止时间
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - StartFirst
         - '{{startFirstOrStopFirst}}'
     Properties:
-      EndDate:
-        'Fn::FormatUTCTime':
-          - 'Fn::CalculateTimeByOpsWindow':
-              - '{{ dailyStopTime }}'
-              - '{{ dailyStopTime }}'
-          - '%Y-%m-%dT%H:%M:%SZ'
+      Duration:
+        Fn::DurationBetween:
+          - '{{ dailyStartTime }}'
+          - '{{ dailyStopTime }}'
   - Name: stopInstanceSecond
-    Action: 'ACS::ECS::StopInstance'
+    Action: ACS::ECS::StopInstance
     Description:
       en: Stops the ECS instances
       zh-cn: 停止实例
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - StartFirst
         - '{{startFirstOrStopFirst}}'
     Properties:
@@ -208,12 +193,12 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
   - Name: stopInstanceFirst
-    Action: 'ACS::ECS::StopInstance'
+    Action: ACS::ECS::StopInstance
     Description:
       en: Stop the ECS instances first
       zh-cn: 首先停止实例
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - StopFirst
         - '{{startFirstOrStopFirst}}'
     Properties:
@@ -224,28 +209,26 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
   - Name: sleepToStartTime
-    Action: 'ACS::Sleep'
+    Action: ACS::Sleep
     Description:
       en: Sleep to instance stop time
       zh-cn: 睡眠到实例开启时间
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - StopFirst
         - '{{startFirstOrStopFirst}}'
     Properties:
-      EndDate:
-        'Fn::FormatUTCTime':
-          - 'Fn::CalculateTimeByOpsWindow':
-              - '{{ dailyStopTime }}'
-              - '{{ dailyStopTime }}'
-          - '%Y-%m-%dT%H:%M:%SZ'
+      Duration:
+        Fn::DurationBetween:
+          - '{{ dailyStopTime }}'
+          - '{{ dailyStartTime }}'
   - Name: startInstance
-    Action: 'ACS::ECS::StartInstance'
+    Action: ACS::ECS::StartInstance
     Description:
       en: Starts the ECS instances
       zh-cn: 开启实例
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - StopFirst
         - '{{startFirstOrStopFirst}}'
     Properties:

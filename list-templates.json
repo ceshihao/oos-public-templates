@@ -3026,7 +3026,7 @@
       "CreatedDate": "2022-05-11T07:57:06Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开关机或者关开机\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "57baaf3237ec2c0c2c0a43d15f2b53feec9dbef6d1765f0858cb4d4a3d87261b",
+      "Hash": "776974a7e699c4598a978447bd13b731ab1d4f3aefa2910a426b0ea08ad24e34",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3035,10 +3035,10 @@
       "TemplateId": "t-e2502339692040a483b3",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-05-11T07:57:06Z"
+      "UpdatedDate": "2022-07-04T04:06:50Z"
     },
     {
       "Category": "TimerTrigger",
