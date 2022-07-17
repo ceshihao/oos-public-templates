@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky modify load balancer internet spec
-  zh-cn: 批量修改公网负载均衡实例的计费方式
+  zh-cn: 批量修改公网负载均衡实例的带宽
   name-en: ACS-SLB-BulkyModifyLoadBalancerInternetSpec
-  name-zh-cn: 批量修改公网负载均衡实例的计费方式
+  name-zh-cn: 批量修改公网负载均衡实例的带宽
   categories:
     - computenest
 Parameters:

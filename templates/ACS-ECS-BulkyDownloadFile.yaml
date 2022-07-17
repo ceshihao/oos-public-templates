@@ -7,11 +7,12 @@ Description:
   categories:
     - instance_manage
     - application_manage
+    - computenest
 Parameters:
   regionId:
     Type: String
     Label:
-      en: Region
+      en: RegionId
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'

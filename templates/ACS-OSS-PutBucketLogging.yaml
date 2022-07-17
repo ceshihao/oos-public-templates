@@ -9,26 +9,29 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   bucketName:
-    Description:
-      name-en: The bucket name
-      name-zh-cn: OSS bucket 名称
+    Label:
+      en: BucketName
+      zh-cn: OSS bucket 名称
     Type: String
   logPrefix:
+    Label:
+      en: LogPrefix
+      zh-cn: 日志文件前缀
     Description:
-      name-en: The prefix of the saved log objects. This element can be left empty
-      name-zh-cn: 指定保存的日志文件前缀，可以为空
+      en: The prefix of the saved log objects. This element can be left empty
+      zh-cn: 指定保存的日志文件前缀，可以为空
     Type: String
     Default: 'No'
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'

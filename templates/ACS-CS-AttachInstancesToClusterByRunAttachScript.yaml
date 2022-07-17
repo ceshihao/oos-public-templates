@@ -80,8 +80,8 @@ Tasks:
   - Name: runCommand
     Action: 'ACS::ECS::RunCommand'
     Description:
-      name-en: Execute cloud assistant command
-      name-zh-cn: 执行云助手命令
+      en: Execute cloud assistant command
+      zh-cn: 执行云助手命令
     Properties:
       regionId: '{{ regionId }}'
       commandContent: '{{ getAttachScript.attachScript }}'

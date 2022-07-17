@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 批量修改按量付费ECS实例的实例规格
   categories:
     - instance_manage
+    - computenest
 Parameters:
   regionId:
     Type: String
@@ -47,34 +48,34 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: getInstance
-    Description:
-      en: Views the ECS instances
-      zh-cn: 获取ECS实例
-    Action: 'ACS::SelectTargets'
-    Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
-      RegionId: '{{ regionId }}'
-      Filters:
-        - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
-  - Name: modifyPostPaidInstanceSpec
-    Action: 'ACS::ECS::ModifyInstanceSpec'
-    Description:
-      en: Modify the type of postpaid instance
-      zh-cn: 修改按量付费实例的实例规格
-    Properties:
-      regionId: '{{ regionId }}'
-      instanceId: '{{ ACS::TaskLoopItem }}'
-      instanceType: '{{ instanceType }}'
-    Loop:
-      RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+- Name: getInstance
+  Description:
+    en: Views the ECS instances
+    zh-cn: 获取ECS实例
+  Action: 'ACS::SelectTargets'
+  Properties:
+    ResourceType: 'ALIYUN::ECS::Instance'
+    RegionId: '{{ regionId }}'
+    Filters:
+      - '{{ targets }}'
+  Outputs:
+    instanceIds:
+      Type: List
+      ValueSelector: 'Instances.Instance[].InstanceId'
+- Name: modifyPostPaidInstanceSpec
+  Action: ACS::ECS::ModifyInstanceSpec
+  Description:
+    en: Modify the type of postpaid instance
+    zh-cn: 修改按量付费实例的实例规格
+  Properties:
+    regionId: '{{ regionId }}'
+    instanceId: '{{ ACS::TaskLoopItem }}'
+    instanceType: '{{ instanceType }}'
+  Loop:
+    RateControl: '{{ rateControl }}'
+    Items: '{{ getInstance.instanceIds }}'
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - instanceType
@@ -96,4 +97,3 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
-

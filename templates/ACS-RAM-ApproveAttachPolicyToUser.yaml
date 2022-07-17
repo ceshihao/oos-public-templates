@@ -8,56 +8,67 @@ Description:
     - security
 Parameters:
   policyType:
+    Label:
+      en: TpolicyType
+      zh-cn: 权限策略类型
     Description:
-      name-en: The ploicy type to add,the optioanl is Custom or System
-      name-zh-cn: 将授予的权限策略类型，可选类型为系统权限或自定义权限
+      en: The policy type to add, the optioanl is Custom or System
+      zh-cn: 将授予的权限策略类型，可选类型为系统权限或自定义权限
     Type: String
     AllowedValues:
       - Custom
       - System
   policyName:
-    Description:
-      name-en: The ploicy to add
-      name-zh-cn: 将授予的权限策略名称
+    Label:
+      en: PolicyName
+      zh-cn: 权限策略名称
     Type: String
   webHookUrl:
+    Label:
+      en: WebHookUrl
+      zh-cn: 钉钉群助手的webhook地址
     Description:
-      name-en: The webhook url of dingtalk group assistant
-      name-zh-cn: 钉钉群助手的webhook地址
       en: >-
-        e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414,acquiring DingTalk webhook please refer to second appendix in https://help.aliyun.com/document_detail/144679.html
+        e.g.https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414,acquiring DingTalk webhook please refer to second appendix in https://help.aliyun.com/document_detail/144679.html.
       zh-cn: >-
-        形如https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414，具体钉钉WebHook获取请参考https://help.aliyun.com/document_detail/144679.html#h2--2-webhook-5
+        形如https://oapi.dingtalk.com/robot/send?access_token=1234zxcvaksdq31414，具体钉钉WebHook获取请参考https://help.aliyun.com/document_detail/144679.html#h2--2-webhook-5。
     Type: String
   atMobiles:
+    Label:
+      en: AtMobiles
+      zn-cn: 钉钉手机号
     Description:
-      name-en: The dingtalk phone numbers of who be @ in notification,e.g.138ALBB1234
-      name-zh-cn: 审批通知中被@的群成员的钉钉手机号，比如138ALBB1234
+      en: The dingtalk phone numbers of who be @ in notification,e.g.138ALBB1234
+      zh-cn: 审批通知中被@的群成员的钉钉手机号，比如138ALBB1234
     Type: List
   atAll:
+    Label:
+      en: AtAll
+      zh-cn: 是否@所有人
     Description:
-      name-en: 'Whether assistant @ all members in dingtalk group or not notification comes'
-      name-zh-cn: 当群助手向钉钉群中发送审批通知时是否@所有人
+      en: 'Whether assistant @ all members in dingtalk group or not notification comes'
+      zh-cn: 当群助手向钉钉群中发送审批通知时是否@所有人
     Type: String
     Default: 'false'
   approvers:
+    Label:
+      en: Approvers
+      zh-cn: 可以审批授权的用户
     Description:
       en: The name to fill is the front part of @ in the RAM user name,if  RAM user is user001@companyAlias.onaliyun.com, then fill  user001  in list
       zh-cn: 用户名是RAM子用户名称中@前面的部分，比如RAM子用户为user001@companyAlias.onaliyun.com,那么列表中填写user001即可
-      name-en: The names of users that have the authority to approve task
-      name-zh-cn: 可以审批任务的用户
     Type: List
     AssociationProperty: ALIYUN::RAM::User
   minRequiredApprovals:
-    Description:
-      name-en: The min required count of approvals
-      name-zh-cn: 最低需要通过审批的数量
+    Label:
+      en: MinRequiredApprovals
+      zh-cn: 最低需要通过审批的数量
     Type: Number
     Default: 1
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'

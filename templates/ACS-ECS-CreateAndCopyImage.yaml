@@ -193,8 +193,8 @@ Tasks:
 - Name: whetherCloneToAllRegions
   Action: 'ACS::Choice'
   Description:
-    name-en: Choose next task by targetRegionIds Chosen
-    name-zh-cn: 根据所选目的地域判断下一步执行
+    en: Choose next task by targetRegionIds Chosen
+    zh-cn: 根据所选目的地域判断下一步执行
   Properties:
     DefaultTask: copyImage
     Choices:
@@ -207,8 +207,8 @@ Tasks:
   Action: 'ACS::ECS::CopyImage'
   OnSuccess: whetherToShareImage
   Description:
-    name-en: Copy image to regions chosen
-    name-zh-cn: 复制镜像到被指定的地域
+    en: Copy image to regions chosen
+    zh-cn: 复制镜像到被指定的地域
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ createImage.imageId }}'
@@ -228,8 +228,8 @@ Tasks:
 - Name: copyImageToAllRegions
   Action: 'ACS::ECS::CopyImage'
   Description:
-    name-en: Copy image to all available regions
-    name-zh-cn: 复制镜像到所有可用地域
+    en: Copy image to all available regions
+    zh-cn: 复制镜像到所有可用地域
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ createImage.imageId }}'
@@ -249,8 +249,8 @@ Tasks:
 - Name: whetherToShareImage
   Action: 'ACS::Choice'
   Description:
-    name-en: Choose next task by accountIds
-    name-zh-cn: 根据输入账户值判断下一步执行
+    en: Choose next task by accountIds
+    zh-cn: 根据输入账户值判断下一步执行
   Properties:
     DefaultTask: shareImage
     Choices:
@@ -262,8 +262,8 @@ Tasks:
 - Name: shareImage
   Action: 'ACS::ExecuteAPI'
   Description:
-    name-en: Shares a custom image to other Alibaba Cloud accounts
-    name-zh-cn: 共享自定义镜像到其他阿里云账号
+    en: Shares a custom image to other Alibaba Cloud accounts
+    zh-cn: 共享自定义镜像到其他阿里云账号
   Properties:
     Service: ECS
     API: ModifyImageSharePermission
@@ -275,8 +275,8 @@ Tasks:
   Action: 'ACS::ExecuteAPI'
   OnError: ACS::NEXT
   Description:
-    name-en: Modify scaling configuration
-    name-zh-cn: 修改伸缩配置
+    en: Modify scaling configuration
+    zh-cn: 修改伸缩配置
   Properties:
     Service: ESS
     API: ModifyScalingConfiguration
@@ -289,8 +289,8 @@ Tasks:
 - Name: updateLaunchTemplate
   Action: 'ACS::ECS::UpdateLaunchTemplate'
   Description:
-    name-en: Update instance launch template
-    name-zh-cn: 更新实例启动模版
+    en: Update instance launch template
+    zh-cn: 更新实例启动模版
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ createImage.imageId }}'

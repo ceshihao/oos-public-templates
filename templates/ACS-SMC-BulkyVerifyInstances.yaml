@@ -7,21 +7,24 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of target region
-      name-zh-cn: 将创建资源的目标地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
     Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
   commandType:
-    Description:
-      name-en: The type of command
-      name-zh-cn: 实例自定义检查云助手命令类型
+    Label:
+      en: CommandType
+      zh-cn: 云助手命令类型
     Type: String
     AllowedValues:
       - RunBatScript
@@ -29,28 +32,28 @@ Parameters:
       - RunShellScript
     Default: RunShellScript
   commandContent:
-    Description:
-      name-en: Custome instance check command content
-      name-zh-cn: 实例自定义检查云助手命令内容
+    Label:
+      en: CommandContent
+      zh-cn: 云助手命令
     Type: String
     AssociationProperty: Code
     Default: ''
   timeout:
-    Description:
-      name-en: Timeout for executing script
-      name-zh-cn: 执行脚本的超时时间
+    Label:
+      en: Timeout
+      zh-cn: 执行命令的超时时间
     Type: Number
     Default: 600
   workingDir:
-    Description:
-      name-en: The directory where the created command runs on the ECS instances
-      name-zh-cn: 在实例中运行命令的目录
+    Label:
+      en: WorkingDir
+      zh-cn: 运行命令的目录
     Type: String
     Default: ''
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution
-      name-zh-cn: 任务执行的并发比率
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -58,9 +61,9 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'

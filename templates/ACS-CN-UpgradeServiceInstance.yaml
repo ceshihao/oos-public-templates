@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Label:
-      en: Region
-      zh-cn: 地域
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   serviceInstanceId:
@@ -31,10 +31,7 @@ Parameters:
       en: UpgradeData of upgrading service instance
       zh-cn: 服务实例更新配置
     Description:
-      zh-cn: >-
-        upgradeStep包括参数
-        Description/ApplicationGroupName/Type/ArtifactsDownloadDirectory/ArtifactsUrl/CommandType/Parameters/CommandContent/ImageId
-        等, 通过Json格式传入
+      zh-cn: upgradeStep包括参数 Description/ApplicationGroupName/Type/ArtifactsDownloadDirectory/ArtifactsUrl/CommandType/Parameters/CommandContent/ImageId 等, 通过Json格式传入
   rateControl:
     Label:
       en: RateControl
@@ -54,62 +51,60 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: determineUpgradeServiceInstanceTypeAndPerformUpgrade
-    Action: 'ACS::CN::DetermineUpgradeServiceInstanceTypeAndPerformUpgrade'
+    Action: ACS::CN::DetermineUpgradeServiceInstanceTypeAndPerformUpgrade
     Description:
-      en: >-
-        Determine computeNest service instance‘s upgrade type and perform the
-        upgrade
-      zh-cn: '通过Type判断服务实例升级类型并执行对应升级操作, 循环获取upgradeSteps（升级步骤）中的每一个步骤的参数'
+       en: Determine computeNest service instance‘s upgrade type and perform the upgrade
+       zh-cn: 通过Type判断服务实例升级类型并执行对应升级操作, 循环获取upgradeSteps（升级步骤）中的每一个步骤的参数
     Properties:
       regionId: '{{ regionId }}'
       serviceInstanceId: '{{ serviceInstanceId }}'
       resourceName:
-        'Fn::Select':
+        Fn::Select:
           - ResourceName
           - '{{ ACS::TaskLoopItem }}'
       applicationGroupName:
-        'Fn::Select':
+        Fn::Select:
           - ApplicationGroupName
           - '{{ ACS::TaskLoopItem }}'
       artifactsUrl:
-        'Fn::If':
-          - 'Fn::Equals':
+        Fn::If:
+          - Fn::Equals:
               - ''
               - '{{ artifactsUrl }}'
-          - 'Fn::Select':
+          - Fn::Select:
               - ArtifactsUrl
               - '{{ ACS::TaskLoopItem }}'
           - '{{ artifactsUrl }}'
       artifactsDownloadDirectory:
-        'Fn::Select':
+        Fn::Select:
           - ArtifactsDownloadDirectory
           - '{{ ACS::TaskLoopItem }}'
       commandType:
-        'Fn::Select':
+        Fn::Select:
           - CommandType
           - '{{ ACS::TaskLoopItem }}'
       commandContent:
-        'Fn::Select':
+        Fn::Select:
           - CommandContent
           - '{{ ACS::TaskLoopItem }}'
       enableParameter: true
       parameters:
-        'Fn::Select':
+        Fn::Select:
           - Parameters
           - '{{ ACS::TaskLoopItem }}'
       imageId:
-        'Fn::Select':
+        Fn::Select:
           - ImageId
           - '{{ ACS::TaskLoopItem }}'
       type:
-        'Fn::Select':
+        Fn::Select:
           - Type
           - '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ upgradeSteps }}'
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - upgradeSteps

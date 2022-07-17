@@ -3,7 +3,7 @@ Description:
   en: Bulky modify access control list entry
   zh-cn: 批量修改访问控制策略组中的IP条目
   name-en: ACS-SLB-BulkyModifyAccessControlListEntry
-  name-zh-cn: 批量修改访问控制策略组中的IP条目
+  name-zh-cn: 批量修改负载均衡访问控制策略组中的IP条目
   categories:
     - computenest
 Parameters:

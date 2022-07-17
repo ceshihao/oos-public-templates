@@ -18,6 +18,9 @@ Parameters:
     Label:
       en: InstanceId
       zh-cn: RDS实例ID
+    AssociationProperty: ALIYUN::RDS::Instance::InstanceId
+    AssociationPropertyMetadata:
+      RegionId: regionId
     Type: String
   OOSAssumeRole:
     Label:

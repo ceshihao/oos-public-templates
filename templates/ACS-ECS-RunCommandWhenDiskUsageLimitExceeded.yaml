@@ -55,8 +55,8 @@ Parameters:
   silenceTime:
     Type: Number
     Description:
-      name-en: When the monitoring data continues to exceed the alarm rule threshold, only one alarm notification will be sent in each silent period
-      name-zh-cn: 当监控数据持续超过报警规则阈值时，每个沉默周期内只发送1次报警通知
+      en: When the monitoring data continues to exceed the alarm rule threshold, only one alarm notification will be sent in each silent period
+      zh-cn: 当监控数据持续超过报警规则阈值时，每个沉默周期内只发送1次报警通知
     Label:
       en: CilenceTime
       zh-cn: 告警通道沉默周期（秒）

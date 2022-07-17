@@ -8,22 +8,22 @@ Description:
     - elastic_manage
 Parameters:
   invokeType:
-    Description:
-      name-en: The type of invoke
-      name-zh-cn: 执行操作类型
+    Label:
+      en: InvokeType
+      zh-cn: 操作类型
     Type: String
     AllowedValues:
       - invoke
       - rollback
   scalingGroupId:
-    Description:
-      name-en: The id of scaling group
-      name-zh-cn: 伸缩组ID
+    Label:
+      en: ScalingGroupId
+      zh-cn: 伸缩组ID
     Type: String
   enterProcess:
-    Description:
-      name-en: The enter process of scaling group
-      name-zh-cn: 执行开始要暂停的伸缩组流程
+    Label:
+      en: EnterProcess
+      zh-cn: 执行开始要暂停的伸缩组流程
     Type: List
     Default:
       - ScaleIn
@@ -32,9 +32,9 @@ Parameters:
       - AlarmNotification
       - ScheduledAction
   exitProcess:
-    Description:
-      name-en: The exit process of scaling group
-      name-zh-cn: 执行结束要恢复的伸缩组流程
+    Label:
+      en: ExitProcess
+      zh-cn: 执行结束要恢复的伸缩组流程
     Type: List
     Default:
       - ScaleIn
@@ -43,33 +43,33 @@ Parameters:
       - AlarmNotification
       - ScheduledAction
   imageId:
-    Description:
-      name-en: The id of image
-      name-zh-cn: 执行操作的目标镜像id
+    Label:
+      en: InvokeImageId
+      zh-cn: 用于更新的镜像
     Type: String
     Default: ''
   sourceImageId:
-    Description:
-      name-en: The id of source image
-      name-zh-cn: 回滚操作执行的目标镜像
+    Label:
+      en: RollbackImageId
+      zh-cn: 用于回滚的镜像
     Type: String
     Default: ''
   sourceExecutionId:
-    Description:
-      name-en: The id of source execution
-      name-zh-cn: 回滚操作执行的目标OOS执行ID
+    Label:
+      en: SourceExecutionId
+      zh-cn: 用于回滚的OOS执行ID
     Type: String
     Default: ''
   scalingConfigurationId:
-    Description:
-      name-en: The ID of the scaling configuration to be modified
-      name-zh-cn: 待修改的伸缩配置ID
+    Label:
+      en: ScalingConfigurationId
+      zh-cn: 伸缩配置ID
     Type: String
     Default: ''
   batchPauseOption:
-    Description:
-      name-en: The type of batches in batch execution
-      name-zh-cn: 分批模式
+    Label:
+      en: BatchPauseOption
+      zh-cn: 分批模式
     Type: String
     AllowedValues:
       - Automatic
@@ -77,23 +77,23 @@ Parameters:
       - EveryBatchPause
     Default: Automatic
   batchNumber:
-    Description:
-      name-en: The number of batches in batch execution
-      name-zh-cn: 分批执行中的批次
+    Label:
+      en: BatchNumber
+      zh-cn: 分批执行的批次
     Type: Number
     MinValue: 1
     MaxValue: 100
     Default: 5
   maxErrors:
-    Description:
-      name-en: Maximum number of errors in rolling upgrade
-      name-zh-cn: 滚动升级中的最大错误次数
+    Label:
+      en: MaxErrors
+      zh-cn: 分批执行的最大错误次数
     Type: Number
     Default: 0
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -129,16 +129,14 @@ Tasks:
   - Name: whetherTheScalingGroupInstanceIsEmpty
     Action: 'ACS::Choice'
     Description:
-      en: >-
-        Check whether the instances in the services in the scaling group are
-        empty
+      en: Check whether the instances in the services in the scaling group are empty
       zh-cn: 检查伸缩组内服务中的实例是否为空
     Properties:
       DefaultTask: whetherTosuspendProcess
       Choices:
         - When:
             'Fn::Equals':
-              - []
+              - [ ]
               - '{{ getInstance.instanceIds }}'
           NextTask: 'ACS::END'
   - Name: whetherTosuspendProcess
@@ -215,7 +213,7 @@ Tasks:
         Type: String
         ValueSelector: newSystemDiskId
   - Name: tagInstance
-    Action: 'ACS::ExecuteApi'
+    Action: ACS::ExecuteApi
     Description:
       en: Creates and attaches tag to ECS instance
       zh-cn: 创建并挂载标签到ECS实例
@@ -227,8 +225,8 @@ Tasks:
           - '{{ ACS::TaskLoopItem }}'
         ResourceType: Instance
         Tags:
-          - Key: 'ess:rollingupdate'
-            Value: 'oos:{{ ACS::ExecutionId }}'
+        - Key: 'ess:rollingupdate'
+          Value: 'oos:{{ ACS::ExecutionId }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       Mode: Concurrency
@@ -277,16 +275,16 @@ Tasks:
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
-    Action: 'ACS::SelectTargets'
+    Action: ACS::SelectTargets
     Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       Filters:
         - Type: ResourceIds
           ResourceIds: '{{ getExecutionInstanceIds.instanceIds }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: getRollbackProcess
     Action: 'ACS::ExecuteAPI'
     Description:

@@ -8,7 +8,7 @@ Parameters:
   regionId:
     Label:
       en: RegionId
-      zh-cn: 地域
+      zh-cn: 地域ID
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'

@@ -9,8 +9,8 @@ Description:
 Parameters:
   regionId:
     Label:
-      en: The region id of instances
-      zh-cn: 实例所在地域ID
+      en: RegionId
+      zh-cn: 地域ID
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'

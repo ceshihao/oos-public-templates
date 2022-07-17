@@ -92,8 +92,8 @@ Tasks:
   - Name: checkResourceUsage
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose the notification task by usage
-      name-zh-cn: 通过使用率选择通知任务
+      en: Choose the notification task by usage
+      zh-cn: 通过使用率选择通知任务
     Properties:
       DefaultTask: 'ACS::END'
       Choices:
@@ -141,8 +141,8 @@ Tasks:
     Action: 'ACS::Notify'
     OnSuccess: 'ACS::END'
     Description:
-      name-en: Resource usage exceeds threshold alarm notification
-      name-zh-cn: 资源使用率超出阈值报警通知
+      en: Resource usage exceeds threshold alarm notification
+      zh-cn: 资源使用率超出阈值报警通知
     Properties:
       NotifyType: WebHook
       WebHook:

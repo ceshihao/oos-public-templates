@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Put the bucket policy.
-  zh-cn: 设置存储空间授权策略。
+  en: Put the bucket policy
+  zh-cn: 设置存储空间授权策略
   name-en: ACS-OSS-PutBucketPolicy
   name-zh-cn: 设置存储空间授权策略
   categories:
@@ -9,25 +9,28 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description: The id of target region.
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   bucketName:
-    Description:
-      name-en: The OSS bucket name.
-      name-zh-cn: OSS bucket 名称。
+    Label:
+      en: BucketName
+      zh-cn: OSS bucket 名称
     Type: String
   bucketPolicy:
+    Label:
+      en: BucketPolicy
+      zh-cn: 存储空间授权策略
     Description:
-      name-en: The bucket policy
-      name-zh-cn: 存储空间授权策略
       en: (for example:{"Version":"1","Statement":[{"Action":["oss:PutObject","oss:GetObject"],"Effect":"Deny","Principal":["1234567890"],"Resource":["acs:oss:*:1234567890:*/*"]}]}).
       zh-cn: （例子：{"Version":"1","Statement":[{"Action":["oss:PutObject","oss:GetObject"],"Effect":"Deny","Principal":["1234567890"],"Resource":["acs:oss:*:1234567890:*/*"]}]}）。
     Type: Json
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -35,8 +38,8 @@ Tasks:
   - Name: putBucketPolicy
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Put the bucket policy.
-      name-zh-cn: 设置存储空间的授权策略。
+      en: Put the bucket policy
+      zh-cn: 设置存储空间的授权策略
     Properties:
       Service: OSS
       API: PutBucketPolicy
@@ -52,8 +55,8 @@ Tasks:
   - Name: waitBucketPolicy
     Action: 'ACS::WaitFor'
     Description:
-      name-en: Wait for the authorization policy of the storage space to take effect.
-      name-zh-cn: 等待存储空间的授权策略生效。
+      en: Wait for the authorization policy of the storage space to take effect
+      zh-cn: 等待存储空间的授权策略生效
     Properties:
       Service: OSS
       API: GetBucketPolicy

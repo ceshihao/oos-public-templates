@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and updates scaling configuration image ID.
-  zh-cn: 通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并更新伸缩配置中的镜像ID。
+  en: Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and updates scaling configuration image ID
+  zh-cn: 通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并更新伸缩配置中的镜像ID
   name-en: ACS-ESS-UpdateScalingConfigurationImage
   name-zh-cn: 更新弹性伸缩配置镜像
   categories:
@@ -9,45 +9,45 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region.
-      name-zh-cn: 地域ID。
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targetImageName:
-    Description:
-      name-en: The name of new image.
-      name-zh-cn: 新镜像的名称。
+    Label:
+      en: NewImageName
+      zh-cn: 新镜像的名称
     Type: String
     Default: UpdateImage_from_{{ sourceImageId }}_on_{{ ACS::ExecutionId }}
   sourceImageId:
-    Description:
-      name-en: The image ID for the ECS instance.
-      name-zh-cn: 源镜像ID。
+    Label:
+      en: SourceImageId
+      zh-cn: 源镜像ID
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
   instanceType:
-    Description:
-      name-en: The instance type for the ECS instances.
-      name-zh-cn: 实例类型。
+    Label:
+      en: InstanceType
+      zh-cn: ECS实例类型
     Type: String
     AssociationProperty: 'ALIYUN::ECS::Instance::InstanceType'
     AllowedPattern: ecs\.[A-Za-z0-9\.\-]*
     Default: 'ecs.g5.large'
   securityGroupId:
-    Description:
-      name-en: The security group ID for the ECS instances.
-      name-zh-cn: 安全组ID。
+    Label:
+      en: SecurityGroupId
+      zh-cn: 安全组ID
     Type: String
     AssociationProperty: 'ALIYUN::ECS::SecurityGroup::SecurityGroupId'
     AssociationPropertyMetadata:
       RegionId: regionId
   vSwitchId:
-    Description:
-      name-en: The virtual switch ID for the ECS instances。
-      name-zh-cn: 交换机ID。
+    Label:
+      en: VSwitchId
+      zh-cn: 交换机ID
     Type: String
     AssociationProperty: 'ALIYUN::VPC::VSwitch::VSwitchId'
     AssociationPropertyMetadata:
@@ -55,9 +55,9 @@ Parameters:
       Filters:
         - SecurityGroupId: securityGroupId
   commandType:
-    Description:
-      name-en: The type of command.
-      name-zh-cn: 云助手命令类型。
+    Label:
+      en: CommandType
+      zh-cn: 云助手命令类型
     Type: String
     AllowedValues:
       - RunBatScript
@@ -65,31 +65,29 @@ Parameters:
       - RunShellScript
     Default: RunShellScript
   commandContent:
-    Description:
-      name-en: Command content to run in ECS instance.
-      name-zh-cn: 在ECS实例中执行的云助手命令。
+    Label:
+      en: CommandContent
+      zh-cn: 云助手命令
     Type: String
     AssociationProperty: Code
   scalingConfigurationIds:
-    Description:
-      name-en: The ID list of the scaling configuration to be modified.
-      name-zh-cn: 待修改的伸缩配置IDs。
+    Label:
+      en: ScalingConfigurationIds
+      zh-cn: 待修改的伸缩配置ID列表
     Type: List
-
   tags:
-    Description:
-      name-en: The image tag.
-      name-zh-cn: 镜像标签。
+    Label:
+      en: ImageTags
+      zh-cn: 镜像标签
     Type: Json
     AssociationProperty: Tags
     AssociationPropertyMetadata:
       ShowSystem: false
     Default: []
-
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -97,8 +95,8 @@ Tasks:
 - Name: checkNewImageName
   Action: ACS::CheckFor
   Description:
-    name-en: Check image name is available.
-    name-zh-cn: 检查镜像名称是可用的。
+    en: Check image name is available
+    zh-cn: 检查镜像名称是可用的
   Properties:
     Service: ECS
     API: DescribeImages
@@ -111,8 +109,8 @@ Tasks:
 - Name: runInstances
   Action: ACS::ECS::RunInstances
   Description:
-    name-en: Create a ECS instance with source image.
-    name-zh-cn: 用源镜像创建一台ECS实例。
+    en: Create a ECS instance with source image
+    zh-cn: 用源镜像创建一台ECS实例
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ sourceImageId }}'
@@ -126,8 +124,8 @@ Tasks:
 - Name: installCloudAssistant
   Action: ACS::ECS::InstallCloudAssistant
   Description:
-    name-en: Install cloud assostant for ECS instance.
-    name-zh-cn: 给实例安装云助手。
+    en: Install cloud assostant for ECS instance
+    zh-cn: 给实例安装云助手
   OnError: deleteInstance
   Properties:
     regionId: '{{ regionId }}'
@@ -135,8 +133,8 @@ Tasks:
 - Name: runCommand
   Action: ACS::ECS::RunCommand
   Description:
-    name-en: Run cloud assostant command on ECS instance.
-    name-zh-cn: 在实例中运行云助手命令。
+    en: Run cloud assostant command on ECS instance
+    zh-cn: 在实例中运行云助手命令
   OnError: deleteInstance
   Properties:
     regionId: '{{ regionId }}'
@@ -146,16 +144,16 @@ Tasks:
 - Name: stopInstance
   Action: ACS::ECS::StopInstance
   Description:
-    name-en: Stops the ECS instance.
-    name-zh-cn: 停止ECS实例。
+    en: Stops the ECS instance
+    zh-cn: 停止ECS实例
   Properties:
     regionId: '{{ regionId }}'
     instanceId: '{{ runInstances.instanceId }}'
 - Name: createImage
   Action: ACS::ECS::CreateImage
   Description:
-    name-en: Create new image with the specified image name and instance ID.
-    name-zh-cn: 通过指定实例ID和镜像名称创建新的镜像。
+    en: Create new image with the specified image name and instance ID
+    zh-cn: 通过指定实例ID和镜像名称创建新的镜像
   OnError: deleteInstance
   Properties:
     regionId: '{{ regionId }}'
@@ -169,8 +167,8 @@ Tasks:
 - Name: deleteInstance
   Action: ACS::ExecuteAPI
   Description:
-    name-en: Deletes the ECS instance.
-    name-zh-cn: 删除ECS实例。
+    en: Deletes the ECS instance
+    zh-cn: 删除ECS实例
   Properties:
     Service: ECS
     API: DeleteInstance
@@ -182,8 +180,8 @@ Tasks:
 - Name: modifyScalingConfiguration
   Action: ACS::ExecuteAPI
   Description:
-    name-en: Modify scaling configuration.
-    name-zh-cn: 修改伸缩配置。
+    en: Modify scaling configuration
+    zh-cn: 修改伸缩配置
   Properties:
     Service: ESS
     API: ModifyScalingConfiguration

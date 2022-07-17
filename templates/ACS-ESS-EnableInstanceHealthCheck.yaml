@@ -8,21 +8,21 @@ Description:
     - elastic_manage
 Parameters:
   regionId:
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
     Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   scalingGroupId:
-    Description:
-      name-en: The ID of the flex group to be modified
-      name-zh-cn: 待修改伸缩组的ID
+    Label:
+      en: ScalingGroupId
+      zh-cn: 待修改伸缩组的ID
     Type: String
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -30,8 +30,8 @@ Tasks:
   - Name: checkForScalingGroupAvalible
     Action: 'ACS::CheckFor'
     Description:
-      name-en: Check weather the Scaling Group is avaliable
-      name-zh-cn: 检查伸缩组状态是否可用
+      en: Check weather the Scaling Group is avaliable
+      zh-cn: 检查伸缩组状态是否可用
     Properties:
       Service: ESS
       API: DescribeScalingGroups
@@ -45,8 +45,8 @@ Tasks:
   - Name: modifyScalingGroup
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Modify the health check status of the ECS flex group
-      name-zh-cn: 修改ECS伸缩组的健康检查状态
+      en: Modify the health check status of the ECS flex group
+      zh-cn: 修改ECS伸缩组的健康检查状态
     Properties:
       Service: ESS
       API: ModifyScalingGroup

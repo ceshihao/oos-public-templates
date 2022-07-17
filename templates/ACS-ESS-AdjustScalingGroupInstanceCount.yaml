@@ -23,6 +23,7 @@ Description:
   categories:
     - elastic_manage
     - application_manage
+    - computenest
 Parameters:
   regionId:
     Type: String
@@ -60,7 +61,7 @@ Parameters:
     MaxValue: 100
   OOSAssumeRole:
     Label:
-      en: The RAM role to be assumed by OOS
+      en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole

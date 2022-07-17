@@ -9,32 +9,32 @@ Description:
 Parameters:
   regionId:
     Type: String
-    Description:
-      name-en: The id of region
-      name-zh-cn: 地域ID
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   userNames:
     Type: List
-    Description:
-      name-en: The name of the RAM user
-      name-zh-cn: 指定用户名
+    Label:
+      en: UserNames
+      zh-cn: 用户名列表
   MFABindRequired:
     Type: Boolean
-    Description:
-      name-en: Whether a MFA device must be attached to the RAM user upon logon
-      name-zh-cn: 用户在下次登录时是否必须绑定多因素认证设备
+    Label:
+      en: MFABindRequired
+      zh-cn: 用户在下次登录时是否必须绑定多因素认证设备
     Default: true
   passwordResetRequired:
     Type: Boolean
-    Description:
-      name-en: Whether the RAM user must change the password upon logon
-      name-zh-cn: 用户在登录时是否需要修改密码
+    Label:
+      en: PasswordResetRequired
+      zh-cn: 用户在登录时是否需要修改密码
     Default: false
   rateControl:
-    Description:
-      name-en: Concurrency ratio of task execution
-      name-zh-cn: 任务执行的并发比率
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
     Type: Json
     AssociationProperty: RateControl
     Default:
@@ -42,9 +42,9 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS
-      name-zh-cn: OOS扮演的RAM角色
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
@@ -52,8 +52,8 @@ Tasks:
   - Name: updateLoginProfile
     Action: 'ACS::ExecuteApi'
     Description:
-      name-en: Modifies the logon configurations of a RAM user
-      name-zh-cn: 修改指定RAM用户的控制台登录信息
+      en: Modifies the logon configurations of a RAM user
+      zh-cn: 修改指定RAM用户的控制台登录信息
     Properties:
       Service: RAM
       API: UpdateLoginProfile

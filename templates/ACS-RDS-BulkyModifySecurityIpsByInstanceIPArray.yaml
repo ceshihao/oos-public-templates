@@ -8,23 +8,23 @@ Description:
     - security
 Parameters:
   regionId:
-    Description:
-      name-en: region id of instances
-      name-zh-cn: 实例所在地域ID
     Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   instanceId:
-    Description:
-      name-en: The id of rds instances
-      name-zh-cn: rds实例ID
-    Type: String
+    Label:
+      en: InstanceId
+      zh-cn: RDS实例ID
     AssociationProperty: ALIYUN::RDS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
+    Type: String
   OOSAssumeRole:
-    Description:
-      en: The RAM role to be assumed by OOS
+    Label:
+      en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole

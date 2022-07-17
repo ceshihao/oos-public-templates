@@ -26,8 +26,8 @@ Parameters:
     Default: install
   overwrite:
     Description:
-      name-en: If Logtail exists in the instance, choose whether to overwrite Logtail(Default no).
-      name-zh-cn: 如果实例内存在Logtail时，选择是否覆盖Logtail(默认不覆盖)
+      en: If Logtail exists in the instance, choose whether to overwrite Logtail(Default no).
+      zh-cn: 如果实例内存在Logtail时，选择是否覆盖Logtail(默认不覆盖)
     Label:
       en: Overwrite
       zh-cn: 是否覆盖Logtail

@@ -1,14 +1,14 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Create SAE application and bind them to SLB.
-  zh-cn: 创建SAE应用并为应用绑定SLB。
+  en: Create SAE application and bind them to SLB
+  zh-cn: 创建SAE应用并为应用绑定SLB
   name-en: ACS-SAE-CreateDemoApp
   name-zh-cn: 创建SAE应用
 Parameters:
   applicationInfos:
-    Description:
-      name-en: The info of SAE applications.
-      name-zh-cn: SAE应用信息。
+    Label:
+      en: SAEApplicationInfos
+      zh-cn: SAE应用信息
     Type: Json
     Default:
       - appName: appName
@@ -17,8 +17,8 @@ Tasks:
   - Name: createApplications
     Action: 'ACS::SAE::CreateApplication'
     Description:
-      name-en: Create SAE application.
-      name-zh-cn: 创建SAE应用。
+      en: Create SAE application
+      zh-cn: 创建SAE应用
     Properties:
       applicationInfo: '{{ ACS::TaskLoopItem }}'
     Loop:
@@ -38,8 +38,8 @@ Tasks:
   - Name: bindSlb
     Action: 'ACS::ExecuteApi'
     Description:
-      name-en: Bind app to SLB.
-      name-zh-cn: 为应用绑定SLB。
+      en: Bind app to SLB
+      zh-cn: 为应用绑定SLB
     Properties:
       Service: SAE
       API: BindSlb
@@ -56,8 +56,8 @@ Tasks:
   - Name: describeBindSlbChangeOrder
     Action: 'ACS::WaitFor'
     Description:
-      name-en: Waits for the APP bind to SLB.
-      name-zh-cn: 等待应用成功绑定SLB。
+      en: Waits for the APP bind to SLB
+      zh-cn: 等待应用成功绑定SLB
     Properties:
       Service: SAE
       API: DescribeChangeOrder

@@ -1,29 +1,29 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Rolling update ECS instances that in scaling group by run command.
-  zh-cn: 通过执行命令的方式滚动更新伸缩组内的ECS实例。
+  en: Rolling update ECS instances that in scaling group by run command
+  zh-cn: 通过执行命令的方式滚动更新伸缩组内的ECS实例
   name-en: ACS-ESS-RollingUpdateByRunCommandInScalingGroup
   name-zh-cn: 通过执行命令的方式滚动更新伸缩组内的ECS实例
   categories:
     - elastic_manage
 Parameters:
   invokeType:
-    Description:
-      name-en: The type of invoke.
-      name-zh-cn: 执行操作类型.
+    Label:
+      en: InvokeType
+      zh-cn: 操作类型
     Type: String
     AllowedValues:
       - invoke
       - rollback
   scalingGroupId:
-    Description:
-      name-en: The id of scaling group.
-      name-zh-cn: 伸缩组ID。
+    Label:
+      en: ScalingGroupId
+      zh-cn: 伸缩组ID
     Type: String
   enterProcess:
-    Description:
-      name-en: The enter process of scaling group.
-      name-zh-cn: 执行开始要暂停的伸缩组流程。
+    Label:
+      en: EnterProcess
+      zh-cn: 执行开始要暂停的伸缩组流程
     Type: List
     Default:
       - ScaleIn
@@ -32,9 +32,9 @@ Parameters:
       - AlarmNotification
       - ScheduledAction
   exitProcess:
-    Description:
-      name-en: The exit process of scaling group.
-      name-zh-cn: 执行结束要恢复的伸缩组流程。
+    Label:
+      en: ExitProcess
+      zh-cn: 执行结束要恢复的伸缩组流程
     Type: List
     Default:
       - ScaleIn
@@ -43,9 +43,9 @@ Parameters:
       - AlarmNotification
       - ScheduledAction
   commandType:
-    Description:
-      name-en: The type of command.
-      name-zh-cn: 云助手命令类型。
+    Label:
+      en: CommandType
+      zh-cn: 命令类型
     Type: String
     AllowedValues:
       - RunBatScript
@@ -53,27 +53,27 @@ Parameters:
       - RunShellScript
     Default: RunShellScript
   invokeScript:
-    Description:
-      name-en: The script of task to invoke.
-      name-zh-cn: 执行操作触发的脚本。
+    Label:
+      en: InvokeScript
+      zh-cn: 用于执行的脚本
     Type: String
     Default: ''
   rollbackScript:
-    Description:
-      name-en: The script of task to rollback.
-      name-zh-cn: 回滚操作执行的脚本
+    Label:
+      en: RollbackScript
+      zh-cn: 用于回滚的脚本
     Type: String
     Default: ''
   sourceExecutionId:
-    Description:
-      name-en: The id of source execution.
-      name-zh-cn: 回滚操作执行的目标OOS执行ID。
+    Label:
+      en: SourceExecutionId
+      zh-cn: 用于回滚的OOS执行ID
     Type: String
     Default: ''
   batchPauseOption:
-    Description:
-      name-en: The type of batches in batch execution.
-      name-zh-cn: 分批模式。
+    Label:
+      en: BatchPauseOption
+      zh-cn: 分批模式
     Type: String
     AllowedValues:
       - Automatic
@@ -81,24 +81,24 @@ Parameters:
       - EveryBatchPause
     Default: Automatic
   batchNumber:
-    Description:
-      name-en: The number of batches in batch execution.
-      name-zh-cn: 分批执行中的批次。
+    Label:
+      en: BatchNumber
+      zh-cn: 分批执行的批次
     Type: Number
     MinValue: 1
     MaxValue: 100
     Default: 5
   OOSAssumeRole:
-    Description:
-      name-en: The RAM role to be assumed by OOS.
-      name-zh-cn: OOS扮演的RAM角色。
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
     Type: String
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: choiceNextTask
     Action: 'ACS::Choice'
-    Description: Choose next task by invoke type.
+    Description: Choose next task by invoke type
     Properties:
       DefaultTask: getInstance
       Choices:
@@ -109,8 +109,8 @@ Tasks:
           NextTask: getExecutionInstanceIds
   - Name: getInstance
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: 'ACS::ExecuteApi'
     Properties:
       Service: ESS
@@ -125,8 +125,8 @@ Tasks:
   - Name: whetherTheScalingGroupInstanceIsEmpty
     Action: 'ACS::Choice'
     Description:
-      name-en: Check whether the instances in the services in the scaling group are empty.
-      name-zh-cn: 检查伸缩组内服务中的实例是否为空。
+      en: Check whether the instances in the services in the scaling group are empty
+      zh-cn: 检查伸缩组内服务中的实例是否为空
     Properties:
       DefaultTask: whetherTosuspendProcess
       Choices:
@@ -138,8 +138,8 @@ Tasks:
   - Name: whetherTosuspendProcess
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by process.
-      name-zh-cn: 根据流程值判断是否暂停流程。
+      en: Choose next task by process
+      zh-cn: 根据流程值判断是否暂停流程
     Properties:
       DefaultTask: suspendProcess
       Choices:
@@ -151,8 +151,8 @@ Tasks:
   - Name: suspendProcess
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Suspend process.
-      name-zh-cn: 暂停伸缩组流程。
+      en: Suspend process
+      zh-cn: 暂停伸缩组流程
     Properties:
       Service: ESS
       API: SuspendProcesses
@@ -162,8 +162,8 @@ Tasks:
   - Name: invokeByRunCommand
     Action: 'ACS::ESS::RunCommand'
     Description:
-      name-en: Execute cloud assistant command.
-      name-zh-cn: 执行云助手命令。
+      en: Execute cloud assistant command
+      zh-cn: 执行云助手命令
     Properties:
       commandContent: '{{ invokeScript }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -187,8 +187,8 @@ Tasks:
   - Name: tagInstance
     Action: ACS::ExecuteApi
     Description:
-      name-en: Creates and attaches tag to ECS instance.
-      name-zh-cn: 创建并挂载标签到ECS实例。
+      en: Creates and attaches tag to ECS instance
+      zh-cn: 创建并挂载标签到ECS实例
     Properties:
       Service: ECS
       API: TagResources
@@ -207,8 +207,8 @@ Tasks:
   - Name: whetherToResumeProcesses
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by process.
-      name-zh-cn: 根据流程值判断是否恢复流程。
+      en: Choose next task by process
+      zh-cn: 根据流程值判断是否恢复流程
     Properties:
       DefaultTask: resumeProcesses
       Choices:
@@ -221,8 +221,8 @@ Tasks:
     Action: 'ACS::ExecuteAPI'
     OnSuccess: 'ACS::END'
     Description:
-      name-en: Resume process.
-      name-zh-cn: 恢复伸缩组流程。
+      en: Resume process
+      zh-cn: 恢复伸缩组流程
     Properties:
       Service: ESS
       API: ResumeProcesses
@@ -232,8 +232,8 @@ Tasks:
   - Name: getExecutionInstanceIds
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Get the instance that has been executed.
-      name-zh-cn: 获取已经执行过执行脚本的实例。
+      en: Get the instance that has been executed
+      zh-cn: 获取已经执行过执行脚本的实例
     Properties:
       Service: OOS
       API: ListExecutions
@@ -245,8 +245,8 @@ Tasks:
         ValueSelector: 'Executions[].Parameters.instanceId'
   - Name: getExistInstanceIds
     Description:
-      name-en: Views the ECS instances.
-      name-zh-cn: 获取ECS实例。
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
     Action: ACS::SelectTargets
     Properties:
       ResourceType: ALIYUN::ECS::Instance
@@ -260,8 +260,8 @@ Tasks:
   - Name: getRollbackProcess
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Views resource parameters.
-      name-zh-cn: 获取源执行的参数。
+      en: Views resource parameters
+      zh-cn: 获取源执行的参数
     Properties:
       Service: OOS
       API: ListExecutions
@@ -277,8 +277,8 @@ Tasks:
   - Name: suspendProcessWithRollBack
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Suspend process.
-      name-zh-cn: 暂停伸缩组流程。
+      en: Suspend process
+      zh-cn: 暂停伸缩组流程
     Properties:
       Service: ESS
       API: SuspendProcesses
@@ -288,8 +288,8 @@ Tasks:
   - Name: rollbackByRunCommand
     Action: 'ACS::ESS::RunCommand'
     Description:
-      name-en: Execute cloud assistant command.
-      name-zh-cn: 执行云助手命令。
+      en: Execute cloud assistant command
+      zh-cn: 执行云助手命令
     Properties:
       commandContent: '{{ rollbackScript }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -314,8 +314,8 @@ Tasks:
   - Name: whetherToResumeProcessesWithRollback
     Action: 'ACS::Choice'
     Description:
-      name-en: Choose next task by process.
-      name-zh-cn: 根据流程值判断是否恢复流程。
+      en: Choose next task by process
+      zh-cn: 根据流程值判断是否恢复流程
     Properties:
       DefaultTask: resumeProcessesWithRollback
       Choices:
@@ -327,8 +327,8 @@ Tasks:
   - Name: resumeProcessesWithRollback
     Action: 'ACS::ExecuteAPI'
     Description:
-      name-en: Resume process.
-      name-zh-cn: 恢复伸缩组流程。
+      en: Resume process
+      zh-cn: 恢复伸缩组流程
     Properties:
       Service: ESS
       API: ResumeProcesses

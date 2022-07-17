@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Label:
-      en: Region
-      zh-cn: 地域
+      en: RegionId
+      zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   serviceInstanceId:

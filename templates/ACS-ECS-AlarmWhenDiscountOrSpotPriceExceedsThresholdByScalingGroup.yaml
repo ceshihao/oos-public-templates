@@ -9,7 +9,7 @@ Parameters:
     Type: String
     Label:
       en: RegionId
-      zh-cn: 地域
+      zh-cn: 地域ID
     Description:
       en: The region id
       zh-cn: 地域
@@ -205,8 +205,8 @@ Tasks:
   - Name: wetherNodifyWebhook
     Action: 'ACS::Choice'
     Description:
-      name-en: Detect if an alarm notification is required
-      name-zh-cn: 检测是否需要发报警通知
+      en: Detect if an alarm notification is required
+      zh-cn: 检测是否需要发报警通知
     Properties:
       DefaultTask: alarmNotify
       Choices:
@@ -219,8 +219,8 @@ Tasks:
   - Name: alarmNotify
     Action: 'ACS::Notify'
     Description:
-      name-en: Instance discount / spot price exceeds threshold alarm notification
-      name-zh-cn: 实例的折扣/现价超出阈值报警通知
+      en: Instance discount / spot price exceeds threshold alarm notification
+      zh-cn: 实例的折扣/现价超出阈值报警通知
     Properties:
       NotifyType: WebHook
       WebHook:
