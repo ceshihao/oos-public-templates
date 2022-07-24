@@ -128,14 +128,22 @@ Tasks:
         - Type: Tags
           RegionId: '{{ regionId }}'
           Tags:
-            - Key: acs:computenest:serviceInstanceId
-              Value: '{{ serviceInstanceId }}'
-            - Fn::If:
-                - Fn::Equals:
-                    - ''
-                    - '{{ resourceName }}'
-                - Key: acs:computenest:applicationGroup
-                  Value: '{{ applicationGroupName }}'
+            Fn::If:
+              - Fn::Equals:
+                  - ''
+                  - '{{ resourceName }}'
+              - Fn::If:
+                  - Fn::Equals:
+                      - ''
+                      - '{{ applicationGroupName }}'
+                  - - Key: acs:computenest:serviceInstanceId
+                      Value: '{{ serviceInstanceId }}'
+                  - - Key: acs:computenest:serviceInstanceId
+                      Value: '{{ serviceInstanceId }}'
+                    - Key: acs:computenest:applicationGroup
+                      Value: '{{ applicationGroupName }}'
+              - - Key: acs:computenest:serviceInstanceId
+                  Value: '{{ serviceInstanceId }}'
                 - Key: acs:computenest:resourceName
                   Value: '{{ resourceName }}'
     Outputs:

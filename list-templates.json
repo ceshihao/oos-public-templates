@@ -4026,7 +4026,7 @@
       "CreatedDate": "2022-02-22T03:15:04Z",
       "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Pre/PostUpgrade stage\", \"zh-cn\": \"计算巢服务实例Pre/PostUpgrade阶段运行云助手命令\", \"name-en\": \"ACS-CN-PrePostUpgradeServiceInstance\", \"name-zh-cn\": \"执行Pre/PostUpgrade阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "9c4bfa56959c2dc2f029150bf2ac0fc819374d6b7a9305d7c1fe166dbfc1ef14",
+      "Hash": "8418a6273b65b84a14578716a9ba8b42d28d5c91640e71a8ef5086c0e9b10ab5",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4035,10 +4035,10 @@
       "TemplateId": "t-65a866c62e50493c9af1",
       "TemplateName": "ACS-CN-PrePostUpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:10:57Z"
+      "UpdatedDate": "2022-07-21T07:00:14Z"
     },
     {
       "Category": "Other",
