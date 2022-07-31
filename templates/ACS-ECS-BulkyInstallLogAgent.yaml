@@ -101,7 +101,7 @@ Tasks:
             }
             wget http://logtail-release-{{ regionId }}.oss-{{ regionId }}-internal.aliyuncs.com/linux64/logtail.sh -q -O logtail.sh;
             if [ $? != 0 ]; then
-              echo "Failed to dowmload logtail_installer, Please check your network service."
+              echo "Failed to download logtail_installer, Please check your network service."
               exit 1
             fi
             chmod 755 logtail.sh;
@@ -158,7 +158,7 @@ Tasks:
             $client.DownloadFile('http://logtail-release-{{ regionId }}.oss-{{ regionId }}-internal.aliyuncs.com/win/logtail_installer.zip', 'C:\Users\Administrator\OOSPackages\logtail_installer.zip')
             if (! $?)
             {
-              echo "Failed to dowmload logtail_installer, Please check your network service."
+              echo "Failed to download logtail_installer, Please check your network service."
               exit 1
             }
             Expand-Archive -Force -Path C:\Users\Administrator\OOSPackages\logtail_installer.zip -DestinationPath C:\Users\Administrator\OOSPackages

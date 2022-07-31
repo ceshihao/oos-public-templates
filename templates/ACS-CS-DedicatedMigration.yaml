@@ -206,9 +206,15 @@ Tasks:
             fi
             chmod +x /tmp/modify-prefix
         fi
+        if ! [[ {{ClusterID}} =~ ^c.* ]];then
+        	echo "clusterID: {{ClusterID}}不是正确的集群id,退出。"
+            exit 1
+        fi
+        echo "clusterID: {{ClusterID}}"
         # 为leader则做snapshot，将snapshot存在在/tmp/
         TIMESTAMP=$(date "+%Y%m%d%H%M%S")
         mkdir -p /tmp/etcdsnap
+        set -x
         SNAP_NAME=etcd_$TIMESTAMP
         echo "开始备份，备份名为/tmp/"$SNAP_NAME
         DestPrefix="/"{{ClusterID}}
@@ -229,6 +235,7 @@ Tasks:
         /tmp/ossutil64 -t $SecurityToken -i $AccessKeyId -k $AccessKeySecret -e {{OSSEndpoint}} cp /tmp/etcdsnap/$SNAP_NAME oss://{{BucketName}}/$SNAP_NAME
         # sign
         oss_url=$(/tmp/ossutil64 -t $SecurityToken -i $AccessKeyId -k $AccessKeySecret -e {{OSSEndpoint}} sign --timeout 2400 oss://{{BucketName}}/$SNAP_NAME | grep -v "elapsed" | tr -d '\n')
+        set +x
         sakey=$(cat /etc/kubernetes/pki/sa.key | base64 -w0)
         sapub=$(cat /etc/kubernetes/pki/sa.pub | base64 -w0)
         frontcrt=$(cat /etc/kubernetes/pki/front-proxy-ca.crt | base64 -w0)

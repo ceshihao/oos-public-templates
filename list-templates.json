@@ -746,7 +746,7 @@
       "CreatedDate": "2019-09-23T09:59:47Z",
       "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装日志服务插件\", \"name-en\": \"ACS-ECS-BulkyInstallLogAgent\", \"name-zh-cn\": \"批量安装日志服务插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "e90a95ac1867df4914b2614ffb347579fa4ee387fbe2e8560dcd55f666eab77e",
+      "Hash": "f3967e3da22a13890d46e724fcc803b8caf42bf0985faea505baadeeabde53dc",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -755,10 +755,10 @@
       "TemplateId": "t-7d7cca42bbd54b0885b3",
       "TemplateName": "ACS-ECS-BulkyInstallLogAgent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:10:59Z"
+      "UpdatedDate": "2022-07-25T11:08:50Z"
     },
     {
       "Category": "Other",
@@ -2266,7 +2266,7 @@
       "CreatedDate": "2021-02-18T08:47:17Z",
       "Description": "{\"en\": \"Sleep control plane, make etcd snapshot and upload it to oss bucket\", \"zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"name-en\": \"ACS-CS-DedicatedMigration\", \"name-zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"categories\": [\"others\"]}",
       "HasTrigger": false,
-      "Hash": "aa0b8027e9c572d13a2ffbbe0214b1df7c8853eae608b927895fbd1fc9daabc0",
+      "Hash": "f346001c523e307ab2f6ca31216e13546bd7e4edc136f592cc4330c7ada71b21",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2275,10 +2275,10 @@
       "TemplateId": "t-bb622b95ba2348278d5a",
       "TemplateName": "ACS-CS-DedicatedMigration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-06-28T03:12:47Z"
+      "UpdatedDate": "2022-07-25T08:46:31Z"
     },
     {
       "Category": "Other",
