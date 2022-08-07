@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Extend ecs instance tags by input params
-  zh-cn: 通过输入条件继承Ecs实例的标签
+  en: Ecs instance related resources (Disk, Image, Snapshot, EIP, ENI) inherit the Tags of the Instance
+  zh-cn: Ecs实例相关资源（Disk、Image、Snapshot、EIP、ENI）继承实例的标签
   name-en: ACS-TAG-ExtendEcsInstanceTagsByInputParams
-  name-zh-cn: 通过输入条件继承Ecs实例的标签
+  name-zh-cn: Ecs实例相关资源（Disk、Image、Snapshot、EIP、ENI）继承实例的标签
 Parameters:
   regionId:
     Label:
@@ -36,6 +36,7 @@ Parameters:
       - snapshot
       - eni
       - eip
+      - image
   isUpdate:
     Label:
       en: IsUpdate
@@ -200,10 +201,10 @@ Tasks:
   - Name: isTagEIP
     Action: ACS::Choice
     Description:
-      en: EIP Extend Tags
-      zh-cn: EIP 是否 继承标签
+      en: Choose next task by resource type
+      zh-cn: 根据资源类型选择下一个任务
     Properties:
-      DefaultTask: ACS::END
+      DefaultTask: isTagImage
       Choices:
         - When:
             Fn::Equals:
@@ -218,7 +219,7 @@ Tasks:
     Description:
       en: Update eip tags By ecs instance tags
       zh-cn: 通过云服务器标签同步更新EIP标签
-    OnSuccess: ACS::END
+    OnSuccess: isTagImage
     Properties:
       TemplateName: ACS::ECS::UpdateEipTagsByEcsInstanceTags
       Parameters:
@@ -237,3 +238,44 @@ Tasks:
         tagResult:
           AggregateType: Fn::ListJoin
           AggregateField: reqResult
+  - Name: isTagImage
+    Action: ACS::Choice
+    Description:
+      en: Choose next task by resource type
+      zh-cn: 根据资源类型选择下一个任务
+    Properties:
+      DefaultTask: ACS::END
+      Choices:
+        - When:
+            Fn::Equals:
+              - true
+              - Fn::Jq:
+                  - First
+                  - contains(["image"])
+                  - '{{resourceTypes}}'
+          NextTask: tagImage
+  - Name: tagImage
+    Action: ACS::Template
+    Description:
+      en: Update custom image tags By ecs instance tags
+      zh-cn: 通过云服务器标签同步更新Image标签(只包括自定义镜像)
+    OnSuccess: ACS::END
+    Properties:
+      TemplateName: ACS::ECS::UpdateCustomImageTagsByEcsInstanceTags
+      Parameters:
+        regionId: '{{ regionId }}'
+        instanceId:
+          Fn::Jq:
+            - First
+            - .InstanceId
+            - '{{ACS::TaskLoopItem}}'
+        tagKeys: '{{tagKeys}}'
+        isUpdate: '{{isUpdate}}'
+    Loop:
+      RateControl: '{{rateControl}}'
+      Items: '{{getInstanceTagResources.desData}}'
+      Outputs:
+        tagResult:
+          AggregateType: Fn::ListJoin
+          AggregateField: reqResult
+

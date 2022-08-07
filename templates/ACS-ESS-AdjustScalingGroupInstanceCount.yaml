@@ -6,7 +6,7 @@ Description:
     <li class="li">The number of cluster nodes after scaling down the nodes cannot be less than the minimum node requirements of the component, otherwise the scaling operation may return an error of code:IncorrectCapacity. </li>
     <li class="li">Please ensure that your account balance is greater than the cost of the newly purchased instance, otherwise an error of code:InvalidAccountStatus.NotEnoughBalance will be returned. </li>
     <li class="li">If it is multi-zone, please expand the multiple of the number of zones. </li>
-    <li class="li">The payment method for the expanded ECS is pay-as-you-go. If necessary, customers need to <a href="https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101. help.dexternal.6ecb4df5sxWQrt">Manual subcontracting yearly and monthly. </a></li>
+    <li class="li">The payment method for the expanded ECS is pay-as-you-go. If necessary, customers need to Manual subcontracting yearly and monthly. </a></li>
     <li class="li">The scaling cannot be less than the number initially opened in the scaling group. </li>
     </ul>
   zh-cn: <p class="p">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p>
@@ -18,7 +18,7 @@ Description:
     <li class="li">扩容的ECS付费方式为按量付费，如有需要，客户需要手动<a href="https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101.help.dexternal.6ecb4df5sxWQrt">转包年包月。</a></li>
     <li class="li">缩容数量不能少于伸缩组内最开始开出来的数量。</li>
     </ul>
-  name-en: ACS-ESS-AdjustScalingGroupInstanceCount
+  name-en: Elastic Scaling
   name-zh-cn: 弹性扩缩容
   categories:
     - elastic_manage
