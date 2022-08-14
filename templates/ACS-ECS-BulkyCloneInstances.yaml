@@ -212,6 +212,14 @@ Tasks:
         Mode: Concurrency
         MaxErrors: 0
         Concurrency: 10
+      Outputs:
+        instanceIds:
+          AggregateType: Fn::ListJoin
+          AggregateField: instanceId
+    Outputs:
+      instanceId:
+        Type: String
+        ValueSelector: instanceId
   - Name: cloneInstancesWithIncrementSnapshot
     Action: ACS::ECS::CloneInstanceWithIncrementSnapshot
     Description:
@@ -240,6 +248,24 @@ Tasks:
         Mode: Concurrency
         MaxErrors: 0
         Concurrency: 10
+      Outputs:
+        instanceIds:
+          AggregateType: Fn::ListJoin
+          AggregateField: instanceId
+    Outputs:
+      instanceId:
+        Type: String
+        ValueSelector: instanceId
+Outputs:
+  instanceIds:
+    Type: List
+    Value:
+      Fn::If:
+        - 'Fn::Equals':
+            - '{{ useIncrementSnapshot }}'
+            - true
+        - '{{ cloneInstancesWithIncrementSnapshot.instanceIds }}'
+        - '{{ cloneInstances.instanceIds }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
