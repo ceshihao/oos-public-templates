@@ -2446,7 +2446,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "ba329d44b9942aee1f714a50099f8bff228c08a055a0621a8e38738df8807683",
+      "Hash": "b18c6ad91b7628e2ecf811911a36ac996c3b01cb884f81ad994a9f37d3f52cf1",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2455,10 +2455,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:02Z"
+      "UpdatedDate": "2022-08-18T08:42:01Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2466,7 +2466,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "ff75477b81bd2fa012ec5a2f580197fe3f6245fa640647faf38867e47eb037e4",
+      "Hash": "0be38fb1592f18475d735fc37414155fb09499170c1f1926092526e03434c16b",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2475,10 +2475,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-05-11T07:40:53Z"
+      "UpdatedDate": "2022-08-18T08:42:01Z"
     },
     {
       "Category": "Other",

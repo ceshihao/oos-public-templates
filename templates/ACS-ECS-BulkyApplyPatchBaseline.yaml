@@ -56,7 +56,7 @@ Parameters:
       en: Timeout
       zh-cn: ECS实例中执行命令的超时时间
     Type: Number
-    Default: 1800
+    Default: 86400
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstance
