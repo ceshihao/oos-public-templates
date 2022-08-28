@@ -1,11 +1,11 @@
 FormatVersion: OOS-2019-06-01
 Description:
-    en: Tag the resources it manages through resource management
-    zh-cn: 通过资源管理批量给其管理的资源打多个标签
-    name-en: ACS-TAG-TagResourcesIgnoreCaseSensitive
-    name-zh-cn: 通过资源管理给资源打标签(忽略标签大小写)
-    categories:
-      - security
+  en: Tag the resources it manages through resource management
+  zh-cn: 通过资源管理批量给其管理的资源打多个标签
+  name-en: ACS-TAG-TagResourcesIgnoreCaseSensitive
+  name-zh-cn: 通过资源管理给资源打标签(忽略标签大小写)
+  categories:
+    - security
 Parameters:
   regionId:
     Type: String
@@ -25,69 +25,70 @@ Parameters:
       zh-cn: 资源类型
     Type: String
     AllowedValues:
-      - ALIYUN::ECS::INSTANCE
-      - ALIYUN::ECS::DISK
-      - ALIYUN::ECS::SNAPSHOT
-      - ALIYUN::ECS::IMAGE
-      - ALIYUN::ECS::SECURITYGROUP
-      - ALIYUN::ECS::VOLUME
-      - ALIYUN::ECS::ENI
-      - ALIYUN::ECS::DDH
-      - ALIYUN::ECS::KEYPAIR
-      - ALIYUN::ECS::LAUNCHTEMPLATE
-      - ALIYUN::ECS::SNAPSHOTPOLICY
-      - ALIYUN::ECS::DDHCLUSTER
-      - ALIYUN::VPC::VPC
-      - ALIYUN::VPC::VSWITCH
-      - ALIYUN::VPC::ROUTETABLE
-      - ALIYUN::VPC::EIP
-      - ALIYUN::VPC::COMMONBANDWIDTHPACKAGE
-      - ALIYUN::VPC::NATGATEWAY
-      - ALIYUN::VPC::IPV6GATEWAY
-      - ALIYUN::VPC::IPV6INSTANCE
-      - ALIYUN::VPC::VPNGATEWAY
-      - ALIYUN::VPC::IPV6BANDWIDTH
-      - ALIYUN::SLB::INSTANCE
-      - ALIYUN::SLB::ACL
-      - ALIYUN::SLB::CERTIFICATE
-      - ALIYUN::RDS::INSTANCE
-      - ALIYUN::APIGATEWAY::APP
-      - ALIYUN::APIGATEWAY::APIGROUP
-      - ALIYUN::APIGATEWAY::PLUGIN
-      - ALIYUN::APIGATEWAY::INSTANCE
-      - ALIYUN::APIGATEWAY::API
-      - ALIYUN::ALIKAFKA::INSTANCE
-      - ALIYUN::ALIKAFKA::TOPIC
-      - ALIYUN::ALIKAFKA::CONSUMERGROUP
-      - ALIYUN::ROS::STACK
-      - ALIYUN::ROS::TEMPLATE
-      - ALIYUN::ALIDNS::DOMAIN
-      - ALIYUN::ESS::SCALINGGROUP
-      - ALIYUN::SMC::SOURCESERVER
-      - ALIYUN::SMC::REPLICATIONJOB
-      - ALIYUN::POLARDB::CLUSTER
-      - ALIYUN::KVSTORE::INSTANCE
-      - ALIYUN::DDS::INSTANCE
-      - ALIYUN::CAS::INSTANCE
-      - ALIYUN::BASTIONHOST::INSTANCE
-      - ALIYUN::ELASTICSEARCH::INSTANCE
-      - ALIYUN::OSS::BUCKET
-      - ALIYUN::DDOSCOO::INSTANCE
-      - ALIYUN::DDOSBGP::INSTANCE
-      - ALIYUN::DRDS::INSTANCE
-      - ALIYUN::GPDB::INSTANCE
-      - ALIYUN::CEN::CEN
-      - ALIYUN::BAAS::ORGANIZATION
-      - ALIYUN::BAAS::CONSORTIUM
-      - ALIYUN::ADB::CLUSTER
-      - ALIYUN::HCS_SGW::GATEWAY
-      - ALIYUN::IMAGESEARCH::INSTANCE
-      - ALIYUN::CDN::DOMAIN
-      - ALIYUN::OOS::TEMPLATE
-      - ALIYUN::OOS::EXECUTION
-      - ALIYUN::MULTIMOD::CLUSTER
-      - ALIYUN::DBAUDIT::INSTANCE
-      - ALIYUN::CS::CLUSTER
+      - 'ALIYUN::ECS::INSTANCE'
+      - 'ALIYUN::ECS::DISK'
+      - 'ALIYUN::ECS::SNAPSHOT'
+      - 'ALIYUN::ECS::IMAGE'
+      - 'ALIYUN::ECS::SECURITYGROUP'
+      - 'ALIYUN::ECS::VOLUME'
+      - 'ALIYUN::ECS::ENI'
+      - 'ALIYUN::ECS::DDH'
+      - 'ALIYUN::ECS::KEYPAIR'
+      - 'ALIYUN::ECS::LAUNCHTEMPLATE'
+      - 'ALIYUN::ECS::SNAPSHOTPOLICY'
+      - 'ALIYUN::ECS::DDHCLUSTER'
+      - 'ALIYUN::VPC::VPC'
+      - 'ALIYUN::VPC::VSWITCH'
+      - 'ALIYUN::VPC::ROUTETABLE'
+      - 'ALIYUN::VPC::EIP'
+      - 'ALIYUN::VPC::COMMONBANDWIDTHPACKAGE'
+      - 'ALIYUN::VPC::NATGATEWAY'
+      - 'ALIYUN::VPC::IPV6GATEWAY'
+      - 'ALIYUN::VPC::IPV6INSTANCE'
+      - 'ALIYUN::VPC::VPNGATEWAY'
+      - 'ALIYUN::VPC::IPV6BANDWIDTH'
+      - 'ALIYUN::SLB::INSTANCE'
+      - 'ALIYUN::SLB::ACL'
+      - 'ALIYUN::SLB::CERTIFICATE'
+      - 'ALIYUN::RDS::INSTANCE'
+      - 'ALIYUN::APIGATEWAY::APP'
+      - 'ALIYUN::APIGATEWAY::APIGROUP'
+      - 'ALIYUN::APIGATEWAY::PLUGIN'
+      - 'ALIYUN::APIGATEWAY::INSTANCE'
+      - 'ALIYUN::APIGATEWAY::API'
+      - 'ALIYUN::ALIKAFKA::INSTANCE'
+      - 'ALIYUN::ALIKAFKA::TOPIC'
+      - 'ALIYUN::ALIKAFKA::CONSUMERGROUP'
+      - 'ALIYUN::ROS::STACK'
+      - 'ALIYUN::ROS::TEMPLATE'
+      - 'ALIYUN::ALIDNS::DOMAIN'
+      - 'ALIYUN::ESS::SCALINGGROUP'
+      - 'ALIYUN::SMC::SOURCESERVER'
+      - 'ALIYUN::SMC::REPLICATIONJOB'
+      - 'ALIYUN::POLARDB::CLUSTER'
+      - 'ALIYUN::KVSTORE::INSTANCE'
+      - 'ALIYUN::DDS::INSTANCE'
+      - 'ALIYUN::CAS::INSTANCE'
+      - 'ALIYUN::BASTIONHOST::INSTANCE'
+      - 'ALIYUN::ELASTICSEARCH::INSTANCE'
+      - 'ALIYUN::OSS::BUCKET'
+      - 'ALIYUN::DDOSCOO::INSTANCE'
+      - 'ALIYUN::DDOSBGP::INSTANCE'
+      - 'ALIYUN::DRDS::INSTANCE'
+      - 'ALIYUN::GPDB::INSTANCE'
+      - 'ALIYUN::CEN::CEN'
+      - 'ALIYUN::BAAS::ORGANIZATION'
+      - 'ALIYUN::BAAS::CONSORTIUM'
+      - 'ALIYUN::ADB::CLUSTER'
+      - 'ALIYUN::HCS_SGW::GATEWAY'
+      - 'ALIYUN::IMAGESEARCH::INSTANCE'
+      - 'ALIYUN::CDN::DOMAIN'
+      - 'ALIYUN::DCDN::DOMAIN'
+      - 'ALIYUN::OOS::TEMPLATE'
+      - 'ALIYUN::OOS::EXECUTION'
+      - 'ALIYUN::MULTIMOD::CLUSTER'
+      - 'ALIYUN::DBAUDIT::INSTANCE'
+      - 'ALIYUN::CS::CLUSTER'
   tags:
     Label:
       en: Tags
@@ -113,23 +114,25 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: tagResource
-    Action: ACS::TAG::TagResourceByTagsIgnoreCaseSensitive
+    Action: 'ACS::TAG::TagResourceByTagsIgnoreCaseSensitive'
     Description:
       en: Tag the resources it manages through resource management
       zh-cn: 通过资源管理给其管理的资源打标签
     Properties:
       regionId: '{{ regionId }}'
       resourceARN:
-        Fn::Jq:
+        'Fn::Jq':
           - First
-          - .resourceType | ascii_downcase |split("::") | "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId }}:"+.[2]+"/{{ ACS::TaskLoopItem }}"
+          - >-
+            .resourceType | ascii_downcase |split("::") | "arn:acs:"+.[1]+":{{
+            regionId }}:{{ ACS::AccountId }}:"+.[2]+"/{{ ACS::TaskLoopItem }}"
           - '{"resourceType":"{{resourceType}}"}'
       tags: '{{ tags }}'
     Loop:
       Items: '{{ resourceIds }}'
       RateControl: '{{ rateControl }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - tags
