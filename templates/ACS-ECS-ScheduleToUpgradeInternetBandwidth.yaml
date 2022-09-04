@@ -51,19 +51,18 @@ Parameters:
       en: The maximum public network bandwidth for in-direction
       zh-cn: 公网最大入带宽
     Description:
-      en: 'Unit: Mbit/s, range: 1~10 when maxBandwidthOut<=10Mbit/s, else 1~maxBandwidthOut'
-      zh-cn: '单位：Mbit/s，取值范围：当所购公网出带宽小于等于10Mbit/s时：1~10。当所购公网出带宽大于10Mbit/s时：1~公网最大出带宽'
+      en: 'Unit: Mbit/s (Megabit per second), range: 1~10 when maxBandwidthOut<=10Mbit/s, else 1~maxBandwidthOut'
+      zh-cn: '单位：Mbit/s（Megabit per second），取值范围：当所购公网出带宽小于等于10Mbit/s时：1~10。当所购公网出带宽大于10Mbit/s时：1~公网最大出带宽'
     Type: Number
     MinValue: 1
-    MaxValue: 1000
     Default: 10
   maxBandwidthOut:
     Label:
       en: The maximum public network bandwidth for out-direction
       zh-cn: 公网最大出带宽
     Description:
-      en: 'Unit: Mbit/s, range：0~100'
-      zh-cn: '单位：Mbit/s, 取值范围：0~100'
+      en: <p>Unit：Mbit/s (Megabit per second), value range： 0~100，OOS does not validate the maxBandwidthOut parameter value. <br/><font color='red'>If the value exceeded the limit of ECS，bandwidth upgrade task will fail, you can submit a ticket to ECS to raise the maximum bandwidth or modify the bandwidth parameter in limit range.</font></p>
+      zh-cn: <p>单位：Mbit/s（Megabit per second），取值范围：0~100，运维编排不对带宽值入参进行校验。<br/><font color='red'>如果您设置的带宽值超过ECS的限制，带宽临时升级会失败，您可以在ECS控制台提交工单提高带宽峰值，或者将带宽值修改到限制范围内。</font></p>
     Type: Number
     MinValue: 0
     Default: 10
