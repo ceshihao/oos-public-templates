@@ -82,6 +82,12 @@ Parameters:
       zh-cn: 用于回滚的OOS执行ID
     Type: String
     Default: ''
+  whetherSaveToFile:
+    Label:
+      en: whetherSaveToFile
+      zh-cn: 是否将内容下载到特定文件
+    Type: Boolean
+    Default: true
   batchPauseOption:
     Label:
       en: BatchPauseOption
@@ -189,7 +195,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ enterProcess }}'
   - Name: invokeByDownloadFileAndRunCommand
-    Action: ACS::ECS::DownloadFileAndRunCommand
+    Action: ACS::ESS::DownloadFileAndRunCommand
     Description:
       en: Upgrade by downloading files to the instance and executing commands
       zh-cn: 通过下载文件到实例并执行命令的方式进行升级
@@ -199,6 +205,7 @@ Tasks:
       sourcePath: '{{ invokeSourcePath }}'
       destinationDir: '{{ invokeDestinationDir }}'
       commandContent: '{{ invokeScript }}'
+      whetherSaveToFile: '{{ whetherSaveToFile }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'
@@ -351,7 +358,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ getRollbackProcess.enterProcess }}'
   - Name: rollbackByDownloadFileAndRunCommand
-    Action: ACS::ECS::DownloadFileAndRunCommand
+    Action: ACS::ESS::DownloadFileAndRunCommand
     Description:
       en: Rollback by downloading files to the instance and executing commands
       zh-cn: 通过下载文件到实例并执行命令的方式进行回滚
@@ -361,6 +368,7 @@ Tasks:
       sourcePath: '{{ rollbackSourcePath }}'
       destinationDir: '{{ rollbackDestinationDir }}'
       commandContent: '{{ rollbackScript }}'
+      whetherSaveToFile: '{{ whetherSaveToFile }}'
     Loop:
       Items: '{{ getExistInstanceIds.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'

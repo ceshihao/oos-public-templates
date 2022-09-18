@@ -17,6 +17,12 @@ Parameters:
       en: DestinationDir
       zh-cn: 实例中文件复制的目标目录
     Type: String
+  whetherSaveToFile:
+    Label:
+      en: whetherSaveToFile
+      zh-cn: 是否将内容下载到特定文件
+    Type: Boolean
+    Default: true
   commandContent:
     Label:
       en: CommandContent
@@ -88,7 +94,7 @@ Tasks:
   - Name: downloadFileAndRunCommand
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
-    Action: ACS::ECS::DownloadFileAndRunCommand
+    Action: ACS::ESS::DownloadFileAndRunCommand
     Description:
       en: Downloads file to the ECS instances adn run command
       zh-cn: 下载文件到实例并执行命令
@@ -98,6 +104,7 @@ Tasks:
       sourceType: https
       sourcePath: '{{ sourcePath }}'
       destinationDir: '{{ destinationDir }}'
+      whetherSaveToFile: '{{ whetherSaveToFile }}'
       commandContent: '{{ commandContent }}'
       timeout: '{{ timeout }}'
     Loop:

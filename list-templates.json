@@ -3686,7 +3686,7 @@
       "CreatedDate": "2022-08-22T06:22:11Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDownloadFileAndRunCommand\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f029ca9638d4e75bdbf442f826c59f224b239c5eddb44d6f310a4fd8856c5bee",
+      "Hash": "83d892892966f02f29bb4c8de11f9a14b81709800f4b142f9e08afb637f1e96f",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3695,10 +3695,10 @@
       "TemplateId": "t-8068dc9cdd684b06aa08",
       "TemplateName": "ACS-ESS-LifeCycleDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-08-22T06:22:11Z"
+      "UpdatedDate": "2022-09-16T07:25:14Z"
     },
     {
       "Category": "Other",
@@ -3706,7 +3706,7 @@
       "CreatedDate": "2022-08-22T06:22:12Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download file and run command\", \"zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadFileAndRunCommandInScalingGroup\", \"name-zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9ffa5a7b578a71739f364b0515eae5093ef133ed1c67e86cfdd601f9874b13cd",
+      "Hash": "f2fd3ff0478dc3e5945c485c8c6cf82f2e65dc15ca42974ea5651796b9685fae",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3715,10 +3715,10 @@
       "TemplateId": "t-4f45c565d5d84c2cae3c",
       "TemplateName": "ACS-ESS-RollingUpdateByDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-08-23T09:30:04Z"
+      "UpdatedDate": "2022-09-16T07:25:14Z"
     },
     {
       "Category": "Other",
