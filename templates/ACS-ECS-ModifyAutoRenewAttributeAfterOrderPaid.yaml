@@ -30,6 +30,7 @@ Parameters:
     AllowedValues:
       - Week
       - Month
+      - Year
     Default: Month
   duration:
     Description:

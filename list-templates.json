@@ -906,7 +906,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d3968ccaa0bb8d3dbbbcf22697634631ed62cf0f84e984e7b909f2877455cd6b",
+      "Hash": "d563b9e721cce0c60401402ebd18e5c422d97419417c3312a8b3e7358f287884",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -915,10 +915,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-08T07:38:31Z"
+      "UpdatedDate": "2022-09-19T02:09:08Z"
     },
     {
       "Category": "Other",
@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "268dc1ac8b339d6b07344fbcbfddba8828aa7ff80269191cc7edabbd41a5d7da",
+      "Hash": "f7c1ff1cab2a6843f6d9e5bfccc5753dccab14a9dff966d5e0c1c6d812f288c4",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2115,10 +2115,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-08-23T08:27:52Z"
+      "UpdatedDate": "2022-09-22T10:09:35Z"
     },
     {
       "Category": "Other",
@@ -3446,7 +3446,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "7f6f79655fc487ca05a14c4bcdce8cd846d0c8bf1d10bf1af72bf2b7c80226cf",
+      "Hash": "6342cf4ffaad8c30a25338c9299e187d594bf92a0d10f925df310c0f6a19fc02",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3455,10 +3455,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-08-25T08:18:37Z"
+      "UpdatedDate": "2022-09-22T10:09:35Z"
     },
     {
       "Category": "Other",
@@ -4046,7 +4046,7 @@
       "CreatedDate": "2021-12-27T04:01:52Z",
       "Description": "{\"name-en\": \"ACS-ECS-ModifyAutoRenewAttributeAfterOrderPaid\", \"name-zh-cn\": \"等待指定订单支付成功后修改实例的自动续费属性\", \"en\": \"Modify the automatic renewal properties of the instance after waiting for the specified order to be paid successfully\", \"zh-cn\": \"等待指定订单支付成功后修改实例的自动续费属性\"}",
       "HasTrigger": false,
-      "Hash": "c11004cdeaf995979a88b2c30f6be3794c069f670fa62b829f0fe73f082ad5a4",
+      "Hash": "2162d3e1fb3f980336382ad80ce887b43fc9fff4b54e631a859042551a8f06b4",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4055,10 +4055,10 @@
       "TemplateId": "t-b55f8325bf3243f6a74f",
       "TemplateName": "ACS-ECS-ModifyAutoRenewAttributeAfterOrderPaid",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:13Z"
+      "UpdatedDate": "2022-09-22T10:16:23Z"
     },
     {
       "Category": "Other",
@@ -4095,10 +4095,10 @@
       "TemplateId": "t-6230fcad88df464e8c1e",
       "TemplateName": "ACS-CN-UpgradeServiceInstanceByResourceName",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-27T07:30:44Z"
+      "UpdatedDate": "2022-09-21T01:27:32Z"
     },
     {
       "Category": "Other",
