@@ -92,6 +92,10 @@ Tasks:
         Fn::Select:
           - Parameters
           - '{{ ACS::TaskLoopItem }}'
+      whetherModifyEssLifecycleHook:
+        Fn::Select:
+          - WhetherModifyEssLifecycleHook
+          - '{{ ACS::TaskLoopItem }}'
       imageId:
         Fn::Select:
           - ImageId

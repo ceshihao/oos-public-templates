@@ -9,6 +9,10 @@ Description:
     <li class="li">The payment method for the expanded ECS is pay-as-you-go. If necessary, customers need to Manual subcontracting yearly and monthly. </a></li>
     <li class="li">The scaling cannot be less than the number initially opened in the scaling group. </li>
     </ul>
+    <p class="p">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Description:</p>
+    <ul class="ul">
+    <li class="li">Adjust ACK cluster node pool<a href='https://help.aliyun.com/document_detail/160490.html?spm=5176.2020520152.help.dexternal.253916ddpJbWDl#title-mpp-3jj- oo3'>Expected number of nodes</a>, please read the linked document carefully and authorize the role AliyunOOSLifecycleHook4CSRole. </li>
+    </ul>
   zh-cn: <p class="p">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p>
     <ul class="ul">
     <li class="li">如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果。</li>
@@ -18,6 +22,10 @@ Description:
     <li class="li">扩容的ECS付费方式为按量付费，如有需要，客户需要手动<a href="https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101.help.dexternal.6ecb4df5sxWQrt">转包年包月。</a></li>
     <li class="li">缩容数量不能少于伸缩组内最开始开出来的数量。</li>
     </ul>
+    <p class="p">调整ACK集群节点池<a href='https://help.aliyun.com/document_detail/160490.html?spm=5176.2020520152.help.dexternal.253916ddpJbWDl#title-mpp-3jj-oo3'>期望节点数</a>。说明：</p>
+    <ul class="ul">
+    <li class="li">请仔细阅读链接文档并授权角色AliyunOOSLifecycleHook4CSRole。</li>
+    </ul>
   name-en: Elastic Scaling
   name-zh-cn: 弹性扩缩容
   categories:
@@ -25,6 +33,15 @@ Description:
     - application_manage
     - computenest
 Parameters:
+  resourceType:
+    Type: String
+    Label:
+      en: ResourceType
+      zh-cn: 将要调整的资源类型
+    AllowedValues:
+      - ACK
+      - ESS
+    Default: ESS
   regionId:
     Type: String
     Label:
@@ -32,14 +49,26 @@ Parameters:
       zh-cn: 将要克隆的ECS实例所在地域
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ESS
   scalingGroupId:
     Type: String
     Label:
       en: ScalingGroupId
       zh-cn: 伸缩组ID
+    Default: ''
     AssociationProperty: ALIYUN::ESS::AutoScalingGroup::AutoScalingGroupId
     AssociationPropertyMetadata:
       RegionId: regionId
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ESS
   adjustmentType:
     Type: String
     Label:
@@ -47,6 +76,11 @@ Parameters:
       zh-cn: 伸缩规则的调整方式
     AssociationPropertyMetadata:
       LocaleKey: ESSGroupAdjustmentType
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ESS
     AllowedValues:
       - ScaleOut
       - ScaleIn
@@ -59,6 +93,51 @@ Parameters:
       zh-cn: 伸缩组ECS实例调整的数量
     MinValue: 0
     MaxValue: 100
+    Default: 0
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ESS
+  clusterId:
+    Label:
+      en: ClusterId
+      zh-cn: 集群ID
+    Type: String
+    Default: ''
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ACK
+  nodepoolId:
+    Label:
+      en: NodepoolId
+      zh-cn: 节点池ID
+    Type: String
+    Default: ''
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ACK
+  desiredSize:
+    Label:
+      en: DesiredSize
+      zh-cn: 期望节点数
+    Type: Number
+    MinValue: 0
+    MaxValue: 100
+    Default: 0
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${resourceType}'
+            - ACK
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -67,6 +146,19 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
+  - Name: chooseNextTaskByResourceType
+    Action: 'ACS::Choice'
+    Description:
+      en: Choose next task by resource type
+      zh-cn: 根据资源类型选择下一个任务
+    Properties:
+      DefaultTask: createScalingRule
+      Choices:
+        - When:
+            Fn::Equals:
+              - 'ACK'
+              - '{{ resourceType }}'
+          NextTask: getNodePoolDetail
   - Name: createScalingRule
     Action: 'ACS::ExecuteAPI'
     Description:
@@ -81,14 +173,14 @@ Tasks:
         ScalingRuleName: '{{ ACS::ExecutionId }}'
         AdjustmentType:
           Fn::If:
-            - 'Fn::Equals':
+            - Fn::Equals:
                 - 'TotalCapacity'
                 - '{{ adjustmentType }}'
             - TotalCapacity
             - QuantityChangeInCapacity
         AdjustmentValue:
           Fn::If:
-            - 'Fn::Equals':
+            - Fn::Equals:
                 - ScaleIn
                 - '{{ adjustmentType }}'
             - '-{{ adjustmentCount }}'
@@ -164,6 +256,7 @@ Tasks:
         ValueSelector: .Detail
   - Name: getOOSExecutionOutput
     Action: 'ACS::ExecuteAPI'
+    OnSuccess: ACS::END
     Description:
       en: Get the lifecycle hook OOS execution output
       zh-cn: 获取生命周期挂钩OOS执行的输出
@@ -178,6 +271,57 @@ Tasks:
       lifecycleHookOOSExecutionResult:
         Type: String
         ValueSelector: 'Executions[].Outputs'
+  - Name: getNodePoolDetail
+    Action: ACS::WaitFor
+    Description:
+      en: Get cluster node pool info
+      zh-cn: 获取集群节点池信息
+    Retries: 20
+    Properties:
+      Service: CS
+      API: DescribeClusterNodePoolDetail
+      Method: GET
+      URI: /clusters/{{clusterId}}/nodepools/{{nodepoolId}}
+      Parameters: {}
+      DesiredValues:
+        - active
+      PropertySelector: .status.state
+    Outputs:
+      nodePoolInfo:
+        Type: Json
+        ValueSelector: .
+  - Name: modifyClusterNodePool
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Modify cluster node pool configuration
+      zh-cn: 修改集群节点池配置
+    Properties:
+      Service: CS
+      API: ModifyClusterNodePool
+      Method: PUT
+      Headers:
+        Content-Type: application/json
+      URI: /clusters/{{clusterId}}/nodepools/{{nodepoolId}}
+      Body:
+        Fn::Jq:
+          - First
+          - '.+({"scaling_group": (.scaling_group + {"desired_size": {{desiredSize}}})}) | del(.scaling_group.login_password)'
+          - '{{ getNodePoolDetail.nodePoolInfo }}'
+  - Name: untilClusterNodePoolReady
+    Action: ACS::WaitFor
+    Description:
+      en: Wait for the cluster node pool configuration to complete
+      zh-cn: 等待集群节点池配置修改完成
+    Retries: 20
+    Properties:
+      Service: CS
+      API: DescribeClusterNodePoolDetail
+      Method: GET
+      Parameters: {}
+      URI: /clusters/{{clusterId}}/nodepools/{{nodepoolId}}
+      DesiredValues:
+        - active
+      PropertySelector: .status.state
 Outputs:
   adjustDetail:
     Type: String
@@ -189,10 +333,14 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
+          - resourceType
           - regionId
           - scalingGroupId
           - adjustmentType
           - adjustmentCount
+          - clusterId
+          - nodepoolId
+          - desiredSize
         Label:
           default:
             zh-cn: 调整方式设置
