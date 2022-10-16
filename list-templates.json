@@ -3526,7 +3526,7 @@
       "CreatedDate": "2022-05-11T07:57:06Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开关机或者关开机\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "776974a7e699c4598a978447bd13b731ab1d4f3aefa2910a426b0ea08ad24e34",
+      "Hash": "fb78e944ccbdc913bc928a1704c016b51c3db6f878a7f4c7da4c416bcff9d2be",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3535,10 +3535,10 @@
       "TemplateId": "t-e2502339692040a483b3",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-04T04:06:50Z"
+      "UpdatedDate": "2022-10-13T09:02:50Z"
     },
     {
       "Category": "TimerTrigger",
@@ -3546,7 +3546,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "f301b926a565bfead13ab659f65ee9111a27c9788199cf8c9109d293970233dc",
+      "Hash": "5e4bd980a4f770f6cd19832883fed5405c18d3f8ef7a6b8636a1b645f12645aa",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3555,10 +3555,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:01Z"
+      "UpdatedDate": "2022-10-13T09:02:50Z"
     },
     {
       "Category": "Other",
