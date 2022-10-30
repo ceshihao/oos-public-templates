@@ -49,12 +49,6 @@ Parameters:
       zh-cn: 将要克隆的ECS实例所在地域
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-    AssociationPropertyMetadata:
-      Visible:
-        Condition:
-          Fn::Equals:
-            - '${resourceType}'
-            - ESS
   scalingGroupId:
     Type: String
     Label:
@@ -106,7 +100,9 @@ Parameters:
       zh-cn: 集群ID
     Type: String
     Default: ''
+    AssociationProperty: ALIYUN::CS::Cluster::ClusterId
     AssociationPropertyMetadata:
+      RegionId: ${regionId}
       Visible:
         Condition:
           Fn::Equals:
@@ -118,7 +114,10 @@ Parameters:
       zh-cn: 节点池ID
     Type: String
     Default: ''
+    AssociationProperty: ALIYUN::CS::Cluster::ClusterNodePool
     AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      ClusterId: ${clusterId}
       Visible:
         Condition:
           Fn::Equals:
@@ -333,8 +332,8 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
-          - resourceType
           - regionId
+          - resourceType
           - scalingGroupId
           - adjustmentType
           - adjustmentCount
