@@ -4119,6 +4119,26 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2022-09-26T08:20:48Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2022-11-04T03:57:24Z",
+      "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCommandNew\", \"name-zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "382e37fa56709a126176bce4f920eb8c0ce7f2670b6bbde4867df697abafd52f",
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-a25c63b7fef0499eb6b5",
+      "TemplateName": "ACS-ESS-LifeCycleRunCommandNew",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2022-11-04T03:57:24Z"
     }
   ]
 }
