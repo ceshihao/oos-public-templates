@@ -1506,7 +1506,7 @@
       "CreatedDate": "2020-04-26T07:58:35Z",
       "Description": "{\"en\": \"Alarm when monitoring the discount and spot price of multi-instance types in multi-availability zone exceeding the threshold\", \"zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"name-en\": \"ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType\", \"name-zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "76efd6cbddf8595623fe673b1282bc1bf9f64e54fba193d35bb1a444c2bb0ac5",
+      "Hash": "ed987e40db44ade6283ae1c9e2c76d8c28fff8730d3249832334792f77363ca8",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1515,10 +1515,10 @@
       "TemplateId": "t-da7fcbca8c5a4479bd47",
       "TemplateName": "ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:10:58Z"
+      "UpdatedDate": "2023-01-17T07:57:16Z"
     },
     {
       "Category": "TimerTrigger",
@@ -3626,7 +3626,7 @@
       "CreatedDate": "2022-06-01T07:31:07Z",
       "Description": "{\"en\": \"Bulky modify load balancer internet spec\", \"zh-cn\": \"批量修改公网负载均衡实例的带宽\", \"name-en\": \"ACS-SLB-BulkyModifyLoadBalancerInternetSpec\", \"name-zh-cn\": \"批量修改公网负载均衡实例的带宽\", \"categories\": [\"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "723db94ea3bb12f0fd9996d4a61c16e99c41bfe1b46d92a416e080c9d6429db8",
+      "Hash": "074329add2e861340915bbc47df5e0d6ad611aea216f294df75cc9ea9c6e9845",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3635,10 +3635,10 @@
       "TemplateId": "t-4037704fb2fb461388f2",
       "TemplateName": "ACS-SLB-BulkyModifyLoadBalancerInternetSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-12T03:14:20Z"
+      "UpdatedDate": "2023-01-16T03:29:48Z"
     },
     {
       "Category": "Other",
