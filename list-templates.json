@@ -1384,9 +1384,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-03-18T07:14:45Z",
-      "Description": "{\"en\": \"Add a security group policy to multiple security groups\", \"zh-cn\": \"将一条安全组策略添加至多个安全组\", \"name-en\": \"ACS-ECS-BulkyAuthorizeSecurityGroup\", \"name-zh-cn\": \"批量授权安全组策略\", \"categories\": [\"instance_manage\"]}",
+      "Description": "{\"en\": \"Add a security group policy to multiple security groups\", \"zh-cn\": \"将一条安全组策略添加至多个安全组\", \"name-en\": \"ACS-ECS-BulkyAuthorizeSecurityGroup\", \"name-zh-cn\": \"批量授权安全组策略\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "873404166494d685cb1aaa6ee698c45f2c0f1de30020d69606a988302d8706b1",
+      "Hash": "81277e89bac1df82913ca64303c426b5fe7a4d4e6eeb1e1735161c4542977e9b",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1395,10 +1395,10 @@
       "TemplateId": "t-ef152dc2a66147928e2b",
       "TemplateName": "ACS-ECS-BulkyAuthorizeSecurityGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:02Z"
+      "UpdatedDate": "2023-02-03T03:20:52Z"
     },
     {
       "Category": "Other",
@@ -1506,7 +1506,7 @@
       "CreatedDate": "2020-04-26T07:58:35Z",
       "Description": "{\"en\": \"Alarm when monitoring the discount and spot price of multi-instance types in multi-availability zone exceeding the threshold\", \"zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"name-en\": \"ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType\", \"name-zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ed987e40db44ade6283ae1c9e2c76d8c28fff8730d3249832334792f77363ca8",
+      "Hash": "5465a6e78e557f2e674540e90871d8f13454b92944afbfd214e18c958ca12fd1",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1515,10 +1515,10 @@
       "TemplateId": "t-da7fcbca8c5a4479bd47",
       "TemplateName": "ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-01-17T07:57:16Z"
+      "UpdatedDate": "2023-02-02T02:15:26Z"
     },
     {
       "Category": "TimerTrigger",
