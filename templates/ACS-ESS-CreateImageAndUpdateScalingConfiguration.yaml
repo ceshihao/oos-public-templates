@@ -56,6 +56,20 @@ Tasks:
     imageId:
       ValueSelector: imageId
       Type: String
+- Name: describeScalingConfigurations
+  Action: ACS::ExecuteAPI
+  Description:
+    en: Describe scaling configurations
+    zh-cn: 查询伸缩配置
+  Properties:
+    Service: ESS
+    API: DescribeScalingConfigurations
+    Parameters:
+      ScalingConfigurationIds: '{{ scalingConfigurationIds }}'
+  Outputs:
+    scalingConfigurationIds:
+      Type: List
+      ValueSelector: .ScalingConfigurations.ScalingConfiguration[].ScalingConfigurationId
 - Name: modifyScalingConfiguration
   Action: ACS::ExecuteAPI
   Description:
@@ -68,7 +82,7 @@ Tasks:
       ScalingConfigurationId: '{{ ACS::TaskLoopItem }}'
       ImageId: '{{ createImage.imageId }}'
   Loop:
-    Items: '{{ scalingConfigurationIds }}'
+    Items: '{{ describeScalingConfigurations.scalingConfigurationIds }}'
 Outputs:
   imageId:
     Type: String

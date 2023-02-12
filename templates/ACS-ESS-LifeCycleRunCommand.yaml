@@ -24,6 +24,18 @@ Parameters:
     Type: String
     AssociationProperty: Code
     Default: echo hello
+  lifecycleActionResult:
+    Label:
+      en: LifecycleActionResult
+      zh-cn: 生命周期挂钩等待状态结束后的下一步动作
+    Description:
+      en: After the command execution fails, the lifecycle hook waits for the next action after the state ends
+      zh-cn: 命令执行失败后，生命周期挂钩等待状态结束后的下一步动作
+    Type: String
+    AllowedValues:
+      - ABANDON
+      - ROLLBACK
+    Default: ABANDON
   regionId:
     Label:
       en: RegionId
@@ -128,7 +140,7 @@ Tasks:
         RegionId: '{{ regionId }}'
         LifecycleHookId: '{{ lifecycleHookId }}'
         LifecycleActionToken: '{{ lifecycleActionToken }}'
-        LifecycleActionResult: ABANDON
+        LifecycleActionResult: '{{ lifecycleActionResult }}'
 Outputs:
   commandOutputs:
     Type: List
