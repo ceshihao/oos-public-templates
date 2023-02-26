@@ -218,12 +218,12 @@ Tasks:
         ValueSelector: Instances.Instance[].InstanceId
   - Name: removeInstances
     Action: 'ACS::ExecuteAPI'
+    OnSuccess: waitScalingActivityComplete
     When:
       Fn::Not:
         Fn::Equals:
           - '{{ getInstanceToBeRemoved.instanceIds }}'
           - []
-    OnSuccess: ACS::END
     Description:
       en: Remove instances from scaling group
       zh-cn: 从伸缩组中移除ECS实例
@@ -234,6 +234,10 @@ Tasks:
         RegionId: '{{ regionId }}'
         ScalingGroupId: '{{ scalingGroupId }}'
         InstanceIds: '{{ getInstanceToBeRemoved.instanceIds }}'
+    Outputs:
+      scalingActivityId:
+        Type: String
+        ValueSelector: .ScalingActivityId
   - Name: createScalingRule
     Action: 'ACS::ExecuteAPI'
     Description:
@@ -295,7 +299,17 @@ Tasks:
       API: DescribeScalingActivities
       Parameters:
         RegionId: '{{ regionId }}'
-        ScalingActivityId1: '{{ executeScalingRule.scalingActivityId }}'
+        ScalingActivityId1:
+          Fn::If:
+            - Fn::And:
+                - Fn::Equals:
+                    - '{{adjustmentType}}'
+                    - ScaleIn
+                - Fn::Equals:
+                    - '{{adjustmentCount}}'
+                    - 0
+            - '{{ removeInstances.scalingActivityId }}'
+            - '{{ executeScalingRule.scalingActivityId }}'
       DesiredValues:
         - Successful
       StopRetryValues:
@@ -304,6 +318,15 @@ Tasks:
         - Warning
       PropertySelector: 'ScalingActivities.ScalingActivity[0].StatusCode'
   - Name: deleteScalingRule
+    When:
+      Fn::Not:
+        Fn::And:
+          - Fn::Equals:
+              - '{{adjustmentType}}'
+              - ScaleIn
+          - Fn::Equals:
+              - '{{adjustmentCount}}'
+              - 0
     Description:
       en: Delete ScalingRule
       zh-cn: 删除伸缩组规则
@@ -324,7 +347,17 @@ Tasks:
       API: DescribeScalingActivityDetail
       Parameters:
         RegionId: '{{ regionId }}'
-        ScalingActivityId: '{{ executeScalingRule.scalingActivityId }}'
+        ScalingActivityId:
+          Fn::If:
+            - Fn::And:
+                - Fn::Equals:
+                    - '{{adjustmentType}}'
+                    - ScaleIn
+                - Fn::Equals:
+                    - '{{adjustmentCount}}'
+                    - 0
+            - '{{ removeInstances.scalingActivityId }}'
+            - '{{ executeScalingRule.scalingActivityId }}'
     Outputs:
       detail:
         Type: String
@@ -341,7 +374,17 @@ Tasks:
       Parameters:
         RegionId: '{{ regionId }}'
         Tags:
-          ESS:ScalingActivityId: '{{ executeScalingRule.scalingActivityId }}'
+          ESS:ScalingActivityId:
+            Fn::If:
+              - Fn::And:
+                  - Fn::Equals:
+                      - '{{adjustmentType}}'
+                      - ScaleIn
+                  - Fn::Equals:
+                      - '{{adjustmentCount}}'
+                      - 0
+              - '{{ removeInstances.scalingActivityId }}'
+              - '{{ executeScalingRule.scalingActivityId }}'
     Outputs:
       lifecycleHookOOSExecutionResult:
         Type: String

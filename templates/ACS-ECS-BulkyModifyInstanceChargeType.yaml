@@ -21,7 +21,7 @@ Parameters:
       zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
   instanceChargeType:
     Label:
@@ -44,14 +44,16 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-          Fn::Not:
-            Fn::Equals:
-              - ${instanceChargeType}
+          'Fn::Not':
+            'Fn::Equals':
+              - '${instanceChargeType}'
               - PostPaid
   period:
     Description:
       en: The period of the instance
-      zh-cn: PeriodUnit=Week时，Period取值：1~4，PeriodUnit=Month时，Period取值：1~12,24, 36, 48, 60
+      zh-cn: >-
+        PeriodUnit=Week时，Period取值：1~4，PeriodUnit=Month时，Period取值：1~12,24, 36,
+        48, 60
     Label:
       en: Period
       zh-cn: 续费时长
@@ -60,13 +62,15 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-          Fn::Not:
-            Fn::Equals:
-              - ${instanceChargeType}
+          'Fn::Not':
+            'Fn::Equals':
+              - '${instanceChargeType}'
               - PostPaid
   includeDataDisks:
     Description:
-      en: Specifies whether to change the billing method of all data disks attached to the instance from pay-as-you-go to subscription
+      en: >-
+        Specifies whether to change the billing method of all data disks
+        attached to the instance from pay-as-you-go to subscription
       zh-cn: 是否将实例挂载的所有按量付费数据盘一起转换为包年包月数据盘
     Label:
       en: IncludeDataDisks
@@ -76,9 +80,9 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-          Fn::Not:
-            Fn::Equals:
-              - ${instanceChargeType}
+          'Fn::Not':
+            'Fn::Equals':
+              - '${instanceChargeType}'
               - PostPaid
   networkChargeType:
     Label:
@@ -112,21 +116,21 @@ Tasks:
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
-    Action: ACS::SelectTargets
+    Action: 'ACS::SelectTargets'
     Properties:
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: Instances.Instance[].InstanceId
+        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: modifyInstanceChargeType
     Description:
       en: Modify instance charge type
       zh-cn: 修改实例计费方式
-    Action: ACS::ECS::ModifyInstanceChargeType
+    Action: 'ACS::ECS::ModifyInstanceChargeType'
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -139,7 +143,7 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - instanceChargeType
@@ -165,7 +169,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
-    Hidden:
-      - period
-      - periodUnit
-      - includeDataDisks
+

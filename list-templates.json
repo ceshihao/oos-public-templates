@@ -1166,7 +1166,7 @@
       "CreatedDate": "2019-11-26T07:01:52Z",
       "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCommand\", \"name-zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "3a076e2205c13195dc5c04df80de7be6f68ba536d4c66e1bba19a381cd667337",
+      "Hash": "dd5a283226325652951f87ff6bf1699a7f2b3a22e91dc1d4654684bc4192e423",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1175,10 +1175,10 @@
       "TemplateId": "t-3febf64130104352b92d",
       "TemplateName": "ACS-ESS-LifeCycleRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-10T05:47:21Z"
+      "UpdatedDate": "2023-02-20T05:08:24Z"
     },
     {
       "Category": "Other",
@@ -1386,7 +1386,7 @@
       "CreatedDate": "2020-03-18T07:14:45Z",
       "Description": "{\"en\": \"Add a security group policy to multiple security groups\", \"zh-cn\": \"将一条安全组策略添加至多个安全组\", \"name-en\": \"ACS-ECS-BulkyAuthorizeSecurityGroup\", \"name-zh-cn\": \"批量授权安全组策略\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "81277e89bac1df82913ca64303c426b5fe7a4d4e6eeb1e1735161c4542977e9b",
+      "Hash": "d6c7def9b80c50e7608f6303d5222ec8306290b9ebb67288ac518c9a245c103f",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1395,10 +1395,10 @@
       "TemplateId": "t-ef152dc2a66147928e2b",
       "TemplateName": "ACS-ECS-BulkyAuthorizeSecurityGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-03T03:20:52Z"
+      "UpdatedDate": "2023-02-24T09:04:05Z"
     },
     {
       "Category": "Other",
@@ -1706,7 +1706,7 @@
       "CreatedDate": "2020-07-09T09:04:56Z",
       "Description": "{\"en\": \"Bulky modify instance charge type\", \"zh-cn\": \"批量修改实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeType\", \"name-zh-cn\": \"批量修改实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "67faeec116f3b58cd3acd31a2b32e847bf6c97854da824b6f17b5751155eabb5",
+      "Hash": "c953e4cc2c37b07aff845942337f6fa7d9f55ffec5124ba9ff761095ed2f6285",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1715,10 +1715,10 @@
       "TemplateId": "t-e4f861b5d66447158e56",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:06Z"
+      "UpdatedDate": "2023-02-22T11:24:36Z"
     },
     {
       "Category": "Other",
@@ -2266,7 +2266,7 @@
       "CreatedDate": "2021-02-18T08:47:17Z",
       "Description": "{\"en\": \"Sleep control plane, make etcd snapshot and upload it to oss bucket\", \"zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"name-en\": \"ACS-CS-DedicatedMigration\", \"name-zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"categories\": [\"others\"]}",
       "HasTrigger": false,
-      "Hash": "f346001c523e307ab2f6ca31216e13546bd7e4edc136f592cc4330c7ada71b21",
+      "Hash": "a902d211dca8d6ef2b273b49aa7df43c15282a80e747a71871e0f4d81073b400",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2275,10 +2275,10 @@
       "TemplateId": "t-bb622b95ba2348278d5a",
       "TemplateName": "ACS-CS-DedicatedMigration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-25T08:46:31Z"
+      "UpdatedDate": "2023-02-22T06:06:55Z"
     },
     {
       "Category": "Other",
@@ -3366,7 +3366,7 @@
       "CreatedDate": "2022-02-24T07:10:38Z",
       "Description": "{\"en\": \"<p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Description:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">If the scaling group has been configured with the desired number of instances, when the number of instances in the scaling group is not equal to the expected number of instances, the auto scaling service will automatically scale to ensure that the number of instances in the scaling group is always maintained After the execution is complete, please go to the ESS console to view the adjustment results. </li> <li class=\\\"li\\\">The number of cluster nodes after scaling down the nodes cannot be less than the minimum node requirements of the component, otherwise the scaling operation may return an error of code:IncorrectCapacity. </li> <li class=\\\"li\\\">Please ensure that your account balance is greater than the cost of the newly purchased instance, otherwise an error of code:InvalidAccountStatus.NotEnoughBalance will be returned. </li> <li class=\\\"li\\\">If it is multi-zone, please expand the multiple of the number of zones. </li> <li class=\\\"li\\\">The payment method for the expanded ECS is pay-as-you-go. If necessary, customers need to Manual subcontracting yearly and monthly. </a></li> <li class=\\\"li\\\"> There are two ways to scale down：scale down the specified number of ECS (<b>the number of ECS instance adjustments in the scaling group</b> is not 0), remove the specified ECS from the scaling group ( <b>The number of ECS instance adjustments in the scaling group</b> is 0 and the ECS to be removed is selected)</li> <li class=\\\"li\\\">The scaling cannot be less than the number initially opened in the scaling group. </li> </ul> <p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Description:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">Adjust ACK cluster node pool<a href='https://help.aliyun.com/document_detail/160490.html?spm=5176.2020520152.help.dexternal.253916ddpJbWDl#title-mpp-3jj- oo3'>Expected number of nodes</a>, please read the linked document carefully and authorize the role AliyunOOSLifecycleHook4CSRole. </li> </ul>\", \"zh-cn\": \"<p class=\\\"p\\\">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果。</li> <li class=\\\"li\\\">缩容节点后的集群节点数量，不能小于组件最低节点要求，否则缩容操作可能会返回 code：IncorrectCapacity 的错误。</li> <li class=\\\"li\\\">执行请确保您的账号余额大于新购实例的费用，否则会返回 code：InvalidAccountStatus.NotEnoughBalance 的错误。</li> <li class=\\\"li\\\">如果是多可用区请扩容可用区数的倍数。</li> <li class=\\\"li\\\">扩容的ECS付费方式为按量付费，如有需要，客户需要手动<a href=\\\"https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101.help.dexternal.6ecb4df5sxWQrt\\\">转包年包月。</a></li> <li class=\\\"li\\\">缩容有两种方式：缩容指定数量的ECS（<b>伸缩组ECS实例调整的数量</b>非0）、从伸缩组中移除指定的ECS（<b>伸缩组ECS实例调整的数量</b>为0且选择要移除的ECS）</li> <li class=\\\"li\\\">缩容数量不能少于伸缩组内最开始开出来的数量。</li> </ul> <p class=\\\"p\\\">调整ACK集群节点池<a href='https://help.aliyun.com/document_detail/160490.html?spm=5176.2020520152.help.dexternal.253916ddpJbWDl#title-mpp-3jj-oo3'>期望节点数</a>。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">请仔细阅读链接文档并授权角色AliyunOOSLifecycleHook4CSRole。</li> </ul>\", \"name-en\": \"Elastic Scaling\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "9e0f7434d29b26452081e00776658be70d43e98bd65d70a1a7a2844d0e721355",
+      "Hash": "2f2748edfc429e9db89ba7c1afa1488781404c02786873df6ebfea545bb98f15",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3375,10 +3375,10 @@
       "TemplateId": "t-f1cf351427fb43eb8d87",
       "TemplateName": "ACS-ESS-AdjustScalingGroupInstanceCount",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-09T08:42:51Z"
+      "UpdatedDate": "2023-02-20T04:08:05Z"
     },
     {
       "Category": "Other",
@@ -3719,6 +3719,46 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2022-09-16T07:25:14Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-02-21T13:19:17Z",
+      "Description": "{\"en\": \"Use lifecycleHook to download OSS file and run command in the specified scaling activity ECS instance\", \"zh-cn\": \"使用生命周期挂钩下载OSS文件到ECS实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand\", \"name-zh-cn\": \"使用生命周期挂钩下载OSS文件到ECS实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "8f148bb2806e0196728f9ce45142059b26fd2f012d3330ea169a24e25508a837",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-3aa64e3c861d46a79f4a",
+      "TemplateName": "ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-02-21T13:19:17Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-02-21T13:20:38Z",
+      "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download OOS file and run command\", \"zh-cn\": \"通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand\", \"name-zh-cn\": \"通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "1fde4ec648366a85df210547c806881aad6e128a59ec4dde3332bcd09188b39f",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-3387915a166f4c2b977c",
+      "TemplateName": "ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-02-21T13:20:38Z"
     },
     {
       "Category": "Other",

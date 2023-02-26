@@ -20,7 +20,7 @@ Parameters:
       en: SecurityGroupIds
       zh-cn: 安全组ID
     Type: List
-    # AssociationProperty: ALIYUN::ECS::SecurityGroup::SecurityGroupId
+    AssociationProperty: ALIYUN::ECS::SecurityGroup::SecurityGroupId
   ipProtocol:
     Label:
       en: IpProtocol
