@@ -1,8 +1,6 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: >-
-    Use lifecycleHook to download OSS file and run command in the specified
-    scaling activity ECS instance
+  en: Use lifecycleHook to download OSS file and run command in the specified scaling activity ECS instance
   zh-cn: 使用生命周期挂钩下载OSS文件到ECS实例并执行命令
   name-en: ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand
   name-zh-cn: 使用生命周期挂钩下载OSS文件到ECS实例并执行命令
@@ -89,9 +87,7 @@ Parameters:
       en: LifecycleActionToken
       zh-cn: 实例关联的特定伸缩活动的令牌
     Description:
-      en: >-
-        The token that indicates a specific scaling activity associated with an
-        instance
+      en: The token that indicates a specific scaling activity associated with an instance
       zh-cn: '实例关联的特定伸缩活动的令牌,请使用弹性伸缩系统默认值 ${lifecycleActionToken}'
     Type: String
     Default: '${lifecycleActionToken}'
@@ -116,7 +112,7 @@ Tasks:
   - Name: downloadFileAndRunCommand
     OnError: CompleteLifecycleActionForAbandon
     OnSuccess: CompleteLifecycleActionForContinue
-    Action: 'ACS::ESS::DownloadOSSFileAndRunCommand'
+    Action: ACS::ECS::DownloadOSSFileAndRunCommand
     Description:
       en: Downloads file to the ECS instances adn run command
       zh-cn: 下载文件到实例并执行命令

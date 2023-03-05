@@ -1,8 +1,6 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: >-
-    Rolling update ECS instances that in scaling group by download OOS file and
-    run command
+  en: Rolling update ECS instances that in scaling group by download OOS file and run command
   zh-cn: 通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例
   name-en: ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand
   name-zh-cn: 通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例
@@ -111,10 +109,7 @@ Parameters:
       en: OSSRegion
       zh-cn: OSS所在地域
     Description:
-      en: >-
-        When the region where the OSS is located is different from the current
-        region, the OSS file will be downloaded through the public network, and
-        the ECS in the scaling group must be able to access the public network.
+      en: When the region where the OSS is located is different from the current region, the OSS file will be downloaded through the public network, and the ECS in the scaling group must be able to access the public network.
       zh-cn: OSS所在地域和当前地域不同时会通过公网下载OSS文件，需要伸缩组内的ECS能访问公网。
     Type: String
     AssociationProperty: RegionId
@@ -146,7 +141,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getLifecycleHook
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Get lifecycle hook
       zh-cn: 获取生命周期挂钩
@@ -191,16 +186,14 @@ Tasks:
   - Name: whetherTheScalingGroupInstanceIsEmpty
     Action: 'ACS::Choice'
     Description:
-      en: >-
-        Check whether the instances in the services in the scaling group are
-        empty
+      en: Check whether the instances in the services in the scaling group are empty
       zh-cn: 检查伸缩组内服务中的实例是否为空
     Properties:
       DefaultTask: whetherToSuspendProcess
       Choices:
         - When:
             'Fn::Equals':
-              - []
+              - [ ]
               - '{{ getInstance.instanceIds }}'
           NextTask: 'ACS::END'
   - Name: whetherToSuspendProcess
@@ -228,7 +221,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ enterProcess }}'
   - Name: invokeByDownloadOSSFileAndRunCommand
-    Action: 'ACS::ESS::DownloadOSSFileAndRunCommand'
+    Action: ACS::ECS::DownloadOSSFileAndRunCommand
     Description:
       en: Upgrade by downloading files to the instance and executing commands
       zh-cn: 通过下载文件到实例并执行命令的方式进行升级
@@ -257,7 +250,7 @@ Tasks:
         Type: String
         ValueSelector: runCommandOutput
   - Name: tagInstance
-    Action: 'ACS::ExecuteApi'
+    Action: ACS::ExecuteApi
     Description:
       en: Creates and attaches tag to ECS instance
       zh-cn: 创建并挂载标签到ECS实例
@@ -269,8 +262,8 @@ Tasks:
           - '{{ ACS::TaskLoopItem }}'
         ResourceType: Instance
         Tags:
-          - Key: 'ess:rollingupdate'
-            Value: 'oos:{{ ACS::ExecutionId }}'
+        - Key: 'ess:rollingupdate'
+          Value: 'oos:{{ ACS::ExecutionId }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       Mode: Concurrency
@@ -278,10 +271,10 @@ Tasks:
       Concurrency: 10
   - Name: createLifecycleHookOfUpgrade
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - '{{ getLifecycleHook.totalCount }}'
         - 0
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Create lifecycle hook of upgrade
       zh-cn: 创建用于升级的生命周期挂钩
@@ -290,24 +283,16 @@ Tasks:
       API: CreateLifecycleHook
       Parameters:
         ScalingGroupId: '{{ scalingGroupId }}'
-        NotificationMetadata: >-
-          {"bucketName":"{{ invokeBucketName }}","objectName":"{{
-          invokeObjectName }}","URLExpirationTime":"{{ URLExpirationTime
-          }}","OSSRegion":"{{ OSSRegion }}","destinationDir":"{{
-          invokeDestinationDir }}","OSSRegion":"{{ OSSRegion
-          }}","commandContent":"{{ invokeScript
-          }}","timeout":"600","regionId":"${regionId}","instanceIds":"${instanceIds}","lifecycleHookId":"${lifecycleHookId}","lifecycleActionToken":"${lifecycleActionToken}","rateControl":"{\"Mode\":\"Concurrency\",\"MaxErrors\":0,\"Concurrency\":10}","OOSAssumeRole":"OOSServiceRole"}
+        NotificationMetadata: '{"bucketName":"{{ invokeBucketName }}","objectName":"{{ invokeObjectName }}","URLExpirationTime":"{{ URLExpirationTime }}","OSSRegion":"{{ OSSRegion }}","destinationDir":"{{ invokeDestinationDir }}","OSSRegion":"{{ OSSRegion }}","commandContent":"{{ invokeScript }}","timeout":"600","regionId":"${regionId}","instanceIds":"${instanceIds}","lifecycleHookId":"${lifecycleHookId}","lifecycleActionToken":"${lifecycleActionToken}","rateControl":"{\"Mode\":\"Concurrency\",\"MaxErrors\":0,\"Concurrency\":10}","OOSAssumeRole":"OOSServiceRole"}'
         LifecycleTransition: SCALE_OUT
         LifecycleHookName: ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand
-        NotificationArn: >-
-          acs:oos:{{ ACS::RegionId
-          }}:{{ACS::AccountId}}:template/ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand
+        NotificationArn: acs:oos:{{ ACS::RegionId }}:{{ACS::AccountId}}:template/ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand
   - Name: modifyLifecycleHookOfUpgrade
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - '{{ getLifecycleHook.totalCount }}'
         - 1
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify lifecycle hook of upgrade
       zh-cn: 修改用于升级的生命周期挂钩
@@ -316,12 +301,7 @@ Tasks:
       API: ModifyLifecycleHook
       Parameters:
         ScalingGroupId: '{{ scalingGroupId }}'
-        NotificationMetadata: >-
-          {"bucketName":"{{ invokeBucketName }}","objectName":"{{
-          invokeObjectName }}","URLExpirationTime":"{{ URLExpirationTime
-          }}","OSSRegion":"{{ OSSRegion }}","destinationDir":"{{
-          invokeDestinationDir }}","commandContent":"{{ invokeScript
-          }}","timeout":"600","regionId":"${regionId}","instanceIds":"${instanceIds}","lifecycleHookId":"${lifecycleHookId}","lifecycleActionToken":"${lifecycleActionToken}","rateControl":"{\"Mode\":\"Concurrency\",\"MaxErrors\":0,\"Concurrency\":10}","OOSAssumeRole":"OOSServiceRole"}
+        NotificationMetadata: '{"bucketName":"{{ invokeBucketName }}","objectName":"{{ invokeObjectName }}","URLExpirationTime":"{{ URLExpirationTime }}","OSSRegion":"{{ OSSRegion }}","destinationDir":"{{ invokeDestinationDir }}","commandContent":"{{ invokeScript }}","timeout":"600","regionId":"${regionId}","instanceIds":"${instanceIds}","lifecycleHookId":"${lifecycleHookId}","lifecycleActionToken":"${lifecycleActionToken}","rateControl":"{\"Mode\":\"Concurrency\",\"MaxErrors\":0,\"Concurrency\":10}","OOSAssumeRole":"OOSServiceRole"}'
         LifecycleTransition: SCALE_OUT
         LifecycleHookName: ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand
   - Name: whetherToResumeProcesses
@@ -367,16 +347,16 @@ Tasks:
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
-    Action: 'ACS::SelectTargets'
+    Action: ACS::SelectTargets
     Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       Filters:
         - Type: ResourceIds
           ResourceIds: '{{ getExecutionInstanceIds.instanceIds }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: getRollbackProcess
     Action: 'ACS::ExecuteAPI'
     Description:
@@ -406,7 +386,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ getRollbackProcess.enterProcess }}'
   - Name: rollbackByDownloadOSSFileAndRunCommand
-    Action: 'ACS::ESS::DownloadOSSFileAndRunCommand'
+    Action: ACS::ECS::DownloadOSSFileAndRunCommand
     Description:
       en: Rollback by downloading files to the instance and executing commands
       zh-cn: 通过下载文件到实例并执行命令的方式进行回滚
@@ -436,10 +416,10 @@ Tasks:
         ValueSelector: runCommandOutput
   - Name: modifyLifecycleHookOfRollback
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - '{{ getLifecycleHook.totalCount }}'
         - 1
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify lifecycle hook of rollback
       zh-cn: 修改用于回滚的生命周期挂钩
@@ -448,12 +428,7 @@ Tasks:
       API: ModifyLifecycleHook
       Parameters:
         ScalingGroupId: '{{ scalingGroupId }}'
-        NotificationMetadata: >-
-          {"bucketName":"{{ rollbackBucketName }}","objectName":"{{
-          rollbackObjectName }}","URLExpirationTime":"{{ URLExpirationTime
-          }}","OSSRegion":"{{ OSSRegion }}","destinationDir":"{{
-          rollbackDestinationDir }}","commandContent":"{{ rollbackScript
-          }}","timeout":"600","regionId":"${regionId}","instanceIds":"${instanceIds}","lifecycleHookId":"${lifecycleHookId}","lifecycleActionToken":"${lifecycleActionToken}","rateControl":"{\"Mode\":\"Concurrency\",\"MaxErrors\":0,\"Concurrency\":10}","OOSAssumeRole":"OOSServiceRole"}
+        NotificationMetadata: '{"bucketName":"{{ rollbackBucketName }}","objectName":"{{ rollbackObjectName }}","URLExpirationTime":"{{ URLExpirationTime }}","OSSRegion":"{{ OSSRegion }}","destinationDir":"{{ rollbackDestinationDir }}","commandContent":"{{ rollbackScript }}","timeout":"600","regionId":"${regionId}","instanceIds":"${instanceIds}","lifecycleHookId":"${lifecycleHookId}","lifecycleActionToken":"${lifecycleActionToken}","rateControl":"{\"Mode\":\"Concurrency\",\"MaxErrors\":0,\"Concurrency\":10}","OOSAssumeRole":"OOSServiceRole"}'
         LifecycleTransition: SCALE_OUT
         LifecycleHookName: ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand
   - Name: whetherToResumeProcessesWithRollback
