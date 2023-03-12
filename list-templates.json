@@ -666,7 +666,7 @@
       "CreatedDate": "2019-07-31T08:36:33Z",
       "Description": "{\"en\": \"Cross Region copy and run ECS instance by InstanceIds\", \"zh-cn\": \"跨地域克隆ECS实例\", \"title\": \"ACS-ECS-CloneInstancesAcrossRegion\", \"name-zh-cn\": \"跨地域克隆ECS实例\", \"categories\": [\"cross_region\"]}",
       "HasTrigger": false,
-      "Hash": "99556a2861bb0bc6bb098aabf04b40eb52ada4dbd2cf52018f335271ddbcc92d",
+      "Hash": "e83ef48a03ae3c874f6daeecdb48406de8a657264b574f40d4902f5fb3cf5d95",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -675,10 +675,10 @@
       "TemplateId": "t-f09d035be0184d3aae72",
       "TemplateName": "ACS-ECS-CloneInstancesAcrossRegion",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:10Z"
+      "UpdatedDate": "2023-03-09T03:28:10Z"
     },
     {
       "Category": "Other",
@@ -1446,7 +1446,7 @@
       "CreatedDate": "2020-04-01T03:47:15Z",
       "Description": "{\"en\": \"When using ECS instances, some situations can lead to system disk corruption, such as instances being forced to stop or restart, or sudden downtime, failure to update /etc/fstab when the disk is unloaded, or even loss or corruption of /etc/fstab or initrd files. When the instance cannot be accessed, the state of the instance displayed in the ECS instance console may still be Running, but the application in the instance cannot be accessed, the network in the instance cannot be reached, and the connection cannot be established through workbench or SSH. If you can connect to an instance from the console with VNC, you will probably see a page that indicates a system startup failure. At this point, you can consider executing the template to cure the damaged instance. The cure process is that the system disk of the damaged instance will be mounted to the newly created temporary instance, then a cure script will be executed in the temporary instance, and finally the cured system disk will be mounted back to the original instance.\", \"zh-cn\": \"使用ECS实例时，有些情况可能导致系统盘损伤，比如实例被强制地停止或重启，抑或突然发生了宕机，以及数据盘被卸载后未更新/etc/fstab，甚至于/etc/fstab或initrd文件丢失或损坏。当无法访问实例时，该实例在ECS实例控制台显示的状态可能还是运行中，但实例内的应用不可访问，实例内的网络不可达，更无法通过workbench或者ssh建立连接。如果您在控制台通过vnc能连接上实例，看到的页面大概是系统启动失败的提示信息。此时您可考虑执行该模版对损伤实例进行救治，救治流程主要是损伤的实例的系统盘将被挂载到新创建的临时实例上，接着在临时实例中会执行一段救治脚本，最后救治过的系统盘将被挂载回原实例\", \"name-en\": \"ACS-ECS-RescueUnreachableInstance-Linux\", \"name-zh-cn\": \"自助救治损伤的ECS实例Linux系统盘\", \"categories\": [\"diagnose\"]}",
       "HasTrigger": false,
-      "Hash": "6db2d6b8027c38947a749744c304143acb7bf0135ac690827e637ec9ae10dab5",
+      "Hash": "252e424e389b464750977bdc750662cff73c855a913771ba2996973cb4fc0836",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1455,10 +1455,10 @@
       "TemplateId": "t-94baebe1d0764277b147",
       "TemplateName": "ACS-ECS-RescueUnreachableInstance-Linux",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:00Z"
+      "UpdatedDate": "2023-03-09T03:28:10Z"
     },
     {
       "Category": "Other",
@@ -4206,7 +4206,7 @@
       "CreatedDate": "2023-02-07T10:04:16Z",
       "Description": "{\"en\": \"Use this template to bulky upgrade CN service instance\", \"zh-cn\": \"使用这个模板在计算巢商家侧批量升级服务实例\", \"name-en\": \"ACS-CN-BulkyUpgradeServiceInstance\", \"name-zh-cn\": \"计算巢商家侧批量升级服务实例\", \"categories\": [\"computenest_supplier\"]}",
       "HasTrigger": false,
-      "Hash": "f052c49b94d9c763a33d3d5e519fc158b51efeb9505a3796efb1f16babd42ffa",
+      "Hash": "865fc74e016beafe86f7405187d1739d191a47bcfb1abefc84ac312b9834769b",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4215,10 +4215,10 @@
       "TemplateId": "t-d875ba1f666145e3a6af",
       "TemplateName": "ACS-CN-BulkyUpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-08T06:15:26Z"
+      "UpdatedDate": "2023-03-07T06:55:23Z"
     },
     {
       "Category": "Other",
