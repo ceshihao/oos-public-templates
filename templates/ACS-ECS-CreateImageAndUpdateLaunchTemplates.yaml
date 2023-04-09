@@ -19,7 +19,7 @@ Parameters:
       en: InstanceId
       zh-cn: ECS实例ID
     Type: String
-    AssociationProperty: 'ALIYUN::ECS::Instance::InstanceId'
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
   targetImageName:
@@ -28,18 +28,9 @@ Parameters:
       zh-cn: 新镜像的名称
     Type: String
     Description:
-      en: >-
-        <p class="p">Note:</p> <ul class="ul"> <li class="li">Length is 2~128
-        English or Chinese characters</li> <li class="li"><font color='red'>must
-        start with big or small letters or Chinese, not http:// and https://.
-        </font></li> <li class="li">Can contain numbers, colons (:), underscores
-        (_), or dashes (-). </li> </ul>
-      zh-cn: >-
-        <p class="p">注意：</p> <ul class="ul"> <li
-        class="li">长度为2~128个英文或中文字符</li> <li class="li"><font
-        color='red'>必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li
-        class="li">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>
-    Default: 'CreateImage_from_{{instanceId}}'
+      en: <p class="p">Note:</p> <ul class="ul"> <li class="li">Length is 2~128 English or Chinese characters</li> <li class="li"><font color='red'>must start with big or small letters or Chinese, not http:// and https://. </font></li> <li class="li">Can contain numbers, colons (:), underscores (_), or dashes (-). </li> </ul>
+      zh-cn: <p class="p">注意：</p> <ul class="ul"> <li class="li">长度为2~128个英文或中文字符</li> <li class="li"><font color='red'>必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li class="li">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>
+    Default: CreateImage_from_{{instanceId}}
   launchTemplateNames:
     Description:
       en: <font color='red'><b>Must correspond to the selected region</b></font>
@@ -82,40 +73,54 @@ Parameters:
     Default: OOSServiceRole
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: createImage
-    Action: 'ACS::ECS::CreateImage'
-    Description:
-      en: Create new image with the specified image name and instance ID
-      zh-cn: 通过指定实例ID和镜像名称创建新的镜像
-    Properties:
-      regionId: '{{ regionId }}'
-      instanceId: '{{ instanceId }}'
-      imageName: >-
-        {{ targetImageName }}_on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate
-        }}
-      tags: '{{tags}}'
-    Outputs:
-      imageId:
-        ValueSelector: imageId
-        Type: String
-  - Name: updateLaunchTemplate
-    Action: 'ACS::ECS::UpdateLaunchTemplate'
-    Description:
-      en: Update instance launch template
-      zh-cn: 更新实例启动模版
-    Properties:
-      regionId: '{{ regionId }}'
-      imageId: '{{ createImage.imageId }}'
-      launchTemplateName: '{{ ACS::TaskLoopItem }}'
-      deleteSourceTemplateVersion: '{{ deleteSourceTemplateVersion }}'
-    Loop:
-      Items: '{{ launchTemplateNames }}'
+- Name: createImage
+  Action: 'ACS::ECS::CreateImage'
+  Description:
+    en: Create new image with the specified image name and instance ID
+    zh-cn: 通过指定实例ID和镜像名称创建新的镜像
+  Properties:
+    regionId: '{{ regionId }}'
+    instanceId: '{{ instanceId }}'
+    imageName: '{{ targetImageName }}_on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
+    tags: '{{tags}}'
+  Outputs:
+    imageId:
+      ValueSelector: imageId
+      Type: String
+- Name: describeDisks
+  Action: 'ACS::ExecuteAPI'
+  Description:
+    en: Get disk info of the ECS instance
+    zh-cn: 查看实例的磁盘信息
+  Properties:
+    Service: ECS
+    API: DescribeDisks
+    Parameters:
+      RegionId: '{{ regionId }}'
+      InstanceId: '{{ instanceId }}'
+  Outputs:
+    systemDiskSize:
+      Type: String
+      ValueSelector: '.Disks.Disk[] | select(.Type == "system" )|.Size'
+- Name: updateLaunchTemplate
+  Action: 'ACS::ECS::UpdateLaunchTemplate'
+  Description:
+    en: Update instance launch template
+    zh-cn: 更新实例启动模版
+  Properties:
+    regionId: '{{ regionId }}'
+    imageId: '{{ createImage.imageId }}'
+    launchTemplateName: '{{ ACS::TaskLoopItem }}'
+    deleteSourceTemplateVersion: '{{ deleteSourceTemplateVersion }}'
+    systemDiskSize: '{{ describeDisks.systemDiskSize}}'
+  Loop:
+    Items: '{{ launchTemplateNames }}'
 Outputs:
   imageIds:
     Type: List
     Value: '{{ createImage.imageId }}'
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - regionId

@@ -1506,7 +1506,7 @@
       "CreatedDate": "2020-04-26T07:58:35Z",
       "Description": "{\"en\": \"Alarm when monitoring the discount and spot price of multi-instance types in multi-availability zone exceeding the threshold\", \"zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"name-en\": \"ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType\", \"name-zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "5465a6e78e557f2e674540e90871d8f13454b92944afbfd214e18c958ca12fd1",
+      "Hash": "93abb5d4131584c2e8eab69620aa8b9930439ef1de162096d9268072b839ea4e",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1515,10 +1515,10 @@
       "TemplateId": "t-da7fcbca8c5a4479bd47",
       "TemplateName": "ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-02T02:15:26Z"
+      "UpdatedDate": "2023-04-06T05:26:14Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "edf22cfcc43b2db1de8df576c66748d547eb5f53d53e75ada082a8e132c3f2ae",
+      "Hash": "291cb61a695ba179e4cea845cdef8bd0c22ad223ce773710f8b6a7818490ba40",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2115,10 +2115,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-03-29T02:54:40Z"
+      "UpdatedDate": "2023-04-07T02:41:09Z"
     },
     {
       "Category": "Other",
@@ -2226,7 +2226,7 @@
       "CreatedDate": "2021-01-27T08:57:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateImageAndUpdateLaunchTemplates\", \"name-zh-cn\": \"创建ECS镜像并更新启动模版\", \"en\": \"Creates an ECS image and update launch template\", \"zh-cn\": \"创建ECS镜像并更新启动模版\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "3f2a7a5ec9b2cdda9be9a91c5cb15bbc99632cfa26e74c0e4baf93936adb4988",
+      "Hash": "4de0d0b28f45ce47c72b6d3e62d2fcd272db0e21aef52c913b3a9744dc75e325",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2235,10 +2235,10 @@
       "TemplateId": "t-aaa35aa635194e2c888d",
       "TemplateName": "ACS-ECS-CreateImageAndUpdateLaunchTemplates",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-27T07:48:49Z"
+      "UpdatedDate": "2023-04-04T23:26:54Z"
     },
     {
       "Category": "Other",
@@ -3446,7 +3446,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "222ad36e85797d2669c14bdb5b95be84501bf7c44419313700beb927f3e26165",
+      "Hash": "7d9e9569d758d2b73d359aa3f62ee3d3cf08e0ace36b7c066628f3016083b0fd",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3455,10 +3455,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-03-29T02:54:40Z"
+      "UpdatedDate": "2023-04-07T02:41:09Z"
     },
     {
       "Category": "Other",
@@ -3879,6 +3879,26 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-03-30T09:09:58Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-04-06T03:40:16Z",
+      "Description": "{\"en\": \"Use snapshot to create a temporary cloud disk to restore data\", \"zh-cn\": \"使用快照创建临时云盘恢复数据\", \"name-en\": \"ACS-ECS-RestoreDataWithSnapshot\", \"name-zh-cn\": \"使用快照恢复数据\", \"categories\": [\"instance_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "11b567077bb685fb7ab3148a9de7630b4ab3c06104abef052b52f22cd8fe1a34",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-bd80be29e5754ae8bbec",
+      "TemplateName": "ACS-ECS-RestoreDataWithSnapshot",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-04-06T03:40:16Z"
     },
     {
       "Category": "Other",
