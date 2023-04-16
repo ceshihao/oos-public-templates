@@ -26,7 +26,7 @@
       "CreatedDate": "2020-06-04T11:30:03Z",
       "Description": "{\"en\": \"Bulky upload files to instances\", \"zh-cn\": \"批量上传文件到多个ECS实例\", \"name-en\": \"Upload File\", \"name-zh-cn\": \"上传文件\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "14f6dba5417f1fc4bc893227a899f874897318b7592c73789642806b86196d76",
+      "Hash": "0f6c5101a070e6dffc3452ef5a2669a808442930695f45768a5a8aca9b03d8ce",
       "Popularity": 9.99,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -35,10 +35,10 @@
       "TemplateId": "t-f3894c68400546069dfd",
       "TemplateName": "ACS-ECS-BulkyDownloadFile",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-07T10:04:17Z"
+      "UpdatedDate": "2023-04-14T03:26:01Z"
     },
     {
       "Category": "Other",
