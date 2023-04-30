@@ -2226,7 +2226,7 @@
       "CreatedDate": "2021-01-27T08:57:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateImageAndUpdateLaunchTemplates\", \"name-zh-cn\": \"创建ECS镜像并更新启动模版\", \"en\": \"Creates an ECS image and update launch template\", \"zh-cn\": \"创建ECS镜像并更新启动模版\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "4de0d0b28f45ce47c72b6d3e62d2fcd272db0e21aef52c913b3a9744dc75e325",
+      "Hash": "4541e53490c2d66b02961cc755b4a9c68dc18a623e060ee8de78d7487dadd166",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2235,10 +2235,10 @@
       "TemplateId": "t-aaa35aa635194e2c888d",
       "TemplateName": "ACS-ECS-CreateImageAndUpdateLaunchTemplates",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-04-04T23:26:54Z"
+      "UpdatedDate": "2023-04-26T03:23:44Z"
     },
     {
       "Category": "Other",
@@ -3941,6 +3941,26 @@
       "UpdatedDate": "2023-04-19T10:01:22Z"
     },
     {
+      "Category": "TimerTrigger",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-04-23T07:04:10Z",
+      "Description": "{\"en\": \"<p>Regularly accept and authorize the execution of system event operations. Template process：<ol><li>Stop ECS instance</li><li>Accept inquired system event</li><li>Start ECS instance</li</ol></p>\", \"zh-cn\": \"<p>定时接受并授权执行系统事件操作。模板流程：<ol><li>停止ECS实例</li><li>接受并授权执行系统事件操作</li><li>启动ECS实例</li</ol></p>\", \"name-en\": \"ACS-ECS-ScheduleToAcceptInquiredSystemEvent\", \"name-zh-cn\": \"定时接受并授权执行系统事件操作\", \"categories\": [\"time_trigger\"]}",
+      "HasTrigger": true,
+      "Hash": "bf105bf99be4281833ac3f248e7f1e6675fae2e6fb5001c952a8c0c9500e48a3",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-5a05f91f73604ae6aaa2",
+      "TemplateName": "ACS-ECS-ScheduleToAcceptInquiredSystemEvent",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-04-24T06:35:31Z"
+    },
+    {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T10:10:52Z",
@@ -4439,6 +4459,26 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-03-30T07:02:59Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-04-26T11:31:15Z",
+      "Description": "{\"en\": \"Use lifecycleHook to run command on one specified instance to other instances created by ESS.\", \"zh-cn\": \"使用生命周期挂钩在指定机器上执行对ESS创建出的机器的命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCmdOnSpecifiedInstanceToEssCreatedInstances\", \"name-zh-cn\": \"使用生命周期挂钩在指定机器上执行对ESS创建出的机器的命令\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "8102cbfc940a33572acb2b71db43f03a51eaf1b77db54505600df88bcfda28a2",
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-46ab1f6b6a084d26801f",
+      "TemplateName": "ACS-ESS-LifeCycleRunCmdOnSpecifiedInstanceToEssCreatedInstances",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-04-26T11:31:15Z"
     }
   ]
 }
