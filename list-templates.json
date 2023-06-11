@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "3c5a026455eabb33612d282b813a17a5accae70c4dc4bf57a5135db46d3e6b58",
+      "Hash": "6190f597e86e1b6f39388ecfa4fe5493e74842b03706197270d148082f5dfcec",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2115,10 +2115,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-05-30T02:12:48Z"
+      "UpdatedDate": "2023-06-08T08:52:53Z"
     },
     {
       "Category": "Other",
@@ -3446,7 +3446,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "7915bd6701c345faf05710d590059d2ad1ca0d059a319e14b860b40aba1c0d4c",
+      "Hash": "1b69cba1cf5f6b52c21054da10f1fe4f0dbbd5d1e01a874a65a1e6759eb9e71b",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3455,10 +3455,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-05-30T02:12:48Z"
+      "UpdatedDate": "2023-06-08T08:52:53Z"
     },
     {
       "Category": "Other",
