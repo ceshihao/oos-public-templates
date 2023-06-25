@@ -2446,7 +2446,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "2ff41a597ab4a9d1bfbc9493b5df56290522748fff64a055fcc4c1d703fe28fd",
+      "Hash": "bfd3886b64d399964b67e8c34dc61a1e28130f860e7042ca34847f420e870685",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2455,10 +2455,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-05-30T09:25:42Z"
+      "UpdatedDate": "2023-06-19T06:03:57Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2466,7 +2466,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "d788b6ddbe154ae39baa57724aaae1f70c104ff738d781a691f10aa510f22304",
+      "Hash": "e2bc1c51c69881356fec768ee112818269e6476de42cc3a02456d191ce49f7d5",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2475,10 +2475,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-17T08:05:56Z"
+      "UpdatedDate": "2023-06-19T06:03:57Z"
     },
     {
       "Category": "Other",
@@ -2626,7 +2626,7 @@
       "CreatedDate": "2021-08-17T08:22:34Z",
       "Description": "{\"en\": \"Use lifecyclehook to delete cluster nodes (only supports elastic contraction activities)\", \"zh-cn\": \"使用生命周期挂钩批量移除CS集群节点（仅支持弹性收缩活动）\", \"name-en\": \"ACS-ESS-LifeCycleBulkyDeleteClusterNodes\", \"name-zh-cn\": \"使用生命周期挂钩批量移除CS集群节点\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d587eecb71636e4ac538d927237e719c019cec25b02ec9f8a709e9f802cff2f8",
+      "Hash": "66c6019ea63a89ddec4387f19dcd4233670c7c6bcb4b6faf223c5ad2b3984045",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2635,10 +2635,10 @@
       "TemplateId": "t-e4c99fda4d1f4fe3bb7a",
       "TemplateName": "ACS-ESS-LifeCycleBulkyDeleteClusterNodes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:02Z"
+      "UpdatedDate": "2023-06-20T12:30:44Z"
     },
     {
       "Category": "TimerTrigger",
