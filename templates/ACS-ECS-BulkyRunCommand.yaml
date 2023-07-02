@@ -210,6 +210,3 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
-    Hidden:
-      - username
-      - enableParameter
