@@ -39,6 +39,13 @@ Parameters:
       - ACS::CBWP::CommonBandwidthPackage
       - ACS::CDN::Domain
       - ACS::CEN::CenInstance
+      - ACS::CEN::CenBandwidthPackage
+      - ACS::CEN::Flowlog
+      - ACS::CEN::TransitRouter
+      - ACS::CEN::TransitRouterVbrAttachment
+      - ACS::CEN::TransitRouterVpcAttachment
+      - ACS::CEN::TransitRouterVpnAttachment
+      - ACS::CEN::TransitRouterRouteTable
       - ACS::DCDN::Domain
       - ACS::DdosCoo::Instance
       - ACS::EBS::DedicatedBlockStorageCluster

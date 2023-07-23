@@ -6,7 +6,7 @@
       "CreatedDate": "2019-09-23T09:38:46Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances\", \"zh-cn\": \"批量在多台ECS实例上运行云助手命令\", \"name-en\": \"Run Command\", \"name-zh-cn\": \"发送远程命令\", \"categories\": [\"run_command\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "f332dd86b3d3128996f1a49500def39f8674131ef3239ac31bb19c653804ccfa",
+      "Hash": "d279159ae033696eb5873549e008b77a51deaa1ddad3e776612e557ad5644cc1",
       "Popularity": 10,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -15,10 +15,10 @@
       "TemplateId": "t-89fb84c218e84fd58e14",
       "TemplateName": "ACS-ECS-BulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v55",
+      "TemplateVersion": "v56",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-27T01:51:06Z"
+      "UpdatedDate": "2023-07-21T01:36:22Z"
     },
     {
       "Category": "Other",
@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "6190f597e86e1b6f39388ecfa4fe5493e74842b03706197270d148082f5dfcec",
+      "Hash": "57262141e529637d4cd4cd6b845a161836da70e7db22bc9980686e51f234a1d0",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2115,10 +2115,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v21",
+      "TemplateVersion": "v22",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-08T08:52:53Z"
+      "UpdatedDate": "2023-07-21T03:09:15Z"
     },
     {
       "Category": "Other",
@@ -3446,7 +3446,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "1b69cba1cf5f6b52c21054da10f1fe4f0dbbd5d1e01a874a65a1e6759eb9e71b",
+      "Hash": "40856863b16f2f59fede1c534bc1377e2a72dbdefbbac8db83dbda06e78080c0",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3455,10 +3455,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-08T08:52:53Z"
+      "UpdatedDate": "2023-07-21T03:09:16Z"
     },
     {
       "Category": "Other",
