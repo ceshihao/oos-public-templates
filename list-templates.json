@@ -126,7 +126,7 @@
       "CreatedDate": "2019-09-23T09:35:04Z",
       "Description": "{\"en\": \"Bulky stops the ECS instances\", \"zh-cn\": \"批量停止ECS实例\", \"name-en\": \"Bulky Stop Instances\", \"name-zh-cn\": \"批量停止实例\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "e861a5ec0111aaea8b4b007fc35c3353031aa3b7dd9b97712e43cd0d35d79868",
+      "Hash": "f1c34e4d196c826bf99a0e9139451fa6f804a8b04095395681ea0ebb8f0931d2",
       "Popularity": 9.5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -135,10 +135,10 @@
       "TemplateId": "t-fa2eb4ae72924bfc972a",
       "TemplateName": "ACS-ECS-BulkyStopInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-06T09:55:22Z"
+      "UpdatedDate": "2023-07-27T03:13:47Z"
     },
     {
       "Category": "Other",
@@ -146,7 +146,7 @@
       "CreatedDate": "2019-09-23T09:37:50Z",
       "Description": "{\"en\": \"Bulky restarts the ECS instances\", \"zh-cn\": \"批量重启ECS实例\", \"name-en\": \"Bulky Reboot Instances\", \"name-zh-cn\": \"批量重启实例\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "bcebec04c090044696625655967b0768365b001871bb0ffe5a9cbfdbc2a4f057",
+      "Hash": "630848faa7b0e77b9de21ccaa7ebbeca3e8cfa6fe2b5f5138470c1fe56685d6e",
       "Popularity": 9.5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -155,10 +155,10 @@
       "TemplateId": "t-f1885a1551dd455e94dc",
       "TemplateName": "ACS-ECS-BulkyRebootInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-11T03:25:54Z"
+      "UpdatedDate": "2023-07-27T03:13:46Z"
     },
     {
       "Category": "Other",
@@ -466,7 +466,7 @@
       "CreatedDate": "2019-11-07T04:26:32Z",
       "Description": "{\"en\": \"Bulky create snapshot\", \"zh-cn\": \"批量给磁盘创建快照\", \"name-en\": \"ACS-ECS-BulkyCreateSnapshot\", \"name-zh-cn\": \"批量创建快照\", \"categories\": [\"data_backup\"]}",
       "HasTrigger": false,
-      "Hash": "eb98b4c9aad04133c321332e52847128f14f0a8863a66fdbf86064b9788b9332",
+      "Hash": "9ded27e508514d3d05eb388d1da38db002048b661f3a5d7e70bc795389945c8b",
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -475,10 +475,10 @@
       "TemplateId": "t-67e7804498984869b5a3",
       "TemplateName": "ACS-ECS-BulkyCreateSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:03Z"
+      "UpdatedDate": "2023-07-27T03:13:46Z"
     },
     {
       "Category": "Other",
@@ -2266,7 +2266,7 @@
       "CreatedDate": "2021-02-18T08:47:17Z",
       "Description": "{\"en\": \"Sleep control plane, make etcd snapshot and upload it to oss bucket\", \"zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"name-en\": \"ACS-CS-DedicatedMigration\", \"name-zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"categories\": [\"others\"]}",
       "HasTrigger": false,
-      "Hash": "5f5a5dd211db181d9d4da2bcf09c5ae5c1e47a4ea11bf98e88b0585a1de96dba",
+      "Hash": "6e1d7edde059723205f2ec4a03c56d51b298172cbb332d57d3bb56d79e98e7d8",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2275,10 +2275,10 @@
       "TemplateId": "t-bb622b95ba2348278d5a",
       "TemplateName": "ACS-CS-DedicatedMigration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-04-20T03:37:14Z"
+      "UpdatedDate": "2023-07-24T02:05:56Z"
     },
     {
       "Category": "Other",
@@ -3566,7 +3566,7 @@
       "CreatedDate": "2022-06-01T07:31:06Z",
       "Description": "{\"en\": \"Bulky modify disk spec\", \"zh-cn\": \"批量修改云盘规格\", \"name-en\": \"ACS-ECS-BulkyModifyDiskSpec\", \"name-zh-cn\": \"批量修改云盘规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "06470f4100f368994fcdb235c8da40ace2b89eae3f761d5ff526955b3375a081",
+      "Hash": "4965b414d30bd40e2c944b315b592c6ee14e61494a9ab37026546075279a4868",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3575,10 +3575,10 @@
       "TemplateId": "t-143fef8b71554c17bac2",
       "TemplateName": "ACS-ECS-BulkyModifyDiskSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-06-10T07:36:26Z"
+      "UpdatedDate": "2023-07-27T03:13:46Z"
     },
     {
       "Category": "Other",
