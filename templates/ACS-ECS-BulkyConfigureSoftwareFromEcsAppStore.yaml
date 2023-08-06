@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 批量安装软件
   categories:
     - run_command
+    - application_manage
 Parameters:
   regionId:
     Type: String
