@@ -2,7 +2,7 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Use this template to install software on ecs
   zh-cn: 使用这个模板批量的在ECS安装软件
-  name-en: ACS-ECS-BulkyConfigureSoftwareFromEcsAppStore
+  name-en: Bulky Configure Software
   name-zh-cn: 批量安装软件
   categories:
     - run_command

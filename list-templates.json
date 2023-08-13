@@ -4104,9 +4104,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2023-06-25T09:47:15Z",
-      "Description": "{\"en\": \"Use this template to install software on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装软件\", \"name-en\": \"ACS-ECS-BulkyConfigureSoftwareFromEcsAppStore\", \"name-zh-cn\": \"批量安装软件\", \"categories\": [\"run_command\", \"application_manage\"]}",
+      "Description": "{\"en\": \"Use this template to install software on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装软件\", \"name-en\": \"Bulky Configure Software\", \"name-zh-cn\": \"批量安装软件\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ac1c0cbf27c440d13257e5694955428155792e3c65a71e188807c075546d3164",
+      "Hash": "aec8fbd795144f84494b76cbadeb86768a41fe7024c20b06cc52aea7d0a9149a",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4115,10 +4115,10 @@
       "TemplateId": "t-b340b437f80b4b65b58f",
       "TemplateName": "ACS-ECS-BulkyConfigureSoftwareFromEcsAppStore",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-03T02:54:20Z"
+      "UpdatedDate": "2023-08-08T03:26:35Z"
     },
     {
       "Category": "TimerTrigger",
