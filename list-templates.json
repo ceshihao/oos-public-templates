@@ -486,7 +486,7 @@
       "CreatedDate": "2020-04-03T09:56:39Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by replace system disk\", \"zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup\", \"name-zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fb09ef7a2514406d630de22d849518f4e6ba8e41b7f922bb0ba6626bec072f4d",
+      "Hash": "9ed4e80beb13c2fed48d2e2b6ecbad9906c22726465553067cf3f8dfa91b0b20",
       "Popularity": 7.2,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -495,10 +495,10 @@
       "TemplateId": "t-5d45c19fed154e24a602",
       "TemplateName": "ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:05Z"
+      "UpdatedDate": "2023-08-25T08:58:49Z"
     },
     {
       "Category": "Other",
@@ -506,7 +506,7 @@
       "CreatedDate": "2020-08-14T02:50:37Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by configure oos package\", \"zh-cn\": \"通过安装OOS软件包的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByConfigureOOSPackage\", \"name-zh-cn\": \"通过安装OOS软件包的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fa2eafc3992e84ec8be85f3da112464960a9a0585be8e06325248d35e834f7b5",
+      "Hash": "d64b3dd75a75c0ec796336f3936a525c6fbcfa4d198ff082ab1f0c195ea3a87c",
       "Popularity": 7.15,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -515,10 +515,10 @@
       "TemplateId": "t-4ea5eef6099842388c23",
       "TemplateName": "ACS-ESS-RollingUpdateByConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:04Z"
+      "UpdatedDate": "2023-08-25T08:58:47Z"
     },
     {
       "Category": "Other",
@@ -546,7 +546,7 @@
       "CreatedDate": "2020-04-03T09:56:16Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by run command\", \"zh-cn\": \"通过执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByRunCommandInScalingGroup\", \"name-zh-cn\": \"通过执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "8d60dd5278cfed941d4efb97dbc1ba0eeb63666b633aa873fb67df01ff909ba0",
+      "Hash": "e7b3be9c4dea26ae281d075c2c523ae75685797553f10ef1d42af3e30ba100af",
       "Popularity": 7.1,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -555,10 +555,10 @@
       "TemplateId": "t-3a5f090408fe4a3c8801",
       "TemplateName": "ACS-ESS-RollingUpdateByRunCommandInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:05Z"
+      "UpdatedDate": "2023-08-25T08:58:49Z"
     },
     {
       "Category": "Other",
@@ -2446,7 +2446,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "bfd3886b64d399964b67e8c34dc61a1e28130f860e7042ca34847f420e870685",
+      "Hash": "495a3b564847a5f31d874283b51ab3092c6a6db90b914e23a100d1689be39597",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2455,10 +2455,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-19T06:03:57Z"
+      "UpdatedDate": "2023-08-25T02:18:19Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2466,7 +2466,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "e2bc1c51c69881356fec768ee112818269e6476de42cc3a02456d191ce49f7d5",
+      "Hash": "2c3e9d50c18c044f6f286dd33d66d4666fa167055c7198cb5d9d01a6f04a394d",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2475,10 +2475,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-19T06:03:57Z"
+      "UpdatedDate": "2023-08-25T02:18:19Z"
     },
     {
       "Category": "Other",
@@ -3706,7 +3706,7 @@
       "CreatedDate": "2022-08-22T06:22:12Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download file and run command\", \"zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadFileAndRunCommandInScalingGroup\", \"name-zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f2fd3ff0478dc3e5945c485c8c6cf82f2e65dc15ca42974ea5651796b9685fae",
+      "Hash": "a377dad7cf450a994a2c76edc226f9bfec16546b449611ef6dcecfdb480464a5",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3715,10 +3715,10 @@
       "TemplateId": "t-4f45c565d5d84c2cae3c",
       "TemplateName": "ACS-ESS-RollingUpdateByDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-09-16T07:25:14Z"
+      "UpdatedDate": "2023-08-25T08:58:48Z"
     },
     {
       "Category": "Other",
@@ -3746,7 +3746,7 @@
       "CreatedDate": "2023-02-21T13:20:38Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download OOS file and run command\", \"zh-cn\": \"通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand\", \"name-zh-cn\": \"通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "383768032122bc508d6b61c49b9d715e854bee14cc7291e6d91e94dec9c8cede",
+      "Hash": "972d50c57248da1f893083a8c7aa62c87976ac9f1e0373662b931500d3a6901a",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3755,10 +3755,10 @@
       "TemplateId": "t-3387915a166f4c2b977c",
       "TemplateName": "ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-28T07:25:29Z"
+      "UpdatedDate": "2023-08-25T08:58:48Z"
     },
     {
       "Category": "Other",
