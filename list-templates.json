@@ -46,7 +46,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ac0b92c74116ce4dd5126413ab21e2205cdaf87b3d6a041e6690977443b6428b",
+      "Hash": "482a456d343ef708b4d418aa783f8d677f133e4e639d7477e5bab43b288ea1fb",
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -55,10 +55,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v42",
+      "TemplateVersion": "v43",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-26T08:37:08Z"
+      "UpdatedDate": "2023-09-01T07:08:00Z"
     },
     {
       "Category": "Other",
