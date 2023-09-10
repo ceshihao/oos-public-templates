@@ -46,7 +46,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "482a456d343ef708b4d418aa783f8d677f133e4e639d7477e5bab43b288ea1fb",
+      "Hash": "f2bf0ea611cbefd27d593e94c4776a9a7e106549ebce8cef5ca0f56a85cd6767",
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -55,10 +55,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v43",
+      "TemplateVersion": "v45",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-01T07:08:00Z"
+      "UpdatedDate": "2023-09-08T04:56:21Z"
     },
     {
       "Category": "Other",
@@ -86,7 +86,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copy new image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f92f6f7e9e3c41b8f925a2a8dca2f7ea5089f5b399bd69893300e9c51924242b",
+      "Hash": "53a4a7129463dd8f9ef927300b102fc2029db01189d5278e9d12e487c37ba0a6",
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -95,10 +95,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v26",
+      "TemplateVersion": "v30",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-26T08:37:07Z"
+      "UpdatedDate": "2023-09-08T04:56:21Z"
     },
     {
       "Category": "Other",
@@ -1166,7 +1166,7 @@
       "CreatedDate": "2019-11-26T07:01:52Z",
       "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCommand\", \"name-zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "dd5a283226325652951f87ff6bf1699a7f2b3a22e91dc1d4654684bc4192e423",
+      "Hash": "7253135d386b3334bb2bed374550b17a01e6e7b7f19892cc42600f77848ae825",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1175,10 +1175,10 @@
       "TemplateId": "t-3febf64130104352b92d",
       "TemplateName": "ACS-ESS-LifeCycleRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-20T05:08:24Z"
+      "UpdatedDate": "2023-09-08T08:02:29Z"
     },
     {
       "Category": "Other",

@@ -122,6 +122,17 @@ Parameters:
           Fn::Equals:
             - ${whetherCreateVpc}
             - false
+  internetMaxBandwidthOut:
+    Type: Number
+    Label:
+      zh-cn: 流量公网带宽
+      en: Internet Max Bandwidth Out
+    Description:
+      zh-cn: 取值范围0-100, 0为不开公网ip
+      en: no public ip if zero
+    Default: 0
+    MinValue: 0
+    MaxValue: 100
   ramRoleName:
     Label:
       en: RamRoleName
@@ -281,6 +292,7 @@ Tasks:
   Description:
     en: Create a ECS instance with source image
     zh-cn: 用源镜像创建一台ECS实例
+  OnError: deleteStack
   Properties:
     regionId: '{{ regionId }}'
     imageId: '{{ sourceImageId }}'
@@ -299,6 +311,7 @@ Tasks:
             - true
         - '{{ untilStackReady.vSwitchId }}'
         - '{{ vSwitchId }}'
+    internetMaxBandwidthOut: '{{ internetMaxBandwidthOut }}'
     ramRoleName: '{{ ramRoleName }}'
   Outputs:
     instanceId:
@@ -404,6 +417,7 @@ Metadata:
           - vSwitchCidrBlock
           - securityGroupId
           - vSwitchId
+          - internetMaxBandwidthOut
           - ramRoleName
         Label:
           default:
