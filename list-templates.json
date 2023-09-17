@@ -46,7 +46,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f2bf0ea611cbefd27d593e94c4776a9a7e106549ebce8cef5ca0f56a85cd6767",
+      "Hash": "e47e452a55cd3ed8d1e2bcdaa709979c1600469a594956a596f956130ad03410",
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -55,10 +55,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v45",
+      "TemplateVersion": "v46",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-08T04:56:21Z"
+      "UpdatedDate": "2023-09-13T08:53:52Z"
     },
     {
       "Category": "Other",
@@ -86,7 +86,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copy new image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "53a4a7129463dd8f9ef927300b102fc2029db01189d5278e9d12e487c37ba0a6",
+      "Hash": "da899c8779d8cf23edcbb4d119626bb75e42e859a78e2fccfd5ccac74220a402",
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -95,10 +95,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v30",
+      "TemplateVersion": "v31",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-08T04:56:21Z"
+      "UpdatedDate": "2023-09-13T08:53:52Z"
     },
     {
       "Category": "Other",
@@ -4659,6 +4659,46 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-04-26T11:31:15Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-09-12T02:44:42Z",
+      "Description": "{\"name-en\": \"ACS-ECS-BulkyCalculateSavingsPlanByInstance\", \"name-zh-cn\": \"批量测算ECS实例SP类型\", \"en\": \"Bulky calculate savings plan by instance\", \"zh-cn\": \"批量测算ECS实例SP类型\"}",
+      "HasTrigger": false,
+      "Hash": "6dae73ba65cf261d2216275c032e200221fa9222d72ff2ac0b6d216c19edf0b8",
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-29cd5f8aea14458fafff",
+      "TemplateName": "ACS-ECS-BulkyCalculateSavingsPlanByInstance",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v3",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-09-13T07:14:26Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-09-12T02:55:00Z",
+      "Description": "{\"name-en\": \"ACS-ECS-BulkyExchangeToPostPayWithSavingsPlan\", \"name-zh-cn\": \"批量通过节省计划换购实例\", \"en\": \"Bulky exchange instance through savings plan\", \"zh-cn\": \"批量通过节省计划换购实例\"}",
+      "HasTrigger": false,
+      "Hash": "4e6569e2771307eacff091ca812d9ea67b11af4123cf0ff9a0c8b0a4eb5ebd97",
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-1c2de39393ec435fa2a5",
+      "TemplateName": "ACS-ECS-BulkyExchangeToPostPayWithSavingsPlan",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-09-12T02:55:00Z"
     }
   ]
 }

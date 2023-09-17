@@ -167,6 +167,12 @@ Parameters:
     Type: String
     AssociationProperty: Code
     Default: 'echo hello'
+  timeout:
+    Label:
+      en: Timeout
+      zh-cn: 超时时间
+    Type: Number
+    Default: 600
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -337,6 +343,7 @@ Tasks:
     commandContent: '{{ commandContent }}'
     commandType: '{{ commandType }}'
     instanceId: '{{ runInstances.instanceId }}'
+    timeout: '{{ timeout }}'
 - Name: stopInstance
   Action: ACS::ECS::StopInstance
   Description:
@@ -426,6 +433,7 @@ Metadata:
       - Parameters:
           - commandType
           - commandContent
+          - timeout
         Label:
           default:
             zh-cn: 发送远程命令
