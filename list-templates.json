@@ -906,7 +906,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "aaa63dc13399078f4a06b34d5717a195cc4d4726dc3dc077c19f6b2545d5f137",
+      "Hash": "e2c02af086f1ef95a1a0ee87ea27011c409af1f058d86d238a2ceadf596fc109",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -915,10 +915,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-11-16T08:02:56Z"
+      "UpdatedDate": "2023-09-18T02:19:57Z"
     },
     {
       "Category": "Other",
@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "57262141e529637d4cd4cd6b845a161836da70e7db22bc9980686e51f234a1d0",
+      "Hash": "b2d02a661122b111528363780ecef15407aca042a623a3bb81bd6a8e6dc7248b",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -2115,10 +2115,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-21T03:09:15Z"
+      "UpdatedDate": "2023-09-18T09:10:58Z"
     },
     {
       "Category": "Other",
@@ -3446,7 +3446,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "40856863b16f2f59fede1c534bc1377e2a72dbdefbbac8db83dbda06e78080c0",
+      "Hash": "08edad3cabbaea1db6b714e9327e63b4c36100f228d9b351fdb9f464480af7e6",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -3455,10 +3455,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-21T03:09:16Z"
+      "UpdatedDate": "2023-09-18T09:10:58Z"
     },
     {
       "Category": "Other",
@@ -4666,7 +4666,7 @@
       "CreatedDate": "2023-09-12T02:44:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyCalculateSavingsPlanByInstance\", \"name-zh-cn\": \"批量测算ECS实例SP类型\", \"en\": \"Bulky calculate savings plan by instance\", \"zh-cn\": \"批量测算ECS实例SP类型\"}",
       "HasTrigger": false,
-      "Hash": "6dae73ba65cf261d2216275c032e200221fa9222d72ff2ac0b6d216c19edf0b8",
+      "Hash": "b8a8a8b1852d2d75bcdffec8213ec21dd57ba45f9d608eb23f476a21f37c73b3",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4675,10 +4675,10 @@
       "TemplateId": "t-29cd5f8aea14458fafff",
       "TemplateName": "ACS-ECS-BulkyCalculateSavingsPlanByInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-13T07:14:26Z"
+      "UpdatedDate": "2023-09-20T08:30:03Z"
     },
     {
       "Category": "Other",
@@ -4686,7 +4686,7 @@
       "CreatedDate": "2023-09-12T02:55:00Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyExchangeToPostPayWithSavingsPlan\", \"name-zh-cn\": \"批量通过节省计划换购实例\", \"en\": \"Bulky exchange instance through savings plan\", \"zh-cn\": \"批量通过节省计划换购实例\"}",
       "HasTrigger": false,
-      "Hash": "4e6569e2771307eacff091ca812d9ea67b11af4123cf0ff9a0c8b0a4eb5ebd97",
+      "Hash": "f18e39d9a3489f6826f95f39a8c52a2578978cfa239a66f8feab3ebe7b80ca8c",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4695,10 +4695,10 @@
       "TemplateId": "t-1c2de39393ec435fa2a5",
       "TemplateName": "ACS-ECS-BulkyExchangeToPostPayWithSavingsPlan",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-12T02:55:00Z"
+      "UpdatedDate": "2023-09-20T08:30:34Z"
     }
   ]
 }

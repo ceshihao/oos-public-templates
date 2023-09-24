@@ -27,6 +27,7 @@ Parameters:
     AllowedValues:
       - ACS::ACK::Cluster
       - ACS::ADB::DBCluster
+      - ACS::ADB::DBClusterLakeVersion
       - ACS::AliKafka::ConsumerGroup
       - ACS::AliKafka::Instance
       - ACS::AliKafka::Topic
@@ -72,6 +73,10 @@ Parameters:
       - ACS::MongoDB::DBInstance
       - ACS::NAS::FileSystem
       - ACS::NAT::NatGateway
+      - ACS::NLB::Listener
+      - ACS::NLB::LoadBalancer
+      - ACS::NLB::SecurityPolicy
+      - ACS::NLB::ServerGroup
       - ACS::OOS::Application
       - ACS::OOS::Parameter
       - ACS::OOS::SecretParameter

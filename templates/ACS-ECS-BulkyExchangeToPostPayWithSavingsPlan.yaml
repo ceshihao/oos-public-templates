@@ -41,7 +41,7 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: refundSavingsPlanByInstance
-    Action: ACS::ECS::ExchangeToPostPayWithSavingsPlan
+    Action: ACS::ECS::CreateSavingsPlan
     Description:
       en: Refund instance through savings plan
       zh-cn: 按节省计划退款
@@ -79,7 +79,7 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Items: '{{ refundInstanceGroup }}'
   - Name: deFrayInstanceBySavingsPlan
-    Action: ACS::ECS::ExchangeToPostPayWithSavingsPlan
+    Action: ACS::ECS::CreateSavingsPlan
     Description:
       en: Defray instance through savings plan
       zh-cn: 按节省计划付款

@@ -87,14 +87,14 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: Instances.Instance[].InstanceId
-  - Name: calculateSavingsPlanByInstance
+  - Name: describeSavingsPlanEstimation
     Action: ACS::ExecuteAPI
     Description:
       en: Calculate savings plan by instance
-      zh-cn: 按实例计算节省计划
+      zh-cn: 按实例计测算节省计划
     Properties:
       Service: ECS
-      API: CalculateSavingsPlanByInstance
+      API: DescribeSavingsPlanEstimation
       Parameters:
         RegionId: '{{ regionId }}'
         InstanceId: '{{ ACS::TaskLoopItem }}'
@@ -113,14 +113,39 @@ Tasks:
       result:
         Type: Json
         ValueSelector: .
+  - Name: bulkyDescribeSavingsPlanPriceByInstanceGroup
+    Action: ACS::ECS::DescribeSavingsPlanPriceByInstanceGroup
+    Description:
+      en: Bulky describe savings plan price by instance group
+      zh-cn: 批量根据实例分组进行SP询价
+    Properties:
+      regionId: '{{ regionId }}'
+      targetGroupOfInstanceFamilyGroup: '{{ ACS::TaskLoopItem }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - First
+          - group_by(.InstanceTypeFamily)
+          - '{{ describeSavingsPlanEstimation.results }}'
+      Outputs:
+        priceResults:
+          AggregateType: Fn::ListJoin
+          AggregateField: result
+    Outputs:
+      result:
+        Type: Json
+        ValueSelector: .results
 Outputs:
+  PriceResults:
+    Type: Json
+    Value: '{{ bulkyDescribeSavingsPlanPriceByInstanceGroup.priceResults }}'
   InstanceInfos:
     Type: Json
     Value:
       Fn::Jq:
         - First
         - group_by(.InstanceTypeFamily)
-        - '{{ calculateSavingsPlanByInstance.results }}'
+        - '{{ describeSavingsPlanEstimation.results }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
