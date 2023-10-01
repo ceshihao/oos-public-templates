@@ -47,37 +47,51 @@ Tasks:
       zh-cn: 按节省计划退款
     Properties:
       regionId: '{{ regionId }}'
-      instanceIdOfExchange:
+      resourceId:
         Fn::Select:
-          - 'InstanceId'
+          - InstanceIds
           - '{{ ACS::TaskLoopItem }}'
       planType:
-        Fn::Select:
-          - 'PlanType'
+        Fn::Jq:
+          - First
+          - .PlanType
           - '{{ ACS::TaskLoopItem }}'
       offeringType:
-        Fn::Select:
-          - 'OfferingType'
+        Fn::Jq:
+          - First
+          - .OfferingType
           - '{{ ACS::TaskLoopItem }}'
       committedAmount:
-        Fn::Select:
-          - 'CommittedAmount'
+        Fn::Jq:
+          - First
+          - .CommittedAmount
           - '{{ ACS::TaskLoopItem }}'
       instanceTypeFamily:
-        Fn::Select:
-          - 'InstanceTypeFamily'
+        Fn::Jq:
+          - First
+          - .InstanceTypeFamily
           - '{{ ACS::TaskLoopItem }}'
       periodUnit:
-        Fn::Select:
-          - 'PeriodUnit'
+        Fn::Jq:
+          - First
+          - .PeriodUnit
           - '{{ ACS::TaskLoopItem }}'
       period:
-        Fn::Select:
-          - 'Period'
+        Fn::Jq:
+          - First
+          - .Period
           - '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ refundInstanceGroup }}'
+      Outputs:
+        orderIds:
+          AggregateType: Fn::ListJoin
+          AggregateField: orderId
+    Outputs:
+      orderId:
+        Type: Json
+        ValueSelector: .orderId
   - Name: deFrayInstanceBySavingsPlan
     Action: ACS::ECS::CreateSavingsPlan
     Description:
@@ -85,37 +99,71 @@ Tasks:
       zh-cn: 按节省计划付款
     Properties:
       regionId: '{{ regionId }}'
-      instanceIdOfExchange:
+      resourceId:
         Fn::Select:
-          - 'InstanceId'
+          - InstanceIds
           - '{{ ACS::TaskLoopItem }}'
       planType:
-        Fn::Select:
-          - 'PlanType'
+        Fn::Jq:
+          - First
+          - .PlanType
           - '{{ ACS::TaskLoopItem }}'
       offeringType:
-        Fn::Select:
-          - 'OfferingType'
+        Fn::Jq:
+          - First
+          - .OfferingType
           - '{{ ACS::TaskLoopItem }}'
       committedAmount:
-        Fn::Select:
-          - 'CommittedAmount'
+        Fn::Jq:
+          - First
+          - .CommittedAmount
           - '{{ ACS::TaskLoopItem }}'
       instanceTypeFamily:
-        Fn::Select:
-          - 'InstanceTypeFamily'
+        Fn::Jq:
+          - First
+          - .InstanceTypeFamily
           - '{{ ACS::TaskLoopItem }}'
       periodUnit:
-        Fn::Select:
-          - 'PeriodUnit'
+        Fn::Jq:
+          - First
+          - .PeriodUnit
           - '{{ ACS::TaskLoopItem }}'
       period:
-        Fn::Select:
-          - 'Period'
+        Fn::Jq:
+          - First
+          - .Period
           - '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ defrayInstanceGroup }}'
+      Outputs:
+        orderIds:
+          AggregateType: Fn::ListJoin
+          AggregateField: orderId
+    Outputs:
+      orderId:
+        Type: Json
+        ValueSelector: .orderId
+  - Name: untilOrderPaidReady
+    Action: ACS::WaitFor
+    Retries: 57
+    Description:
+      en: Waits for the order is paid
+      zh-cn: 等待订单支付完成
+    Properties:
+      Service: BssOpenApi
+      API: GetOrderDetail
+      Parameters:
+        RegionId: '{{ regionId }}'
+        OrderId: '{{ ACS::TaskLoopItem }}'
+      DesiredValues:
+        - Paid
+      StopRetryValues:
+        - Cancelled
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items: '{{ deFrayInstanceBySavingsPlan.orderIds }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
