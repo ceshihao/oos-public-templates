@@ -150,7 +150,7 @@ Tasks:
         Content:
           msgtype: markdown
           markdown:
-            title: 监控结果
+            title: 监控结果(MonitoringResult)
             text:
               'Fn::Join':
                 - ''
