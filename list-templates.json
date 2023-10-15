@@ -1506,7 +1506,7 @@
       "CreatedDate": "2020-04-26T07:58:35Z",
       "Description": "{\"en\": \"Alarm when monitoring the discount and spot price of multi-instance types in multi-availability zone exceeding the threshold\", \"zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"name-en\": \"ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType\", \"name-zh-cn\": \"监控多可用区下的多实例类型的折扣与现价超出阈值时报警\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "267ce9661594e423e6eb35164670acf85849162c52959b2fe19f10340bce4c19",
+      "Hash": "043d643869f41c0efd18b5c49f693de6c2106889baf3d140863dab272523060d",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1515,10 +1515,10 @@
       "TemplateId": "t-da7fcbca8c5a4479bd47",
       "TemplateName": "ACS-ECS-AlarmWhenDiscountAndPriceExceedsThresholdInMultiZoneAndInstanceType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-07T03:20:23Z"
+      "UpdatedDate": "2023-10-09T06:39:47Z"
     },
     {
       "Category": "TimerTrigger",
@@ -1546,7 +1546,7 @@
       "CreatedDate": "2020-05-09T07:50:18Z",
       "Description": "{\"en\": \"Monitor the discounts and prices of spot instances in the scaling group, and send out alarm notifications if they exceed\", \"zh-cn\": \"监控伸缩组内的抢占式实例的折扣与价格，实际值超出阈值时发出报警通知\", \"name-en\": \"ACS-ECS-AlarmWhenDiscountOrSpotPriceExceedsThresholdByScalingGroup\", \"name-zh-cn\": \"监控伸缩组内的抢占式实例的价格与折扣超出阈值时报警\"}",
       "HasTrigger": false,
-      "Hash": "e33abfcdd63f2bfc4103547eecad5e1f379f334de7767198ea0a1ac4caa39717",
+      "Hash": "eeb0267c978dc3fb2ecb61c4d94fdc181c8b933ff8241c813a89a04343b5dca2",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1555,10 +1555,10 @@
       "TemplateId": "t-3d871dcd66674a1d82cd",
       "TemplateName": "ACS-ECS-AlarmWhenDiscountOrSpotPriceExceedsThresholdByScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-07T03:20:24Z"
+      "UpdatedDate": "2023-10-09T06:39:47Z"
     },
     {
       "Category": "Other",
@@ -1666,7 +1666,7 @@
       "CreatedDate": "2020-06-08T04:07:30Z",
       "Description": "{\"en\": \"Monitor the discounts and prices of spot instances that currently exist in the scaling group, and send out alarm notifications if they exceed\", \"zh-cn\": \"监控目前伸缩组内实际存在的抢占式实例的折扣与价格，实际值超出阈值时发出报警通知\", \"name-en\": \"ACS-ECS-AlarmDiscountOrPriceInScalingGroupExistingInstanceTypes\", \"name-zh-cn\": \"监控伸缩组已有的实例类型的价格与折扣超出阈值时报警\"}",
       "HasTrigger": false,
-      "Hash": "bf88ffcb90ad15d3543d96b288502a69ad3a98d357de5dc6ad18b710aed01cca",
+      "Hash": "a8a530f283c1af3bbd4b5e1bce01d72cbc6dd37311f042dad2f89126dc3180d8",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1675,10 +1675,10 @@
       "TemplateId": "t-624a112378ae42b2b37c",
       "TemplateName": "ACS-ECS-AlarmDiscountOrPriceInScalingGroupExistingInstanceTypes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-07T03:20:23Z"
+      "UpdatedDate": "2023-10-09T06:39:46Z"
     },
     {
       "Category": "Other",
@@ -2446,7 +2446,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "495a3b564847a5f31d874283b51ab3092c6a6db90b914e23a100d1689be39597",
+      "Hash": "a5824152b7a895ee4b39273ac11c390af5c96c812bea2b02fdf9ea248d4f19b7",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2455,10 +2455,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T02:18:19Z"
+      "UpdatedDate": "2023-10-10T06:52:22Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4763,42 +4763,42 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2023-09-12T02:44:42Z",
-      "Description": "{\"name-en\": \"ACS-ECS-BulkyCalculateSavingsPlanByInstance\", \"name-zh-cn\": \"批量测算ECS实例SP类型\", \"en\": \"Bulky calculate savings plan by instance\", \"zh-cn\": \"批量测算ECS实例SP类型\"}",
+      "CreatedDate": "2023-10-11T03:24:01Z",
+      "Description": "{\"name-en\": \"ACS-ECS-BulkyDescribeSavingsPlanEstimation\", \"name-zh-cn\": \"批量测算ECS实例SP类型\", \"en\": \"Bulky describe savings plan estimation\", \"zh-cn\": \"批量测算ECS实例SP类型\"}",
       "HasTrigger": false,
-      "Hash": "b8a8a8b1852d2d75bcdffec8213ec21dd57ba45f9d608eb23f476a21f37c73b3",
+      "Hash": "14a74e530a125f2c487e25c21f2714b5f6fecf802e4a6a1ba246239530295edd",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
       "Tags": {},
       "TemplateFormat": "YAML",
-      "TemplateId": "t-29cd5f8aea14458fafff",
-      "TemplateName": "ACS-ECS-BulkyCalculateSavingsPlanByInstance",
+      "TemplateId": "t-12e09308c8bc4d2babf4",
+      "TemplateName": "ACS-ECS-BulkyDescribeSavingsPlanEstimation",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v1",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-20T08:30:03Z"
+      "UpdatedDate": "2023-10-11T03:24:01Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2023-09-12T02:55:00Z",
-      "Description": "{\"name-en\": \"ACS-ECS-BulkyExchangeToPostPayWithSavingsPlan\", \"name-zh-cn\": \"批量通过节省计划换购实例\", \"en\": \"Bulky exchange instance through savings plan\", \"zh-cn\": \"批量通过节省计划换购实例\"}",
+      "CreatedDate": "2023-10-11T03:24:26Z",
+      "Description": "{\"name-en\": \"ACS-ECS-BulkyCreateSavingsPlan\", \"name-zh-cn\": \"批量通过节省计划换购实例\", \"en\": \"Bulky create savings plan\", \"zh-cn\": \"批量通过节省计划换购实例\"}",
       "HasTrigger": false,
-      "Hash": "9fc0249970cd2f0369fb9117a36cc1af1b0c2ddc54a66315a8220594ed934f94",
+      "Hash": "fba5149ee00fce38734e936adcf29527b6660b85b74c94627df7071210567aa6",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
       "Tags": {},
       "TemplateFormat": "YAML",
-      "TemplateId": "t-1c2de39393ec435fa2a5",
-      "TemplateName": "ACS-ECS-BulkyExchangeToPostPayWithSavingsPlan",
+      "TemplateId": "t-5f2c0aaa8baa40b7b9e7",
+      "TemplateName": "ACS-ECS-BulkyCreateSavingsPlan",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v1",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-28T15:13:58Z"
+      "UpdatedDate": "2023-10-11T03:24:26Z"
     }
   ]
 }

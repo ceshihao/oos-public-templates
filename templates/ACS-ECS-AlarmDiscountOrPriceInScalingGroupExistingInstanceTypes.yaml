@@ -156,7 +156,7 @@ Tasks:
                 - ''
                 - 'Fn::ListJoin':
                     - |
-                      ### 报警阈值%：{{ threshold }}
+                      ### 报警阈值%(alarm threshold %)：{{ threshold }}
                     - 'Fn::Jq':
                         - First
                         - . | join("\n\n")
@@ -170,7 +170,7 @@ Outputs:
           - ''
           - 'Fn::ListJoin':
               - |
-                ### 报警阈值%：{{ threshold }}
+                ### 报警阈值%(alarm threshold %)：{{ threshold }}
               - 'Fn::Jq':
                   - First
                   - . | join("\n\n")
