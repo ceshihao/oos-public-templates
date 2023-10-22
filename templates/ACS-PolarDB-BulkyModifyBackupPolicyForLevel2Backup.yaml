@@ -27,6 +27,19 @@ Parameters:
       en: Level2 Backup Retention Period
       zh-cn: 二级备份保留周期
     Type: String
+  dataLevel2BackupPeriod:
+    Label:
+      en: Data Level2 Backup Period
+      zh-cn: 二级备份周期
+    Type: List
+    AllowedValues:
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      - Sunday
   rateControl:
     Label:
       en: RateControl
@@ -56,6 +69,10 @@ Tasks:
         RegionId: '{{ regionId }}'
         DBClusterId: '{{ ACS::TaskLoopItem }}'
         DataLevel2BackupRetentionPeriod: '{{ dataLevel2BackupRetentionPeriod }}'
+        DataLevel2BackupPeriod:
+          Fn::Join:
+            - ','
+            - '{{ dataLevel2BackupPeriod }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ instanceIds }}'
@@ -75,6 +92,12 @@ Metadata:
           default:
             zh-cn: 二级备份保留周期
             en: Data Level2 Backup Retention Period
+      - Parameters:
+          - dataLevel2BackupPeriod
+        Label:
+          default:
+            zh-cn: 二级备份周期
+            en: Data Level2 Backup Period
       - Parameters:
           - rateControl
           - OOSAssumeRole

@@ -137,7 +137,19 @@ Parameters:
       en: RamRoleName
       zh-cn: 实例的RAM角色
     Type: String
+    AssociationProperty: ALIYUN::ECS::RAM::Role
     Default: ''
+  systemDiskCategory:
+    Label:
+      en: SystemDiskCategory
+      zh-cn: 系统盘的云盘种类
+    Type: String
+    AssociationProperty: ALIYUN::ECS::Disk::SystemDiskCategory
+    AssociationPropertyMetadata:
+      RegionId: regionId
+      InstanceType: instanceType
+      InstanceChargeType: instanceChargeType
+    Default: cloud_essd
   tags:
     Label:
       en: Tags
@@ -366,6 +378,7 @@ Tasks:
         - '{{ vSwitchId }}'
     internetMaxBandwidthOut: '{{ internetMaxBandwidthOut }}'
     ramRoleName: '{{ ramRoleName }}'
+    systemDiskCategory: '{{ systemDiskCategory }}'
   Outputs:
     instanceId:
       ValueSelector: instanceIds[0]
@@ -621,6 +634,7 @@ Metadata:
           - securityGroupId
           - vSwitchId
           - internetMaxBandwidthOut
+          - systemDiskCategory
           - ramRoleName
         Label:
           default:

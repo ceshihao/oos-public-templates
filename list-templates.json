@@ -46,7 +46,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e47e452a55cd3ed8d1e2bcdaa709979c1600469a594956a596f956130ad03410",
+      "Hash": "7349ff576e392df344fc3ea7ea400aa4370f2f975a8f32288f7a5d47c6427e0c",
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -55,10 +55,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v46",
+      "TemplateVersion": "v47",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-13T08:53:52Z"
+      "UpdatedDate": "2023-10-16T07:02:16Z"
     },
     {
       "Category": "Other",
@@ -86,7 +86,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copy new image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "da899c8779d8cf23edcbb4d119626bb75e42e859a78e2fccfd5ccac74220a402",
+      "Hash": "db5b6632e92070165dab2eef5fba10cba5c05f88000139e9cf4045bcbcf93018",
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -95,10 +95,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v31",
+      "TemplateVersion": "v32",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-13T08:53:52Z"
+      "UpdatedDate": "2023-10-16T07:02:16Z"
     },
     {
       "Category": "Other",
@@ -4186,7 +4186,7 @@
       "CreatedDate": "2023-09-26T12:00:35Z",
       "Description": "{\"en\": \"Modify maintain time of polardb cluster\", \"zh-cn\": \"修改PolarDB集群的自动备份策略的二级备份保留周期\", \"name-en\": \"ACS-PolarDB-BulkyModifyBackupPolicyForLevel2Backup\", \"name-zh-cn\": \"修改PolarDB集群的自动备份策略的二级备份保留周期\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "52abcf356bdb4d3003f6ace1fc844f1ff94f886a5f3d0c8f522477ab7dfcb724",
+      "Hash": "6191d2a574e8470033ec9d93bf558d3f47e7d2a72eafcaa249a6095d4f4395f0",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4195,10 +4195,10 @@
       "TemplateId": "t-1b9c383ee2cb4d239356",
       "TemplateName": "ACS-PolarDB-BulkyModifyBackupPolicyForLevel2Backup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-26T12:00:35Z"
+      "UpdatedDate": "2023-10-17T06:43:20Z"
     },
     {
       "Category": "Other",
