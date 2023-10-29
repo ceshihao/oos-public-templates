@@ -17,17 +17,26 @@ Parameters:
     Label:
       en: TimerTrigger
       zh-cn: 定时类型
-    AssociationProperty: ALIYUN::OOS::Component::TimerTrigger
+    AssociationProperty: 'ALIYUN::OOS::Component::TimerTrigger'
     AssociationPropertyMetadata:
       MinuteInterval: 30
   diskIds:
     Label:
       en: DiskIds
       zh-cn: 云盘ID
-    AssociationProperty: ALIYUN::ECS::Disk::DiskId
+    AssociationProperty: 'ALIYUN::ECS::Disk::DiskId'
     AssociationPropertyMetadata:
       RegionId: regionId
     Type: List
+  tags:
+    Label:
+      en: Tags
+      zh-cn: 快照标签
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      ShowSystem: false
+    Default: []
   rateControl:
     Label:
       en: RateControl
@@ -47,35 +56,36 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: timerTrigger
-    Action: ACS::TimerTrigger
+    Action: 'ACS::TimerTrigger'
     Description:
       en: Triggers a task as scheduled by specifying type and expression
       zh-cn: 通过指定触发类型和表达式按计划触发任务
     Properties:
       Type:
-        Fn::Select:
+        'Fn::Select':
           - type
           - '{{timerTrigger}}'
       Expression:
-        Fn::Select:
+        'Fn::Select':
           - expression
           - '{{timerTrigger}}'
       EndDate:
-        Fn::Select:
+        'Fn::Select':
           - endDate
           - '{{ timerTrigger }}'
       TimeZone:
-        Fn::Select:
+        'Fn::Select':
           - timeZone
           - '{{ timerTrigger }}'
   - Name: createSnapshot
-    Action: ACS::ECS::CreateSnapshot
+    Action: 'ACS::ECS::CreateSnapshot'
     Description:
       en: Create a snapshot for a cloud disk
       zh-cn: 为一块云盘创建一份快照
     Properties:
       regionId: '{{ regionId }}'
       diskId: '{{ ACS::TaskLoopItem }}'
+      tags: '{{ tags }}'
     Outputs:
       snapshotId:
         Type: String
@@ -85,9 +95,10 @@ Tasks:
       Items: '{{ diskIds }}'
       Outputs:
         snapshotIds:
-          AggregateType: Fn::ListJoin
+          AggregateType: 'Fn::ListJoin'
           AggregateField: snapshotId
 Outputs:
   createdSnapshotIds:
     Type: List
     Value: '{{ createSnapshot.snapshotIds }}'
+

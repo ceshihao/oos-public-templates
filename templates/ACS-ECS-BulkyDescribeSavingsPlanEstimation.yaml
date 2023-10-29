@@ -97,7 +97,7 @@ Tasks:
       API: DescribeSavingsPlanEstimation
       Parameters:
         RegionId: '{{ regionId }}'
-        InstanceId: '{{ ACS::TaskLoopItem }}'
+        ResourceId: '{{ ACS::TaskLoopItem }}'
         PlanType: '{{ planType }}'
         OfferingType: '{{ offeringType }}'
         PeriodUnit: '{{ periodUnit }}'

@@ -19,7 +19,7 @@ Parameters:
       en: DiskIds
       zh-cn: 云盘 ID
     Type: List
-    AssociationProperty: ALIYUN::ECS::Disk::DiskId
+    AssociationProperty: 'ALIYUN::ECS::Disk::DiskId'
     AssociationPropertyMetadata:
       RegionId: regionId
   retentionDays:
@@ -27,12 +27,24 @@ Parameters:
       en: RetentionDays
       zh-cn: 快照保留时间
     Description:
-      en: The unit is day. Snapshots are automatically released after the retention time expires.The default is 0, indicating that the snapshot will not be automatically released.
-      zh-cn: 单位为天,保留时间到期后快照会被自动释放。默认为0，表示快照不会被自动释放。
+      en: >-
+        The unit is day. Snapshots are automatically released after the
+        retention time expires.The default is 0, indicating that the snapshot
+        will not be automatically released.
+      zh-cn: '单位为天,保留时间到期后快照会被自动释放。默认为0，表示快照不会被自动释放。'
     Type: Number
     MaxValue: 65536
     MinValue: 0
     Default: 0
+  tags:
+    Label:
+      en: Tags
+      zh-cn: 快照标签
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      ShowSystem: false
+    Default: []
   rateControl:
     Label:
       en: RateControl
@@ -58,11 +70,12 @@ Tasks:
       zh-cn: 为一块云盘创建一份快照
     Properties:
       diskId: '{{ ACS::TaskLoopItem }}'
+      tags: '{{ tags }}'
       retentionDays:
-        Fn::If:
-          - Fn::Equals:
-            - '{{ retentionDays }}'
-            - 0
+        'Fn::If':
+          - 'Fn::Equals':
+              - '{{ retentionDays }}'
+              - 0
           - ''
           - '{{ retentionDays }}'
     Outputs:
@@ -81,11 +94,12 @@ Outputs:
     Type: List
     Value: '{{ createSnapshot.snapshotIds }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - diskIds
           - retentionDays
+          - tags
         Label:
           default:
             zh-cn: 配置参数
@@ -97,3 +111,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+
