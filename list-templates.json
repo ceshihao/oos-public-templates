@@ -2364,9 +2364,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2021-04-23T09:28:26Z",
-      "Description": "{\"en\": \"Bulky modify the billing method of instances in a specified instance type family.\", \"zh-cn\": \"批量修改指定实例规格族下实例的计费方式。\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies\", \"name-zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"categories\": [\"instance_manage\"]}",
+      "Description": "{\"en\": \"Bulky modify the billing method of instances in a specified instance type family.\", \"zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies\", \"name-zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f0334f6384b5d80fef1aaa1ea89185798164ab6dc664f4f89761a49b68a7f646",
+      "Hash": "97ace104cf76d93608f8f695439ed2e4bb4db627ab56de500426bdc4a29a8beb",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2375,10 +2375,10 @@
       "TemplateId": "t-fcae94921f6d4e17b636",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-04-23T09:28:26Z"
+      "UpdatedDate": "2023-11-10T09:13:06Z"
     },
     {
       "Category": "Other",
@@ -4855,10 +4855,10 @@
       "TemplateId": "t-12e09308c8bc4d2babf4",
       "TemplateName": "ACS-ECS-BulkyDescribeSavingsPlanEstimation",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-25T04:06:20Z"
+      "UpdatedDate": "2023-11-07T10:34:44Z"
     },
     {
       "Category": "Other",
@@ -4875,10 +4875,30 @@
       "TemplateId": "t-5f2c0aaa8baa40b7b9e7",
       "TemplateName": "ACS-ECS-BulkyCreateSavingsPlan",
       "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-11-07T10:34:44Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-11-06T11:13:49Z",
+      "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"通过生成临时地址批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
+      "HasTrigger": false,
+      "Hash": "ba03c8cc9bba77c371b19c573e69cbbcc6480dbca6a5bbaea347f716efbf6d2a",
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-dbec4cab2eda4e90a40c",
+      "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
+      "TemplateType": "Automation",
       "TemplateVersion": "v1",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-11T03:24:26Z"
+      "UpdatedDate": "2023-11-06T11:13:49Z"
     }
   ]
 }

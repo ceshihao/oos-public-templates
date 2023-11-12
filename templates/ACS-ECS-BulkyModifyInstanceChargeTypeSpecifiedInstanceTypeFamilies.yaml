@@ -3,7 +3,7 @@ Description:
   en: >-
     Bulky modify the billing method of instances in a specified instance type
     family.
-  zh-cn: 批量修改指定实例规格族下实例的计费方式。
+  zh-cn: 批量修改指定实例规格族下实例的计费方式
   name-en: ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies
   name-zh-cn: 批量修改指定实例规格族下实例的计费方式
   categories:
