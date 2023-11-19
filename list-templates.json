@@ -746,7 +746,7 @@
       "CreatedDate": "2019-09-23T09:59:47Z",
       "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装日志服务插件\", \"name-en\": \"ACS-ECS-BulkyInstallLogAgent\", \"name-zh-cn\": \"批量安装日志服务插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "f3967e3da22a13890d46e724fcc803b8caf42bf0985faea505baadeeabde53dc",
+      "Hash": "ec550dc3c1d866b39346ec066e9507f3e6ef66611f0b0852a3aecdbcac6e71f2",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -755,10 +755,10 @@
       "TemplateId": "t-7d7cca42bbd54b0885b3",
       "TemplateName": "ACS-ECS-BulkyInstallLogAgent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-25T11:08:50Z"
+      "UpdatedDate": "2023-11-17T08:29:24Z"
     },
     {
       "Category": "Other",
@@ -1626,7 +1626,7 @@
       "CreatedDate": "2020-05-19T09:32:01Z",
       "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackage\", \"name-zh-cn\": \"批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "2856e8f446c7de8265c6071249f1eb0d31c938f3e021eb5485307214ccfa8ebd",
+      "Hash": "9939e9e954823f9d7afe2198bc42cdb5dc8487089a216f52b23bfa86adb5e96d",
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -1635,10 +1635,10 @@
       "TemplateId": "t-ee71820191514ce498d2",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-01-11T09:16:34Z"
+      "UpdatedDate": "2023-11-13T08:41:22Z"
     },
     {
       "Category": "Other",
@@ -4323,6 +4323,46 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2023-11-16T01:46:48Z",
+      "Description": "{\"en\": \"Bulky delete expired image\", \"zh-cn\": \"批量删除过期的镜像\", \"name-en\": \"ACS-ECS-BulkyDeleteExpiredImage\", \"name-zh-cn\": \"批量删除过期的镜像\", \"categories\": [\"image_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "1e2563793c471b0fd7010a7a1cae56f27f7dc30f8c2e891ba1a5771863162c31",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-848f8cd0b91f42af91d3",
+      "TemplateName": "ACS-ECS-BulkyDeleteExpiredImage",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-11-16T01:46:48Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-11-16T01:46:48Z",
+      "Description": "{\"en\": \"Bulky delete expired snapshot\", \"zh-cn\": \"批量删除过期的快照\", \"name-en\": \"ACS-ECS-BulkyDeleteExpiredSnapshot\", \"name-zh-cn\": \"批量删除过期的快照\", \"categories\": [\"data_backup\"]}",
+      "HasTrigger": false,
+      "Hash": "5bd8a8456d8a126d9183e4714dea6cb35c26384a475b5d7257de48cae0322921",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-47cb34fce5934eb48ea5",
+      "TemplateName": "ACS-ECS-BulkyDeleteExpiredSnapshot",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-11-16T01:46:48Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T10:10:52Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using Linux kernel version as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将Linux内核版本用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByLinuxKernelVersion\", \"name-zh-cn\": \"批量根据Linux内核版本标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
@@ -4886,7 +4926,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"通过生成临时地址批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "ba03c8cc9bba77c371b19c573e69cbbcc6480dbca6a5bbaea347f716efbf6d2a",
+      "Hash": "ffcbb3a09952babaf97dde367cee8d938f8d6f47f3b439ede9c80bac65429d48",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4895,10 +4935,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-06T11:13:49Z"
+      "UpdatedDate": "2023-11-13T08:41:22Z"
     }
   ]
 }
