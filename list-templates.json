@@ -486,7 +486,7 @@
       "CreatedDate": "2020-04-03T09:56:39Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by replace system disk\", \"zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup\", \"name-zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9ed4e80beb13c2fed48d2e2b6ecbad9906c22726465553067cf3f8dfa91b0b20",
+      "Hash": "ff377dca2809b65d23382b2640821e70438061658a7b4bd55504b13daf2cb990",
       "Popularity": 7.2,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -495,10 +495,10 @@
       "TemplateId": "t-5d45c19fed154e24a602",
       "TemplateName": "ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T08:58:49Z"
+      "UpdatedDate": "2023-11-28T11:10:01Z"
     },
     {
       "Category": "Other",
@@ -506,7 +506,7 @@
       "CreatedDate": "2020-08-14T02:50:37Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by configure oos package\", \"zh-cn\": \"通过安装OOS软件包的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByConfigureOOSPackage\", \"name-zh-cn\": \"通过安装OOS软件包的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d64b3dd75a75c0ec796336f3936a525c6fbcfa4d198ff082ab1f0c195ea3a87c",
+      "Hash": "405ae551489016d60f4497c3a36aee83787662e86ed98931643bfdd6a3767866",
       "Popularity": 7.15,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -515,10 +515,10 @@
       "TemplateId": "t-4ea5eef6099842388c23",
       "TemplateName": "ACS-ESS-RollingUpdateByConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T08:58:47Z"
+      "UpdatedDate": "2023-11-28T11:10:01Z"
     },
     {
       "Category": "Other",
@@ -546,7 +546,7 @@
       "CreatedDate": "2020-04-03T09:56:16Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by run command\", \"zh-cn\": \"通过执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByRunCommandInScalingGroup\", \"name-zh-cn\": \"通过执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e7b3be9c4dea26ae281d075c2c523ae75685797553f10ef1d42af3e30ba100af",
+      "Hash": "238b01470e6cdd02cd0a5bf0f3c053c1ef67cd3a9945e0c73854f6c3060e2791",
       "Popularity": 7.1,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
@@ -555,10 +555,10 @@
       "TemplateId": "t-3a5f090408fe4a3c8801",
       "TemplateName": "ACS-ESS-RollingUpdateByRunCommandInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T08:58:49Z"
+      "UpdatedDate": "2023-11-28T11:10:01Z"
     },
     {
       "Category": "Other",
@@ -2446,7 +2446,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "a5824152b7a895ee4b39273ac11c390af5c96c812bea2b02fdf9ea248d4f19b7",
+      "Hash": "e2f6fb14550062f90688da68f6df2c15827a4f5d8e1e97830b78b010c0938b67",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2455,10 +2455,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-10T06:52:22Z"
+      "UpdatedDate": "2023-11-30T05:57:07Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2466,7 +2466,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "2c3e9d50c18c044f6f286dd33d66d4666fa167055c7198cb5d9d01a6f04a394d",
+      "Hash": "8d2a9dcb86f30eeed7df56b27150c7cf997a38c628c3e98837098c9fc530c908",
       "Popularity": 5,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -2475,10 +2475,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T02:18:19Z"
+      "UpdatedDate": "2023-11-30T05:57:07Z"
     },
     {
       "Category": "Other",
@@ -4403,6 +4403,26 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2023-11-29T02:48:51Z",
+      "Description": "{\"en\": \"Modify resource auto renew attribute\", \"zh-cn\": \"修改资源自动续费属性\", \"name-en\": \"ACS-BssOpenApi-SetRenewal\", \"name-zh-cn\": \"修改资源自动续费属性\"}",
+      "HasTrigger": false,
+      "Hash": "93a21331ba806055171c95947beffbebd766c21cd1d0cb85b873945cb947824c",
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-9b4f1680d07143b2a3e5",
+      "TemplateName": "ACS-BssOpenApi-SetRenewal",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-11-29T02:48:51Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T10:10:52Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using Linux kernel version as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将Linux内核版本用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByLinuxKernelVersion\", \"name-zh-cn\": \"批量根据Linux内核版本标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
@@ -4966,7 +4986,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"通过生成临时地址批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "ffcbb3a09952babaf97dde367cee8d938f8d6f47f3b439ede9c80bac65429d48",
+      "Hash": "e02ca345f26f4c554e289be38b36277d95226d3f6c7a7aacc823402d281725f6",
       "Popularity": 0,
       "ResourceGroupId": "",
       "ShareType": "Public",
@@ -4975,10 +4995,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-13T08:41:22Z"
+      "UpdatedDate": "2023-11-30T08:29:43Z"
     }
   ]
 }

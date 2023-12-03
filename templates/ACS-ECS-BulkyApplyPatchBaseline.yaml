@@ -43,6 +43,30 @@ Parameters:
     Default: install
     AssociationPropertyMetadata:
       LocaleKey: OOSPatchExecuteType
+  whetherCreateSnapshot:
+    Label:
+      en: WhetherCreateSnapshot
+      zh-cn: 是否为系统盘创建快照
+    Type: Boolean
+    Default: false
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+            Fn::Equals:
+              - '${action}'
+              - install
+  retentionDays:
+    Label:
+      en: RetentionDays
+      zh-cn: 快照保留天数
+    Type: String
+    Default: ''
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+            Fn::Equals:
+              - '${whetherCreateSnapshot}'
+              - true
   rebootIfNeed:
     Label:
       en: RebootIfNeed
@@ -106,6 +130,8 @@ Tasks:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
       action: '{{ action }}'
+      whetherCreateSnapshot: '{{ whetherCreateSnapshot }}'
+      retentionDays: '{{ retentionDays }}'
       rebootIfNeed: '{{ rebootIfNeed }}'
       timeout: '{{ timeout }}'
     Loop:
@@ -153,6 +179,8 @@ Metadata:
     ParameterGroups:
       - Parameters:
           - action
+          - whetherCreateSnapshot
+          - retentionDays
           - rebootIfNeed
           - timeout
         Label:

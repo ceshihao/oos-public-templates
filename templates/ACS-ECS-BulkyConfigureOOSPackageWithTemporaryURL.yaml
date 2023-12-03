@@ -61,6 +61,17 @@ Parameters:
       Mode: Concurrency
       MaxErrors: 0
       Concurrency: 10
+  parameters:
+    Label:
+      en: Parameters
+      zh-cn: 命令中的参数
+    Type: Json
+    Default: {}
+    AssociationProperty: TemplateParameter
+    AssociationPropertyMetadata:
+      TemplateName: packageName
+      TemplateVersion: packageVersion
+      TemplateType: Package
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -94,6 +105,7 @@ Tasks:
       action: '{{ action }}'
       packageName: '{{ packageName }}'
       packageVersion: '{{ packageVersion }}'
+      parameters: '{{ parameters }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       RateControl: '{{ rateControl }}'
@@ -116,6 +128,7 @@ Metadata:
           - packageName
           - action
           - packageVersion
+          - parameters
         Label:
           default:
             zh-cn: 配置参数
