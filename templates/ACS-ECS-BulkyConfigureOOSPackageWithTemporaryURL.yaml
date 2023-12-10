@@ -33,6 +33,7 @@ Parameters:
     AssociationProperty: 'ALIYUN::OOS::Package::PackageName'
     AssociationPropertyMetadata:
       RegionId: regionId
+      Target: ${targets}
   packageVersion:
     Label:
       en: packageVersion
@@ -47,10 +48,20 @@ Parameters:
     Label:
       en: TargetInstance
       zh-cn: 目标实例
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
+  orderId:
+    Description:
+      en: The ID of Order
+      zh-cn: 订单ID
+    Type: String
+    Default: ''
   rateControl:
     Label:
       en: RateControl
@@ -80,7 +91,36 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: getInstance
+  - Name: getInstanceFromOrderId
+    Action: ACS::WaitFor
+    When:
+      Fn::Not:
+        'Fn::Equals':
+          - '{{ orderId }}'
+          - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 通过订单ID获取ECS实例
+    Properties:
+      Service: BssOpenApi
+      API: GetOrderDetail
+      Parameters:
+        RegionId: '{{ regionId }}'
+        OrderId: '{{ orderId }}'
+      DesiredValues:
+        - Paid
+      StopRetryValues:
+        - Cancelled
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
+    Outputs:
+      instanceIDs:
+        Type: List
+        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
+  - Name: getInstanceFromTargets
+    When:
+      'Fn::Equals':
+        - '{{ orderId }}'
+        - ''
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
@@ -107,7 +147,13 @@ Tasks:
       packageVersion: '{{ packageVersion }}'
       parameters: '{{ parameters }}'
     Loop:
-      Items: '{{ getInstance.instanceIds }}'
+      Items:
+        Fn::If:
+          - 'Fn::Equals':
+              - '{{ orderId }}'
+              - ''
+          - '{{ getInstanceFromTargets.instanceIds }}'
+          - '{{ getInstanceFromOrderId.instanceIds }}'
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:

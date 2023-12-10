@@ -47,6 +47,8 @@ Parameters:
       - ACS::CEN::TransitRouterVpcAttachment
       - ACS::CEN::TransitRouterVpnAttachment
       - ACS::CEN::TransitRouterRouteTable
+      - ACS::CEN::TransitRouterPeerAttachment
+      - ACS::CEN::TransitRouterMulticastDomain
       - ACS::DCDN::Domain
       - ACS::DdosCoo::Instance
       - ACS::EBS::DedicatedBlockStorageCluster
@@ -60,6 +62,12 @@ Parameters:
       - ACS::ECS::NetworkInterface
       - ACS::ECS::SecurityGroup
       - ACS::ECS::Snapshot
+      - ACS::ESS::ScalingGroup
+      - ACS::ECI::ContainerGroup
+      - ACS::ECS::Command
+      - ACS::ECS::Image
+      - ACS::ECS::KeyPair
+      - ACS::ECS::AutoSnapshotPolicy
       - ACS::EIP::EipAddress
       - ACS::ExpressConnect::PhysicalConnection
       - ACS::FC::Service
