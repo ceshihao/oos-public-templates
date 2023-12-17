@@ -48,7 +48,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "7349ff576e392df344fc3ea7ea400aa4370f2f975a8f32288f7a5d47c6427e0c",
+      "Hash": "694ec8a8d90d3f646512b03450732b09855b39ce9edc129fbdd9ce112fe3f6c1",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -58,10 +58,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v47",
+      "TemplateVersion": "v48",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-16T07:02:16Z"
+      "UpdatedDate": "2023-12-12T05:49:45Z"
     },
     {
       "Category": "Other",
@@ -69,7 +69,7 @@
       "CreatedDate": "2019-10-15T09:15:49Z",
       "Description": "{\"en\": \"Bulky replaces the system disk of ECS instances.\", \"zh-cn\": \"批量更换ECS实例的系统盘\", \"name-en\": \"ACS-ECS-BulkyReplaceSystemDisk\", \"name-zh-cn\": \"批量更换ECS实例的系统盘\", \"categories\": [\"instance_manage\", \"application_management\"]}",
       "HasTrigger": false,
-      "Hash": "cef9dc024b3e16ee6dca6c05f9562b70e43583ecbd88950a8348f141e45b6ca2",
+      "Hash": "83095009bd591eacea162f2427c3f20adb643b60adafb21f2990dedc4a9cd158",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -79,10 +79,10 @@
       "TemplateId": "t-79de292785534776b0d0",
       "TemplateName": "ACS-ECS-BulkyReplaceSystemDisk",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:08Z"
+      "UpdatedDate": "2023-12-15T03:51:15Z"
     },
     {
       "Category": "Other",
@@ -90,7 +90,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copy new image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "db5b6632e92070165dab2eef5fba10cba5c05f88000139e9cf4045bcbcf93018",
+      "Hash": "63cb3732d669e380d648d74485c5684eda544615d31e83d31ae7d8ae0ca11f70",
       "IsFavorite": false,
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -100,10 +100,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v32",
+      "TemplateVersion": "v33",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-16T07:02:16Z"
+      "UpdatedDate": "2023-12-12T05:49:45Z"
     },
     {
       "Category": "Other",
@@ -195,7 +195,7 @@
       "CreatedDate": "2020-11-24T06:21:49Z",
       "Description": "{\"en\": \"Schedule to clean up disks\", \"zh-cn\": \"定时清理磁盘\", \"name-en\": \"Cleanup Disks\", \"name-zh-cn\": \"清理磁盘\", \"categories\": [\"time_trigger\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": true,
-      "Hash": "52b9d41e4fe6af44e0a23c3476d2c08a543b91b986eab0f877da2ce819b855e5",
+      "Hash": "4631756c4a94ec7e56ff039ab53be2602c052f7f5c2d4f36918c66a2c7114c5e",
       "IsFavorite": false,
       "Popularity": 8.44,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -205,10 +205,10 @@
       "TemplateId": "t-ba9eef0913e24cc081c6",
       "TemplateName": "ACS-ECS-ScheduleToCleanUpDisks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-17T08:05:56Z"
+      "UpdatedDate": "2023-12-12T03:34:27Z"
     },
     {
       "Category": "TimerTrigger",
@@ -426,7 +426,7 @@
       "CreatedDate": "2019-09-23T11:52:52Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidth\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "b31fd32d7808e2a27a4c0d669fcf7a8d06871c7c88a50be3cdf310a1c1b47c08",
+      "Hash": "f5b542c8615baf157adfd944737665b926e2d48eec3137ca7cd19de2f8732810",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -436,10 +436,10 @@
       "TemplateId": "t-75eabaf5ba1d4b5a95e4",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v31",
+      "TemplateVersion": "v32",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-17T08:05:57Z"
+      "UpdatedDate": "2023-12-12T03:34:27Z"
     },
     {
       "Category": "Other",
@@ -2568,7 +2568,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "e2f6fb14550062f90688da68f6df2c15827a4f5d8e1e97830b78b010c0938b67",
+      "Hash": "35c4f0cf36cc7e3bee3e8e7304899600134ea05f2607e093ae7a1e5878532505",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2578,10 +2578,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-30T05:57:07Z"
+      "UpdatedDate": "2023-12-12T05:57:45Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2589,7 +2589,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "8d2a9dcb86f30eeed7df56b27150c7cf997a38c628c3e98837098c9fc530c908",
+      "Hash": "576ae8318b42c4858948e0072726448730075de9a18808a9ec7333dcb80d2765",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2599,10 +2599,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-30T05:57:07Z"
+      "UpdatedDate": "2023-12-12T05:57:45Z"
     },
     {
       "Category": "Other",
@@ -3723,7 +3723,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "a2d30508e16482b57bd98fc15fa97148902de9677526ffa8b9c97f4c949ee980",
+      "Hash": "74856c9e6f20660cbb936ca1a744faeed3ca820e4c42ae310ec8752e4300f3e2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3733,10 +3733,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-17T08:05:57Z"
+      "UpdatedDate": "2023-12-12T03:48:58Z"
     },
     {
       "Category": "Other",
@@ -4640,6 +4640,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-11-29T02:48:51Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-12-12T06:55:09Z",
+      "Description": "{\"en\": \"FlushExpireKeys of redis instances\", \"zh-cn\": \"清理Redis过期key\", \"name-en\": \"ACS-Redis-FlushExpireKeys\", \"name-zh-cn\": \"清理Redis过期key\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "3ef3ea03400ee3b0c7a46ca5380996ad9abbe40a69687ee38dec6c5250aac449",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-5724fc31f3e943788b1c",
+      "TemplateName": "ACS-Redis-FlushExpireKeys",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-12-12T06:55:09Z"
     },
     {
       "Category": "Other",

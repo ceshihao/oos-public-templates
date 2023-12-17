@@ -149,7 +149,6 @@ Parameters:
     AssociationPropertyMetadata:
       RegionId: regionId
       InstanceType: instanceType
-      InstanceChargeType: instanceChargeType
     Default: cloud_essd
   commandType:
     Label:

@@ -59,8 +59,10 @@ Parameters:
     Label:
       en: RetentionDays
       zh-cn: 快照保留天数
-    Type: String
-    Default: ''
+    Type: Number
+    MinValue: 1
+    MaxValue: 65536
+    Default: 7
     AssociationPropertyMetadata:
       Visible:
         Condition:
