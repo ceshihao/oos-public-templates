@@ -32,7 +32,10 @@ Parameters:
       - ACS::AliKafka::Instance
       - ACS::AliKafka::Topic
       - ACS::ALB::Acl
+      - ACS::ALB::HealthCheckTemplate
       - ACS::ALB::LoadBalancer
+      - ACS::ALB::Listener
+      - ACS::ALB::Rule
       - ACS::ALB::SecurityPolicy
       - ACS::ALB::ServerGroup
       - ACS::ApiGateway::Api
@@ -99,6 +102,7 @@ Parameters:
       - ACS::RDS::DBInstance
       - ACS::Redis::DBInstance
       - ACS::ResourceManager::Account
+      - ACS::ResourceManager::ResourceGroup
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate
       - ACS::SLB::LoadBalancer

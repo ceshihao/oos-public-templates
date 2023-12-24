@@ -1,0 +1,144 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Use this template to install multiple oos packages on ecs
+  zh-cn: 通过生成临时地址批量安装多个OOS自定义软件包
+  name-en: ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL
+  name-zh-cn: 通过生成临时地址批量安装多个OOS自定义软件包
+  categories:
+    - run_command
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  action:
+    Label:
+      en: Action
+      zh-cn: 配置的软件包的方式
+    Type: String
+    AllowedValues:
+      - install
+      - uninstall
+    Default: install
+    AssociationPropertyMetadata:
+      LocaleKey: SoftwareOperationType
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: regionId
+  orderId:
+    Description:
+      en: The ID of Order
+      zh-cn: 订单ID
+    Type: String
+    Default: ''
+  rateControl:
+    Label:
+      en: RateControlForMultipleEcs
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  packageInfo:
+    Label:
+      en: PackageInfo
+      zh-cn: 一组软件包和相应的参数
+    Type: List
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: configurePackage
+    Description:
+      en: Configure Package
+      zh-cn: 配置软件包
+    Action: ACS::Template
+    Properties:
+      TemplateName: ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL
+      Parameters:
+        regionId: '{{ regionId }}'
+        action: '{{ action }}'
+        targets: '{{ targets }}'
+        orderId: '{{ orderId }}'
+        packageName:
+          Fn::Select:
+            - 'packageName'
+            - '{{ ACS::TaskLoopItem }}'
+        packageVersion:
+          Fn::Select:
+            - 'packageVersion'
+            - '{{ ACS::TaskLoopItem }}'
+        parameters:
+          Fn::If:
+            - Fn::Equals:
+                - Fn::Select:
+                    - 'parameters'
+                    - '{{ ACS::TaskLoopItem }}'
+                - ''
+            - {}
+            - Fn::Select:
+                - 'parameters'
+                - '{{ ACS::TaskLoopItem }}'
+        rateControl: '{{ rateControl }}'
+    Loop:
+      Items: '{{ packageInfo }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+      Outputs:
+        commandOutputs:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: commandOutput
+    Outputs:
+      commandOutput:
+        Type: List
+        ValueSelector: .commandOutput
+Outputs:
+  commandOutput:
+    Type: List
+    Value: '{{ configurePackage.commandOutputs }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - packageInfo
+          - action
+        Label:
+          default:
+            zh-cn: 配置参数
+            en: Configure Parameters
+      - Parameters:
+          - regionId
+          - targets
+        Label:
+          default:
+            zh-cn: 选择实例
+            en: Select Instances
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
+
