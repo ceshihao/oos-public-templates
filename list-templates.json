@@ -27,7 +27,7 @@
       "CreatedDate": "2020-06-04T11:30:03Z",
       "Description": "{\"en\": \"Bulky upload files to instances\", \"zh-cn\": \"批量上传文件到多个ECS实例\", \"name-en\": \"Upload File\", \"name-zh-cn\": \"上传文件\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "fb17dbd504937492b73f0a106c3b2656ce27cb5bdac609d76d92492935b4da17",
+      "Hash": "171084bec122e7b94aeda5c030d2b8665c263bb847f1af77968b279a6f2c9d91",
       "IsFavorite": false,
       "Popularity": 9.99,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -37,10 +37,10 @@
       "TemplateId": "t-f3894c68400546069dfd",
       "TemplateName": "ACS-ECS-BulkyDownloadFile",
       "TemplateType": "Automation",
-      "TemplateVersion": "v21",
+      "TemplateVersion": "v22",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-20T07:35:31Z"
+      "UpdatedDate": "2023-12-27T08:40:55Z"
     },
     {
       "Category": "Other",
@@ -111,7 +111,7 @@
       "CreatedDate": "2019-09-23T09:22:45Z",
       "Description": "{\"en\": \"Bulky starts the ECS instances\", \"zh-cn\": \"批量启动ECS实例\", \"name-en\": \"Bulky Start Instances\", \"name-zh-cn\": \"批量启动实例\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "84c9c9d69c987cede51068dee8c79473fc5d8b860e5510c453ed0071538fdf74",
+      "Hash": "d17ea78e0f87e31bbf092deecedbdfeab136890a53c91c9e2c87fe799a5c40e9",
       "IsFavorite": false,
       "Popularity": 9.6,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -121,10 +121,10 @@
       "TemplateId": "t-ec1a9eeffc0c423a82c7",
       "TemplateName": "ACS-ECS-BulkyStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-11T03:25:55Z"
+      "UpdatedDate": "2023-12-27T08:40:55Z"
     },
     {
       "Category": "Other",
@@ -300,7 +300,7 @@
       "CreatedDate": "2019-10-22T08:17:08Z",
       "Description": "{\"en\": \"Creates an ECS image\", \"zh-cn\": \"创建一个ECS镜像\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "40fb5e3e08ef6c8a499ff7cd8441194f518028ad08338a84cb70c023a64576f1",
+      "Hash": "eea281d8751174c935b5cb7877bff5657546f12db870127d263ddb7e6a840f04",
       "IsFavorite": false,
       "Popularity": 8.23,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -310,10 +310,10 @@
       "TemplateId": "t-4bdb1745c171401883a2",
       "TemplateName": "ACS-ECS-CreateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-04-26T08:37:07Z"
+      "UpdatedDate": "2023-12-27T08:40:56Z"
     },
     {
       "Category": "Other",
@@ -489,7 +489,7 @@
       "CreatedDate": "2019-11-07T04:26:32Z",
       "Description": "{\"en\": \"Bulky create snapshot\", \"zh-cn\": \"批量给磁盘创建快照\", \"name-en\": \"ACS-ECS-BulkyCreateSnapshot\", \"name-zh-cn\": \"批量创建快照\", \"categories\": [\"data_backup\"]}",
       "HasTrigger": false,
-      "Hash": "0929fd77b100073f161eaa001a83e72e08c060d1f64ea75baf274da83cb7b823",
+      "Hash": "4dd9e1627538f63b68228569245704fa8aad36b3e32f465fced9c7f4c227aec2",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -499,10 +499,10 @@
       "TemplateId": "t-67e7804498984869b5a3",
       "TemplateName": "ACS-ECS-BulkyCreateSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-24T07:13:55Z"
+      "UpdatedDate": "2023-12-27T08:40:55Z"
     },
     {
       "Category": "Other",
@@ -657,7 +657,7 @@
       "CreatedDate": "2021-11-10T12:53:51Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyTagInstances\", \"name-zh-cn\": \"批量为ECS实例绑定标签\", \"en\": \"Bulky tag ECS instances\", \"zh-cn\": \"批量为ECS实例绑定标签\"}",
       "HasTrigger": false,
-      "Hash": "6b01e9ad02848b4c8dd0a57370223541dcc7143b1f7d334a62ee12961b9d6bab",
+      "Hash": "3464cf309aa986d198f664e218792588aa96476df7e2f204de28d9bbcc2776a3",
       "IsFavorite": false,
       "Popularity": 6,
       "ResourceGroupId": "",
@@ -667,10 +667,10 @@
       "TemplateId": "t-5933ae558e11429f93f4",
       "TemplateName": "ACS-ECS-BulkyTagInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:10Z"
+      "UpdatedDate": "2023-12-27T03:30:05Z"
     },
     {
       "Category": "Other",
@@ -1455,7 +1455,7 @@
       "CreatedDate": "2020-03-18T07:14:45Z",
       "Description": "{\"en\": \"Add a security group policy to multiple security groups\", \"zh-cn\": \"将一条安全组策略添加至多个安全组\", \"name-en\": \"ACS-ECS-BulkyAuthorizeSecurityGroup\", \"name-zh-cn\": \"批量授权安全组策略\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "d6c7def9b80c50e7608f6303d5222ec8306290b9ebb67288ac518c9a245c103f",
+      "Hash": "99b34e22e07ba6f02ea467c71c20fa03f9cac924eda9c1a9b8759ece7a604fd1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1465,10 +1465,10 @@
       "TemplateId": "t-ef152dc2a66147928e2b",
       "TemplateName": "ACS-ECS-BulkyAuthorizeSecurityGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-24T09:04:05Z"
+      "UpdatedDate": "2023-12-27T08:40:55Z"
     },
     {
       "Category": "Other",
@@ -1728,7 +1728,7 @@
       "CreatedDate": "2020-05-27T08:36:18Z",
       "Description": "{\"en\": \"Bulky modify the information of an ECS instance\", \"zh-cn\": \"批量修改ECS实例的部分信息\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceAttributes\", \"name-zh-cn\": \"批量修改实例的部分信息\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "04258eb1dc120831c89f0269f6f92dbef7b561f9d1ffea2c7cd5bab958a30dae",
+      "Hash": "de9d968da81a35e5ddec8cb437a467f8f1fcbc9262b8d6c28e8838358aadf774",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1738,10 +1738,10 @@
       "TemplateId": "t-117636a804fe491a97b1",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:05Z"
+      "UpdatedDate": "2023-12-27T08:40:55Z"
     },
     {
       "Category": "Other",
@@ -2251,9 +2251,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-11-30T08:59:47Z",
-      "Description": "{\"en\": \"Bulky downLoad file to instances and run command\", \"zh-cn\": \"批量下载文件到多个ECS实例并执行云助手命令\", \"name-en\": \"ACS-ECS-BulkyDownloadFileAndRunCommand\", \"name-zh-cn\": \"批量下载文件到多个ECS实例并执行云助手命令\", \"categories\": [\"instance_manage\"]}",
+      "Description": "{\"en\": \"Bulky downLoad file to instances and run command\", \"zh-cn\": \"批量下载文件到多个ECS实例并执行云助手命令\", \"name-en\": \"ACS-ECS-BulkyDownloadFileAndRunCommand\", \"name-zh-cn\": \"批量下载文件到多个ECS实例并执行云助手命令\", \"categories\": [\"instance_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "975d2da64a2fb7947ea63801f0413e47dfe011e64eadd45f3c50b621f5300751",
+      "Hash": "2024af43728c8069aaf4cfd584a1a4737cc70e84f1e41fa1c165cf96eb7cf304",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-806b7ce344c94850acc0",
       "TemplateName": "ACS-ECS-BulkyDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T10:07:22Z"
+      "UpdatedDate": "2023-12-27T06:59:44Z"
     },
     {
       "Category": "Other",
@@ -4626,7 +4626,7 @@
       "CreatedDate": "2023-11-29T02:48:51Z",
       "Description": "{\"en\": \"Modify resource auto renew attribute\", \"zh-cn\": \"修改资源自动续费属性\", \"name-en\": \"ACS-BssOpenApi-SetRenewal\", \"name-zh-cn\": \"修改资源自动续费属性\"}",
       "HasTrigger": false,
-      "Hash": "93a21331ba806055171c95947beffbebd766c21cd1d0cb85b873945cb947824c",
+      "Hash": "c2fc71e5b4a3d96b30e0f235db7269ec6f188ff358cfabf5af2bf8ec97de37f8",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4636,10 +4636,10 @@
       "TemplateId": "t-9b4f1680d07143b2a3e5",
       "TemplateName": "ACS-BssOpenApi-SetRenewal",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-29T02:48:51Z"
+      "UpdatedDate": "2023-12-26T03:22:10Z"
     },
     {
       "Category": "Other",
@@ -4666,9 +4666,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2023-12-18T09:47:55Z",
-      "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"通过生成临时地址批量安装多个OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"通过生成临时地址批量安装多个OOS自定义软件包\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "5577090420f27243b9b93c6f080472de4351a5c6dc4e73e800ca8db07593599c",
+      "Hash": "b9cd201c40ad7db48693c2bf1f876ea01a9b80b839228ed4e500053f7e15b7e3",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4678,10 +4678,10 @@
       "TemplateId": "t-cc058c4ee95b45b39460",
       "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-18T09:47:55Z"
+      "UpdatedDate": "2023-12-29T09:49:05Z"
     },
     {
       "Category": "Other",
@@ -4703,6 +4703,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-12-19T03:10:54Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-12-26T01:37:24Z",
+      "Description": "{\"en\": \"Use snapshot to create a temporary cloud disk to restore data\", \"zh-cn\": \"使用快照创建临时云盘恢复数据\", \"name-en\": \"ACS-ECS-ResetDiskWithSnapshot\", \"name-zh-cn\": \"使用快照恢复数据\", \"categories\": [\"instance_manage\", \"computenest\", \"application_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "15fcc3a4c6ccd303b9e186f4522c981af1d08fe042c1cb3e54c7a542c4b190f4",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-fbfe576f3d254321ab08",
+      "TemplateName": "ACS-ECS-ResetDiskWithSnapshot",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2023-12-26T09:38:53Z"
     },
     {
       "Category": "Other",
@@ -5025,7 +5046,7 @@
       "CreatedDate": "2021-12-06T08:12:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "bb9f4ca129aefc1cb9211b46a606b7fcf81674e20b080ff1300f2662a9129ea7",
+      "Hash": "fcdd9a12843b0531e5e6370f21baf3796ca95ee782b8bc7b78c9cd67288b45bc",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5035,10 +5056,10 @@
       "TemplateId": "t-28fa369cb3994e71b4b4",
       "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:07Z"
+      "UpdatedDate": "2023-12-27T08:40:55Z"
     },
     {
       "Category": "Other",
@@ -5298,7 +5319,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"通过生成临时地址批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "07f4f5c19cd6a66d0616ba9949082af0d6e1d0d2ee5cca2d5fa79207ca3553ab",
+      "Hash": "82947544fd84cfe2b1b8bac6c26bc63310ead6859fc016a89c1c0decb0f5e533",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5308,10 +5329,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-05T11:10:45Z"
+      "UpdatedDate": "2023-12-26T07:38:53Z"
     }
   ]
 }

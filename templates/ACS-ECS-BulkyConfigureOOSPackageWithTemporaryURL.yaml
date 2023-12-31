@@ -113,7 +113,7 @@ Tasks:
         - Cancelled
       PropertySelector: Data.OrderList.Order[].PaymentStatus
     Outputs:
-      instanceIDs:
+      instanceIds:
         Type: List
         ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
   - Name: getInstanceFromTargets

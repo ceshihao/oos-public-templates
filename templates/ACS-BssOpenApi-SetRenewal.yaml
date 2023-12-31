@@ -63,6 +63,10 @@ Parameters:
       - ACS::ADB::DBCluster
       - ACS::RDS::DBInstance
       - ACS::PolarDB::DBCluster
+      - ACS::SLB::LoadBalancer
+      - ACS::DdosCoo::Instance
+      - ACS::CEN::CenBandwidthPackage
+
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -151,8 +155,26 @@ Tasks:
               ACS::Bastionhost::Instance: bastionhost
               ACS::EIP::EipAddress: eip
               ACS::MongoDB::DBInstance: dds
-              ACS::ADB::DBCluster: adb
+              ACS::ADB::DBCluster: ads
               ACS::PolarDB::DBCluster: polardb
+              ACS::SLB::LoadBalancer: slb
+              ACS::DdosCoo::Instance: ddos
+              ACS::CEN::CenBandwidthPackage: cbn
+        ProductType:
+          Fn::Select:
+            - '{{ productCode }}'
+            - ACS::CBWP::CommonBandwidthPackage: ''
+              ACS::Bastionhost::Instance: bastionhost
+              ACS::ECS::Instance: ''
+              ACS::EIP::EipAddress: ''
+              ACS::MongoDB::DBInstance: ''
+              ACS::Redis::DBInstance: ''
+              ACS::ADB::DBCluster: ''
+              ACS::RDS::DBInstance: rds
+              ACS::PolarDB::DBCluster: online
+              ACS::SLB::LoadBalancer: ''
+              ACS::DdosCoo::Instance: 'ddoscoo'
+              ACS::CEN::CenBandwidthPackage: 'cbn_bwp_pre'
     Loop:
       Items: '{{ resourceIds }}'
   - Name: ModifyInstanceRenewAttribute
@@ -181,9 +203,12 @@ Tasks:
               ACS::EIP::EipAddress: eip
               ACS::MongoDB::DBInstance: dds
               ACS::Redis::DBInstance: redisa
-              ACS::ADB::DBCluster: adb
+              ACS::ADB::DBCluster: ads
               ACS::RDS::DBInstance: rds
               ACS::PolarDB::DBCluster: polardb
+              ACS::SLB::LoadBalancer: slb
+              ACS::DdosCoo::Instance: ddos
+              ACS::CEN::CenBandwidthPackage: cbn
         ProductType:
           Fn::Select:
             - '{{ productCode }}'
@@ -196,6 +221,9 @@ Tasks:
               ACS::ADB::DBCluster: ''
               ACS::RDS::DBInstance: rds
               ACS::PolarDB::DBCluster: online
+              ACS::SLB::LoadBalancer: ''
+              ACS::DdosCoo::Instance: 'ddoscoo'
+              ACS::CEN::CenBandwidthPackage: 'cbn_bwp_pre'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Use this template to install multiple oos packages on ecs
-  zh-cn: 通过生成临时地址批量安装多个OOS自定义软件包
+  zh-cn: 批量安装/卸载多个扩展程序
   name-en: ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL
-  name-zh-cn: 通过生成临时地址批量安装多个OOS自定义软件包
+  name-zh-cn: 批量安装/卸载多个扩展程序
   categories:
     - run_command
 Parameters:
@@ -17,7 +17,7 @@ Parameters:
   action:
     Label:
       en: Action
-      zh-cn: 配置的软件包的方式
+      zh-cn: 执行动作
     Type: String
     AllowedValues:
       - install
@@ -57,8 +57,14 @@ Parameters:
   packageInfo:
     Label:
       en: PackageInfo
-      zh-cn: 一组软件包和相应的参数
+      zh-cn: 一组扩展程序及其安装命令参数
     Type: List
+  reboot:
+    Description:
+      en: Whether to reboot
+      zh-cn: 是否重启
+    Type: Boolean
+    Default: false
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -67,44 +73,69 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
+  - Name: getInstanceFromOrderId
+    Action: ACS::WaitFor
+    When:
+      Fn::Not:
+        'Fn::Equals':
+          - '{{ orderId }}'
+          - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 通过订单ID获取ECS实例
+    Properties:
+      Service: BssOpenApi
+      API: GetOrderDetail
+      Parameters:
+        RegionId: '{{ regionId }}'
+        OrderId: '{{ orderId }}'
+      DesiredValues:
+        - Paid
+      StopRetryValues:
+        - Cancelled
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
+  - Name: getInstanceFromTargets
+    When:
+      'Fn::Equals':
+        - '{{ orderId }}'
+        - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: 'ACS::SelectTargets'
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: configurePackage
     Description:
       en: Configure Package
       zh-cn: 配置软件包
-    Action: ACS::Template
+    Action: ACS::ECS::ConfigureMultipleOOSPackagesWithTemporaryURL
     Properties:
-      TemplateName: ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL
-      Parameters:
-        regionId: '{{ regionId }}'
-        action: '{{ action }}'
-        targets: '{{ targets }}'
-        orderId: '{{ orderId }}'
-        packageName:
-          Fn::Select:
-            - 'packageName'
-            - '{{ ACS::TaskLoopItem }}'
-        packageVersion:
-          Fn::Select:
-            - 'packageVersion'
-            - '{{ ACS::TaskLoopItem }}'
-        parameters:
-          Fn::If:
-            - Fn::Equals:
-                - Fn::Select:
-                    - 'parameters'
-                    - '{{ ACS::TaskLoopItem }}'
-                - ''
-            - {}
-            - Fn::Select:
-                - 'parameters'
-                - '{{ ACS::TaskLoopItem }}'
-        rateControl: '{{ rateControl }}'
+      regionId: '{{ regionId }}'
+      action: '{{ action }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      reboot: '{{ reboot }}'
+      packageInfo: '{{ packageInfo }}'
     Loop:
-      Items: '{{ packageInfo }}'
-      RateControl:
-        Mode: Concurrency
-        MaxErrors: 0
-        Concurrency: 1
+      Items:
+        Fn::If:
+          - 'Fn::Equals':
+              - '{{ orderId }}'
+              - ''
+          - '{{ getInstanceFromTargets.instanceIds }}'
+          - '{{ getInstanceFromOrderId.instanceIds }}'
+      RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:
           AggregateType: 'Fn::ListJoin'
@@ -123,6 +154,7 @@ Metadata:
       - Parameters:
           - packageInfo
           - action
+          - reboot
         Label:
           default:
             zh-cn: 配置参数
@@ -130,6 +162,7 @@ Metadata:
       - Parameters:
           - regionId
           - targets
+          - orderId
         Label:
           default:
             zh-cn: 选择实例
