@@ -1,6 +1,6 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  name-en: ACS-ECS-InheritDiskTagToSnapshot
+  name-en: ACS-ECS-InheritDiskTagToSnapshot 
   name-zh-cn: 某个地域所有磁盘标签继承到快照
   en: Inherit all disk tags to snapshots
   zh-cn: 某个地域所有磁盘标签继承到快照
@@ -36,7 +36,7 @@ Parameters:
     Label:
       en: RateControl
       zh-cn: 任务执行的并发比率
-    Description:
+    Description: 
       en: Concurrency rate of task execution
       zh-cn: 任务执行的并发比率
     Type: Json
@@ -53,8 +53,8 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getDisks
-    Action: 'ACS::ExecuteAPI'
-    Description:
+    Action: ACS::ExecuteAPI
+    Description: 
       en: Query the disk information
       zh-cn: 查询磁盘信息
     Properties:
@@ -65,10 +65,10 @@ Tasks:
     Outputs:
       disks:
         Type: List
-        ValueSelector: '.Disks.Disk[].DiskId'
+        ValueSelector: .Disks.Disk[].DiskId
   - Name: tagSnapshot
-    Action: 'ACS::ECS::InheritDiskTagToSnapshot'
-    Description:
+    Action: ACS::ECS::InheritDiskTagToSnapshot
+    Description: 
       en: Inherit the specified disk tags to snapshots
       zh-cn: 将指定磁盘的标签继承到快照
     Properties:
@@ -77,12 +77,10 @@ Tasks:
       tagKeys: '{{tagKeys}}'
       isUpdate: '{{isUpdate}}'
       rateControl: '{{rateControl}}'
-      OOSAssumeRole: '{{OOSAssumeRole}}'
     Loop:
       RateControl: '{{rateControl}}'
       Items: '{{getDisks.disks}}'
       Outputs:
         tagResult:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: reqResult
-

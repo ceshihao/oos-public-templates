@@ -22,6 +22,7 @@ Parameters:
     AllowedValues:
       - ALIYUN::ECS::Instance
       - ALIYUN::ECS::ManagedInstance
+      - ALIYUN::ECD::Desktop
     Default: ALIYUN::ECS::Instance
   targets:
     Type: Json
@@ -111,7 +112,9 @@ Parameters:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
-    Default: OOSServiceRole
+    Default: ''
+    AssociationPropertyMetadata:
+      TimerTrigger: '${timerTrigger}'
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: timerTrigger
@@ -191,6 +194,33 @@ Tasks:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
       action: '{{ action }}'
+      timeout: '{{ timeout }}'
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items: '{{ getInstance.instanceIds }}'
+      Outputs:
+        commandOutputs:
+          AggregateType: Fn::ListJoin
+          AggregateField: commandOutput
+    Outputs:
+      commandOutput:
+        Type: String
+        ValueSelector: commandOutput
+  - Name: applyPatchBaselineOnECDInstance
+    Description:
+      en: Apply patch baseline on ECD instance
+      zh-cn: 在ECD实例中配置补丁基线
+    Action: ACS::ECD::ApplyPatchBaseline
+    When:
+      Fn::Equals:
+        - '{{ resourceType }}'
+        - ALIYUN::ECD::Desktop
+    Properties:
+      regionId: '{{ regionId }}'
+      desktopId: '{{ ACS::TaskLoopItem }}'
+      action: '{{ action }}'
+      rebootIfNeed: '{{ rebootIfNeed }}'
+      whetherCreateSnapshot: '{{ whetherCreateSnapshot }}'
       timeout: '{{ timeout }}'
     Loop:
       RateControl: '{{ rateControl }}'

@@ -970,9 +970,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-10-26T08:12:54Z",
-      "Description": "{\"en\": \"Use this template to run Ansible playbook on ECS Instance.Only supports CentOS, AliyunLinux and Ubuntu.\", \"zh-cn\": \"使用这个模板执行ECS实例中的Ansible PlayBook，仅支持CentOS，AliyunLinux和Ubuntu\", \"name-en\": \"ACS-ECS-ApplyAnsiblePlayBooks\", \"name-zh-cn\": \"在实例中执行Ansible PlayBook\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Use this template to run Ansible playbook on ECS Instance.Only supports CentOS, Alibaba Cloud Linux and Ubuntu.\", \"zh-cn\": \"使用这个模板执行ECS实例中的Ansible PlayBook，仅支持CentOS，Alibaba Cloud Linux和Ubuntu\", \"name-en\": \"ACS-ECS-ApplyAnsiblePlayBooks\", \"name-zh-cn\": \"在实例中执行Ansible PlayBook\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "d6dec57288ff9bde995b5b47b9abd7e99daa399842b2db27c31bcc623f18bd13",
+      "Hash": "49cd8bbd26e71da75a5d53cc367e5f106562cfd1f57fa8a41adcff22f1617aa2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -982,10 +982,10 @@
       "TemplateId": "t-0f87c1cc974343f9b71b",
       "TemplateName": "ACS-ECS-ApplyAnsiblePlayBooks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:00Z"
+      "UpdatedDate": "2024-01-05T05:35:33Z"
     },
     {
       "Category": "Other",
@@ -2589,7 +2589,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "576ae8318b42c4858948e0072726448730075de9a18808a9ec7333dcb80d2765",
+      "Hash": "8110a3d7e9b732a0fe9a135a1fd7b33429d3b9ad34857a89051ac1048bc57218",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2599,10 +2599,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-12T05:57:45Z"
+      "UpdatedDate": "2024-01-04T09:29:53Z"
     },
     {
       "Category": "Other",
@@ -4605,7 +4605,7 @@
       "CreatedDate": "2023-11-24T09:36:39Z",
       "Description": "{\"name-en\": \"ACS-ECS-InheritDiskTagToSnapshot\", \"name-zh-cn\": \"某个地域所有磁盘标签继承到快照\", \"en\": \"Inherit all disk tags to snapshots\", \"zh-cn\": \"某个地域所有磁盘标签继承到快照\"}",
       "HasTrigger": false,
-      "Hash": "01c7957b206bad2d330569e18215acfa5b708f44ecee55242f758873ea0d5619",
+      "Hash": "206668e5c6295e5200ef16e15dba1afe3ad0b880390ae812fe88396a6c6917fb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4615,10 +4615,10 @@
       "TemplateId": "t-aa68cfa87b80470fac35",
       "TemplateName": "ACS-ECS-InheritDiskTagToSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-24T09:37:57Z"
+      "UpdatedDate": "2024-01-04T01:36:34Z"
     },
     {
       "Category": "Other",
