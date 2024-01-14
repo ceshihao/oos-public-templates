@@ -5317,9 +5317,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2023-11-06T11:13:49Z",
-      "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"通过生成临时地址批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"批量安装/卸载单个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载单个扩展程序\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "82947544fd84cfe2b1b8bac6c26bc63310ead6859fc016a89c1c0decb0f5e533",
+      "Hash": "43e8c6f499563e0100942b89394cd0f05b192351d5c1660ad2b56dce16823fa6",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5329,10 +5329,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-26T07:38:53Z"
+      "UpdatedDate": "2024-01-11T02:04:43Z"
     }
   ]
 }

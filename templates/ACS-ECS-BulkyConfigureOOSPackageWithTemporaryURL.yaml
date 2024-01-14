@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Use this template to install oos package on ecs
-  zh-cn: 使用这个模板批量的在ECS安装OOS自定义软件包
+  zh-cn: 批量安装/卸载单个扩展程序
   name-en: ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL
-  name-zh-cn: 通过生成临时地址批量安装OOS自定义软件包
+  name-zh-cn: 批量安装/卸载单个扩展程序
   categories:
     - run_command
 Parameters:
@@ -17,7 +17,7 @@ Parameters:
   action:
     Label:
       en: Action
-      zh-cn: 配置的软件包的方式
+      zh-cn: 执行动作
     Type: String
     AllowedValues:
       - install
@@ -28,7 +28,7 @@ Parameters:
   packageName:
     Label:
       en: packageName
-      zh-cn: 要配置的软件包名称
+      zh-cn: 要安装的扩展程序
     Type: String
     AssociationProperty: 'ALIYUN::OOS::Package::PackageName'
     AssociationPropertyMetadata:
@@ -37,7 +37,7 @@ Parameters:
   packageVersion:
     Label:
       en: packageVersion
-      zh-cn: 要配置的软件包版本
+      zh-cn: 扩展程序版本
     Type: String
     AssociationProperty: 'ALIYUN::OOS::Package::PackageVersion'
     AssociationPropertyMetadata:
