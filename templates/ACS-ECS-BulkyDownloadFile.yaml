@@ -28,6 +28,7 @@ Parameters:
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
+      Status: Running
   sourceType:
     Type: String
     Description:
