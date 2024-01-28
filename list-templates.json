@@ -1077,7 +1077,7 @@
       "CreatedDate": "2019-11-07T04:26:58Z",
       "Description": "{\"en\": \"Bulky delete snapshot\", \"zh-cn\": \"批量删除快照\", \"name-en\": \"ACS-ECS-BulkyDeleteSnapshot\", \"name-zh-cn\": \"批量删除快照\", \"categories\": [\"data_backup\"]}",
       "HasTrigger": false,
-      "Hash": "b244f40fff597392da9942017f6edc859414576cf346f759e23a4d5e7dab94eb",
+      "Hash": "42766dc51858254abc5a5e85f56db57d53e5b2759867bf1f255da4e335b23ee5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1087,10 +1087,10 @@
       "TemplateId": "t-1795a62074f045509873",
       "TemplateName": "ACS-ECS-BulkyDeleteSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:04Z"
+      "UpdatedDate": "2024-01-22T02:36:40Z"
     },
     {
       "Category": "Other",
@@ -1875,7 +1875,7 @@
       "CreatedDate": "2020-07-24T03:39:45Z",
       "Description": "{\"en\": \"Attach custom policy to user that template executed by after approving\", \"zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachCustomPolicyToUser\", \"name-zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "9fd9481160714251c3359daf84b6488c57f2abd99273c9bc852deee54f5c00fc",
+      "Hash": "9ac973ddaca83ffcf7808c4fe693b42c8d27675eca60c26f1568bd338962efe2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1885,10 +1885,10 @@
       "TemplateId": "t-6ab589bbe4354166b258",
       "TemplateName": "ACS-RAM-ApproveAttachCustomPolicyToUser",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-15T06:19:28Z"
+      "UpdatedDate": "2024-01-22T03:39:02Z"
     },
     {
       "Category": "Other",
@@ -1896,7 +1896,7 @@
       "CreatedDate": "2020-07-24T03:40:23Z",
       "Description": "{\"en\": \"Attach policy to user that template executed by after approving\", \"zh-cn\": \"审批通过后授权给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachPolicyToUser\", \"name-zh-cn\": \"审批通过后授权给创建执行的子用户\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "14183a43922169f6446ef30771e44554d388d6427d8dba73b5d8f513219a2246",
+      "Hash": "f0a4f922b1e81984e52076a40b0015d7b56247acbac6577aeccd2648692880ad",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1906,10 +1906,10 @@
       "TemplateId": "t-dd813ba5a55e42988128",
       "TemplateName": "ACS-RAM-ApproveAttachPolicyToUser",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-15T06:19:28Z"
+      "UpdatedDate": "2024-01-22T03:39:02Z"
     },
     {
       "Category": "Other",
@@ -4227,7 +4227,7 @@
       "CreatedDate": "2023-05-30T01:47:05Z",
       "Description": "{\"en\": \"Create RAM role and attach custom policy\", \"zh-cn\": \"创建角色并授予自定义权限策略\", \"name-en\": \"ACS-RAM-CreateRoleAndAttachCustomPolicy\", \"name-zh-cn\": \"创建角色并授予自定义权限策略\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "8ef510fcdbf15b24d574bfafaaf7a08db9845196a8c11fc2560d01d8bcc05810",
+      "Hash": "794042fd934f90760025b2aba3dc25e3cb0bdc7b0cabb85d6283f599c7d84d1b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4237,10 +4237,10 @@
       "TemplateId": "t-8c879b46d6b340c19050",
       "TemplateName": "ACS-RAM-CreateRoleAndAttachCustomPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-05-30T07:08:32Z"
+      "UpdatedDate": "2024-01-22T03:39:02Z"
     },
     {
       "Category": "Other",
