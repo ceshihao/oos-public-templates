@@ -2568,7 +2568,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "7457b5144488983aa6debde1ab05038cad864d7aa1c31f3f7b0a07b8bfa4d8d0",
+      "Hash": "c45c96a5850deb4035e225e492185a25219b79c6f0855c4ebf9a96c08c46deff",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2578,10 +2578,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-21T03:02:45Z"
+      "UpdatedDate": "2024-01-29T07:26:58Z"
     },
     {
       "Category": "TimerTrigger",
@@ -3891,7 +3891,7 @@
       "CreatedDate": "2022-08-22T06:22:12Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download file and run command\", \"zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadFileAndRunCommandInScalingGroup\", \"name-zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "a377dad7cf450a994a2c76edc226f9bfec16546b449611ef6dcecfdb480464a5",
+      "Hash": "c306c9627fc1ef21502995f71acd47df9588d71dec1c6fbff59d167b3ee93406",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3901,10 +3901,10 @@
       "TemplateId": "t-4f45c565d5d84c2cae3c",
       "TemplateName": "ACS-ESS-RollingUpdateByDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T08:58:48Z"
+      "UpdatedDate": "2024-01-29T08:36:52Z"
     },
     {
       "Category": "Other",
@@ -4668,7 +4668,7 @@
       "CreatedDate": "2023-12-18T09:47:55Z",
       "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "b9cd201c40ad7db48693c2bf1f876ea01a9b80b839228ed4e500053f7e15b7e3",
+      "Hash": "0cf2a5668fa63731b378b73441ce2f2ea55a4c34e37a3d128f374e3a49cacf28",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4678,10 +4678,10 @@
       "TemplateId": "t-cc058c4ee95b45b39460",
       "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-29T09:49:05Z"
+      "UpdatedDate": "2024-02-01T08:16:43Z"
     },
     {
       "Category": "Other",
@@ -4766,6 +4766,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-01-16T06:36:00Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-02-01T09:14:15Z",
+      "Description": "{\"zh-cn\": \"镜像修复, 镜像修复是基于镜像检测的结果对镜像进行离线修复, 关于镜像检测 https://help.aliyun.com/zh/ecs/user-guide/overview-18, 修复流程会首先基于Alibaba cloud linux镜像创建一台修复实例,将您的镜像的快照创建云盘挂载到修复实例上,离线修复数据盘，然后将修复后的数据盘创建新的镜像。 一些限制 1)当您的镜像的系统类型是如ubuntu 22.04 64位等公共镜像系统类型时,修复后生成的镜像类型会是如ubuntu_64位自定义镜像系统类型。\", \"en\": \"Image repair, which is an offline repair of an image based on the results of image check, Please refer to this document for image check https://www.alibabacloud.com/help/en/ecs/user-guide/overview-18 The repair process will first create a repair instance based on the Alibaba cloud Linux image, create a cloud disk snapshot of your image, mount it to the repair instance, repair the data disk offline, and then create a new image of the repaired data disk.\", \"name-en\": \"ACS-ECS-RepairImage\", \"name-zh-cn\": \"修复镜像\", \"categories\": [\"image_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "3bb7e9262e01251d3daa3cf8a6f7c2e9c3b17d763bbf55a015463d0c7ea577bc",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-edcdfb2703b24211aa4f",
+      "TemplateName": "ACS-ECS-RepairImage",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-02-01T09:14:15Z"
     },
     {
       "Category": "Other",

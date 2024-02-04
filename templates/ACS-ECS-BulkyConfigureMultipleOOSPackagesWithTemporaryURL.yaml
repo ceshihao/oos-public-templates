@@ -73,8 +73,13 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
+  - Name: sleepForEcsReady
+    Action: ACS::Sleep
+    Properties:
+      Duration: 3s
   - Name: getInstanceFromOrderId
     Action: ACS::WaitFor
+    Retries: 57
     When:
       Fn::Not:
         'Fn::Equals':

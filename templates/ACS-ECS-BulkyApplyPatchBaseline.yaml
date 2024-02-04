@@ -200,6 +200,21 @@ Tasks:
       commandOutput:
         Type: String
         ValueSelector: commandOutput
+Outputs:
+  commandOutput:
+    Type: String
+    Value:
+      Fn::If:
+        - Fn::Equals:
+            - '{{ resourceType }}'
+            - ALIYUN::ECS::Instance
+        - '{{ applyPatchBaseline.commandOutputs }}'
+        - Fn::If:
+            - Fn::Equals:
+                - '{{ resourceType }}'
+                - ALIYUN::ECS::ManagedInstance
+            - '{{ applyPatchBaselineOnManagedInstance.commandOutputs }}'
+            - '{{ applyPatchBaselineOnECDInstance.commandOutputs }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
