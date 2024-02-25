@@ -58,12 +58,12 @@ Parameters:
       en: ContainersUpdateType
       zh-cn: Containers参数更新方式
     Description:
-      en: |-
+      en: >-
         <ul class="ul">
           <li class="li">RenewUpdate: Full update, all related parameters need to be filled in when updating. If the parameter is a List, it does not support updating an item individually, and if the parameter is a structure, it does not support updating an internal member individually. </li>
           <li class="li">IncrementalUpdate: Incremental update, when updating, you can only fill in a parameter that needs to be updated, and other related parameters remain unchanged. </li>
         </ul>
-      zh-cn: |-
+      zh-cn: >-
         <ul class="ul">          
            <li class="li">RenewUpdate：全量更新，更新时需填写相关的所有参数。如果参数是一个List，不支持单独更新某个item，如果参数是一个结构体，不支持单独更新某个内部成员。</li>
            <li class="li">IncrementalUpdate：增量更新，更新时可以只填某一需要更新的参数，其它相关参数保持原有不变。</li>
@@ -113,11 +113,11 @@ Parameters:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
-    Default: OOSServiceRole
+    Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: choiceNextTask
-    Action: 'ACS::Choice'
+    Action: ACS::Choice
     Description:
       en: Choose next task by invoke type
       zh-cn: 根据执行的类型选择执行的任务
@@ -125,7 +125,7 @@ Tasks:
       DefaultTask: getInstance
       Choices:
         - When:
-            'Fn::Equals':
+            Fn::Equals:
               - rollback
               - '{{ invokeType }}'
           NextTask: getExecutionInstanceIds
@@ -133,7 +133,7 @@ Tasks:
     Description:
       en: Get the ECI instances
       zh-cn: 获取ECI实例
-    Action: 'ACS::ExecuteApi'
+    Action: ACS::ExecuteApi
     Properties:
       Service: ESS
       API: DescribeScalingInstances
@@ -143,9 +143,9 @@ Tasks:
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'ScalingInstances.ScalingInstance[].InstanceId'
+        ValueSelector: ScalingInstances.ScalingInstance[].InstanceId
   - Name: whetherTheScalingGroupInstanceIsEmpty
-    Action: 'ACS::Choice'
+    Action: ACS::Choice
     Description:
       en: Check whether the instance in the service in the scaling group is empty
       zh-cn: 检查伸缩组内服务中的实例是否为空
@@ -153,12 +153,12 @@ Tasks:
       DefaultTask: whetherToSuspendProcess
       Choices:
         - When:
-            'Fn::Equals':
+            Fn::Equals:
               - []
               - '{{ getInstance.instanceIds }}'
           NextTask: modifyScalingConfigurationForInvoke
   - Name: whetherToSuspendProcess
-    Action: 'ACS::Choice'
+    Action: ACS::Choice
     Description:
       en: Choose next task by process
       zh-cn: 根据流程值判断是否暂停流程
@@ -166,12 +166,12 @@ Tasks:
       DefaultTask: suspendProcess
       Choices:
         - When:
-            'Fn::Equals':
+            Fn::Equals:
               - []
               - '{{ enterProcess }}'
           NextTask: invokeByUpdateContainerGroup
   - Name: suspendProcess
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Suspend process
       zh-cn: 暂停伸缩组流程
@@ -182,7 +182,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ enterProcess }}'
   - Name: invokeByUpdateContainerGroup
-    Action: 'ACS::ESS::UpdateContainerGroup'
+    Action: ACS::ESS::UpdateContainerGroup
     Description:
       en: Update Container Group
       zh-cn: 更新容器组
@@ -195,11 +195,11 @@ Tasks:
       Items: '{{ getInstance.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'
       Concurrency:
-        'Fn::CalculateBatch':
+        Fn::CalculateBatch:
           - '{{ batchNumber }}'
           - '{{ getInstance.instanceIds }}'
   - Name: modifyScalingConfigurationForInvoke
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify scaling configuration for invoke
       zh-cn: 更新操作修改伸缩配置
@@ -211,7 +211,7 @@ Tasks:
         Container: '{{ containerConfigure }}'
         ContainersUpdateType: '{{ updateType }}'
   - Name: whetherToResumeProcessesByGroupInstances
-    Action: 'ACS::Choice'
+    Action: ACS::Choice
     Description:
       en: Check whether the instance in the service in the scaling group is empty
       zh-cn: 检查伸缩组内服务中的实例是否为空
@@ -219,12 +219,12 @@ Tasks:
       DefaultTask: whetherToResumeProcesses
       Choices:
         - When:
-            'Fn::Equals':
+            Fn::Equals:
               - []
               - '{{ getInstance.instanceIds }}'
-          NextTask: 'ACS::END'
+          NextTask: ACS::END
   - Name: whetherToResumeProcesses
-    Action: 'ACS::Choice'
+    Action: ACS::Choice
     Description:
       en: Choose next task by process
       zh-cn: 根据流程值判断是否恢复流程
@@ -232,13 +232,13 @@ Tasks:
       DefaultTask: resumeProcesses
       Choices:
         - When:
-            'Fn::Equals':
+            Fn::Equals:
               - []
               - '{{ exitProcess }}'
-          NextTask: 'ACS::END'
+          NextTask: ACS::END
   - Name: resumeProcesses
-    Action: 'ACS::ExecuteAPI'
-    OnSuccess: 'ACS::END'
+    Action: ACS::ExecuteAPI
+    OnSuccess: ACS::END
     Description:
       en: Resume process
       zh-cn: 恢复伸缩组流程
@@ -249,7 +249,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ exitProcess }}'
   - Name: getExecutionInstanceIds
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Get the instance id that has been updated
       zh-cn: 获取已经更新容器的实例ID
@@ -261,9 +261,9 @@ Tasks:
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: '.Executions[].Parameters.instanceId'
+        ValueSelector: .Executions[].Parameters.instanceId
   - Name: getRollbackProcess
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Get resource parameters
       zh-cn: 获取源执行的参数
@@ -275,12 +275,12 @@ Tasks:
     Outputs:
       enterProcess:
         Type: List
-        ValueSelector: 'Executions[].Parameters.enterProcess[]'
+        ValueSelector: Executions[].Parameters.enterProcess[]
       exitProcess:
         Type: List
-        ValueSelector: 'Executions[].Parameters.exitProcess[]'
+        ValueSelector: Executions[].Parameters.exitProcess[]
   - Name: suspendProcessWithRollBack
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Suspend process
       zh-cn: 暂停伸缩组流程
@@ -291,7 +291,7 @@ Tasks:
         ScalingGroupId: '{{ scalingGroupId }}'
         Process: '{{ getRollbackProcess.enterProcess }}'
   - Name: rollbackByUpdateContainerGroup
-    Action: 'ACS::ESS::UpdateContainerGroup'
+    Action: ACS::ESS::UpdateContainerGroup
     Description:
       en: Update container group for rollback
       zh-cn: 回滚更新容器组
@@ -304,11 +304,11 @@ Tasks:
       Items: '{{ getExecutionInstanceIds.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'
       Concurrency:
-        'Fn::CalculateBatch':
+        Fn::CalculateBatch:
           - '{{ batchNumber }}'
           - '{{ getExecutionInstanceIds.instanceIds }}'
   - Name: modifyScalingConfigurationForRollback
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Modify scaling configuration for rollback
       zh-cn: 回滚操作修改伸缩配置
@@ -320,7 +320,7 @@ Tasks:
         Container: '{{ sourceContainerConfigure }}'
         ContainersUpdateType: '{{ updateType }}'
   - Name: whetherToResumeProcessesWithRollback
-    Action: 'ACS::Choice'
+    Action: ACS::Choice
     Description:
       en: Choose next task by process
       zh-cn: 根据流程值判断是否恢复流程
@@ -328,12 +328,12 @@ Tasks:
       DefaultTask: resumeProcessesWithRollback
       Choices:
         - When:
-            'Fn::Equals':
+            Fn::Equals:
               - []
               - '{{ getRollbackProcess.exitProcess }}'
-          NextTask: 'ACS::END'
+          NextTask: ACS::END
   - Name: resumeProcessesWithRollback
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Description:
       en: Resume process
       zh-cn: 恢复伸缩组流程

@@ -6,7 +6,7 @@
       "CreatedDate": "2019-09-23T09:38:46Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances\", \"zh-cn\": \"批量在多台ECS实例上运行云助手命令\", \"name-en\": \"Run Command\", \"name-zh-cn\": \"发送远程命令\", \"categories\": [\"run_command\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "d279159ae033696eb5873549e008b77a51deaa1ddad3e776612e557ad5644cc1",
+      "Hash": "15570aea32e2f68a2d64786f10a8f61d08f29abd7cd707dd8a716c9715277a25",
       "IsFavorite": false,
       "Popularity": 10,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -16,10 +16,10 @@
       "TemplateId": "t-89fb84c218e84fd58e14",
       "TemplateName": "ACS-ECS-BulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v56",
+      "TemplateVersion": "v57",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-21T01:36:22Z"
+      "UpdatedDate": "2024-02-22T03:18:15Z"
     },
     {
       "Category": "Other",
@@ -69,7 +69,7 @@
       "CreatedDate": "2019-10-15T09:15:49Z",
       "Description": "{\"en\": \"Bulky replaces the system disk of ECS instances.\", \"zh-cn\": \"批量更换ECS实例的系统盘\", \"name-en\": \"ACS-ECS-BulkyReplaceSystemDisk\", \"name-zh-cn\": \"批量更换ECS实例的系统盘\", \"categories\": [\"instance_manage\", \"application_management\"]}",
       "HasTrigger": false,
-      "Hash": "83095009bd591eacea162f2427c3f20adb643b60adafb21f2990dedc4a9cd158",
+      "Hash": "8d65a78a8a19acb8e87d6e81200bf17eab7db388b0574191f5a26f8ac3e414b1",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -79,10 +79,10 @@
       "TemplateId": "t-79de292785534776b0d0",
       "TemplateName": "ACS-ECS-BulkyReplaceSystemDisk",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-15T03:51:15Z"
+      "UpdatedDate": "2024-02-22T03:18:15Z"
     },
     {
       "Category": "Other",
@@ -90,7 +90,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copy new image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "63cb3732d669e380d648d74485c5684eda544615d31e83d31ae7d8ae0ca11f70",
+      "Hash": "132ee5a57ff991adb2ac9e50648b36e1a6b46a6c132942cd9e5ae338945d1f7a",
       "IsFavorite": false,
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -100,10 +100,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v33",
+      "TemplateVersion": "v34",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-12T05:49:45Z"
+      "UpdatedDate": "2024-02-22T03:18:23Z"
     },
     {
       "Category": "Other",
@@ -132,7 +132,7 @@
       "CreatedDate": "2019-09-23T09:35:04Z",
       "Description": "{\"en\": \"Bulky stops the ECS instances\", \"zh-cn\": \"批量停止ECS实例\", \"name-en\": \"Bulky Stop Instances\", \"name-zh-cn\": \"批量停止实例\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "f1c34e4d196c826bf99a0e9139451fa6f804a8b04095395681ea0ebb8f0931d2",
+      "Hash": "e1f50444e8f10927ffe178d39b2a3dd0f29425abaa82f6de064a4fac5fa3891e",
       "IsFavorite": false,
       "Popularity": 9.5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -142,10 +142,10 @@
       "TemplateId": "t-fa2eb4ae72924bfc972a",
       "TemplateName": "ACS-ECS-BulkyStopInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-27T03:13:47Z"
+      "UpdatedDate": "2024-02-22T03:18:16Z"
     },
     {
       "Category": "Other",
@@ -153,7 +153,7 @@
       "CreatedDate": "2019-09-23T09:37:50Z",
       "Description": "{\"en\": \"Bulky restarts the ECS instances\", \"zh-cn\": \"批量重启ECS实例\", \"name-en\": \"Bulky Reboot Instances\", \"name-zh-cn\": \"批量重启实例\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "630848faa7b0e77b9de21ccaa7ebbeca3e8cfa6fe2b5f5138470c1fe56685d6e",
+      "Hash": "6b1b47c202de351042204b1b45bf2ff9e71f4a0b5736540bd95f29d757d4b60e",
       "IsFavorite": false,
       "Popularity": 9.5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -163,10 +163,10 @@
       "TemplateId": "t-f1885a1551dd455e94dc",
       "TemplateName": "ACS-ECS-BulkyRebootInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-27T03:13:46Z"
+      "UpdatedDate": "2024-02-22T03:18:14Z"
     },
     {
       "Category": "Other",
@@ -174,7 +174,7 @@
       "CreatedDate": "2019-09-23T09:56:02Z",
       "Description": "{\"en\": \"Bulky delete ECS postpaid instances\", \"zh-cn\": \"批量删除ECS按量付费实例\", \"name-en\": \"ACS-ECS-BulkyDeleteInstances\", \"name-zh-cn\": \"批量删除ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "5682b23bef02204d597a68e90e41013c18723d37340c2b0c5a6e67145434670b",
+      "Hash": "772926ca00f86eb13fe5d1500c4188380add1b962ce8c4fa6f562e4c249bfdc8",
       "IsFavorite": false,
       "Popularity": 9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -184,10 +184,10 @@
       "TemplateId": "t-f0a5eaafeae246af967d",
       "TemplateName": "ACS-ECS-BulkyDeleteInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:03Z"
+      "UpdatedDate": "2024-02-22T03:18:09Z"
     },
     {
       "Category": "TimerTrigger",
@@ -279,7 +279,7 @@
       "CreatedDate": "2020-03-05T06:41:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateAndCopyImage\", \"name-zh-cn\": \"创建ECS镜像并同步到其它地域\", \"en\": \"Creates an ECS image and copy new image\", \"zh-cn\": \"创建一个新ECS镜像并且克隆新镜像到其他地域\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "35043edaed4f4fe4501c607ec22aea1e336c522770e628ed21820efa2c936379",
+      "Hash": "a4810b2262ffebd64a8590b684521ceb97d07559dd022a0f0f1f40578147dfe5",
       "IsFavorite": false,
       "Popularity": 8.24,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -289,10 +289,10 @@
       "TemplateId": "t-de8b0d697efe4224a902",
       "TemplateName": "ACS-ECS-CreateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v23",
+      "TemplateVersion": "v24",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:00Z"
+      "UpdatedDate": "2024-02-22T03:18:19Z"
     },
     {
       "Category": "Other",
@@ -321,7 +321,7 @@
       "CreatedDate": "2019-10-22T08:22:25Z",
       "Description": "{\"en\": \"Deletes an ECS image\", \"zh-cn\": \"删除一个ECS镜像\", \"name-en\": \"Delete Image\", \"name-zh-cn\": \"删除镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "53fd9175d1b59272182bbe191910181e4108a6ba7f602212be7ecf08cd647937",
+      "Hash": "185fca786c62308352a0dec8574a8226dc73ac303239a0b987da9ce0fdceca35",
       "IsFavorite": false,
       "Popularity": 8.22,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -331,10 +331,10 @@
       "TemplateId": "t-aa12b5c1c5824485b6ba",
       "TemplateName": "ACS-ECS-DeleteImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-05-31T07:26:50Z"
+      "UpdatedDate": "2024-02-22T03:18:19Z"
     },
     {
       "Category": "TimerTrigger",
@@ -447,7 +447,7 @@
       "CreatedDate": "2019-10-22T07:34:48Z",
       "Description": "{\"en\": \"Bulky resets system disks to its initial state.The ECS instances must be in stopped status\", \"zh-cn\": \"批量初始化系统盘，磁盘所在实例必须为停止状态\", \"name-en\": \"ACS-ECS-BulkyReInitSystemDisk\", \"name-zh-cn\": \"批量初始化系统盘\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "83b5241af8c79e78b79ec28731237349f2c06a8f322247e158d26c6e162acbed",
+      "Hash": "d4cc0562e1c6a070d8a5974189bfeea2bdc1754bdc29712336edff244aad1931",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -457,10 +457,10 @@
       "TemplateId": "t-ed12e01578d24ff98c73",
       "TemplateName": "ACS-ECS-BulkyReInitSystemDisk",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:07Z"
+      "UpdatedDate": "2024-02-22T03:18:14Z"
     },
     {
       "Category": "Other",
@@ -468,7 +468,7 @@
       "CreatedDate": "2019-10-22T08:10:45Z",
       "Description": "{\"en\": \"Bulky renew ECS prepaid instances\", \"zh-cn\": \"批量续费ECS预付费实例\", \"name-en\": \"Bulky Renew Instances\", \"name-zh-cn\": \"批量续费实例\", \"categories\": [\"instance_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d9b9525b4953d0b0e6f030fe0796cd945e24ec46b4b05995e5f57c0075f227f7",
+      "Hash": "303bc4b9ebb09e69c1b367595120b53c7324af7a0b89a6a58a8a2df2d0afdec5",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -478,10 +478,10 @@
       "TemplateId": "t-9f9c9b8023914f72beac",
       "TemplateName": "ACS-ECS-BulkyRenewInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-01-06T10:22:54Z"
+      "UpdatedDate": "2024-02-22T03:18:14Z"
     },
     {
       "Category": "Other",
@@ -510,7 +510,7 @@
       "CreatedDate": "2020-04-03T09:56:39Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by replace system disk\", \"zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup\", \"name-zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ff377dca2809b65d23382b2640821e70438061658a7b4bd55504b13daf2cb990",
+      "Hash": "eab3cf001badf9928bca03ea3aca9d2a722714f72f199b96624df5b1c8164d7e",
       "IsFavorite": false,
       "Popularity": 7.2,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -520,10 +520,10 @@
       "TemplateId": "t-5d45c19fed154e24a602",
       "TemplateName": "ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-28T11:10:01Z"
+      "UpdatedDate": "2024-02-22T03:18:25Z"
     },
     {
       "Category": "Other",
@@ -531,7 +531,7 @@
       "CreatedDate": "2020-08-14T02:50:37Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by configure oos package\", \"zh-cn\": \"通过安装OOS软件包的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByConfigureOOSPackage\", \"name-zh-cn\": \"通过安装OOS软件包的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "405ae551489016d60f4497c3a36aee83787662e86ed98931643bfdd6a3767866",
+      "Hash": "06a8f4e853f4ddb7122598c4d8981ddd278d3e496a3bc8165f32a26a376cdf4b",
       "IsFavorite": false,
       "Popularity": 7.15,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -541,10 +541,10 @@
       "TemplateId": "t-4ea5eef6099842388c23",
       "TemplateName": "ACS-ESS-RollingUpdateByConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-28T11:10:01Z"
+      "UpdatedDate": "2024-02-22T03:18:24Z"
     },
     {
       "Category": "Other",
@@ -552,7 +552,7 @@
       "CreatedDate": "2019-09-23T10:22:37Z",
       "Description": "{\"en\": \"Creates one or more ECS instances with approval\", \"zh-cn\": \"通过审批后创建ECS实例\", \"name-en\": \"ACS-ECS-RunInstancesWithApproval\", \"name-zh-cn\": \"通过审批后创建ECS实例\", \"categories\": [\"cost_manage\"]}",
       "HasTrigger": false,
-      "Hash": "6b77538af4a6706bcc3795424e29d3662265292844acbc773c0b230fab0eb1ab",
+      "Hash": "2177dbff6250b30d7ce8617db194d9d48a3e21a2bb1419c42c6c88cf0b269e08",
       "IsFavorite": false,
       "Popularity": 7.1,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -562,10 +562,10 @@
       "TemplateId": "t-c4d9670ba2294892bd30",
       "TemplateName": "ACS-ECS-RunInstancesWithApproval",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:14Z"
+      "UpdatedDate": "2024-02-22T03:18:22Z"
     },
     {
       "Category": "Other",
@@ -573,7 +573,7 @@
       "CreatedDate": "2020-04-03T09:56:16Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by run command\", \"zh-cn\": \"通过执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByRunCommandInScalingGroup\", \"name-zh-cn\": \"通过执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "238b01470e6cdd02cd0a5bf0f3c053c1ef67cd3a9945e0c73854f6c3060e2791",
+      "Hash": "9da0476403d75d9d863111ca29d4cafe1044d3e57f6de4751391199a4f083a1f",
       "IsFavorite": false,
       "Popularity": 7.1,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -583,10 +583,10 @@
       "TemplateId": "t-3a5f090408fe4a3c8801",
       "TemplateName": "ACS-ESS-RollingUpdateByRunCommandInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-28T11:10:01Z"
+      "UpdatedDate": "2024-02-22T03:18:25Z"
     },
     {
       "Category": "Other",
@@ -594,7 +594,7 @@
       "CreatedDate": "2020-02-18T08:12:15Z",
       "Description": "{\"en\": \"Creates an ECS image and updates scaling configuration image ID\", \"zh-cn\": \"创建一个新ECS镜像并更新伸缩配置中的镜像ID\", \"name-en\": \"ACS-ESS-CreateImageAndUpdateScalingConfiguration\", \"name-zh-cn\": \"创建一个新ECS镜像并更新弹性伸缩配置\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "bce3ca6c4c35557eb66a206ec90a0524884a6524cb467d7d556b7fe9e486d2e0",
+      "Hash": "eb52fd9de97a37a49ff2b5a88c628ff57465be9fcfd031003e9d9b22f889e70e",
       "IsFavorite": false,
       "Popularity": 7.05,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -604,10 +604,10 @@
       "TemplateId": "t-57900f64c9f54d6a8bf2",
       "TemplateName": "ACS-ESS-CreateImageAndUpdateScalingConfiguration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-13T03:23:59Z"
+      "UpdatedDate": "2024-02-22T03:18:24Z"
     },
     {
       "Category": "Other",
@@ -615,7 +615,7 @@
       "CreatedDate": "2019-10-11T03:07:34Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and updates scaling configuration image ID\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并更新伸缩配置中的镜像ID\", \"name-en\": \"ACS-ESS-UpdateScalingConfigurationImage\", \"name-zh-cn\": \"更新弹性伸缩配置镜像\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "1688f67a02504a4cd5d95f9cec2e322d51d9c2daf7c8691e5faee717fc8365a1",
+      "Hash": "2feb05bc1895d644bfd80ac10f928a1f2c2e61dd45b75f1494b0291b3d87011b",
       "IsFavorite": false,
       "Popularity": 7,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -625,10 +625,10 @@
       "TemplateId": "t-07c204c118cf43c0b44a",
       "TemplateName": "ACS-ESS-UpdateScalingConfigurationImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:06Z"
+      "UpdatedDate": "2024-02-22T03:18:26Z"
     },
     {
       "Category": "Other",
@@ -678,7 +678,7 @@
       "CreatedDate": "2019-07-31T08:36:33Z",
       "Description": "{\"en\": \"Cross available zone clone and bulky run ECS instance\", \"zh-cn\": \"跨可用区批量克隆ECS实例\", \"name-en\": \"ACS-ECS-CloneInstancesAcrossAZ\", \"name-zh-cn\": \"跨可用区批量克隆ECS实例\", \"categories\": [\"cross_region\"]}",
       "HasTrigger": false,
-      "Hash": "b061cfd045591ebf402d37e9b11bcf3ce56e4be614e8581e28ebbfe0509d2c7c",
+      "Hash": "1beecb6632971cbd044fce99195f6934bd5b0888421e1c0f159e20cf82b87f3b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -688,10 +688,10 @@
       "TemplateId": "t-37fe07e0e7534813bb66",
       "TemplateName": "ACS-ECS-CloneInstancesAcrossAZ",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:10Z"
+      "UpdatedDate": "2024-02-22T03:18:18Z"
     },
     {
       "Category": "Other",
@@ -699,7 +699,7 @@
       "CreatedDate": "2019-07-31T08:36:33Z",
       "Description": "{\"en\": \"Cross Region copy and run ECS instance by InstanceIds\", \"zh-cn\": \"跨地域克隆ECS实例\", \"title\": \"ACS-ECS-CloneInstancesAcrossRegion\", \"name-zh-cn\": \"跨地域克隆ECS实例\", \"categories\": [\"cross_region\"]}",
       "HasTrigger": false,
-      "Hash": "e83ef48a03ae3c874f6daeecdb48406de8a657264b574f40d4902f5fb3cf5d95",
+      "Hash": "75dca9085679ae279618e9a092f5023bf75a41047a03ed5619c50b13fbbaa6f1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -709,10 +709,10 @@
       "TemplateId": "t-f09d035be0184d3aae72",
       "TemplateName": "ACS-ECS-CloneInstancesAcrossRegion",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-03-09T03:28:10Z"
+      "UpdatedDate": "2024-02-22T03:18:18Z"
     },
     {
       "Category": "Other",
@@ -741,7 +741,7 @@
       "CreatedDate": "2019-08-23T03:48:21Z",
       "Description": "{\"en\": \"Converts the public IP address of a VPC-connected ECS instance with another Elastic IP (EIP) address\", \"zh-cn\": \"将一台网络类型为专有网络VPC的ECS实例的公网IP转化为其它弹性公网IP\", \"name-en\": \"ACS-ECS-ConvertsPublicIPToNewEIPByInstanceId\", \"name-zh-cn\": \"将一台实例的公网IP转化为其它弹性公网IP\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "eae0e0eff50fb47837f5179e3d01fe23a873731aa055c5d341f1c069eb3a4a03",
+      "Hash": "10460abbb25ed3b649f4226a3dad615b59ffb20849a55cc4c8de6a5a8690cf05",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -751,10 +751,10 @@
       "TemplateId": "t-43b5e5bc434a4c6782d5",
       "TemplateName": "ACS-ECS-ConvertsPublicIPToNewEIPByInstanceId",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:11Z"
+      "UpdatedDate": "2024-02-22T03:18:19Z"
     },
     {
       "Category": "Other",
@@ -762,7 +762,7 @@
       "CreatedDate": "2019-09-06T06:01:22Z",
       "Description": "{\"en\": \"Run remote shell script\", \"zh-cn\": \"运行远端shell脚本\", \"name-en\": \"ACS-ECS-RunRemoteShellScript\", \"name-zh-cn\": \"运行远端shell脚本\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "883126c663549e16929b2b8971f36f8d39e1d8c62ee8c18cc046027862efd6f1",
+      "Hash": "7fd5f5c6e1558ccf71b1cabfaefb97fdbd7e3b87ae70dfa2505962830d1da977",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -772,10 +772,10 @@
       "TemplateId": "t-ec54018ce5424cf6ac60",
       "TemplateName": "ACS-ECS-RunRemoteShellScript",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:15Z"
+      "UpdatedDate": "2024-02-22T03:18:22Z"
     },
     {
       "Category": "Other",
@@ -804,7 +804,7 @@
       "CreatedDate": "2019-09-23T10:12:53Z",
       "Description": "{\"en\": \"Bulky upgrades internet bandwidth of ECS instances\", \"zh-cn\": \"批量升级ECS实例公网带宽\", \"name-en\": \"ACS-ECS-BulkyUpgradeInternetBandwidth\", \"name-zh-cn\": \"批量升级ECS实例公网带宽\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "c89533a651883591c93652fa9d38e3ca6563a06198c0763bd727afc24d21d7ea",
+      "Hash": "58befee27564954c18e62a1a230f7eaf8d9924de5abb4b6e1ccffdacf176e3f6",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -814,10 +814,10 @@
       "TemplateId": "t-947af5a2bcca49408783",
       "TemplateName": "ACS-ECS-BulkyUpgradeInternetBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:10Z"
+      "UpdatedDate": "2024-02-22T03:18:17Z"
     },
     {
       "Category": "Other",
@@ -825,7 +825,7 @@
       "CreatedDate": "2019-09-23T11:27:44Z",
       "Description": "{\"en\": \"Run shell script.\", \"zh-cn\": \"运行shell脚本\", \"title\": \"ACS-ECS-RunShellScript\", \"name-zh-cn\": \"运行shell脚本\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "240f40ecaf0b7263eb92dfae894655ae2e0da6d39a5b667d4e0b28a10c83f527",
+      "Hash": "fc5744cb8e106258f087271fc6eb487d0d5032c42c11c05dbd5f3725ff00727c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -835,10 +835,10 @@
       "TemplateId": "t-ad02ab38034f4768a2ac",
       "TemplateName": "ACS-ECS-RunShellScript",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:15Z"
+      "UpdatedDate": "2024-02-22T03:18:23Z"
     },
     {
       "Category": "Other",
@@ -846,7 +846,7 @@
       "CreatedDate": "2019-09-23T11:50:56Z",
       "Description": "{\"en\": \"Deletes the ECS postpaid instances with approval\", \"zh-cn\": \"通过审批后删除ECS按量付费实例\", \"name-en\": \"ACS-ECS-BulkyDeleteInstancesWithApproval\", \"name-zh-cn\": \"通过审批后批量删除ECS实例\", \"categories\": [\"cost_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2586f748b3fae4c01a6fbef48e6734bf40de7947e92dc8caee8b03375c8aeb95",
+      "Hash": "329cef617da96af1028f8e9589329054a8cab0421c9db868a68bdc7bfd465a6d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -856,10 +856,10 @@
       "TemplateId": "t-70b3da3154cc47478b72",
       "TemplateName": "ACS-ECS-BulkyDeleteInstancesWithApproval",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:04Z"
+      "UpdatedDate": "2024-02-22T03:18:10Z"
     },
     {
       "Category": "Other",
@@ -867,7 +867,7 @@
       "CreatedDate": "2019-09-23T11:51:38Z",
       "Description": "{\"en\": \"Bulky delete prepaid instances\", \"zh-cn\": \"批量删除ECS预付费实例\", \"name-en\": \"ACS-ECS-BulkyDeletePrepaidInstances\", \"name-zh-cn\": \"批量删除ECS预付费实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9b46d3cbdec4f5474a0df0b999d59be60e2988fdf7037961f25b22809705c224",
+      "Hash": "4c348afe796f2db5d971be4f2683f051941d8b05c090ef19beda0aed78350d5f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -877,10 +877,10 @@
       "TemplateId": "t-e91bcf3094384930a542",
       "TemplateName": "ACS-ECS-BulkyDeletePrepaidInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:04Z"
+      "UpdatedDate": "2024-02-22T03:18:10Z"
     },
     {
       "Category": "Other",
@@ -930,7 +930,7 @@
       "CreatedDate": "2019-10-22T08:24:57Z",
       "Description": "{\"en\": \"Bulky install XDragon hardware detection plug-in, cloud monitor, smartmontools, or uninstall and update XDragon hardware detection plug-in\", \"zh-cn\": \"批量安装神龙硬件检测插件、云监控、smartmontools,以及卸载与更新神龙硬件检测插件\", \"name-en\": \"ACS-ECS-InstallXDragonAndCloudMonitor\", \"name-zh-cn\": \"批量安装神龙监控插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "24b1547d922ea9c1eef572c35edce0fb1f37769d49ae0428b6c000181d9a96f5",
+      "Hash": "c49d598960cc891d7f9aff5cc83f86c46d4eda0457e1ae2e1881581a8c051949",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -940,10 +940,10 @@
       "TemplateId": "t-d605b9477c8a4044a714",
       "TemplateName": "ACS-ECS-InstallXDragonAndCloudMonitor",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:12Z"
+      "UpdatedDate": "2024-02-22T03:18:20Z"
     },
     {
       "Category": "Other",
@@ -951,7 +951,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e2c02af086f1ef95a1a0ee87ea27011c409af1f058d86d238a2ceadf596fc109",
+      "Hash": "5ceda482399094fbc8f6e167afec33561144f6a8270b430dcaacba4abc4fbdcf",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -961,10 +961,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-18T02:19:57Z"
+      "UpdatedDate": "2024-02-22T03:18:09Z"
     },
     {
       "Category": "Other",
@@ -972,7 +972,7 @@
       "CreatedDate": "2019-10-26T08:12:54Z",
       "Description": "{\"en\": \"Use this template to run Ansible playbook on ECS Instance.Only supports CentOS, Alibaba Cloud Linux and Ubuntu.\", \"zh-cn\": \"使用这个模板执行ECS实例中的Ansible PlayBook，仅支持CentOS，Alibaba Cloud Linux和Ubuntu\", \"name-en\": \"ACS-ECS-ApplyAnsiblePlayBooks\", \"name-zh-cn\": \"在实例中执行Ansible PlayBook\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "49cd8bbd26e71da75a5d53cc367e5f106562cfd1f57fa8a41adcff22f1617aa2",
+      "Hash": "04dd10deb9bab58c5100c7dd0180071047f1b2c2580d24984b2164975d4805b4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -982,10 +982,10 @@
       "TemplateId": "t-0f87c1cc974343f9b71b",
       "TemplateName": "ACS-ECS-ApplyAnsiblePlayBooks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-05T05:35:33Z"
+      "UpdatedDate": "2024-02-22T03:18:06Z"
     },
     {
       "Category": "Other",
@@ -993,7 +993,7 @@
       "CreatedDate": "2019-10-26T10:02:23Z",
       "Description": "{\"en\": \"Use this template to install or unistall docker on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装或卸载docker\", \"name-en\": \"ACS-ECS-ConfigureDocker\", \"name-zh-cn\": \"批量安装或卸载Docker\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "796d2776201d6f2486f4ac89e90e292ee3a93a1b0eecdf774677102adf6474d5",
+      "Hash": "8d2c79291d4b0ba35a2af0dc1a459b252dd8c64b4b8e91ab524a13207025bd96",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1003,10 +1003,10 @@
       "TemplateId": "t-4bfdf3f8497148cba61e",
       "TemplateName": "ACS-ECS-ConfigureDocker",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:11Z"
+      "UpdatedDate": "2024-02-22T03:18:18Z"
     },
     {
       "Category": "Other",
@@ -1014,7 +1014,7 @@
       "CreatedDate": "2019-10-27T04:15:51Z",
       "Description": "{\"en\": \"Use this template to install cloud monitor agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装云监控插件\", \"name-en\": \"ACS-ECS-ConfigureCloudMonitorAgent\", \"name-zh-cn\": \"批量安装云监控插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "c67f953ddc59134a00be601322e8fa85f345c366055e2be160731f7798bffb17",
+      "Hash": "d5fc1b676a1975df8c423e618f79799e293a21d501592bbd18e10670981721f5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1024,10 +1024,10 @@
       "TemplateId": "t-4da652899773418b8a79",
       "TemplateName": "ACS-ECS-ConfigureCloudMonitorAgent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:11Z"
+      "UpdatedDate": "2024-02-22T03:18:18Z"
     },
     {
       "Category": "Other",
@@ -1035,7 +1035,7 @@
       "CreatedDate": "2019-11-05T09:38:31Z",
       "Description": "{\"en\": \"Bulky modify the column creditspecification for the T5 series instance\", \"zh-cn\": \"批量修改T5系列实例的性能模式\", \"name-en\": \"ACS-ECS-BulkyModifyT5InstanceCreditSpecification\", \"name-zh-cn\": \"批量修改T5系列实例的性能模式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ce8c5cb00411a2ba66a8e79fc929d584a1ea5ee2a4304798666cd3e2b6e03fab",
+      "Hash": "bb9a7f457671f7bc11e089965ad22e5643dbb52895633f3ef66e2ab049ab8550",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1045,10 +1045,10 @@
       "TemplateId": "t-23245706cf594d429680",
       "TemplateName": "ACS-ECS-BulkyModifyT5InstanceCreditSpecification",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:06Z"
+      "UpdatedDate": "2024-02-22T03:18:13Z"
     },
     {
       "Category": "Other",
@@ -1056,7 +1056,7 @@
       "CreatedDate": "2019-11-07T04:26:02Z",
       "Description": "{\"en\": \"Enable action trail\", \"zh-cn\": \"开启跟踪\", \"name-en\": \"ACS-Actiontrail-EnableActionTrail\", \"name-zh-cn\": \"开启操作审计跟踪\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "835f5416c204e9d2934d0eeb47fe746de89ed8386bbdbf4509a4ff32bc8deeea",
+      "Hash": "8ca5826637f12d093a20f5a8be41f5b73752b3f45397bee9cd8a5a9c58926970",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1066,10 +1066,10 @@
       "TemplateId": "t-0d4b4e78ca004bac9fd3",
       "TemplateName": "ACS-Actiontrail-EnableActionTrail",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:56Z"
+      "UpdatedDate": "2024-02-22T03:18:02Z"
     },
     {
       "Category": "Other",
@@ -1098,7 +1098,7 @@
       "CreatedDate": "2019-11-07T04:27:27Z",
       "Description": "{\"en\": \"Encryption rules for configuring buckets\", \"zh-cn\": \"配置OSSBucket的加密规则\", \"name-en\": \"ACS-OSS-PutBucketEncryption\", \"name-zh-cn\": \"配置OSSBucket加密规则\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "8b2439c4f6010023b23d17242965878a4e14967cc8ddd6f4eb44b6991c9657f0",
+      "Hash": "330a0a3d17c90a1629feaeedb3c1b77d0c235666cbcfd7ee37379d463107b4d1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1108,10 +1108,10 @@
       "TemplateId": "t-f2eebf2cc4e54a1f856e",
       "TemplateName": "ACS-OSS-PutBucketEncryption",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:08Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",
@@ -1119,7 +1119,7 @@
       "CreatedDate": "2019-11-12T11:29:45Z",
       "Description": "{\"en\": \"Bulky replaces system disk of ECS instances in default server group\", \"zh-cn\": \"批量替换SLB默认服务组内的ECS实例的系统盘\", \"name-en\": \"ACS-ECS-BulkyReplaceSystemDiskInSLBDefaultServerGroup\", \"name-zh-cn\": \"批量替换SLB默认服务组内的ECS实例的系统盘\", \"categories\": [\"slb_management\"]}",
       "HasTrigger": false,
-      "Hash": "a976a2ffad9c1d51f45a17762de5ce6bbf10284b60499ffbd5a21e36353e684b",
+      "Hash": "067cf890a6d7b3bb2ad3ff4528dca588cd7d56bf1828b2d1a6a1bffc4a7f33e0",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1129,10 +1129,10 @@
       "TemplateId": "t-8ffd4c91e7184c788d0a",
       "TemplateName": "ACS-ECS-BulkyReplaceSystemDiskInSLBDefaultServerGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:08Z"
+      "UpdatedDate": "2024-02-22T03:18:15Z"
     },
     {
       "Category": "Other",
@@ -1140,7 +1140,7 @@
       "CreatedDate": "2019-11-12T11:30:39Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances of default server group\", \"zh-cn\": \"批量在SLB默认服务组内的ECS实例上运行命令\", \"name-en\": \"ACS-ECS-BulkyRunCommandInSLBDefaultServerGroup\", \"name-zh-cn\": \"批量在SLB默认服务组内的ECS实例上运行命令\", \"categories\": [\"slb_management\"]}",
       "HasTrigger": false,
-      "Hash": "d4620ebbc3517f3dd37c65b5de340f43aa88fedcb0cdec95cee737b6ca14f7aa",
+      "Hash": "24bd4df00f0ef59342110d6e50604a73b76d35940ac9aaeeca07a5b0aa18ff5c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1150,10 +1150,10 @@
       "TemplateId": "t-b8ec7da5d1944d10afba",
       "TemplateName": "ACS-ECS-BulkyRunCommandInSLBDefaultServerGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:08Z"
+      "UpdatedDate": "2024-02-22T03:18:16Z"
     },
     {
       "Category": "Other",
@@ -1161,7 +1161,7 @@
       "CreatedDate": "2019-11-12T11:31:06Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances of VServer group\", \"zh-cn\": \"批量在SLB虚拟服务组内的ECS实例上运行命令\", \"name-en\": \"ACS-ECS-BulkyRunCommandInSLBVServerGroup\", \"name-zh-cn\": \"批量在SLB虚拟服务组内的ECS实例上运行命令\", \"categories\": [\"slb_management\"]}",
       "HasTrigger": false,
-      "Hash": "69dd5c590a1ef34fbea21fbb8df87bc788f766e477b9687699ff2c81df74544d",
+      "Hash": "3bbf1815e4306b58b450a2bc36bc78f9f5bd6ffd17991b3aa1a266013fff3ed2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1171,10 +1171,10 @@
       "TemplateId": "t-854ad846aecc479db267",
       "TemplateName": "ACS-ECS-BulkyRunCommandInSLBVServerGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:09Z"
+      "UpdatedDate": "2024-02-22T03:18:16Z"
     },
     {
       "Category": "Other",
@@ -1182,7 +1182,7 @@
       "CreatedDate": "2019-11-19T08:55:09Z",
       "Description": "{\"en\": \"Bulky attaches instance ram role\", \"zh-cn\": \"批量授予实例Ram角色\", \"name-en\": \"ACS-ECS-BulkyAttachInstanceRamRole\", \"name-zh-cn\": \"批量授予实例Ram角色\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9f43dae41c0506f7d1c81bc085366e01a3f002990cf89c76977ce5e84e2d553a",
+      "Hash": "e4f730b1a3790a21048df8a33a73deb8b0401c5fe15e7ef692ba344fb40037f9",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1192,10 +1192,10 @@
       "TemplateId": "t-9ed6d75745ca4d08a2cd",
       "TemplateName": "ACS-ECS-BulkyAttachInstanceRamRole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:02Z"
+      "UpdatedDate": "2024-02-22T03:18:07Z"
     },
     {
       "Category": "Other",
@@ -1203,7 +1203,7 @@
       "CreatedDate": "2019-11-19T09:01:37Z",
       "Description": "{\"en\": \"Bulky detaches instance ram role\", \"zh-cn\": \"批量收回实例Ram角色\", \"name-en\": \"ACS-ECS-BulkyDetachInstanceRamRole\", \"name-zh-cn\": \"批量收回实例Ram角色\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "86b124fc8ce291083274b729f5df082e539d2b0f1e0809305805375be02f719c",
+      "Hash": "09d653a5f0b205c0e8b185c591260b3503de049ef1b5f6b3009c44567dd36938",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1213,10 +1213,10 @@
       "TemplateId": "t-7352b42390084435a3a8",
       "TemplateName": "ACS-ECS-BulkyDetachInstanceRamRole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:04Z"
+      "UpdatedDate": "2024-02-22T03:18:10Z"
     },
     {
       "Category": "Other",
@@ -1245,7 +1245,7 @@
       "CreatedDate": "2019-11-27T03:28:08Z",
       "Description": "{\"en\": \"Bulky creates ECS image and exports them into OSS\", \"zh-cn\": \"批量创建并导出镜像到OSS-Bucket\", \"name-en\": \"ACS-ECS-BulkyCreateAndExportImage\", \"name-zh-cn\": \"批量创建并导出镜像到OSS-Bucket\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "6b7dd13f40e6fe1f321f1927faa195bb134d7a5cc79b1a254970f008d6885c6c",
+      "Hash": "158737f0d5a6b718b1a86918ed18c86bb59b975a59556df9f43f90206ff65744",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1255,10 +1255,10 @@
       "TemplateId": "t-b4572b0060a64904bcfa",
       "TemplateName": "ACS-ECS-BulkyCreateAndExportImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:03Z"
+      "UpdatedDate": "2024-02-22T03:18:09Z"
     },
     {
       "Category": "AlarmTrigger",
@@ -1266,7 +1266,7 @@
       "CreatedDate": "2019-12-26T07:07:51Z",
       "Description": "{\"en\": \"Run command when disk usage limit is exceeded\", \"zh-cn\": \"当某磁盘使用率过高时执行某命令\", \"name-en\": \"ACS-ECS-RunCommandWhenDiskUsageLimitExceeded\", \"name-zh-cn\": \"当某磁盘使用率超过阈值时执行命令\", \"categories\": [\"alarm-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "96e5a191085a824ce4664e49c9cacb0b636e8f96e61c0fdad66f7cfe747ae324",
+      "Hash": "a6e3d0b8dedf0ec02363d64d23d8f96e870aa2744644bf9b2e52483b1f346516",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1276,10 +1276,10 @@
       "TemplateId": "t-0f0ee63847fb4fa0b0ff",
       "TemplateName": "ACS-ECS-RunCommandWhenDiskUsageLimitExceeded",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:01Z"
+      "UpdatedDate": "2024-02-22T03:18:22Z"
     },
     {
       "Category": "Other",
@@ -1287,7 +1287,7 @@
       "CreatedDate": "2019-12-30T09:44:56Z",
       "Description": "{\"en\": \"Use this template to install or unistall package on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装或卸载yum/apt包\", \"name-en\": \"ACS-ECS-ConfigurePackage\", \"name-zh-cn\": \"批量安装或卸载包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "358a37cefd6b0a0ab227dba5cfea05e6a556a4192d020f419d0f143b5317613c",
+      "Hash": "30e4241905aec885ed74c902bdaa85a7a84dc3704193b5b0fbec97d3138a7e32",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1297,10 +1297,10 @@
       "TemplateId": "t-83f55a0ed25d40e6a049",
       "TemplateName": "ACS-ECS-ConfigurePackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:11Z"
+      "UpdatedDate": "2024-02-22T03:18:18Z"
     },
     {
       "Category": "Other",
@@ -1329,7 +1329,7 @@
       "CreatedDate": "2019-12-30T09:50:56Z",
       "Description": "{\"en\": \"Remove backend servers from SLB when preemptible instance of current region is about to be interrupted\", \"zh-cn\": \"当前地域的抢占式实例即将释放时，将实例从其所在负载均衡后端服务器列表移除\", \"name-en\": \"ACS-ECS-RemoveFromSLBWhenPreemptibleInstanceInterrupted\", \"name-zh-cn\": \"将即将释放的抢占式实例从其所在负载均衡后端服务器列表移除\", \"categories\": [\"event-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "ae7c3682e10961e97469b092fccefe056a3badcac30dacbb0c9fe3dca6645e53",
+      "Hash": "09afb207fff63413a73f5f2fab6834c8e32c9d061bd68a420d985123a2355270",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1339,10 +1339,10 @@
       "TemplateId": "t-1e3a7fb8b0c44525b78e",
       "TemplateName": "ACS-ECS-RemoveFromSLBWhenPreemptibleInstanceInterrupted",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:13Z"
+      "UpdatedDate": "2024-02-22T03:18:21Z"
     },
     {
       "Category": "Other",
@@ -1350,7 +1350,7 @@
       "CreatedDate": "2020-01-09T13:28:04Z",
       "Description": "{\"en\": \"Bulky add EIPs to common bandwidth package\", \"zh-cn\": \"批量把EIP加入共享带宽包\", \"name-en\": \"ACS-ECS-BulkyAddEipsToCommonBandwidthPackage\", \"name-zh-cn\": \"批量把EIP加入共享带宽包\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "01038c5a7affcfda440dedbea2c9afa4cb0d92f3f53c6231764469f466afe5c4",
+      "Hash": "d3b80895bfd8b8d6f8838d5680a9450aa5f3f207267aef49dd762944a9568419",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1360,10 +1360,10 @@
       "TemplateId": "t-ec6d9b8e9ee048bfa157",
       "TemplateName": "ACS-ECS-BulkyAddEipsToCommonBandwidthPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:01Z"
+      "UpdatedDate": "2024-02-22T03:18:07Z"
     },
     {
       "Category": "Other",
@@ -1371,7 +1371,7 @@
       "CreatedDate": "2020-01-09T13:29:20Z",
       "Description": "{\"en\": \"Bulky remove EIPs from common bandwidth package\", \"zh-cn\": \"批量把EIP移出共享带宽包\", \"name-en\": \"ACS-ECS-BulkyRemoveEipsFromCommonBandwidthPackage\", \"name-zh-cn\": \"批量把EIP移出共享带宽包\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "98a9dead34e907a4f9ccbac5c28976c60f273a511d798bd4a62bfafb0f06381e",
+      "Hash": "e7456a8294eca8050f9303cf00be8cec533658be1ee82cf9bbcddd3228f10eb8",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1381,10 +1381,10 @@
       "TemplateId": "t-d6b35c0ebb014030a91c",
       "TemplateName": "ACS-ECS-BulkyRemoveEipsFromCommonBandwidthPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:07Z"
+      "UpdatedDate": "2024-02-22T03:18:14Z"
     },
     {
       "Category": "AlarmTrigger",
@@ -1434,7 +1434,7 @@
       "CreatedDate": "2020-02-06T08:14:38Z",
       "Description": "{\"en\": \"Approve Bulky RunCommand\", \"zh-cn\": \"审批后批量执行命令\", \"name-en\": \"ACS-ECS-ApproveBulkyRunCommand\", \"name-zh-cn\": \"审批后批量执行命令\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9ce578d3ad930de7e09d016848253021e9767df6de2ee1a4fdfcb047ce19c42a",
+      "Hash": "8dc68d79e56762acdc005de845566ab9fc9d189cb13b7b913638b23b837fc01e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1444,10 +1444,31 @@
       "TemplateId": "t-0dbbb24dd934427b8691",
       "TemplateName": "ACS-ECS-ApproveBulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:01Z"
+      "UpdatedDate": "2024-02-22T03:18:06Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2020-02-06T08:15:51Z",
+      "Description": "{\"en\": \"Create ECS instances by ROS with approval\", \"zh-cn\": \"审批通过ROS创建ECS\", \"name-en\": \"ACS-ECS-ApproveROSCreateInstances\", \"name-zh-cn\": \"审批通过ROS创建ECS\", \"categories\": [\"cost_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "3c9e595627b2dba313929f6528ccf248b029c41fac855b4856d4293a30512dd7",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "rg-acfmz4wrjukykdy",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-889d3258581d45d5af80",
+      "TemplateName": "ACS-ECS-ApproveROSCreateInstances",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v11",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-02-22T03:18:07Z"
     },
     {
       "Category": "Other",
@@ -1476,7 +1497,7 @@
       "CreatedDate": "2020-03-18T07:15:35Z",
       "Description": "{\"en\": \"Join a security group to multiple instances\", \"zh-cn\": \"将安全组下发至多台实例\", \"name-en\": \"ACS-ECS-JoinSecurityGroupToMultipleInstance\", \"name-zh-cn\": \"下发安全组至多台实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "a08d15894e10a0d1995083ad5358881598ffce77b74e02670f60720792febb59",
+      "Hash": "0b934733302047a55ef451c633b55524b1ac6e00ee4e305cb54d2e01998fe3d1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1486,10 +1507,10 @@
       "TemplateId": "t-c2a9d5614bf9494589c8",
       "TemplateName": "ACS-ECS-JoinSecurityGroupToMultipleInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:12Z"
+      "UpdatedDate": "2024-02-22T03:18:20Z"
     },
     {
       "Category": "Other",
@@ -1518,7 +1539,7 @@
       "CreatedDate": "2020-04-01T03:47:15Z",
       "Description": "{\"en\": \"When using ECS instances, some situations can lead to system disk corruption, such as instances being forced to stop or restart, or sudden downtime, failure to update /etc/fstab when the disk is unloaded, or even loss or corruption of /etc/fstab or initrd files. When the instance cannot be accessed, the state of the instance displayed in the ECS instance console may still be Running, but the application in the instance cannot be accessed, the network in the instance cannot be reached, and the connection cannot be established through workbench or SSH. If you can connect to an instance from the console with VNC, you will probably see a page that indicates a system startup failure. At this point, you can consider executing the template to cure the damaged instance. The cure process is that the system disk of the damaged instance will be mounted to the newly created temporary instance, then a cure script will be executed in the temporary instance, and finally the cured system disk will be mounted back to the original instance.\", \"zh-cn\": \"使用ECS实例时，有些情况可能导致系统盘损伤，比如实例被强制地停止或重启，抑或突然发生了宕机，以及数据盘被卸载后未更新/etc/fstab，甚至于/etc/fstab或initrd文件丢失或损坏。当无法访问实例时，该实例在ECS实例控制台显示的状态可能还是运行中，但实例内的应用不可访问，实例内的网络不可达，更无法通过workbench或者ssh建立连接。如果您在控制台通过vnc能连接上实例，看到的页面大概是系统启动失败的提示信息。此时您可考虑执行该模版对损伤实例进行救治，救治流程主要是损伤的实例的系统盘将被挂载到新创建的临时实例上，接着在临时实例中会执行一段救治脚本，最后救治过的系统盘将被挂载回原实例\", \"name-en\": \"ACS-ECS-RescueUnreachableInstance-Linux\", \"name-zh-cn\": \"自助救治损伤的ECS实例Linux系统盘\", \"categories\": [\"diagnose\"]}",
       "HasTrigger": false,
-      "Hash": "252e424e389b464750977bdc750662cff73c855a913771ba2996973cb4fc0836",
+      "Hash": "4220d81ca6f07a525c5245c93a1e1625ba656011754a6ff9cbcc62b18d6a0022",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1528,10 +1549,10 @@
       "TemplateId": "t-94baebe1d0764277b147",
       "TemplateName": "ACS-ECS-RescueUnreachableInstance-Linux",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-03-09T03:28:10Z"
+      "UpdatedDate": "2024-02-22T03:18:21Z"
     },
     {
       "Category": "Other",
@@ -1539,7 +1560,7 @@
       "CreatedDate": "2020-04-08T09:50:13Z",
       "Description": "{\"en\": \"Invoke the function and return the result\", \"zh-cn\": \"执行函数计算，并返回函数计算的结果\", \"name-en\": \"ACS-FC-InvokeFunction\", \"name-zh-cn\": \"执行函数计算\"}",
       "HasTrigger": false,
-      "Hash": "d7669d0569993fffee753488b2eab21a76d059f87d004754ccfe8be96f149160",
+      "Hash": "0cfba99f9d65b1f9e75ce4cda03aad1c381e4ef48a378854c8dc804fd605f665",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1549,10 +1570,10 @@
       "TemplateId": "t-ba40bed7df5a4207b9a0",
       "TemplateName": "ACS-FC-InvokeFunction",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:06Z"
+      "UpdatedDate": "2024-02-22T03:18:26Z"
     },
     {
       "Category": "Other",
@@ -1560,7 +1581,7 @@
       "CreatedDate": "2020-04-21T12:06:12Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances across multiple regions\", \"zh-cn\": \"批量在多个地域的ECS实例上运行云助手命令\", \"name-en\": \"ACS-ECS-BulkyRunCommandAcrossRegions\", \"name-zh-cn\": \"批量在多个地域的ECS实例上运行云助手命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "427356af025a97d8ef1f047067d08ea9cd195fb04fa44cdaafd9753b09c1833b",
+      "Hash": "a33067a3db0a92ab1d3386d7d20a69426dbf0ecd2730fac04889306139939c75",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1570,10 +1591,10 @@
       "TemplateId": "t-cf5a5607f8e34ca69f63",
       "TemplateName": "ACS-ECS-BulkyRunCommandAcrossRegions",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:08Z"
+      "UpdatedDate": "2024-02-22T03:18:16Z"
     },
     {
       "Category": "Other",
@@ -1707,7 +1728,7 @@
       "CreatedDate": "2020-05-19T09:32:01Z",
       "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackage\", \"name-zh-cn\": \"批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "9939e9e954823f9d7afe2198bc42cdb5dc8487089a216f52b23bfa86adb5e96d",
+      "Hash": "76dbc088a52bc4c6c222695346131b47026cf72cd679d1ace5d2ffb84809b9e2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1717,10 +1738,10 @@
       "TemplateId": "t-ee71820191514ce498d2",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-13T08:41:22Z"
+      "UpdatedDate": "2024-02-22T03:18:08Z"
     },
     {
       "Category": "Other",
@@ -1770,7 +1791,7 @@
       "CreatedDate": "2020-06-19T07:07:07Z",
       "Description": "{\"en\": \"Updates OS security\", \"zh-cn\": \"操作系统内核安全更新\", \"name-en\": \"ACS-CS-BulkyOSSecurityUpdate\", \"name-zh-cn\": \"操作系统内核安全更新\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "60e07d8d3da4ec720c4b4b475df25c19f9e8c0e5aa188e0f2b462b6699248346",
+      "Hash": "474e478188a189cca97195511273edaf0d16ee8fc79f2cc7ef2d9f693885b3f4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1780,10 +1801,10 @@
       "TemplateId": "t-db2b21277b8b4140a8c8",
       "TemplateName": "ACS-CS-BulkyOSSecurityUpdate",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:57Z"
+      "UpdatedDate": "2024-02-22T03:18:04Z"
     },
     {
       "Category": "Other",
@@ -1791,7 +1812,7 @@
       "CreatedDate": "2020-07-09T09:04:56Z",
       "Description": "{\"en\": \"Bulky modify instance charge type\", \"zh-cn\": \"批量修改实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeType\", \"name-zh-cn\": \"批量修改实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "c953e4cc2c37b07aff845942337f6fa7d9f55ffec5124ba9ff761095ed2f6285",
+      "Hash": "fc75d96ee8262a0926e9c534b70989f547c15323d8646a775c8b49c6cb456dc6",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1801,10 +1822,10 @@
       "TemplateId": "t-e4f861b5d66447158e56",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-22T11:24:36Z"
+      "UpdatedDate": "2024-02-22T03:18:12Z"
     },
     {
       "Category": "Other",
@@ -1812,7 +1833,7 @@
       "CreatedDate": "2020-07-09T09:22:59Z",
       "Description": "{\"en\": \"Bulky convert the public IP address of a VPC-connected ECS instance to an Elastic IP (EIP) address and add it to common bandwith package\", \"zh-cn\": \"批量把公网IP转换为EIP并加入到共享带宽包中\", \"name-en\": \"ACS-ECS-BulkyConvertPublicToEIPAndAddToCommonBandwidthPackage\", \"name-zh-cn\": \"批量把公网IP转换为EIP并加入到共享带宽包中\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ff2605fab9c325081e32fba884ae82698a441c219018e84fafaa084d11146935",
+      "Hash": "7d81074758f56f7f993182af4e17e314db2f5047370ecdce976c93e29ec4b5d2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1822,10 +1843,10 @@
       "TemplateId": "t-b943ce84a9334241a9b3",
       "TemplateName": "ACS-ECS-BulkyConvertPublicToEIPAndAddToCommonBandwidthPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:03Z"
+      "UpdatedDate": "2024-02-22T03:18:08Z"
     },
     {
       "Category": "Other",
@@ -1875,7 +1896,7 @@
       "CreatedDate": "2020-07-24T03:39:45Z",
       "Description": "{\"en\": \"Attach custom policy to user that template executed by after approving\", \"zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachCustomPolicyToUser\", \"name-zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "9ac973ddaca83ffcf7808c4fe693b42c8d27675eca60c26f1568bd338962efe2",
+      "Hash": "1c6b27ca31e6fc99c9cab5539aaf516a1475ee119141dc19b31d885be9fda7de",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1885,10 +1906,10 @@
       "TemplateId": "t-6ab589bbe4354166b258",
       "TemplateName": "ACS-RAM-ApproveAttachCustomPolicyToUser",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-22T03:39:02Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -1896,7 +1917,7 @@
       "CreatedDate": "2020-07-24T03:40:23Z",
       "Description": "{\"en\": \"Attach policy to user that template executed by after approving\", \"zh-cn\": \"审批通过后授权给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachPolicyToUser\", \"name-zh-cn\": \"审批通过后授权给创建执行的子用户\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "f0a4f922b1e81984e52076a40b0015d7b56247acbac6577aeccd2648692880ad",
+      "Hash": "15c1959255b22595593fcfb7287af56d1713fe05056a51b95c5d11b6d65820d4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1906,10 +1927,10 @@
       "TemplateId": "t-dd813ba5a55e42988128",
       "TemplateName": "ACS-RAM-ApproveAttachPolicyToUser",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-22T03:39:02Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -1917,7 +1938,7 @@
       "CreatedDate": "2020-07-28T07:25:55Z",
       "Description": "{\"en\": \"Create and verify instance by commands\", \"zh-cn\": \"SMC创建并通过执行命令验证目标实例\", \"name-en\": \"ACS-SMC-CreateAndVerifyInstance\", \"name-zh-cn\": \"SMC创建并验证目标实例\"}",
       "HasTrigger": false,
-      "Hash": "ae11faa22ad77c5ac002b3d16987543e57ec056750469bc08993b8410ba3380e",
+      "Hash": "958208b31c4f1382ad9b881c10f5e63e54a2c155935604ecdbadd18fd22cd7ab",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1927,10 +1948,10 @@
       "TemplateId": "t-0e0699a718a54631a701",
       "TemplateName": "ACS-SMC-CreateAndVerifyInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:11Z"
+      "UpdatedDate": "2024-02-22T03:18:31Z"
     },
     {
       "Category": "Other",
@@ -1959,7 +1980,7 @@
       "CreatedDate": "2020-08-19T11:19:29Z",
       "Description": "{\"en\": \"Set domain server certificate\", \"zh-cn\": \"启用指定域名下证书功能\", \"name-en\": \"ACS-CDN-SetDomainServerCertificate\", \"name-zh-cn\": \"启用指定域名下证书功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "7ceec599fa9fce1d6a684c2d3860ced3890fed76f45d7592278c49469c04dfe9",
+      "Hash": "db1faec84a5ab6936b5bc3c4570282151d93a811df2647c4ea4ae6569d2b9a07",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1969,10 +1990,10 @@
       "TemplateId": "t-056477e349be4b54ad63",
       "TemplateName": "ACS-CDN-SetDomainServerCertificate",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:57Z"
+      "UpdatedDate": "2024-02-22T03:18:03Z"
     },
     {
       "Category": "Other",
@@ -1980,7 +2001,7 @@
       "CreatedDate": "2020-08-19T11:20:50Z",
       "Description": "{\"en\": \"Bulky enable instances deletionprotection\", \"zh-cn\": \"批量启用实例删除保护\", \"name-en\": \"ACS-ECS-BulkyEnableDeletionProtection\", \"name-zh-cn\": \"批量启用实例删除保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "1f2849134e5b2f75076ee4bb880a864f6c94422685f3c26138f0c429eb535467",
+      "Hash": "a22ed75132f965e6cb455ec8a6b8da93237952c55b759b834d4699c8cf71feb0",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1990,10 +2011,10 @@
       "TemplateId": "t-6bcf9af89d2c48858a22",
       "TemplateName": "ACS-ECS-BulkyEnableDeletionProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:05Z"
+      "UpdatedDate": "2024-02-22T03:18:11Z"
     },
     {
       "Category": "Other",
@@ -2001,7 +2022,7 @@
       "CreatedDate": "2020-08-19T11:21:38Z",
       "Description": "{\"en\": \"Bulky set loadbalancer deletion protection\", \"zh-cn\": \"批量启用负载均衡实例删除保护\", \"name-en\": \"ACS-SLB-BulkySetLoadBalancerDeleteProtection\", \"name-zh-cn\": \"批量启用负载均衡实例删除保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "293ffb02d20a9b533b9ec6b6e84797b44368a8012501de6b6857c17014aad62c",
+      "Hash": "592745b0c1c618b4416bb1e7e9decb9df0103fc1b163cd4c60290e558ff28bfc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2011,10 +2032,10 @@
       "TemplateId": "t-8314523ac0fd40caba40",
       "TemplateName": "ACS-SLB-BulkySetLoadBalancerDeleteProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:10Z"
+      "UpdatedDate": "2024-02-22T03:18:31Z"
     },
     {
       "Category": "Other",
@@ -2022,7 +2043,7 @@
       "CreatedDate": "2020-08-25T08:01:45Z",
       "Description": "{\"en\": \"Set or modify the access permission (ACL) of the bucket\", \"zh-cn\": \"设置或修改存储空间（Bucket）的访问权限（ACL）\", \"name-en\": \"ACS-OSS-PutBucketAcl\", \"name-zh-cn\": \"设置存储空间的访问权限\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "7d7eef0f60087f62812a94c503351cef367cf4e69e26b89f4585ac9d0d668d88",
+      "Hash": "c6999ae828c7eae43184e12b95b24ab5f7ddface0eddf53c9c220ffcd6b01ccb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2032,10 +2053,10 @@
       "TemplateId": "t-291847118a394f6fb886",
       "TemplateName": "ACS-OSS-PutBucketAcl",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:07Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",
@@ -2043,7 +2064,7 @@
       "CreatedDate": "2020-08-25T08:03:13Z",
       "Description": "{\"en\": \"Put the bucket policy\", \"zh-cn\": \"设置存储空间授权策略\", \"name-en\": \"ACS-OSS-PutBucketPolicy\", \"name-zh-cn\": \"设置存储空间授权策略\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "fb1e10c293db2eb6d0758d522309d88f9d4bebe3c9430d7d7a02f0a751424854",
+      "Hash": "4d8b5f56615f59ce58ca1451198bff6a08ec15e0efbd8c1748970dd9a101712f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2053,10 +2074,10 @@
       "TemplateId": "t-773bfc3afeef46c388b0",
       "TemplateName": "ACS-OSS-PutBucketPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:08Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",
@@ -2064,7 +2085,7 @@
       "CreatedDate": "2020-08-25T08:10:25Z",
       "Description": "{\"en\": \"Put the bucket referer\", \"zh-cn\": \"设置存储空间防盗链\", \"name-en\": \"ACS-OSS-PutBucketReferer\", \"name-zh-cn\": \"设置存储空间防盗链\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "6b47c6108560441d70a21e9296fdda54282cf6459b2d07bce28496aa6184bfb3",
+      "Hash": "2c07c8a208af2b69e99e634d540adde179aff00a6493be155734ccad34fba02d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2074,10 +2095,10 @@
       "TemplateId": "t-86fe7abccbd94dca9cdc",
       "TemplateName": "ACS-OSS-PutBucketReferer",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:08Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -2106,7 +2127,7 @@
       "CreatedDate": "2020-09-16T13:05:27Z",
       "Description": "{\"en\": \"Bulky modify prepay instance spec\", \"zh-cn\": \"批量修改包年包月ECS实例的实例规格\", \"name-en\": \"ACS-ECS-BulkyModifyPrepayInstanceSpec\", \"name-zh-cn\": \"批量修改包年包月ECS实例的实例规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "1d6ac577502b8e941e3202b8d5e974c75688d294c01e0a8a10c70da377c850f1",
+      "Hash": "29ecbe53e357e9a7036a35e13db0657e1dfdf3a85fe3c1dd44512c8abaa38699",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2116,10 +2137,10 @@
       "TemplateId": "t-cdfe48a10a5a41a7ad78",
       "TemplateName": "ACS-ECS-BulkyModifyPrepayInstanceSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-11T06:09:47Z"
+      "UpdatedDate": "2024-02-22T03:18:13Z"
     },
     {
       "Category": "Other",
@@ -2127,7 +2148,7 @@
       "CreatedDate": "2020-10-16T02:55:02Z",
       "Description": "{\"en\": \"Bulky add EIPs to common bandwidth package\", \"zh-cn\": \"批量创建并绑定弹性公网IP（EIP）到同地域的云产品实例上\", \"name-en\": \"ACS-ECS-BulkyAllocateAndAssociateEipAddress\", \"name-zh-cn\": \"批量创建并绑定弹性公网IP（EIP）到同地域的云产品实例上\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "cbf35ba074485da865c1285b39698ebaef0804cb52fd5f2fe933b96635d5eaff",
+      "Hash": "f8c0db36c5c2265cd3a6166746b154b5aeb6365865b57c21b57c4de43463b91b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2137,10 +2158,10 @@
       "TemplateId": "t-e57b10c2273d47b4996e",
       "TemplateName": "ACS-ECS-BulkyAllocateAndAssociateEipAddress",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:01Z"
+      "UpdatedDate": "2024-02-22T03:18:07Z"
     },
     {
       "Category": "Other",
@@ -2148,7 +2169,7 @@
       "CreatedDate": "2020-10-21T11:32:32Z",
       "Description": "{\"en\": \"Run packer template\", \"zh-cn\": \"执行Packer模板\", \"name-en\": \"ACS-ECS-RunPacker\", \"name-zh-cn\": \"执行Packer模板\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "955f8196c465cc1849a99236852c9b3054a7ad90a401c87f796476905f6df47d",
+      "Hash": "93b8ffd145860a920a8537754232e90457b9f084bfb4072151072305813b0271",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2158,10 +2179,10 @@
       "TemplateId": "t-a2a284d28bfc453181b7",
       "TemplateName": "ACS-ECS-RunPacker",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:14Z"
+      "UpdatedDate": "2024-02-22T03:18:22Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2190,7 +2211,7 @@
       "CreatedDate": "2020-11-06T09:23:51Z",
       "Description": "{\"en\": \"Bulky verify instance by commands\", \"zh-cn\": \"SMC执行指定的多个实例，并通过执行命令验证目标实例\", \"name-en\": \"ACS-SMC-BulkyVerifyInstances\", \"name-zh-cn\": \"SMC验证目标实例\"}",
       "HasTrigger": false,
-      "Hash": "d70f4b6e574dde69ffe8f38bdfd96f8974d7bc1c2594b1d579a3018b0b8ee2df",
+      "Hash": "a0adf8da3019ba65164acc59fd5ad411b07137d6241a7630ffd5211793f12798",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2200,10 +2221,10 @@
       "TemplateId": "t-246fb675dd0a407ba207",
       "TemplateName": "ACS-SMC-BulkyVerifyInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:10Z"
+      "UpdatedDate": "2024-02-22T03:18:31Z"
     },
     {
       "Category": "Other",
@@ -2211,7 +2232,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "54478f981d1e894a6e863197c451026f35cb14fdb0f14d9ee2d692f8f65b5f25",
+      "Hash": "731e7ba48745490d59185db31915b57dea4962fb1e283a6d6ada21a767d96a1f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2221,10 +2242,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v25",
+      "TemplateVersion": "v26",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-20T08:51:48Z"
+      "UpdatedDate": "2024-02-22T03:18:32Z"
     },
     {
       "Category": "Other",
@@ -2253,7 +2274,7 @@
       "CreatedDate": "2020-11-30T08:59:47Z",
       "Description": "{\"en\": \"Bulky downLoad file to instances and run command\", \"zh-cn\": \"批量下载文件到多个ECS实例并执行云助手命令\", \"name-en\": \"ACS-ECS-BulkyDownloadFileAndRunCommand\", \"name-zh-cn\": \"批量下载文件到多个ECS实例并执行云助手命令\", \"categories\": [\"instance_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2024af43728c8069aaf4cfd584a1a4737cc70e84f1e41fa1c165cf96eb7cf304",
+      "Hash": "cb0810487722cc35f1e2df00503e18c8d757e0ed29dffe35d31b0356abc2a109",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2284,10 @@
       "TemplateId": "t-806b7ce344c94850acc0",
       "TemplateName": "ACS-ECS-BulkyDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-27T06:59:44Z"
+      "UpdatedDate": "2024-02-22T03:18:11Z"
     },
     {
       "Category": "Other",
@@ -2274,7 +2295,7 @@
       "CreatedDate": "2020-12-25T08:25:47Z",
       "Description": "{\"en\": \"Publish a message to the specified MNS topic. After the message is published to the topic, it will be pushed to Endpoint for consumption\", \"zh-cn\": \"向指定的MNS主题发布消息，消息发布到主题后随即会被推送给Endpoint消费\", \"name-en\": \"ACS-MNS-PublishMessage\", \"name-zh-cn\": \"发布消息至MNS主题\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "5908ea06a6a63903a931f4ae4d7f07b7443a9ad200440659b522a9a21edaaa5e",
+      "Hash": "399dae54d30512e3c1a4066ac6fe7e504163c6efe58a63e281ac54a9392684b7",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2284,10 +2305,10 @@
       "TemplateId": "t-a9670d10a39949f6abe0",
       "TemplateName": "ACS-MNS-PublishMessage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:07Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",
@@ -2295,7 +2316,7 @@
       "CreatedDate": "2021-01-08T02:33:46Z",
       "Description": "{\"en\": \"Attach ECS instances to cluster\", \"zh-cn\": \"添加已有ECS节点到集群\", \"name-en\": \"ACS-CS-AttackInstancesToACKCluster\", \"name-zh-cn\": \"添加已有ECS节点到集群\", \"categories\": [\"ACK_manage\"]}",
       "HasTrigger": false,
-      "Hash": "6fe3b9d3dca37fddc58fc6b7baee4b182317445c0758f483d531c3d725b0865c",
+      "Hash": "a4fc941cb1e172bf9d4b1a015a850e3538eb498cc810e8116857fa4456a16191",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2305,10 +2326,10 @@
       "TemplateId": "t-27bf20d163734c148053",
       "TemplateName": "ACS-CS-AttachInstancesToClusterByRunAttachScript",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:10:58Z"
+      "UpdatedDate": "2024-02-22T03:18:04Z"
     },
     {
       "Category": "Other",
@@ -2316,7 +2337,7 @@
       "CreatedDate": "2021-01-27T06:00:35Z",
       "Description": "{\"en\": \"Use this template to install ARMS agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装ARMS插件\", \"name-en\": \"ACS-ECS-BulkyInstallARMSAgent\", \"name-zh-cn\": \"批量安装ARMS插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "967ea09401b142ac641ce1a0601d9ba5d8ad7645dfe4ae42292d06c9c11c0c89",
+      "Hash": "8c961fbe4b11eb6b75a0d11cc77c2913bc8aaced268474741e91594bec70e0c7",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2326,10 +2347,10 @@
       "TemplateId": "t-0ffdac06831c4a8d919a",
       "TemplateName": "ACS-ECS-BulkyInstallARMSAgent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:05Z"
+      "UpdatedDate": "2024-02-22T03:18:11Z"
     },
     {
       "Category": "Other",
@@ -2337,7 +2358,7 @@
       "CreatedDate": "2021-01-27T08:57:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateImageAndUpdateLaunchTemplates\", \"name-zh-cn\": \"创建ECS镜像并更新启动模版\", \"en\": \"Creates an ECS image and update launch template\", \"zh-cn\": \"创建ECS镜像并更新启动模版\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "4541e53490c2d66b02961cc755b4a9c68dc18a623e060ee8de78d7487dadd166",
+      "Hash": "0ef129be89c354ea45649f025d7d171c8baac60fbafa7bf68035fa666671743e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2347,10 +2368,10 @@
       "TemplateId": "t-aaa35aa635194e2c888d",
       "TemplateName": "ACS-ECS-CreateImageAndUpdateLaunchTemplates",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-04-26T03:23:44Z"
+      "UpdatedDate": "2024-02-22T03:18:19Z"
     },
     {
       "Category": "Other",
@@ -2358,7 +2379,7 @@
       "CreatedDate": "2021-02-04T02:35:41Z",
       "Description": "{\"name-en\": \"ACS-EventBridge-PutEvents\", \"name-zh-cn\": \"EventBridge发布事件\", \"en\": \"Put one or more events\", \"zh-cn\": \"发布一个或多个事件\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "ad9d308c0953102215707902b312c8d5d0febc95f8841cdc5742b65b44c34bf3",
+      "Hash": "317716b9f2139b26c175c3f5d262cc63d5e26d96c87b4e30ffc016ba7412f76a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2368,10 +2389,10 @@
       "TemplateId": "t-8fa5a1d3bc3f4898bd96",
       "TemplateName": "ACS-EventBridge-PutEvents",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:06Z"
+      "UpdatedDate": "2024-02-22T03:18:26Z"
     },
     {
       "Category": "Other",
@@ -2379,7 +2400,7 @@
       "CreatedDate": "2021-02-18T08:47:17Z",
       "Description": "{\"en\": \"Sleep control plane, make etcd snapshot and upload it to oss bucket\", \"zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"name-en\": \"ACS-CS-DedicatedMigration\", \"name-zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"categories\": [\"others\"]}",
       "HasTrigger": false,
-      "Hash": "6e1d7edde059723205f2ec4a03c56d51b298172cbb332d57d3bb56d79e98e7d8",
+      "Hash": "833cdcbc3701d3060f94b5e42325384fe3f51bc3a13355fbe8ba5a6ff7bb9ee1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2389,10 +2410,10 @@
       "TemplateId": "t-bb622b95ba2348278d5a",
       "TemplateName": "ACS-CS-DedicatedMigration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-24T02:05:56Z"
+      "UpdatedDate": "2024-02-22T03:18:04Z"
     },
     {
       "Category": "Other",
@@ -2400,7 +2421,7 @@
       "CreatedDate": "2021-03-12T05:26:42Z",
       "Description": "{\"en\": \"Modify postpaid instance's type\", \"zh-cn\": \"修改按量付费实例的规格\", \"name-en\": \"ACS-ECS-ModifyInstanceSpec\", \"name-zh-cn\": \"修改按量付费实例的规格\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ae576a8e4d7628a5cbad81ecf5bde714eec27d084a6daca54186821471d22b70",
+      "Hash": "35f743e105c297fdc365becd7936498bd53b625f594ac419ce1b035b4a73cd44",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2410,10 +2431,10 @@
       "TemplateId": "t-6a993ebeee924071ac17",
       "TemplateName": "ACS-ECS-ModifyInstanceSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-06T11:08:14Z"
+      "UpdatedDate": "2024-02-22T03:18:20Z"
     },
     {
       "Category": "Other",
@@ -2442,7 +2463,7 @@
       "CreatedDate": "2021-03-30T03:09:28Z",
       "Description": "{\"en\": \"Use this template to install Hibernate agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装Hibernate插件\", \"name-en\": \"ACS-ECS-BulkyInstallHibernateAgent\", \"name-zh-cn\": \"批量安装Hibernate插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "4d15cb68324b9ea77d7032af52ccda84dc61e782260b9508099449a5c4fdc7cb",
+      "Hash": "ae27561b566c8a118274dccbed0987597ed51b4bda21327d40c3eb9eb0975f9a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2452,10 +2473,10 @@
       "TemplateId": "t-0f2428d28ca24c1a97fc",
       "TemplateName": "ACS-ECS-BulkyInstallHibernateAgent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:05Z"
+      "UpdatedDate": "2024-02-22T03:18:12Z"
     },
     {
       "Category": "Other",
@@ -2484,7 +2505,7 @@
       "CreatedDate": "2021-04-23T09:28:26Z",
       "Description": "{\"en\": \"Bulky modify the billing method of instances in a specified instance type family.\", \"zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies\", \"name-zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "97ace104cf76d93608f8f695439ed2e4bb4db627ab56de500426bdc4a29a8beb",
+      "Hash": "1a935855347799ff21c78e6816c4fc42294648ac044d01545f26865165467c2a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2494,10 +2515,10 @@
       "TemplateId": "t-fcae94921f6d4e17b636",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-10T09:13:06Z"
+      "UpdatedDate": "2024-02-22T03:18:12Z"
     },
     {
       "Category": "Other",
@@ -2526,7 +2547,7 @@
       "CreatedDate": "2021-05-18T12:06:42Z",
       "Description": "{\"en\": \"Bulky delete Redis postpaid instances\", \"zh-cn\": \"批量删除Redis按量付费实例\", \"name-en\": \"ACS-Redis-BulkyDeleteInstances\", \"name-zh-cn\": \"批量删除Redis按量付费实例\"}",
       "HasTrigger": false,
-      "Hash": "6dba618fbc37080f0102933ba14219c0957bf362cdb5abd9ba3b6fad6f48ecb1",
+      "Hash": "55749ab01cfdd661cc39402c6972e6080ee658be6bc592730b58f2aca8994777",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2536,10 +2557,10 @@
       "TemplateId": "t-fefac66a772e4244991d",
       "TemplateName": "ACS-Redis-BulkyDeleteInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -2610,7 +2631,7 @@
       "CreatedDate": "2021-05-20T06:45:21Z",
       "Description": "{\"en\": \"Bulky modify ECS instance user password by secret parameter\", \"zh-cn\": \"通过加密参数批量修改ECS实例用户密码\", \"name-en\": \"ACS-ECS-BulkyModifyUserPasswordBySecretParameter\", \"name-zh-cn\": \"通过加密参数批量修改ECS实例用户密码\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "b99a8ce9533982c2194b691cdde30caa7a3ac25ebbacb7349160d126e5928747",
+      "Hash": "cb1400fa8b5d5e019be3139b7c3d14b1d16145c84b36df7fb89ebf9b0d78310e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2620,10 +2641,10 @@
       "TemplateId": "t-af7e516eecf44d16976b",
       "TemplateName": "ACS-ECS-BulkyModifyUserPasswordBySecretParameter",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:06Z"
+      "UpdatedDate": "2024-02-22T03:18:14Z"
     },
     {
       "Category": "Other",
@@ -2631,7 +2652,7 @@
       "CreatedDate": "2021-05-25T10:13:24Z",
       "Description": "{\"en\": \"Bulky replaces system disk of ECS instances in Vserver group\", \"zh-cn\": \"批量替换SLB虚拟服务组内ECS实例的系统盘\", \"name-en\": \"ACS-ECS-BulkyReplaceSystemDiskWithSLBVServerGroup\", \"name-zh-cn\": \"批量替换SLB虚拟服务组内ECS实例的系统盘\", \"categories\": [\"slb_management\"]}",
       "HasTrigger": false,
-      "Hash": "cbe538459b07b86cd1c301b9f2d59fee15f769a1084f1bfd325cbdecbea9db1d",
+      "Hash": "b5021f0f47c0b2ea1099c37051cda32e0755c0af11b8de5b3b7df652751844ab",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2641,10 +2662,10 @@
       "TemplateId": "t-a153a6d170b14ef6b35e",
       "TemplateName": "ACS-ECS-BulkyReplaceSystemDiskInSLBVServerGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:08Z"
+      "UpdatedDate": "2024-02-22T03:18:15Z"
     },
     {
       "Category": "Other",
@@ -2652,7 +2673,7 @@
       "CreatedDate": "2021-05-25T10:13:33Z",
       "Description": "{\"en\": \"Bulky modify the logon configurations of a RAM user\", \"zh-cn\": \"批量修改指定RAM用户的控制台登录信息\", \"name-en\": \"ACS-RAM-BulkyUpdateLoginProfile\", \"name-zh-cn\": \"批量修改指定RAM用户的控制台登录信息\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "cd6bf8909806c718e1c8ecd4bb976798ffb6bcc6a35d08da6af3e5943f3c9a89",
+      "Hash": "ee14191d70a7279813f6df8e93428976c1788044ff75d50ad07ffb8422aba148",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2662,10 +2683,10 @@
       "TemplateId": "t-3d1f73ba73834d829ec0",
       "TemplateName": "ACS-RAM-BulkyUpdateLoginProfile",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:08Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -2673,7 +2694,7 @@
       "CreatedDate": "2021-06-03T11:43:08Z",
       "Description": "{\"en\": \"Bulky modify ECS network charge type\", \"zh-cn\": \"批量修改ECS网络计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceNetworkChargeType\", \"name-zh-cn\": \"批量修改ECS网络计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "3fb468c55122c9072e82117827f67d64a374422a955c1cf7dafa0ab28d4ac7c9",
+      "Hash": "333712259cf50360e659905fb14162030dbd37b92a94c2ce60a3d8d693ff74bf",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2683,10 +2704,10 @@
       "TemplateId": "t-0466a6a559b544e3b5b3",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceNetworkChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:06Z"
+      "UpdatedDate": "2024-02-22T03:18:13Z"
     },
     {
       "Category": "Other",
@@ -2694,7 +2715,7 @@
       "CreatedDate": "2021-06-16T02:55:39Z",
       "Description": "{\"en\": \"Bulky modify instance auto renew attribute\", \"zh-cn\": \"批量修改实例的自动续费属性\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceAutoRenewAttribute\", \"name-zh-cn\": \"批量修改实例的自动续费属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "32c526eb2a9be3e2a88d96043c073c4bc7f54a4a5d7bbdfab62dd89576d0e765",
+      "Hash": "9cf102a21feff36e1c7bbaf327252c803a918d9984e96b96888132cb70badd20",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2704,10 +2725,10 @@
       "TemplateId": "t-282664c5085447b5807c",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceAutoRenewAttribute",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:06Z"
+      "UpdatedDate": "2024-02-22T03:18:12Z"
     },
     {
       "Category": "Other",
@@ -2715,7 +2736,7 @@
       "CreatedDate": "2021-07-08T08:27:31Z",
       "Description": "{\"en\": \"Bulky enable deletion protection for instances\", \"zh-cn\": \"批量设置实例保护\", \"name-en\": \"ACS-VPC-BulkyEnableDeletionProtection\", \"name-zh-cn\": \"批量设置实例保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "ec39327e1162dcd474a4156e1a451dd78a8914a24e257f928b3caf884b15fca2",
+      "Hash": "7ed9755f2d52e3840957db4aee7d61c102216b60d0099f160537b162e359020b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2725,10 +2746,10 @@
       "TemplateId": "t-86e10783aba94a27a1a0",
       "TemplateName": "ACS-VPC-BulkyEnableDeletionProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:11Z"
+      "UpdatedDate": "2024-02-22T03:18:33Z"
     },
     {
       "Category": "Other",
@@ -2736,7 +2757,7 @@
       "CreatedDate": "2021-07-08T08:59:57Z",
       "Description": "{\"en\": \"Enables health checks for ECS instances in the scaling group\", \"zh-cn\": \"开启ESS伸缩组中的ECS实例的健康检查\", \"name-en\": \"ACS-ESS-EnableInstanceHealthCheck\", \"name-zh-cn\": \"开启ESS伸缩组中的ECS实例的健康检查\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d05f7748ba2ab24ef8681314de9b93bacdd0b418ce0e0aeb342fac5040ef1b8a",
+      "Hash": "4422e436cf20f64d2c2a2be99d76685c6bd660845f15f9b47e2db169fe46a41f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2746,10 +2767,10 @@
       "TemplateId": "t-dffa61c2b3c94f279224",
       "TemplateName": "ACS-ESS-EnableInstanceHealthCheck",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:02Z"
+      "UpdatedDate": "2024-02-22T03:18:24Z"
     },
     {
       "Category": "Other",
@@ -2799,7 +2820,7 @@
       "CreatedDate": "2021-10-21T09:41:08Z",
       "Description": "{\"en\": \"Bulky reboot ECD desktops\", \"zh-cn\": \"批量重启云桌面\", \"name-en\": \"ACS-ECD-BulkyRebootDesktops\", \"name-zh-cn\": \"批量重启云桌面\"}",
       "HasTrigger": false,
-      "Hash": "f1e76040a4727fa421ea464e5d37b09498ede7e7fc996b36cc5f629f67cf6676",
+      "Hash": "d86038b7b336fe0160621a503456958845ea10acfd0fce7024be3a26e34a9f88",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2809,10 +2830,10 @@
       "TemplateId": "t-2491443bea3a42449144",
       "TemplateName": "ACS-ECD-BulkyRebootDesktops",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:58Z"
+      "UpdatedDate": "2024-02-22T03:18:05Z"
     },
     {
       "Category": "Other",
@@ -2820,7 +2841,7 @@
       "CreatedDate": "2021-10-21T09:41:48Z",
       "Description": "{\"en\": \"Bulky rebuild ECD desktops\", \"zh-cn\": \"批量重建云桌面\", \"name-en\": \"ACS-ECD-BulkyRebuildDesktops\", \"name-zh-cn\": \"批量重建云桌面\"}",
       "HasTrigger": false,
-      "Hash": "d602d1f49c42a0fb7e0e11c45320cc206cb6c48472c313b6cd3884640b5737c3",
+      "Hash": "13fdb9840391b8e2f0a2a9a3221280199913a3714a19aec290ce290a1cae6119",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2830,10 +2851,10 @@
       "TemplateId": "t-106f09fadf9442d6a7d8",
       "TemplateName": "ACS-ECD-BulkyRebuildDesktops",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:58Z"
+      "UpdatedDate": "2024-02-22T03:18:05Z"
     },
     {
       "Category": "Other",
@@ -2841,7 +2862,7 @@
       "CreatedDate": "2021-10-21T09:42:31Z",
       "Description": "{\"en\": \"Bulky renew subscription cloud desktops\", \"zh-cn\": \"批量续费包年包月云桌面\", \"name-en\": \"ACS-ECD-BulkyRenewDesktops\", \"name-zh-cn\": \"批量续费包年包月云桌面\"}",
       "HasTrigger": false,
-      "Hash": "e08fc1a41f7e4abaca5661d821aed1b94e294bc8ec474d442a821a2d503e464f",
+      "Hash": "79f8cb5f4a92186049c87eb216775712c3d224086dbe64ef0a75f8156a17b262",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2851,10 +2872,10 @@
       "TemplateId": "t-ffc4aec979844ce9973e",
       "TemplateName": "ACS-ECD-BulkyRenewDesktops",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:59Z"
+      "UpdatedDate": "2024-02-22T03:18:05Z"
     },
     {
       "Category": "Other",
@@ -2862,7 +2883,7 @@
       "CreatedDate": "2021-10-21T09:43:04Z",
       "Description": "{\"en\": \"Bulky run command on ECD desktops\", \"zh-cn\": \"批量在多个云桌面中执行云助手命令\", \"name-en\": \"ACS-ECD-BulkyRunCommand\", \"name-zh-cn\": \"批量在多个云桌面中执行云助手命令\"}",
       "HasTrigger": false,
-      "Hash": "fa55a3911d74bcde4a002587b65b16623c3ce0c6c6447093c7f877507df8da3a",
+      "Hash": "a2c20c60919c599a985662f86defc1e259acf43fe7c7dcb4fb3fef83e37a5a3b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2872,10 +2893,10 @@
       "TemplateId": "t-f59ee5f20dfa4defaf9d",
       "TemplateName": "ACS-ECD-BulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:59Z"
+      "UpdatedDate": "2024-02-22T03:18:06Z"
     },
     {
       "Category": "Other",
@@ -2883,7 +2904,7 @@
       "CreatedDate": "2021-10-21T09:43:40Z",
       "Description": "{\"en\": \"Bulky start ECD desktops\", \"zh-cn\": \"批量启动云桌面\", \"name-en\": \"ACS-ECD-BulkyStartDesktops\", \"name-zh-cn\": \"批量启动云桌面\"}",
       "HasTrigger": false,
-      "Hash": "90c33275cdaff0d22965e56179abd5c7a9dc1aa9458f9858cbb6a8fb272ff9d8",
+      "Hash": "a4e66603f0f230a144de78c8a370b34e6f655d4cab6e7547f6f74cf8775500ba",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2893,10 +2914,10 @@
       "TemplateId": "t-7ec8da472b684fb999e2",
       "TemplateName": "ACS-ECD-BulkyStartDesktops",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:59Z"
+      "UpdatedDate": "2024-02-22T03:18:06Z"
     },
     {
       "Category": "Other",
@@ -2904,7 +2925,7 @@
       "CreatedDate": "2021-10-21T09:44:08Z",
       "Description": "{\"en\": \"Bulky stop ECD desktops\", \"zh-cn\": \"批量停止云桌面\", \"name-en\": \"ACS-ECD-BulkyStopDesktops\", \"name-zh-cn\": \"批量停止云桌面\"}",
       "HasTrigger": false,
-      "Hash": "3084e19fe173fc078971402123631c6f65e66953a6c3e7a9d11d5d1925114bdb",
+      "Hash": "ab4a82574b3324dfab3ac69dbce6af500db6f110c3e76f855671a4e7b433edea",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2914,10 +2935,10 @@
       "TemplateId": "t-6d59f6cf504a4c07884c",
       "TemplateName": "ACS-ECD-BulkyStopDesktops",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:59Z"
+      "UpdatedDate": "2024-02-22T03:18:06Z"
     },
     {
       "Category": "Other",
@@ -2925,7 +2946,7 @@
       "CreatedDate": "2021-11-05T07:42:09Z",
       "Description": "{\"en\": \"<p class=\\\"p\\\">Clone ECS instances in batches. Note:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">Please check for missing drivers before migrating, so as not to cause the new instance to fail to start. </li> <li class=\\\"li\\\">Based on mirror snapshot migration, if you need to retain complete data, please select <font color='blue'>Incremental snapshots for downtime</font> as Yes, and then go to the next step; if you do not need to retain For data generated during the migration process, select No and migrate directly according to the guidelines. <font color='red'>It is recommended that you select No to test whether the new instance is normal, and then select Yes to ensure complete data. </font></li> <li class=\\\"li\\\">The time required to create a snapshot is in minutes and depends on the size of the cloud disk. The first snapshot of the cloud disk is a full snapshot, which takes a long time and may be at the hour level. Creating a snapshot again takes a relatively short time, but still depends on the amount of data changes since the last snapshot. The bigger the change, the longer it will take. </li> <li class=\\\"li\\\"><font color='red'>Because the machine will restart, please make sure that the data disk has been set to be automatically mounted, otherwise the data disk will not be mounted after restarting. </font></li> <li class=\\\"li\\\"><font color='red'>The current operation is a high-risk operation. If you select Yes for snapshot migration, please confirm that the business impact of the shutdown is controllable. </font></li> <li class=\\\"li\\\"><font color='red'>Public IP and Elastic IP need to be manually re-bound to the new instance. Refer to the documentation： <a href='https://help.aliyun.com/document_detail/156287.html'>Classic network type ECS public IP is converted to elastic public IP</a>, <a href='https://help.aliyun.com/document_detail/67455.html'>Convert the fixed public IP of the VPC ECS instance to EIP</a>, <a href='https://help.aliyun.com/document_detail/27733.html'>Modify private IP address</a></font></li> <li class=\\\"li\\\">Take a snapshot of the instance before execution, which will greatly shorten the execution time. </li> <li class=\\\"li\\\"><font color='red'>Please make sure that your account balance is greater than the cost of the newly purchased instance. </font></li> </ul>\", \"zh-cn\": \"<p class=\\\"p\\\">批量克隆ECS实例。注意：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">您在迁移之前请检查是否缺少驱动，以免造成新的实例无法启动。</li> <li class=\\\"li\\\">基于镜像快照迁移，如果需要保留完整数据，请选择<font color='blue'>停机增量快照</font>为是，再执行下一步操作；如果不需要保留迁移过程中产生的数据，则选择否，直接根据指引迁移即可。<font color='red'>建议您先选择否来测试新实例是否业务正常，测试新实例业务正常后再选择是来保证完整数据。</font></li> <li class=\\\"li\\\">创建快照的所需时间为分钟级别，并取决于云盘容量大小。云盘的第一份快照为全量快照，耗时较久，有可能在小时级别。再次创建快照，相对耗时较短，但依然取决于和上一份快照之间的数据变化量。变化越大，耗时越久。</li> <li class=\\\"li\\\"><font color='red'>因机器会重新启动，请您务必确认数据盘等已设置为自动挂载否则重启后将无法挂载数据盘。</font></li> <li class=\\\"li\\\"><font color='red'>当前操作为高风险操作，如果选择停机快照迁移为是，请您确认关机业务影响可控。</font></li> <li class=\\\"li\\\"><font color='red'>公网IP和弹性IP需要您手动重新绑定到新实例上，参考文档： <a href='https://help.aliyun.com/document_detail/156287.html'>经典网络类型ECS公网IP转为弹性公网IP</a>、 <a href='https://help.aliyun.com/document_detail/67455.html'>专有网络ECS实例的固定公网IP转换为EIP</a>、 <a href='https://help.aliyun.com/document_detail/27733.html'>修改私有IP地址</a></font></li> <li class=\\\"li\\\">执行前先打对实例打一个快照，将极大缩短执行时间。</li> <li class=\\\"li\\\"><font color='red'>请确保您的账号余额大于新购实例的费用。</font></li> </ul>\", \"name-en\": \"ACS-ECS-BulkyCloneInstances\", \"name-zh-cn\": \"批量克隆ECS实例\", \"categories\": [\"cross_region\"]}",
       "HasTrigger": false,
-      "Hash": "8df1b4e37b4f38ca0a51ffe013d8e095065521ddf492e880fefce5bda818568c",
+      "Hash": "977459957f93d6b437388cdc8ae0477a6acd514296d774fc0f3a59ab8e5a1566",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2935,10 +2956,10 @@
       "TemplateId": "t-db586b6e686547dc8cfc",
       "TemplateName": "ACS-ECS-BulkyCloneInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-08-09T08:22:48Z"
+      "UpdatedDate": "2024-02-22T03:18:08Z"
     },
     {
       "Category": "Other",
@@ -2946,7 +2967,7 @@
       "CreatedDate": "2021-11-18T12:10:08Z",
       "Description": "{\"en\": \"Update rotation policy\", \"zh-cn\": \"更新密钥轮转策略\", \"name-en\": \"ACS-KMS-BulkyUpdateRotationPolicy\", \"name-zh-cn\": \"更新密钥轮转策略\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "8862606e5e1d6929f96d0e03a8eb016c3fd84b46335413d26f475bf805621b04",
+      "Hash": "50958ae4ec24f478848c8f2c38ea56e056f0ba511bd13673137929ef74860541",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2956,10 +2977,10 @@
       "TemplateId": "t-348f82be3f0442669f2a",
       "TemplateName": "ACS-KMS-BulkyUpdateRotationPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:07Z"
+      "UpdatedDate": "2024-02-22T03:18:26Z"
     },
     {
       "Category": "Other",
@@ -2967,7 +2988,7 @@
       "CreatedDate": "2021-11-18T12:10:45Z",
       "Description": "{\"en\": \"Migrate security ip mode\", \"zh-cn\": \"切换RDS白名单为高安全模式\", \"name-en\": \"ACS-RDS-BulkyMigrateSecurityIPMode\", \"name-zh-cn\": \"切换RDS白名单为高安全模式\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "36b9127df20093e327c10e039e8ee8736f58e1733284bd120c6ed1ca463a270e",
+      "Hash": "c5578f882661bcd4d77e705ca717fe89146aa18cdae7fa26b50f17f9c84eb3f8",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2977,10 +2998,10 @@
       "TemplateId": "t-4e480fecf62d49d38713",
       "TemplateName": "ACS-RDS-BulkyMigrateSecurityIPMode",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -2988,7 +3009,7 @@
       "CreatedDate": "2021-11-18T12:11:19Z",
       "Description": "{\"en\": \"Modify action event policy\", \"zh-cn\": \"开启RDS历史事件功能\", \"name-en\": \"ACS-RDS-BulkyModifyActionEventPolicy\", \"name-zh-cn\": \"开启RDS历史事件功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "388c7563397bbc1885ef33dd6b4cc89155d8bd5b407b44a279f22dfc6c606395",
+      "Hash": "19d1220af66f683c3d756b69987d4ce46669ef4c638d07e6a12f208e3be32293",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2998,10 +3019,10 @@
       "TemplateId": "t-bd95c7dd8c17475a8d72",
       "TemplateName": "ACS-RDS-BulkyModifyActionEventPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -3009,7 +3030,7 @@
       "CreatedDate": "2021-11-18T12:11:52Z",
       "Description": "{\"en\": \"Modify SQL collector policy\", \"zh-cn\": \"开启RDS实例的SQL洞察（SQL审计）功能\", \"name-en\": \"ACS-RDS-BulkyModifySQLCollectorPolicy\", \"name-zh-cn\": \"开启RDS实例的SQL洞察（SQL审计）功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "ff67b07e6714196f28abce4314efa05adb1ae3ffcba72b673639a02ea73112de",
+      "Hash": "602447eff22ad0427b59c84aa70d210c0d4caac487cbccf6d55a25938916e74e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3019,10 +3040,10 @@
       "TemplateId": "t-8a7ff165b95f4d56b202",
       "TemplateName": "ACS-RDS-BulkyModifySQLCollectorPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -3030,7 +3051,7 @@
       "CreatedDate": "2021-11-18T12:12:25Z",
       "Description": "{\"en\": \"Modify audit log config\", \"zh-cn\": \"开启redis审计日志，保留时长180天\", \"name-en\": \"ACS-REDIS-BulkyModifyAuditLogConfig\", \"name-zh-cn\": \"开启redis审计日志，保留时长180天\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "0d6282bf22fa7548729033ebd0a05a66055edc85aafd447878254f956ecf167f",
+      "Hash": "05b9992e1e4833e5e02828301f53c8de3b6f747e4cbed4bdec14499ba1efcd88",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3040,10 +3061,10 @@
       "TemplateId": "t-df20c03f32eb4d8d9d16",
       "TemplateName": "ACS-REDIS-BulkyModifyAuditLogConfig",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -3051,7 +3072,7 @@
       "CreatedDate": "2021-11-18T12:12:53Z",
       "Description": "{\"en\": \"Set loadbalancer modification protection\", \"zh-cn\": \"批量启用负载均衡实例配置修改保护\", \"name-en\": \"ACS-SLB-BulkySetLoadBalancerModificationProtection\", \"name-zh-cn\": \"批量启用负载均衡实例配置修改保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "98f2fb4de329a2b5ebb66d6381263a00d7e6adce1c95e8d4633def8d19f63a3f",
+      "Hash": "996e2790826de6ac42a3732c167422382c0415183451284f5b71e1cc64bcab96",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3061,10 +3082,10 @@
       "TemplateId": "t-30b18261e854480fad6e",
       "TemplateName": "ACS-SLB-BulkySetLoadBalancerModificationProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:10Z"
+      "UpdatedDate": "2024-02-22T03:18:31Z"
     },
     {
       "Category": "Other",
@@ -3072,7 +3093,7 @@
       "CreatedDate": "2021-11-18T12:13:25Z",
       "Description": "{\"en\": \"Modify log service status\", \"zh-cn\": \"开启指定域名配置的日志采集功能\", \"name-en\": \"ACS-WAF-BulkyModifyLogServiceStatus\", \"name-zh-cn\": \"开启指定域名配置的日志采集功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "758e8a033cf2f505eba8eeaa4c87d7a564b103400e431edefa120047c4bb66d7",
+      "Hash": "7f0b95c3f14afc55e9747cb7601bb224fd1f99b582ffc556b15567b1b5ecb854",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3082,10 +3103,10 @@
       "TemplateId": "t-729300ccd42745f1ab61",
       "TemplateName": "ACS-WAF-BulkyModifyLogServiceStatus",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:12Z"
+      "UpdatedDate": "2024-02-22T03:18:33Z"
     },
     {
       "Category": "Other",
@@ -3093,7 +3114,7 @@
       "CreatedDate": "2021-11-18T12:13:51Z",
       "Description": "{\"en\": \"Modify protection module status\", \"zh-cn\": \"开启WAF防护功能模块模块\", \"name-en\": \"ACS-WAF-BulkyModifyProtectionModuleStatus\", \"name-zh-cn\": \"开启WAF防护功能模块\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "d0b7b80ca5b770b757e41ef31d5697aef3104ae9eb85ab89a9abab10061f26a5",
+      "Hash": "f27a0f0f2361dea919147abd797a8b91b27bc220c40a4d50c20b041f2964e632",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3103,10 +3124,10 @@
       "TemplateId": "t-b182b31e910048cdad01",
       "TemplateName": "ACS-WAF-BulkyModifyProtectionModuleStatus",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:12Z"
+      "UpdatedDate": "2024-02-22T03:18:33Z"
     },
     {
       "Category": "Other",
@@ -3114,7 +3135,7 @@
       "CreatedDate": "2021-11-18T13:06:29Z",
       "Description": "{\"name-en\": \"ACS-RAM-SetPasswordPolicy\", \"name-zh-cn\": \"调用SetPasswordPolicy设置RAM用户密码强度策略\", \"en\": \"Call SetPasswordPolicy to set the RAM user password strength policy\", \"zh-cn\": \"调用SetPasswordPolicy设置RAM用户密码强度策略\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "8227a4f24a7289ff22bc45dfb57a7a04105fae3b7c4afa00794f3fb8b9d17bca",
+      "Hash": "865c9d4ad94ff79a36c46f03a235db440357443ac7758cc86bc39b6d6e3c7934",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3124,10 +3145,10 @@
       "TemplateId": "t-65b81ff4281540609764",
       "TemplateName": "ACS-RAM-SetPasswordPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -3135,7 +3156,7 @@
       "CreatedDate": "2021-11-19T05:18:04Z",
       "Description": "{\"en\": \"Modify SQL collector retention\", \"zh-cn\": \"设置RDS实例的SQL洞察日志保存时长为180天\", \"name-en\": \"ACS-RDS-BulkyModifySQLCollectorRetention\", \"name-zh-cn\": \"设置RDS实例的SQL洞察日志保存时长为180天\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "aa42fcb67f6f20dcf14ce9c578c816390f3d7ae2dca69a1ce8bc9edb783924f2",
+      "Hash": "846aa4102c9b88343fdea4b722035d1519af894c8e78be9d885309577af63d76",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3145,10 +3166,10 @@
       "TemplateId": "t-1d0373ec716a44c3a942",
       "TemplateName": "ACS-RDS-BulkyModifySQLCollectorRetention",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -3156,7 +3177,7 @@
       "CreatedDate": "2021-11-22T06:45:12Z",
       "Description": "{\"en\": \"Enable logging for a bucket\", \"zh-cn\": \"为存储空间（Bucket）开启日志转存功能\", \"name-en\": \"ACS-OSS-PutBucketLogging\", \"name-zh-cn\": \"为存储空间（Bucket）开启日志转存功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "efecba5a3755c170e127df8f5ceb298897ee62f9e1840754425cacf9f92e6a98",
+      "Hash": "c432fdfe477f0943c459cbe65b5154ec62408232556d47892cfb4aa964456f6b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3166,10 +3187,10 @@
       "TemplateId": "t-27a2c8eddd494903957d",
       "TemplateName": "ACS-OSS-PutBucketLogging",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:08Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",
@@ -3177,7 +3198,7 @@
       "CreatedDate": "2021-11-22T06:45:46Z",
       "Description": "{\"en\": \"Enable the versioning state of a bucket\", \"zh-cn\": \"开启指定存储空间（Bucket）的版本控制\", \"name-en\": \"ACS-OSS-PutBucketVersioning\", \"name-zh-cn\": \"开启指定存储空间（Bucket）的版本控制\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "502ffa3c087374ffc83d39e4302155221dd39a9218aa9a7bd77ba53624ec3906",
+      "Hash": "90753ce4eee6130181c38b883b1b1b987ef63920166713fab7002aac25e7f6dc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3187,10 +3208,10 @@
       "TemplateId": "t-c941251c78fe4f3b8ba9",
       "TemplateName": "ACS-OSS-PutBucketVersioning",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:08Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -3198,7 +3219,7 @@
       "CreatedDate": "2021-11-22T11:33:43Z",
       "Description": "{\"en\": \"Bulky modify ECD desktop auto renew attribute\", \"zh-cn\": \"批量修改云桌面的自动续费属性\", \"name-en\": \"ACS-ECD-BulkyModifyDesktopAutoRenewAttribute\", \"name-zh-cn\": \"批量修改云桌面的自动续费属性\"}",
       "HasTrigger": false,
-      "Hash": "fd0b90f925a2f20be241a063ba30dce2550b27b0315570cbe5cffa2e22557c3d",
+      "Hash": "fb59de593cd3920cc1f4084e581d1b6eb6c8185f752c1d2fd04203300adfec70",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3208,10 +3229,10 @@
       "TemplateId": "t-08002cde40254193b4af",
       "TemplateName": "ACS-ECD-BulkyModifyDesktopAutoRenewAttribute",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:58Z"
+      "UpdatedDate": "2024-02-22T03:18:05Z"
     },
     {
       "Category": "Other",
@@ -3219,7 +3240,7 @@
       "CreatedDate": "2021-11-22T11:34:12Z",
       "Description": "{\"en\": \"Bulky Modify ECD desktop charge type\", \"zh-cn\": \"批量修改云桌面的计费方式\", \"name-en\": \"ACS-ECD-BulkyModifyDesktopChargeType\", \"name-zh-cn\": \"批量修改云桌面的计费方式\"}",
       "HasTrigger": false,
-      "Hash": "f2d941669054fdd894724090155b66cb94e38b2a8eccf24d9a4b001c1bdb49c4",
+      "Hash": "50c67cabe0f47f6af017e7ac5fb8c0147a5bd78aed933575c58fd85296078a94",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3229,10 +3250,10 @@
       "TemplateId": "t-fc8affafc79c4ee79c74",
       "TemplateName": "ACS-ECD-BulkyModifyDesktopChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:58Z"
+      "UpdatedDate": "2024-02-22T03:18:05Z"
     },
     {
       "Category": "Other",
@@ -3240,7 +3261,7 @@
       "CreatedDate": "2021-12-01T03:54:41Z",
       "Description": "{\"en\": \"Ecs instance related resources (Disk, Image, Snapshot, EIP, ENI) inherit the Tags of the Instance\", \"zh-cn\": \"Ecs实例相关资源（Disk、Image、Snapshot、EIP、ENI）继承实例的标签\", \"name-en\": \"ACS-TAG-ExtendEcsInstanceTagsByInputParams\", \"name-zh-cn\": \"Ecs实例相关资源（Disk、Image、Snapshot、EIP、ENI）继承实例的标签\"}",
       "HasTrigger": false,
-      "Hash": "b839a07c94f8c512e588d8f18a4d82f5f0c9fdbcb141dbcf26140c84f728474c",
+      "Hash": "fcdc6256f83260272c4d36301b7dbcd05611f02767b956de561c630748af5a42",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3250,10 +3271,10 @@
       "TemplateId": "t-3c6dd3661b6d43d4a830",
       "TemplateName": "ACS-TAG-ExtendEcsInstanceTagsByInputParams",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-08-04T10:25:44Z"
+      "UpdatedDate": "2024-02-22T03:18:32Z"
     },
     {
       "Category": "Other",
@@ -3261,7 +3282,7 @@
       "CreatedDate": "2021-12-02T09:58:28Z",
       "Description": "{\"en\": \"Del 0.0.0.0/0 from the ip white list array of rds instances\", \"zh-cn\": \"从RDS实例IP白名单分组里删除0.0.0.0/0\", \"name-en\": \"ACS-RDS-BulkyModifySecurityIpsByInstanceIPArray\", \"name-zh-cn\": \"从RDS实例IP白名单分组里删除0.0.0.0/0\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "545341db2c1d10f32c3d9ad9ee6a1378d239b08401b399f624de6d2ba19ff175",
+      "Hash": "96011bd8bb0d24fe36e921a3a19bbd3f2d5ea3bad7afdaabc7412efd3d886887",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3271,10 +3292,10 @@
       "TemplateId": "t-f15ffd5916674ea0bc2c",
       "TemplateName": "ACS-RDS-BulkyModifySecurityIpsByInstanceIPArray",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -3282,7 +3303,7 @@
       "CreatedDate": "2021-12-15T03:38:30Z",
       "Description": "{\"en\": \"Abolishing a specified API in a specified stage\", \"zh-cn\": \"下线指定运行环境的指定API\", \"name-en\": \"ACS-ApiGateway-BulkyAbolishApi\", \"name-zh-cn\": \"下线指定运行环境的指定API\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "d7fb23367c92cdf96f2606029d2618b013178d716b554f46fd71276cb288bf4d",
+      "Hash": "bc20d284fec2237bf61adee470ecbe1e999adb7401dd52a5e3836438652828e4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3292,10 +3313,10 @@
       "TemplateId": "t-1d2b5df5a80e4901b6c2",
       "TemplateName": "ACS-ApiGateway-BulkyAbolishApi",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:56Z"
+      "UpdatedDate": "2024-02-22T03:18:02Z"
     },
     {
       "Category": "Other",
@@ -3303,7 +3324,7 @@
       "CreatedDate": "2021-12-15T03:38:30Z",
       "Description": "{\"en\": \"Modify the https version of apigateway instance to support tls1.2\", \"zh-cn\": \"修改API网关https版本支持tls1.2版本\", \"name-en\": \"ACS-ApiGateway-BulkyModifyApiGroupNetworkPolicy\", \"name-zh-cn\": \"修改API网关https版本支持tls1.2版本\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "f7168aee9ffc34da7f2a9d6a024ae7883773556de31de0d64e109f51885d27fc",
+      "Hash": "eb25a9b7e410341e5e4289b5448e02e954f3b7cc7e5ab9f36663d3c1159205f6",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3313,10 +3334,10 @@
       "TemplateId": "t-b00d800a27ad418987b0",
       "TemplateName": "ACS-ApiGateway-BulkyModifyApiGroupNetworkPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-30T08:44:23Z"
+      "UpdatedDate": "2024-02-22T03:18:03Z"
     },
     {
       "Category": "Other",
@@ -3324,7 +3345,7 @@
       "CreatedDate": "2021-12-15T03:38:30Z",
       "Description": "{\"en\": \"Enable deletion protection for CMK\", \"zh-cn\": \"开启CMK删除保护\", \"name-en\": \"ACS-KMS-BulkySetDeletionProtection\", \"name-zh-cn\": \"开启CMK删除保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "88ae89fb3ff8c3fefa652cd7163aa040d7ae9fc027f55ad276bbffa4753daa01",
+      "Hash": "49711e7a9ce32c7fa5628fcc492ead5a9b18e53a460c0c6f4759ad35beb2c5d0",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3334,10 +3355,10 @@
       "TemplateId": "t-0c8a70c4e403429f926e",
       "TemplateName": "ACS-KMS-BulkySetDeletionProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-30T08:44:23Z"
+      "UpdatedDate": "2024-02-22T03:18:26Z"
     },
     {
       "Category": "Other",
@@ -3345,7 +3366,7 @@
       "CreatedDate": "2021-12-15T03:38:31Z",
       "Description": "{\"en\": \"Modifies configuration parameters of redis instances\", \"zh-cn\": \"更改Redis实例的参数配置\", \"name-en\": \"ACS-Redis-BulkyModifyInstanceConfig\", \"name-zh-cn\": \"更改Redis实例的参数配置\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "9e455fe7c7f1f4bc0f4c84f56a992868330ed93b9fffceda33fd5924b8cc18f2",
+      "Hash": "a7b2288b41f286bcc58606ea454b279c9f78810ceb27831441d9a0eb75fa324c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3355,10 +3376,10 @@
       "TemplateId": "t-56d22e4cd4f2457da692",
       "TemplateName": "ACS-Redis-BulkyModifyInstanceConfig",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:17Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -3366,7 +3387,7 @@
       "CreatedDate": "2021-12-15T03:38:31Z",
       "Description": "{\"en\": \"Release the public address of Redis instance\", \"zh-cn\": \"释放Redis实例的外网地址\", \"name-en\": \"ACS-Redis-ReleaseInstancePublicConnection\", \"name-zh-cn\": \"释放Redis实例的外网地址\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "201a2b6b5252404b4b488128b1c4a561871421b8093e4a676c515cbf4c5d11d9",
+      "Hash": "051cb7ad65d8f5edbf223ad7e22e474ef50666add2bea60e76f6ddb3a964f636",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3376,10 +3397,10 @@
       "TemplateId": "t-6ad616bf28404049a756",
       "TemplateName": "ACS-Redis-ReleaseInstancePublicConnection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:17Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -3387,7 +3408,7 @@
       "CreatedDate": "2021-12-15T03:38:31Z",
       "Description": "{\"en\": \"Del the specified risk ports mapped on dnat table\", \"zh-cn\": \"删除NAT网关上DNAT映射的指定风险端口\", \"name-en\": \"ACS-VPC-BulkyDeleteForwardEntry\", \"name-zh-cn\": \"删除NAT网关上DNAT映射的指定风险端口\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "6dfd7ff3eba283d6f7a82c21c6c23346a97a75b060ba08d8de7ab5e5e3ef0491",
+      "Hash": "3d83f27d94167f4eb6c28c761b86efecaa20bbf5f3e93c604e9b49f1b762aa61",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3397,10 +3418,10 @@
       "TemplateId": "t-7f32bfe8c16649229d91",
       "TemplateName": "ACS-VPC-BulkyDeleteForwardEntry",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-01-07T09:13:06Z"
+      "UpdatedDate": "2024-02-22T03:18:32Z"
     },
     {
       "Category": "Other",
@@ -3429,7 +3450,7 @@
       "CreatedDate": "2021-12-27T11:48:17Z",
       "Description": "{\"en\": \"Bulky del specified ip from the ip white list array of redis instances\", \"zh-cn\": \"批量从Redis实例IP白名单分组里删除指定IP\", \"name-en\": \"ACS-Redis-BulkyDeleteSecurityIpByInstanceIPArray\", \"name-zh-cn\": \"批量从Redis实例IP白名单分组里删除指定IP\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "d677c155a36257ff06cf5847d7cc73f322ae7b94c17af38fb813c595b5d9919d",
+      "Hash": "ff1e4600e1bbcd2c895ccb5ec9367ac5d955c17ebfd43a800dfaabf9098fd658",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3439,10 +3460,10 @@
       "TemplateId": "t-7f9fb9b5fbaf444aa68e",
       "TemplateName": "ACS-Redis-BulkyDeleteSecurityIpByInstanceIPArray",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:10Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -3450,7 +3471,7 @@
       "CreatedDate": "2021-12-30T08:44:23Z",
       "Description": "{\"en\": \"Modify API to private\", \"zh-cn\": \"修改API为私有类型\", \"name-en\": \"ACS-ApiGateway-BulkyModifyApi\", \"name-zh-cn\": \"修改API为私有类型\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "7102d779f8a6b31262b7c0a7e8a8b8916113c0e38d3abe145345d80ddd88d1b7",
+      "Hash": "79455ccedab3fc3071645cd285ba922495a9572d9e2213f31d40ebd753159371",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3460,10 +3481,10 @@
       "TemplateId": "t-4e0b3551e6594640a703",
       "TemplateName": "ACS-ApiGateway-BulkyModifyApi",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-21T11:18:04Z"
+      "UpdatedDate": "2024-02-22T03:18:02Z"
     },
     {
       "Category": "Other",
@@ -3471,7 +3492,7 @@
       "CreatedDate": "2021-12-30T08:44:23Z",
       "Description": "{\"en\": \"Release the public address of RDS instance\", \"zh-cn\": \"释放RDS实例的外网地址\", \"name-en\": \"ACS-RDS-ReleaseInstancePublicConnection\", \"name-zh-cn\": \"释放RDS实例的外网地址\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "c8f29aac68a0f5c93a1e50bb4c629f22f19bfa14801106682a01ab81470a7e50",
+      "Hash": "d4f98de0464fb292e827855fbddbde2cc96f3b247d4015da56c4874b44c5a9f2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3481,10 +3502,10 @@
       "TemplateId": "t-3de2394880eb4189b1e3",
       "TemplateName": "ACS-RDS-ReleaseInstancePublicConnection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:09Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
@@ -3513,7 +3534,7 @@
       "CreatedDate": "2022-02-18T08:12:22Z",
       "Description": "{\"en\": \"Use this template to install sls logtail on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装日志服务插件\", \"name-en\": \"ACS-LOG-BulkyInstallLogtail\", \"name-zh-cn\": \"批量安装日志服务插件\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "5a86a8ef4fdc5e644ef99de9b1111e74d006b38795e891dbda57b0b95550c65e",
+      "Hash": "32ceb0da365c064d28cbc99a935fe3c1fdc81da0b1c890a540cc8dab6084dec2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3523,10 +3544,10 @@
       "TemplateId": "t-d4c978b64ef24c3b95d2",
       "TemplateName": "ACS-LOG-BulkyInstallLogtail",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:07Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",
@@ -3534,7 +3555,7 @@
       "CreatedDate": "2022-02-24T07:10:38Z",
       "Description": "{\"en\": \"<p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Description:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">If the scaling group has been configured with the desired number of instances, when the number of instances in the scaling group is not equal to the expected number of instances, the auto scaling service will automatically scale to ensure that the number of instances in the scaling group is always maintained After the execution is complete, please go to the ESS console to view the adjustment results. </li> <li class=\\\"li\\\">The number of cluster nodes after scaling down the nodes cannot be less than the minimum node requirements of the component, otherwise the scaling operation may return an error of code:IncorrectCapacity. </li> <li class=\\\"li\\\">Please ensure that your account balance is greater than the cost of the newly purchased instance, otherwise an error of code:InvalidAccountStatus.NotEnoughBalance will be returned. </li> <li class=\\\"li\\\">If it is multi-zone, please expand the multiple of the number of zones. </li> <li class=\\\"li\\\">The payment method for the expanded ECS is pay-as-you-go. If necessary, customers need to Manual subcontracting yearly and monthly. </a></li> <li class=\\\"li\\\"> There are two ways to scale down：scale down the specified number of ECS (<b>the number of ECS instance adjustments in the scaling group</b> is not 0), remove the specified ECS from the scaling group ( <b>The number of ECS instance adjustments in the scaling group</b> is 0 and the ECS to be removed is selected)</li> <li class=\\\"li\\\">The scaling cannot be less than the number initially opened in the scaling group. </li> </ul> <p class=\\\"p\\\">Adjust the number of instances in a scaling group by creating and executing scaling group rules. Description:</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">Adjust ACK cluster node pool<a href='https://help.aliyun.com/document_detail/160490.html?spm=5176.2020520152.help.dexternal.253916ddpJbWDl#title-mpp-3jj- oo3'>Expected number of nodes</a>, please read the linked document carefully and authorize the role AliyunOOSLifecycleHook4CSRole. </li> </ul>\", \"zh-cn\": \"<p class=\\\"p\\\">通过创建并执行伸缩组规则来调整伸缩组的实例数。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">如果伸缩组已配置期望实例数，当伸缩组内实例数不等于期望实例数时，弹性伸缩服务会自动进行扩缩容，确保伸缩组内始终保持该数量的实例数，执行完毕后请到ESS控制台查看调整结果。</li> <li class=\\\"li\\\">缩容节点后的集群节点数量，不能小于组件最低节点要求，否则缩容操作可能会返回 code：IncorrectCapacity 的错误。</li> <li class=\\\"li\\\">执行请确保您的账号余额大于新购实例的费用，否则会返回 code：InvalidAccountStatus.NotEnoughBalance 的错误。</li> <li class=\\\"li\\\">如果是多可用区请扩容可用区数的倍数。</li> <li class=\\\"li\\\">扩容的ECS付费方式为按量付费，如有需要，客户需要手动<a href=\\\"https://help.aliyun.com/document_detail/49884.html?spm=5176.2020520101.help.dexternal.6ecb4df5sxWQrt\\\">转包年包月。</a></li> <li class=\\\"li\\\">缩容有两种方式：缩容指定数量的ECS（<b>伸缩组ECS实例调整的数量</b>非0）、从伸缩组中移除指定的ECS（<b>伸缩组ECS实例调整的数量</b>为0且选择要移除的ECS）</li> <li class=\\\"li\\\">缩容数量不能少于伸缩组内最开始开出来的数量。</li> </ul> <p class=\\\"p\\\">调整ACK集群节点池<a href='https://help.aliyun.com/document_detail/160490.html?spm=5176.2020520152.help.dexternal.253916ddpJbWDl#title-mpp-3jj-oo3'>期望节点数</a>。说明：</p> <ul class=\\\"ul\\\"> <li class=\\\"li\\\">请仔细阅读链接文档并授权角色AliyunOOSLifecycleHook4CSRole。</li> </ul>\", \"name-en\": \"Elastic Scaling\", \"name-zh-cn\": \"弹性扩缩容\", \"categories\": [\"elastic_manage\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "2f2748edfc429e9db89ba7c1afa1488781404c02786873df6ebfea545bb98f15",
+      "Hash": "bada9d141e811c8da0b43e7677338b6a0570097cd567a3f36d228be0c63621b4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3544,10 +3565,10 @@
       "TemplateId": "t-f1cf351427fb43eb8d87",
       "TemplateName": "ACS-ESS-AdjustScalingGroupInstanceCount",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-20T04:08:05Z"
+      "UpdatedDate": "2024-02-22T03:18:23Z"
     },
     {
       "Category": "Other",
@@ -3555,7 +3576,7 @@
       "CreatedDate": "2022-02-28T09:59:25Z",
       "Description": "{\"en\": \"Bulky stops the classic ECS instances\", \"zh-cn\": \"批量停止ECS经典网络实例\", \"name-en\": \"ACS-ECS-BulkyStopClassicInstances\", \"name-zh-cn\": \"批量停止ECS经典网络实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2b28e55fd8c54555074d65dc3a2db47e296a03189b6977480760d76d1688b9c8",
+      "Hash": "dde878250b350829a52c6ecfb86302c6b94ac85d5e5eac142f7ca0678cd07409",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3565,10 +3586,10 @@
       "TemplateId": "t-a1223a972aff4c909373",
       "TemplateName": "ACS-ECS-BulkyStopClassicInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-28T09:59:25Z"
+      "UpdatedDate": "2024-02-22T03:18:16Z"
     },
     {
       "Category": "Other",
@@ -3576,7 +3597,7 @@
       "CreatedDate": "2022-02-28T10:00:05Z",
       "Description": "{\"en\": \"Bulky stops the ECS instances with public ip\", \"zh-cn\": \"批量停止有公网IP的ECS实例\", \"name-en\": \"ACS-ECS-BulkyStopInstancesWithPublicIp\", \"name-zh-cn\": \"批量停止有公网IP的ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "034d3f84b4db16f243bb2e1f9365ae8277a2ed1ecf9b8de71810806f1a0fcc52",
+      "Hash": "549b179439df0b010dfdc82f01c8a711c833e6a7987a4ef633eeceaf863d8bfd",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3586,10 +3607,10 @@
       "TemplateId": "t-18fd71f0f7554845b904",
       "TemplateName": "ACS-ECS-BulkyStopInstancesWithPublicIp",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-02-28T10:00:05Z"
+      "UpdatedDate": "2024-02-22T03:18:17Z"
     },
     {
       "Category": "Other",
@@ -3597,7 +3618,7 @@
       "CreatedDate": "2022-02-28T10:00:37Z",
       "Description": "{\"en\": \"Del the security gorup rule\", \"zh-cn\": \"删除安全组规则\", \"name-en\": \"ACS-ECS-RevokeSecurityGroupRules\", \"name-zh-cn\": \"删除安全组规则\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "43fc0fab38b39168457b07630311c91d0860e64228bc6b1e4d180c957d8007d7",
+      "Hash": "3991213b7883869845a0e7f1f85dff36919129e762ceb64b4631f6f393de1ce4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3607,10 +3628,10 @@
       "TemplateId": "t-61cdd6175eb04f70863e",
       "TemplateName": "ACS-ECS-RevokeSecurityGroupRules",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-06T04:07:46Z"
+      "UpdatedDate": "2024-02-22T03:18:21Z"
     },
     {
       "Category": "Other",
@@ -3618,7 +3639,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "304600315741808fe9f9650b7a32f61e6bb22fdf2b615a84909596d6e63e1d51",
+      "Hash": "e4854714b970fc8b728bb927a12f754b9379089d3b2459530498fc7c97785880",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3628,10 +3649,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-20T08:51:49Z"
+      "UpdatedDate": "2024-02-22T03:18:32Z"
     },
     {
       "Category": "Other",
@@ -3639,7 +3660,7 @@
       "CreatedDate": "2022-03-15T08:35:31Z",
       "Description": "{\"en\": \"Bulky install aegis agent on ECS instance\", \"zh-cn\": \"批量的在ECS安装Aegis插件\", \"name-en\": \"ACS-ECS-BulkyInstallAegisAgent\", \"name-zh-cn\": \"批量安装Aegis插件\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "b2cc5c4cae41a6c43853f08f03c1478577e9dd1ff157395c8cb82f92bb799ea9",
+      "Hash": "0cf704c2b43ee4796ccbeb052fd5f921f2840a9240f65ccb3cb14b00741a6ff3",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3649,10 +3670,10 @@
       "TemplateId": "t-33deb4fbcd7e45d8892d",
       "TemplateName": "ACS-ECS-BulkyInstallAegisAgent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-03-15T08:35:31Z"
+      "UpdatedDate": "2024-02-22T03:18:11Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3681,7 @@
       "CreatedDate": "2022-04-18T10:24:15Z",
       "Description": "{\"en\": \"Bulky modify postpaid instance spec\", \"zh-cn\": \"批量修改按量付费ECS实例的实例规格\", \"name-en\": \"ACS-ECS-BulkyModifyPostPaidInstanceSpec\", \"name-zh-cn\": \"批量修改按量付费ECS实例的实例规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "f643fbb9612c45135a9e38a3dc529be94f4796479e7c246a5eb3d276d3897a88",
+      "Hash": "7110d5ee013b37c7bc7e9fa8d6dd8b05299cb79d820968df7f1e23719b768870",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3691,10 @@
       "TemplateId": "t-a85ed6a21c0b422eaff2",
       "TemplateName": "ACS-ECS-BulkyModifyPostPaidInstanceSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-11T06:09:47Z"
+      "UpdatedDate": "2024-02-22T03:18:13Z"
     },
     {
       "Category": "TimerTrigger",
@@ -3744,7 +3765,7 @@
       "CreatedDate": "2022-06-01T07:31:06Z",
       "Description": "{\"en\": \"Bulky modify disk spec\", \"zh-cn\": \"批量修改云盘规格\", \"name-en\": \"ACS-ECS-BulkyModifyDiskSpec\", \"name-zh-cn\": \"批量修改云盘规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "4965b414d30bd40e2c944b315b592c6ee14e61494a9ab37026546075279a4868",
+      "Hash": "83dc2ceabb96d7661f71a60dea255cd91d3261bc83be235409221d785c06c2e5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3754,10 +3775,10 @@
       "TemplateId": "t-143fef8b71554c17bac2",
       "TemplateName": "ACS-ECS-BulkyModifyDiskSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-07-27T03:13:46Z"
+      "UpdatedDate": "2024-02-22T03:18:12Z"
     },
     {
       "Category": "Other",
@@ -3765,7 +3786,7 @@
       "CreatedDate": "2022-06-01T07:31:07Z",
       "Description": "{\"en\": \"Bulky resize disk\", \"zh-cn\": \"批量扩容磁盘\", \"name-en\": \"ACS-ECS-BulkyResizeDisk\", \"name-zh-cn\": \"批量扩容磁盘\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "30f95fbb9dd0b57f5fed7b9d21269294e0a9706a3686e052b9cfd85690210c0d",
+      "Hash": "2bc2c671d55e568fa429b8888de7a7e8ad912e50591da0fd27fca36684e06ed2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3775,10 +3796,10 @@
       "TemplateId": "t-e080a101fc76471e9ec7",
       "TemplateName": "ACS-ECS-BulkyResizeDisk",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-06-10T07:36:26Z"
+      "UpdatedDate": "2024-02-22T03:18:15Z"
     },
     {
       "Category": "Other",
@@ -3786,7 +3807,7 @@
       "CreatedDate": "2022-06-01T07:31:07Z",
       "Description": "{\"en\": \"Bulky modify load balancer instance spec\", \"zh-cn\": \"批量修改负载均衡的实例规格\", \"name-en\": \"ACS-SLB-BulkyModifyLoadBalancerInstanceSpec\", \"name-zh-cn\": \"批量修改负载均衡的实例规格\", \"categories\": [\"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "797313d2c96cba329b45d978cd8edd823d61ea7cfb86f3a7fe61de763aee6588",
+      "Hash": "29e90f85dcd15bbe4148d1a44d931eeb7ef3bb8e6c3539e801a82eda986457c6",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3796,10 +3817,10 @@
       "TemplateId": "t-0200d41c65ad43848c49",
       "TemplateName": "ACS-SLB-BulkyModifyLoadBalancerInstanceSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-06-10T07:36:26Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -3807,7 +3828,7 @@
       "CreatedDate": "2022-06-01T07:31:07Z",
       "Description": "{\"en\": \"Bulky modify load balancer internet spec\", \"zh-cn\": \"批量修改公网负载均衡实例的带宽\", \"name-en\": \"ACS-SLB-BulkyModifyLoadBalancerInternetSpec\", \"name-zh-cn\": \"批量修改公网负载均衡实例的带宽\", \"categories\": [\"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "074329add2e861340915bbc47df5e0d6ad611aea216f294df75cc9ea9c6e9845",
+      "Hash": "1824f3462a0a59689e5512ac0c8524735a44f24e85673deccfe0719d1c7cad1a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3817,10 +3838,10 @@
       "TemplateId": "t-4037704fb2fb461388f2",
       "TemplateName": "ACS-SLB-BulkyModifyLoadBalancerInternetSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-01-16T03:29:48Z"
+      "UpdatedDate": "2024-02-22T03:18:31Z"
     },
     {
       "Category": "Other",
@@ -3828,7 +3849,7 @@
       "CreatedDate": "2022-06-01T09:34:52Z",
       "Description": "{\"en\": \"Bulky modify access control list entry\", \"zh-cn\": \"批量修改访问控制策略组中的IP条目\", \"name-en\": \"ACS-SLB-BulkyModifyAccessControlListEntry\", \"name-zh-cn\": \"批量修改负载均衡访问控制策略组中的IP条目\", \"categories\": [\"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "ba56f7558c18d3864c8b8b95aa0ab576cb32f43ab1fa623b1b79d72b403d317e",
+      "Hash": "21a64367414fda1aebee6fc2699f1647b6ab4457871302973c10ce759790ed9f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3838,10 +3859,10 @@
       "TemplateId": "t-cf0fbc2a93014bbca8d2",
       "TemplateName": "ACS-SLB-BulkyModifyAccessControlListEntry",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-11T06:09:48Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -3849,7 +3870,7 @@
       "CreatedDate": "2022-06-13T02:10:25Z",
       "Description": "{\"en\": \"Rolling update ECI instances in scaling group by update container group\", \"zh-cn\": \"通过更新容器组的方式滚动更新伸缩组内的ECI实例\", \"name-en\": \"ACS-ESS-RollingUpdateByUpdateContainerGroup\", \"name-zh-cn\": \"通过更新容器组的方式滚动更新伸缩组内的ECI实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "422d7dbcda31295a2745bfe5d22964fa6a6b11580c648130e9add61950f5a4c0",
+      "Hash": "7ca55c8c14b111bc429ffaec469e580998039cb4aa041157af56814cf9e75163",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3859,10 +3880,10 @@
       "TemplateId": "t-cce7cfe87b8b45b6ade7",
       "TemplateName": "ACS-ESS-RollingUpdateByUpdateContainerGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-17T02:54:40Z"
+      "UpdatedDate": "2024-02-22T03:18:26Z"
     },
     {
       "Category": "Other",
@@ -3891,7 +3912,7 @@
       "CreatedDate": "2022-08-22T06:22:12Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download file and run command\", \"zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadFileAndRunCommandInScalingGroup\", \"name-zh-cn\": \"通过下载文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "c306c9627fc1ef21502995f71acd47df9588d71dec1c6fbff59d167b3ee93406",
+      "Hash": "07edcdf05727c2b7cfb819bd3f6cafc00c7d1e7552ff0e594dba6c3ecb964980",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3901,10 +3922,10 @@
       "TemplateId": "t-4f45c565d5d84c2cae3c",
       "TemplateName": "ACS-ESS-RollingUpdateByDownloadFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-29T08:36:52Z"
+      "UpdatedDate": "2024-02-22T03:18:24Z"
     },
     {
       "Category": "Other",
@@ -3933,7 +3954,7 @@
       "CreatedDate": "2023-02-21T13:20:38Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by download OOS file and run command\", \"zh-cn\": \"通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand\", \"name-zh-cn\": \"通过下载OSS文件并执行命令的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "972d50c57248da1f893083a8c7aa62c87976ac9f1e0373662b931500d3a6901a",
+      "Hash": "809a0c7937845a6b4b6f258b2307323edacde03657a555996fb58504e01b88f1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3943,10 +3964,10 @@
       "TemplateId": "t-3387915a166f4c2b977c",
       "TemplateName": "ACS-ESS-RollingUpdateByDownloadOSSFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-08-25T08:58:48Z"
+      "UpdatedDate": "2024-02-22T03:18:25Z"
     },
     {
       "Category": "Other",
@@ -3954,7 +3975,7 @@
       "CreatedDate": "2023-02-28T07:25:29Z",
       "Description": "{\"en\": \"Bulky downLoad OSS file to instances and run command\", \"zh-cn\": \"批量下载OSS文件到多个ECS实例并执行云助手命令\", \"name-en\": \"ACS-ECS-BulkyDownloadOSSFileAndRunCommand\", \"name-zh-cn\": \"批量下载OSS文件到多个ECS实例并执行云助手命令\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "22ddb60b3467004226c5aacb3de23c28cc0571baee5fdcce2bf14840648b25fb",
+      "Hash": "ed03ca44c496ada38118788fd07ecc55962914eed4e9ccc4a6742a2d91515e10",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3964,10 +3985,10 @@
       "TemplateId": "t-4c79ce5412f746f0917d",
       "TemplateName": "ACS-ECS-BulkyDownloadOSSFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-28T07:25:29Z"
+      "UpdatedDate": "2024-02-22T03:18:11Z"
     },
     {
       "Category": "Other",
@@ -4479,7 +4500,7 @@
       "CreatedDate": "2023-10-23T08:44:51Z",
       "Description": "{\"en\": \"Enable deletion protection for the cluster\", \"zh-cn\": \"开启集群的删除保护\", \"name-en\": \"ACS-CS-BulkyEnableDeletionProtection\", \"name-zh-cn\": \"开启集群的删除保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "f21406d8b1fd5b849df3bd05e3080a7701ed100d88a354a50e33d405bf3f77ec",
+      "Hash": "829ef7d7fff15855e13ab7af6b9f2aa0426079cd7ac081979baf53a2c47dbdef",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4489,10 +4510,10 @@
       "TemplateId": "t-e7dd982f1083476694ec",
       "TemplateName": "ACS-CS-BulkyEnableDeletionProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-23T08:44:51Z"
+      "UpdatedDate": "2024-02-22T03:18:04Z"
     },
     {
       "Category": "Other",
@@ -4535,6 +4556,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-10-23T08:44:51Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-11-06T11:13:49Z",
+      "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"computenest\", \"application_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "212574f3191728fb8ebf13711719d5b0afa4b7bebad22f3db6f18c0e437792c2",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-dbec4cab2eda4e90a40c",
+      "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v17",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-02-22T08:25:45Z"
     },
     {
       "Category": "Other",
@@ -4584,7 +4626,7 @@
       "CreatedDate": "2023-11-24T06:04:49Z",
       "Description": "{\"en\": \"Bulky move resources from one resource group to another\", \"zh-cn\": \"批量将资源从一个资源组转移到另一个资源组\", \"name-en\": \"ACS-ResourceManager-BulkyMoveResources\", \"name-zh-cn\": \"资源管理批量转资源组\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "913f267aba37a14d93dd4914efa0d8eeed6b9124efc6d1df892fd40e521c0ee9",
+      "Hash": "3b072f01e76ec4eb5cdbbcaf8edd202cd556cbfbc878f648b235d9a3239c3742",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4594,10 +4636,10 @@
       "TemplateId": "t-bc8293575a704476aa9e",
       "TemplateName": "ACS-ResourceManager-BulkyMoveResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-24T06:04:49Z"
+      "UpdatedDate": "2024-02-22T03:18:30Z"
     },
     {
       "Category": "Other",
@@ -4626,7 +4668,7 @@
       "CreatedDate": "2023-11-29T02:48:51Z",
       "Description": "{\"en\": \"Modify resource auto renew attribute\", \"zh-cn\": \"修改资源自动续费属性\", \"name-en\": \"ACS-BssOpenApi-SetRenewal\", \"name-zh-cn\": \"修改资源自动续费属性\"}",
       "HasTrigger": false,
-      "Hash": "c2fc71e5b4a3d96b30e0f235db7269ec6f188ff358cfabf5af2bf8ec97de37f8",
+      "Hash": "fafc48b56de46df3368e734d649a4bb4f8215ac1a5cd4d7cb04b159fcc7e7d56",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4636,10 +4678,10 @@
       "TemplateId": "t-9b4f1680d07143b2a3e5",
       "TemplateName": "ACS-BssOpenApi-SetRenewal",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-26T03:22:10Z"
+      "UpdatedDate": "2024-02-22T03:18:03Z"
     },
     {
       "Category": "Other",
@@ -4794,7 +4836,7 @@
       "CreatedDate": "2019-09-23T10:10:52Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using Linux kernel version as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将Linux内核版本用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByLinuxKernelVersion\", \"name-zh-cn\": \"批量根据Linux内核版本标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "cd410505bf7a68cca57e2dd5405afbaad60658d24a070fdfa7d0deea6203c38b",
+      "Hash": "97dba0c22a366d68803450a5909a464ac46f8fa5ea2b1ac35e04a5e72d4f2006",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4804,10 +4846,10 @@
       "TemplateId": "t-ffed5630fe174671b4bf",
       "TemplateName": "ACS-ECS-BulkyTagInstanceByLinuxKernelVersion",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:09Z"
+      "UpdatedDate": "2024-02-22T03:18:17Z"
     },
     {
       "Category": "Other",
@@ -4815,7 +4857,7 @@
       "CreatedDate": "2019-09-23T10:11:25Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using OS type as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将操作系统类型用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByOSType\", \"name-zh-cn\": \"批量根据操作系统类型标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ad85e6795b0c3fbc5741927a754bbc627c2975e93b136ef28349bb53454612ab",
+      "Hash": "8b9d918259cfaaae0b7c8400fcdf45a800e4ff01fdddffefccb1569c3cd3136f",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4825,10 +4867,10 @@
       "TemplateId": "t-a95b0c8589af453cad72",
       "TemplateName": "ACS-ECS-BulkyTagInstanceByOSType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:09Z"
+      "UpdatedDate": "2024-02-22T03:18:17Z"
     },
     {
       "Category": "Other",
@@ -4836,7 +4878,7 @@
       "CreatedDate": "2019-09-23T10:12:12Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using RunCommand invocation result as tag value\", \"zh-cn\": \"批量根据运行云助手命令的结果标记实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByRunCommandResult\", \"name-zh-cn\": \"批量根据运行命令的结果标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d0202385a8ab91f62cae34ccaff9483bf454d58342e092da083706e4acb2ec9d",
+      "Hash": "c0da5b06beda74c9e55149252380d60f2009206fffeae647d50d9af2094a5d36",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4846,10 +4888,10 @@
       "TemplateId": "t-41851b14f8db4f17afe2",
       "TemplateName": "ACS-ECS-BulkyTagInstanceByRunCommandResult",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:09Z"
+      "UpdatedDate": "2024-02-22T03:18:17Z"
     },
     {
       "Category": "AlarmTrigger",
@@ -4857,7 +4899,7 @@
       "CreatedDate": "2019-11-28T09:33:03Z",
       "Description": "{\"en\": \"Reboot the specified ECS instance when it's CPU utilization excceded threshold.The selected instance must already have the Cloud Monitor agent installed\", \"zh-cn\": \"当指定ECS实例在CPU利用率超过阈值时执行实例重启。所选实例必须已安装云监控Agent\", \"name-en\": \"ACS-ECS-RebootSpecifiedInstanceAtHighCpu\", \"name-zh-cn\": \"当指定ECS实例在CPU利用率超过阈值时执行实例重启\", \"categories\": [\"alarm-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "f8b4b3f1bf5e754da985927de19582a3e60379a3fa0e3cedfdfc46743ddc4bec",
+      "Hash": "d98ee97b90abfaecfc5b34fc436ab6d81c185b6c18d9ec0e5b9430e129939c6b",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4867,10 +4909,10 @@
       "TemplateId": "t-24eb0f7489874aaebc00",
       "TemplateName": "ACS-ECS-RebootSpecifiedInstanceAtHighCpu",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:13Z"
+      "UpdatedDate": "2024-02-22T03:18:20Z"
     },
     {
       "Category": "AlarmTrigger",
@@ -4878,7 +4920,7 @@
       "CreatedDate": "2019-12-03T03:22:20Z",
       "Description": "{\"en\": \"Reboot ECS instance with specified tag when its CPU utilization exceeded threshold.The selected instance must already have the Cloud Monitor agent installed\", \"zh-cn\": \"按tag在ECS实例CPU利用率超过阈值时执行实例重启。所选实例必须已安装云监控Agent\", \"name-en\": \"ACS-ECS-RebootInstanceAtHighCpuByTags\", \"name-zh-cn\": \"按tag在ECS实例CPU利用率超过阈值时执行实例重启\", \"categories\": [\"alarm-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "08842101d1832580784116e588bddd6ceb5c28bfef13b6fb8cfd36a305ac0e02",
+      "Hash": "ee86919315a3137896fafacc612ef7044f58b27721ec36c55028aec04f1dead1",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4888,10 +4930,10 @@
       "TemplateId": "t-c6f22e323e4a40c49368",
       "TemplateName": "ACS-ECS-RebootInstanceAtHighCpuByTags",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:13Z"
+      "UpdatedDate": "2024-02-22T03:18:20Z"
     },
     {
       "Category": "EventTrigger",
@@ -4899,7 +4941,7 @@
       "CreatedDate": "2019-12-04T12:56:43Z",
       "Description": "{\"en\": \"Start ECS instance when instance enter stopped status with specified tag\", \"zh-cn\": \"当标签下实例关机时，自动启动该实例\", \"name-en\": \"ACS-ECS-AutoStartECSWhenStoppedByTags\", \"name-zh-cn\": \"指定标签下的实例关机时自动重启\", \"categories\": [\"event-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "154f5733e01074b69e954daa27ce6d1a2d594f3062c5b26232f5bbed9dfa329d",
+      "Hash": "f03fea0d23ee559566fe21242cf32d585c3130f996976fdd5f79a438fd33c1c1",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4909,18 +4951,18 @@
       "TemplateId": "t-a78ae2c2d6954ea2afde",
       "TemplateName": "ACS-ECS-AutoStartECSWhenStoppedByTags",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:01Z"
+      "UpdatedDate": "2024-02-22T03:18:07Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-12-16T11:43:16Z",
-      "Description": "{\"en\": \"Bulky run command on ECS instances.\", \"zh-cn\": \"批量在多台实例上运行命令。\", \"name-en\": \"ACS-RDC-RunCommandByStaragent\", \"name-zh-cn\": \"云效批量运行命令\"}",
+      "Description": "{\"en\": \"Bulky run command on ECS instances\", \"zh-cn\": \"批量在多台实例上运行命令\", \"name-en\": \"ACS-RDC-RunCommandByStaragent\", \"name-zh-cn\": \"云效批量运行命令\"}",
       "HasTrigger": false,
-      "Hash": "c3615dca9f672f72b9d4e0c309a17949a8f6357cb16001d1d1929d3d5ef065bc",
+      "Hash": "058e32b25bee6e260745c8518efa342f487e8592338c1a92dba999a04d7c6a87",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4930,39 +4972,18 @@
       "TemplateId": "t-341783f55d1d4da8b661",
       "TemplateName": "ACS-RDC-RunCommandByStaragent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:43Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
-      "CreatedDate": "2020-02-06T08:15:51Z",
-      "Description": "{\"en\": \"Create ECS instances by ROS with approval\", \"zh-cn\": \"审批通过ROS创建ECS\", \"name-en\": \"ACS-ECS-ApproveROSCreateInstances\", \"name-zh-cn\": \"审批通过ROS创建ECS\", \"categories\": [\"cost_manage\"]}",
-      "HasTrigger": false,
-      "Hash": "abb27ac5ce504351f77075df5a5cc1fb6d5ba307a1274aabcce9d6635c9b6e34",
-      "IsFavorite": false,
-      "Popularity": 0,
-      "ResourceGroupId": "rg-acfmz4wrjukykdy",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-889d3258581d45d5af80",
-      "TemplateName": "ACS-ECS-ApproveROSCreateInstances",
-      "TemplateType": "Automation",
       "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-06-10T07:05:42Z"
+      "UpdatedDate": "2024-02-22T03:18:29Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-03-18T06:12:38Z",
-      "Description": "{\"en\": \"Bulky run command on ECS instances.\", \"zh-cn\": \"批量在多台实例上运行命令。\", \"name-en\": \"ACS-RDC-RunCommandByStaragent\", \"name-zh-cn\": \"云效批量运行命令\"}",
+      "Description": "{\"en\": \"Bulky run command on ECS instances\", \"zh-cn\": \"批量在多台实例上运行命令\", \"name-en\": \"ACS-RDC-RunCommandByDevops\", \"name-zh-cn\": \"云效批量运行命令\"}",
       "HasTrigger": false,
-      "Hash": "01eafd8b3af1f3cd09e83d0abe1c17f2d9be8081453ffc9ca898c981d1a70551",
+      "Hash": "7f1ff8f80e6b5d87c267d9a7958b1dbe2340359741d75ef6649c9640dde39fd7",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -4972,10 +4993,10 @@
       "TemplateId": "t-14faae4320e14973915e",
       "TemplateName": "ACS-RDC-RunCommandByDevops",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-11-29T08:01:29Z"
+      "UpdatedDate": "2024-02-22T03:18:28Z"
     },
     {
       "Category": "Other",
@@ -5004,7 +5025,7 @@
       "CreatedDate": "2021-05-25T10:13:16Z",
       "Description": "{\"en\": \"Run command on k8s cluster\", \"zh-cn\": \"在k8s集群中执行命令\", \"name-en\": \"ACS-CS-RunCommand\", \"name-zh-cn\": \"在k8s集群中执行命令\"}",
       "HasTrigger": false,
-      "Hash": "3a5bfb93cec5dae2cfc1932647308880f0f032023a47fd705be4e3d8287ca7d6",
+      "Hash": "72deeb6ac5754e37a242d5e9039e9883dd64c65546be5a67b55020349acfdd08",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5014,10 +5035,10 @@
       "TemplateId": "t-c7b0682e184541c98748",
       "TemplateName": "ACS-CS-RunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-06-21T02:56:49Z"
+      "UpdatedDate": "2024-02-22T03:18:04Z"
     },
     {
       "Category": "Other",
@@ -5067,7 +5088,7 @@
       "CreatedDate": "2021-08-26T09:52:43Z",
       "Description": "{\"en\": \"Bulky query instance ID and disk information\", \"zh-cn\": \"批量查询实例ID及磁盘信息\", \"name-en\": \"ACS-ECS-BulkyDescribeDisks\", \"name-zh-cn\": \"批量查询实例ID及磁盘信息\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "53a998e219d8f35ac02534205a43418f83a09a5d3c6291b8d81e97a52c9c30d1",
+      "Hash": "8b614a18b3062507ec7ed8552d9c3715afa86e5c8e82d1655e7a93eddb2844ae",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5077,10 +5098,10 @@
       "TemplateId": "t-7ebf439f1ace4d438731",
       "TemplateName": "ACS-ECS-BulkyDescribeDisks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:10:59Z"
+      "UpdatedDate": "2024-02-22T03:18:10Z"
     },
     {
       "Category": "Other",
@@ -5088,7 +5109,7 @@
       "CreatedDate": "2021-09-07T02:10:59Z",
       "Description": "{\"en\": \"Use this template to configure oos package on ECS\", \"zh-cn\": \"使用这个模板批量的在ECS安装OOS自定义软件包\", \"name-en\": \"ACS-CN-BulkyConfigureOOSPackage\", \"name-zh-cn\": \"批量安装OOS自定义软件包\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "31e3bca07f0fcd4bc47ba2b1f1ab018247d079a2bdf442ef3f569cfc30a83ce2",
+      "Hash": "f9c492f6b6859520f85eb3680cff994d2e9f32b1c7a9195d8acc24e16cfdf667",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5098,10 +5119,10 @@
       "TemplateId": "t-95aa4ee735b44105825e",
       "TemplateName": "ACS-CN-BulkyConfigureOOSPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:53:57Z"
+      "UpdatedDate": "2024-02-22T03:18:03Z"
     },
     {
       "Category": "Other",
@@ -5130,7 +5151,7 @@
       "CreatedDate": "2021-12-27T04:01:52Z",
       "Description": "{\"name-en\": \"ACS-ECS-ModifyAutoRenewAttributeAfterOrderPaid\", \"name-zh-cn\": \"等待指定订单支付成功后修改实例的自动续费属性\", \"en\": \"Modify the automatic renewal properties of the instance after waiting for the specified order to be paid successfully\", \"zh-cn\": \"等待指定订单支付成功后修改实例的自动续费属性\"}",
       "HasTrigger": false,
-      "Hash": "2162d3e1fb3f980336382ad80ce887b43fc9fff4b54e631a859042551a8f06b4",
+      "Hash": "10abde2471048928cad4210f607085a582025d3c67fa780afb3966dfd7b2a2a3",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5140,10 +5161,10 @@
       "TemplateId": "t-b55f8325bf3243f6a74f",
       "TemplateName": "ACS-ECS-ModifyAutoRenewAttributeAfterOrderPaid",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-09-22T10:16:23Z"
+      "UpdatedDate": "2024-02-22T03:18:20Z"
     },
     {
       "Category": "Other",
@@ -5151,7 +5172,7 @@
       "CreatedDate": "2022-02-22T03:15:04Z",
       "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Pre/PostUpgrade stage\", \"zh-cn\": \"计算巢服务实例Pre/PostUpgrade阶段运行云助手命令\", \"name-en\": \"ACS-CN-PrePostUpgradeServiceInstance\", \"name-zh-cn\": \"执行Pre/PostUpgrade阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "8418a6273b65b84a14578716a9ba8b42d28d5c91640e71a8ef5086c0e9b10ab5",
+      "Hash": "12fc3f31b829f480c4bb5d7adadf9d2293b4ba8dd22e81a9a26e6f87a5886071",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5161,10 +5182,10 @@
       "TemplateId": "t-65a866c62e50493c9af1",
       "TemplateName": "ACS-CN-PrePostUpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-21T07:00:14Z"
+      "UpdatedDate": "2024-02-22T03:18:03Z"
     },
     {
       "Category": "Other",
@@ -5340,7 +5361,7 @@
       "CreatedDate": "2023-10-11T03:24:01Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyDescribeSavingsPlanEstimation\", \"name-zh-cn\": \"批量测算ECS实例SP类型\", \"en\": \"Bulky describe savings plan estimation\", \"zh-cn\": \"批量测算ECS实例SP类型\"}",
       "HasTrigger": false,
-      "Hash": "5f81b1c1ced9284262476272e36460b66db43decf7c812b7ec46a34699a8d7c9",
+      "Hash": "597c0a7d4d92cb6efc4a1e1ce3cbce544d6b15a4b1aa5b01882effdf912a6577",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5350,10 +5371,10 @@
       "TemplateId": "t-12e09308c8bc4d2babf4",
       "TemplateName": "ACS-ECS-BulkyDescribeSavingsPlanEstimation",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-07T10:34:44Z"
+      "UpdatedDate": "2024-02-22T03:18:10Z"
     },
     {
       "Category": "Other",
@@ -5361,7 +5382,7 @@
       "CreatedDate": "2023-10-11T03:24:26Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyCreateSavingsPlan\", \"name-zh-cn\": \"批量通过节省计划换购实例\", \"en\": \"Bulky create savings plan\", \"zh-cn\": \"批量通过节省计划换购实例\"}",
       "HasTrigger": false,
-      "Hash": "fba5149ee00fce38734e936adcf29527b6660b85b74c94627df7071210567aa6",
+      "Hash": "a26170d5f0c9b1f76b584561edddd155c68c65d31b80d7d7f1c302e0d0be8007",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5371,31 +5392,10 @@
       "TemplateId": "t-5f2c0aaa8baa40b7b9e7",
       "TemplateName": "ACS-ECS-BulkyCreateSavingsPlan",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-07T10:34:44Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
-      "CreatedDate": "2023-11-06T11:13:49Z",
-      "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"批量安装/卸载单个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载单个扩展程序\", \"categories\": [\"run_command\"]}",
-      "HasTrigger": false,
-      "Hash": "43e8c6f499563e0100942b89394cd0f05b192351d5c1660ad2b56dce16823fa6",
-      "IsFavorite": false,
-      "Popularity": 0,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-dbec4cab2eda4e90a40c",
-      "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v15",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-11T02:04:43Z"
+      "UpdatedDate": "2024-02-22T03:18:09Z"
     }
   ]
 }
