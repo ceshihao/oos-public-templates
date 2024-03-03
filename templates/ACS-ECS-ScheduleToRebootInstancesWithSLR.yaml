@@ -2,7 +2,7 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Schedule to reboots the ECS instances
   zh-cn: 定时重启ECS实例
-  name-en: ACS-ECS-ScheduleToRebootInstances
+  name-en: ACS-ECS-ScheduleToRebootInstancesWithSLR
   name-zh-cn: 定时重启ECS实例
   categories:
     - time_trigger
@@ -14,34 +14,14 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  cron:
-    Description:
-      en: 'refer them here: https://help.aliyun.com/document_detail/169784.html'
-      zh-cn: '详情参考：https://help.aliyun.com/document_detail/169784.html'
+  timerTrigger:
+    Type: Json
     Label:
-      en: CronExpression
-      zh-cn: cron表达式
-    Type: String
-    AssociationProperty: Cron
-    Default: 0 0 12 ? * *
-  endDate:
-    Description:
-      en: 'Format: yyyy-MM-ddTHH:mm:ssZ.'
-      zh-cn: '格式：yyyy-MM-ddTHH:mm:ssZ'
-    Label:
-      en: EndDate
-      zh-cn: 时间触发器结束时间
-    Type: String
-    AssociationProperty: DateTime
+      en: TimerTrigger
+      zh-cn: 定时类型
+    AssociationProperty: ALIYUN::OOS::Component::TimerTrigger
     AssociationPropertyMetadata:
-      Format: 'YYYY-MM-DDTHH:mm:ssZ'
-  timeZone:
-    Label:
-      en: TimeZone
-      zh-cn: 时区
-    Type: String
-    AssociationProperty: TimeZone
-    Default: UTC
+      MinuteInterval: 30
   targets:
     Type: Json
     Label:
@@ -75,10 +55,22 @@ Tasks:
     en: Triggers a task as scheduled by specifying type and expression
     zh-cn: 通过指定触发类型和表达式按计划触发任务
   Properties:
-    Type: cron
-    Expression: '{{ cron }}'
-    EndDate: '{{ endDate }}'
-    TimeZone: '{{ timeZone }}'
+    Type:
+      Fn::Select:
+        - type
+        - '{{timerTrigger}}'
+    Expression:
+      Fn::Select:
+        - expression
+        - '{{timerTrigger}}'
+    EndDate:
+      Fn::Select:
+        - endDate
+        - '{{ timerTrigger }}'
+    TimeZone:
+      Fn::Select:
+        - timeZone
+        - '{{ timerTrigger }}'
 - Name: getInstance
   Description:
     en: Views the ECS instances
@@ -112,9 +104,7 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
-          - timeZone
-          - cron
-          - endDate
+          - timerTrigger
         Label:
           default:
             zh-cn: 定时设置

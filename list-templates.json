@@ -6,7 +6,7 @@
       "CreatedDate": "2019-09-23T09:38:46Z",
       "Description": "{\"en\": \"Bulky run command on ECS instances\", \"zh-cn\": \"批量在多台ECS实例上运行云助手命令\", \"name-en\": \"Run Command\", \"name-zh-cn\": \"发送远程命令\", \"categories\": [\"run_command\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "15570aea32e2f68a2d64786f10a8f61d08f29abd7cd707dd8a716c9715277a25",
+      "Hash": "d9fb010809765444a97dbfcbc490621c0e789b25fecb044d875803610a5a96ea",
       "IsFavorite": false,
       "Popularity": 10,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -16,10 +16,10 @@
       "TemplateId": "t-89fb84c218e84fd58e14",
       "TemplateName": "ACS-ECS-BulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v57",
+      "TemplateVersion": "v58",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:15Z"
+      "UpdatedDate": "2024-02-29T09:54:07Z"
     },
     {
       "Category": "Other",
@@ -237,7 +237,7 @@
       "CreatedDate": "2020-01-16T12:05:25Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开启和停止ECS实例\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopInstances\", \"name-zh-cn\": \"定时开启和停止ECS实例\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "042dc2842ab189ff60e2cea97c1288b27a7d0a37328514870ee628233884d02c",
+      "Hash": "bb23627bc51ea96ec35225a213ae5815ac41fe4ab9bfe41c74a1ba95904c04f0",
       "IsFavorite": false,
       "Popularity": 8.3,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -247,10 +247,10 @@
       "TemplateId": "t-202a218472bb4ac0b779",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:01Z"
+      "UpdatedDate": "2024-02-27T02:48:20Z"
     },
     {
       "Category": "TimerTrigger",
@@ -258,7 +258,7 @@
       "CreatedDate": "2019-09-23T10:28:16Z",
       "Description": "{\"en\": \"Schedule to reboots the ECS instances\", \"zh-cn\": \"定时重启ECS实例\", \"name-en\": \"ACS-ECS-ScheduleToRebootInstances\", \"name-zh-cn\": \"定时重启ECS实例\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "6d6e570482e3daa1d455dfd701f75e77613862834382fbc7601ecb3247f80a46",
+      "Hash": "f5ddc58c0653ec0f77ae92d754328d93621dc62dcd63820e8a26a43cf29cff64",
       "IsFavorite": false,
       "Popularity": 8.25,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -268,10 +268,10 @@
       "TemplateId": "t-0843ca6812e140b1bfb8",
       "TemplateName": "ACS-ECS-ScheduleToRebootInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2021-12-29T09:54:16Z"
+      "UpdatedDate": "2024-02-27T02:48:20Z"
     },
     {
       "Category": "Other",
@@ -363,7 +363,7 @@
       "CreatedDate": "2020-09-21T07:02:34Z",
       "Description": "{\"en\": \"Schedule to stop and start ECS instances.\", \"zh-cn\": \"定时停止和开启ECS实例。\", \"name-en\": \"ACS-ECS-ScheduleToStopAndStartInstances\", \"name-zh-cn\": \"定时停止和开启ECS实例\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "f7d43be045cf2c80a4194da254de47cfbb4471873cebbb70fa4c8fa6e3ba362a",
+      "Hash": "9437fdc2930fcffbd57dcda9114dc722f71f21b325780c5c11f83355fcfcc7e6",
       "IsFavorite": false,
       "Popularity": 8.15,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -373,10 +373,10 @@
       "TemplateId": "t-2162d9ff688747dfa819",
       "TemplateName": "ACS-ECS-ScheduleToStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:01Z"
+      "UpdatedDate": "2024-02-27T02:48:21Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4829,6 +4829,48 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-02-01T09:14:15Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-02-27T07:31:01Z",
+      "Description": "{\"en\": \"Bulky attach key pair on Linux instances without reboot\", \"zh-cn\": \"批量对多台Linux实例绑定密钥对，无需重启\", \"name-en\": \"Attach Key Pair Online\", \"name-zh-cn\": \"在线绑定密钥对\"}",
+      "HasTrigger": false,
+      "Hash": "41e9df802676c6ddc71db73da7f03d2eadb68efc68b6433f96dcc09d9436fa03",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-c1420585af2c4effb5e1",
+      "TemplateName": "ACS-ECS-BuilkyAttachKeyPairOnline",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-02-27T07:31:01Z"
+    },
+    {
+      "Category": "TimerTrigger",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-02-27T07:47:11Z",
+      "Description": "{\"en\": \"Schedule to reboots the ECS instances\", \"zh-cn\": \"定时重启ECS实例\", \"name-en\": \"ACS-ECS-ScheduleToRebootInstancesWithSLR\", \"name-zh-cn\": \"定时重启ECS实例\", \"categories\": [\"time_trigger\"]}",
+      "HasTrigger": true,
+      "Hash": "e809addee5ece824c73d9d24800f9c1c2af1e7e105ba25525c486bdcb8077f1e",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-80b15248b7f1423a98ff",
+      "TemplateName": "ACS-ECS-ScheduleToRebootInstancesWithSLR",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-02-27T07:47:11Z"
     },
     {
       "Category": "Other",
