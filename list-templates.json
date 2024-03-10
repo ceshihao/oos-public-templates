@@ -48,7 +48,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2b566f432e9c2a20454013757026ccf732888c97691d138935176b0e457991ab",
+      "Hash": "47dd08c25fec91a41c2edee14fe2de5e4974b8a2f56e4b90e51f9032d52bee36",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -58,10 +58,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v49",
+      "TemplateVersion": "v51",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-16T08:34:12Z"
+      "UpdatedDate": "2024-03-08T02:30:42Z"
     },
     {
       "Category": "Other",
@@ -4626,7 +4626,7 @@
       "CreatedDate": "2023-11-24T06:04:49Z",
       "Description": "{\"en\": \"Bulky move resources from one resource group to another\", \"zh-cn\": \"批量将资源从一个资源组转移到另一个资源组\", \"name-en\": \"ACS-ResourceManager-BulkyMoveResources\", \"name-zh-cn\": \"资源管理批量转资源组\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "3b072f01e76ec4eb5cdbbcaf8edd202cd556cbfbc878f648b235d9a3239c3742",
+      "Hash": "378677ba1dea9cc4d10d63801076f4b442a00af0bffe7d0d90d3652b27d8c629",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4636,10 +4636,10 @@
       "TemplateId": "t-bc8293575a704476aa9e",
       "TemplateName": "ACS-ResourceManager-BulkyMoveResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:30Z"
+      "UpdatedDate": "2024-03-05T09:14:01Z"
     },
     {
       "Category": "Other",
