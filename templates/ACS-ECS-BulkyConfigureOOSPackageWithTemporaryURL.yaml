@@ -35,7 +35,7 @@ Parameters:
     AssociationProperty: 'ALIYUN::OOS::Package::PackageName'
     AssociationPropertyMetadata:
       RegionId: regionId
-      Target: '${targets}'
+      Target: ${targets}
   packageVersion:
     Label:
       en: packageVersion
@@ -43,7 +43,7 @@ Parameters:
     Type: String
     AssociationProperty: 'ALIYUN::OOS::Package::PackageVersion'
     AssociationPropertyMetadata:
-      TemplateName: '${packageName}'
+      TemplateName: ${packageName}
     Default: ''
   targets:
     Type: Json
@@ -94,9 +94,9 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getInstanceFromOrderId
-    Action: 'ACS::WaitFor'
+    Action: ACS::WaitFor
     When:
-      'Fn::Not':
+      Fn::Not:
         'Fn::Equals':
           - '{{ orderId }}'
           - ''
@@ -113,11 +113,11 @@ Tasks:
         - Paid
       StopRetryValues:
         - Cancelled
-      PropertySelector: 'Data.OrderList.Order[].PaymentStatus'
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Data.OrderList.Order[].InstanceIDs | fromjson | .[]'
+        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
   - Name: getInstanceFromTargets
     When:
       'Fn::Equals':
@@ -140,7 +140,7 @@ Tasks:
     Description:
       en: Configure Package
       zh-cn: 配置软件包
-    Action: 'ACS::ECS::ConfigureOOSPackageWithTemporaryURL'
+    Action: ACS::ECS::ConfigureOOSPackageWithTemporaryURL
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -150,7 +150,7 @@ Tasks:
       parameters: '{{ parameters }}'
     Loop:
       Items:
-        'Fn::If':
+        Fn::If:
           - 'Fn::Equals':
               - '{{ orderId }}'
               - ''
@@ -161,18 +161,25 @@ Tasks:
         commandOutputs:
           AggregateType: 'Fn::ListJoin'
           AggregateField: commandOutput
+        configurationOutputs:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: configurationOutput
     Outputs:
       commandOutput:
         Type: String
-        ValueSelector: >-
-          .|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult":
-          .commandOutput}
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult": .commandOutput}'
+      configurationOutput:
+        Type: String
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult": .configurationOutput}'
 Outputs:
   commandOutput:
     Type: List
     Value: '{{ configurePackage.commandOutputs }}'
+  configurationOutput:
+    Type: List
+    Value: '{{ configurePackage.configurationOutputs }}'
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - packageName

@@ -4563,7 +4563,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"computenest\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "212574f3191728fb8ebf13711719d5b0afa4b7bebad22f3db6f18c0e437792c2",
+      "Hash": "0ffd9eac15fa7dba73dd2dd4f057245051783e065634cbeab303e66ee7bd9f1a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4573,10 +4573,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T08:25:45Z"
+      "UpdatedDate": "2024-03-15T08:09:55Z"
     },
     {
       "Category": "Other",
@@ -4710,7 +4710,7 @@
       "CreatedDate": "2023-12-18T09:47:55Z",
       "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "0cf2a5668fa63731b378b73441ce2f2ea55a4c34e37a3d128f374e3a49cacf28",
+      "Hash": "d5f5dd88800a8755a00ba830ad1778335fee5002166495234c9993de830f8e26",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4720,10 +4720,10 @@
       "TemplateId": "t-cc058c4ee95b45b39460",
       "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-01T08:16:43Z"
+      "UpdatedDate": "2024-03-15T08:09:55Z"
     },
     {
       "Category": "Other",
@@ -4871,6 +4871,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-02-27T07:47:11Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-03-11T11:40:57Z",
+      "Description": "{\"en\": \"Bulky detach key pair from Linux instances without reboot\", \"zh-cn\": \"批量对多台Linux实例解绑密钥对，无需重启\", \"name-en\": \"Detach Key Pair Online\", \"name-zh-cn\": \"在线解绑密钥对\"}",
+      "HasTrigger": false,
+      "Hash": "53432993d62a0982346ee062b15e7ebba315dc1c703f55ad30d0a197e428ad59",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-5b03c383388d4dbba04a",
+      "TemplateName": "ACS-ECS-BulkyDetachKeyPairOnline",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-03-11T11:40:57Z"
     },
     {
       "Category": "Other",
