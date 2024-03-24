@@ -167,10 +167,10 @@ Tasks:
     Outputs:
       commandOutput:
         Type: String
-        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult": .commandOutput}'
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "Result": .commandOutput}'
       configurationOutput:
         Type: String
-        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult": .configurationOutput}'
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "Result": .configurationOutput}'
 Outputs:
   commandOutput:
     Type: List

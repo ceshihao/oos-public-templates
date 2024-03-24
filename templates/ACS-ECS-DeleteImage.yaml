@@ -23,7 +23,7 @@ Parameters:
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
-      ImageOwnerAlias:
+      SupportedImageOwnerAlias:
         - self
   force:
     Label:
@@ -58,6 +58,7 @@ Metadata:
       - Parameters:
           - regionId
           - imageId
+          - force
         Label:
           default:
             zh-cn: 选择镜像
