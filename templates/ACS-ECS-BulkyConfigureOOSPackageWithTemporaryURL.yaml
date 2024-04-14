@@ -6,7 +6,6 @@ Description:
   name-zh-cn: 安装/卸载扩展程序
   categories:
     - run_command
-    - computenest
     - application_manage
 Parameters:
   regionId:
