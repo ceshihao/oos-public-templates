@@ -43,6 +43,7 @@ Parameters:
     AssociationProperty: 'ALIYUN::OOS::Package::PackageVersion'
     AssociationPropertyMetadata:
       TemplateName: ${packageName}
+      PublicDisabled: true
     Default: ''
   targets:
     Type: Json

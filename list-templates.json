@@ -1098,7 +1098,7 @@
       "CreatedDate": "2019-11-07T04:27:27Z",
       "Description": "{\"en\": \"Encryption rules for configuring buckets\", \"zh-cn\": \"配置OSSBucket的加密规则\", \"name-en\": \"ACS-OSS-PutBucketEncryption\", \"name-zh-cn\": \"配置OSSBucket加密规则\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "330a0a3d17c90a1629feaeedb3c1b77d0c235666cbcfd7ee37379d463107b4d1",
+      "Hash": "d4f86c22c4852354fb621d9727d18bb4aa57b970e832029c2390c78e9cd9856d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1108,10 +1108,10 @@
       "TemplateId": "t-f2eebf2cc4e54a1f856e",
       "TemplateName": "ACS-OSS-PutBucketEncryption",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:27Z"
+      "UpdatedDate": "2024-04-26T08:07:02Z"
     },
     {
       "Category": "Other",
@@ -4563,7 +4563,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "a31510c3b8ad8b4c2472109a5582ab7f3676de585f8fb6c9f182aa8fdbbc8c2c",
+      "Hash": "b64ed408a22882668e116efe9fa55f15528bb66b6fc3047bb3cf6f28d7c8becc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4573,10 +4573,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-07T01:13:04Z"
+      "UpdatedDate": "2024-04-26T08:58:58Z"
     },
     {
       "Category": "Other",
@@ -4703,27 +4703,6 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-12-12T06:55:09Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
-      "CreatedDate": "2023-12-18T09:47:55Z",
-      "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
-      "HasTrigger": false,
-      "Hash": "d5f5dd88800a8755a00ba830ad1778335fee5002166495234c9993de830f8e26",
-      "IsFavorite": false,
-      "Popularity": 5,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-cc058c4ee95b45b39460",
-      "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v6",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-03-15T08:09:55Z"
     },
     {
       "Category": "Other",
@@ -5669,6 +5648,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-02-22T03:18:09Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-12-18T09:47:55Z",
+      "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
+      "HasTrigger": false,
+      "Hash": "c1299e9453651db7eaf5cb544d296f5e71ceff8d84bf594a4ae0d30ce5c46d45",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-cc058c4ee95b45b39460",
+      "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v7",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-04-25T07:30:22Z"
     }
   ]
 }
