@@ -44,6 +44,7 @@ Parameters:
     AssociationPropertyMetadata:
       TemplateName: ${packageName}
       PublicDisabled: true
+      DoRequestAtFirst: true
     Default: ''
   targets:
     Type: Json
