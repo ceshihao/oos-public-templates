@@ -4794,7 +4794,7 @@
       "CreatedDate": "2024-02-01T09:14:15Z",
       "Description": "{\"zh-cn\": \"镜像修复, 镜像修复是基于镜像检测的结果对镜像进行离线修复, 关于镜像检测 https://help.aliyun.com/zh/ecs/user-guide/overview-18, 修复流程会首先基于Alibaba cloud linux镜像创建一台修复实例,将您的镜像的快照创建云盘挂载到修复实例上,离线修复数据盘，然后将修复后的数据盘创建新的镜像。 一些限制 1)当您的镜像的系统类型是如ubuntu 22.04 64位等公共镜像系统类型时,修复后生成的镜像类型会是如ubuntu_64位自定义镜像系统类型。\", \"en\": \"Image repair, which is an offline repair of an image based on the results of image check, Please refer to this document for image check https://www.alibabacloud.com/help/en/ecs/user-guide/overview-18 The repair process will first create a repair instance based on the Alibaba cloud Linux image, create a cloud disk snapshot of your image, mount it to the repair instance, repair the data disk offline, and then create a new image of the repaired data disk.\", \"name-en\": \"ACS-ECS-RepairImage\", \"name-zh-cn\": \"修复镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "3bb7e9262e01251d3daa3cf8a6f7c2e9c3b17d763bbf55a015463d0c7ea577bc",
+      "Hash": "fc1e9f503996de774b78f87eb90c511cfb2a2c44dc025fb454ad2c73d7d8158d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4804,10 +4804,10 @@
       "TemplateId": "t-edcdfb2703b24211aa4f",
       "TemplateName": "ACS-ECS-RepairImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-01T09:14:15Z"
+      "UpdatedDate": "2024-05-08T02:43:27Z"
     },
     {
       "Category": "Other",
