@@ -5085,6 +5085,27 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2024-05-20T05:43:52Z",
+      "Description": "{\"en\": \"Bulky query disk ID and disk information\", \"zh-cn\": \"批量查询磁盘ID及磁盘信息\", \"name-en\": \"ACS-ENS-BulkyDescribeDisks\", \"name-zh-cn\": \"批量查询实例ID及磁盘信息\"}",
+      "HasTrigger": false,
+      "Hash": "9c39a3544d6cd4c8527cc0dfc03af78240835aab178e6908911bd2eb375cd0fa",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-0236bcb9d13948f5acb3",
+      "TemplateName": "ACS-ENS-BulkyQueryDisksAttributes",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-05-20T05:43:52Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T10:10:52Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using Linux kernel version as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将Linux内核版本用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByLinuxKernelVersion\", \"name-zh-cn\": \"批量根据Linux内核版本标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
@@ -5669,6 +5690,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-04-25T07:30:22Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-05-20T07:40:09Z",
+      "Description": "{\"name-en\": \"ACS::OOS::BuildDockerImage\", \"name-zh-cn\": \"构建Docker镜像\", \"en\": \"Build Docker Image and Upload to ACR\", \"zh-cn\": \"构建Docker镜像并上传至阿里云镜像仓库\"}",
+      "HasTrigger": false,
+      "Hash": "94f775fc8067a78ac9a892b34294c39d6be5e81c3e903ed57744fe2d9d6761a9",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-e4f2df2c56b848028e49",
+      "TemplateName": "ACS-Testrangeselect",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-05-20T07:40:09Z"
     }
   ]
 }
