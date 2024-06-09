@@ -4563,7 +4563,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2a6beef8698db1fac7c30404be76e602bad43ec75a4176f654ddb0de7b1f839a",
+      "Hash": "5a148a97b37bf5c0fcc81efa51cf30e5f5e07831a808dba1deef846afb682102",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4573,10 +4573,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v25",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-28T02:00:01Z"
+      "UpdatedDate": "2024-06-04T03:33:56Z"
     },
     {
       "Category": "Other",
@@ -4703,6 +4703,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2023-12-12T06:55:09Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2023-12-18T09:47:55Z",
+      "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
+      "HasTrigger": false,
+      "Hash": "d55b09f22bbed9a3c2ec73716ae55e2664299473474d9a9f0dd03cc9db3ff7d2",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-cc058c4ee95b45b39460",
+      "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v8",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-06-04T01:11:26Z"
     },
     {
       "Category": "Other",
@@ -5669,27 +5690,6 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-02-22T03:18:09Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
-      "CreatedDate": "2023-12-18T09:47:55Z",
-      "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
-      "HasTrigger": false,
-      "Hash": "c1299e9453651db7eaf5cb544d296f5e71ceff8d84bf594a4ae0d30ce5c46d45",
-      "IsFavorite": false,
-      "Popularity": 0,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-cc058c4ee95b45b39460",
-      "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v7",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-25T07:30:22Z"
     },
     {
       "Category": "Other",

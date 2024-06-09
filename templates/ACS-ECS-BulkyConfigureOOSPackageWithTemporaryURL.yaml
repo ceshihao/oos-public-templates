@@ -167,11 +167,11 @@ Tasks:
           AggregateField: configurationOutput
     Outputs:
       commandOutput:
-        Type: String
-        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "Result": .commandOutput}'
+        Type: Json
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "InstanceResult": [{"Package": "{{packageName}}", "PackageResult": .commandOutput}]}'
       configurationOutput:
-        Type: String
-        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "Result": .configurationOutput}'
+        Type: Json
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "InstanceResult": [{"Package": "{{packageName}}", "PackageResult": .configurationOutput}]}'
 Outputs:
   commandOutput:
     Type: List

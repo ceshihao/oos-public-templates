@@ -74,14 +74,14 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: sleepForEcsReady
-    Action: 'ACS::Sleep'
+    Action: ACS::Sleep
     Properties:
       Duration: 3s
   - Name: getInstanceFromOrderId
-    Action: 'ACS::WaitFor'
+    Action: ACS::WaitFor
     Retries: 57
     When:
-      'Fn::Not':
+      Fn::Not:
         'Fn::Equals':
           - '{{ orderId }}'
           - ''
@@ -98,11 +98,11 @@ Tasks:
         - Paid
       StopRetryValues:
         - Cancelled
-      PropertySelector: 'Data.OrderList.Order[].PaymentStatus'
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Data.OrderList.Order[].InstanceIDs | fromjson | .[]'
+        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
   - Name: getInstanceFromTargets
     When:
       'Fn::Equals':
@@ -125,7 +125,7 @@ Tasks:
     Description:
       en: Configure Package
       zh-cn: 配置软件包
-    Action: 'ACS::ECS::ConfigureMultipleOOSPackagesWithTemporaryURL'
+    Action: ACS::ECS::ConfigureMultipleOOSPackagesWithTemporaryURL
     Properties:
       regionId: '{{ regionId }}'
       action: '{{ action }}'
@@ -134,7 +134,7 @@ Tasks:
       packageInfo: '{{ packageInfo }}'
     Loop:
       Items:
-        'Fn::If':
+        Fn::If:
           - 'Fn::Equals':
               - '{{ orderId }}'
               - ''
@@ -150,11 +150,11 @@ Tasks:
           AggregateField: configurationOutput
     Outputs:
       commandOutput:
-        Type: List
-        ValueSelector: .commandOutput
+        Type: Json
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "InstanceResult": .commandOutput}'
       configurationOutput:
-        Type: List
-        ValueSelector: .configurationOutput
+        Type: Json
+        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "InstanceResult": .configurationOutput}'
 Outputs:
   commandOutput:
     Type: List
@@ -163,7 +163,7 @@ Outputs:
     Type: List
     Value: '{{ configurePackage.configurationOutputs }}'
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - packageInfo
