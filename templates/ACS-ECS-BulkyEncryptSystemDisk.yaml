@@ -27,6 +27,9 @@ Parameters:
     Label:
       en: KMSKeyId
       zh-cn: 加密镜像使用的KMS密钥ID
+    AssociationProperty: ALIYUN::KMS::Key::KeyId
+    AssociationPropertyMetadata:
+      RegionId: regionId
     Type: String
   rateControl:
     Label:
