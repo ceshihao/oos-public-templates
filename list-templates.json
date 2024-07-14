@@ -2232,7 +2232,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "731e7ba48745490d59185db31915b57dea4962fb1e283a6d6ada21a767d96a1f",
+      "Hash": "2e1d5b8b1bef2f391fddbb1a9e685dbb0af961047cbcd011bd71705727e624ff",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2242,10 +2242,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v26",
+      "TemplateVersion": "v27",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:32Z"
+      "UpdatedDate": "2024-07-09T02:42:46Z"
     },
     {
       "Category": "Other",
@@ -3639,7 +3639,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "e4854714b970fc8b728bb927a12f754b9379089d3b2459530498fc7c97785880",
+      "Hash": "fbea82a06418f1c36acb1c5259c54348a92fbef62ecbdb7bafd55a7e0b8f7b62",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3649,10 +3649,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:32Z"
+      "UpdatedDate": "2024-07-09T02:42:46Z"
     },
     {
       "Category": "Other",
@@ -3702,7 +3702,7 @@
       "CreatedDate": "2022-05-11T07:40:54Z",
       "Description": "{\"en\": \"Schedule bulky create snapshot\", \"zh-cn\": \"定时批量给磁盘创建快照\", \"name-en\": \"ACS-ECS-ScheduleToBulkyCreateSnapshot\", \"name-zh-cn\": \"定时批量创建快照\"}",
       "HasTrigger": true,
-      "Hash": "6164daf3907dc9924add397ee693db517cb9e72043afc7f5e024f17d344979cf",
+      "Hash": "c90067da491565666f2f9d7dd9c448eb2b3dc00c840146b12e409f4eef835276",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3712,10 +3712,10 @@
       "TemplateId": "t-0ac55b649ad44a46b9bd",
       "TemplateName": "ACS-ECS-ScheduleToBulkyCreateSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-10-24T07:04:17Z"
+      "UpdatedDate": "2024-07-08T01:43:52Z"
     },
     {
       "Category": "TimerTrigger",
@@ -5508,7 +5508,7 @@
       "CreatedDate": "2021-12-06T08:12:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fcdd9a12843b0531e5e6370f21baf3796ca95ee782b8bc7b78c9cd67288b45bc",
+      "Hash": "d4de7bf266e1b4160112c2eecff2261549a9020e8fa82a47977b20ad7bc3d5a9",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5518,10 +5518,10 @@
       "TemplateId": "t-28fa369cb3994e71b4b4",
       "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-27T08:40:55Z"
+      "UpdatedDate": "2024-07-09T10:52:24Z"
     },
     {
       "Category": "Other",
