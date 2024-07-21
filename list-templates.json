@@ -4563,7 +4563,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "5a148a97b37bf5c0fcc81efa51cf30e5f5e07831a808dba1deef846afb682102",
+      "Hash": "e61653a22b2ab48a8285c2a334d45f4b03fb2f4674600d8a3560773ae0a01383",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4573,10 +4573,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v25",
+      "TemplateVersion": "v26",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-06-04T03:33:56Z"
+      "UpdatedDate": "2024-07-15T08:16:49Z"
     },
     {
       "Category": "Other",
@@ -5211,6 +5211,27 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2024-07-19T09:29:33Z",
+      "Description": "{\"en\": \"Solutions to Repair Windows System Blue Screen Issues\", \"zh-cn\": \"修复Windows系统蓝屏问题解决方案\", \"name-en\": \"ACS-ECS-RepairWindowsBlueScreenIssue\", \"name-zh-cn\": \"修复Windows系统蓝屏问题\"}",
+      "HasTrigger": false,
+      "Hash": "6571e2595de41047b416efe6c45644f87120b65971e17b398a50b3a18e31887b",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-adebcc11c33849b39727",
+      "TemplateName": "ACS-ECS-RepairWindowsBlueScreenIssue",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v4",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-07-19T13:22:50Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T10:10:52Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using Linux kernel version as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将Linux内核版本用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByLinuxKernelVersion\", \"name-zh-cn\": \"批量根据Linux内核版本标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
@@ -5781,7 +5802,7 @@
       "CreatedDate": "2023-12-18T09:47:55Z",
       "Description": "{\"en\": \"Use this template to install multiple oos packages on ecs\", \"zh-cn\": \"批量安装/卸载多个扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL\", \"name-zh-cn\": \"批量安装/卸载多个扩展程序\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "433f280252544e321cab9c037b3837dab1409bdd697dd46e70a05f94a936dc38",
+      "Hash": "6ccfc52c2b21550e4e605047fc901333f41ac5c8e19cdd55f12f00c434782fdc",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5791,10 +5812,10 @@
       "TemplateId": "t-cc058c4ee95b45b39460",
       "TemplateName": "ACS-ECS-BulkyConfigureMultipleOOSPackagesWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-06-24T08:05:12Z"
+      "UpdatedDate": "2024-07-15T08:16:49Z"
     },
     {
       "Category": "Other",
