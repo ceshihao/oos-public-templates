@@ -60,6 +60,7 @@ Parameters:
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
+      Status: Running
   orderId:
     Description:
       en: The ID of Order

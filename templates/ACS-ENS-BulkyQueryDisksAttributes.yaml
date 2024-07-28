@@ -2,7 +2,7 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky query disk ID and disk information
   zh-cn: 批量查询磁盘ID及磁盘信息
-  name-en: ACS-ENS-BulkyDescribeDisks
+  name-en: ACS-ENS-BulkyQueryDisksAttributes
   name-zh-cn: 批量查询实例ID及磁盘信息
 Parameters:
   rateControl:
