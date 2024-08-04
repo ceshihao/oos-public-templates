@@ -1,11 +1,11 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Unbind tags through resource management
-  zh-cn: 通过资源管理解绑标签
-  name-en: ACS-TAG-UnTagResources
-  name-zh-cn: 解绑标签
-  categories:
-    - tag_manage
+    en: Add tags to resources through resource management
+    zh-cn: 通过资源管理给其管理的资源打标签
+    name-en: ACS-TAG-AddTagsToResources
+    name-zh-cn: 通过资源管理给资源打标签
+    categories:
+      - tag_manage
 Parameters:
   regionId:
     Label:
@@ -14,127 +14,33 @@ Parameters:
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  tagKey:
-    Label:
-      en: tagKey
-      zh-cn: 标签键
-    Type: String
-  tagValue:
-    Label:
-      en: tagValue
-      zh-cn: 标签值
-    Description:
-      en: When the tag value is empty, it will retrieve all resources with the specified tag key and unbind the tag
-      zh-cn: 当标签值为空时，会获取所有带指定标签键的资源并解绑标签
-    Type: String
-    Default: ''
   resourceType:
     Label:
       en: ResourceType
       zh-cn: 资源类型
     Type: String
     AllowedValues:
-      - ACS::ACK::Cluster
-      - ACS::ADB::DBCluster
-      - ACS::ADB::DBClusterLakeVersion
-      - ACS::AliKafka::ConsumerGroup
-      - ACS::AliKafka::Instance
-      - ACS::AliKafka::Topic
-      - ACS::ALB::Acl
-      - ACS::ALB::HealthCheckTemplate
-      - ACS::ALB::LoadBalancer
-      - ACS::ALB::Listener
-      - ACS::ALB::Rule
-      - ACS::ALB::SecurityPolicy
-      - ACS::ALB::ServerGroup
-      - ACS::ApiGateway::Api
-      - ACS::ApiGateway::ApiGroup
-      - ACS::CBWP::CommonBandwidthPackage
-      - ACS::CDN::Domain
-      - ACS::CEN::CenInstance
-      - ACS::CEN::CenBandwidthPackage
-      - ACS::CEN::Flowlog
-      - ACS::CEN::TransitRouter
-      - ACS::CEN::TransitRouterVbrAttachment
-      - ACS::CEN::TransitRouterVpcAttachment
-      - ACS::CEN::TransitRouterVpnAttachment
-      - ACS::CEN::TransitRouterRouteTable
-      - ACS::CEN::TransitRouterPeerAttachment
-      - ACS::CEN::TransitRouterMulticastDomain
-      - ACS::DCDN::Domain
-      - ACS::DdosCoo::Instance
-      - ACS::EBS::DedicatedBlockStorageCluster
-      - ACS::EBS::DiskReplicaGroup
-      - ACS::EBS::DiskReplicaPair
-      - ACS::EBS::EnterpriseSnapshotPolicy
-      - ACS::ECS::DedicatedHost
-      - ACS::ECS::Disk
-      - ACS::ECS::Instance
-      - ACS::ECS::LaunchTemplate
-      - ACS::ECS::NetworkInterface
-      - ACS::ECS::SecurityGroup
-      - ACS::ECS::Snapshot
-      - ACS::ESS::ScalingGroup
-      - ACS::ECI::ContainerGroup
-      - ACS::ECS::Command
-      - ACS::ECS::Image
-      - ACS::ECS::KeyPair
-      - ACS::ECS::AutoSnapshotPolicy
-      - ACS::EIP::EipAddress
-      - ACS::ExpressConnect::PhysicalConnection
-      - ACS::FC::Service
-      - ACS::GPDB::DBInstance
-      - ACS::Ga::Accelerator
-      - ACS::Ga::Acl
-      - ACS::Ga::BandwidthPackage
-      - ACS::Ga::BasicAccelerator
-      - ACS::Ga::EndpointGroup
-      - ACS::HBase::Cluster
-      - ACS::MongoDB::DBInstance
-      - ACS::NAS::FileSystem
-      - ACS::NAT::NatGateway
-      - ACS::NLB::Listener
-      - ACS::NLB::LoadBalancer
-      - ACS::NLB::SecurityPolicy
-      - ACS::NLB::ServerGroup
-      - ACS::OOS::Application
-      - ACS::OOS::Parameter
-      - ACS::OOS::SecretParameter
-      - ACS::OOS::Template
-      - ACS::OSS::Bucket
-      - ACS::Ons::Group
-      - ACS::Ons::Instance
-      - ACS::Ons::Topic
-      - ACS::PolarDB::DBCluster
-      - ACS::PrivateLink::VpcEndpoint
-      - ACS::PrivateLink::VpcEndpointService
-      - ACS::RDS::DBInstance
-      - ACS::Redis::DBInstance
-      - ACS::ResourceManager::Account
-      - ACS::ResourceManager::ResourceGroup
-      - ACS::SLB::AccessControlList
-      - ACS::SLB::CACertificate
-      - ACS::SLB::LoadBalancer
-      - ACS::SLB::MasterSlaveServerGroup
-      - ACS::SLB::ServerCertificate
-      - ACS::SLB::VServerGroup
-      - ACS::VPC::DhcpOptionsSet
-      - ACS::VPC::FlowLog
-      - ACS::VPC::GatewayEndpoint
-      - ACS::VPC::HaVip
-      - ACS::VPC::Ipv4Gateway
-      - ACS::VPC::Ipv4Gateway
-      - ACS::VPC::Ipv6Gateway
-      - ACS::VPC::NetworkAcl
-      - ACS::VPC::PrefixList
-      - ACS::VPC::PublicIpAddressPool
-      - ACS::VPC::RouteTable
-      - ACS::VPC::TrafficMirrorFilter
-      - ACS::VPC::TrafficMirrorSession
-      - ACS::VPC::VPC
-      - ACS::VPC::VSwitch
-      - ACS::VPN::CustomerGateway
-      - ACS::VPN::VpnGateway
+      - ALIYUN::ECS::INSTANCE
+      - ALIYUN::ECS::DISK
+      - ALIYUN::ECS::SNAPSHOT
+      - ALIYUN::ECS::SECURITYGROUP
+      - ALIYUN::ECS::ENI
+      - ALIYUN::ECS::IMAGE
+      - ALIYUN::ECS::CAPACITYRESERVATION
+      - ALIYUN::ECS::COMMAND
+      - ALIYUN::ECS::DDH
+      - ALIYUN::ECS::DDHCLUSTER
+      - ALIYUN::ECS::ELASTICITYASSURANCE
+      - ALIYUN::ECS::IMAGECOMPONENT
+      - ALIYUN::ECS::IMAGEPIPELINE
+      - ALIYUN::ECS::INVOCATION
+      - ALIYUN::ECS::KEYPAIR
+      - ALIYUN::ECS::LAUNCHTEMPLATE
+      - ALIYUN::ECS::RESERVEDINSTANCE
+      - ALIYUN::ECS::SCU
+      - ALIYUN::ECS::SNAPSHOTGROUP
+      - ALIYUN::ECS::SNAPSHOTPOLICY
+      - ALIYUN::ECS::VOLUME
       - ALIYUN::ADB::CLUSTER
       - ALIYUN::ALB::ACL
       - ALIYUN::ALB::LOADBALANCER
@@ -224,27 +130,6 @@ Parameters:
       - ALIYUN::ECI::IMAGECACHE
       - ALIYUN::ECI::LAUNCHTEMPLATE
       - ALIYUN::ECI::VIRTUALNODE
-      - ALIYUN::ECS::CAPACITYRESERVATION
-      - ALIYUN::ECS::COMMAND
-      - ALIYUN::ECS::DDH
-      - ALIYUN::ECS::DDHCLUSTER
-      - ALIYUN::ECS::DISK
-      - ALIYUN::ECS::ELASTICITYASSURANCE
-      - ALIYUN::ECS::ENI
-      - ALIYUN::ECS::IMAGE
-      - ALIYUN::ECS::IMAGECOMPONENT
-      - ALIYUN::ECS::IMAGEPIPELINE
-      - ALIYUN::ECS::INSTANCE
-      - ALIYUN::ECS::INVOCATION
-      - ALIYUN::ECS::KEYPAIR
-      - ALIYUN::ECS::LAUNCHTEMPLATE
-      - ALIYUN::ECS::RESERVEDINSTANCE
-      - ALIYUN::ECS::SCU
-      - ALIYUN::ECS::SECURITYGROUP
-      - ALIYUN::ECS::SNAPSHOT
-      - ALIYUN::ECS::SNAPSHOTGROUP
-      - ALIYUN::ECS::SNAPSHOTPOLICY
-      - ALIYUN::ECS::VOLUME
       - ALIYUN::EDAS::APPLICATION
       - ALIYUN::EDAS::CLUSTER
       - ALIYUN::EDAS::NAMESPACE
@@ -416,8 +301,31 @@ Parameters:
       - ALIYUN::VPC::VPNGATEWAY
       - ALIYUN::VPC::VSWITCH
       - ALIYUN::WAF::DOMAIN
-      - ''
-    Default: ''
+    Default: ALIYUN::ECS::INSTANCE
+
+  tags:
+    Label:
+      en: Filter resources based on tags
+      zh-cn: 根据标签筛选资源
+    Description:
+      en: When the tag filtering condition is empty, it means selecting all resources under the resource type
+      zh-cn: 当标签筛选条件为空时，表示选择该资源类型下所有的资源
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      RegionId: '{{ regionId }}'
+      ResourceType: '{{ resourceType }}'
+    Default: []
+
+  newTags:
+    Label:
+      en: The tags to be added
+      zh-cn: 要添加的标签
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      RegionId: '{{ regionId }}'
+      ResourceType: '{{ resourceType }}'
   rateControl:
     Label:
       en: RateControl
@@ -426,7 +334,7 @@ Parameters:
     AssociationProperty: RateControl
     Default:
       Mode: Concurrency
-      MaxErrors: 100%
+      MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
     Label:
@@ -437,34 +345,51 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getResourceARN
-    Action: ACS::TAG::GetARNsByTag
+    Action: ACS::ExecuteAPI
     Description:
       en: Get ResourcesArn with specified tag
       zh-cn: 获取带有指定标签的ResourcesArn
     Properties:
-      regionId: '{{ regionId }}'
-      tagKey: '{{ tagKey }}'
-      tagValue: '{{ tagValue }}'
-      resourceType: '{{ resourceType }}'
-      rateControl: '{{ rateControl }}'
+      Service: TAG
+      API: ListTagResources
+      Parameters:
+        RegionId: '{{ regionId }}'
+        Tags:
+          Fn::If:
+            - Fn::Equals:
+                - '{{ tags }}'
+                - []
+            - Null
+            - Fn::Jq:
+                - First
+                - from_entries
+                - '{{ tags }}'
+        ResourceARN:
+          - Fn::Jq:
+              - First
+              - .resourceType | ascii_downcase |split("::") | "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId }}:"+.[2]+"/*"
+              - '{"resourceType":"{{resourceType}}"}'
     Outputs:
       resourceArns:
         Type: List
-        ValueSelector: resourceArns[]
-  - Name: unTagResources
-    Action: ACS::ExecuteAPI
+        ValueSelector: TagResources[].ResourceARN
+  - Name: tagResource
+    Action: ACS::ExecuteApi
     Description:
-      en: Delete tag by resourceArns
-      zh-cn: 根据resourceArns删除标签
+      en: Tag resources with new tag through resource management
+      zh-cn: 通过资源管理给资源打上新的标签
     Properties:
       Service: TAG
-      API: UnTagResources
+      API: TagResources
       Parameters:
         RegionId: '{{ regionId }}'
-        TagKey:
-          - '{{ tagKey }}'
         ResourceARN:
           - '{{ACS::TaskLoopItem}}'
+        Tags:
+          - Fn::Jq:
+              - First
+              - from_entries
+              - '{{ newTags }}'
     Outputs:
       failedResource:
         Type: List
@@ -473,14 +398,14 @@ Tasks:
       RateControl: '{{rateControl}}'
       Items: '{{getResourceARN.resourceArns}}'
       Outputs:
-        untagResult:
+        tagResult:
           AggregateType: Fn::ListJoin
           AggregateField: failedResource
 Outputs:
-  resources:
+  resourceArns:
     Type: List
     Value: '{{ getResourceARN.resourceArns }}'
-  untagFailedResult:
+  tagFailedResource:
     Type: List
-    Value: '{{ unTagResources.untagResult }}'
+    Value: '{{ tagResource.tagResult }}'
 

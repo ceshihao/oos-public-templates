@@ -1,43 +1,33 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky run command on ECS instances
-  zh-cn: 批量在多台ECS实例上运行云助手命令
-  name-en: Run Command
-  name-zh-cn: 发送远程命令
-  categories:
-    - run_command
-    - application_manage
-    - computenest
-    - tag_operate_resource
+    en: Listen to tag events and execute cloud assistant commands when the specified tag is added to the ECS instance
+    zh-cn: 监听标签事件当给ECS实例打上指定标签时执行云助手命令
+    name-en: ACS-TAG-MonitorTagEcsInstanceAndRunCommand
+    name-zh-cn: 监听标签事件当给ECS实例打上指定标签时执行云助手命令
+    categories:
+      - event-trigger
+      - tag_event_trigger
 Parameters:
   regionId:
-    Type: String
     Label:
       en: RegionId
       zh-cn: 地域ID
+    Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  resourceType:
+  tagKey:
+    Label:
+      en: Tag key being monitored
+      zh-cn: 监听的标签键
     Type: String
+  tagValue:
     Label:
-      en: ResourceType
-      zh-cn: 资源类型
-    AssociationPropertyMetadata:
-      LocaleKey: TargetResourceType
-    AllowedValues:
-      - ALIYUN::ECS::Instance
-      - ALIYUN::ECS::ManagedInstance
-    Default: ALIYUN::ECS::Instance
-  targets:
-    Type: Json
-    Label:
-      en: TargetInstance
-      zh-cn: 目标实例
-    AssociationProperty: Targets
-    AssociationPropertyMetadata:
-      ResourceType: resourceType
-      RegionId: regionId
-      Status: Running
+      en: Tag value being monitored
+      zh-cn: 监听的标签值
+    Description:
+      en: When you tag an ECS instance, <font color='red'>the command will fail if the instance is in the stopped state.</font>
+      zh-cn: 当给ECS实例打上指定标签时，<font color='red'>如果实例处于停止状态，该命令会执行失败。</font>
+    Type: String
   commandType:
     Label:
       en: CommandType
@@ -142,27 +132,55 @@ Parameters:
       MaxErrors: 0
       Concurrency: 10
   OOSAssumeRole:
-    Label:
-      en: OOSAssumeRole
-      zh-cn: OOS扮演的RAM角色
+    Description:
+      en: The RAM role to be assumed by OOS.
+      zh-cn: OOS扮演的RAM角色。
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: getInstance
+  - Name: eventTrigger
     Description:
-      en: Views the ECS instances
-      zh-cn: 获取ECS实例
-    Action: ACS::SelectTargets
+      en: Monitor the ECS instance TAG event.
+      zh-cn: 监控实例标签变化。
+    Action: ACS::EventTrigger
     Properties:
-      ResourceType: '{{ resourceType }}'
-      RegionId: '{{ regionId }}'
-      Filters:
-        - '{{ targets }}'
+      Product: tag
+      Name:
+        - Tag:ChangeOnResource
+      Level:
+        - INFO
+      RegionId:
+        - '{{ regionId }}'
+      Content:
+        product:
+          - ecs
+        resourceType:
+          - instance
+        changedTagKeys:
+          - '{{ tagKey }}'
     Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: Instances.Instance[].InstanceId
+      instanceId:
+        ValueSelector: .content.resourceId
+        Type: String
+      content:
+        ValueSelector: .content
+        Type: String
+      isAddTag:
+        ValueSelector: .content.tags|.{{tagKey}}=="{{tagValue}}"|tostring
+        Type: String
+
+  - Name: whetherTagSmc
+    Action: ACS::Choice
+    Properties:
+      DefaultTask: 'ACS::END'
+      Choices:
+        - When:
+            Fn::Equals:
+              - 'true'
+              - '{{ eventTrigger.isAddTag }}'
+          NextTask: runCommand
+
   - Name: runCommand
     Action: ACS::ECS::RunCommand
     Description:
@@ -171,55 +189,25 @@ Tasks:
     Properties:
       regionId: '{{ regionId }}'
       commandContent: '{{ commandContent }}'
-      instanceId: '{{ ACS::TaskLoopItem }}'
+      instanceId: '{{ eventTrigger.instanceId }}'
       commandType: '{{ commandType }}'
       workingDir: '{{ workingDir }}'
       timeout: '{{ timeout }}'
       enableParameter: '{{ enableParameter }}'
       username: '{{ username }}'
       windowsPasswordName: '{{ windowsPasswordName }}'
-    Loop:
-      RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
-      Outputs:
-        commandOutputs:
-          AggregateType: Fn::ListJoin
-          AggregateField: commandOutput
     Outputs:
       commandOutput:
         Type: String
         ValueSelector: invocationOutput
 Outputs:
-  commandOutputs:
-    Type: List
-    Value: '{{ runCommand.commandOutputs }}'
-Metadata:
-  ALIYUN::OOS::Interface:
-    ParameterGroups:
-      - Parameters:
-          - commandType
-          - commandContent
-          - workingDir
-          - timeout
-          - enableParameter
-          - username
-          - windowsPasswordName
-        Label:
-          default:
-            zh-cn: 执行命令选型
-            en: run command options
-      - Parameters:
-          - regionId
-          - resourceType
-          - targets
-        Label:
-          default:
-            zh-cn: 选择实例
-            en: Select Ecs Instances
-      - Parameters:
-          - rateControl
-          - OOSAssumeRole
-        Label:
-          default:
-            zh-cn: 高级选项
-            en: Control Options
+  tagEventContent:
+    Value: '{{ eventTrigger.content }}'
+    Type: String
+  instanceId:
+    Value: '{{ eventTrigger.instanceId }}'
+    Type: String
+  isTriggerExecute:
+    Value: '{{ eventTrigger.isAddTag }}'
+    Type: String
+

@@ -1,9 +1,11 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Update tags through resource management
-  zh-cn: 通过资源管理更新标签
+  en: Batch unbind old tags on resources and bind new tags to resources
+  zh-cn: 批量解绑资源上的旧标签同时为资源绑定新标签
   name-en: ACS-TAG-UpdateTag
   name-zh-cn: 更新标签
+  categories:
+    - tag_manage
 Parameters:
   regionId:
     Label:
