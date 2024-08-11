@@ -41,7 +41,6 @@ Tasks:
       instanceId:
         ValueSelector: .content.resourceId
         Type: String
-
   - Name: startInstance
     Action: 'ACS::ECS::StartInstance'
     Description:
@@ -54,7 +53,7 @@ Outputs:
     Value: '{{ eventTrigger.instanceId  }}'
     Type: String
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - tags
@@ -68,3 +67,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+
