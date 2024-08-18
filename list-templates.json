@@ -426,7 +426,7 @@
       "CreatedDate": "2019-09-23T11:52:52Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidth\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "274b974f6761262572a2716ef189b6ef482d3810bb2167418b63b35362efbe90",
+      "Hash": "f2d552a0d78e71d43532d43ec10cb8d6008f040729350b52ff96e919ffe22e65",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -436,10 +436,10 @@
       "TemplateId": "t-75eabaf5ba1d4b5a95e4",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v36",
+      "TemplateVersion": "v37",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-31T03:07:57Z"
+      "UpdatedDate": "2024-08-15T02:00:07Z"
     },
     {
       "Category": "Other",
@@ -1413,7 +1413,7 @@
       "CreatedDate": "2020-01-17T07:51:18Z",
       "Description": "{\"en\": \"Execute specified template when alarm is raised according to alarm rule. AlarmTrigger will always run until being canceled\", \"zh-cn\": \"指定告警规则，当告警发生时执行指定的模板。在主动取消前告警触发器会一直运行\", \"name-en\": \"ACS-OOS-ExecuteTemplateByAlarm\", \"name-zh-cn\": \"在告警发生时执行指定的模板\", \"categories\": [\"alarm-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "c9439fcc45381e433c99226a6c425222e4d25d7e72bc695e7ae1ad7d2e4ca90b",
+      "Hash": "5b08a3cebde24a8e1f3e01178e84e37eec6c8555fdcb0fe6cbb955cb009eb099",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1423,10 +1423,10 @@
       "TemplateId": "t-5e8849beb52f4b019ca1",
       "TemplateName": "ACS-OOS-ExecuteTemplateByAlarm",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:07Z"
+      "UpdatedDate": "2024-08-12T05:08:33Z"
     },
     {
       "Category": "EventTrigger",
@@ -1434,7 +1434,7 @@
       "CreatedDate": "2020-01-17T07:51:59Z",
       "Description": "{\"en\": \"Execute specified template when system event happens. EventTrigger will always run until being canceled\", \"zh-cn\": \"指定系统事件订阅规则，当系统事件发生时执行指定的模板。在主动取消前事件触发器会一直运行\", \"name-en\": \"ACS-OOS-ExecuteTemplateBySystemEvent\", \"name-zh-cn\": \"在系统事件发生时执行指定的模板\", \"categories\": [\"event-trigger\"]}",
       "HasTrigger": true,
-      "Hash": "60437d31e2fa509c777b2a3f4374ce11b7ef4cd75681f0468063dbff8300c819",
+      "Hash": "45d7239752dd4f80fc2c863433a6d06bf66c10a56999c183b6d5e51a4d6d3be0",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1444,10 +1444,10 @@
       "TemplateId": "t-665020187f374f4fa516",
       "TemplateName": "ACS-OOS-ExecuteTemplateBySystemEvent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:07Z"
+      "UpdatedDate": "2024-08-12T05:03:10Z"
     },
     {
       "Category": "Other",
@@ -3765,7 +3765,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "918b23da3da9dd7989f7f7538038df566564935cde4666a1820d105f6058f707",
+      "Hash": "6e1539348359107c72cdb021cd03d26790a32b33df26a8bb32dc6ddeae343e25",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3775,10 +3775,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-15T06:48:43Z"
+      "UpdatedDate": "2024-08-15T02:00:07Z"
     },
     {
       "Category": "Other",
