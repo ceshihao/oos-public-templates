@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Use lifecycleHook to modify instance charge type in the specified scaling activity
-  zh-cn: 使用生命周期挂钩修改实例付费方式
+  zh-cn: 使用生命周期挂钩修改实例付费方式(仅支持弹性扩张活动)
   name-en: ACS-ESS-LifeCycleModifyInstanceChargeType
-  name-zh-cn: 使用生命周期挂钩修改实例付费方式
+  name-zh-cn: 使用生命周期挂钩修改实例付费方式(仅支持弹性扩张活动)
   categories:
     - elastic_manage
 Parameters:

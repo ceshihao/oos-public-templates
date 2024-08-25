@@ -5128,9 +5128,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2024-06-20T08:03:57Z",
-      "Description": "{\"en\": \"Use lifecycleHook to modify instance charge type in the specified scaling activity\", \"zh-cn\": \"使用生命周期挂钩修改实例付费方式\", \"name-en\": \"ACS-ESS-LifeCycleModifyInstanceChargeType\", \"name-zh-cn\": \"使用生命周期挂钩修改实例付费方式\", \"categories\": [\"elastic_manage\"]}",
+      "Description": "{\"en\": \"Use lifecycleHook to modify instance charge type in the specified scaling activity\", \"zh-cn\": \"使用生命周期挂钩修改实例付费方式(仅支持弹性扩张活动)\", \"name-en\": \"ACS-ESS-LifeCycleModifyInstanceChargeType\", \"name-zh-cn\": \"使用生命周期挂钩修改实例付费方式(仅支持弹性扩张活动)\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "8de0cf3afcbab88d1cc8773a7279b29263cba800af910b00f7579b3d19475488",
+      "Hash": "d3941991ea196d6adef9be45866caf2ef22c5adbd00fd481ca75f25d3449756a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5140,10 +5140,10 @@
       "TemplateId": "t-a4b9386581c541718b51",
       "TemplateName": "ACS-ESS-LifeCycleModifyInstanceChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-06-20T08:03:57Z"
+      "UpdatedDate": "2024-08-21T06:32:54Z"
     },
     {
       "Category": "Other",
