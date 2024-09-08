@@ -40,6 +40,12 @@ Parameters:
     AssociationPropertyMetadata:
       ShowSystem: false
     Default: []
+  whetherOnlySystemDisk:
+    Label:
+      en: WhetherOnlySystemDisk
+      zh-cn: 是否仅选择系统盘
+    Type: Boolean
+    Default: false
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -53,6 +59,28 @@ Tasks:
   Description:
     en: Create new image with the specified image name and instance ID
     zh-cn: 通过指定实例ID和镜像名称创建新的镜像
+  When:
+    Fn::Equals:
+        - '{{ whetherOnlySystemDisk }}'
+        - false
+  Properties:
+    regionId: '{{ regionId }}'
+    imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
+    instanceId: '{{ instanceId }}'
+    tags: '{{tags}}'
+  Outputs:
+    imageId:
+      ValueSelector: imageId
+      Type: String
+- Name: createImageOnlySystemDisk
+  Action: ACS::ECS::CreateImageForSystemDisk
+  Description:
+    en: Create new system disk image with the specified image name and instance ID
+    zh-cn: 通过指定实例ID和镜像名称创建新的系统盘镜像
+  When:
+    Fn::Equals:
+      - '{{ whetherOnlySystemDisk }}'
+      - true
   Properties:
     regionId: '{{ regionId }}'
     imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
@@ -65,7 +93,13 @@ Tasks:
 Outputs:
   imageId:
     Type: String
-    Value: '{{ createImage.imageId }}'
+    Value:
+      Fn::If:
+        - Fn::Equals:
+            - '{{ whetherOnlySystemDisk }}'
+            - false
+        - '{{ createImage.imageId }}'
+        - '{{ createImageOnlySystemDisk.imageId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -79,6 +113,7 @@ Metadata:
       - Parameters:
           - imageName
           - tags
+          - whetherOnlySystemDisk
         Label:
           default:
             zh-cn: 镜像设置
