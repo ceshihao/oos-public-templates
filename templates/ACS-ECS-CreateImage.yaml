@@ -40,6 +40,34 @@ Parameters:
     AssociationPropertyMetadata:
       ShowSystem: false
     Default: []
+  imageFamily:
+    Label:
+      en: ImageFamily
+      zh-cn: 镜像族系
+    Type: String
+    Default: ''
+  imageDescription:
+    Label:
+      en: ImageDescription
+      zh-cn: 镜像描述
+    Type: String
+    Default: ''
+  resourceGroupId:
+    Label:
+      en: ResourceGroupId
+      zh-cn: 资源组ID
+    Type: String
+    AssociationProperty: ALIYUN::ECS::ResourceGroup::ResourceGroupId
+    Default: ''
+  detectionStrategy:
+    Label:
+      en: DetectionStrategy
+      zh-cn: 镜像检测策略
+    Type: String
+    AllowedValues:
+      - Standard
+      - ''
+    Default: ''
   whetherOnlySystemDisk:
     Label:
       en: WhetherOnlySystemDisk
@@ -68,6 +96,10 @@ Tasks:
     imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
     instanceId: '{{ instanceId }}'
     tags: '{{tags}}'
+    imageFamily: '{{ imageFamily }}'
+    imageDescription: '{{ imageDescription }}'
+    resourceGroupId: '{{ resourceGroupId }}'
+    detectionStrategy: '{{ detectionStrategy }}'
   Outputs:
     imageId:
       ValueSelector: imageId
@@ -86,6 +118,10 @@ Tasks:
     imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
     instanceId: '{{ instanceId }}'
     tags: '{{tags}}'
+    imageFamily: '{{ imageFamily }}'
+    imageDescription: '{{ imageDescription }}'
+    resourceGroupId: '{{ resourceGroupId }}'
+    detectionStrategy: '{{ detectionStrategy }}'
   Outputs:
     imageId:
       ValueSelector: imageId
@@ -114,6 +150,10 @@ Metadata:
           - imageName
           - tags
           - whetherOnlySystemDisk
+          - imageFamily
+          - imageDescription
+          - resourceGroupId
+          - detectionStrategy
         Label:
           default:
             zh-cn: 镜像设置

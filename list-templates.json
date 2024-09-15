@@ -300,7 +300,7 @@
       "CreatedDate": "2019-10-22T08:17:08Z",
       "Description": "{\"en\": \"Creates an ECS image\", \"zh-cn\": \"创建一个ECS镜像\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "81135cac5cb27bd658eaf49dba16030e55c6fc226532ece97a383c03e30408f6",
+      "Hash": "fed933ef370a7cb5fc17b7b2ad29c44495df86460978b5bc9991c1df67c064f1",
       "IsFavorite": false,
       "Popularity": 8.23,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -310,10 +310,10 @@
       "TemplateId": "t-4bdb1745c171401883a2",
       "TemplateName": "ACS-ECS-CreateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-09-06T06:00:42Z"
+      "UpdatedDate": "2024-09-14T08:12:12Z"
     },
     {
       "Category": "Other",
