@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  name-en: ACS-ENS-BulkyQueryDisksAttributes
-  name-zh-cn: 批量查询ENS磁盘信息
-  en: Bulky query ENS disk info
-  zh-cn: 批量查询ENS磁盘信息
+  name-en: ACS-ENS-BulkyQueryNasFileSystemsInfo
+  name-zh-cn: 批量查询ENS协同存储文件系统信息
+  en: Bulky query ENS nas file system info
+  zh-cn: 批量查询ENS协同存储文件系统信息
 Parameters:
   rateControl:
     Label:
@@ -23,9 +23,9 @@ Parameters:
     Default: ""
 RamRole: "{{ OOSAssumeRole }}"
 Tasks:
-  - Name: getDisks
+  - Name: getNasFileSystems
     Description:
-      en: Views the ENS disks
-      zh-cn: 获取ENS磁盘
-    Action: ACS::ENS::QueryDisksInfo
+      en: Views the ENS nas file systems
+      zh-cn: 获取ENS协同存储文件系统
+    Action: ACS::ENS::QueryNasFileSystemsInfo
 
