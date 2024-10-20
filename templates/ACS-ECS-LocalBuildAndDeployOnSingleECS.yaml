@@ -44,6 +44,9 @@ Parameters:
       Organization: ${organization}
       Owner: ${owner}
   instanceId:
+    Label:
+      en: InstanceId
+      zh-cn: ECS实例ID
     Description:
       en: The ID of ECS instance
       zh-cn: ECS实例ID

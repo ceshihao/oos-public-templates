@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-08-25T08:10:25Z",
       "Description": "{\"en\": \"Put the bucket referer\", \"zh-cn\": \"设置存储空间防盗链\", \"name-en\": \"ACS-OSS-PutBucketReferer\", \"name-zh-cn\": \"设置存储空间防盗链\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "2c07c8a208af2b69e99e634d540adde179aff00a6493be155734ccad34fba02d",
+      "Hash": "a55b40566ca2acc245fb900ca6ed2bf61131f06e47a1da42a6f754610d7a5097",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2116,10 +2116,10 @@
       "TemplateId": "t-86fe7abccbd94dca9cdc",
       "TemplateName": "ACS-OSS-PutBucketReferer",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:28Z"
+      "UpdatedDate": "2024-10-17T06:01:57Z"
     },
     {
       "Category": "Other",
@@ -2526,7 +2526,7 @@
       "CreatedDate": "2021-04-23T09:28:26Z",
       "Description": "{\"en\": \"Bulky modify the billing method of instances in a specified instance type family.\", \"zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies\", \"name-zh-cn\": \"批量修改指定实例规格族下实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "1a935855347799ff21c78e6816c4fc42294648ac044d01545f26865165467c2a",
+      "Hash": "75c4cef3980af5957d1d16fa9bea3c71b4535cf2bf82d480d7ea773a308d519a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2536,10 +2536,10 @@
       "TemplateId": "t-fcae94921f6d4e17b636",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeTypeSpecifiedInstanceTypeFamilies",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:12Z"
+      "UpdatedDate": "2024-10-17T06:01:56Z"
     },
     {
       "Category": "Other",
@@ -3765,7 +3765,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "6e1539348359107c72cdb021cd03d26790a32b33df26a8bb32dc6ddeae343e25",
+      "Hash": "0fd38c197b4315a2fe4cc1c38ed0261f9104ed16c1c6b6030ff439cd2b2c4e56",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3775,10 +3775,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-08-15T02:00:07Z"
+      "UpdatedDate": "2024-10-15T06:19:01Z"
     },
     {
       "Category": "Other",
@@ -3954,7 +3954,7 @@
       "CreatedDate": "2023-02-21T13:19:17Z",
       "Description": "{\"en\": \"Use lifecycleHook to download OSS file and run command in the specified scaling activity ECS instance\", \"zh-cn\": \"使用生命周期挂钩下载OSS文件到ECS实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand\", \"name-zh-cn\": \"使用生命周期挂钩下载OSS文件到ECS实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "31e2e1cc96fcb9665f5157b2b81ab431575bbf4b2f0573b45531d509416ee5bf",
+      "Hash": "0f0cba6a046ce72c78c262361737f1cfe7232724adc419f584239267e89f4694",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3964,10 +3964,10 @@
       "TemplateId": "t-3aa64e3c861d46a79f4a",
       "TemplateName": "ACS-ESS-LifeCycleDownloadOSSFileAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-02-28T07:25:29Z"
+      "UpdatedDate": "2024-10-17T06:01:57Z"
     },
     {
       "Category": "Other",
@@ -4416,7 +4416,7 @@
       "CreatedDate": "2023-09-26T12:00:35Z",
       "Description": "{\"name-en\": \"ACS-Mongodb-BulkyModifyBackupPolicy\", \"name-zh-cn\": \"修改MongoDB实例的备份策略\", \"en\": \"Update mongodb instance backup policy\", \"zh-cn\": \"修改MongoDB实例的备份策略\"}",
       "HasTrigger": false,
-      "Hash": "bc985aa4455eb91fa74ffb3f72fa0ea1648f5126c783c8d33dcaaac43cb56de0",
+      "Hash": "c56bfe4c434f3e98cf62c08cf88e28f1f646cbd798aeb74037ebae9029df083e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4426,10 +4426,10 @@
       "TemplateId": "t-14acb1aaee5b443bb1c8",
       "TemplateName": "ACS-Mongodb-BulkyModifyBackupPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-26T12:00:35Z"
+      "UpdatedDate": "2024-10-17T06:12:09Z"
     },
     {
       "Category": "Other",
@@ -4479,7 +4479,7 @@
       "CreatedDate": "2023-09-26T12:00:35Z",
       "Description": "{\"en\": \"Modify redis instance's backup policy.\", \"zh-cn\": \"修改Redis实例的自动备份策略。\", \"name-en\": \"ACS-Redis-BulkyModifyBackupPolicy\", \"name-zh-cn\": \"修改Redis实例的自动备份策略\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "8b49148648cb7c85f4167372349ad108b7c16eb867b75682bad04d76928d7a7e",
+      "Hash": "224db6d0b352a4a8bed022c7a78ae899b62fb9bb64fb19b7e0fd358bb9f3698f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4489,10 +4489,10 @@
       "TemplateId": "t-5bbb177ea05947588eb0",
       "TemplateName": "ACS-Redis-BulkyModifyBackupPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-26T12:00:35Z"
+      "UpdatedDate": "2024-10-17T06:01:57Z"
     },
     {
       "Category": "Other",
@@ -4584,7 +4584,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "3cfaebc43954be2a899aae3275e7ac1aae6ac56fde62affe0131fa512ab5a1b7",
+      "Hash": "d0332936eb77e4d7469d16ea58d558512c97f51d41a9e285d6debfd33b63bd08",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4594,10 +4594,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v27",
+      "TemplateVersion": "v28",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-22T05:44:04Z"
+      "UpdatedDate": "2024-10-17T06:01:56Z"
     },
     {
       "Category": "Other",
@@ -4647,7 +4647,7 @@
       "CreatedDate": "2023-11-24T06:04:49Z",
       "Description": "{\"en\": \"Bulky move resources from one resource group to another\", \"zh-cn\": \"批量将资源从一个资源组转移到另一个资源组\", \"name-en\": \"ACS-ResourceManager-BulkyMoveResources\", \"name-zh-cn\": \"资源管理批量转资源组\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "378677ba1dea9cc4d10d63801076f4b442a00af0bffe7d0d90d3652b27d8c629",
+      "Hash": "1ad3f38b4d6e04c9b360cc583f5486b0a6027d2ba4e005e57fc5a087be1fbaf7",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4657,10 +4657,10 @@
       "TemplateId": "t-bc8293575a704476aa9e",
       "TemplateName": "ACS-ResourceManager-BulkyMoveResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-03-05T09:14:01Z"
+      "UpdatedDate": "2024-10-16T09:39:47Z"
     },
     {
       "Category": "Other",
@@ -4668,7 +4668,7 @@
       "CreatedDate": "2023-11-24T09:36:39Z",
       "Description": "{\"name-en\": \"ACS-ECS-InheritDiskTagToSnapshot\", \"name-zh-cn\": \"某个地域所有磁盘标签继承到快照\", \"en\": \"All snapshots in the specified region inherit the specified tag on the corresponding disk.\", \"zh-cn\": \"指定地域下所有的快照继承对应磁盘上指定的标签\", \"categories\": [\"tag_manage\"]}",
       "HasTrigger": false,
-      "Hash": "0ab98cf4e96a42d9cf57b050669c61ec8f8e3e077a353cdd18d06ced2cac6dac",
+      "Hash": "bf5f79ae52a8b38cddbedc6d42e252785392a9c0d309384bafff49017a551874",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4678,10 +4678,10 @@
       "TemplateId": "t-aa68cfa87b80470fac35",
       "TemplateName": "ACS-ECS-InheritDiskTagToSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-30T02:46:44Z"
+      "UpdatedDate": "2024-10-17T06:01:56Z"
     },
     {
       "Category": "Other",
@@ -5088,7 +5088,7 @@
       "CreatedDate": "2024-04-11T07:21:09Z",
       "Description": "{\"en\": \"Schedules to execute ECS diagnostic reports in bulk\", \"zh-cn\": \"定时运行ECS健康诊断\", \"name-en\": \"ACS-ECS-ScheduleToExecuteDiagnosticReports\", \"name-zh-cn\": \"定时执行ECS健康诊断\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "22dee6954390b91af967b116b9e68b5611a6869dddf34c6a51c0a1dcdcbbb061",
+      "Hash": "62b76d92ea9d46316d9b0c57fc36155de073ed65bfdccdbdfa1eab299f529f15",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5098,10 +5098,10 @@
       "TemplateId": "t-4620055003224a9fb1bc",
       "TemplateName": "ACS-ECS-ScheduleToExecuteDiagnosticReports",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-25T01:39:12Z"
+      "UpdatedDate": "2024-10-17T06:01:57Z"
     },
     {
       "Category": "Other",
@@ -5319,7 +5319,7 @@
       "CreatedDate": "2024-07-30T02:46:45Z",
       "Description": "{\"en\": \"Listen to tag events and upload files to instance when the specified tag is added to the ECS instance\", \"zh-cn\": \"监听标签事件当给ECS实例打上指定标签时批量上传文件到ECS实例\", \"name-en\": \"ACS-TAG-MonitorTagEcsInstanceAndDownloadOSSFile\", \"name-zh-cn\": \"监听标签事件当给ECS实例打上指定标签时批量上传文件到ECS实例\", \"categories\": [\"event-trigger\", \"tag_event_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "cfde532ec1fc5f1948247284eee532416f350332a371683a3ee642756c20be75",
+      "Hash": "a0b6aeae2c3511e7b1dec84ec2cdfef829c92694659a67cb316eaac90866b452",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5329,10 +5329,10 @@
       "TemplateId": "t-0cb86120d8ab47e1ad6a",
       "TemplateName": "ACS-TAG-MonitorTagEcsInstanceAndDownloadOSSFile",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-30T02:46:45Z"
+      "UpdatedDate": "2024-10-17T06:01:58Z"
     },
     {
       "Category": "EventTrigger",
@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-07-30T02:46:46Z",
       "Description": "{\"en\": \"Listen to tag events and execute cloud assistant commands when the specified tag is added to the ECS instance\", \"zh-cn\": \"监听标签事件当给ECS实例打上指定标签时执行云助手命令\", \"name-en\": \"ACS-TAG-MonitorTagEcsInstanceAndRunCommand\", \"name-zh-cn\": \"监听标签事件当给ECS实例打上指定标签时执行云助手命令\", \"categories\": [\"event-trigger\", \"tag_event_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "f539b3baa8eda0b77ebfb9bf43b873f9d05135a2aab52e9767c337313c94e350",
+      "Hash": "2be3e38d9f86c85a0df948510f4215ada7c366ec267a99e65875c4aba4ea2645",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-e9e3007fef824c89a40c",
       "TemplateName": "ACS-TAG-MonitorTagEcsInstanceAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-30T02:46:46Z"
+      "UpdatedDate": "2024-10-17T06:01:58Z"
     },
     {
       "Category": "Other",
@@ -5382,7 +5382,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "a21e88e0534022bff616ea30e87f93862addcc05be91ec46e7204cceb24fb38d",
+      "Hash": "326e4f393266ac825b498641e55a03b68cbc2dc4af828f906dd578c72c844598",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5392,10 +5392,10 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-09-02T05:51:04Z"
+      "UpdatedDate": "2024-10-17T06:01:56Z"
     },
     {
       "Category": "Other",
