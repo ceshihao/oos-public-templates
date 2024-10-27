@@ -67,30 +67,88 @@ Parameters:
       zh-cn: 代码仓库分支，不填拉取默认分支
     Type: String
     Default: ''
-  isDockerBuild:
+  downloadPath:
     Label:
-      en: IsDockerBuild
-      zh-cn: 是否Docker构建
+      en: Download Path
+      zh-cn: 下载路径
     Description:
-      en: If true, docker will automatically be install on your ecs.
-      zh-cn: 如果为true，会为您在ECS上自动安装Docker。
-    Type: Boolean
-    Default: true
+      en: Download the code to a path on your ECS ({{ACS::ExecutionId}} in the default value is the ID of each execution, you can replace the default value as needed)
+      zh-cn: 将代码下载到您的ECS上的路径（默认值中{{ACS::ExecutionId}}为每次执行的ID，默认值供参考，您可按需替换）
+    Type: String
+    Default: /root/workspace/{{ACS::ExecutionId}}
+  buildType:
+    Label:
+      en: BuildType
+      zh-cn: 构建方式
+    Description:
+      en: If select Container Build and ECS detects that Docker is not installed, Docker will automatically be installed for you.
+      zh-cn: 选择容器构建，如果检测到ECS没有安装Docker，会为您自动安装Docker。
+    Type: String
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        ContainerBuild: 容器构建
+        SoftwarePacakgeBuild: 软件包构建
+    AllowedValues:
+      - SoftwarePacakgeBuild
+      - ContainerBuild
+    Default: SoftwarePacakgeBuild
   buildAndDeployScript:
     Label:
       en: buildAndDeployScript
       zh-cn: 构建部署脚本
+    Description:
+      en: Script execution takes the root directory of the code as its working directory.
+      zh-cn: 脚本执行会以您指定的下载路径作为工作路径。
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
     AssociationPropertyMetadata:
       CommandType: RunShellScript
-    Default: |-
-      # sample java deploy script
-      set -e
-      yum install -y maven-3.5.4
-      mvn package
-      java -jar target/sample-spring-1.0-SNAPSHOT.jar &
+      Value:
+        - Condition:
+            Fn::Equals:
+              - ${buildType}
+              - ContainerBuild
+          Value: |-
+            ##### Sample Java Deploy Script 
+            ##### for Docker Build
+
+            ### Build latest image
+            # docker build -t myapp:latest .
+            # container_name="my-container"
+
+            ### Stop the previous version of the container (if any)
+            # container_id=$(docker ps -aq -f name=${container_name}) 
+            # if [ -n "$container_id" ]; then
+            #   docker stop $container_id
+            #   docker rm $container_id
+            # fi
+
+            ### Start the current version of the container
+            # docker run -d -p 8080:8080 --name ${container_name} myapp:latest
+
+            ##### end
+        - Condition:
+            Fn::Equals:
+              - ${buildType}
+              - SoftwarePacakgeBuild
+          Value: |-
+            ##### Sample Java Deploy Script 
+            ##### for ECS on Alibaba Cloud Linux 3.2104
+            
+            ### Build jar file.
+            # set -e
+            # yum install -y maven-3.5.4
+            # mvn package
+            
+            ### Stop the previous version of the application (if any) and deploy the current version.
+            # PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
+            # if [ -n "$PID" ]; then
+            #   kill -9 $PID
+            # fi
+            # java -jar target/sample-spring-1.0-SNAPSHOT.jar &
+            
+            ##### end
 RamRole: ''
 Tasks:
   - Name: GitCodeRepo
@@ -111,11 +169,18 @@ Tasks:
     Properties:
       instanceId: '{{ instanceId }}'
       codeSource: git
-      isDockerBuild: '{{ isDockerBuild }}'
+      isDockerBuild:
+        Fn::If:
+          - Fn::Equals:
+            - '{{ buildType }}'
+            - 'ContainerBuild'
+          - true
+          - false
       codeSourceUrl: '{{ GitCodeRepo.authorizedUrl }}'
       branch: '{{ branch }}'
       buildAndDeployScript: '{{ buildAndDeployScript }}'
       regionId: '{{ ACS::RegionId }}'
+      workingDir: '{{ downloadPath }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -125,12 +190,13 @@ Metadata:
           - organization
           - repository
           - branch
+          - downloadPath
         Label:
           default:
             zh-cn: 代码源配置
             en: Code Source Configuration
       - Parameters:
-          - isDockerBuild
+          - buildType
           - buildAndDeployScript
         Label:
           default:
