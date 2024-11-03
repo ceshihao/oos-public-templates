@@ -1867,7 +1867,7 @@
       "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:08Z"
+      "UpdatedDate": "2024-02-22T03:18:09Z"
     },
     {
       "Category": "Other",
@@ -3652,7 +3652,7 @@
       "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:21Z"
+      "UpdatedDate": "2024-02-22T03:18:22Z"
     },
     {
       "Category": "Other",
@@ -5382,7 +5382,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "37b932e9cf04498d878fca50bd761764fb0335b325093be8b8ff8a96470e3205",
+      "Hash": "0a90dfd88f24e3d0e81fc89e6e97d3b2d6ab5e3fef88f4171ecfce18303fe3d9",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5392,10 +5392,10 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-25T09:31:34Z"
+      "UpdatedDate": "2024-10-28T08:04:47Z"
     },
     {
       "Category": "Other",

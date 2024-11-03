@@ -72,26 +72,19 @@ Parameters:
       en: Download Path
       zh-cn: 下载路径
     Description:
-      en: Download the code to a path on your ECS ({{ACS::ExecutionId}} in the default value is the ID of each execution, you can replace the default value as needed)
-      zh-cn: 将代码下载到您的ECS上的路径（默认值中{{ACS::ExecutionId}}为每次执行的ID，默认值供参考，您可按需替换）
+      en: The path to download the code. If not set, it will be downloaded to /root/workspace/{current execution ID}. If you need to specify a path, please ensure that the path you provide does not have files, otherwise it will fail to pull.
+      zh-cn: 将代码下载到您的ECS上的路径。【不填默认下载到/root/workspace/{当前执行的ID}。如您需指定路径，请确保您提供的路径下没有文件，否则会拉取失败。】
     Type: String
-    Default: /root/workspace/{{ACS::ExecutionId}}
-  buildType:
+    Default: ''
+  isDockerBuild:
     Label:
-      en: BuildType
-      zh-cn: 构建方式
+      en: IsDockerBuild
+      zh-cn: 是否使用Docker构建
     Description:
-      en: If select Container Build and ECS detects that Docker is not installed, Docker will automatically be installed for you.
-      zh-cn: 选择容器构建，如果检测到ECS没有安装Docker，会为您自动安装Docker。
-    Type: String
-    AssociationPropertyMetadata:
-      ValueLabelMapping:
-        ContainerBuild: 容器构建
-        SoftwarePacakgeBuild: 软件包构建
-    AllowedValues:
-      - SoftwarePacakgeBuild
-      - ContainerBuild
-    Default: SoftwarePacakgeBuild
+      en: If yes, it will detect if Docker is already installed on your ECS, and if not, it will be installed automatically for you.
+      zh-cn: 如果选择是，会检测您的ECS上是否已安装Docker，如果没有会为您自动安装。
+    Type: Boolean
+    Default: false
   buildAndDeployScript:
     Label:
       en: buildAndDeployScript
@@ -107,8 +100,8 @@ Parameters:
       Value:
         - Condition:
             Fn::Equals:
-              - ${buildType}
-              - ContainerBuild
+              - ${isDockerBuild}
+              - true
           Value: |-
             ##### Sample Java Deploy Script 
             ##### for Docker Build
@@ -130,8 +123,8 @@ Parameters:
             ##### end
         - Condition:
             Fn::Equals:
-              - ${buildType}
-              - SoftwarePacakgeBuild
+              - ${isDockerBuild}
+              - false
           Value: |-
             ##### Sample Java Deploy Script 
             ##### for ECS on Alibaba Cloud Linux 3.2104
@@ -169,18 +162,31 @@ Tasks:
     Properties:
       instanceId: '{{ instanceId }}'
       codeSource: git
-      isDockerBuild:
-        Fn::If:
-          - Fn::Equals:
-            - '{{ buildType }}'
-            - 'ContainerBuild'
-          - true
-          - false
+      isDockerBuild: '{{ isDockerBuild }}'
       codeSourceUrl: '{{ GitCodeRepo.authorizedUrl }}'
       branch: '{{ branch }}'
       buildAndDeployScript: '{{ buildAndDeployScript }}'
       regionId: '{{ ACS::RegionId }}'
-      workingDir: '{{ downloadPath }}'
+      workingDir:
+        Fn::If:
+          - Fn::Equals:
+            - '{{ downloadPath }}'
+            - ''
+          - '/root/workspace/{{ACS::ExecutionId}}'
+          - '{{ downloadPath }}'
+    Outputs:
+      downloadCodeFromOssCommandOutput:
+        Type: String
+        ValueSelector: downloadCodeFromOssOutput
+      downloadCodeFromGitCommandOutput:
+        Type: String
+        ValueSelector: downloadCodeFromGitOutput
+      installDockerCommandOutput:
+        Type: String
+        ValueSelector: installDockerOutput
+      buildAndDeployCommandOutput:
+        Type: String
+        ValueSelector: buildAndDeployOutput
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -196,7 +202,7 @@ Metadata:
             zh-cn: 代码源配置
             en: Code Source Configuration
       - Parameters:
-          - buildType
+          - isDockerBuild
           - buildAndDeployScript
         Label:
           default:
