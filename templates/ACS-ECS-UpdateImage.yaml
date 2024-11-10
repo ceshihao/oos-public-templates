@@ -150,6 +150,18 @@ Parameters:
       RegionId: regionId
       InstanceType: instanceType
     Default: cloud_essd
+  systemDiskSize:
+    Label:
+      en: SystemDiskSize
+      zh-cn: 系统盘大小
+    Description:
+      zh-cn: 系统盘大小，单位GB，普通云盘容量：20-500G，ESSD云盘PL0：1-2048G，ESSD云盘PL1：20-2048G，ESSD云盘PL2：461-2048G，ESSD云盘PL3：1261-2048G，ESSD AutoPL云盘：1-2048G，其他云盘类型：20-2048G.
+      en: 'System disk size, in GB, regular cloud: 20-500G, cloud_essd PL0:1-2048G, cloud_essd PL1:20-2048G, cloud_essd PL2:461-2048G, cloud_essd PL3:1261-2048G, ESSD AutoPL cloud disk: 1-2048G, other cloud disk types: 20-2048G.'
+    ConstraintDescription:
+      zh-cn: 必须输入整数，单位GB
+      en: 'Must be an integer.'
+    Type: String
+    Default: ''
   commandType:
     Label:
       en: CommandType
@@ -409,6 +421,7 @@ Tasks:
     internetMaxBandwidthOut: '{{ internetMaxBandwidthOut }}'
     ramRoleName: '{{ ramRoleName }}'
     systemDiskCategory: '{{ systemDiskCategory }}'
+    systemDiskSize: '{{ systemDiskSize }}'
   Outputs:
     instanceId:
       ValueSelector: instanceIds[0]
@@ -540,6 +553,7 @@ Metadata:
           - vSwitchId
           - internetMaxBandwidthOut
           - systemDiskCategory
+          - systemDiskSize
           - ramRoleName
         Label:
           default:
@@ -563,3 +577,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

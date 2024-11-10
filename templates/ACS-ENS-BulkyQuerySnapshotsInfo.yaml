@@ -5,6 +5,12 @@ Description:
   en: Bulky query ENS snapshot info
   zh-cn: 批量查询ENS快照信息
 Parameters:
+  diskId:
+    Label:
+      en: DiskId
+      zh-cn: 磁盘ID
+    Type: String
+    Default: ""
   rateControl:
     Label:
       en: RateControl
@@ -28,4 +34,6 @@ Tasks:
       en: Views the ENS snapshots
       zh-cn: 获取ENS快照
     Action: ACS::ENS::QuerySnapshotsInfo
+    Properties:
+      diskId: "{{ diskId }}"
 

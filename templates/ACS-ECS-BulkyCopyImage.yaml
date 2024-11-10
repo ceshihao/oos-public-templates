@@ -22,6 +22,20 @@ Parameters:
     AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
     AssociationPropertyMetadata:
       RegionId: regionId
+      SupportedImageOwnerAlias:
+        - self
+  targetImageName:
+    Label:
+      en: Target image name
+      zh-cn: 目标镜像名
+    Type: String
+    Default: ''
+  targetImageDescription:
+    Label:
+      en: Target image describe
+      zh-cn: 镜像描述
+    Type: String
+    Default: ''
   targetRegionIds:
     Label:
       en: TargetRegionIds
@@ -121,6 +135,8 @@ Tasks:
       regionId: '{{ regionId }}'
       imageId: '{{ imageId }}'
       targetRegionId: '{{ ACS::TaskLoopItem }}'
+      targetImageName: '{{ targetImageName }}'
+      targetImageDescription: '{{ targetImageDescription }}'
     Loop:
       Items: '{{ targetRegionIds }}'
       RateControl: '{{ rateControl }}'
@@ -141,6 +157,8 @@ Tasks:
       regionId: '{{ regionId }}'
       imageId: '{{ imageId }}'
       targetRegionId: '{{ ACS::TaskLoopItem }}'
+      targetImageName: '{{ targetImageName }}'
+      targetImageDescription: '{{ targetImageDescription }}'
     Loop:
       Items: '{{ queryAllAvailableRegions.regionIds }}'
       RateControl: '{{ rateControl }}'
@@ -169,6 +187,8 @@ Metadata:
           - regionId
           - imageId
           - targetRegionIds
+          - targetImageName
+          - targetImageDescription
         Label:
           default:
             zh-cn: 配置参数

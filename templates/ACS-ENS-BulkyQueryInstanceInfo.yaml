@@ -27,5 +27,5 @@ Tasks:
     Description:
       en: Views the ENS instances
       zh-cn: 获取ENS实例
-    Action: ACS::ENS::QueryInstanceInfo
+    Action: 'ACS::ENS::QueryInstanceInfo'
 

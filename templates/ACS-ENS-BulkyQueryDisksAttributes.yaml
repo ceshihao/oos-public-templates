@@ -20,12 +20,12 @@ Parameters:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
-    Default: ""
-RamRole: "{{ OOSAssumeRole }}"
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getDisks
     Description:
       en: Views the ENS disks
       zh-cn: 获取ENS磁盘
-    Action: ACS::ENS::QueryDisksInfo
+    Action: 'ACS::ENS::QueryDisksInfo'
 

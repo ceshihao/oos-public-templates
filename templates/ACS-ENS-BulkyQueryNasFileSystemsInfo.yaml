@@ -20,12 +20,12 @@ Parameters:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
-    Default: ""
-RamRole: "{{ OOSAssumeRole }}"
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getNasFileSystems
     Description:
       en: Views the ENS nas file systems
       zh-cn: 获取ENS协同存储文件系统
-    Action: ACS::ENS::QueryNasFileSystemsInfo
+    Action: 'ACS::ENS::QueryNasFileSystemsInfo'
 

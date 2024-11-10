@@ -20,11 +20,11 @@ Parameters:
       en: OOSAssumeRole
       zh-cn: OOS扮演的RAM角色
     Type: String
-    Default: ""
-RamRole: "{{ OOSAssumeRole }}"
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: ExecuteApi
-    Action: ACS::ExecuteApi
+    Action: 'ACS::ExecuteApi'
     Description: 查询ENS实例列表
     Properties:
       Parameters: {}
@@ -33,9 +33,9 @@ Tasks:
     Outputs:
       InstancesInfo:
         Type: List
-        ValueSelector: .Instances.Instance[]
+        ValueSelector: '.Instances.Instance[]'
 Outputs:
   instances_info:
     Type: List
-    Value: "{{ ExecuteApi.InstancesInfo }}"
+    Value: '{{ ExecuteApi.InstancesInfo }}'
 
