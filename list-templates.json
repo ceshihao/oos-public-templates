@@ -48,7 +48,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "a58790802fa89e085cbed0f85166110341f5789edf1318d2b5028aa79aa630ea",
+      "Hash": "375fef455b2111298d4ab66a68f74ce199d8c8169d1111eda1819306bd795595",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -58,10 +58,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v53",
+      "TemplateVersion": "v54",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-07T02:42:53Z"
+      "UpdatedDate": "2024-11-11T06:23:26Z"
     },
     {
       "Category": "Other",
@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "2e1d5b8b1bef2f391fddbb1a9e685dbb0af961047cbcd011bd71705727e624ff",
+      "Hash": "b8e9e403c28ca339477ec6c07295609b15ab57980fb8a3dd70e6cff2f5220507",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v27",
+      "TemplateVersion": "v28",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-09T02:42:46Z"
+      "UpdatedDate": "2024-11-12T08:22:54Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "fbea82a06418f1c36acb1c5259c54348a92fbef62ecbdb7bafd55a7e0b8f7b62",
+      "Hash": "0f7694a25e288f64f7cdc678b1dceda05658cf0678dbf1f17f2fd1ec311ddcdc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-09T02:42:46Z"
+      "UpdatedDate": "2024-11-12T08:22:55Z"
     },
     {
       "Category": "Other",
@@ -6152,6 +6152,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-11-06T06:31:59Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-11-15T05:57:35Z",
+      "Description": "{\"en\": \"Batch automated installation of NVMe drivers and modification of instance NVMe properties to support\", \"zh-cn\": \"批量自动化安装NVMe驱动并将实例的NVMe属性修改为支持\", \"name-en\": \"ACS-ECS-BulkyConfigureNVMe\", \"name-zh-cn\": \"批量安装NVMe驱动\", \"categories\": [\"instance_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "d9e32259e8b60483d28501ce1dae7326f2ac934ded7e3a291468eaf123d12370",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-05b5ed28c0534f708e55",
+      "TemplateName": "ACS-ECS-BulkyConfigureNVMe",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-11-15T05:57:35Z"
     }
   ]
 }

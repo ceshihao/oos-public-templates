@@ -80,6 +80,7 @@ Parameters:
       - ACS::Ga::BandwidthPackage
       - ACS::Ga::BasicAccelerator
       - ACS::Ga::EndpointGroup
+      - ACS::Live::Domain
       - ACS::HBase::Cluster
       - ACS::MongoDB::DBInstance
       - ACS::NAS::FileSystem
@@ -104,6 +105,7 @@ Parameters:
       - ACS::Redis::DBInstance
       - ACS::ResourceManager::Account
       - ACS::ResourceManager::ResourceGroup
+      - ACS::RocketMQ::Instance
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate
       - ACS::SLB::LoadBalancer

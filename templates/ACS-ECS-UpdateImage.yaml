@@ -201,6 +201,12 @@ Parameters:
             - ${updateType}
             - RunCommand
     Default: 'echo hello'
+  contentEncoding:
+    Label:
+      en: ContentEncoding
+      zh-cn: 命令编码方式
+    Type: String
+    Default: PlainText
   timeout:
     Label:
       en: Timeout
@@ -448,6 +454,7 @@ Tasks:
   Properties:
     regionId: '{{ regionId }}'
     commandContent: '{{ commandContent }}'
+    contentEncoding: '{{ contentEncoding }}'
     commandType: '{{ commandType }}'
     instanceId: '{{ runInstances.instanceId }}'
     timeout: '{{ timeout }}'
@@ -577,4 +584,6 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+    Hidden:
+      - contentEncoding
 
