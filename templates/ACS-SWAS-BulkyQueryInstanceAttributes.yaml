@@ -12,9 +12,9 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  instanceIds:
+  resourceIds:
     Label:
-      en: InstanceIds
+      en: ResourceIds
       zh-cn: SWAS实例ID列表
     Type: List
   targetInfos:
@@ -50,7 +50,7 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ instanceIds }}'
+      Items: '{{ resourceIds }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -62,7 +62,7 @@ Metadata:
             en: Configure Parameters
       - Parameters:
           - regionId
-          - instanceIds
+          - resourceIds
         Label:
           default:
             zh-cn: 选择实例

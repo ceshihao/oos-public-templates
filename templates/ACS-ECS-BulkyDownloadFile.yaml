@@ -60,8 +60,8 @@ Parameters:
       en: DestinationDir
       zh-cn: 文件保存路径
     Description:
-      en: The full path of destination directory
-      zh-cn: 文件在目标机器的完整路径
+      en: < Li class = "Li" > The complete path of the file on the target machine. example：linux：/root, windows：E://.</ li>
+      zh-cn: <li class="li">文件在目标机器的完整路径。例：linux：/root, windows：E://。</li>
     Type: String
     Default: /root
   timeout:

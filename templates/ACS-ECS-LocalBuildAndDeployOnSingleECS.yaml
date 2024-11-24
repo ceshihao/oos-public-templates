@@ -10,8 +10,11 @@ Parameters:
     Label:
       en: Platform
       zh-cn: 平台
-    AssociationProperty: 'ALIYUN::OOS::GitPlatform::Name'
+    AssociationProperty: ALIYUN::OOS::GitPlatform::Name
     Default: github
+    Description:
+      en: ECS in mainland China may experience unstable GitHub connection. It is recommended to use Gitee first.
+      zh-cn: 中国内地ECS可能会出现GitHub连接不稳定，建议优先使用Gitee。
     AllowedValues:
       - github
       - gitee
@@ -20,29 +23,29 @@ Parameters:
     Label:
       en: Owner
       zh-cn: 所有者
-    AssociationProperty: 'ALIYUN::OOS::GitAccount::Name'
+    AssociationProperty: ALIYUN::OOS::GitAccount::Name
     AssociationPropertyMetadata:
-      Platform: '${platform}'
+      Platform: ${platform}
   organization:
     Type: String
     Label:
       en: Organization
       zh-cn: 组织
     Default: ''
-    AssociationProperty: 'ALIYUN::OOS::GitOrganization::Name'
+    AssociationProperty: ALIYUN::OOS::GitOrganization::Name
     AssociationPropertyMetadata:
-      Platform: '${platform}'
-      Owner: '${owner}'
+      Platform: ${platform}
+      Owner: ${owner}
   repository:
     Type: String
     Label:
       en: Repository
       zh-cn: 仓库
-    AssociationProperty: 'ALIYUN::OOS::GitRepository::Name'
+    AssociationProperty: ALIYUN::OOS::GitRepository::Name
     AssociationPropertyMetadata:
-      Platform: '${platform}'
-      Organization: '${organization}'
-      Owner: '${owner}'
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
   instanceId:
     Label:
       en: InstanceId
@@ -55,15 +58,15 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-          'Fn::Equals':
-            - '${platform}'
+          Fn::Equals:
+            - ${platform}
             - Null
   branch:
     Label:
       en: Branch
       zh-cn: 分支
     Description:
-      en: 'Branch, pull default branch if not set'
+      en: Branch, pull default branch if not set
       zh-cn: 代码仓库分支，不填拉取默认分支
     Type: String
     Default: ''
@@ -72,13 +75,8 @@ Parameters:
       en: Download Path
       zh-cn: 下载路径
     Description:
-      en: >-
-        The path to download the code. If not set, it will be downloaded to
-        /root/workspace/{current execution ID}. If you need to specify a path,
-        please ensure that the path you provide does not have files, otherwise
-        it will fail to pull.
-      zh-cn: >-
-        将代码下载到您的ECS上的路径。【不填默认下载到/root/workspace/{当前执行的ID}。如您需指定路径，请确保您提供的路径下没有文件，否则会拉取失败。】
+      en: The path to download the code. If not set, it will be downloaded to /root/workspace/{current execution ID}. If you need to specify a path, please ensure that the path you provide does not have files, otherwise it will fail to pull.
+      zh-cn: 将代码下载到您的ECS上的路径。【不填默认下载到/root/workspace/{当前执行的ID}。如您需指定路径，请确保您提供的路径下没有文件，否则会拉取失败。】
     Type: String
     Default: ''
   isDockerBuild:
@@ -86,9 +84,7 @@ Parameters:
       en: IsDockerBuild
       zh-cn: 是否使用Docker构建
     Description:
-      en: >-
-        If yes, it will detect if Docker is already installed on your ECS, and
-        if not, it will be installed automatically for you.
+      en: If yes, it will detect if Docker is already installed on your ECS, and if not, it will be installed automatically for you.
       zh-cn: 如果选择是，会检测您的ECS上是否已安装Docker，如果没有会为您自动安装。
     Type: Boolean
     Default: false
@@ -97,26 +93,24 @@ Parameters:
       en: buildAndDeployScript
       zh-cn: 构建部署脚本
     Description:
-      en: >-
-        Script execution takes the root directory of the code as its working
-        directory.
+      en: Script execution takes the root directory of the code as its working directory.
       zh-cn: 脚本执行会以您指定的下载路径作为工作路径。
     Type: String
     MaxLength: 16384
-    AssociationProperty: 'ALIYUN::OOS::Command::CommandContent'
+    AssociationProperty: ALIYUN::OOS::Command::CommandContent
     AssociationPropertyMetadata:
       CommandType: RunShellScript
       Value:
         - Condition:
-            'Fn::Equals':
-              - '${isDockerBuild}'
+            Fn::Equals:
+              - ${isDockerBuild}
               - true
           Value: |-
-            ##### Sample Java Deploy Script 
-            ##### for Docker Build
+            ##### 请注意不要在这里填写Dockerfile内容，这里应该填写用于构建部署的shell命令，可参考下面的示例。
+            ##### Please do not fill in the Dockerfile content here, but fill in the build command, refer to the example below.
 
             ### Build latest image
-            # docker build -t myapp:latest .
+            # docker build -f Dockerfile -t myapp:latest .
             # container_name="my-container"
 
             ### Stop the previous version of the container (if any)
@@ -131,44 +125,30 @@ Parameters:
 
             ##### end
         - Condition:
-            'Fn::Equals':
-              - '${isDockerBuild}'
+            Fn::Equals:
+              - ${isDockerBuild}
               - false
-          Value: >-
+          Value: |-
             ##### Sample Java Deploy Script 
-
             ##### for ECS on Alibaba Cloud Linux 3.2104
-
-
+            
             ### Build jar file.
-
             # set -e
-
             # yum install -y maven-3.5.4
-
             # mvn package
-
-
-            ### Stop the previous version of the application (if any) and deploy
-            the current version.
-
-            # PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v
-            "grep" | awk '{print $2}')
-
+            
+            ### Stop the previous version of the application (if any) and deploy the current version.
+            # PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
             # if [ -n "$PID" ]; then
-
             #   kill -9 $PID
-
             # fi
-
             # java -jar target/sample-spring-1.0-SNAPSHOT.jar &
-
-
+            
             ##### end
 RamRole: ''
 Tasks:
   - Name: GitCodeRepo
-    Action: 'ACS::CICD::GitCodeRepo'
+    Action: ACS::CICD::GitCodeRepo
     Description: 指定代码源，生成临时授权链接
     Properties:
       organization: '{{ organization }}'
@@ -180,7 +160,7 @@ Tasks:
         Type: String
         ValueSelector: authorizedUrl
   - Name: LocalBuildAndDeploy
-    Action: 'ACS::CICD::LocalBuildAndDeploy'
+    Action: ACS::CICD::LocalBuildAndDeploy
     Description: 拉取代码，构建并部署应用
     Properties:
       instanceId: '{{ instanceId }}'
@@ -191,10 +171,10 @@ Tasks:
       buildAndDeployScript: '{{ buildAndDeployScript }}'
       regionId: '{{ ACS::RegionId }}'
       workingDir:
-        'Fn::If':
-          - 'Fn::Equals':
-              - '{{ downloadPath }}'
-              - ''
+        Fn::If:
+          - Fn::Equals:
+            - '{{ downloadPath }}'
+            - ''
           - '/root/workspace/{{ACS::ExecutionId}}'
           - '{{ downloadPath }}'
     Outputs:
@@ -211,7 +191,7 @@ Tasks:
         Type: String
         ValueSelector: buildAndDeployOutput
 Metadata:
-  'ALIYUN::OOS::Interface':
+  ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - platform
@@ -231,4 +211,3 @@ Metadata:
           default:
             zh-cn: 构建部署配置
             en: Build and Deploy Configuration
-

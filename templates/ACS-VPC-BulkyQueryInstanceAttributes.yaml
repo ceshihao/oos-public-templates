@@ -12,11 +12,11 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  vpcIds:
+  resourceIds:
     Type: List
     Label:
-      en: vpcId
-      zh-cn: VPCId
+      en: ResourceIds
+      zh-cn: VPC实例ID列表
     AssociationProperty: ALIYUN::ECS::VPC::VPCId
     AssociationPropertyMetadata:
       RegionId: regionId
@@ -52,7 +52,7 @@ Tasks:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
-      Items: '{{ vpcIds }}'
+      Items: '{{ resourceIds }}'
       RateControl: '{{ rateControl }}'
 Metadata:
   ALIYUN::OOS::Interface:
@@ -65,7 +65,7 @@ Metadata:
             en: Configure Parameters
       - Parameters:
           - regionId
-          - vpcIds
+          - resourceIds
         Label:
           default:
             zh-cn: 选择VPC

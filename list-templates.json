@@ -27,7 +27,7 @@
       "CreatedDate": "2020-06-04T11:30:03Z",
       "Description": "{\"en\": \"Bulky upload files to instances\", \"zh-cn\": \"批量上传文件到多个ECS实例\", \"name-en\": \"Upload File\", \"name-zh-cn\": \"上传文件\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\", \"tag_operate_resource\"]}",
       "HasTrigger": false,
-      "Hash": "fc2ed8350a34957400145f1868cf1e60260d0390aff85e8680c9db262cd4f902",
+      "Hash": "c5f013ed6e959ff07d2216e51f0743bc8588e0e1e8838ab2a79a9eba04b373d5",
       "IsFavorite": false,
       "Popularity": 9.99,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -37,10 +37,10 @@
       "TemplateId": "t-f3894c68400546069dfd",
       "TemplateName": "ACS-ECS-BulkyDownloadFile",
       "TemplateType": "Automation",
-      "TemplateVersion": "v25",
+      "TemplateVersion": "v26",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-30T02:46:43Z"
+      "UpdatedDate": "2024-11-19T09:11:38Z"
     },
     {
       "Category": "Other",
@@ -300,7 +300,7 @@
       "CreatedDate": "2019-10-22T08:17:08Z",
       "Description": "{\"en\": \"Creates an ECS image\", \"zh-cn\": \"创建一个ECS镜像\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fed933ef370a7cb5fc17b7b2ad29c44495df86460978b5bc9991c1df67c064f1",
+      "Hash": "a4cbd44050049878432a9ee80599197fcee326af4c9db3f7c9311df7fa77d824",
       "IsFavorite": false,
       "Popularity": 8.23,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -310,10 +310,10 @@
       "TemplateId": "t-4bdb1745c171401883a2",
       "TemplateName": "ACS-ECS-CreateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-09-14T08:12:12Z"
+      "UpdatedDate": "2024-11-19T03:19:05Z"
     },
     {
       "Category": "Other",
@@ -1833,7 +1833,7 @@
       "CreatedDate": "2020-07-09T09:04:56Z",
       "Description": "{\"en\": \"Bulky modify instance charge type\", \"zh-cn\": \"批量修改实例的计费方式\", \"name-en\": \"ACS-ECS-BulkyModifyInstanceChargeType\", \"name-zh-cn\": \"批量修改实例的计费方式\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fc75d96ee8262a0926e9c534b70989f547c15323d8646a775c8b49c6cb456dc6",
+      "Hash": "2c5a9697fa78ac235dca9ab8763da1a476d8d4c3e4def1459b177fdaccf806a2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1843,10 +1843,10 @@
       "TemplateId": "t-e4f861b5d66447158e56",
       "TemplateName": "ACS-ECS-BulkyModifyInstanceChargeType",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:12Z"
+      "UpdatedDate": "2024-11-19T07:22:14Z"
     },
     {
       "Category": "Other",
@@ -5337,6 +5337,27 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2024-09-02T03:38:03Z",
+      "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
+      "HasTrigger": false,
+      "Hash": "7700594d40b28f7d9e49144fc57304aff612365d887250ad107238ca833c83fb",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-19a26faf087d4d8a8a1a",
+      "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v10",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-11-22T07:39:13Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2024-09-03T09:27:39Z",
       "Description": "{\"en\": \"Bulky encrypt the disks\", \"zh-cn\": \"批量加密云盘\", \"name-en\": \"ACS-ECS-BulkyEncryptDisks\", \"name-zh-cn\": \"批量加密云盘\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
@@ -6030,27 +6051,6 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2024-09-02T03:38:03Z",
-      "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
-      "HasTrigger": false,
-      "Hash": "4c299c207023ae5eb7f07298bbbf7e318d591a2ddcfeb36854c592b86bfe2766",
-      "IsFavorite": false,
-      "Popularity": 0,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-19a26faf087d4d8a8a1a",
-      "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v9",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-04T02:36:27Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
       "CreatedDate": "2024-09-24T03:14:00Z",
       "Description": "{\"name-en\": \"ACS-ENS-BulkyQueryInstanceInfo\", \"name-zh-cn\": \"批量查询ENS实例信息\", \"en\": \"Bulky query ENS instance info\", \"zh-cn\": \"批量查询ENS实例信息\"}",
       "HasTrigger": false,
@@ -6117,7 +6117,7 @@
       "CreatedDate": "2024-11-06T06:31:58Z",
       "Description": "{\"en\": \"Bulky query SWAS instance attributes\", \"zh-cn\": \"批量查询轻量应用服务器属性\", \"name-en\": \"ACS-SWAS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询轻量应用服务器属性\"}",
       "HasTrigger": false,
-      "Hash": "2da488f192b5b148db80233a6980340197181d3dc3170a14af2661e32f5cb338",
+      "Hash": "ee0bed138c4dd256618b4ae18b933a313f23b524ad255cd08271d4ec247c77a1",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6127,10 +6127,10 @@
       "TemplateId": "t-429d1f3c4e11414cbe1d",
       "TemplateName": "ACS-SWAS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-06T06:31:58Z"
+      "UpdatedDate": "2024-11-19T03:19:05Z"
     },
     {
       "Category": "Other",
@@ -6138,7 +6138,7 @@
       "CreatedDate": "2024-11-06T06:31:59Z",
       "Description": "{\"name-en\": \"ACS-VPC-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询VPC属性\", \"en\": \"Bulky query VPC attributes\", \"zh-cn\": \"批量查询VPC属性\"}",
       "HasTrigger": false,
-      "Hash": "0519dbf0f75e9be29dabd126fc9cbee2c7a6811a5cc44ba7557622acc712ac20",
+      "Hash": "b578cf3b232c990fb1ab5771454392d34cd3caf001e6e9a44081be0dbcbc4a3c",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6148,10 +6148,10 @@
       "TemplateId": "t-658cc78219b54aef9689",
       "TemplateName": "ACS-VPC-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-06T06:31:59Z"
+      "UpdatedDate": "2024-11-19T03:19:05Z"
     },
     {
       "Category": "Other",
@@ -6173,6 +6173,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-11-15T05:57:35Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-11-19T02:48:58Z",
+      "Description": "{\"en\": \"Red Hat Enterprise Linux template activation\", \"zh-cn\": \"RHEL模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinux\", \"name-zh-cn\": \"RHEL模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "047a62051654f57ef62e040e87e88517a8b76ce051982472aab58621cfee2a49",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-2a53c9a230b241f9bf5a",
+      "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinux",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-11-19T02:48:58Z"
     }
   ]
 }

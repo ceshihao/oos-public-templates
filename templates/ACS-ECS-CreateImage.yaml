@@ -45,6 +45,7 @@ Parameters:
       en: ImageFamily
       zh-cn: 镜像族系
     Type: String
+    AssociationProperty: ALIYUN::ECS::Image::ImageFamily
     Default: ''
   imageDescription:
     Label:
