@@ -80,7 +80,7 @@ Tasks:
 Outputs:
   commandOutput:
     Type: String
-    Value: '{{ configureNVMe.invocationOutput }}'
+    Value: '{{ configureNVMe.commandOutputs }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
