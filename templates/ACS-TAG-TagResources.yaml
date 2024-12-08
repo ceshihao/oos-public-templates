@@ -52,12 +52,14 @@ Parameters:
       - ACS::CEN::TransitRouterVbrAttachment
       - ACS::CEN::TransitRouterVpcAttachment
       - ACS::CEN::TransitRouterVpnAttachment
+      - ACS::CEN::TransitRouterEcrAttachment
       - ACS::DCDN::Domain
       - ACS::DdosCoo::Instance
       - ACS::EBS::DedicatedBlockStorageCluster
       - ACS::EBS::DiskReplicaGroup
       - ACS::EBS::DiskReplicaPair
       - ACS::EBS::EnterpriseSnapshotPolicy
+      - ACS::EBS::SolutionInstance
       - ACS::ECI::ContainerGroup
       - ACS::ECS::AutoSnapshotPolicy
       - ACS::ECS::Command
@@ -83,6 +85,8 @@ Parameters:
       - ACS::Live::Domain
       - ACS::HBase::Cluster
       - ACS::MongoDB::DBInstance
+      - ACS::MSE::Gateway
+      - ACS::MSE::Cluster
       - ACS::NAS::FileSystem
       - ACS::NAT::NatGateway
       - ACS::NLB::Listener

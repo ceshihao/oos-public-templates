@@ -19,10 +19,16 @@ Parameters:
     Label:
       en: OrderId
       zh-cn: 订单号
-    Description:
-      en: The ID of Order
-      zh-cn: 订单ID
     Type: String
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: regionId
   rateControl:
     Label:
       en: RateControl
@@ -41,15 +47,15 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: getInstanceFromOrderId
+  - Name: untilOrderPaiedReady
     Action: ACS::WaitFor
-    Description:
-      en: Views the ECS instances
-      zh-cn: 通过订单ID获取ECS实例
     Retries: 10
     DelayType: Exponential
     Delay: 2
     BackOff: 2
+    Description:
+      en: Waits for the order is paied
+      zh-cn: 等待订单支付完成
     Properties:
       Service: BssOpenApi
       API: GetOrderDetail
@@ -61,11 +67,20 @@ Tasks:
       StopRetryValues:
         - Cancelled
       PropertySelector: Data.OrderList.Order[].PaymentStatus
-      NotDesiredValues: []
+  - Name: getInstance
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: runCommand
     Action: ACS::ECS::ActivateSoftware
     Description:
@@ -84,7 +99,7 @@ Tasks:
         Type: String
         ValueSelector: invocationOutput
     Loop:
-      Items: '{{ getInstanceFromOrderId.instanceIds }}'
+      Items: '{{ getInstance.instanceIds }}'
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:
@@ -99,6 +114,7 @@ Metadata:
     ParameterGroups:
       - Parameters:
           - orderId
+          - targets
           - regionId
         Label:
           default:

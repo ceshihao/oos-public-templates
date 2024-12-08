@@ -1581,7 +1581,7 @@
       "CreatedDate": "2020-04-08T09:50:13Z",
       "Description": "{\"en\": \"Invoke the function and return the result\", \"zh-cn\": \"执行函数计算，并返回函数计算的结果\", \"name-en\": \"ACS-FC-InvokeFunction\", \"name-zh-cn\": \"执行函数计算\"}",
       "HasTrigger": false,
-      "Hash": "59fdcb5ade5af752810a2f0367bf8cecd001c7195013076d0fbf0ceaddcfb83e",
+      "Hash": "f0db407975d38b6125f0f607d1b4e137750c5b139289fd1017f33867c49a3e94",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1591,10 +1591,10 @@
       "TemplateId": "t-ba40bed7df5a4207b9a0",
       "TemplateName": "ACS-FC-InvokeFunction",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-18T09:19:17Z"
+      "UpdatedDate": "2024-12-06T03:50:55Z"
     },
     {
       "Category": "Other",
@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "b8e9e403c28ca339477ec6c07295609b15ab57980fb8a3dd70e6cff2f5220507",
+      "Hash": "5694df20d44e8bfc7c2357a2573a16354199c27d776d057315069f29a832bf5a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v28",
+      "TemplateVersion": "v29",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-12T08:22:54Z"
+      "UpdatedDate": "2024-12-06T07:20:37Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "0f7694a25e288f64f7cdc678b1dceda05658cf0678dbf1f17f2fd1ec311ddcdc",
+      "Hash": "57d2c7ebc41e27e85d4b1bc09d46e49c8c34923a2bf322a6f9e0cc7bf6055096",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-12T08:22:55Z"
+      "UpdatedDate": "2024-12-06T07:20:38Z"
     },
     {
       "Category": "Other",
@@ -3744,7 +3744,7 @@
       "CreatedDate": "2022-05-11T07:57:06Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开关机或者关开机\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "142cd2a7177802d3d093b619f50b27f73c57403d320acc09bde0b92e67d122cf",
+      "Hash": "96fd5f44d0782df7f95f7caaf2654d4f0eca4886b3fa8feed8f9a19d68a3326d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3754,10 +3754,10 @@
       "TemplateId": "t-e2502339692040a483b3",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-06-18T02:07:40Z"
+      "UpdatedDate": "2024-12-02T04:45:45Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4374,7 +4374,7 @@
       "CreatedDate": "2023-06-30T02:07:36Z",
       "Description": "{\"en\": \"Schedule to start and stop RDS instances\", \"zh-cn\": \"RDS定时开关机或者关开机\", \"name-en\": \"ACS-RDS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"RDS定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "77b8dde169810b2c472e7f7fb55cc3f08861e626f12351a9a506070345767d5f",
+      "Hash": "27bee2b72597932dbccfb3f439a3433a43a45e28aaabec2a8490f87dc335a2f5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4384,10 +4384,10 @@
       "TemplateId": "t-83d99815f0b14078b665",
       "TemplateName": "ACS-RDS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-30T02:33:05Z"
+      "UpdatedDate": "2024-12-02T04:45:45Z"
     },
     {
       "Category": "Other",
@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "7700594d40b28f7d9e49144fc57304aff612365d887250ad107238ca833c83fb",
+      "Hash": "074cc6b50551ac6fcf26c3910efcb45b5e78a6e69ad6ca310ddd3c8541ba33d3",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-22T07:39:13Z"
+      "UpdatedDate": "2024-12-06T07:53:43Z"
     },
     {
       "Category": "Other",
@@ -6201,7 +6201,7 @@
       "CreatedDate": "2024-11-19T02:48:58Z",
       "Description": "{\"en\": \"Red Hat Enterprise Linux template activation\", \"zh-cn\": \"RHEL模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinux\", \"name-zh-cn\": \"RHEL模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "047a62051654f57ef62e040e87e88517a8b76ce051982472aab58621cfee2a49",
+      "Hash": "f0c08d3a5fc661f1203e2896e3b4e598cad455aed6f98da70e032a26f6916b0e",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6211,10 +6211,10 @@
       "TemplateId": "t-2a53c9a230b241f9bf5a",
       "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinux",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-19T02:48:58Z"
+      "UpdatedDate": "2024-12-05T02:57:57Z"
     },
     {
       "Category": "Other",
@@ -6222,7 +6222,7 @@
       "CreatedDate": "2024-11-29T01:39:33Z",
       "Description": "{\"en\": \"Red Hat Enterprise Linux Extended Lifecycle Support template activation\", \"zh-cn\": \"RHELELS模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinuxExtendedLifecycleSupport\", \"name-zh-cn\": \"RHELELS模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ff4e14fc76a02e83de94d46d64af5cea5f8dffe884ed5103d8b80208f52997d7",
+      "Hash": "abc7b7bc8e8781cf6723cdc0b105477f6723c1359fcb95ee942d08e95328950d",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6232,10 +6232,10 @@
       "TemplateId": "t-aaf83b7501e94b328ddc",
       "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinuxExtendedLifecycleSupport",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-29T01:39:33Z"
+      "UpdatedDate": "2024-12-05T02:57:57Z"
     },
     {
       "Category": "Other",
@@ -6243,7 +6243,7 @@
       "CreatedDate": "2024-11-29T01:39:34Z",
       "Description": "{\"en\": \"SQL Server template activation\", \"zh-cn\": \"SQL服务模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateSQLServer\", \"name-zh-cn\": \"SQL服务模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "ef4c7fc8b471f72277f779d95f9937e9c7f8d32a92c2ad88470cde71bc42e96e",
+      "Hash": "a902a90316364c7181570f8012b1de90bb8d6bd1571646ceda50d6817d932c8b",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6253,10 +6253,10 @@
       "TemplateId": "t-6761bd8658734ce39c27",
       "TemplateName": "ACS-ECS-BulkyActivateSQLServer",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-29T01:39:34Z"
+      "UpdatedDate": "2024-12-05T02:57:57Z"
     },
     {
       "Category": "Other",
@@ -6264,7 +6264,7 @@
       "CreatedDate": "2024-11-29T01:39:34Z",
       "Description": "{\"en\": \"SUSE Linux Enterprise Server template activation\", \"zh-cn\": \"SUSE Linux Enterprise Server模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateSUSELinuxEnterpriseServer\", \"name-zh-cn\": \"SUSE Linux Enterprise Server模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "591e152c36e3fc2373bfad0646459b0574c8b49f7392f2934fe2a0138b0542dd",
+      "Hash": "fb430842aee916db49462d449bc4353f2f1c3eb1502dc0cbe96d309d7b0de4a2",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6274,10 +6274,10 @@
       "TemplateId": "t-1cd56072712142f69646",
       "TemplateName": "ACS-ECS-BulkyActivateSUSELinuxEnterpriseServer",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-29T01:39:34Z"
+      "UpdatedDate": "2024-12-05T02:57:58Z"
     },
     {
       "Category": "Other",
@@ -6285,7 +6285,7 @@
       "CreatedDate": "2024-11-29T01:39:34Z",
       "Description": "{\"en\": \"SUSE Linux Enterprise Server for SAP template activation\", \"zh-cn\": \"SUSE Linux Enterprise Server for SAP模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateSUSELinuxEnterpriseServerforSAP\", \"name-zh-cn\": \"SUSE Linux Enterprise Server for SAP模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "8f52b2f1ad5ca1e09070113f03b0c1a63428cb3b7fa8b2ab6d5c032515ea0e88",
+      "Hash": "281dae760f7e7e98179c322543ac09aa68a3af7c09de1f8e0f288ab7edc2b9d0",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6295,10 +6295,94 @@
       "TemplateId": "t-31b3924f5f14447aa899",
       "TemplateName": "ACS-ECS-BulkyActivateSUSELinuxEnterpriseServerforSAP",
       "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-12-05T02:57:58Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-12-06T09:44:11Z",
+      "Description": "{\"en\": \"Turn on the HTTP-HTTPS force redirect configuration of CDN\", \"zh-cn\": \"开启CDN的HTTP-HTTPS强制跳转配置\", \"name-en\": \"ACS-CDN-EnableForceHttps\", \"name-zh-cn\": \"开启CDN的HTTP-HTTPS强制跳转配置\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "562a253a35c8ccab0127beb77fcce1e201c304fe8289605755f5b489a075707d",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-48f71097265f4a47bc34",
+      "TemplateName": "ACS-CDN-EnableForceHttps",
+      "TemplateType": "Automation",
       "TemplateVersion": "v1",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-29T01:39:34Z"
+      "UpdatedDate": "2024-12-06T09:44:11Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-12-06T09:44:11Z",
+      "Description": "{\"en\": \"Modify mongoDB instance ip whitelist\", \"zh-cn\": \"删除mongoDB集群IP白名单中的0.0.0.0/0\", \"name-en\": \"ACS-MongoDB-ModifyAccessWhiteList\", \"name-zh-cn\": \"删除mongoDB集群IP白名单中的0.0.0.0/0\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "c973669e724a229497692f6f9aac2cd1501324ffd83204b49f0b1ed5e3a11ebb",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-16d426c795cc49b3bfe4",
+      "TemplateName": "ACS-MongoDB-ModifyAccessWhiteList",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-12-06T09:44:11Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-12-06T09:44:11Z",
+      "Description": "{\"en\": \"Modify polarDB cluseter ip whitelist\", \"zh-cn\": \"删除PolarDB集群IP白名单中的0.0.0.0/0\", \"name-en\": \"ACS-PolarDB-ModifyAccessWhiteList\", \"name-zh-cn\": \"删除PolarDB集群IP白名单中的0.0.0.0/0\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "7fb450f1ffa34a72d54ead4600d8f9c924ea84fbfd2b80e66098b406d94121b2",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-7adc60cdef0d42fa86d5",
+      "TemplateName": "ACS-PolarDB-ModifyAccessWhiteList",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-12-06T09:44:11Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-12-06T09:44:12Z",
+      "Description": "{\"en\": \"Modify rds instance backup policy log backup retention period\", \"zh-cn\": \"修改RDS实例备份策略日志备份保留天数\", \"name-en\": \"ACS-RDS-ModifyBackupLogRetentionPeriod\", \"name-zh-cn\": \"修改RDS实例备份策略日志备份保留天数\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "8574d6be34cbd7a951a3a71f401820495ca75570257e37ff8c4690981fc1d0f3",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-124bc5468dbb421c8b40",
+      "TemplateName": "ACS-RDS-ModifyBackupLogRetentionPeriod",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2024-12-06T09:44:12Z"
     }
   ]
 }

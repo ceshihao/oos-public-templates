@@ -65,11 +65,13 @@ Parameters:
     Label:
       en: Branch
       zh-cn: 分支
-    Description:
-      en: Branch, pull default branch if not set
-      zh-cn: 代码仓库分支，不填拉取默认分支
+    AssociationProperty: ALIYUN::OOS::GitBranch::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
+      RepoFullName: ${repository}
     Type: String
-    Default: ''
   downloadPath:
     Label:
       en: Download Path
@@ -155,10 +157,7 @@ Tasks:
       platform: '{{ platform }}'
       owner: '{{ owner }}'
       repository: '{{ repository }}'
-    Outputs:
-      authorizedUrl:
-        Type: String
-        ValueSelector: authorizedUrl
+      branch: '{{ branch }}'
   - Name: LocalBuildAndDeploy
     Action: ACS::CICD::LocalBuildAndDeploy
     Description: 拉取代码，构建并部署应用
@@ -167,9 +166,7 @@ Tasks:
       codeSource: git
       isDockerBuild: '{{ isDockerBuild }}'
       codeSourceUrl: '{{ GitCodeRepo.authorizedUrl }}'
-      branch: '{{ branch }}'
       buildAndDeployScript: '{{ buildAndDeployScript }}'
-      regionId: '{{ ACS::RegionId }}'
       workingDir:
         Fn::If:
           - Fn::Equals:
@@ -177,19 +174,10 @@ Tasks:
             - ''
           - '/root/workspace/{{ACS::ExecutionId}}'
           - '{{ downloadPath }}'
-    Outputs:
-      downloadCodeFromOssCommandOutput:
-        Type: String
-        ValueSelector: downloadCodeFromOssOutput
-      downloadCodeFromGitCommandOutput:
-        Type: String
-        ValueSelector: downloadCodeFromGitOutput
-      installDockerCommandOutput:
-        Type: String
-        ValueSelector: installDockerOutput
-      buildAndDeployCommandOutput:
-        Type: String
-        ValueSelector: buildAndDeployOutput
+Outputs:
+  commandOutput:
+    Type: String
+    Value: '{{ LocalBuildAndDeploy.buildAndDeployOutput }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
