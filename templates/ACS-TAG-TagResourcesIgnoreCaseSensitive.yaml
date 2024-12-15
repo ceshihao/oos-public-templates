@@ -73,6 +73,7 @@ Parameters:
       - ACS::ECS::SecurityGroup
       - ACS::ECS::Snapshot
       - ACS::EIP::EipAddress
+      - ACS::Eipanycast::AnycastEipAddress
       - ACS::ESS::ScalingGroup
       - ACS::ExpressConnect::PhysicalConnection
       - ACS::FC::Service
@@ -109,6 +110,8 @@ Parameters:
       - ACS::Redis::DBInstance
       - ACS::ResourceManager::Account
       - ACS::ResourceManager::ResourceGroup
+      - ACS::ResourceManager::Folder
+      - ACS::ResourceManager::ControlPolicy
       - ACS::RocketMQ::Instance
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate
@@ -134,6 +137,7 @@ Parameters:
       - ACS::VPC::VSwitch
       - ACS::VPN::CustomerGateway
       - ACS::VPN::VpnGateway
+      - ACS::WAFV3::DefenseResource
       - ALIYUN::ADB::CLUSTER
       - ALIYUN::ALB::ACL
       - ALIYUN::ALB::LOADBALANCER

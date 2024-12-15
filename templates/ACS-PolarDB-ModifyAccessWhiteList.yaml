@@ -17,6 +17,7 @@ Tasks:
       API: DescribeDBClusterAccessWhitelist
       Parameters:
         DBClusterId: '{{ dbClusterId }}'
+        RegionId: '{{ regionId }}'
     Outputs:
       dBClusterIPArray:
         Type: List
@@ -33,6 +34,7 @@ Tasks:
         DBClusterId: '{{ dbClusterId }}'
         ModifyMode: Delete
         SecurityIps: '{{ securityIp }}'
+        RegionId: '{{ regionId }}'
         DBClusterIPArrayName:
           Fn::Select:
             - DBClusterIPArrayName

@@ -15,11 +15,6 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  orderId:
-    Label:
-      en: OrderId
-      zh-cn: 订单号
-    Type: String
   targets:
     Type: Json
     Label:
@@ -47,26 +42,6 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-  - Name: untilOrderPaiedReady
-    Action: ACS::WaitFor
-    Retries: 10
-    DelayType: Exponential
-    Delay: 2
-    BackOff: 2
-    Description:
-      en: Waits for the order is paied
-      zh-cn: 等待订单支付完成
-    Properties:
-      Service: BssOpenApi
-      API: GetOrderDetail
-      Parameters:
-        RegionId: '{{ regionId }}'
-        OrderId: '{{ orderId }}'
-      DesiredValues:
-        - Paid
-      StopRetryValues:
-        - Cancelled
-      PropertySelector: Data.OrderList.Order[].PaymentStatus
   - Name: getInstance
     Description:
       en: Views the ECS instances
@@ -81,6 +56,25 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: Instances.Instance[].InstanceId
+  - Name: tagInstance
+    Action: ACS::ExecuteApi
+    Description:
+      en: Creates and attaches tag to ECS instance
+      zh-cn: 创建并挂载标签到ECS实例
+    Properties:
+      Service: ECS
+      API: TagResources
+      Parameters:
+        RegionId: '{{ regionId }}'
+        ResourceIds:
+          - '{{ ACS::TaskLoopItem }}'
+        ResourceType: Instance
+        Tags:
+          - Key: activation-execution-id
+            Value: '{{ ACS::ExecutionId }}'
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items: '{{ getInstance.instanceIds }}'
   - Name: runCommand
     Action: ACS::ECS::ActivateSoftware
     Description:
@@ -90,49 +84,51 @@ Tasks:
       regionId: '{{ regionId }}'
       commandContent: |-
         #bin/bash
-
         # Subscribe to Redhat repo on Alibaba Cloud ECS
-
+        
         # error code list
         # 1: get os version failed by release file
         # 2: can not get os version by release file not exists
         # 3: not support rhel 7 arm64
         # 4: os not in support list
         # 5: download rpm from mirrors site failed
-
+        
         # rhui repo rpm list
-
+        
         rhel_7_x86_url="https://mirrors-ssl.aliyuncs.com/pulp/repos/unprotected/alibaba/rhuicli/Packages/c/client-rhel7-3.0-1.el7_9.noarch.rpm"
-
+        
         rhel_8_x86_url="https://redhat.mirrors.aliyuncs.com/pulp/content/unprotected/alibaba/rhuicli-rhel-8/Packages/a/aliyun_rhui_rhel8-2.0-3.x86_64.rpm"
         rhel_8_arm64_url="https://redhat.mirrors.aliyuncs.com/pulp/content/unprotected/alibaba/rhuicli-rhel-8/Packages/a/aliyun_rhui_rhel8-2.0-3.aarch64.rpm"
-
+        
         rhel_9_x86_url="https://redhat.mirrors.aliyuncs.com/pulp/content/unprotected/alibaba/rhuicli-rhel-9/Packages/a/aliyun_rhui_rhel9-2.0-1.x86_64.rpm"
         rhel_9_arm64_url="https://redhat.mirrors.aliyuncs.com/pulp/content/unprotected/alibaba/rhuicli-rhel-9/Packages/a/aliyun_rhui_rhel9-2.0-1.aarch64.rpm"
-
+        
+        DISTRO=
         ARCH=
         OSVER=
 
         function init_arch_version(){
             ARCH=$(uname -m)
             if [ -f /etc/redhat-release ];then
+                grep -q "CentOS Linux release" /etc/redhat-release && DISTRO=centos
                 OSVER=$(cat /etc/redhat-release |grep -oP '\d' |head -n 1)
                 return
             fi
             if [ -f /etc/os-release ];then
+                grep -q "CentOS Linux" /etc/os-release && DISTRO=centos
                 OSVER=$(cat /etc/os-release |grep VERSION_ID |grep  -oP '\d' |head -n 1)
                 return
             fi
-
+        
             if [ -z $OSVER ];then
                 echo "Unable to get OS version"
                 exit 1
             fi
-
+        
             echo "redhat-release & os-release not exist, Unable to get OS version"
             exit 2
         }
-
+        
         function download_rpm_to_local() {
             url=$1
             localpath=$2
@@ -142,22 +138,34 @@ Tasks:
                 exit 5
             fi
         }
-
+        
         function rhel_7_x86_subscription() {
             echo "Subscribing to Red Hat Enterprise Linux Server 7 x86 repo on Alibaba Cloud ECS"
-
-            download_rpm_to_local $rhel_7_x86_url /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
-            rpm -ivh --replacefiles --force /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
+            
+            download_rpm_to_local $rhel_7_x86_url /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm  
+            rpm -ivh --replacefiles --force /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm 
             rm -fv  /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
             yum clean all
             yum makecache
         }
-
+        
+        function centos_7_x86_subscription() {
+            echo "Subscribing Centos Linux 7 with Red Hat Enterprise Linux Server 7 x86 repo on Alibaba Cloud ECS"
+        
+            download_rpm_to_local $rhel_7_x86_url /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
+            rpm -ivh --replacefiles --force /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
+            rm -fv  /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
+            sed -i s/\$releasever/7Server/g /etc/yum.repos.d/rh-cloud.repo
+            yum clean all
+            yum makecache
+        }
+        
         function rhel_7_arm64_subscription() {
             echo "not support rhel 7 arm64"
             exit 3
         }
-
+        
+        
         function rhel_8_x86_subscription() {
             echo "Subscribing to Red Hat Enterprise Linux Server 8 x86 repo on Alibaba Cloud ECS"
             download_rpm_to_local  $rhel_8_x86_url /tmp/aliyun_rhui_rhel8-2.0-3.x86_64.rpm
@@ -166,7 +174,7 @@ Tasks:
             yum clean all
             yum makecache
         }
-
+        
         function rhel_8_arm64_subscription() {
             echo "Subscribing to Red Hat Enterprise Linux Server 8 arm64 repo on Alibaba Cloud ECS"
             download_rpm_to_local $rhel_8_arm64_url  /tmp/aliyun_rhui_rhel8-2.0-3.aarch64.rpm
@@ -175,7 +183,7 @@ Tasks:
             yum clean all
             yum makecache
         }
-
+        
         function rhel_9_x86_subscription() {
             echo "Subscribing to Red Hat Enterprise Linux Server 9 x86 repo on Alibaba Cloud ECS"
             download_rpm_to_local $rhel_9_x86_url  /tmp/aliyun_rhui_rhel9-2.0-1.x86_64.rpm
@@ -184,7 +192,7 @@ Tasks:
             yum clean all
             yum makecache
         }
-
+        
         function rhel_9_arm64_subscription() {
             echo "Subscribing to Red Hat Enterprise Linux Server 9 arm64 repo on Alibaba Cloud ECS"
             download_rpm_to_local $rhel_9_arm64_url  /tmp/aliyun_rhui_rhel9-2.0-1.aarch64.rpm
@@ -193,10 +201,17 @@ Tasks:
             yum clean all
             yum makecache
         }
-
+        
+        
         function main() {
             init_arch_version
-            case "$OSVER$ARCH" in
+            case "$DISTRO$OSVER$ARCH" in
+                centos7x86_64)
+                    centos_7_x86_subscription
+                ;;
+                centos8x86_64)
+                    rhel_8_x86_subscription
+                ;;
                 7x86_64)
                     rhel_7_x86_subscription
                 ;;
@@ -215,13 +230,14 @@ Tasks:
                 9aarch64)
                     rhel_9_arm64_subscription
                 ;;
-                *)
-                    echo "not support your os, only support rhel 7[x86], rhel 8[x86,arm64], rhel 9[x86,arm64]"
+                *)  
+                    echo "not support your os, only support rhel 7[x86],centos 7[x86],centos 8[x86], rhel 8[x86,arm64], rhel 9[x86,arm64]"
                     exit 4
                 ;;
             esac
-
+        
         }
+        
         main
       instanceId: '{{ ACS::TaskLoopItem }}'
       commandType: RunShellScript
@@ -244,7 +260,6 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
-          - orderId
           - targets
           - regionId
         Label:
