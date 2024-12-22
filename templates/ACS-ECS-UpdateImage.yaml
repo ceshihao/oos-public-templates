@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image
-  zh-cn: 通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像
+  en: 'Update an existing ECS image by running commands and create a new ECS image. This is applicable to scenarios requiring batch updates and management of ECS images, such as software installation and system configuration changes. During configuration, users need to provide the following required parameters: Region ID (regionId), which specifies the region where the image update and creation operations occur, and Source Image ID (sourceImageId), which identifies the original ECS image that needs updating. Additional parameters that can be modified from their default values include: Target Image Name (targetImageName) for naming the newly created ECS image, Instance Type (instanceType) for the type of instance to install and configure the new image on, and Update Type (updateType), which can be selected to either run commands or install packages. Upon execution, the template will return the ID of the newly created image, facilitating the verification and management of the created ECS image.'
+  zh-cn: 通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像，适用于需要对ECS镜像进行批量更新和管理的场景，例如软件安装和系统配置更改。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定创建和更新镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像。其他可在默认值基础上修改的参数包括：目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名，实例类型（instanceType）：用于安装和配置新的镜像实例类型，以及更新方式（updateType）：可选择运行命令或安装软件包。模板在执行后会返回新创建的镜像ID，方便用户验证和管理创建的ECS镜像。
   name-en: Update Image
   name-zh-cn: 更新镜像
   categories:
