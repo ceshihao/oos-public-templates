@@ -76,6 +76,7 @@ Parameters:
       - ACS::Eipanycast::AnycastEipAddress
       - ACS::ESS::ScalingGroup
       - ACS::ExpressConnect::PhysicalConnection
+      - ACS::ExpressConnectRouter::ExpressConnectRouter
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
       - ACS::Ga::Accelerator
@@ -83,6 +84,9 @@ Parameters:
       - ACS::Ga::BandwidthPackage
       - ACS::Ga::BasicAccelerator
       - ACS::Ga::EndpointGroup
+      - ACS::KMS::KEY
+      - ACS::KMS::SECRET
+      - ACS::Live::Caster
       - ACS::Live::Domain
       - ACS::HBase::Cluster
       - ACS::MongoDB::DBInstance
@@ -113,6 +117,8 @@ Parameters:
       - ACS::ResourceManager::Folder
       - ACS::ResourceManager::ControlPolicy
       - ACS::RocketMQ::Instance
+      - ACS::RDS::Custom
+      - ACS::RDS::CustomDeploymentSet
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate
       - ACS::SLB::LoadBalancer
