@@ -90,7 +90,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "c7962cb8f0a5a3592d235376ba34ca4a0660b6fb25acf7094cae8595d69c230d",
+      "Hash": "3ddc37e5c93fed0e9455756b78ef9a45682fbf4f736843e5fe4892446cd7a952",
       "IsFavorite": false,
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -100,10 +100,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v37",
+      "TemplateVersion": "v38",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:26Z"
+      "UpdatedDate": "2024-12-30T04:09:49Z"
     },
     {
       "Category": "Other",
@@ -279,7 +279,7 @@
       "CreatedDate": "2020-03-05T06:41:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-CreateAndCopyImage\", \"name-zh-cn\": \"创建ECS镜像并同步到其它地域\", \"en\": \"Creates an ECS image and copies the new image to other regions, applicable to scenarios requiring creation and synchronization of ECS images across different regions, such as system updates and backups. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instance for which the image will be created, ECS Instance ID (instanceId), which identifies the instance to create the image from, and Target Image Name (targetImageName), which names the new ECS image. Optionally, users may execute tasks on the instance via cloud assistant commands (commandContent). The created image will be synchronized to specified target regions (targetRegionIds), and users can also opt to share the image with other Alibaba Cloud accounts (accountIds). Upon execution, the template will return a list of the created and cloned image IDs, facilitating verification of the operations.\", \"zh-cn\": \"创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要创建和同步ECS镜像到不同地域的场景，例如系统更新和备份。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要创建镜像的ECS实例所在的地域，ECS实例ID（instanceId）：用于指定要创建镜像的实例，目标镜像名称（targetImageName）：用于为新的ECS镜像命名。此外，用户可以选择性地通过云助手命令（commandContent）在实例上运行脚本任务。创建后的镜像将被同步到指定的目标地域（targetRegionIds），用户也可以选择共享镜像到其他阿里云账户（accountIds）。模板在执行后会返回创建和克隆的镜像ID列表，方便用户验证操作结果。\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "70d1e0cf8eaa9fd05b0689e5be03f47208c87029ad7f39c0268b569fe19716db",
+      "Hash": "53e0c442a5c5b2cfc66847148713a59c42f264f3204e07afcfae92dc7ed94c6f",
       "IsFavorite": false,
       "Popularity": 8.24,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -289,10 +289,10 @@
       "TemplateId": "t-de8b0d697efe4224a902",
       "TemplateName": "ACS-ECS-CreateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v27",
+      "TemplateVersion": "v28",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:23Z"
+      "UpdatedDate": "2024-12-30T04:09:48Z"
     },
     {
       "Category": "Other",
@@ -489,7 +489,7 @@
       "CreatedDate": "2019-11-07T04:26:32Z",
       "Description": "{\"en\": \"Bulky create snapshot\", \"zh-cn\": \"批量给磁盘创建快照\", \"name-en\": \"ACS-ECS-BulkyCreateSnapshot\", \"name-zh-cn\": \"批量创建快照\", \"categories\": [\"data_backup\"]}",
       "HasTrigger": false,
-      "Hash": "4dd9e1627538f63b68228569245704fa8aad36b3e32f465fced9c7f4c227aec2",
+      "Hash": "c3f958488b887646b153841deb62846816bb7ffd2aad913c22d1efa4a0d74bad",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -499,10 +499,10 @@
       "TemplateId": "t-67e7804498984869b5a3",
       "TemplateName": "ACS-ECS-BulkyCreateSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v23",
+      "TemplateVersion": "v24",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-12-27T08:40:55Z"
+      "UpdatedDate": "2025-01-03T10:26:23Z"
     },
     {
       "Category": "Other",
@@ -951,7 +951,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "32457315f8cb9ae86017c531404cdd719535e8c07b07669c58df609b98801329",
+      "Hash": "610413548db99ea00392aa37d78c9063f2efdd411afca4ca5971596a86a028b1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -961,10 +961,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-04T03:46:17Z"
+      "UpdatedDate": "2024-12-30T04:09:47Z"
     },
     {
       "Category": "Other",

@@ -66,6 +66,7 @@ Tasks:
       en: Create a snapshot for a cloud disk
       zh-cn: 为一块云盘创建一份快照
     Properties:
+      regionId: '{{ regionId }}'
       diskId: '{{ ACS::TaskLoopItem }}'
       tags: '{{ tags }}'
       retentionDays:
