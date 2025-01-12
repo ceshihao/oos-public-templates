@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "9e5834ca2d962c802b22cf505cf86c3be45a88a7e5d0208b1a1f5cfe1f87ddf5",
+      "Hash": "015d2afe476cebe3663f4179d972b3d5a85675b1798ae18384d46b205b90c579",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v32",
+      "TemplateVersion": "v33",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-23T08:05:48Z"
+      "UpdatedDate": "2025-01-09T06:15:42Z"
     },
     {
       "Category": "Other",
@@ -3553,9 +3553,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2022-02-18T08:12:22Z",
-      "Description": "{\"en\": \"Use this template to install sls logtail on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装日志服务插件\", \"name-en\": \"ACS-LOG-BulkyInstallLogtail\", \"name-zh-cn\": \"批量安装日志服务插件\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Use this template to install the observability collection component LoongCollector (formerly Logtail) in batches on ECS.\", \"zh-cn\": \"使用这个模板批量的在ECS安装可观测采集组件 LoongCollector（原 Logtail）\", \"name-en\": \"ACS-LOG-BulkyInstallLogtail\", \"name-zh-cn\": \"批量安装可观测采集组件 LoongCollector（原 Logtail）\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "32ceb0da365c064d28cbc99a935fe3c1fdc81da0b1c890a540cc8dab6084dec2",
+      "Hash": "ca30da281334201c3c4c436c2976a752e78d301cbba06dda546315466894668e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3565,10 +3565,10 @@
       "TemplateId": "t-d4c978b64ef24c3b95d2",
       "TemplateName": "ACS-LOG-BulkyInstallLogtail",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:27Z"
+      "UpdatedDate": "2025-01-08T02:29:42Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "0ff2714d063f4146a6ea701de3d353288a068419ff756912c7e20664002ec28e",
+      "Hash": "b183df4e54a6480f270d5a712f2323d211673c85c3c17f65ae1be560edb029f3",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-23T08:05:49Z"
+      "UpdatedDate": "2025-01-09T06:15:42Z"
     },
     {
       "Category": "Other",
@@ -5130,7 +5130,7 @@
       "CreatedDate": "2024-06-21T08:35:02Z",
       "Description": "{\"name-en\": \"ACS-RDS-BulkyModifyDBInstanceSpec\", \"name-zh-cn\": \"修改RDS实例的配置\", \"en\": \"<div><p>Modify the configuration of the RDS instance, change reminder:</p>\\n<ul>\\n<li>Changing the RDS configuration may involve the migration of underlying data, please wait patiently. After the migration is completed, the switch will be performed, and there will be a flash disconnection of about 30 seconds during the switch. Please ensure that the application has a reconnection mechanism.</li>\\n<li>The instance specification change process will automatically restart the instance according to the switch time you choose, without manual operation.</li>\\n<li>The expansion business of the same storage type of cloud disk is not sensitive, and it will be executed immediately after the configuration change, and will not wait for the operation and maintenance window; the expansion business of local disks and different types of cloud disks will have flash disconnections, and you can choose to switch in the operation and maintenance window.</li>\\n<li>During the flash disconnection, most operations related to databases, accounts, networks, etc. cannot be performed, so please try to perform the configuration change operation during the off-peak period of the business.</li>\\n<li>The disk space of the main instance must be less than or equal to the disk space of the read-only instance</li>\\n</ul>\\n</div>\", \"zh-cn\": \"<div><p>修改RDS实例的配置，变更提醒：</p>\\n <ul>\\n <li>RDS变更配置可能涉及底层数据迁移，请您耐心等待。在迁移完成后会进行切换，切换时会出现30秒左右的闪断，请确保应用具备重连机制。</li>\\n <li>变更实例规格过程会根据您选择的切换时间自动重启实例，无需手动操作。</li>\\n <li>云盘同存储类型的扩容业务无感，变配后会将立即执行，不会等待运维窗口；本地盘及不同类型云盘扩容业务会出现闪断，可选择运维窗口切换。</li>\\n <li>闪断过程中，与数据库、账号、网络等相关的大部分操作都无法执行，因此请尽量在业务低峰期执行变配操作。</li>\\n <li>主实例磁盘空间须小于等于只读实例磁盘空间</li>\\n </ul>\\n</div>\"}",
       "HasTrigger": false,
-      "Hash": "af3f347e47c622dea16da85aec1d70e2fddb491303beb7544c0cab65700ae971",
+      "Hash": "118fc9299e5bde56472a8afef47eb3712b8b2fe83ffd20067e4d86524b5374b1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5140,10 +5140,10 @@
       "TemplateId": "t-098a8cda19144d5e916e",
       "TemplateName": "ACS-RDS-BulkyModifyDBInstanceSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-06-21T09:10:49Z"
+      "UpdatedDate": "2025-01-07T07:19:56Z"
     },
     {
       "Category": "Other",
@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "d208aef587b4f666b223dc09c3d166c8f6d0601fe772edde127aec2ff4960f15",
+      "Hash": "cf4e4eaa2a3612480c828fca193396106bc15b3e6b879f0b2f15e6c94af1616c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-16T03:17:36Z"
+      "UpdatedDate": "2025-01-09T06:02:20Z"
     },
     {
       "Category": "Other",
@@ -5760,7 +5760,7 @@
       "CreatedDate": "2021-12-06T08:12:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d4de7bf266e1b4160112c2eecff2261549a9020e8fa82a47977b20ad7bc3d5a9",
+      "Hash": "0d4d230bb5b42b562194e7e4850f44cfdb3313279d5a5b35c8410b2b94770784",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5770,10 +5770,10 @@
       "TemplateId": "t-28fa369cb3994e71b4b4",
       "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-09T10:52:24Z"
+      "UpdatedDate": "2025-01-09T04:51:14Z"
     },
     {
       "Category": "Other",

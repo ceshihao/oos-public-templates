@@ -111,6 +111,20 @@ Parameters:
       - Immediate
       - MaintainTime
     Default: Immediate
+  direction:
+    Type: String
+    Label:
+      en: Direction
+      zh-cn: 实例变配类型
+    Description:
+      en: If only the DBInstanceWarehousType parameter is changed, such as changing an SSD cloud drive to an ESSD cloud drive, this parameter will be left blank.
+      zh-cn: 如果仅变更 DBInstanceStorageType 参数，例如将 SSD 云盘变更为 ESSD 云盘，则此参数留空。
+    AllowedValues:
+      - Up
+      - Down
+      - TempUpgrade
+      - Serverless
+    Default: Up
   rateControl:
     Label:
       en: RateControl
@@ -155,6 +169,7 @@ Tasks:
       dBInstanceStorage: '{{ dBInstanceStorage }}'
       dBInstanceStorageType: '{{ dBInstanceStorageType }}'
       effectiveTime: '{{ effectiveTime }}'
+      direction: '{{ direction }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
@@ -173,6 +188,7 @@ Metadata:
           - dBInstanceClass
           - dBInstanceStorage
           - effectiveTime
+          - direction
         Label:
           default:
             zh-cn: 配置参数

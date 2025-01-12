@@ -266,11 +266,10 @@ Tasks:
                   - true
           - Fn::Sub:
               - |-
-                  repository=$(echo "{{repository}}" | sed 's/[^a-zA-Z0-9 ]/-/g')
-                  current_image_version={{platform}}-{{owner}}-$repository:{{ACS::ExecutionId}}
+                  container_name=$(echo "{{platform}}-{{owner}}-{{repository}}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z0-9]/-/g')
+                  current_image_version=$container_name:{{ACS::ExecutionId}}
                   docker build -f {{dockerFilePath}} -t $current_image_version ${FinalContextPath}
                   
-                  container_name={{platform}}-{{owner}}-$repository
                   container_id=$(docker ps -aq -f name=$container_name) 
                   if [ -n "$container_id" ]; then
                     docker stop $container_id
@@ -319,7 +318,10 @@ Tasks:
         Type: String
         ValueSelector: buildAndDeployOutput
 Outputs:
-  commandOutput:
+  downloadCodeFromGitCommandOutput:
+    Type: String
+    Value: '{{ LocalBuildAndDeploy.downloadCodeFromGitOutput }}'
+  buildAndDeployCommandOutput:
     Type: String
     Value: '{{ LocalBuildAndDeploy.buildAndDeployOutput }}'
 Metadata:

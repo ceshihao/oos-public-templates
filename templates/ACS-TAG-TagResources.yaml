@@ -116,6 +116,7 @@ Parameters:
       - ACS::ResourceManager::ResourceGroup
       - ACS::ResourceManager::Folder
       - ACS::ResourceManager::ControlPolicy
+      - ACS::ResourceManager::ResourceShare
       - ACS::RocketMQ::Instance
       - ACS::RDS::Custom
       - ACS::RDS::CustomDeploymentSet
@@ -143,6 +144,7 @@ Parameters:
       - ACS::VPC::VSwitch
       - ACS::VPN::CustomerGateway
       - ACS::VPN::VpnGateway
+      - ACS::VPN::VpnAttachment
       - ACS::WAFV3::DefenseResource
       - ALIYUN::ADB::CLUSTER
       - ALIYUN::ALB::ACL

@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Use this template to install sls logtail on ecs
-  zh-cn: 使用这个模板批量的在ECS安装日志服务插件
+  en: Use this template to install the observability collection component LoongCollector (formerly Logtail) in batches on ECS.
+  zh-cn: 使用这个模板批量的在ECS安装可观测采集组件 LoongCollector（原 Logtail）
   name-en: ACS-LOG-BulkyInstallLogtail
-  name-zh-cn: 批量安装日志服务插件
+  name-zh-cn: 批量安装可观测采集组件 LoongCollector（原 Logtail）
   categories:
     - run_command
 Parameters:
@@ -24,18 +24,29 @@ Parameters:
       - upgrade
       - uninstall
     Default: install
-  overwrite:
-    Description:
-      en: If Logtail exists in the instance, choose whether to overwrite Logtail(Default no).
-      zh-cn: 如果实例内存在Logtail时，选择是否覆盖Logtail(默认不覆盖)
-    Label:
-      en: Overwrite
-      zh-cn: 是否覆盖Logtail
+  version:
     Type: String
+    Description:
+      en: This parameter is currently only effective for Linux systems (Windows systems will temporarily install the latest version by default)
+      zh-cn: 此参数目前仅对 Linux 系统生效（Windows 系统暂时默认安装最新版本）
+    Label:
+      en: Installed agent version
+      zh-cn: 安装的Agent版本
+    Default: latest
+    AllowedPattern: (^latest$)|(^\d+\.\d+\.\d+\.\d+$)|(^\d+\.\d+\.\d+$)
+    ConstraintDescription: 'An error has been detected with the version. '
+  agentType:
+    Type: String
+    Description:
+      en: This parameter is currently only effective for Linux systems (Windows systems currently do not support LoongCollector and will be installed as Logtail by default)
+      zh-cn: 此参数目前仅对 Linux 系统生效（Windows 系统暂时不支持LoongCollector，目前默认安装为Logtail）
+    Label:
+      en: Installed agent type
+      zh-cn: 安装的Agent类型
     AllowedValues:
-      - 'true'
-      - 'false'
-    Default: 'false'
+      - LoongCollector
+      - Logtail
+    Default: LoongCollector
   targets:
     Type: Json
     Label:
@@ -86,9 +97,19 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
       regionId: '{{ regionId }}'
       parameters:
-        regionid: '{{ regionId }}'
-        action: '{{ action }}'
-        overwrite: '{{ overwrite }}'
+        Fn::If:
+          - Fn::Equals:
+              - Fn::Jq:
+                  - First
+                  - .|map(select(.instanceId == "{{ ACS::TaskLoopItem }}").osType)[]
+                  - '{{ getInstance.instanceInfos }}'
+              - linux
+          - regionid: '{{ regionId }}'
+            action: '{{ action }}'
+            agentType: '{{agentType}}'
+            version: '{{version}}'
+          - regionid: '{{ regionId }}'
+            action: '{{ action }}'
       commandId:
         Fn::If:
           - Fn::Equals:
@@ -97,19 +118,19 @@ Tasks:
                   - .|map(select(.instanceId == "{{ ACS::TaskLoopItem }}").osType)[]
                   - '{{ getInstance.instanceInfos }}'
               - linux
-          - cmd-ACS-LOG-InstallLogtail-for-linux.sh
-          - cmd-ACS-LOG-InstallLogtail-for-windows.ps1
+          - ACS-LOG-InstallLogtail-for-linux.sh
+          - ACS-LOG-InstallLogtail-for-windows.ps1
+    Outputs:
+      commandOutput:
+        Type: String
+        ValueSelector: invocationOutput
     Loop:
       Items: '{{ getInstance.instanceIds }}'
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:
-          AggregateType: 'Fn::ListJoin'
+          AggregateType: Fn::ListJoin
           AggregateField: commandOutput
-    Outputs:
-      commandOutput:
-        Type: String
-        ValueSelector: invocationOutput
 Outputs:
   commandOutput:
     Type: String
@@ -119,7 +140,8 @@ Metadata:
     ParameterGroups:
       - Parameters:
           - action
-          - overwrite
+          - agentType
+          - version
         Label:
           default:
             zh-cn: 设置参数
@@ -138,3 +160,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+
