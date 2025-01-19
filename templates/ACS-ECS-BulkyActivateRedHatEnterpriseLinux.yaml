@@ -132,9 +132,20 @@ Tasks:
         function download_rpm_to_local() {
             url=$1
             localpath=$2
-            wget -q $url -O $localpath
-            if [ $? -ne 0 ];then
-                echo "download $url failed"
+            if command -v wget &> /dev/null; then
+                wget -q $url -O $localpath
+                if [ $? -ne 0 ]; then
+                    echo "download $url failed"
+                    exit 5
+                fi
+            elif command -v curl &> /dev/null; then
+                curl -s -o $localpath $url
+                if [ $? -ne 0 ]; then
+                    echo "download $url failed"
+                    exit 5
+                fi
+            else
+                echo "Neither wget nor curl is available for downloading files"
                 exit 5
             fi
         }

@@ -101,20 +101,36 @@ Tasks:
                 OSVER=$(cat /etc/os-release |grep VERSION_ID |grep  -oP '\d' |head -n 1)
                 return
             fi
-
             if [ -z $OSVER ];then
                 echo "Unable to get OS version"
                 exit 1
             fi
-
             echo "redhat-release & os-release not exist, Unable to get OS version"
             exit 2
         }
         function rhel_7_x86_els_subscription() {
             echo "Subscribing to Red Hat Enterprise Linux Server 7 x86 ELS  repo on Alibaba Cloud ECS"
-            wget -q https://mirrors-ssl.aliyuncs.com/pulp/repos/unprotected/alibaba/rhel7_tmp/client-rhel7-4.0-10.els.noarch.rpm  -O /tmp/client-rhel7-4.0-10.els.noarch.rpm  
-            rpm -ivh --replacefiles  --force /tmp/client-rhel7-4.0-10.els.noarch.rpm
-            rm -fv  /tmp/client-rhel7-3.0-1.el7_9.noarch.rpm
+            url=https://mirrors-ssl.aliyuncs.com/pulp/repos/unprotected/alibaba/rhel7_tmp/client-rhel7-4.0-10.els.noarch.rpm
+            localpath=/tmp/client-rhel7-4.0-10.els.noarch.rpm
+            if command -v wget &> /dev/null; then
+                wget -q $url -O $localpath
+                if [ $? -ne 0 ]; then
+                    echo "download $url failed"
+                    exit 5
+                fi
+            elif command -v curl &> /dev/null; then
+                curl -s -o $localpath $url
+                if [ $? -ne 0 ]; then
+                    echo "download $url failed"
+                    exit 5
+                fi
+            else
+                echo "Neither wget nor curl is available for downloading files"
+                exit 5
+            fi
+        
+            rpm -ivh --replacefiles  --force $localpath
+            rm -fv  $localpath
             yum clean all
             yum makecache
         }
@@ -122,12 +138,12 @@ Tasks:
             init_arch_version
             case "$OSVER$ARCH" in
                 7x86_64)
-                   rhel_7_x86_els_subscription
+                    rhel_7_x86_els_subscription
                 ;;
                 *)  
                     echo "not support your os, only support rhel 7[x86]"
                     exit 4
-                  ;;
+                ;;
             esac
         }
         main

@@ -84,6 +84,9 @@ Parameters:
       - ACS::Ga::BandwidthPackage
       - ACS::Ga::BasicAccelerator
       - ACS::Ga::EndpointGroup
+      - ACS::GWLB::LoadBalancer
+      - ACS::GWLB::Listener
+      - ACS::GWLB::ServerGroup
       - ACS::KMS::Key
       - ACS::KMS::Secret
       - ACS::Live::Domain

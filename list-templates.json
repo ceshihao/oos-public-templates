@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "015d2afe476cebe3663f4179d972b3d5a85675b1798ae18384d46b205b90c579",
+      "Hash": "11afeb669103c423783aaa203cdf393758cdf389580a44833e307a2b8d5e6d7f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v33",
+      "TemplateVersion": "v34",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-01-09T06:15:42Z"
+      "UpdatedDate": "2025-01-17T03:00:06Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "b183df4e54a6480f270d5a712f2323d211673c85c3c17f65ae1be560edb029f3",
+      "Hash": "dec302557ae91d3ca22ff5054d8d15064407d8cc5857fe385890033efbfa868d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v23",
+      "TemplateVersion": "v24",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-01-09T06:15:42Z"
+      "UpdatedDate": "2025-01-17T03:00:06Z"
     },
     {
       "Category": "Other",
@@ -6222,7 +6222,7 @@
       "CreatedDate": "2024-11-19T02:48:58Z",
       "Description": "{\"en\": \"Red Hat Enterprise Linux template activation\", \"zh-cn\": \"RHEL模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinux\", \"name-zh-cn\": \"RHEL模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "57d68a7fda0536ff68327d20ef2a25e1ff4fb367c2505c186eb54f403b4ef054",
+      "Hash": "776031a4685ec4cbb9d4f100ee69323bdb784795db696028cc81da6818e4825e",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6232,10 +6232,10 @@
       "TemplateId": "t-2a53c9a230b241f9bf5a",
       "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinux",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-11T09:54:08Z"
+      "UpdatedDate": "2025-01-13T02:13:26Z"
     },
     {
       "Category": "Other",
@@ -6243,7 +6243,7 @@
       "CreatedDate": "2024-11-29T01:39:33Z",
       "Description": "{\"en\": \"Red Hat Enterprise Linux Extended Lifecycle Support template activation\", \"zh-cn\": \"RHELELS模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinuxExtendedLifecycleSupport\", \"name-zh-cn\": \"RHELELS模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "f68c2488816b146c8a2cec664a8fc0abf3209bc75d96f177dc9cf71d4caebaad",
+      "Hash": "4ea92afecc7b2f92fa782ffaa486a911a8e4f9bb166f2c009d17e036dee0051b",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6253,10 +6253,10 @@
       "TemplateId": "t-aaf83b7501e94b328ddc",
       "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinuxExtendedLifecycleSupport",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-11T09:54:08Z"
+      "UpdatedDate": "2025-01-13T02:13:27Z"
     },
     {
       "Category": "Other",
@@ -6635,6 +6635,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-12-26T09:48:21Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-01-13T06:59:54Z",
+      "Description": "{\"name-en\": \"ACS-ENS-BulkyQueryLoadBalancerInfo\", \"name-zh-cn\": \"批量查询ENS负载均衡实例信息\", \"en\": \"Bulky query ENS Edge Load Balancer info\", \"zh-cn\": \"批量查询ENS负载均衡实例信息\"}",
+      "HasTrigger": false,
+      "Hash": "0f98a25d2967d180324e063161370bf8efc87179dd8557e8702f016d95558be2",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-a7cd0f39ea8042e88f2f",
+      "TemplateName": "ACS-ENS-BulkyQueryLoadBalancerInfo",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-01-13T06:59:54Z"
     }
   ]
 }
