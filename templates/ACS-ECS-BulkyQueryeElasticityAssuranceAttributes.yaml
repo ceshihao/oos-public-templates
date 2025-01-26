@@ -1,0 +1,76 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Query ElasticityAssurance attributes
+  zh-cn: 查询弹性保障服务的信息
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  status:
+    Type: String
+    Label:
+      en: status
+      zh-cn: 弹性保障服务的状态
+    Default: All
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Batch
+      MaxErrors: 0
+      Batch:
+        - 20
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: describeElasticityAssurances
+    Action: ACS::ExecuteApi
+    Description:
+      en: Queries Elasticity Assurance information
+      zh-cn: 查询弹性保障服务的信息
+    Properties:
+      Service: ECS
+      API: DescribeElasticityAssurances
+      Headers: {}
+      Body: {}
+      Parameters:
+        RegionId: '{{ regionId }}'
+        Status: '{{ status }}'
+    Outputs:
+      ElasticityAssuranceItem:
+        Type: List
+        ValueSelector: ElasticityAssuranceSet.ElasticityAssuranceItem
+Outputs:
+  ElasticityAssuranceItem:
+    Type: List
+    Value: '{{ describeElasticityAssurances.ElasticityAssuranceItem }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - status
+        Label:
+          default:
+            zh-cn: 查询参数
+            en: Query Parameters
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Advanced Options
+

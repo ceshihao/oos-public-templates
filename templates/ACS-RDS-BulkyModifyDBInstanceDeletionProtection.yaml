@@ -45,6 +45,7 @@ Tasks:
       Parameters:
         DBInstanceId: '{{ ACS::TaskLoopItem }}'
         DeletionProtection: true
+        RegionId: '{{ regionId }}'
     Loop:
       Items: '{{ instanceIds }}'
       RateControl: '{{ rateControl }}'

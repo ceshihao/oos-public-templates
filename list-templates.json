@@ -3744,7 +3744,7 @@
       "CreatedDate": "2022-05-11T07:57:06Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开关机或者关开机\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "96fd5f44d0782df7f95f7caaf2654d4f0eca4886b3fa8feed8f9a19d68a3326d",
+      "Hash": "5d805011c6ef0921b0911b69561f89a5c9af9cb2e18fe4f4c3d3700323342f90",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3754,10 +3754,10 @@
       "TemplateId": "t-e2502339692040a483b3",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-02T04:45:45Z"
+      "UpdatedDate": "2025-01-23T08:02:42Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4290,7 +4290,7 @@
       "CreatedDate": "2023-05-30T02:12:48Z",
       "Description": "{\"en\": \"Bulky enable deletion protection for instances\", \"zh-cn\": \"批量开启RDS实例保护\", \"name-en\": \"ACS-RDS-BulkyModifyDBInstanceDeletionProtection\", \"name-zh-cn\": \"批量开启RDS实例保护\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "df3f575b2481538515f1034bc7d09e28972cd9f55443e1eff69a1afa9105c03e",
+      "Hash": "0c02962eb24a7f3a02c87b7f65dfaa376930735d75392acf3f43b181782a2a06",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4300,10 +4300,10 @@
       "TemplateId": "t-4eede07834df4d5d97ca",
       "TemplateName": "ACS-RDS-BulkyModifyDBInstanceDeletionProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-05-30T02:12:48Z"
+      "UpdatedDate": "2025-01-20T02:23:43Z"
     },
     {
       "Category": "Other",
@@ -6656,6 +6656,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-01-13T06:59:54Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-01-22T09:00:26Z",
+      "Description": "{\"en\": \"Query ElasticityAssurance attributes\", \"zh-cn\": \"查询弹性保障服务的信息\"}",
+      "HasTrigger": false,
+      "Hash": "77840d6145ac95c52e19007658fa3af1d03ae62d65c2e3a8afbfa6c2842346d5",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-c49a8a47111e4e558693",
+      "TemplateName": "ACS-ECS-BulkyQueryeElasticityAssuranceAttributes",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v3",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-01-23T02:22:55Z"
     }
   ]
 }

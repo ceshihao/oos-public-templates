@@ -166,6 +166,7 @@ Tasks:
       Fn::Equals:
         - StartFirst
         - '{{startFirstOrStopFirst}}'
+    OnError: sleepToStopTime
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -212,6 +213,7 @@ Tasks:
       Fn::Equals:
         - StopFirst
         - '{{startFirstOrStopFirst}}'
+    OnError: sleepToStartTime
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
