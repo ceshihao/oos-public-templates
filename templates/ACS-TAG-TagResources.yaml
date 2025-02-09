@@ -40,6 +40,7 @@ Parameters:
       - ACS::AliKafka::Topic
       - ACS::ApiGateway::Api
       - ACS::ApiGateway::ApiGroup
+      - ACS::Bastionhost::Instance
       - ACS::CBWP::CommonBandwidthPackage
       - ACS::CDN::Domain
       - ACS::CEN::CenBandwidthPackage
@@ -53,8 +54,10 @@ Parameters:
       - ACS::CEN::TransitRouterVpcAttachment
       - ACS::CEN::TransitRouterVpnAttachment
       - ACS::CEN::TransitRouterEcrAttachment
+      - ACS::CloudStorageGateway::Gateway
       - ACS::DCDN::Domain
       - ACS::DdosCoo::Instance
+      - ACS::DdosBgp::Instance
       - ACS::EBS::DedicatedBlockStorageCluster
       - ACS::EBS::DiskReplicaGroup
       - ACS::EBS::DiskReplicaPair
@@ -77,6 +80,8 @@ Parameters:
       - ACS::ESS::ScalingGroup
       - ACS::ExpressConnect::PhysicalConnection
       - ACS::ExpressConnectRouter::ExpressConnectRouter
+      - ACS::ECS::ImageComponent
+      - ACS::ECS::ImagePipeline
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
       - ACS::Ga::Accelerator
@@ -92,6 +97,7 @@ Parameters:
       - ACS::Live::Domain
       - ACS::Live::Caster
       - ACS::HBase::Cluster
+      - ACS::Hologram::Instance
       - ACS::MongoDB::DBInstance
       - ACS::MSE::Gateway
       - ACS::MSE::Cluster
@@ -123,6 +129,7 @@ Parameters:
       - ACS::RocketMQ::Instance
       - ACS::RDS::Custom
       - ACS::RDS::CustomDeploymentSet
+      - ACS::ROS::Template
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate
       - ACS::SLB::LoadBalancer
@@ -130,6 +137,7 @@ Parameters:
       - ACS::SLB::ServerCertificate
       - ACS::SLB::VServerGroup
       - ACS::SLS::Project
+      - ACS::SelectDB::DBInstance
       - ACS::VPC::DhcpOptionsSet
       - ACS::VPC::FlowLog
       - ACS::VPC::GatewayEndpoint
