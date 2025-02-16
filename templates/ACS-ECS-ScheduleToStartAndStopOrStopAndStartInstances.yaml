@@ -28,6 +28,9 @@ Parameters:
     Label:
       en: StartFirstOrStopFirst
       zh-cn: 开关机模式
+    Description:
+      en: 'Scheduled startup and shutdown is a whole task. If you create a task after the scheduled startup and shutdown task is started, the scheduled startup and shutdown task for that day will not be executed.'
+      zh-cn: '定时开机与关机是一个整体任务，若您创建任务的时间在定时开关机任务启动的时间之后，当日的定时开关机任务将不会执行'
     AllowedValues:
       - StartFirst
       - StopFirst

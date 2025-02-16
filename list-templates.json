@@ -3744,7 +3744,7 @@
       "CreatedDate": "2022-05-11T07:57:06Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开关机或者关开机\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "5d805011c6ef0921b0911b69561f89a5c9af9cb2e18fe4f4c3d3700323342f90",
+      "Hash": "c86cf1300810026a87fefb18f1f7135e9aaa584511521ea6b93d0b94fe42338c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3754,10 +3754,10 @@
       "TemplateId": "t-e2502339692040a483b3",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-01-23T08:02:42Z"
+      "UpdatedDate": "2025-02-12T03:10:27Z"
     },
     {
       "Category": "TimerTrigger",
@@ -6677,6 +6677,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-01-23T02:22:55Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-02-10T11:08:36Z",
+      "Description": "{\"name-en\": \"ACS-ENS-BulkyQueryNatGatewayInfo\", \"name-zh-cn\": \"批量查询ENS NAT网关信息\", \"en\": \"Bulky query ENS Nat Gateway info\", \"zh-cn\": \"批量查询ENS NAT网关信息\"}",
+      "HasTrigger": false,
+      "Hash": "5545734244611596d99330780f3fe93add350eba46b946de44b02265374ddff5",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-2d9ca7c23ea44a89b71e",
+      "TemplateName": "ACS-ENS-BulkyQueryNatGatewayInfo",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v7",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-02-12T02:22:29Z"
     }
   ]
 }
