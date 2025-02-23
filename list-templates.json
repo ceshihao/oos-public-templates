@@ -951,7 +951,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "610413548db99ea00392aa37d78c9063f2efdd411afca4ca5971596a86a028b1",
+      "Hash": "40c2c34bec67fb9d9d13ab1c52cc082005a5f16cc3137e668783e79d9785cb87",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -961,10 +961,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-30T04:09:47Z"
+      "UpdatedDate": "2025-02-17T09:01:23Z"
     },
     {
       "Category": "Other",
@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "7e66597c225b03994c799cc3d6be612045edc985ff534249c39b2109ae01949b",
+      "Hash": "4c8e64dc92e04995b0c16a1202a9034165699f288f7ba2ef0c06c33fd3aaa512",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v36",
+      "TemplateVersion": "v37",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-07T08:36:41Z"
+      "UpdatedDate": "2025-02-18T05:45:33Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "336b155a6c26882722bea804cfab3fe686084da969f1c8058f6b520970a3b7cb",
+      "Hash": "fa079d305bd90c3b3b77c68d3396bcd0cc2e1aaab2d1fe97db87a226655f89d5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v26",
+      "TemplateVersion": "v27",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-07T08:32:37Z"
+      "UpdatedDate": "2025-02-18T05:45:34Z"
     },
     {
       "Category": "Other",
@@ -3786,7 +3786,7 @@
       "CreatedDate": "2022-06-01T07:31:06Z",
       "Description": "{\"en\": \"Bulky modify disk spec\", \"zh-cn\": \"批量修改云盘规格\", \"name-en\": \"ACS-ECS-BulkyModifyDiskSpec\", \"name-zh-cn\": \"批量修改云盘规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "83dc2ceabb96d7661f71a60dea255cd91d3261bc83be235409221d785c06c2e5",
+      "Hash": "04d95bd09d10acf4ceb4d0e36864bf25e24fe1b11b9b146fd3f05c606a943477",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3796,10 +3796,10 @@
       "TemplateId": "t-143fef8b71554c17bac2",
       "TemplateName": "ACS-ECS-BulkyModifyDiskSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:12Z"
+      "UpdatedDate": "2025-02-18T11:49:16Z"
     },
     {
       "Category": "Other",
@@ -6698,6 +6698,48 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-02-12T02:22:29Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-02-17T08:04:42Z",
+      "Description": "{\"name-en\": \"ACS-ENS-BulkyQueryDNatInfo\", \"name-zh-cn\": \"批量查询ENS DNAT规则信息\", \"en\": \"Bulky query ENS DNAT rule information\", \"zh-cn\": \"批量查询ENS DNAT规则信息\"}",
+      "HasTrigger": false,
+      "Hash": "682b97cc42b56ed9fba36a80677f2cdcf55d9b8168123f9049d86456235f574a",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-3cec1c3de5004c769f34",
+      "TemplateName": "ACS-ENS-BulkyQueryDNatInfo",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-02-17T08:04:42Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-02-17T08:04:42Z",
+      "Description": "{\"name-en\": \"ACS-ENS-BulkyQuerySNatInfo\", \"name-zh-cn\": \"批量查询ENS SNAT规则信息\", \"en\": \"Bulky query ENS SNAT rule information\", \"zh-cn\": \"批量查询ENS SNAT规则信息\"}",
+      "HasTrigger": false,
+      "Hash": "0d056259e3306026dcb1ba5574422267cdf0d0aece2cf3f9b878da344d50dc2d",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-5920b840503749ef8648",
+      "TemplateName": "ACS-ENS-BulkyQuerySNatInfo",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-02-17T08:04:42Z"
     }
   ]
 }

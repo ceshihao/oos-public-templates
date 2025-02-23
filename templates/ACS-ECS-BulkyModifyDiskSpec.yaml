@@ -34,6 +34,12 @@ Parameters:
       - PL2
       - PL3
     Default: PL1
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${diskCategory}
+            - cloud_essd
   diskCategory:
     Label:
       en: DiskCategory
@@ -75,7 +81,13 @@ Tasks:
     Parameters:
       RegionId: '{{ regionId }}'
       DiskId: '{{ ACS::TaskLoopItem }}'
-      PerformanceLevel: '{{ performanceLevel }}'
+      PerformanceLevel:
+        Fn::If:
+          - Fn::Equals:
+            - ${diskCategory}
+            - cloud_essd
+          - '{{ performanceLevel }}'
+          - null
       DiskCategory: '{{ diskCategory }}'
   Loop:
     RateControl: '{{ rateControl }}'
@@ -86,8 +98,8 @@ Metadata:
       - Parameters:
           - regionId
           - diskIds
-          - performanceLevel
           - diskCategory
+          - performanceLevel
         Label:
           default:
             zh-cn: 参数设置

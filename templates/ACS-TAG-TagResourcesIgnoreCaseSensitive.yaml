@@ -75,6 +75,10 @@ Parameters:
       - ACS::ECS::NetworkInterface
       - ACS::ECS::SecurityGroup
       - ACS::ECS::Snapshot
+      - ACS::ECS::ElasticityAssurance
+      - ACS::ECS::CapacityReservation
+      - ACS::ECS::SnapshotGroup
+      - ACS::ECS::ReservedInstance
       - ACS::EIP::EipAddress
       - ACS::Eipanycast::AnycastEipAddress
       - ACS::ESS::ScalingGroup
@@ -116,6 +120,7 @@ Parameters:
       - ACS::Ons::Instance
       - ACS::Ons::Instance
       - ACS::Ons::Topic
+      - ACS::OTS::Instance
       - ACS::PolarDB::DBCluster
       - ACS::PrivateLink::VpcEndpoint
       - ACS::PrivateLink::VpcEndpointService
@@ -153,6 +158,8 @@ Parameters:
       - ACS::VPC::TrafficMirrorSession
       - ACS::VPC::VPC
       - ACS::VPC::VSwitch
+      - ACS::VPC::PeerConnection
+      - ACS::VPC::VSwitchCidrReservation
       - ACS::VPN::CustomerGateway
       - ACS::VPN::VpnGateway
       - ACS::VPN::VpnAttachment

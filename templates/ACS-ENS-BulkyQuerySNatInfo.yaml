@@ -1,0 +1,39 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ENS-BulkyQuerySNatInfo
+  name-zh-cn: 批量查询ENS SNAT规则信息
+  en: Bulky query ENS SNAT rule information
+  zh-cn: 批量查询ENS SNAT规则信息
+Parameters:
+  natGatewayId:
+    Label:
+      en: NatGatewayId
+      zh-cn: Nat网关id
+    Type: String
+    Default: ""
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ""
+RamRole: "{{ OOSAssumeRole }}"
+Tasks:
+  - Name: getSNatList
+    Description:
+      en: Query ENS SNAT rule information
+      zh-cn: 查询ENS SNAT规则信息
+    Action: ACS::ENS::QuerySNatInfo
+    Properties:
+      natGatewayId: "{{ NatGatewayId }}"
+
