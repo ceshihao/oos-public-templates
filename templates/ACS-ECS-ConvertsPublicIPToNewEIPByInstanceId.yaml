@@ -75,7 +75,7 @@ Tasks:
   Properties:
     Service: ECS
     API: AllocateEipAddress
-    Parameters: Null
+    Parameters: {}
   Outputs:
     AllocationId:
       Type: String

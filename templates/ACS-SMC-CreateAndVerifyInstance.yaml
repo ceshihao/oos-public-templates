@@ -662,10 +662,6 @@ Tasks:
                   }
                 }
               }
-    Outputs:
-      StackId:
-        Type: String
-        ValueSelector: StackId
   - Name: untilStackReady
     Action: 'ACS::WaitFor'
     Description:

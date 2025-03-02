@@ -44,7 +44,7 @@ Tasks:
       API: ModifyCluster
       Method: PUT
       URI: /api/v2/clusters/{{ ACS::TaskLoopItem }}
-      Parameters: null
+      Parameters: {}
       Body: '{"deletion_protection":true}'
     Description:
       en: Executes a command in cluster

@@ -123,10 +123,6 @@ Tasks:
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: Instances.Instance[].InstanceId
   - Name: modifyInstanceChargeType
     Description:
       en: Modify instance charge type
@@ -142,7 +138,7 @@ Tasks:
       includeDataDisks: '{{ includeDataDisks }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

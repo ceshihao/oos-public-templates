@@ -29,16 +29,6 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::Component::TimerTrigger
     AssociationPropertyMetadata:
       MinuteInterval: 30
-  Bandwidth:
-    Type: Number
-    Label:
-      en: Bandwidth
-      zh-cn: 要增加的带宽
-    Description:
-      en: Unit:MB/s. The maximum incoming bandwidth is 6 times the default bandwidth of this instance specification, but the upper limit is 192MB/s. For example, the default bandwidth of an instance is 10 MB/s, and the value range of this parameter is 0~60.
-      zh-cn: 单位：MB/s。最大可传入该实例规格默认带宽的 6 倍，但上限为 192MB/s。例如实例默认带宽为 10 MB/s，本参数的取值范围为 0~60。
-    MinValue: 1
-    MaxValue: 192
   DurationHour:
     Label:
       en: DurationHour
@@ -49,6 +39,51 @@ Parameters:
     Type: Number
     MinValue: 1
     Default: 1
+  NodeId:
+    Label:
+      en: NodeId
+      zh-cn: 数据分片ID
+    Description:
+      zh-cn: 数据分片ID，您可以调用[DescribeLogicInstanceTopology]获取，传入多个时使用英文逗号（,）分隔；您也可以传入 All（即表示所有数据分片）。注：当实例为[集群架构]或[读写分离架构]时，本参数才可用且必须传入。
+      en: 'Data shard ID, you can call [DescribeLogicInstanceTopology] to obtain, use English commas (,) to separate multiple shards; you can also pass in All (that is, all data shards). Note: This parameter is available and must be passed in when the instance is [Cluster Architecture] or [Read-Write Separation Architecture].'
+    Type: List
+    Default: ALL
+  Bandwidth:
+    Type: Number
+    Label:
+      en: Bandwidth
+      zh-cn: 要增加的带宽
+    Description:
+      en: Unit:MB/s. The maximum incoming bandwidth is 6 times the default bandwidth of this instance specification, but the upper limit is 192MB/s. For example, the default bandwidth of an instance is 10 MB/s, and the value range of this parameter is 0~60.
+      zh-cn: 单位：MB/s。最大可传入该实例规格默认带宽的 6 倍，但上限为 192MB/s。例如实例默认带宽为 10 MB/s，本参数的取值范围为 0~60。
+    MinValue: 1
+    MaxValue: 192
+    Default: 20
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${NodeId}
+            - ALL
+  Bandwidths:
+    Type: List
+    Label:
+      en: Bandwidths
+      zh-cn: 要增加的带宽数组
+    Description:
+      en: Unit:MB/s. The maximum incoming bandwidth is 6 times the default bandwidth of this instance specification, but the upper limit is 192MB/s. For example, the default bandwidth of an instance is 10 MB/s, and the value range of this parameter is 0~60.If the request parameter NodeId passes in multiple data shard IDs, the bandwidth value passed in this parameter must correspond to the order of the data shard IDs, and multiple bandwidth values must be separated by commas (,).
+      zh-cn: 单位：MB/s。最大可传入该实例规格默认带宽的 6 倍，但上限为 192MB/s。例如实例默认带宽为 10 MB/s，本参数的取值范围为 0~60。如果请求参数 NodeId 传入了多个数据分片ID，本参数传入的带宽值需和 NodeId 的顺序对应，多个带宽值之间使用英文逗号（,）分隔。
+    Default: []
+    AssociationProperty: List[Parameter]
+    AssociationPropertyMetadata:
+      Parameter:
+        Type: Number
+      Visible:
+        Condition:
+          Fn::Not:
+            Fn::Equals:
+              - ${NodeId}
+              - ALL
   RateControl:
     Label:
       en: RateControl
@@ -112,7 +147,9 @@ Tasks:
       RegionId: '{{ RegionId }}'
       InstanceId: '{{ ACS::TaskLoopItem }}'
       Bandwidth: '{{ Bandwidth }}'
+      Bandwidths: '{{ Bandwidths }}'
       DurationHour: '{{ DurationHour }}'
+      NodeId: '{{ NodeId }}'
     Loop:
       RateControl: '{{ RateControl }}'
       Items: '{{ GetInstance.InstanceIds }}'

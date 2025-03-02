@@ -56,10 +56,6 @@ Tasks:
     ResourceType: 'ALIYUN::ECS::Instance'
     Filters:
       - '{{ targets }}'
-  Outputs:
-    instanceIds:
-      Type: List
-      ValueSelector: Instances.Instance[].InstanceId
 - Name: attachInstanceRamRole
   Action: ACS::ExecuteApi
   Description:
@@ -75,11 +71,11 @@ Tasks:
         - '{{ ACS::TaskLoopItem }}'
   Loop:
     RateControl: '{{ rateControl }}'
-    Items: '{{ getInstance.instanceIds }}'
+    Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Outputs:
   instanceIds:
     Type: List
-    Value: '{{ getInstance.instanceIds }}'
+    Value: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

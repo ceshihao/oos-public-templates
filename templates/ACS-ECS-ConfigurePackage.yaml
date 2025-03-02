@@ -73,10 +73,6 @@ Tasks:
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: runCommand
     Action: 'ACS::ECS::RunCommand'
     Properties:
@@ -128,7 +124,7 @@ Tasks:
       regionId: '{{ regionId }}'
       commandType: RunShellScript
     Loop:
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:

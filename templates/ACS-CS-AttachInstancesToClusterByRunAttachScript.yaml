@@ -69,9 +69,9 @@ Tasks:
       Service: CS
       API: DescribeClusterAttachScripts
       Method: POST
-      Headers: Null
+      Headers: {}
       URI: '/clusters/{{clusterId}}/attachscript'
-      Parameters: Null
+      Parameters: {}
       Body: '{ }'
     Outputs:
       attachScript:

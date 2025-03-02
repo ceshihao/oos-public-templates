@@ -59,14 +59,10 @@ Tasks:
     commandType: RunShellScript
     workingDir: "{{ workingDir }}"
     timeout: "{{ timeout }}"
-  Outputs:
-    commandOutput:
-      Type: String
-      ValueSelector: invocationOutput
 Outputs:
   commandOutput:
     Type: String
-    Value: '{{ runCommand.commandOutput }}'
+    Value: '{{ runCommand.invocationOutput }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

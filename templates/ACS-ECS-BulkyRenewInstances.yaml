@@ -75,10 +75,6 @@ Tasks:
       ResourceType: 'ALIYUN::ECS::Instance'
       Filters:
         - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: renewInstance
     Action: 'ACS::ExecuteAPI'
     Description:
@@ -94,7 +90,7 @@ Tasks:
         PeriodUnit: '{{ periodUnit }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

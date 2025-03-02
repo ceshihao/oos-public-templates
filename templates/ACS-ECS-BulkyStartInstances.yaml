@@ -53,10 +53,6 @@ Tasks:
     RegionId: '{{ regionId }}'
     Filters:
       - '{{ targets }}'
-  Outputs:
-    instanceIds:
-      Type: List
-      ValueSelector: Instances.Instance[].InstanceId
 - Name: startInstance
   Action: ACS::ECS::StartInstance
   Description:
@@ -67,11 +63,11 @@ Tasks:
     instanceId: '{{ ACS::TaskLoopItem }}'
   Loop:
     RateControl: '{{ rateControl }}'
-    Items: '{{ getInstance.instanceIds }}'
+    Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Outputs:
   instanceIds:
     Type: List
-    Value: '{{ getInstance.instanceIds }}'
+    Value: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
