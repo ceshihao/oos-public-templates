@@ -51,10 +51,6 @@ Tasks:
     RegionId: '{{ regionId }}'
     Filters:
       - '{{ targets }}'
-  Outputs:
-    instanceIds:
-      Type: List
-      ValueSelector: Instances.Instance[].InstanceId
 - Name: reInitSystemDisk
   Action: ACS::ECS::ReInitDisk
   Description:
@@ -65,7 +61,7 @@ Tasks:
     instanceId: '{{ ACS::TaskLoopItem }}'
   Loop:
     RateControl: '{{ rateControl }}'
-    Items: '{{ getInstance.instanceIds }}'
+    Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
     Outputs:
       diskIdAndInstanceIds:
           AggregateType: Fn::ListJoin

@@ -52,10 +52,6 @@ Tasks:
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: Instances.Instance[].InstanceId
   - Name: tagInstance
     Action: ACS::ExecuteApi
     Description:
@@ -74,7 +70,7 @@ Tasks:
             Value: '{{ ACS::ExecutionId }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
   - Name: runCommand
     Action: ACS::ECS::ActivateSoftware
     Description:
@@ -93,7 +89,7 @@ Tasks:
         Type: String
         ValueSelector: invocationOutput
     Loop:
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:

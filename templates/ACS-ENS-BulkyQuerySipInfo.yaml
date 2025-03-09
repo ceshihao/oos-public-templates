@@ -1,0 +1,31 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ENS-BulkyQuerySipInfo
+  name-zh-cn: 批量查询ENS辅助公网IP信息
+  en: Bulky query ENS secondary public ip info
+  zh-cn: 批量查询ENS辅助公网IP信息
+Parameters:
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ""
+RamRole: "{{ OOSAssumeRole }}"
+Tasks:
+  - Name: getSipList
+    Description:
+      en: Views the ENS secondary public ip list
+      zh-cn: 批量查询ENS辅助公网IP信息
+    Action: ACS::ENS::QuerySipInfo
+

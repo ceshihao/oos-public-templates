@@ -1,0 +1,31 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ENS-BulkyQueryEniInfo
+  name-zh-cn: 批量查询ENS弹性网卡信息
+  en: Bulky query ENS elastic network interface info
+  zh-cn: 批量查询ENS弹性网卡信息
+Parameters:
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ""
+RamRole: "{{ OOSAssumeRole }}"
+Tasks:
+  - Name: getEniList
+    Description:
+      en: Views the ENS elastic network interface list
+      zh-cn: 获取ENS弹性网卡列表
+    Action: ACS::ENS::QueryEniInfo
+

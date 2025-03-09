@@ -76,10 +76,6 @@ Tasks:
             - 0
           - ''
           - '{{ retentionDays }}'
-    Outputs:
-      snapshotId:
-        Type: String
-        ValueSelector: .snapshotId
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ diskIds }}'

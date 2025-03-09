@@ -133,10 +133,6 @@ Tasks:
       RegionId: '{{regionId}}'
       Filters:
         - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: Instances.Instance[].InstanceId
   - Name: startInstanceFirst
     Action: ACS::RDS::StartInstance
     Description:
@@ -151,7 +147,7 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
   - Name: sleepToStopTime
     Action: ACS::Sleep
     Description:
@@ -180,7 +176,7 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
   - Name: stopInstanceFirst
     Action: ACS::RDS::StopInstance
     Description:
@@ -195,7 +191,7 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
   - Name: sleepToStartTime
     Action: ACS::Sleep
     Description:
@@ -224,5 +220,5 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
 

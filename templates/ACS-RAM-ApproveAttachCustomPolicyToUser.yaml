@@ -70,6 +70,15 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  isExisted:
+    'Fn::Equals':
+      - '{{ checkPolicyExist.existed }}'
+      - 'true'
+  notExisted:
+    'Fn::Equals':
+      - '{{ checkPolicyExist.existed }}'
+      - 'false'
 Tasks:
   - Name: approveAttachPolicy
     Action: 'ACS::Approve'
@@ -116,10 +125,7 @@ Tasks:
         ValueSelector: .DefaultPolicyVersion == null|tostring
   - Name: createStack
     Action: 'ACS::Template'
-    When:
-      'Fn::Equals':
-        - '{{ checkPolicyExist.existed }}'
-        - 'false'
+    When: notExisted
     Description:
       en: Attach policy by Ros resource stack
       zh-cn: 通过Ros资源栈为角色授权
@@ -179,10 +185,7 @@ Tasks:
         ValueSelector: stackId
   - Name: createStackForNewPolicy
     Action: 'ACS::Template'
-    When:
-      'Fn::Equals':
-        - '{{ checkPolicyExist.existed }}'
-        - 'true'
+    When: isExisted
     Description:
       en: Attach policy by Ros resource stack when policy is not exist
       zh-cn: 当policy不存在时，通过Ros资源栈为角色授权

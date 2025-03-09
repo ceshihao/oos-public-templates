@@ -116,10 +116,6 @@ Tasks:
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
-    Outputs:
-      instanceIds:
-        Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: downloadFileAndRunCommand
     Action: ACS::ECS::DownloadFileAndRunCommand
     Description:
@@ -135,7 +131,7 @@ Tasks:
       workingDir: '{{ workingDir }}'
       timeout: '{{ timeout }}'
     Loop:
-      Items: '{{ getInstance.instanceIds }}'
+      Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
       RateControl: '{{ rateControl }}'
 Metadata:
   ALIYUN::OOS::Interface:

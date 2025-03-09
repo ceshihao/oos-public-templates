@@ -89,10 +89,6 @@ Tasks:
     RegionId: '{{ regionId }}'
     Filters:
       - '{{ targets }}'
-  Outputs:
-    instanceIds:
-      Type: List
-      ValueSelector: Instances.Instance[].InstanceId
 - Name: rebootInstance
   Action: ACS::ECS::RebootInstance
   Description:
@@ -102,12 +98,12 @@ Tasks:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
   Loop:
-    Items: '{{ getInstance.instanceIds }}'
+    Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
     RateControl: '{{ rateControl }}'
 Outputs:
   instanceIds:
     Type: List
-    Value: '{{ getInstance.instanceIds }}'
+    Value: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

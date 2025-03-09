@@ -58,10 +58,6 @@ Tasks:
     RegionId: '{{ regionId }}'
     Filters:
       - '{{ targets }}'
-  Outputs:
-    instanceIds:
-      Type: List
-      ValueSelector: 'Instances.Instance[].InstanceId'
 - Name: modifyPostPaidInstanceSpec
   Action: ACS::ECS::ModifyInstanceSpec
   Description:
@@ -73,7 +69,7 @@ Tasks:
     instanceType: '{{ instanceType }}'
   Loop:
     RateControl: '{{ rateControl }}'
-    Items: '{{ getInstance.instanceIds }}'
+    Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

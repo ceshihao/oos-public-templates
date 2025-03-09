@@ -66,37 +66,61 @@ Parameters:
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
-- Name: GetEipInstance
-  Description:
-    en: Get the EIP instance
-    zh-cn: 获取EIP实例
-  Action: ACS::ExecuteAPI
-  Properties:
-    Service: VPC
-    API: DescribeEipAddresses
-    Parameters:
+  - Name: timerTrigger
+    Action: ACS::TimerTrigger
+    Description:
+      en: Triggers a task as scheduled by specifying type and expression
+      zh-cn: 通过指定触发类型和表达式按计划触发任务
+    Properties:
+      Type:
+        Fn::Select:
+          - type
+          - '{{timerTrigger}}'
+      Expression:
+        Fn::Select:
+          - expression
+          - '{{timerTrigger}}'
+      EndDate:
+        Fn::Select:
+          - endDate
+          - '{{ timerTrigger }}'
+      TimeZone:
+        Fn::Select:
+          - timeZone
+          - '{{ timerTrigger }}'
+    Outputs: {}
+  - Name: GetEipInstance
+    Description:
+      en: Get the EIP instance
+      zh-cn: 获取EIP实例
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: VPC
+      API: DescribeEipAddresses
+      Parameters:
+        RegionId: '{{ RegionId }}'
+        AllocationId:
+          Fn::Join:
+            - ','
+            - '{{ AllocationId }}'
+      Headers: {}
+      Body: {}
+    Outputs: {}
+  - Name: UpgradeEipAddressBandwidth
+    Action: ACS::VPC::UpgradeEipBandwidth
+    Description:
+      en: Upgrade EIP instance bandwidth
+      zh-cn: 升级EIP实例的带宽
+    Properties:
       RegionId: '{{ RegionId }}'
-      AllocationId:
-        Fn::Join:
-          - ','
-          - '{{ AllocationId }}'
-  Outputs:
-    AllocationIds:
-      Type: List
-      ValueSelector: .EipAddresses.EipAddress[].AllocationId
-- Name: UpgradeEipAddressBandwidth
-  Action: ACS::VPC::UpgradeEipBandwidth
-  Description:
-    en: Upgrade EIP instance bandwidth
-    zh-cn: 升级EIP实例的带宽
-  Properties:
-    RegionId: '{{ RegionId }}'
-    AllocationId: '{{ ACS::TaskLoopItem }}'
-    Bandwidth: '{{ Bandwidth }}'
-    DurationHour: '{{ DurationHour }}'
-  Loop:
-    RateControl: '{{ RateControl }}'
-    Items: '{{ GetEipInstance.AllocationIds }}'
+      AllocationId: '{{ ACS::TaskLoopItem }}'
+      Bandwidth: '{{ Bandwidth }}'
+      DurationHour: '{{ DurationHour }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ GetEipInstance.EipAddresses.EipAddress[]?.AllocationId }}'
+      RateControl: '{{ RateControl }}'
+      Outputs: {}
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
