@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Bulky modify access control list entry
-  zh-cn: 批量修改访问控制策略组中的IP条目
+  zh-cn: 批量修改访问控制策略组中的 IP 条目
   name-en: ACS-SLB-BulkyModifyAccessControlListEntry
   name-zh-cn: 批量修改负载均衡访问控制策略组中的IP条目
   categories:
@@ -63,12 +63,18 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
-Tasks:
-- Name: addAccessControlListEntrys
-  When:
+Conditions:
+  Add:
     'Fn::Equals':
       - '{{ action }}'
       - Add
+  Remove:
+    'Fn::Equals':
+      - '{{ action }}'
+      - Remove
+Tasks:
+- Name: addAccessControlListEntrys
+  When: Add
   Action: ACS::ExecuteApi
   Description:
     en: Add access control list entry
@@ -84,10 +90,7 @@ Tasks:
     RateControl: '{{ rateControl }}'
     Items: '{{ aclIds }}'
 - Name: removeAccessControlListEntry
-  When:
-    'Fn::Equals':
-      - '{{ action }}'
-      - Remove
+  When: Remove
   Action: ACS::ExecuteApi
   Description:
     en: Remove access control list entry

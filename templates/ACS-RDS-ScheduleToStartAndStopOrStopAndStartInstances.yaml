@@ -37,7 +37,7 @@ Parameters:
   weekdays:
     Label:
       en: The Cycle of task
-      zh-cn: 任务执行的周期
+      zh-cn: 任务执行周期
     Type: String
     AssociationProperty: TimeTriggerWeekly
     Default: '*'
@@ -87,6 +87,15 @@ Parameters:
     Type: String
     Default: AliyunServiceRoleForOOSInstanceScheduler
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  StartFirst:
+    Fn::Equals:
+      - StartFirst
+      - '{{startFirstOrStopFirst}}'
+  StopFirst:
+    Fn::Equals:
+      - StopFirst
+      - '{{startFirstOrStopFirst}}'
 Tasks:
   - Name: timerTrigger
     Action: ACS::TimerTrigger
@@ -138,10 +147,7 @@ Tasks:
     Description:
       en: Starts the RDS instances
       zh-cn: 首先启动RDS实例
-    When:
-      Fn::Equals:
-        - StartFirst
-        - '{{startFirstOrStopFirst}}'
+    When: StartFirst
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -153,10 +159,7 @@ Tasks:
     Description:
       en: Sleep to instance stop time
       zh-cn: 睡眠到实例停止时间
-    When:
-      Fn::Equals:
-        - StartFirst
-        - '{{startFirstOrStopFirst}}'
+    When: StartFirst
     Properties:
       Duration:
         Fn::DurationBetween:
@@ -167,10 +170,7 @@ Tasks:
     Description:
       en: Stops the RDS instances
       zh-cn: 停止RDS实例
-    When:
-      Fn::Equals:
-        - StartFirst
-        - '{{startFirstOrStopFirst}}'
+    When: StartFirst
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -182,10 +182,7 @@ Tasks:
     Description:
       en: Stop the RDS instances first
       zh-cn: 首先停止RDS实例
-    When:
-      Fn::Equals:
-        - StopFirst
-        - '{{startFirstOrStopFirst}}'
+    When: StopFirst
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -197,10 +194,7 @@ Tasks:
     Description:
       en: Sleep to instance stop time
       zh-cn: 睡眠到实例开启时间
-    When:
-      Fn::Equals:
-        - StopFirst
-        - '{{startFirstOrStopFirst}}'
+    When: StopFirst
     Properties:
       Duration:
         Fn::DurationBetween:
@@ -211,10 +205,7 @@ Tasks:
     Description:
       en: Starts the RDS instances
       zh-cn: 启动RDS实例
-    When:
-      Fn::Equals:
-        - StopFirst
-        - '{{startFirstOrStopFirst}}'
+    When: StopFirst
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'

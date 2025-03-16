@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
   name-en: ACS-ECS-ScheduleApplyPatchBaseline
-  name-zh-cn: 定时在ECS实例中配置补丁基线
+  name-zh-cn: 定时在指定ECS实例中配置补丁基线
   en: Schedule to apply patch baseline on ECS instance
   zh-cn: 定时在ECS实例中配置补丁基线
 Parameters:
@@ -116,6 +116,19 @@ Parameters:
     AssociationPropertyMetadata:
       TimerTrigger: '${timerTrigger}'
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  isECSInstance:
+    Fn::Equals:
+      - '{{ resourceType }}'
+      - ALIYUN::ECS::Instance
+  isECSManagedInstance:
+    Fn::Equals:
+      - '{{ resourceType }}'
+      - ALIYUN::ECS::ManagedInstance
+  isECDInstance:
+    Fn::Equals:
+      - '{{ resourceType }}'
+      - ALIYUN::ECD::Desktop
 Tasks:
   - Name: timerTrigger
     Action: ACS::TimerTrigger
@@ -158,10 +171,7 @@ Tasks:
       en: Apply patch baseline on ECS instance
       zh-cn: 在ECS实例中配置补丁基线
     Action: ACS::ECS::ApplyPatchBaseline
-    When:
-      Fn::Equals:
-        - '{{ resourceType }}'
-        - ALIYUN::ECS::Instance
+    When: isECSInstance
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -186,10 +196,7 @@ Tasks:
       en: Apply patch baseline on ECS managed instance
       zh-cn: 在ECS托管实例中配置补丁基线
     Action: ACS::ECS::ApplyPatchBaselineOnMangedInstance
-    When:
-      Fn::Equals:
-        - '{{ resourceType }}'
-        - ALIYUN::ECS::ManagedInstance
+    When: isECSManagedInstance
     Properties:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
@@ -211,10 +218,7 @@ Tasks:
       en: Apply patch baseline on ECD instance
       zh-cn: 在ECD实例中配置补丁基线
     Action: ACS::ECD::ApplyPatchBaseline
-    When:
-      Fn::Equals:
-        - '{{ resourceType }}'
-        - ALIYUN::ECD::Desktop
+    When: isECDInstance
     Properties:
       regionId: '{{ regionId }}'
       desktopId: '{{ ACS::TaskLoopItem }}'

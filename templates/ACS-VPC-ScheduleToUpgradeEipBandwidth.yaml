@@ -37,17 +37,16 @@ Parameters:
     Type: Number
     MinValue: 1
     MaxValue: 500
-  DurationHour:
+  Duration:
     Label:
-      en: DurationHour
+      en: Duration
       zh-cn: 带宽升级持续时间
     Description:
-      zh-cn: 单位：小时。持续时间最少1小时
-      en: Unit:Hour. The bandwidth upgrade should last at least 1 hours
-    Type: Number
-    MinValue: 1
-    MaxValue: 24
-    Default: 1
+      zh-cn: 限制：最短1秒钟。
+      en: with a minimum limit of 1 second.
+    Type: String
+    AssociationProperty: ALIYUN::OOS::Component::DurationExpression
+    Default: 'PT1H'
   RateControl:
     Label:
       en: RateControl
@@ -115,7 +114,7 @@ Tasks:
       RegionId: '{{ RegionId }}'
       AllocationId: '{{ ACS::TaskLoopItem }}'
       Bandwidth: '{{ Bandwidth }}'
-      DurationHour: '{{ DurationHour }}'
+      Duration: '{{ Duration }}'
     Outputs: {}
     Loop:
       Items: '{{ GetEipInstance.EipAddresses.EipAddress[]?.AllocationId }}'
@@ -134,7 +133,7 @@ Metadata:
           - RegionId
           - AllocationId
           - Bandwidth
-          - DurationHour
+          - Duration
         Label:
           default:
             zh-cn: 选择实例

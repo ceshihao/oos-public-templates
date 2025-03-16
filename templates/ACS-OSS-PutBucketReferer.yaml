@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Put the bucket referer
-  zh-cn: 设置存储空间防盗链
+  zh-cn: 设置存储空间的防盗链
   name-en: ACS-OSS-PutBucketReferer
   name-zh-cn: 设置存储空间防盗链
   categories:
@@ -47,6 +47,11 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  Empty:
+    'Fn::Equals':
+      - '{{ refererList }}'
+      - []
 Tasks:
   - Name: convertXmlParameters
     Action: 'ACS::ECS::SMCConversionConstantByJqScript'
@@ -84,10 +89,7 @@ Tasks:
     Description:
       en: Wait for the bucket referer modification to complete when referer is allowed to be empty
       zh-cn: 等待存储空间防盗链允许为空时修改完成
-    When:
-      'Fn::Equals':
-        - '{{ refererList }}'
-        - []
+    When: Empty
     OnSuccess: 'ACS::END'
     Properties:
       Service: OSS

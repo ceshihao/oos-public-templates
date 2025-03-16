@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Attach custom policy to user that template executed by after approving
-  zh-cn: 审批通过后授予自定义权限给创建执行的子用户
+  zh-cn: 在审批通过后授予自定义权限给创建执行的子用户
   name-en: ACS-RAM-ApproveAttachCustomPolicyToUser
   name-zh-cn: 审批通过后授予自定义权限给创建执行的子用户
   categories:

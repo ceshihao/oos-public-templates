@@ -46,9 +46,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-06-21T02:32:39Z",
-      "Description": "{\"en\": \"Update an existing ECS image by running commands and create a new ECS image. This is applicable to scenarios requiring batch updates and management of ECS images, such as software installation and system configuration changes. During configuration, users need to provide the following required parameters: Region ID (regionId), which specifies the region where the image update and creation operations occur, and Source Image ID (sourceImageId), which identifies the original ECS image that needs updating. Additional parameters that can be modified from their default values include: Target Image Name (targetImageName) for naming the newly created ECS image, Instance Type (instanceType) for the type of instance to install and configure the new image on, and Update Type (updateType), which can be selected to either run commands or install packages. Upon execution, the template will return the ID of the newly created image, facilitating the verification and management of the created ECS image.\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像，适用于需要对ECS镜像进行批量更新和管理的场景，例如软件安装和系统配置更改。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定创建和更新镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像。其他可在默认值基础上修改的参数包括：目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名，实例类型（instanceType）：用于安装和配置新的镜像实例类型，以及更新方式（updateType）：可选择运行命令或安装软件包。模板在执行后会返回新创建的镜像ID，方便用户验证和管理创建的ECS镜像。\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
+      "Description": "{\"en\": \"Update an existing ECS image by running commands and create a new ECS image. This is applicable to scenarios requiring batch updates and management of ECS images, such as software installation and system configuration changes. During configuration, users need to provide the following required parameters: Region ID (regionId), which specifies the region where the image update and creation operations occur, and Source Image ID (sourceImageId), which identifies the original ECS image that needs updating. Additional parameters that can be modified from their default values include: Target Image Name (targetImageName) for naming the newly created ECS image, Instance Type (instanceType) for the type of instance to install and configure the new image on, and Update Type (updateType), which can be selected to either run commands or install packages. Upon execution, the template will return the ID of the newly created image, facilitating the verification and management of the created ECS image.\", \"zh-cn\": \"通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像，适用于需要对ECS镜像进行批量更新和管理的场景，例如软件安装和系统配置更改。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定创建和更新镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像。其他可在默认值基础上修改的参数包括：目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名，实例类型（instanceType）：用于安装和配置新的镜像实例类型，以及更新方式（updateType）：可选择运行命令或安装软件包。模板在执行后会返回新创建的镜像ID，方便用户验证和管理创建的ECS镜像。\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "38b288486fee14f45ad098edbdb6afab599b85ec75e6f531788a6a270ed297da",
+      "Hash": "9682b3f5944b8ee56dce8c465145e60b9443a66094cff3bf88c02df650b5d776",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -58,10 +58,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v56",
+      "TemplateVersion": "v57",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:27Z"
+      "UpdatedDate": "2025-03-13T09:43:04Z"
     },
     {
       "Category": "Other",
@@ -88,9 +88,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-11-20T03:57:45Z",
-      "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.\", \"zh-cn\": \"通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。\", \"categories\": [\"image_manage\"]}",
+      "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.\", \"zh-cn\": \"通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "3ddc37e5c93fed0e9455756b78ef9a45682fbf4f736843e5fe4892446cd7a952",
+      "Hash": "e79746fb55687bddd1207fa1021043221fd74002db8aead1f168ba3a097016c2",
       "IsFavorite": false,
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -100,10 +100,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v38",
+      "TemplateVersion": "v39",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-30T04:09:49Z"
+      "UpdatedDate": "2025-03-13T09:43:04Z"
     },
     {
       "Category": "Other",
@@ -298,9 +298,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-10-22T08:17:08Z",
-      "Description": "{\"en\": \"Creates an ECS image, applicable to scenarios requiring the creation of a custom image from an existing ECS instance, such as for backup and system migration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instance for which the image will be created, ECS Instance ID (instanceId), which identifies the instance from which the image will be created, and Image Name (imageName). Users can also choose whether to create an image only from the system disk (whetherOnlySystemDisk). After the image creation, the template will return the ID of the newly created image.\", \"zh-cn\": \"创建一个ECS镜像，适用于需要从现有ECS实例创建自定义镜像的场景，例如备份和系统迁移。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要创建镜像的ECS实例所在的地域，ECS实例ID（instanceId）：用于指定要创建镜像的实例，以及图片名称（imageName）。用户还可以选择是否仅创建系统盘映像（whetherOnlySystemDisk）。创建镜像后，模板会返回新创建镜像的ID。\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
+      "Description": "{\"en\": \"Creates an ECS image, applicable to scenarios requiring the creation of a custom image from an existing ECS instance, such as for backup and system migration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instance for which the image will be created, ECS Instance ID (instanceId), which identifies the instance from which the image will be created, and Image Name (imageName). Users can also choose whether to create an image only from the system disk (whetherOnlySystemDisk). After the image creation, the template will return the ID of the newly created image.\", \"zh-cn\": \"创建一个ECS镜像，适用于需要从现有ECS实例创建自定义镜像的场景，例如备份和系统迁移。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要创建镜像的ECS实例所在地域，ECS实例ID（instanceId）：用于指定要创建镜像的实例，以及图片名称（imageName）。用户还可以选择是否仅创建系统盘映像（whetherOnlySystemDisk）。创建镜像后，模板会返回新创建镜像的ID。\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "cecd23f8d054a904a5743ce0631990cfc3873a551ebcb1983b5adc5ea47b500f",
+      "Hash": "2e359cc952ffb9385615b3009e0d535682efe85ea6cac353478a5d4fcf89443e",
       "IsFavorite": false,
       "Popularity": 8.23,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -310,10 +310,10 @@
       "TemplateId": "t-4bdb1745c171401883a2",
       "TemplateName": "ACS-ECS-CreateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:23Z"
+      "UpdatedDate": "2025-03-13T09:43:02Z"
     },
     {
       "Category": "Other",
@@ -1077,7 +1077,7 @@
       "CreatedDate": "2019-11-07T04:26:58Z",
       "Description": "{\"en\": \"Bulky delete snapshot\", \"zh-cn\": \"批量删除快照\", \"name-en\": \"ACS-ECS-BulkyDeleteSnapshot\", \"name-zh-cn\": \"批量删除快照\", \"categories\": [\"data_backup\"]}",
       "HasTrigger": false,
-      "Hash": "42766dc51858254abc5a5e85f56db57d53e5b2759867bf1f255da4e335b23ee5",
+      "Hash": "1d1a7bfe98c5680acb1ccd1e1dc39af00c7d7392d54df0df6df9825b4d59a36a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1087,10 +1087,10 @@
       "TemplateId": "t-1795a62074f045509873",
       "TemplateName": "ACS-ECS-BulkyDeleteSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-22T02:36:40Z"
+      "UpdatedDate": "2025-03-13T09:43:01Z"
     },
     {
       "Category": "Other",
@@ -1915,9 +1915,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-07-24T03:39:45Z",
-      "Description": "{\"en\": \"Attach custom policy to user that template executed by after approving\", \"zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachCustomPolicyToUser\", \"name-zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"categories\": [\"security\"]}",
+      "Description": "{\"en\": \"Attach custom policy to user that template executed by after approving\", \"zh-cn\": \"在审批通过后授予自定义权限给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachCustomPolicyToUser\", \"name-zh-cn\": \"审批通过后授予自定义权限给创建执行的子用户\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "94752ee57b5cada14010e49f21c90a58ccbb3385779471698310c05850debd6c",
+      "Hash": "0dab71273940583128fd1bc4ffe164a50c0d27330edbc6bf091b569a286e447b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1927,10 +1927,10 @@
       "TemplateId": "t-6ab589bbe4354166b258",
       "TemplateName": "ACS-RAM-ApproveAttachCustomPolicyToUser",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-04T01:14:40Z"
+      "UpdatedDate": "2025-03-13T09:43:05Z"
     },
     {
       "Category": "Other",
@@ -2104,9 +2104,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-08-25T08:10:25Z",
-      "Description": "{\"en\": \"Put the bucket referer\", \"zh-cn\": \"设置存储空间防盗链\", \"name-en\": \"ACS-OSS-PutBucketReferer\", \"name-zh-cn\": \"设置存储空间防盗链\", \"categories\": [\"security\"]}",
+      "Description": "{\"en\": \"Put the bucket referer\", \"zh-cn\": \"设置存储空间的防盗链\", \"name-en\": \"ACS-OSS-PutBucketReferer\", \"name-zh-cn\": \"设置存储空间防盗链\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "a55b40566ca2acc245fb900ca6ed2bf61131f06e47a1da42a6f754610d7a5097",
+      "Hash": "cff211370dec2acf9930e6168b3c1533e2d2dca33fc19a3803fe31fa7ef3e19c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2116,10 +2116,10 @@
       "TemplateId": "t-86fe7abccbd94dca9cdc",
       "TemplateName": "ACS-OSS-PutBucketReferer",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-17T06:01:57Z"
+      "UpdatedDate": "2025-03-13T09:43:05Z"
     },
     {
       "Category": "Other",
@@ -2629,9 +2629,9 @@
       "Category": "TimerTrigger",
       "CreatedBy": "ACS",
       "CreatedDate": "2021-05-19T03:43:50Z",
-      "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
+      "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在指定ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "8110a3d7e9b732a0fe9a135a1fd7b33429d3b9ad34857a89051ac1048bc57218",
+      "Hash": "b38d8bfce141fd64423eb4cb01df8bd3db76fff16567980e6efb8246be7a00f7",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2641,18 +2641,18 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-04T09:29:53Z"
+      "UpdatedDate": "2025-03-13T09:43:02Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2021-05-20T06:45:21Z",
-      "Description": "{\"en\": \"Bulky modify ECS instance user password by secret parameter\", \"zh-cn\": \"通过加密参数批量修改ECS实例用户密码\", \"name-en\": \"ACS-ECS-BulkyModifyUserPasswordBySecretParameter\", \"name-zh-cn\": \"通过加密参数批量修改ECS实例用户密码\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Bulky modify ECS instance user password by secret parameter\", \"zh-cn\": \"通过加密参数批量的修改ECS实例用户密码\", \"name-en\": \"ACS-ECS-BulkyModifyUserPasswordBySecretParameter\", \"name-zh-cn\": \"通过加密参数批量修改ECS实例用户密码\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "7e2240be7378a4e46d3d9009d6f3c8aa6c83bbba0a86811be5d0139b66a1f5c0",
+      "Hash": "0017c03df8c024ea5e1b964114a9dad4b2d719a2f2508bdaf99d81d2634da7d4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2662,10 +2662,10 @@
       "TemplateId": "t-af7e516eecf44d16976b",
       "TemplateName": "ACS-ECS-BulkyModifyUserPasswordBySecretParameter",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-24T02:54:50Z"
+      "UpdatedDate": "2025-03-13T09:43:02Z"
     },
     {
       "Category": "Other",
@@ -3868,9 +3868,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2022-06-01T09:34:52Z",
-      "Description": "{\"en\": \"Bulky modify access control list entry\", \"zh-cn\": \"批量修改访问控制策略组中的IP条目\", \"name-en\": \"ACS-SLB-BulkyModifyAccessControlListEntry\", \"name-zh-cn\": \"批量修改负载均衡访问控制策略组中的IP条目\", \"categories\": [\"computenest\"]}",
+      "Description": "{\"en\": \"Bulky modify access control list entry\", \"zh-cn\": \"批量修改访问控制策略组中的 IP 条目\", \"name-en\": \"ACS-SLB-BulkyModifyAccessControlListEntry\", \"name-zh-cn\": \"批量修改负载均衡访问控制策略组中的IP条目\", \"categories\": [\"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "21a64367414fda1aebee6fc2699f1647b6ab4457871302973c10ce759790ed9f",
+      "Hash": "e20bf8b1f60569f0aa653750a9d44bf78f8dd02f1e0000a4d49391ecff69ec11",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3880,10 +3880,10 @@
       "TemplateId": "t-cf0fbc2a93014bbca8d2",
       "TemplateName": "ACS-SLB-BulkyModifyAccessControlListEntry",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:30Z"
+      "UpdatedDate": "2025-03-13T09:43:06Z"
     },
     {
       "Category": "Other",
@@ -4374,7 +4374,7 @@
       "CreatedDate": "2023-06-30T02:07:36Z",
       "Description": "{\"en\": \"Schedule to start and stop RDS instances\", \"zh-cn\": \"RDS定时开关机或者关开机\", \"name-en\": \"ACS-RDS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"RDS定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "3118675f5ef7677f27dfa299e5ceae83b2d1328211e8384e131f28f097d2cbe2",
+      "Hash": "d5f88113f085eb885637e662d3ee5d57a6e0e0b9177f722ad153b819f315ed42",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4384,10 +4384,10 @@
       "TemplateId": "t-83d99815f0b14078b665",
       "TemplateName": "ACS-RDS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-03T07:59:51Z"
+      "UpdatedDate": "2025-03-13T09:43:06Z"
     },
     {
       "Category": "Other",
@@ -5025,7 +5025,7 @@
       "CreatedDate": "2024-04-10T02:12:02Z",
       "Description": "{\"en\": \"Schedule to upgrade EIP bandwidth\", \"zh-cn\": \"定时升级EIP实例临时带宽\", \"name-en\": \"ACS-VPC-ScheduleToUpgradeEipBandwidth\", \"name-zh-cn\": \"定时升级EIP实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "6a0e2c0619b454aeb7c4718abef966786223eb6fb08fdbde0fa4de2cd7df3eb2",
+      "Hash": "162c13525cc84e8edfcd636f8b1a6702d877bb021a7e84198834dacb7cbb0631",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5035,10 +5035,10 @@
       "TemplateId": "t-ea5c84904d7f466890ad",
       "TemplateName": "ACS-VPC-ScheduleToUpgradeEipBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-03T11:53:14Z"
+      "UpdatedDate": "2025-03-13T09:46:56Z"
     },
     {
       "Category": "Other",

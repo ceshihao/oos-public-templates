@@ -3,7 +3,7 @@ Description:
   name-en: ACS-ECS-UpdateAndCopyImage
   name-zh-cn: 更新ECS镜像并同步到其它地域
   en: 'Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.'
-  zh-cn: 通过运行命令更新一个已存在的ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。
+  zh-cn: 通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。
   categories:
     - image_manage
 Parameters:
@@ -260,13 +260,15 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
-Tasks:
-- Name: createStack
-  Action: 'ACS::ExecuteAPI'
-  When:
+Conditions:
+  CreateVpc:
     Fn::Equals:
       - '{{ whetherCreateVpc }}'
       - true
+Tasks:
+- Name: createStack
+  Action: 'ACS::ExecuteAPI'
+  When: CreateVpc
   Description:
     en: Create a resource stack
     zh-cn: 创建资源栈
@@ -329,10 +331,7 @@ Tasks:
       ValueSelector: StackId
 - Name: untilStackReady
   Action: 'ACS::WaitFor'
-  When:
-    Fn::Equals:
-      - '{{ whetherCreateVpc }}'
-      - true
+  When: CreateVpc
   Description:
     en: Wait for the stack status CREATE_COMPLETE
     zh-cn: 等待资源栈至创建成功状态
@@ -449,10 +448,7 @@ Tasks:
       Force: true
 - Name: deleteStack
   Action: 'ACS::ExecuteApi'
-  When:
-    Fn::Equals:
-      - '{{ whetherCreateVpc }}'
-      - true
+  When: CreateVpc
   Description:
     en: Delete the stack
     zh-cn: 删除资源栈

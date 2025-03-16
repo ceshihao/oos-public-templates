@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en:  'Creates an ECS image, applicable to scenarios requiring the creation of a custom image from an existing ECS instance, such as for backup and system migration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instance for which the image will be created, ECS Instance ID (instanceId), which identifies the instance from which the image will be created, and Image Name (imageName). Users can also choose whether to create an image only from the system disk (whetherOnlySystemDisk). After the image creation, the template will return the ID of the newly created image.'
-  zh-cn: 创建一个ECS镜像，适用于需要从现有ECS实例创建自定义镜像的场景，例如备份和系统迁移。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要创建镜像的ECS实例所在的地域，ECS实例ID（instanceId）：用于指定要创建镜像的实例，以及图片名称（imageName）。用户还可以选择是否仅创建系统盘映像（whetherOnlySystemDisk）。创建镜像后，模板会返回新创建镜像的ID。
+  zh-cn: 创建一个ECS镜像，适用于需要从现有ECS实例创建自定义镜像的场景，例如备份和系统迁移。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要创建镜像的ECS实例所在地域，ECS实例ID（instanceId）：用于指定要创建镜像的实例，以及图片名称（imageName）。用户还可以选择是否仅创建系统盘映像（whetherOnlySystemDisk）。创建镜像后，模板会返回新创建镜像的ID。
   name-en: Create Image
   name-zh-cn: 创建镜像
   categories:
@@ -82,16 +82,22 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  NotOnlySystemDisk:
+    Fn::Equals:
+      - '{{ whetherOnlySystemDisk }}'
+      - false
+  OnlySystemDisk:
+    Fn::Equals:
+      - '{{ whetherOnlySystemDisk }}'
+      - true
 Tasks:
 - Name: createImage
   Action: ACS::ECS::CreateImage
   Description:
     en: Create new image with the specified image name and instance ID
     zh-cn: 通过指定实例ID和镜像名称创建新的镜像
-  When:
-    Fn::Equals:
-        - '{{ whetherOnlySystemDisk }}'
-        - false
+  When: NotOnlySystemDisk
   Properties:
     regionId: '{{ regionId }}'
     imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'
@@ -110,10 +116,7 @@ Tasks:
   Description:
     en: Create new system disk image with the specified image name and instance ID
     zh-cn: 通过指定实例ID和镜像名称创建新的系统盘镜像
-  When:
-    Fn::Equals:
-      - '{{ whetherOnlySystemDisk }}'
-      - true
+  When: OnlySystemDisk
   Properties:
     regionId: '{{ regionId }}'
     imageName: '{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}'

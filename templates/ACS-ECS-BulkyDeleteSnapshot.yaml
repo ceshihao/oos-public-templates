@@ -13,7 +13,7 @@ Parameters:
       zh-cn: 快照类型
     Description:
       en: Specified： Specified snapshot, Unrelated： Unrelated snapshot
-      zh-cn: Specified：指定的快照，Unrelated：无关联的快照
+      zh-cn: Specified：指定的快照 Unrelated：无关联的快照
     Type: String
     Default: Specified
     AllowedValues:
@@ -54,13 +54,19 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  SpecifiedSnapshot:
+    Fn::Equals:
+      - '{{ snapshotType }}'
+      - Specified
+  UnrelatedSnapshot:
+    Fn::Equals:
+      - '{{ snapshotType }}'
+      - Unrelated
 Tasks:
   - Name: deleteSnapshot
     Action: ACS::ExecuteAPI
-    When:
-      Fn::Equals:
-        - '{{ snapshotType }}'
-        - Specified
+    When: SpecifiedSnapshot
     Description:
       en: Delete the specified snapshot
       zh-cn: 删除指定的快照
@@ -75,10 +81,7 @@ Tasks:
       Items: '{{ snapshotIds }}'
   - Name: deleteUnrelatedSnapshot
     Action: ACS::ECS::DeleteUnrelatedSnapshots
-    When:
-      Fn::Equals:
-        - '{{ snapshotType }}'
-        - Unrelated
+    When: UnrelatedSnapshot
     Description:
       en: Delete the unrelated snapshot
       zh-cn: 删除无关联的快照
