@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Bulky encrypt the disks
-  zh-cn: 批量加密云盘
+  en: 'Batch encrypt cloud disks. Please note that you should check your cloud disk type before using this template: only ESSD series cloud disks (ESSD PL0/PL1/PL2/PL3, ESSD Entry, ESSD AutoPL and ESSD local redundancy) are supported. At the same time, prepaid disks purchased at a discount do not support encryption with this template, which will incur additional fees.'
+  zh-cn: 批量加密云盘，请注意，在使用该模板前请检查您的云盘类型：仅支持加密ESSD系列云盘（ESSD PL0/PL1/PL2/PL3、ESSD Entry、ESSD AutoPL和ESSD同城冗余）。同时，折扣购买的预付费磁盘不支持此模板加密，会产生额外的费用
   name-en: ACS-ECS-BulkyEncryptDisks
   name-zh-cn: 批量加密云盘
   categories:

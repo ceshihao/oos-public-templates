@@ -26,6 +26,7 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::GitAccount::Name
     AssociationPropertyMetadata:
       Platform: ${platform}
+      ShowUnbindCom: true
   organization:
     Type: String
     Label:

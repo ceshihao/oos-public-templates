@@ -2001,7 +2001,7 @@
       "CreatedDate": "2020-08-19T11:19:29Z",
       "Description": "{\"en\": \"Set domain server certificate\", \"zh-cn\": \"启用指定域名下证书功能\", \"name-en\": \"ACS-CDN-SetDomainServerCertificate\", \"name-zh-cn\": \"启用指定域名下证书功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "db1faec84a5ab6936b5bc3c4570282151d93a811df2647c4ea4ae6569d2b9a07",
+      "Hash": "b5bdf5cab9bcf776b46dea73cfcf21ab12f40e8fba2b991122b8daaf5245ecd4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2011,10 +2011,10 @@
       "TemplateId": "t-056477e349be4b54ad63",
       "TemplateName": "ACS-CDN-SetDomainServerCertificate",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:03Z"
+      "UpdatedDate": "2025-03-25T10:53:02Z"
     },
     {
       "Category": "Other",
@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "cf4e4eaa2a3612480c828fca193396106bc15b3e6b879f0b2f15e6c94af1616c",
+      "Hash": "eb098ba910fc80e8851396aee262f8b0ccca3e8e5cbf8825e435573f79681069",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,18 +5350,18 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v16",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-01-09T06:02:20Z"
+      "UpdatedDate": "2025-03-27T11:28:08Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2024-09-03T09:27:39Z",
-      "Description": "{\"en\": \"Bulky encrypt the disks\", \"zh-cn\": \"批量加密云盘\", \"name-en\": \"ACS-ECS-BulkyEncryptDisks\", \"name-zh-cn\": \"批量加密云盘\", \"categories\": [\"security\"]}",
+      "Description": "{\"en\": \"Batch encrypt cloud disks. Please note that you should check your cloud disk type before using this template: only ESSD series cloud disks (ESSD PL0/PL1/PL2/PL3, ESSD Entry, ESSD AutoPL and ESSD local redundancy) are supported. At the same time, prepaid disks purchased at a discount do not support encryption with this template, which will incur additional fees.\", \"zh-cn\": \"批量加密云盘，请注意，在使用该模板前请检查您的云盘类型：仅支持加密ESSD系列云盘（ESSD PL0/PL1/PL2/PL3、ESSD Entry、ESSD AutoPL和ESSD同城冗余）。同时，折扣购买的预付费磁盘不支持此模板加密，会产生额外的费用\", \"name-en\": \"ACS-ECS-BulkyEncryptDisks\", \"name-zh-cn\": \"批量加密云盘\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "e578228b6ef14ea3dfe35a1992eca70e93b2bf51ff6abfdc8f23248cae75208d",
+      "Hash": "bddf5c84893592e8f39c5ae2355bb93edd3ec64eb6c0da4740eca7587f7e4ce6",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5371,10 +5371,10 @@
       "TemplateId": "t-5028412d133e4853976c",
       "TemplateName": "ACS-ECS-BulkyEncryptDisks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-09-03T09:27:39Z"
+      "UpdatedDate": "2025-03-26T09:28:22Z"
     },
     {
       "Category": "TimerTrigger",
