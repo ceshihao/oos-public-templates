@@ -81,6 +81,7 @@ Parameters:
       - ACS::ECS::ReservedInstance
       - ACS::ECS::Activation
       - ACS::ECS::DedicatedHostCluster
+      - ACS::ECS::StorageCapacityUnit
       - ACS::EIP::EipAddress
       - ACS::Eipanycast::AnycastEipAddress
       - ACS::ESS::ScalingGroup
@@ -91,6 +92,8 @@ Parameters:
       - ACS::Eflo::Cluster
       - ACS::Eflo::Node
       - ACS::EAIS::Instance
+      - ACS::Eflo::Vcc
+      - ACS::Eflo::Vpd
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
       - ACS::Ga::Accelerator
@@ -130,6 +133,8 @@ Parameters:
       - ACS::PolarDB::DBCluster
       - ACS::PrivateLink::VpcEndpoint
       - ACS::PrivateLink::VpcEndpointService
+      - ACS::RAM::Role
+      - ACS::RAM::Policy
       - ACS::RDS::DBInstance
       - ACS::Redis::DBInstance
       - ACS::ResourceManager::Account

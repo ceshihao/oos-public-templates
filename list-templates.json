@@ -1959,7 +1959,7 @@
       "CreatedDate": "2020-07-28T07:25:55Z",
       "Description": "{\"en\": \"Create and verify instance by commands\", \"zh-cn\": \"SMC创建并通过执行命令验证目标实例\", \"name-en\": \"ACS-SMC-CreateAndVerifyInstance\", \"name-zh-cn\": \"SMC创建并验证目标实例\"}",
       "HasTrigger": false,
-      "Hash": "1258d78fa49bde5ab1e1a008c4cca6335e7c5319ec0dd422e66cbfdeaaa87e8a",
+      "Hash": "ebdf5ed976712b4931e42ba2793252ee6b9b8dac72e5dcb71aef5ac7df807e3c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1969,10 +1969,10 @@
       "TemplateId": "t-0e0699a718a54631a701",
       "TemplateName": "ACS-SMC-CreateAndVerifyInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-27T11:30:50Z"
+      "UpdatedDate": "2025-03-31T02:28:55Z"
     },
     {
       "Category": "Other",
@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "1feaa90ba214a0e18cba0541e3d85e26f0381522c691dfcd15cbf31b417b393e",
+      "Hash": "5d1d6841b0761af4f46c9fa3bedd0ae7adb80948d7e54747b10accbd9e0eb621",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v39",
+      "TemplateVersion": "v44",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-21T02:49:14Z"
+      "UpdatedDate": "2025-04-03T05:56:03Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "81e056c11c0271a47c84d200c10d28f3cf191068020caf90018bfde361f9c7bc",
+      "Hash": "9b938c4f85f52f91fc8ea54d8013a9aee64e91adce39c906c5112aea35109b26",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v29",
+      "TemplateVersion": "v34",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-21T02:49:15Z"
+      "UpdatedDate": "2025-04-03T05:56:03Z"
     },
     {
       "Category": "Other",
@@ -5445,7 +5445,7 @@
       "CreatedDate": "2024-11-29T09:14:46Z",
       "Description": "{\"name-en\": \"ACS-ECS-DownloadFileFromECS\", \"name-zh-cn\": \"从ECS实例下载文件\", \"en\": \"Upload ECS files to OSS and generate temporary download links\", \"zh-cn\": \"将ECS文件上传到OSS，并生成临时下载链接\"}",
       "HasTrigger": false,
-      "Hash": "2dab3ab700e677974faa1790021b621bcda2dae769d1d639370d776326a2ba8a",
+      "Hash": "5ca663561f3e6c718fa358f699d148be2b00f14e8e814a246bfc36664e135af9",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5455,10 +5455,10 @@
       "TemplateId": "t-e75b0ffbecce4342b3b8",
       "TemplateName": "ACS-ECS-DownloadFileFromECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-29T10:16:52Z"
+      "UpdatedDate": "2025-04-01T11:45:53Z"
     },
     {
       "Category": "Other",
@@ -5760,7 +5760,7 @@
       "CreatedDate": "2021-12-06T08:12:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "0d4d230bb5b42b562194e7e4850f44cfdb3313279d5a5b35c8410b2b94770784",
+      "Hash": "d4de7bf266e1b4160112c2eecff2261549a9020e8fa82a47977b20ad7bc3d5a9",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5770,10 +5770,10 @@
       "TemplateId": "t-28fa369cb3994e71b4b4",
       "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-01-09T04:51:14Z"
+      "UpdatedDate": "2025-03-31T09:01:06Z"
     },
     {
       "Category": "Other",

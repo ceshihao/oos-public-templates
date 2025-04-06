@@ -35,10 +35,9 @@ Parameters:
     Type: Json
     AssociationProperty: RateControl
     Default:
-      Mode: Batch
+      Mode: Concurrency
       MaxErrors: 0
-      Batch:
-        - 20
+      Concurrency: 100
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole

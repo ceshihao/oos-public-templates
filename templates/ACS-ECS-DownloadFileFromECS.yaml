@@ -42,7 +42,9 @@ Parameters:
 Tasks:
   - Action: ACS::ECS::UploadOssFile
     Name: UploadOssFile
-    Description: ''
+    Description:
+      en: Upload OSS file
+      zh-cn: 上传OSS文件
     Properties:
       regionId: '{{ regionId }}'
       ossRegion: '{{ regionId }}'
@@ -67,8 +69,11 @@ Tasks:
       bucketName: '{{ bucketName }}'
       fileToUpload: '{{ fileName }}'
       instanceId: '{{ instanceId }}'
-  - Name: putBucketAcl
+  - Name: PutObjectACL
     Action: 'ACS::ExecuteAPI'
+    Description:
+      en: Put object ACL
+      zh-cn: 设置对象权限
     Properties:
       Service: OSS
       API: PutObjectACL
@@ -95,10 +100,12 @@ Tasks:
                           - '{{ fileName }}'
   - Action: ACS::OSS::GenerateUrl
     Name: GenerateUrl
-    Description: ''
+    Description:
+      en: generate temporary download url
+      zh-cn: 生成临时下载链接
     Properties:
       regionId: '{{ regionId }}'
-      validTime: 900
+      validTime: 600
       isInternal: false
       bucketName: '{{ bucketName }}'
       objectName:
@@ -125,3 +132,6 @@ Outputs:
   temporaryUrl:
     Type: String
     Value: '{{ GenerateUrl.temporaryUrl }}'
+  commandOutput:
+    Type: String
+    Value: '{{ UploadOssFile.commandOutput }}'

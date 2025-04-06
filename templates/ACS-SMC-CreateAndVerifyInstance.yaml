@@ -56,7 +56,7 @@ Parameters:
     Type: Number
     Default: 19
     MinValue: 19
-    MaxValue: 500
+    MaxValue: 2048
   instancesCount:
     Label:
       en: InstancesCount
