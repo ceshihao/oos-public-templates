@@ -94,6 +94,7 @@ Parameters:
       - ACS::EAIS::Instance
       - ACS::Eflo::Vcc
       - ACS::Eflo::Vpd
+      - ACS::Eflo::Subnet
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
       - ACS::Ga::Accelerator

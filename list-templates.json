@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "5d1d6841b0761af4f46c9fa3bedd0ae7adb80948d7e54747b10accbd9e0eb621",
+      "Hash": "b380a1e62302234e7dd1d4be43ed8ec02ec7da35553e96f242f7f95756a98499",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v44",
+      "TemplateVersion": "v45",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-04-03T05:56:03Z"
+      "UpdatedDate": "2025-04-11T01:47:13Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "9b938c4f85f52f91fc8ea54d8013a9aee64e91adce39c906c5112aea35109b26",
+      "Hash": "b24b02bec083177639783bb2bd6e497c4a11a0c884a6f737372370ad0321fe74",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v34",
+      "TemplateVersion": "v35",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-04-03T05:56:03Z"
+      "UpdatedDate": "2025-04-11T01:47:13Z"
     },
     {
       "Category": "Other",
@@ -3891,7 +3891,7 @@
       "CreatedDate": "2022-06-13T02:10:25Z",
       "Description": "{\"en\": \"Rolling update ECI instances in scaling group by update container group\", \"zh-cn\": \"通过更新容器组的方式滚动更新伸缩组内的ECI实例\", \"name-en\": \"ACS-ESS-RollingUpdateByUpdateContainerGroup\", \"name-zh-cn\": \"通过更新容器组的方式滚动更新伸缩组内的ECI实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "7ca55c8c14b111bc429ffaec469e580998039cb4aa041157af56814cf9e75163",
+      "Hash": "be0ca987adfad16cef5f24359c72ae52751377343cec82135d08ba0a59651ce4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3901,10 +3901,10 @@
       "TemplateId": "t-cce7cfe87b8b45b6ade7",
       "TemplateName": "ACS-ESS-RollingUpdateByUpdateContainerGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:26Z"
+      "UpdatedDate": "2025-04-07T07:58:18Z"
     },
     {
       "Category": "Other",
@@ -4983,7 +4983,7 @@
       "CreatedDate": "2024-04-01T03:42:47Z",
       "Description": "{\"en\": \"Create Redis backups in batches and upload them to OSS. Backing up redis and using fc to upload the backup to OSS may incur charges. For billing details, please refer to <a href='https://help .aliyun.com/zh/redis/user-guide/automatic-or-manual-backup#e606eb29c7mew'>Redis Backup Fee Instructions</a> and <a href='https://help.aliyun.com/zh/ fc/product-overview/billing-overview'>Function calculation billing instructions</a>\", \"zh-cn\": \"批量创建Redis备份并上传到OSS。备份redis和使用fc将备份上传到oss都可能会产生费用，计费详情参考<a href='https://help.aliyun.com/zh/redis/user-guide/automatic-or-manual-backup#e606eb29c7mew'>Redis备份费用说明</a>和<a href='https://help.aliyun.com/zh/fc/product-overview/billing-overview'>函数计算计费说明</a>\", \"name-en\": \"ACS-Redis-BulkyCreateBackupAndUploadToOSS\", \"name-zh-cn\": \"批量创建Redis备份并上传到OSS\"}",
       "HasTrigger": false,
-      "Hash": "2f1d601d47fa0ccc7bd728e0f788b9c95544834a114baf90f5e6a111bf6fcd09",
+      "Hash": "2daa3b90eee6cd336a5f48519e8b6a5e5e1908922477bef47d9996b0a6fc9ecf",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4993,10 +4993,10 @@
       "TemplateId": "t-c852b8d5142d485fac0f",
       "TemplateName": "ACS-Redis-BulkyCreateBackupAndUploadToOSS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-12T10:04:38Z"
+      "UpdatedDate": "2025-04-08T03:57:38Z"
     },
     {
       "Category": "TimerTrigger",

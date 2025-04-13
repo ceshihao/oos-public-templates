@@ -42,6 +42,18 @@ Parameters:
       - HealthCheck
       - AlarmNotification
       - ScheduledAction
+  lifecycleState:
+    Label:
+      en: LifecycleState
+      zh-cn: 生命周期状态
+    Description:
+      en: The lifecycle state of the ECI instance to be upgraded
+      zh-cn: 要升级的ECI实例所处的生命周期状态
+    Type: List
+    AllowedValues:
+      - InService
+      - Protected
+    Default: InService
   containerConfigure:
     Label:
       en: ContainerConfigure
@@ -139,7 +151,7 @@ Tasks:
       API: DescribeScalingInstances
       Parameters:
         ScalingGroupId: '{{ scalingGroupId }}'
-        LifecycleState: InService
+        LifecycleState: '{{ lifecycleState }}'
     Outputs:
       instanceIds:
         Type: List

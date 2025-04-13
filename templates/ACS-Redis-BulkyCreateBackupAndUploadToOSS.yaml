@@ -35,6 +35,18 @@ Parameters:
     AssociationProperty: ALIYUN::OSS::Bucket::BucketName
     AssociationPropertyMetadata:
       RegionId: ${OSSRegionId}
+  invokeConfig:
+    Type: String
+    Label:
+      en: Invoke Config
+      zh-cn: 执行配置
+    Description:
+      en: 'FC function execution configuration: synchronous execution or asynchronous execution When using FC to upload a backup, if your backup file is large, the backup upload may fail due to the 60s running time limit of FC synchronous execution. It is recommended that you choose asynchronous execution when the backup file is larger than 500MB. If you choose asynchronous execution, the additional permission policies required are as follows: [fc:DeleteFunctionAsyncInvokeConfig, fc:GetStatefulAsyncInvocation, fc:PutFunctionAsyncInvokeConfig]'
+      zh-cn: FC函数的执行配置：同步执行或异步执行 使用FC上传备份时，若您的备份文件较大，可能会因为FC同步执行的60s运行时间限制导致备份上传失败，建议您在备份文件大于500MB时选择异步执行。若您选择异步执行，需要的额外权限策略如下：[fc:DeleteFunctionAsyncInvokeConfig, fc:GetStatefulAsyncInvocation, fc:PutFunctionAsyncInvokeConfig]
+    AllowedValues:
+      - sync
+      - async
+    Default: sync
   rateControl:
     Label:
       en: RateControl
@@ -77,6 +89,7 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
       OSSRegionId: '{{ OSSRegionId }}'
       OSSBucketName: '{{ OSSBucketName }}'
+      invokeConfig: '{{ invokeConfig }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ GetInstance.InstanceIds }}'
