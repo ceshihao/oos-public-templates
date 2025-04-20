@@ -1,0 +1,102 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Creates one or more ECS instances
+  zh-cn: 创建ECS实例
+  name-en: ACS-ECS-RunInstances
+  name-zh-cn: 创建ECS实例
+  categories:
+    - cost_manage
+Parameters:
+  imageId:
+    Label:
+      en: ImageId
+      zh-cn: 镜像ID
+    Type: String
+    AssociationProperty: 'ALIYUN::ECS::Image::ImageId'
+  instanceType:
+    Label:
+      en: InstanceType
+      zh-cn: 实例类型
+    Type: String
+    AssociationProperty: 'ALIYUN::ECS::Instance::InstanceType'
+    AllowedPattern: ecs\.[A-Za-z0-9\.\-]*
+  securityGroupId:
+    Label:
+      en: SecurityGroupId
+      zh-cn: 安全组ID
+    Type: String
+    AssociationProperty: 'ALIYUN::ECS::SecurityGroup::SecurityGroupId'
+  vSwitchId:
+    Label:
+      en: VSwitchId
+      zh-cn: 交换机ID
+    Type: String
+    AssociationProperty: 'ALIYUN::VPC::VSwitch::VSwitchId'
+    AssociationPropertyMetadata:
+      Filters:
+        - SecurityGroupId: securityGroupId
+  amount:
+    Label:
+      en: Amount
+      zh-cn: 实例数量
+    Type: Number
+    Default: 1
+  instanceName:
+    Label:
+      en: InstanceName
+      zh-cn: 实例名称
+    Type: String
+    Default: ''
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+- Name: runInstances
+  Action: ACS::ECS::RunInstances
+  Description:
+    en: Creates one or more ECS instances
+    zh-cn: 创建实例
+  Properties:
+    imageId: '{{ imageId }}'
+    instanceType: '{{ instanceType }}'
+    securityGroupId: '{{ securityGroupId }}'
+    vSwitchId: '{{ vSwitchId }}'
+    amount: '{{ amount }}'
+    instanceName: '{{ instanceName }}'
+  Outputs:
+    instanceId:
+      ValueSelector: instanceIds
+      Type: List
+Outputs:
+  instanceId:
+    Type: String
+    Value: '{{ runInstances.instanceId }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - accessToken
+        Label:
+          default:
+            zh-cn: 钉钉访问令牌
+            en: Dingtalk Access Token
+      - Parameters:
+          - imageId
+          - instanceType
+          - securityGroupId
+          - vSwitchId
+          - amount
+        Label:
+          default:
+            zh-cn: 创建实例选型
+            en: Run Command Options
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
