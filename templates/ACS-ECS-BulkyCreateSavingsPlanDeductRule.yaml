@@ -204,6 +204,7 @@ Tasks:
             - '{{ datadiskSP }}'
         CommodityCode: '{{ productType }}'
         PricingCycle: Year
+        AutoPay: false
         PayMode:
           Fn::Select:
             - Fn::Jq:
@@ -403,6 +404,33 @@ Tasks:
       Method: POST
       Parameters:
         UserDeductRules: '[{"CommodityCode":"ecs","ModuleCode":"instance_type","SkipDeduct":true},{"CommodityCode":"ecs","ModuleCode":"systemdisk","SkipDeduct":true},{"CommodityCode":"ecs","ModuleCode":"vm_os","SkipDeduct":true},{"CommodityCode":"ecs","ModuleCode":"vm_bandwidth","SkipDeduct":true},{"CommodityCode":"eci_betav1","ModuleCode":"instance_type","SkipDeduct":true},{"CommodityCode":"eci_betav1","ModuleCode":"cpu","SkipDeduct":true},{"CommodityCode":"eci_betav1","ModuleCode":"mem","SkipDeduct":true},{"CommodityCode":"ecs_iCR_public_cn","ModuleCode":"period","SkipDeduct":true}]'
+        SpnInstanceCode: '{{ untilDatadiskOrderPaidReady.instanceIds }}'
+    Outputs:
+      result:
+        Type: List
+        ValueSelector: .
+  - Name: SetSavingPlanUserDeductRuleDatadiskIntl
+    Action: ACS::ExecuteAPI
+    When:
+      Fn::And:
+        - Fn::Equals:
+            - '{{ productType }}'
+            - savingplan_common_public_intl
+        - Fn::Equals:
+            - '{{ planType }}'
+            - ecs
+        - Fn::Not:
+            Fn::Equals:
+              - '{{ datadiskSP }}'
+              - {}
+    Description:
+      en: Set Saving Plan User Deduct Rule(DatadiskIntl)
+      zh-cn: 国际Datadisk设置抵扣规则
+    Properties:
+      Service: bssopenapi
+      API: SetSavingPlanUserDeductRule
+      Parameters:
+        UserDeductRules: '[{"CommodityCode":"ecs_intl","ModuleCode":"instance_type","SkipDeduct":true},{"CommodityCode":"ecs_intl","ModuleCode":"systemdisk","SkipDeduct":true},{"CommodityCode":"ecs_intl","ModuleCode":"vm_os","SkipDeduct":true},{"CommodityCode":"ecs_intl","ModuleCode":"vm_bandwidth","SkipDeduct":true},{"CommodityCode":"eci_betav1_intl","ModuleCode":"instance_type","SkipDeduct":true},{"CommodityCode":"eci_betav1_intl","ModuleCode":"cpu","SkipDeduct":true},{"CommodityCode":"eci_betav1_intl","ModuleCode":"mem","SkipDeduct":true},{"CommodityCode":"ecs_iCR_public_intl","ModuleCode":"period","SkipDeduct":true}]'
         SpnInstanceCode: '{{ untilDatadiskOrderPaidReady.instanceIds }}'
     Outputs:
       result:
