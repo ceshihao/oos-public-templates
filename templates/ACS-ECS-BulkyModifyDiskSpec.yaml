@@ -84,7 +84,7 @@ Tasks:
       PerformanceLevel:
         Fn::If:
           - Fn::Equals:
-            - ${diskCategory}
+            - '{{ diskCategory }}'
             - cloud_essd
           - '{{ performanceLevel }}'
           - null

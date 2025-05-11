@@ -3786,7 +3786,7 @@
       "CreatedDate": "2022-06-01T07:31:06Z",
       "Description": "{\"en\": \"Bulky modify disk spec\", \"zh-cn\": \"批量修改云盘规格\", \"name-en\": \"ACS-ECS-BulkyModifyDiskSpec\", \"name-zh-cn\": \"批量修改云盘规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "04d95bd09d10acf4ceb4d0e36864bf25e24fe1b11b9b146fd3f05c606a943477",
+      "Hash": "fcda45256687f2646c31e68e24b6b7734bf43041f845f15529acea2e6a1869b1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3796,10 +3796,10 @@
       "TemplateId": "t-143fef8b71554c17bac2",
       "TemplateName": "ACS-ECS-BulkyModifyDiskSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-18T11:49:16Z"
+      "UpdatedDate": "2025-05-09T09:22:35Z"
     },
     {
       "Category": "Other",
@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "eb098ba910fc80e8851396aee262f8b0ccca3e8e5cbf8825e435573f79681069",
+      "Hash": "c75820f93d9c0f79c90cc8d7f5bc4288f301e2793186af6ec6478ef7b71ac7c5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v18",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-27T11:28:08Z"
+      "UpdatedDate": "2025-05-09T08:23:46Z"
     },
     {
       "Category": "Other",

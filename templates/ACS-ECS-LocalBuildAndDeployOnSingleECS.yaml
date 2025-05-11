@@ -5,12 +5,31 @@ Description:
   name-en: ACS-ECS-LocalBuildAndDeployOnSingleECS
   name-zh-cn: 单ECS本地构建部署
 Parameters:
+  codeSource:
+    Label:
+      en: CodeResource
+      zh-cn: 代码源
+    Type: String
+    Default: gitRepo
+    AllowedValues:
+      - gitRepo
+      - uploadFile
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        gitRepo: Git仓库
+        uploadFile: 上传本地代码
   platform:
     Type: String
     Label:
       en: Platform
       zh-cn: 平台
     AssociationProperty: ALIYUN::OOS::GitPlatform::Name
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
     Default: github
     Description:
       en: ECS in mainland China may experience unstable GitHub connection. It is recommended to use Gitee first.
@@ -23,10 +42,21 @@ Parameters:
     Label:
       en: Owner
       zh-cn: 所有者
+    Default: ''
     AssociationProperty: ALIYUN::OOS::GitAccount::Name
     AssociationPropertyMetadata:
       Platform: ${platform}
       ShowUnbindCom: true
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
   organization:
     Type: String
     Label:
@@ -37,16 +67,54 @@ Parameters:
     AssociationPropertyMetadata:
       Platform: ${platform}
       Owner: ${owner}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
   repository:
     Type: String
     Label:
       en: Repository
       zh-cn: 仓库
+    Default: ''
     AssociationProperty: ALIYUN::OOS::GitRepository::Name
     AssociationPropertyMetadata:
       Platform: ${platform}
       Organization: ${organization}
       Owner: ${owner}
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
+  branch:
+    Label:
+      en: Branch
+      zh-cn: 分支
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitBranch::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
+      RepoFullName: ${repository}
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - gitRepo
   instanceId:
     Label:
       en: InstanceId
@@ -60,19 +128,32 @@ Parameters:
       Visible:
         Condition:
           Fn::Equals:
-            - ${platform}
+            - ${codeSource}
             - Null
-  branch:
-    Label:
-      en: Branch
-      zh-cn: 分支
-    AssociationProperty: ALIYUN::OOS::GitBranch::Name
-    AssociationPropertyMetadata:
-      Platform: ${platform}
-      Organization: ${organization}
-      Owner: ${owner}
-      RepoFullName: ${repository}
+  sourcePath:
     Type: String
+    Label:
+      en: Upload File
+      zh-cn: 上传本地文件
+    Description:
+      en: You can compress the local code into a zip or tar.gz format file. The file will be uploaded to the temporary OSS provided by AliCloud, and then downloaded and automatically decompressed to the specified download path. <strong>Note</strong> If the compression package contains the top-level folder (all files are in this top-level folder), the top-level folder will not be retained after decompression, and the internal files will be decompressed to the download path directly.
+      zh-cn: 您可以将本地代码压缩成zip或tar.gz格式的文件。文件会被上传到阿里云提供的临时OSS，然后被下载并自动解压到您指定的下载路径。<strong>注意</strong>：如果压缩包中包含最顶层的文件夹（所有文件都在这一个最外层文件夹里），解压后不会保留最顶层的文件夹，而是直接把内部文件解压到下载路径。
+    Default: 'example.zip'
+    AllowedPattern: ^[^?]*\.(?:zip|tar\.gz)(?:\?.*)?$
+    AssociationProperty: ALIYUN::OOS::File::FileUrl
+    AssociationPropertyMetadata:
+      FileType: ${sourceType}
+      RegionId: ${regionId}
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - uploadFile
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeSource}
+            - uploadFile
   downloadPath:
     Label:
       en: Download Path
@@ -130,21 +211,62 @@ Parameters:
       Branch: ${branch}
       Visible:
         Condition:
-          Fn::Equals:
-            - ${buildOption}
-            - Automation
+          Fn::And:
+            - Fn::Equals:
+                - ${codeSource}
+                - gitRepo
+            - Fn::Equals:
+                - ${buildOption}
+                - Automation
       Required:
         Condition:
-          Fn::Equals:
-            - ${buildOption}
-            - Automation
+          Fn::And:
+            - Fn::Equals:
+                - ${codeSource}
+                - gitRepo
+            - Fn::Equals:
+                - ${buildOption}
+                - Automation
+  dockerFilePathForUploadFile:
+    Label:
+      en: Dockerfile Path
+      zh-cn: Dockerfile路径
+    Description:
+      en: Please specify the Dockerfile path. Examples Dockerfile, ./Dockerfile, ./config/Dockerfile
+      zh-cn: 请指定Dockerfile的路径。示例 Dockerfile，./Dockerfile，./config/Dockerfile
+    Type: String
+    Default: ''
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Owner: ${owner}
+      OrgId: ${organization}
+      RepoFullName: ${repository}
+      Branch: ${branch}
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${codeSource}
+                - uploadFile
+            - Fn::Equals:
+                - ${buildOption}
+                - Automation
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${codeSource}
+                - uploadFile
+            - Fn::Equals:
+                - ${buildOption}
+                - Automation
   contextPath:
     Label:
       en: Context Path
       zh-cn: 上下文路径
     Description:
       en: Context Path as the path of the context directory relative to the root directory of the code repository
-      zh-cn: docker build命令执行的上下文路径, 填写相对于代码库根目录的路径，如.或./config/。如不填写，默认为Dockerfile文件所在目录。
+      zh-cn: docker build命令执行的上下文路径, 填写相对于代码库根目录的路径，如.或./config/等等。如不填写，默认为Dockerfile文件所在目录。
     Type: String
     Default: ''
     AssociationPropertyMetadata:
@@ -240,6 +362,10 @@ Parameters:
 RamRole: ''
 Tasks:
   - Name: GitCodeRepo
+    When:
+      Fn::Equals:
+        - '{{ codeSource }}'
+        - gitRepo
     Action: ACS::CICD::GitCodeRepo
     Description: 指定代码源，生成临时授权链接
     Properties:
@@ -253,9 +379,21 @@ Tasks:
     Description: 拉取代码，构建并部署应用
     Properties:
       instanceId: '{{ instanceId }}'
-      codeSource: git
+      codeSource:
+        Fn::If:
+          - Fn::Equals:
+            - '{{ codeSource }}'
+            - gitRepo
+          - git
+          - oss
       isDockerBuild: '{{ isDockerBuild }}'
-      codeSourceUrl: '{{ GitCodeRepo.authorizedUrl }}'
+      codeSourceUrl:
+        Fn::If:
+          - Fn::Equals:
+            - '{{ codeSource }}'
+            - gitRepo
+          - '{{ GitCodeRepo.authorizedUrl }}'
+          - '{{ sourcePath }}'
       buildAndDeployScript:
         Fn::If:
           - Fn::And:
@@ -267,9 +405,18 @@ Tasks:
                   - true
           - Fn::Sub:
               - |-
-                  container_name=$(echo "{{platform}}-{{owner}}-{{repository}}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z0-9]/-/g')
+                  if [ "{{ codeSource }}" = "gitRepo" ]; then
+                    container_name=$(echo "{{platform}}-{{owner}}-{{repository}}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z0-9]/-/g')
+                  else
+                    result=$(echo "{{ sourcePath }}" | sed -E 's!.*/([^/?]*)\?[^?]*$!\1!')
+                    container_name=$(echo "$result" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z0-9]/-/g')
+                  fi
                   current_image_version=$container_name:{{ACS::ExecutionId}}
-                  docker build -f {{dockerFilePath}} -t $current_image_version ${FinalContextPath}
+                  if [ "{{ codeSource }}" = "gitRepo" ]; then
+                    docker build -f {{dockerFilePath}} -t $current_image_version ${FinalContextPath}
+                  else           
+                    docker build -f {{dockerFilePathForUploadFile}} -t $current_image_version ${FinalContextPath}
+                  fi
                   
                   container_id=$(docker ps -aq -f name=$container_name) 
                   if [ -n "$container_id" ]; then
@@ -281,22 +428,44 @@ Tasks:
               - FinalContextPath:
                   Fn::If:
                     - Fn::Equals:
-                        - '{{ contextPath }}'
-                        - ''
+                        - '{{ codeSource }}'
+                        - gitRepo
                     - Fn::If:
-                        - Fn::ContainsSubString:
-                            - '{{ dockerFilePath }}'
-                            - /
-                        - Fn::Join:
-                            - /
-                            - Fn::RangeSelect:
-                                - 0
-                                - -1
-                                - Fn::Split:
-                                    - /
-                                    - '{{ dockerFilePath }}'
-                        - '.'
-                    - '{{ contextPath }}'
+                        - Fn::Equals:
+                            - '{{ contextPath }}'
+                            - ''
+                        - Fn::If:
+                            - Fn::ContainsSubString:
+                                - '{{ dockerFilePath }}'
+                                - /
+                            - Fn::Join:
+                                - /
+                                - Fn::RangeSelect:
+                                    - 0
+                                    - -1
+                                    - Fn::Split:
+                                        - /
+                                        - '{{ dockerFilePath }}'
+                            - '.'
+                        - '{{ contextPath }}'
+                    - Fn::If:
+                        - Fn::Equals:
+                            - '{{ contextPath }}'
+                            - ''
+                        - Fn::If:
+                            - Fn::ContainsSubString:
+                                - '{{ dockerFilePathForUploadFile }}'
+                                - /
+                            - Fn::Join:
+                                - /
+                                - Fn::RangeSelect:
+                                    - 0
+                                    - -1
+                                    - Fn::Split:
+                                        - /
+                                        - '{{ dockerFilePathForUploadFile }}'
+                            - '.'
+                        - '{{ contextPath }}'
           - '{{ buildAndDeployScript }}'
       workingDir:
         Fn::If:
@@ -329,6 +498,8 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
+          - codeSource
+          - sourcePath
           - platform
           - owner
           - organization
@@ -344,6 +515,7 @@ Metadata:
           - buildOption
           - buildAndDeployScript
           - dockerFilePath
+          - dockerFilePathForUploadFile
           - contextPath
           - dockerRunOptions
         Label:
