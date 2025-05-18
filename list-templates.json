@@ -6,7 +6,7 @@
       "CreatedDate": "2019-09-23T09:38:46Z",
       "Description": "{\"en\": \"Bulky run commands on multiple ECS instances, applicable to scenarios that require managing multiple ECS instances simultaneously, such as application management and resource tagging operations. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the target ECS instances where the commands will be executed, Resource Type (resourceType), to determine the type of target ECS instances (e.g., ECS instance or managed instance), and Target Instances (targets), to select the specific instances to be operated on. Other parameters include Command Type (commandType), which specifies the type of command to be executed (e.g., Shell script, Python script, etc.), and Command Content (commandContent), which is the actual command or script. Upon execution, the template provides the output results of the bulk operation, enabling users to verify the status of the command executions.\", \"zh-cn\": \"批量在多台ECS实例上运行云助手命令，适用于需要同时管理多台ECS实例的场景，如应用程序管理和资源标记操作等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要执行命令的目标ECS实例所在的区域，资源类型（resourceType）：用于确定目标ECS实例的类型（如ECS实例或受管实例），目标实例（targets）：用于选择要操作的具体实例列表。参数还包括命令类型（commandType）：指定要执行的命令类型（如Shell脚本、Python脚本等），以及命令内容（commandContent）：具体的命令或脚本内容。模板在执行后会返回批量操作的输出结果，方便用户验证命令执行的状态。\", \"name-en\": \"Run Command\", \"name-zh-cn\": \"发送远程命令\", \"categories\": [\"run_command\", \"application_manage\", \"computenest\", \"tag_operate_resource\"]}",
       "HasTrigger": false,
-      "Hash": "119ada9e53afb101459e91d05a3ff4f3ee4ed8158f700218484a1ba2a63fd19a",
+      "Hash": "3995f71039998dedf7a3e905ae4f33f9b6c41e6c0b4e7a26dbf49bc0827db83d",
       "IsFavorite": false,
       "Popularity": 10,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -16,10 +16,10 @@
       "TemplateId": "t-89fb84c218e84fd58e14",
       "TemplateName": "ACS-ECS-BulkyRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v61",
+      "TemplateVersion": "v64",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:22Z"
+      "UpdatedDate": "2025-05-15T11:34:01Z"
     },
     {
       "Category": "Other",
@@ -27,7 +27,7 @@
       "CreatedDate": "2020-06-04T11:30:03Z",
       "Description": "{\"en\": \"Bulky upload files to multiple Alibaba Cloud ECS instances, applicable to scenarios that require distributing files across multiple instances, such as application deployment and data synchronization. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the target ECS instances where the files will be uploaded, Target Instances (targets), which defines the specific ECS instances to be operated on, Source Type (sourceType), which specifies the source method of the file (e.g., local, OSS, or HTTPS), and Source Path (sourcePath), which is the exact location of the file. Upon execution, the template provides the results of the file upload operation, enabling users to verify the status of the file uploads.\", \"zh-cn\": \"批量上传文件到多个阿里云ECS实例，适用于需要在多台实例间分发文件的场景，例如应用部署、数据同步等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要上传文件的目标ECS实例所在的区域，目标实例（targets）：用于定义具体需要操作的ECS实例，文件类型（sourceType）：用于指定文件的来源方式（如本地、OSS或HTTPS），以及文件路径（sourcePath）：具体的文件位置。模板在执行后会返回文件上传操作的结果信息，方便用户验证文件上传的状态。\", \"name-en\": \"Upload File\", \"name-zh-cn\": \"上传文件\", \"categories\": [\"instance_manage\", \"application_manage\", \"computenest\", \"tag_operate_resource\"]}",
       "HasTrigger": false,
-      "Hash": "5643ad038fae0b4b6a05ae3cabc2a66fce061abac8f807161585946ca16d4be7",
+      "Hash": "d4bfa65414c5a077c01582b45ddb9fac7c40ebbc25b555293877a8df23373883",
       "IsFavorite": false,
       "Popularity": 9.99,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -37,10 +37,10 @@
       "TemplateId": "t-f3894c68400546069dfd",
       "TemplateName": "ACS-ECS-BulkyDownloadFile",
       "TemplateType": "Automation",
-      "TemplateVersion": "v28",
+      "TemplateVersion": "v31",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:21Z"
+      "UpdatedDate": "2025-05-15T11:34:00Z"
     },
     {
       "Category": "Other",
@@ -48,7 +48,7 @@
       "CreatedDate": "2019-06-21T02:32:39Z",
       "Description": "{\"en\": \"Update an existing ECS image by running commands and create a new ECS image. This is applicable to scenarios requiring batch updates and management of ECS images, such as software installation and system configuration changes. During configuration, users need to provide the following required parameters: Region ID (regionId), which specifies the region where the image update and creation operations occur, and Source Image ID (sourceImageId), which identifies the original ECS image that needs updating. Additional parameters that can be modified from their default values include: Target Image Name (targetImageName) for naming the newly created ECS image, Instance Type (instanceType) for the type of instance to install and configure the new image on, and Update Type (updateType), which can be selected to either run commands or install packages. Upon execution, the template will return the ID of the newly created image, facilitating the verification and management of the created ECS image.\", \"zh-cn\": \"通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像，适用于需要对ECS镜像进行批量更新和管理的场景，例如软件安装和系统配置更改。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定创建和更新镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像。其他可在默认值基础上修改的参数包括：目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名，实例类型（instanceType）：用于安装和配置新的镜像实例类型，以及更新方式（updateType）：可选择运行命令或安装软件包。模板在执行后会返回新创建的镜像ID，方便用户验证和管理创建的ECS镜像。\", \"name-en\": \"Update Image\", \"name-zh-cn\": \"更新镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9682b3f5944b8ee56dce8c465145e60b9443a66094cff3bf88c02df650b5d776",
+      "Hash": "634c96bf60df84113ab805f5a8fa1902a55f16f7cdf016c2bb4fed7cc9b52926",
       "IsFavorite": false,
       "Popularity": 9.9,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -58,10 +58,10 @@
       "TemplateId": "t-1d2b574bd67a4c949677",
       "TemplateName": "ACS-ECS-UpdateImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v57",
+      "TemplateVersion": "v60",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-13T09:43:04Z"
+      "UpdatedDate": "2025-05-15T11:34:04Z"
     },
     {
       "Category": "Other",
@@ -90,7 +90,7 @@
       "CreatedDate": "2019-11-20T03:57:45Z",
       "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.\", \"zh-cn\": \"通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e79746fb55687bddd1207fa1021043221fd74002db8aead1f168ba3a097016c2",
+      "Hash": "e7c7cf2d7e7ccd3bc83fcafdcba0295826a0fe7b945e05bbab712bda7c2a61ce",
       "IsFavorite": false,
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -100,10 +100,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v39",
+      "TemplateVersion": "v42",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-13T09:43:04Z"
+      "UpdatedDate": "2025-05-15T11:34:03Z"
     },
     {
       "Category": "Other",
@@ -216,7 +216,7 @@
       "CreatedDate": "2019-11-22T02:43:51Z",
       "Description": "{\"en\": \"Schedule to run command on ECS instances, applicable to scenarios that require periodically running commands on multiple ECS instances, such as system maintenance and task automation. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances where the commands will be run, Cron Expression (triggerCron), which defines the schedule for the task, Target Instances (targets), which defines the specific ECS instances to be operated on, and Command Type (commandType) and Command Content (commandContent). Upon execution, the template will return a list of the output results of the run command, enabling users to verify the status of the command executions.\", \"zh-cn\": \"定时批量在多台ECS实例上运行云助手命令，适用于需要定期在多台ECS实例上执行命令的场景，例如系统维护和任务自动化。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要运行命令的ECS实例所在的区域，Cron表达式（triggerCron）：用于定义任务的定时触发规则，目标实例（targets）：用于定义具体需要操作的ECS实例，以及命令类型（commandType）和命令内容（commandContent）。模板在执行后会返回运行命令的输出结果列表，方便用户验证命令的执行状态。\", \"name-en\": \"ACS-ECS-ScheduleToRunCommand\", \"name-zh-cn\": \"定时批量在ECS实例上运行命令\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "936f7873c0a63c54c60dc26c86c327c73efdfab89ec124011bf812108b17373a",
+      "Hash": "0100712fa26cc692a64d1ad7e3aca40ca5427bb4068eb32c1097895c319cd79e",
       "IsFavorite": false,
       "Popularity": 8.4,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -226,10 +226,10 @@
       "TemplateId": "t-dabecf54512d4ce490f4",
       "TemplateName": "ACS-ECS-ScheduleToRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:24Z"
+      "UpdatedDate": "2025-05-15T11:34:01Z"
     },
     {
       "Category": "TimerTrigger",
@@ -1224,7 +1224,7 @@
       "CreatedDate": "2019-11-26T07:01:52Z",
       "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"name-en\": \"ACS-ESS-LifeCycleRunCommand\", \"name-zh-cn\": \"使用生命周期挂钩到实例中执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "7253135d386b3334bb2bed374550b17a01e6e7b7f19892cc42600f77848ae825",
+      "Hash": "a90754a734d5840adc61fe950bafce77707b1cc24b4531434dbc5f464c570d79",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1234,10 +1234,10 @@
       "TemplateId": "t-3febf64130104352b92d",
       "TemplateName": "ACS-ESS-LifeCycleRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-09-08T08:02:29Z"
+      "UpdatedDate": "2025-05-15T11:34:04Z"
     },
     {
       "Category": "Other",
@@ -2148,7 +2148,7 @@
       "CreatedDate": "2020-09-16T13:05:27Z",
       "Description": "{\"en\": \"Bulky modify prepay instance spec\", \"zh-cn\": \"批量修改包年包月ECS实例的实例规格\", \"name-en\": \"ACS-ECS-BulkyModifyPrepayInstanceSpec\", \"name-zh-cn\": \"批量修改包年包月ECS实例的实例规格\", \"categories\": [\"instance_manage\", \"computenest\"]}",
       "HasTrigger": false,
-      "Hash": "813eb1cd84502dc4768f3dd812fe2e73c223c3413968ca0f27c6c37051804a6c",
+      "Hash": "4f2967d5b29020f7f103cb4deda448b1a827ef204751073f8a7b3287f778447e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2158,10 +2158,10 @@
       "TemplateId": "t-cdfe48a10a5a41a7ad78",
       "TemplateName": "ACS-ECS-BulkyModifyPrepayInstanceSpec",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-03T07:59:49Z"
+      "UpdatedDate": "2025-05-14T10:47:29Z"
     },
     {
       "Category": "Other",
@@ -5319,7 +5319,7 @@
       "CreatedDate": "2024-07-30T02:46:46Z",
       "Description": "{\"en\": \"Listen to tag events and execute cloud assistant commands when the specified tag is added to the ECS instance\", \"zh-cn\": \"监听标签事件当给ECS实例打上指定标签时执行云助手命令\", \"name-en\": \"ACS-TAG-MonitorTagEcsInstanceAndRunCommand\", \"name-zh-cn\": \"监听标签事件当给ECS实例打上指定标签时执行云助手命令\", \"categories\": [\"event-trigger\", \"tag_event_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "2be3e38d9f86c85a0df948510f4215ada7c366ec267a99e65875c4aba4ea2645",
+      "Hash": "5831e9b738dcd22d483b6b28c0e45077e8791587e9b791ffb186817dd8b9ab91",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5329,10 +5329,10 @@
       "TemplateId": "t-e9e3007fef824c89a40c",
       "TemplateName": "ACS-TAG-MonitorTagEcsInstanceAndRunCommand",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-17T06:01:58Z"
+      "UpdatedDate": "2025-05-15T11:34:04Z"
     },
     {
       "Category": "Other",
@@ -5907,7 +5907,7 @@
       "CreatedDate": "2022-02-22T03:15:04Z",
       "Description": "{\"en\": \"Run command in ComputeNest service instance‘s Pre/PostUpgrade stage\", \"zh-cn\": \"计算巢服务实例Pre/PostUpgrade阶段运行云助手命令\", \"name-en\": \"ACS-CN-PrePostUpgradeServiceInstance\", \"name-zh-cn\": \"执行Pre/PostUpgrade阶段命令\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "12fc3f31b829f480c4bb5d7adadf9d2293b4ba8dd22e81a9a26e6f87a5886071",
+      "Hash": "1014c214e403db47d175ef7e7054be6ec8a7d5a62610a5691bcc22eaf34fa5f4",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -5917,10 +5917,10 @@
       "TemplateId": "t-65a866c62e50493c9af1",
       "TemplateName": "ACS-CN-PrePostUpgradeServiceInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:03Z"
+      "UpdatedDate": "2025-05-15T11:34:00Z"
     },
     {
       "Category": "Other",

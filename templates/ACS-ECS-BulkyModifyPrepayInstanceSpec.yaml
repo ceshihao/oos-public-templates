@@ -24,15 +24,6 @@ Parameters:
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
-  operatorType:
-    Label:
-      en: OperatorType
-      zh-cn: 实例升降级类型
-    Type: String
-    AllowedValues:
-      - downgrade
-      - upgrade
-    Default: upgrade
   instanceType:
     Label:
       en: InstanceType
@@ -76,7 +67,6 @@ Tasks:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
     instanceType: '{{ instanceType }}'
-    operatorType: '{{ operatorType }}'
   Loop:
     RateControl: '{{ rateControl }}'
     Items: '{{ getInstance.Instances.Instance[].InstanceId }}'
@@ -84,7 +74,6 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
-          - operatorType
           - instanceType
         Label:
           default:

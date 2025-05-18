@@ -66,8 +66,8 @@ Parameters:
     Default: /root
   timeout:
     Label:
-      en: Timeout
-      zh-cn: 超时时间
+      en: Timeout (s)
+      zh-cn: 超时时间（秒）
     Type: Number
     Default: 600
   fileOwner:
