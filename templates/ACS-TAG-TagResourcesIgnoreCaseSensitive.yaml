@@ -40,6 +40,9 @@ Parameters:
       - ACS::AliKafka::Topic
       - ACS::ApiGateway::Api
       - ACS::ApiGateway::ApiGroup
+      - ACS::ARMS::TraceApp
+      - ACS::ARMS::RetcodeApp
+      - ACS::ARMS::Prometheus
       - ACS::Bastionhost::Instance
       - ACS::CBWP::CommonBandwidthPackage
       - ACS::CDN::Domain
@@ -95,6 +98,8 @@ Parameters:
       - ACS::Eflo::Vcc
       - ACS::Eflo::Vpd
       - ACS::Eflo::Subnet
+      - ACS::Eflo::ExperimentPlan
+      - ACS::EMR::Cluster
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
       - ACS::Ga::Accelerator
@@ -112,6 +117,7 @@ Parameters:
       - ACS::Live::Caster
       - ACS::HBase::Cluster
       - ACS::Hologram::Instance
+      - ACS::MaxCompute::Project
       - ACS::MongoDB::DBInstance
       - ACS::MSE::Gateway
       - ACS::MSE::Cluster
@@ -126,6 +132,8 @@ Parameters:
       - ACS::OOS::SecretParameter
       - ACS::OOS::Template
       - ACS::OSS::Bucket
+      - ACS::OOS::StateConfiguration
+      - ACS::OOS::PatchBaseline
       - ACS::Ons::Group
       - ACS::Ons::Instance
       - ACS::Ons::Instance
