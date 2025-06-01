@@ -11,6 +11,90 @@ Parameters:
       zh-cn: 列名列表
     Type: List
     Default: []
+  InstanceName:
+    Label:
+      en: InstanceName
+      zh-cn: 实例名称
+    Type: String
+    Default: ''
+  Status:
+    Label:
+      en: Status
+      zh-cn: 实例状态
+    Type: String
+    Default: ''
+  EnsServiceId:
+    Label:
+      en: EnsServiceId
+      zh-cn: ENS服务ID
+    Type: String
+    Default: ''
+  InstanceResourceType:
+    Label:
+      en: InstanceResourceType
+      zh-cn: 付费方式
+    Type: String
+    Default: ''
+  InstanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: 实例Id列表
+    Type: List
+    Default: []
+  InstanceType:
+    Label:
+      en: InstanceType
+      zh-cn: 实例规格
+    Type: String
+    Default: ''
+  SearchKey:
+    Label:
+      en: SearchKey
+      zh-cn: 公网IP
+    Type: String
+    Default: ''
+  IntranetIp:
+    Label:
+      en: IntranetIp
+      zh-cn: 内网IP
+    Type: String
+    Default: ''
+  SecurityGroupId:
+    Label:
+      en: SecurityGroupId
+      zh-cn: 安全组
+    Type: String
+    Default: ''
+  NetworkId:
+    Label:
+      en: NetworkId
+      zh-cn: 网络ID
+    Type: String
+    Default: ''
+  VSwitchId:
+    Label:
+      en: VSwitchId
+      zh-cn: 交换机ID
+    Type: String
+    Default: ''
+  ImageId:
+    Label:
+      en: ImageId
+      zh-cn: 镜像ID
+    Type: String
+    Default: ''
+  EnsRegionIds:
+    Label:
+      en: EnsRegionIds
+      zh-cn: 节点id列表
+    Type: List
+    Default: []
+  Tags:
+    Label:
+      en: Tags
+      zh-cn: 标签
+    Type: List
+    Default: []
   rateControl:
     Label:
       en: RateControl
@@ -38,6 +122,21 @@ Tasks:
       en: Get all ENS instances at once
       zh-cn: 一次性获取ENS实例全部属性
     Action: ACS::ENS::QueryInstanceInfo
+    Properties:
+      InstanceName: '{{ InstanceName }}'
+      InstanceIds: '{{ InstanceIds }}'
+      InstanceType: '{{ InstanceType }}'
+      SearchKey: '{{ SearchKey }}'
+      IntranetIp: '{{ IntranetIp }}'
+      SecurityGroupId: '{{ SecurityGroupId }}'
+      NetworkId: '{{ NetworkId }}'
+      VSwitchId: '{{ VSwitchId }}'
+      ImageId: '{{ ImageId }}'
+      EnsRegionIds: '{{ EnsRegionIds }}'
+      Tags: '{{ Tags }}'
+      Status: '{{ Status }}'
+      EnsServiceId: '{{ EnsServiceId }}'
+      InstanceResourceType: '{{ InstanceResourceType }}'
   - Name: getInstanceSlice
     When: 
       Fn::Not:
@@ -50,6 +149,20 @@ Tasks:
     Action: ACS::ENS::QueryInstanceSliceInfo
     Properties:
       columnName: "{{ ACS::TaskLoopItem }}"
+      InstanceName: '{{ InstanceName }}'
+      InstanceIds: '{{ InstanceIds }}'
+      InstanceType: '{{ InstanceType }}'
+      SearchKey: '{{ SearchKey }}'
+      IntranetIp: '{{ IntranetIp }}'
+      SecurityGroupId: '{{ SecurityGroupId }}'
+      NetworkId: '{{ NetworkId }}'
+      VSwitchId: '{{ VSwitchId }}'
+      ImageId: '{{ ImageId }}'
+      EnsRegionIds: '{{ EnsRegionIds }}'
+      Status: '{{ Status }}'
+      EnsServiceId: '{{ EnsServiceId }}'
+      InstanceResourceType: '{{ InstanceResourceType }}'
+      Tags: '{{ Tags }}'
     Loop:
       Items: "{{ columnNames }}"
       RateControl: "{{ rateControl }}"

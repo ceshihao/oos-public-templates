@@ -6621,7 +6621,7 @@
       "CreatedDate": "2024-12-13T08:53:06Z",
       "Description": "{\"name-en\": \"ACS-ENS-BulkyQueryInstanceSliceInfo\", \"name-zh-cn\": \"批量查询ENS实例信息（按列名拆分）\", \"en\": \"Bulky query ENS instance info sliced by column name\", \"zh-cn\": \"批量查询ENS实例信息（按列名拆分）\"}",
       "HasTrigger": false,
-      "Hash": "e2bff30a6ea5826824a30dfd430051d7f9e8099869b2cbcb230d3f7117e01806",
+      "Hash": "0604e4d85da3f172e49a82a62738d4a4b8c3c05cb5864664bf968f2285d7e75d",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6631,10 +6631,10 @@
       "TemplateId": "t-0b662111818245ea8c9a",
       "TemplateName": "ACS-ENS-BulkyQueryInstanceSliceInfo",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-13T08:53:06Z"
+      "UpdatedDate": "2025-05-28T06:00:07Z"
     },
     {
       "Category": "Other",
