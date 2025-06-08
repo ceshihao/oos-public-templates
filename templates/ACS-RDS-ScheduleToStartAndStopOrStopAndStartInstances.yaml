@@ -6,6 +6,7 @@ Description:
   name-zh-cn: RDS定时开关机或者关开机
   categories:
     - time_trigger
+    - rds
 Parameters:
   regionId:
     Type: String

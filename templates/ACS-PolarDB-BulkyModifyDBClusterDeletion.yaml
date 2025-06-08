@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 开启或者关闭集群保护锁
   categories:
     - security
+    - polardb
 Parameters:
   regionId:
     Label:

@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 删除PolarDB集群IP白名单中的0.0.0.0/0
   categories:
     - security
+    - polardb
 Tasks:
   - Name: describeDBClusterAccessWhitelist
     Action: ACS::ExecuteAPI

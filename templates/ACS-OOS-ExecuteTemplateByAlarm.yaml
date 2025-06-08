@@ -32,6 +32,13 @@ Parameters:
       zh-cn: 实例的标签
     AssociationProperty: Tags
     Default: []
+  resourceGroup:
+    Label:
+      en: ResourceGroupId
+      zh-cn: 资源组ID
+    Type: String
+    AssociationProperty: ALIYUN::ECS::ResourceGroup::ResourceGroupId
+    Default: ""
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -44,6 +51,7 @@ Tasks:
     Action: 'ACS::AlarmTrigger'
     Properties:
       Tags: '{{ tags }}'
+      ResourceGroup: '{{ resourceGroup }}'
       Namespace:
         'Fn::Select':
           - namespace

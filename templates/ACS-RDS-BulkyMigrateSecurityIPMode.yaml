@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 切换RDS白名单为高安全模式
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Type: String

@@ -4,6 +4,8 @@ Description:
   zh-cn: 定时升级Redis实例临时带宽
   name-en: ACS-Redis-ScheduleToUpgradeInstanceBandwidth
   name-zh-cn: 定时升级Redis实例临时带宽
+  categories:
+    - tair
 Parameters:
   RegionId:
     Type: String

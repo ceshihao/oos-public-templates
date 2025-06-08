@@ -22,6 +22,8 @@ Description:
         <li>主实例磁盘空间须小于等于只读实例磁盘空间</li>
       </ul>
     </div>
+  categories:
+    - rds
 Parameters:
   regionId:
     Label:

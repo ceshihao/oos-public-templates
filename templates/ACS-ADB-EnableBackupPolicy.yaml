@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 开启ADB实例的自动备份策略
   categories:
     - security
+    - analyticdb
 Parameters:
   regionId:
     Label:

@@ -4,6 +4,8 @@ Description:
   zh-cn: 批量删除Redis按量付费实例
   name-en: ACS-Redis-BulkyDeleteInstances
   name-zh-cn: 批量删除Redis按量付费实例
+  categories:
+    - tair
 Parameters:
   regionId:
     Type: String

@@ -4,6 +4,8 @@ Description:
   name-zh-cn: 修改MongoDB实例的备份策略
   en: Update mongodb instance backup policy
   zh-cn: 修改MongoDB实例的备份策略
+  categories:
+    - mongodb
 Parameters:
   regionId:
     Label:

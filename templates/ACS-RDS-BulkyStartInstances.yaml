@@ -4,6 +4,8 @@ Description:
   zh-cn: 批量启动RDS实例，适用于需要同时管理和启动多台RDS实例的场景，例如优化资源使用和成本管理。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要启动实例的地域，目标实例（targets）：用于定义具体需要操作的RDS实例。模板在执行后会返回所有启动的实例ID列表，方便用户验证实例启动的状态。
   name-en: ACS-RDS-BulkyStartInstances
   name-zh-cn: 批量启动RDS实例
+  categories:
+    - rds
 Parameters:
   regionId:
     Type: String

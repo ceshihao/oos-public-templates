@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 删除mongoDB集群IP白名单中的0.0.0.0/0
   categories:
     - security
+    - mongodb
 Tasks:
   - Name: describeSecurityIps
     Action: ACS::ExecuteAPI

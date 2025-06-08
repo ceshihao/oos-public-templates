@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 从RDS实例IP白名单分组里删除0.0.0.0/0
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Type: String

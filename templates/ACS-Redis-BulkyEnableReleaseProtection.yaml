@@ -6,6 +6,7 @@ Description:
   name-zh-cn: Redis实例开启实例释放保护
   categories:
     - security
+    - tair
 Parameters:
   regionId:
     Label:

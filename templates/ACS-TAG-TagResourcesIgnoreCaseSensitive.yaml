@@ -99,6 +99,7 @@ Parameters:
       - ACS::Eflo::Vpd
       - ACS::Eflo::Subnet
       - ACS::Eflo::ExperimentPlan
+      - ACS::Eflo::Vsc
       - ACS::EMR::Cluster
       - ACS::FC::Service
       - ACS::GPDB::DBInstance

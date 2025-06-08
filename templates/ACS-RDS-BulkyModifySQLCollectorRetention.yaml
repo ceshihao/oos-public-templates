@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 设置RDS实例的SQL洞察日志保存时长为180天
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Type: String

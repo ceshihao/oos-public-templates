@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 释放RDS实例的外网地址
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Label:

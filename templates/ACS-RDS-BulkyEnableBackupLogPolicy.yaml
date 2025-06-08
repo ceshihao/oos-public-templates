@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 开启RDS实例备份策略的日志备份设置
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Label:

@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 释放Redis实例的外网地址
   categories:
     - security
+    - tair
 Parameters:
   regionId:
     Label:

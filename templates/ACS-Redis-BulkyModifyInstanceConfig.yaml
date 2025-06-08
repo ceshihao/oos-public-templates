@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 更改Redis实例的参数配置
   categories:
     - security
+    - tair
 Parameters:
   regionId:
     Label:

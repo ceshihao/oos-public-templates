@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 修改RDS实例备份策略日志备份保留天数
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Label:

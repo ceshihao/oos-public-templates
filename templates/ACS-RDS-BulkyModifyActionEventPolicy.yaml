@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 开启RDS历史事件功能
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Type: String

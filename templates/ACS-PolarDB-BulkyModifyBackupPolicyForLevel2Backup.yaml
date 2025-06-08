@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 修改PolarDB集群的自动备份策略的二级备份保留周期
   categories:
     - security
+    - polardb
 Parameters:
   regionId:
     Label:

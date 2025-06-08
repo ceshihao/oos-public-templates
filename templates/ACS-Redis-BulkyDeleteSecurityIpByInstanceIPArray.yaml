@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 批量从Redis实例IP白名单分组里删除指定IP
   categories:
     - security
+    - tair
 Parameters:
   regionId:
     Label:

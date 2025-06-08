@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 开启redis审计日志，保留时长180天
   categories:
     - security
+    - tair
 Parameters:
   regionId:
     Type: String

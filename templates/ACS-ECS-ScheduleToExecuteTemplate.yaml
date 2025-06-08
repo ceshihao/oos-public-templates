@@ -55,6 +55,10 @@ Tasks:
         'Fn::Select':
           - endDate
           - '{{ timerTrigger }}'
+      StartDate:
+        'Fn::Select':
+          - startDate
+          - '{{ timerTrigger }}'
       TimeZone:
         'Fn::Select':
           - timeZone

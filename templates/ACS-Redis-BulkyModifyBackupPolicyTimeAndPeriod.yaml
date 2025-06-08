@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 修改Redis实例自动备份策略的备份时间和周期
   categories:
     - security
+    - tair
 Tasks:
   - Name: DescribeBackupPolicy
     Action: ACS::ExecuteAPI

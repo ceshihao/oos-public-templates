@@ -6,6 +6,7 @@ Description:
   name-zh-cn: 批量开启RDS实例保护
   categories:
     - security
+    - rds
 Parameters:
   regionId:
     Type: String
