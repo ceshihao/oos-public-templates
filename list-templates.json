@@ -951,7 +951,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "40c2c34bec67fb9d9d13ab1c52cc082005a5f16cc3137e668783e79d9785cb87",
+      "Hash": "4cbda462ee373435691e0738131febb5a1fe105a7cd0b2aed742614ecbac40e3",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -961,10 +961,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v21",
+      "TemplateVersion": "v22",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-17T09:01:23Z"
+      "UpdatedDate": "2025-06-19T10:04:11Z"
     },
     {
       "Category": "Other",
@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "b69f32798816568222eaf979a9a8f302fc00d67d48dc54df6988796aa2e05f19",
+      "Hash": "381d65aa35f1e8736deba72e0c2d42079c04c21f66f9cbb3723042d88fc5df42",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v47",
+      "TemplateVersion": "v48",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-03T07:59:47Z"
+      "UpdatedDate": "2025-06-18T06:56:39Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "60cc1b30aa4c2328c932bfd15fa74b6997fa1c36169ad601076f1714d670f397",
+      "Hash": "4006015ad907ef183d02c79c7b2d303c5d930643c314b65819ec3e47cbca40be",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v37",
+      "TemplateVersion": "v38",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-03T07:59:48Z"
+      "UpdatedDate": "2025-06-18T06:56:39Z"
     },
     {
       "Category": "Other",
@@ -4815,7 +4815,7 @@
       "CreatedDate": "2024-02-01T09:14:15Z",
       "Description": "{\"zh-cn\": \"镜像修复, 镜像修复是基于镜像检测的结果对镜像进行离线修复, 关于镜像检测 https://help.aliyun.com/zh/ecs/user-guide/overview-18, 修复流程会首先基于Alibaba cloud linux镜像创建一台修复实例,将您的镜像的快照创建云盘挂载到修复实例上,离线修复数据盘，然后将修复后的数据盘创建新的镜像。 一些限制 1)当您的镜像的系统类型是如ubuntu 22.04 64位等公共镜像系统类型时,修复后生成的镜像类型会是如ubuntu_64位自定义镜像系统类型。\", \"en\": \"Image repair, which is an offline repair of an image based on the results of image check, Please refer to this document for image check https://www.alibabacloud.com/help/en/ecs/user-guide/overview-18 The repair process will first create a repair instance based on the Alibaba cloud Linux image, create a cloud disk snapshot of your image, mount it to the repair instance, repair the data disk offline, and then create a new image of the repaired data disk.\", \"name-en\": \"ACS-ECS-RepairImage\", \"name-zh-cn\": \"修复镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fc1e9f503996de774b78f87eb90c511cfb2a2c44dc025fb454ad2c73d7d8158d",
+      "Hash": "bfc5ab5dccfe25d15a1f0ea1e5c984228d6b0e727bb815113db42161b838f696",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4825,10 +4825,10 @@
       "TemplateId": "t-edcdfb2703b24211aa4f",
       "TemplateName": "ACS-ECS-RepairImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-05-08T02:43:27Z"
+      "UpdatedDate": "2025-06-16T08:10:28Z"
     },
     {
       "Category": "Other",
@@ -6327,7 +6327,7 @@
       "CreatedDate": "2024-11-19T02:48:58Z",
       "Description": "{\"en\": \"Red Hat Enterprise Linux template activation\", \"zh-cn\": \"RHEL模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinux\", \"name-zh-cn\": \"RHEL模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "1488ab6692f75aa4c5d684ed10a218290ef8e87199fbb67529ee8be4e36e7e57",
+      "Hash": "2e6b8246fccfbec255dcacd41aef2c6d9aa9c9c4f709ff03f52a5aeb18f4b284",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6337,10 +6337,10 @@
       "TemplateId": "t-2a53c9a230b241f9bf5a",
       "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinux",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-27T11:43:45Z"
+      "UpdatedDate": "2025-06-19T02:43:09Z"
     },
     {
       "Category": "Other",

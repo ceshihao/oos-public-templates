@@ -74,6 +74,7 @@ Parameters:
       - me-east-1
       - me-central-1
       - na-south-1
+      - us-southeast-1
     Default:
       - all-regions
   rateControl:

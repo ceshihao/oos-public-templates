@@ -100,6 +100,9 @@ Parameters:
       - ACS::Eflo::Subnet
       - ACS::Eflo::ExperimentPlan
       - ACS::Eflo::Vsc
+      - ACS::Eflo::ElasticNetworkInterface
+      - ACS::Eflo::NetworkInterface
+      - ACS::Eflo::Er
       - ACS::EMR::Cluster
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
@@ -155,6 +158,7 @@ Parameters:
       - ACS::RocketMQ::Instance
       - ACS::RDS::Custom
       - ACS::RDS::CustomDeploymentSet
+      - ACS::RDS::CustomDisk
       - ACS::ROS::Template
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate
@@ -181,6 +185,9 @@ Parameters:
       - ACS::VPC::VSwitch
       - ACS::VPC::PeerConnection
       - ACS::VPC::VSwitchCidrReservation
+      - ACS::VpcIpam::Ipam
+      - ACS::VpcIpam::IpamPool
+      - ACS::VpcIpam::IpamScope
       - ACS::VPN::CustomerGateway
       - ACS::VPN::VpnGateway
       - ACS::VPN::VpnAttachment

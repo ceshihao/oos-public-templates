@@ -1,10 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  zh-cn: 镜像修复, 镜像修复是基于镜像检测的结果对镜像进行离线修复, 关于镜像检测 https://help.aliyun.com/zh/ecs/user-guide/overview-18,
-         修复流程会首先基于Alibaba cloud linux镜像创建一台修复实例,将您的镜像的快照创建云盘挂载到修复实例上,离线修复数据盘，然后将修复后的数据盘创建新的镜像。
-         一些限制 1)当您的镜像的系统类型是如ubuntu 22.04 64位等公共镜像系统类型时,修复后生成的镜像类型会是如ubuntu_64位自定义镜像系统类型。
-  en: Image repair, which is an offline repair of an image based on the results of image check, Please refer to this document for image check https://www.alibabacloud.com/help/en/ecs/user-guide/overview-18
-      The repair process will first create a repair instance based on the Alibaba cloud Linux image, create a cloud disk snapshot of your image, mount it to the repair instance, repair the data disk offline, and then create a new image of the repaired data disk.
+  zh-cn: 镜像修复, 镜像修复是基于镜像检测的结果对镜像进行离线修复, 关于镜像检测 https://help.aliyun.com/zh/ecs/user-guide/overview-18, 修复流程会首先基于Alibaba cloud linux镜像创建一台修复实例,将您的镜像的快照创建云盘挂载到修复实例上,离线修复数据盘，然后将修复后的数据盘创建新的镜像。 一些限制 1)当您的镜像的系统类型是如ubuntu 22.04 64位等公共镜像系统类型时,修复后生成的镜像类型会是如ubuntu_64位自定义镜像系统类型。
+  en: Image repair, which is an offline repair of an image based on the results of image check, Please refer to this document for image check https://www.alibabacloud.com/help/en/ecs/user-guide/overview-18 The repair process will first create a repair instance based on the Alibaba cloud Linux image, create a cloud disk snapshot of your image, mount it to the repair instance, repair the data disk offline, and then create a new image of the repaired data disk.
   name-en: ACS-ECS-RepairImage
   name-zh-cn: 修复镜像
   categories:
@@ -20,7 +17,7 @@ Parameters:
   zoneId:
     Type: String
     Label:
-      en:  VSwitch Availability Zone
+      en: VSwitch Availability Zone
       zh-cn: 交换机可用区
     AssociationProperty: ALIYUN::ECS::ZoneId
     AssociationPropertyMetadata:
@@ -102,23 +99,31 @@ Parameters:
       - fstab
       - nvme
       - cloudinit
-    Default: assist
+    Default:
+      - assist
+      - cloudinit
+      - virtio
+      - nvme
+      - fstab
+      - grub
+      - dhcp
+      - growpart
 Tasks:
   - Name: checkImage
     Action: ACS::CheckFor
     Description:
-      en: Check if the image is x86_ 64 or arm64
-      zh-cn: 检查镜像是否为x86_64或arm64
+      en: Check if the image supports repairing
+      zh-cn: 检查镜像是否支持修复
     Properties:
       Service: ECS
       API: DescribeImages
+      PropertySelector: .Images.Image[0].DetectionOptions.Items.Item[] | select(.Name == "SystemImage") | .Value
+      DesiredValues: []
       Parameters:
         RegionId: '{{ regionId }}'
         ImageId: '{{ repairImageId }}'
-      DesiredValues:
-        - x86_64
-        - arm64
-      PropertySelector: Images.Image[0].Architecture
+      NotDesiredValues:
+        - Invalid
     Outputs:
       architecture:
         Type: String
@@ -138,6 +143,23 @@ Tasks:
       bootMode:
         Type: String
         ValueSelector: Images.Image[0].BootMode
+  - Name: checkImageArchitecture
+    Action: ACS::Choice
+    Description:
+      en: Check if the image is x86_ 64 or arm64
+      zh-cn: 检查镜像是否为x86_64或arm64
+    Properties:
+      DefaultTask: ACS::END
+      Choices:
+        - When:
+            Fn::Or:
+              - Fn::Equals:
+                  - x86_64
+                  - '{{checkImage.architecture}}'
+              - Fn::Equals:
+                  - arm64
+                  - '{{checkImage.architecture}}'
+          NextTask: runInstances
   - Name: runInstances
     Action: ACS::ExecuteAPI
     Description:
@@ -151,7 +173,7 @@ Tasks:
         Amount: 1
         ImageId: '{{ baseImageId }}'
         InstanceType: '{{ instanceType }}'
-        InstanceName: 'image_repair_please_no_delete'
+        InstanceName: image_repair_please_no_delete
         SecurityGroupId: '{{ securityGroupId }}'
         VSwitchId: '{{ vSwitchId }}'
         InternetMaxBandwidthIn: 200
@@ -159,7 +181,7 @@ Tasks:
         SystemDiskCategory: '{{ systemDiskCategory }}'
         DataDisk:
           - SnapshotId: '{{ checkImage.snapshotId }}'
-            DiskName: 'image_repair_{{ checkImage.snapshotId }}'
+            DiskName: image_repair_{{ checkImage.snapshotId }}
             Category: '{{ systemDiskCategory }}'
         InstanceChargeType: PostPaid
     Outputs:
@@ -174,13 +196,19 @@ Tasks:
     Properties:
       Service: ECS
       API: DescribeInstances
+      PropertySelector: Instances.Instance[0].Status
+      DesiredValues:
+        - Running
+      NotDesiredValues: []
+      StopRetryValues: []
       Parameters:
         RegionId: '{{ regionId }}'
         InstanceIds:
           - '{{ runInstances.instanceId }}'
-      DesiredValues:
-        - Running
-      PropertySelector: Instances.Instance[0].Status
+    Retries: 10
+    DelayType: Exponential
+    Delay: 2
+    BackOff: 2
   - Name: checkForCreatedDiskReady
     Action: ACS::CheckFor
     Description:
@@ -235,8 +263,8 @@ Tasks:
     OnError: stopInstances
     Properties:
       regionId: '{{ regionId }}'
-      commandId: 'ACS-ECS-ImageRepair-for-linux.sh'
-      parameters: 
+      commandId: ACS-ECS-ImageRepair-for-linux.sh
+      parameters:
         Fn::Join:
           - ''
           - - '{"repairitems":'
@@ -268,7 +296,7 @@ Tasks:
     OnError: deleteInstance
     Properties:
       regionId: '{{ regionId }}'
-      snapshotName: 'image_repair_{{ checkForCreatedDiskReady.diskId }}'
+      snapshotName: image_repair_{{ checkForCreatedDiskReady.diskId }}
       diskId: '{{ checkForCreatedDiskReady.diskId }}'
       retentionDays: 1
     Outputs:
@@ -288,10 +316,10 @@ Tasks:
       Parameters:
         RegionId: '{{ regionId }}'
         SnapshotId: '{{ createSnapshot.snapshotId }}'
-        ImageName: 
+        ImageName:
           Fn::Join:
-            - '_'
-            - - 'repaired'
+            - _
+            - - repaired
               - '{{ checkImage.imageName }}'
               - Fn::FormatUTCTime:
                   - '{{ACS::CurrentUTCTime}}'
@@ -335,7 +363,7 @@ Tasks:
         RegionId: '{{ regionId }}'
         SnapshotId: '{{ createSnapshot.snapshotId }}'
         Force: true
-  - Name: stopInstances #远程命令执行失败后等待1分钟再释放，否则报错“IncorrectInstanceStatus.Initializing”（ECS工程师：阿里云的实例有一分钟保护机制，刚创建的实例需要在60s之后才能删除。）
+  - Name: stopInstances
     Action: ACS::Sleep
     Description:
       en: Waiting for instance initialization to complete
@@ -385,4 +413,3 @@ Metadata:
           default:
             zh-cn: 发送远程命令
             en: Run Command
-
