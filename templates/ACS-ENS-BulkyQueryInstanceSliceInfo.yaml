@@ -5,6 +5,12 @@ Description:
   en: Bulky query ENS instance info sliced by column name 
   zh-cn: 批量查询ENS实例信息（按列名拆分）
 Parameters:
+  PageSize:
+    Label:
+      en: PageSize
+      zh-cn: 每页大小
+    Type: Number
+    Default: 50
   columnNames:
     Label:
       en: ColumnNames
@@ -123,6 +129,7 @@ Tasks:
       zh-cn: 一次性获取ENS实例全部属性
     Action: ACS::ENS::QueryInstanceInfo
     Properties:
+      PageSize: '{{ PageSize }}'
       InstanceName: '{{ InstanceName }}'
       InstanceIds: '{{ InstanceIds }}'
       InstanceType: '{{ InstanceType }}'
@@ -148,6 +155,7 @@ Tasks:
       zh-cn: 获取ENS实例指定属性
     Action: ACS::ENS::QueryInstanceSliceInfo
     Properties:
+      PageSize: '{{ PageSize }}'
       columnName: "{{ ACS::TaskLoopItem }}"
       InstanceName: '{{ InstanceName }}'
       InstanceIds: '{{ InstanceIds }}'
