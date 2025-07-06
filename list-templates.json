@@ -2421,7 +2421,7 @@
       "CreatedDate": "2021-02-18T08:47:17Z",
       "Description": "{\"en\": \"Sleep control plane, make etcd snapshot and upload it to oss bucket\", \"zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"name-en\": \"ACS-CS-DedicatedMigration\", \"name-zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"categories\": [\"others\"]}",
       "HasTrigger": false,
-      "Hash": "833cdcbc3701d3060f94b5e42325384fe3f51bc3a13355fbe8ba5a6ff7bb9ee1",
+      "Hash": "2545752f6409558494d9a4925f34eb73a0494be9d805efe5f130a91cd51441bf",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2431,10 +2431,10 @@
       "TemplateId": "t-bb622b95ba2348278d5a",
       "TemplateName": "ACS-CS-DedicatedMigration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:04Z"
+      "UpdatedDate": "2025-06-30T02:17:43Z"
     },
     {
       "Category": "Other",

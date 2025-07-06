@@ -88,8 +88,8 @@ Tasks:
   - Action: ACS::ECS::RunCommand
     OnError: rollback
     Description:
-      en: Execute cloud assistant command
-      zh-cn: 执行云助手命令
+      en: Sleep or start controlplane component on master node
+      zh-cn: 休眠或启动Master节点管控组件
     Properties:
       regionId: '{{ regionId }}'
       commandContent: |-
@@ -165,8 +165,8 @@ Tasks:
   - Action: ACS::ECS::RunCommand
     OnError: rollback
     Description:
-      en: Execute cloud assistant command
-      zh-cn: 执行云助手命令
+      en: Uploading etcd-backup of the Etcd leader node
+      zh-cn: Etcd Leader节点数据备份上传
     Properties:
       regionId: '{{ regionId }}'
       commandContent: |-
@@ -227,8 +227,9 @@ Tasks:
         fi
         set -e
         # 获取oss 相关地址，上传
-        ROLE=$(curl -s 100.100.100.200/latest/meta-data/ram/security-credentials/)
-        ROLERES=$(curl -s 100.100.100.200/latest/meta-data/ram/security-credentials/$ROLE)
+        TOKEN=$(curl -s -X PUT "http://100.100.100.200/latest/api/token" -H "X-aliyun-ecs-metadata-token-ttl-seconds: 3600")
+        ROLE=$(curl -s -H "X-aliyun-ecs-metadata-token: $TOKEN"  http://100.100.100.200/latest/meta-data/ram/security-credentials/)       
+        ROLERES=$(curl -s -H "X-aliyun-ecs-metadata-token: $TOKEN" http://100.100.100.200/latest/meta-data/ram/security-credentials/$ROLE)
         AccessKeyId=$(echo $ROLERES | jq .AccessKeyId|sed 's/\"//g')
         AccessKeySecret=$(echo $ROLERES | jq .AccessKeySecret|sed 's/\"//g')
         SecurityToken=$(echo $ROLERES | jq .SecurityToken|sed 's/\"//g')
@@ -268,8 +269,8 @@ Tasks:
   - Action: 'ACS::ECS::RunCommand'
     OnError: rollback
     Description:
-      En: Execute cloud assistant command
-      Zh-cn: 执行云助手命令
+      En: findEtcdLeader InstanceId
+      zh-cn:  获取EtcdLeader节点 InstanceId
     Properties:
       regionId: '{{ regionId }}'
       commandContent: |-
@@ -278,7 +279,8 @@ Tasks:
             exit 0
         fi
         if [ -e  /tmp/etcdsnap/sign ]; then
-            curl --retry 10 -sSL 100.100.100.200/latest/meta-data/instance-id
+            TOKEN=`curl -s -X PUT "http://100.100.100.200/latest/api/token"  -H "X-aliyun-ecs-metadata-token-ttl-seconds: 3600"`
+            curl --retry 10 -sSL -H "X-aliyun-ecs-metadata-token: $TOKEN" 100.100.100.200/latest/meta-data/instance-id
         fi
       instanceId: '{{ ACS::TaskLoopItem }}'
       commandType: RunShellScript
@@ -300,8 +302,8 @@ Tasks:
     OnError: rollback
     OnSuccess: ACS::END
     Description:
-      en: Execute cloud assistant command
-      zh-cn: 执行云助手命令
+      en: Clean up temporary data
+      zh-cn: 清理临时数据
     Properties:
       regionId: '{{ regionId }}'
       commandContent: |-
@@ -334,8 +336,8 @@ Tasks:
     Name: readSign
   - Action: ACS::ECS::RunCommand
     Description:
-      en: Execute cloud assistant command
-      zh-cn: 执行云助手命令
+      en: Execute cloud assistant command to rollback
+      zh-cn: 执行云助手命令回滚
     Properties:
       regionId: '{{ regionId }}'
       commandContent: |-
