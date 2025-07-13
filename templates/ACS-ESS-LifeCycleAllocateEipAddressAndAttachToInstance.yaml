@@ -56,6 +56,15 @@ Parameters:
       zh-cn: 'EIP的标签（输入格式：[{"Key":"test1","Value":"test1"},{"Key":"test2","Value":"test2"}....]）'
     Type: Json
     Default: [{"Key":"oos_generate","Value":"{{ACS::ExecutionId}}"}]
+  ISP:
+    Label: EIP的线路类型
+    Description: EIP的线路类型（BGP：BGP（多线）线路。BGP_PRO：BGP（多线）_精品线路。）
+    Type: String
+    AllowedValues:
+      - BGP
+      - BGP_PRO
+      - BGP_International
+    Default: BGP
   lifecycleHookId:
     Label:
       en: LifecycleHookId
@@ -105,6 +114,7 @@ Tasks:
       bandwidth: '{{ bandwidth }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
       tags: '{{ eipTags }}'
+      ISP: '{{ ISP }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ instanceIds }}'

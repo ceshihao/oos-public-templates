@@ -1707,7 +1707,7 @@
       "CreatedDate": "2020-05-19T06:33:09Z",
       "Description": "{\"en\": \"Use lifecycleHook to create EIP and attach them to the instance(only supports elastic expansion activities)\", \"zh-cn\": \"使用生命周期挂钩批量创建弹性IP并将其绑定到实例上(仅支持弹性扩张活动)\", \"name-en\": \"ACS-ESS-LifeCycleAllocateEipAddressAndAttachToInstance\", \"name-zh-cn\": \"使用生命周期挂钩创建EIP并绑定到实例上\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e0d75bc31539f16dc45f72f796d3527512e7664308038e2902733d289d37862b",
+      "Hash": "c4198ebde31a52b0f552f441bdbf5489571a25584f2bbfcc74e4a3715ee08e5b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1717,10 +1717,10 @@
       "TemplateId": "t-07553114ee05462bb010",
       "TemplateName": "ACS-ESS-LifeCycleAllocateEipAddressAndAttachToInstance",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:02Z"
+      "UpdatedDate": "2025-07-07T09:44:07Z"
     },
     {
       "Category": "Other",
