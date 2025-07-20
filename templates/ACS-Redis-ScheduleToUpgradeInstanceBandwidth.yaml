@@ -22,7 +22,7 @@ Parameters:
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: ALIYUN::Redis::Instance
-      RegionId: regionId
+      RegionId: RegionId
   TimerTrigger:
     Type: Json
     Label:

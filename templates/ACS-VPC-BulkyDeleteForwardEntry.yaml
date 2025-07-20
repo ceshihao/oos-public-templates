@@ -96,7 +96,7 @@ Tasks:
       Items:
         'Fn::Jq':
           - All
-          - 'foreach .[] as $item ([[],[]]; if $item == null then [[],.[0]] else [(.[0] + [$item]),[]] end; if $item == null then .[1] else empty end) | .[]'
+          - '.[] | (select(. != null))'
           - '{{ describeForwardTableEntries.ForwardEntryId-all }}'
       RateControl:
         Mode: Concurrency

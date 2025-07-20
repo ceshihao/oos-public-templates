@@ -3429,7 +3429,7 @@
       "CreatedDate": "2021-12-15T03:38:31Z",
       "Description": "{\"en\": \"Del the specified risk ports mapped on dnat table\", \"zh-cn\": \"删除NAT网关上DNAT映射的指定风险端口\", \"name-en\": \"ACS-VPC-BulkyDeleteForwardEntry\", \"name-zh-cn\": \"删除NAT网关上DNAT映射的指定风险端口\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "3d83f27d94167f4eb6c28c761b86efecaa20bbf5f3e93c604e9b49f1b762aa61",
+      "Hash": "c5e8f7eb0bb0b9702be99188d1e749e292eb06d05367b69045d2e47258e6c30f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3439,10 +3439,10 @@
       "TemplateId": "t-7f32bfe8c16649229d91",
       "TemplateName": "ACS-VPC-BulkyDeleteForwardEntry",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:32Z"
+      "UpdatedDate": "2025-07-17T11:14:37Z"
     },
     {
       "Category": "Other",
@@ -5004,7 +5004,7 @@
       "CreatedDate": "2024-04-10T02:12:01Z",
       "Description": "{\"en\": \"Scheduled upgrade of the temporary bandwidth of a Redis instance\", \"zh-cn\": \"定时升级Redis实例临时带宽\", \"name-en\": \"ACS-Redis-ScheduleToUpgradeInstanceBandwidth\", \"name-zh-cn\": \"定时升级Redis实例临时带宽\", \"categories\": [\"tair\"]}",
       "HasTrigger": true,
-      "Hash": "4b40ac768a4a9b99846f1a3baf5673f54c6e247473d602f9f5d458bdffbb88bf",
+      "Hash": "2a411d355a54832cf04a1b25bc6fe7c83ae9765f510056cc16a17f01d19534ca",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5014,10 +5014,10 @@
       "TemplateId": "t-3700a39f12944e7e83b3",
       "TemplateName": "ACS-Redis-ScheduleToUpgradeInstanceBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:37Z"
+      "UpdatedDate": "2025-07-14T08:58:35Z"
     },
     {
       "Category": "TimerTrigger",
@@ -6950,6 +6950,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-03-05T11:49:48Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-07-18T09:42:16Z",
+      "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "3cd69456ec49a19c823781453f59bf88ebebc4d5b855bdbdf4cfda08063c500d",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-0dd82fbd0d5744d28bd4",
+      "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-07-18T09:42:16Z"
     }
   ]
 }
