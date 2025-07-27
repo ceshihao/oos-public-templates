@@ -437,20 +437,36 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: getResourceARN
-    Action: ACS::TAG::GetARNsByTag
+    Action: ACS::ExecuteAPI
     Description:
-      en: Get ResourcesArn with specified tag
-      zh-cn: 获取带有指定标签的ResourcesArn
+      en: Get resourceArns by tags
+      zh-cn: 根据标签键（值）获取对应的ResourceARN
     Properties:
-      regionId: '{{ regionId }}'
-      tagKey: '{{ tagKey }}'
-      tagValue: '{{ tagValue }}'
-      resourceType: '{{ resourceType }}'
-      rateControl: '{{ rateControl }}'
+      Service: TAG
+      API: ListTagResources
+      Parameters:
+        RegionId: '{{ regionId }}'
+        Tags:
+          Fn::If:
+            - Fn::Equals:
+                - '{{ tagValue }}'
+                - ''
+            - '{"{{tagKey}}":null}'
+            - '{"{{tagKey}}":"{{tagValue}}"}'
+        ResourceARN:
+          - Fn::If:
+              - Fn::Equals:
+                  - '{{ resourceType }}'
+                  - ''
+              - Null
+              - Fn::Jq:
+                  - First
+                  - .resourceType | ascii_downcase |split("::") | "arn:acs:"+.[1]+":{{ regionId }}:{{ ACS::AccountId }}:"+.[2]+"/*"
+                  - '{"resourceType":"{{resourceType}}"}'
     Outputs:
       resourceArns:
         Type: List
-        ValueSelector: resourceArns[]
+        ValueSelector: TagResources[].ResourceARN
   - Name: unTagResources
     Action: ACS::ExecuteAPI
     Description:

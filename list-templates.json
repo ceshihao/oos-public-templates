@@ -2253,7 +2253,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "381d65aa35f1e8736deba72e0c2d42079c04c21f66f9cbb3723042d88fc5df42",
+      "Hash": "f36b74db82ce1594c82382b10cf2e419bfb786bad59bb01fd5e190508960c3fb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2263,10 +2263,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v48",
+      "TemplateVersion": "v49",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-18T06:56:39Z"
+      "UpdatedDate": "2025-07-24T06:00:58Z"
     },
     {
       "Category": "Other",
@@ -3660,7 +3660,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "4006015ad907ef183d02c79c7b2d303c5d930643c314b65819ec3e47cbca40be",
+      "Hash": "c4c2da896bcad5d7b7dde2727b905d8a173da349115180394e8fdcb97f8df3de",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3670,10 +3670,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v38",
+      "TemplateVersion": "v39",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-18T06:56:39Z"
+      "UpdatedDate": "2025-07-24T06:00:59Z"
     },
     {
       "Category": "Other",
@@ -4647,7 +4647,7 @@
       "CreatedDate": "2023-11-24T06:04:49Z",
       "Description": "{\"en\": \"Bulky move resources from one resource group to another\", \"zh-cn\": \"批量将资源从一个资源组转移到另一个资源组\", \"name-en\": \"ACS-ResourceManager-BulkyMoveResources\", \"name-zh-cn\": \"资源管理批量转资源组\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "1ad3f38b4d6e04c9b360cc583f5486b0a6027d2ba4e005e57fc5a087be1fbaf7",
+      "Hash": "d911294deb365544b35579e32f92e26d21b059014e3ae0b19deb95eea12e779a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4657,10 +4657,10 @@
       "TemplateId": "t-bc8293575a704476aa9e",
       "TemplateName": "ACS-ResourceManager-BulkyMoveResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-16T09:39:47Z"
+      "UpdatedDate": "2025-07-23T06:42:23Z"
     },
     {
       "Category": "Other",
@@ -5172,7 +5172,7 @@
       "CreatedDate": "2024-07-04T02:36:48Z",
       "Description": "{\"en\": \"Unbind tags through resource management\", \"zh-cn\": \"通过资源管理解绑标签\", \"name-en\": \"ACS-TAG-UnTagResources\", \"name-zh-cn\": \"解绑标签\", \"categories\": [\"tag_manage\"]}",
       "HasTrigger": false,
-      "Hash": "cb3416e398322100299561b46dc88ef99aa769dc678cb0d1194dca9d2758c4b2",
+      "Hash": "c5eaec3d0380510dab3c75641d14631603453d9c47257f2eedc3dc45e5c0e4a1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5182,10 +5182,10 @@
       "TemplateId": "t-3c32243a62fe4a17800c",
       "TemplateName": "ACS-TAG-UnTagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-30T02:46:46Z"
+      "UpdatedDate": "2025-07-23T05:58:32Z"
     },
     {
       "Category": "Other",

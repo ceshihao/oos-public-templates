@@ -57,6 +57,7 @@ Parameters:
       - ACS::CEN::TransitRouterVpcAttachment
       - ACS::CEN::TransitRouterVpnAttachment
       - ACS::CEN::TransitRouterEcrAttachment
+      - ACS::ClickHouse::DBCluster
       - ACS::CloudStorageGateway::Gateway
       - ACS::DCDN::Domain
       - ACS::DdosCoo::Instance
@@ -85,6 +86,7 @@ Parameters:
       - ACS::ECS::Activation
       - ACS::ECS::DedicatedHostCluster
       - ACS::ECS::StorageCapacityUnit
+      - ACS::ECS::AutoProvisioningGroup
       - ACS::EIP::EipAddress
       - ACS::Eipanycast::AnycastEipAddress
       - ACS::ESS::ScalingGroup
@@ -148,6 +150,7 @@ Parameters:
       - ACS::PrivateLink::VpcEndpointService
       - ACS::RAM::Role
       - ACS::RAM::Policy
+      - ACS::RAM::User
       - ACS::RDS::DBInstance
       - ACS::Redis::DBInstance
       - ACS::ResourceManager::Account
