@@ -1,0 +1,161 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ECS-DeployRevisionOnEssApplicationGroup
+  name-zh-cn: 在单个Ess应用分组上部署部署物
+  en: Deploy deployments on single application group
+  zh-cn: 在单个Ess应用分组上部署部署物
+Parameters:
+  applicationName:
+    Label:
+      en: ApplicationName
+      zh-cn: 应用名称
+    Type: String
+  applicationGroupName:
+    Label:
+      en: ApplicationGroupName
+      zh-cn: 应用分组名称
+    Type: String
+  deployRevisionId:
+    Label:
+      en: DeployRevisionId
+      zh-cn: 部署物ID
+    Type: String
+  deployMethod:
+    Label:
+      en: DeployMethod
+      zh-cn: 发布模式
+    Description:
+      en: The full-scale publishing mode will publish all instances under the current scaling group. For grayscale publishing mode, you can select some instances to publish.
+      zh-cn: 全量发布模式会发布当前伸缩组下所有实例，对于灰度发布模式，您可以选择部分实例发布
+    Type: String
+    Default: all
+    AllowedValues:
+      - all
+      - partial
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        all: 全量发布
+        partial: 灰度发布
+  instanceIds:
+    Label:
+      en: instanceIds
+      zh-cn: ECS实例ID
+    Type: List
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${deployMethod}'
+            - partial
+    Default: []
+  whetherStartApplicationWhenScaleOut:
+    Label:
+      en: whetherStartApplicationWhenScaleOut
+      zh-cn: 是否在扩容时启动应用
+    Type: Boolean
+    Default: true
+  whetherStopApplicationWhenScaleIn:
+    Label:
+      en: whetherStopApplicationWhenScaleIn
+      zh-cn: 是否在缩容时停止应用
+    Type: Boolean
+    Default: true
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 部署的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      MaxErrors: 0
+      Mode: Batch
+      Batch:
+        - 50%
+        - 50%
+      BatchPauseOption: EveryBatchPause
+Tasks:
+  - Name: getApplicationGroupDetail
+    Description:
+      en: Get the application group detail
+      zh-cn: 获取应用分组详情
+    Action: ACS::ExecuteApi
+    Properties:
+      Service: oos
+      API: GetApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+    Outputs:
+      tagKey:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagKey
+      tagValue:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagValue
+      deployRegionId:
+        Type: String
+        ValueSelector: .ApplicationGroup.DeployRegionId
+  - Name: getInstanceFromTargets
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: 'ACS::SelectTargets'
+    When:
+      Fn::Equals:
+        - '{{ deployMethod }}'
+        - all
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      Filters:
+        - Type: ApplicationGroup
+          ApplicationName: '{{ applicationName }}'
+          ApplicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: deployRevisionOnEssPre
+    Description:
+      en: PreDeployRevision
+      zh-cn: 部署准备
+    Action: ACS::CICD::PreDeployRevisionEss
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+      whetherStartApplicationWhenScaleOut: '{{ whetherStartApplicationWhenScaleOut }}'
+      whetherStopApplicationWhenScaleIn: '{{ whetherStopApplicationWhenScaleIn }}'
+      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
+      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+  - Name: bulkyDeployRevisions
+    Action: 'ACS::Loop'
+    Description:
+      en: BulkyDeployRevisions
+      zh-cn: 批量发布部署物
+    When:
+      Fn::Equals:
+        - '{{ getApplicationGroupDetail.tagKey }}'
+        - acs:autoscaling:scalingGroupId
+    Properties:
+      LoopItems:
+        Fn::If:
+          - Fn::Equals:
+            - '{{ deployMethod }}'
+            - all
+          - '{{ getInstanceFromTargets.instanceIds }}'
+          - '{{ instanceIds }}'
+      LoopRateControl: '{{ rateControl }}'
+      LoopTasks:
+        - Name: DeployRevisions
+          Action: 'ACS::CICD::DeployRevisionOnEcs'
+          Properties:
+            regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+            instanceId: '{{ ACS::TaskLoopItem }}'
+            deployRevisionId: '{{ deployRevisionId }}'
+    Outputs:
+      deployCommandOutput:
+        Type: String
+        ValueSelector: '{{ DeployRevisions.commandOutput }}'

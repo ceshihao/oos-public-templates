@@ -1,0 +1,191 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ECS-DeployRevisionOnApplicationGroup
+  name-zh-cn: 在单个应用分组上部署部署物
+  en: Deploy deployments on single application group
+  zh-cn: 在单个应用分组上部署部署物
+Parameters:
+  applicationName:
+    Label:
+      en: ApplicationName
+      zh-cn: 应用名称
+    Type: String
+  applicationGroupName:
+    Label:
+      en: ApplicationGroupName
+      zh-cn: 应用分组名称
+    Type: String
+  deployRevisionId:
+    Label:
+      en: DeployRevisionId
+      zh-cn: 部署物ID
+    Type: String
+  deployMethod:
+    Label:
+      en: DeployMethod
+      zh-cn: 发布模式
+    Description:
+      en: The full-scale publishing mode will publish all instances under the current application group. For grayscale publishing mode, you can select some instances to publish.
+      zh-cn: 全量发布模式下会发布当前应用分组下所有实例，灰度发布模式下您可以选择部分实例发布
+    Type: String
+    Default: all
+    AllowedValues:
+      - all
+      - partial
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        all: 全量发布
+        partial: 灰度发布
+  instanceIds:
+    Label:
+      en: Deploy on partial instanceIds
+      zh-cn: 仅发布部分ECS实例ID
+    Description:
+      en: You can select to publish only part of ECS in current application group. Note- When publishing part of ECS, the baseline of the application will not be managed! Only when publishing all ECS, the baseline of the application will be recorded.
+      zh-cn: 您可以选择仅发布应用分组下的部分ECS。注意：发布部分ECS，应用的基线将不会被管理！只有全量发布时，应用的基线会被记录。
+    Type: String
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${deployMethod}'
+            - partial
+    Default: []
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 部署的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Batch
+      MaxErrors: 0
+      Batch:
+        - 50%
+        - 50%
+      BatchPauseOption: EveryBatchPause
+Tasks:
+  - Name: getApplicationGroupDetail
+    Action: ACS::ExecuteApi
+    Description:
+      en: GetApplicationGroupDetail
+      zh-cn: 获取应用分组详情
+    Properties:
+      Service: oos
+      API: GetApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+    Outputs:
+      tagKey:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagKey
+      tagValue:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagValue
+      deployRegionId:
+        Type: String
+        ValueSelector: .ApplicationGroup.DeployRegionId
+  - Name: suspendEssProcess
+    Description:
+      en: Suspend ESS application group scaling process
+      zh-cn: 暂停待发布ESS应用分组的伸缩活动
+    Action: ACS::CICD::SuspendEssProcess
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
+      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+  - Name: getInstanceFromTargets
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    OnError: resumeProcesses
+    Action: 'ACS::SelectTargets'
+    When:
+      Fn::Equals:
+        - '{{ deployMethod }}'
+        - all
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      Filters:
+        - Type: ApplicationGroup
+          ApplicationName: '{{ applicationName }}'
+          ApplicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: bulkyDeployRevisions
+    Action: 'ACS::Loop'
+    OnError: resumeProcesses
+    Description:
+      en: BulkyDeployRevisions
+      zh-cn: 批量发布部署物
+    Properties:
+      LoopItems:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ deployMethod }}'
+              - all
+          - '{{ getInstanceFromTargets.instanceIds }}'
+          - '{{ instanceIds }}'
+      LoopRateControl: '{{ rateControl }}'
+      LoopTasks:
+        - Name: deployRevisions
+          Action: 'ACS::CICD::DeployRevisionOnEcs'
+          Properties:
+            regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+            instanceId: '{{ ACS::TaskLoopItem }}'
+            deployRevisionId: '{{ deployRevisionId }}'
+    Outputs:
+      deployCommandOutput:
+        Type: String
+        ValueSelector: '{{ deployRevisions.commandOutput }}'
+  - Name: updateDeployedRevision
+    Action: ACS::ExecuteAPI
+    OnError: resumeProcesses
+    When:
+      Fn::Equals:
+        - '{{ deployMethod }}'
+        - all
+    Description:
+      en: Update the deployed revision
+      zh-cn: 更新部署的版本
+    Properties:
+      Service: OOS
+      API: UpdateApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+        DeployedRevisionId: '{{ deployRevisionId }}'
+  - Name: manageDeployLifeCycleHook
+    OnError: resumeProcesses
+    Description:
+      en: ManageDeployLifeCycleHook
+      zh-cn: 管理部署相关生命周期挂钩
+    Action: ACS::CICD::ManageDeployLifeCycleHook
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      deployMethod: '{{ deployMethod }}'
+      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
+      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+  - Name: resumeProcesses
+    Action: ACS::ExecuteAPI
+    When:
+      Fn::Equals:
+        - '{{ getApplicationGroupDetail.tagKey }}'
+        - acs:autoscaling:scalingGroupId
+    Description: 恢复伸缩组流程
+    Properties:
+      Service: ESS
+      API: ResumeProcesses
+      Parameters:
+        ScalingGroupId: '{{ getApplicationGroupDetail.tagValue }}'
+        Process: '{{ suspendEssProcess.processesToSuspend }}'

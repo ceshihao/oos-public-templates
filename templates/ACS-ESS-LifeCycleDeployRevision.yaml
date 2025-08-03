@@ -92,7 +92,7 @@ Tasks:
     Outputs:
       lastDeployRevisionId:
         Type: String
-        ValueSelector: .DeployedRevisionIds[]
+        ValueSelector: .ApplicationGroup.DeployedRevisionIds[]
   - Name: DeployRevision
     Action: 'ACS::CICD::DeployRevisionOnEcs'
     When:
