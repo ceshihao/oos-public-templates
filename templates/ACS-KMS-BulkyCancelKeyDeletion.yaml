@@ -1,0 +1,57 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Cancel deletion of KMS key
+  zh-cn: 撤销KMS密钥删除
+  name-en: ACS-KMS-BulkyCancelKeyDeletion
+  name-zh-cn: 撤销KMS密钥删除
+  categories:
+    - security
+    - kms
+Tasks:
+  - Name: cancelKeyDeletion
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Enable deletion protection for CMK.
+      zh-cn: 开启CMK删除保护。
+    Properties:
+      Service: KMS
+      API: CancelKeyDeletion
+      Parameters:
+        RegionId: '{{ regionId }}'
+        KeyId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ keyIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+Parameters:
+  regionId:
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  keyIds:
+    Label:
+      en: The ids of key
+      zh-cn: 主密钥的全局唯一标识符列表
+    Type: List
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+

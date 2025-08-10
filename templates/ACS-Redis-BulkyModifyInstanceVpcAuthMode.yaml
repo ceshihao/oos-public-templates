@@ -1,0 +1,67 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Modify redis instance's vpc auth mode
+  zh-cn: 修改Redis实例的专有网络免密访问设置
+  name-en: ACS-Redis-BulkyModifyInstanceVpcAuthMode
+  name-zh-cn: 修改Redis实例的专有网络免密访问设置
+  categories:
+    - security
+    - tair
+Tasks:
+  - Name: modifyInstanceVpcAuthMode
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Modify redis instance's vpc access mode
+      zh-cn: 开启或关闭专有网络免密访问。
+    Properties:
+      Service: R-KVSTORE
+      API: ModifyInstanceVpcAuthMode
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceId: '{{ ACS::TaskLoopItem }}'
+        VpcAuthMode: '{{ vpcAuthMode }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+Parameters:
+  regionId:
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceIds:
+    Label:
+      en: The Ids of redis instances
+      zh-cn: redis实例ID列表
+    Type: List
+  vpcAuthMode:
+    Label:
+      en: Auth mode of vpc
+      zh-cn: 专有网络下的认证模式
+    Description:
+      en: 'Authentication mode under VPC, with the following values: Open: Authentication through password. Close: Disable password authentication, enabling password-free access.'
+      zh-cn: 专有网络下的认证模式，取值：Open：通过密码认证。Close：关闭密码认证，即开启免密访问。
+    Type: String
+    Default: Open
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+

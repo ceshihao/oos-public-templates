@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-09-02T03:38:03Z",
       "Description": "{\"en\": \"Build and deploy applications on a single ECS\", \"zh-cn\": \"在单个ECS上构建并部署应用\", \"name-en\": \"ACS-ECS-LocalBuildAndDeployOnSingleECS\", \"name-zh-cn\": \"单ECS本地构建部署\"}",
       "HasTrigger": false,
-      "Hash": "c75820f93d9c0f79c90cc8d7f5bc4288f301e2793186af6ec6478ef7b71ac7c5",
+      "Hash": "244843c864be550ff03d2a5ac68c260848e2e5fbc56fb9f66de9663617bd071c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-19a26faf087d4d8a8a1a",
       "TemplateName": "ACS-ECS-LocalBuildAndDeployOnSingleECS",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-05-09T08:23:46Z"
+      "UpdatedDate": "2025-08-08T06:56:08Z"
     },
     {
       "Category": "Other",
@@ -5585,6 +5585,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-06-05T08:15:35Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-08-07T06:36:55Z",
+      "Description": "{\"en\": \"Use lifecycleHook to run command in the specified scaling activity instance and skip nonexistent Instances\", \"zh-cn\": \"使用生命周期挂钩到实例中执行命令，跳过不存在的实例。\", \"name-en\": \"ACS-ESS-LifeCycleRunCommandV2\", \"name-zh-cn\": \"使用生命周期挂钩到实例中执行命令，跳过不存在的实例。\", \"categories\": [\"elastic_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "8cb8d6c4e166aa1a4f5650eb73893d1f4d2dea80a8fbe1678684076d36ea4871",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-c13d3160b1f9458ebada",
+      "TemplateName": "ACS-ESS-LifeCycleRunCommandV2",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-08-07T06:36:55Z"
     },
     {
       "Category": "Other",
@@ -7013,6 +7034,48 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-07-28T09:02:32Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-08-07T07:13:18Z",
+      "Description": "{\"en\": \"Cancel deletion of KMS key\", \"zh-cn\": \"撤销KMS密钥删除\", \"name-en\": \"ACS-KMS-BulkyCancelKeyDeletion\", \"name-zh-cn\": \"撤销KMS密钥删除\", \"categories\": [\"security\", \"kms\"]}",
+      "HasTrigger": false,
+      "Hash": "716f9c1e18eb1c1952a2bd203853b8bba8f0a70586bb9b93f96554288aa616f6",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-fdea617caf65445cb742",
+      "TemplateName": "ACS-KMS-BulkyCancelKeyDeletion",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-08-07T07:13:18Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-08-07T07:13:18Z",
+      "Description": "{\"en\": \"Modify redis instance's vpc auth mode\", \"zh-cn\": \"修改Redis实例的专有网络免密访问设置\", \"name-en\": \"ACS-Redis-BulkyModifyInstanceVpcAuthMode\", \"name-zh-cn\": \"修改Redis实例的专有网络免密访问设置\", \"categories\": [\"security\", \"tair\"]}",
+      "HasTrigger": false,
+      "Hash": "81a20bfd42764174d17af94caec9d849274225520999778175448bc3b321d26c",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-d582b085df8c42e98c85",
+      "TemplateName": "ACS-Redis-BulkyModifyInstanceVpcAuthMode",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-08-07T07:13:18Z"
     }
   ]
 }

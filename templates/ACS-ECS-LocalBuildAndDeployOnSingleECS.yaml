@@ -16,8 +16,12 @@ Parameters:
       - uploadFile
     AssociationPropertyMetadata:
       ValueLabelMapping:
-        gitRepo: Git仓库
-        uploadFile: 上传本地代码
+        gitRepo:
+          zh-cn: Git仓库
+          en: Git Repository
+        uploadFile:
+          zh-cn: 上传本地文件
+          en: Upload File
   platform:
     Type: String
     Label:
