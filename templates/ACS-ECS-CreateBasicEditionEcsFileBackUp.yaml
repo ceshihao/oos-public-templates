@@ -1,0 +1,125 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: create ECS file backup basic edition
+  zh-cn: 创建ECS文件备份基础版
+  name-en: ACS-ECS-CreateBasicEditionEcsFileBackUp
+  name-zh-cn: 创建ECS文件备份基础版
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: regionId
+  orderId:
+    Description:
+      en: The ID of Order
+      zh-cn: 订单ID
+    Type: String
+    Default: ''
+Tasks:
+  - Name: sleepForEcsReady
+    Action: 'ACS::Sleep'
+    Properties:
+      Duration: 3s
+  - Name: getInstanceFromOrderId
+    Action: 'ACS::WaitFor'
+    Retries: 57
+    When:
+      'Fn::Not':
+        'Fn::Equals':
+          - '{{ orderId }}'
+          - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 通过订单ID获取ECS实例
+    Properties:
+      Service: BssOpenApi
+      API: GetOrderDetail
+      Parameters:
+        RegionId: '{{ regionId }}'
+        OrderId: '{{ orderId }}'
+      DesiredValues:
+        - Paid
+      StopRetryValues:
+        - Cancelled
+      PropertySelector: 'Data.OrderList.Order[].PaymentStatus'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: 'Data.OrderList.Order[].InstanceIDs | fromjson | .[]'
+  - Name: getInstanceFromTargets
+    When:
+      'Fn::Equals':
+        - '{{ orderId }}'
+        - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: 'ACS::SelectTargets'
+    Properties:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: createEcsBackUpServiceLinkedRole
+    OnError: createMagPieBridgeServiceLinkedRole
+    IsCritical: false
+    Action: 'ACS::ExecuteAPI'
+    Properties:
+      Service: resourcemanager
+      API: CreateServiceLinkedRole
+      Parameters:
+        ServiceName: ecsbackup.hbr.aliyuncs.com
+  - Name: createMagPieBridgeServiceLinkedRole
+    OnError: createEcsFileBackUp
+    IsCritical: false
+    Action: 'ACS::ExecuteAPI'
+    Properties:
+      Service: resourcemanager
+      API: CreateServiceLinkedRole
+      Parameters:
+        ServiceName: magpiebridge.hbr.aliyuncs.com
+  - Name: createEcsFileBackUp
+    Action: 'ACS::Loop'
+    Properties:
+      LoopItems:
+        'Fn::If':
+          - 'Fn::Equals':
+              - '{{ orderId }}'
+              - ''
+          - '{{ getInstanceFromTargets.instanceIds }}'
+          - '{{ getInstanceFromOrderId.instanceIds }}'
+      LoopTasks:
+        - Name: createBackUp
+          Action: 'ACS::ExecuteAPI'
+          Properties:
+            Service: HBR
+            API: CreateBackupPlan
+            Parameters:
+              SourceType: ECS_FILE
+              Edition: BASIC
+              InstanceId: '{{ ACS::TaskLoopItem }}'
+      LoopRateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 10
+

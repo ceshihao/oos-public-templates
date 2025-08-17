@@ -42,8 +42,8 @@ Parameters:
       en: (The basic image is used to create a repair instance. You need to select a basic image with the same architecture as the repair target image. For example, the custom image you want to repair is x86_64, please select aliyun_3_X64 image)
       zh-cn: <font color='red'>基础镜像用来创建修复实例, 您需要选择和修复目标镜像同架构的基础镜像, 如您要修复的自定义镜像是x86_64镜像,请选择 aliyun_3_x64 镜像</font>
     AllowedValues:
-      - aliyun_3_x64_20G_alibase_20230727.vhd
-      - aliyun_3_arm64_20G_alibase_20230731.vhd
+      - aliyun_3_x64_20G_alibase_20250629.vhd
+      - aliyun_3_arm64_20G_alibase_20250629.vhd
   instanceType:
     Label:
       en: InstanceType
@@ -117,7 +117,7 @@ Tasks:
     Properties:
       Service: ECS
       API: DescribeImages
-      PropertySelector: .Images.Image[0].DetectionOptions.Items.Item[] | select(.Name == "SystemImage") | .Value
+      PropertySelector: Images.Image[0].DetectionOptions.Items.Item[]? | select(.Name == "SystemImage") | .Value
       DesiredValues: []
       Parameters:
         RegionId: '{{ regionId }}'

@@ -1,0 +1,67 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Bulky modify the automatic master-slave switchover function of the RDS instance.
+  zh-cn: 批量修改RDS实例的主备自动切换功能
+  name-en: ACS-RDS-BulkyModifyHASwitchConfig
+  name-zh-cn: 批量修改RDS实例的主备自动切换功能
+  categories:
+    - security
+    - rds
+Tasks:
+  - Name: modifyHASwitchConfig
+    Action: ACS::ExecuteApi
+    Description:
+      en: Modify the automatic master-slave switchover function of the RDS instance.
+      zh-cn: 开启或关闭RDS实例的主备自动切换功能
+    Properties:
+      Service: RDS
+      API: ModifyHASwitchConfig
+      Parameters:
+        DBInstanceId: '{{ ACS::TaskLoopItem }}'
+        HAConfig: '{{ hAConfig }}'
+        RegionId: '{{ regionId }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: RDS实例Id列表
+    Type: List
+  hAConfig:
+    Label:
+      en: HAConfig
+      zh-cn: 主备切换设置
+    Description:
+      en: 'Master-slave switchover settings, with the following values, Auto: Automatically switch between master and slave instances when a failure occurs. Manual: Temporarily disable automatic switching.'
+      zh-cn: 主备切换设置，取值：Auto：出现故障时自动切换主备实例。Manual：临时关闭自动切换。
+    Type: String
+    Default: Auto
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+

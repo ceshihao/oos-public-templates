@@ -1,0 +1,63 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Enable oss bucket's logging.
+  zh-cn: 为存储空间（Bucket）开启日志转存功能
+  name-en: ACS-OSS-BulkyPutBucketLogging
+  name-zh-cn: 为存储空间（Bucket）开启日志转存功能
+  categories:
+    - security
+    - oss
+Tasks:
+  - Name: putBucketLogging
+    Action: ACS::ExecuteAPI
+    Description: 为存储空间（Bucket）开启日志转存功能
+    Properties:
+      Service: OSS
+      API: PutBucketLogging
+      Parameters:
+        RegionId: '{{ regionId }}'
+        bucket: '{{ ACS::TaskLoopItem }}'
+      Method: PUT
+      URI: '?logging'
+      Body: <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus> <LoggingEnabled> <TargetBucket>{{ targetBucket }}</TargetBucket> <TargetPrefix>{{ logPrefix }}</TargetPrefix> </LoggingEnabled> </BucketLoggingStatus>
+    Outputs: {}
+    Loop:
+      Items: '{{ bucketNames }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+Parameters:
+  regionId:
+    Type: String
+    Label: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  bucketNames:
+    Label: 要处理的OSS bucket名称列表
+    Type: List
+  targetBucket:
+    Label:
+      en: specific bucket to store logs
+      zh-cn: 指定存储访问日志的Bucket
+    Type: String
+  logPrefix:
+    Label: 日志文件前缀
+    Description: 指定保存的日志文件前缀，可以为空
+    Type: String
+    Default: ''
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
