@@ -1,0 +1,86 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Bulky set automatic storage expansion for RDS instances
+  zh-cn: 批量设置RDS实例的存储空间自动扩容功能
+  name-en: ACS-RDS-BulkyModifyDasInstanceConfig
+  name-zh-cn: 批量设置RDS实例的存储空间自动扩容功能
+  categories:
+    - security
+    - rds
+Tasks:
+  - Name: modifyDasInstanceConfig
+    Action: ACS::ExecuteApi
+    Description:
+      en: Set automatic storage expansion for RDS instances
+      zh-cn: 设置RDS实例的存储空间自动扩容功能
+    Properties:
+      Service: RDS
+      API: ModifyDasInstanceConfig
+      Parameters:
+        DBInstanceId: '{{ ACS::TaskLoopItem }}'
+        StorageAutoScale: '{{ storageAutoScale }}'
+        StorageThreshold: '{{ storageThreshold }}'
+        StorageUpperBound: '{{ storageUpperBound }}'
+        RegionId: '{{ regionId }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: RDS实例Id列表
+    Type: List
+  storageAutoScale:
+    Label:
+      en: StorageAutoScale
+      zh-cn: 存储空间自动扩展开关
+    Description:
+      en: Automatic storage expansion switch, Enable or Disable
+      zh-cn: 存储空间自动扩展开关，取值：Enable：开启；Disable：关闭
+    Type: String
+    Default: Enable
+  storageThreshold:
+    Label:
+      en: StorageThreshold
+      zh-cn: 触发阈值百分比
+    Description:
+      en: Threshold percentage for triggering automatic storage expansion. When the remaining storage space percentage reaches the set threshold, automatic expansion will be triggered. Values 10, 20, 30, 40, 50.
+      zh-cn: 触发阈值百分比，当剩余存储空间百分比达到设定的阈值时，会触发自动扩容。取值：10、20、30、40、50
+    Type: String
+    Default: 10
+  storageUpperBound:
+    Label:
+      en: StorageUpperBound
+      zh-cn: 自动扩容上限
+    Description:
+      en: Automatic expansion upper limit, which must be greater than or equal to the instance's current total storage space. ESSD cloud disk limit 32000 GB, SSD cloud disk limit 6000 GB.
+      zh-cn: 自动扩容上限，需要大于等于实例当前存储空间总大小。ESSD云盘上限32000GB,SSD云盘上限6000GB
+    Type: String
+    Default: 100
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'

@@ -54,6 +54,10 @@ Parameters:
       - ACS::SLB::LoadBalancer
       - ACS::DdosCoo::Instance
       - ACS::CEN::CenBandwidthPackage
+      - ACS::KMS::Instance
+      - ACS::VPN::VpnGateway
+      - ACS::DRDS::DBInstance
+      - ACS::DRDS::PolarDBXInstance
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -93,6 +97,10 @@ Tasks:
               ACS::SLB::LoadBalancer: slb
               ACS::DdosCoo::Instance: ddos
               ACS::CEN::CenBandwidthPackage: cbn
+              ACS::KMS::Instance: kms
+              ACS::VPN::VpnGateway: vpn
+              ACS::DRDS::DBInstance: drds
+              ACS::DRDS::PolarDBXInstance: drds
         ProductType:
           Fn::Select:
             - '{{ productCode }}'
@@ -108,6 +116,10 @@ Tasks:
               ACS::SLB::LoadBalancer: ''
               ACS::DdosCoo::Instance: 'ddoscoo'
               ACS::CEN::CenBandwidthPackage: 'cbn_bwp_pre'
+              ACS::KMS::Instance: ''
+              ACS::VPN::VpnGateway: ''
+              ACS::DRDS::DBInstance: ''
+              ACS::DRDS::PolarDBXInstance: ''
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

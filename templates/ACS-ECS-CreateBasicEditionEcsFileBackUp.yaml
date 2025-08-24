@@ -33,14 +33,14 @@ Parameters:
     Default: ''
 Tasks:
   - Name: sleepForEcsReady
-    Action: 'ACS::Sleep'
+    Action: ACS::Sleep
     Properties:
       Duration: 3s
   - Name: getInstanceFromOrderId
-    Action: 'ACS::WaitFor'
+    Action: ACS::WaitFor
     Retries: 57
     When:
-      'Fn::Not':
+      Fn::Not:
         'Fn::Equals':
           - '{{ orderId }}'
           - ''
@@ -57,11 +57,11 @@ Tasks:
         - Paid
       StopRetryValues:
         - Cancelled
-      PropertySelector: 'Data.OrderList.Order[].PaymentStatus'
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Data.OrderList.Order[].InstanceIDs | fromjson | .[]'
+        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
   - Name: getInstanceFromTargets
     When:
       'Fn::Equals':
@@ -83,7 +83,7 @@ Tasks:
   - Name: createEcsBackUpServiceLinkedRole
     OnError: createMagPieBridgeServiceLinkedRole
     IsCritical: false
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Properties:
       Service: resourcemanager
       API: CreateServiceLinkedRole
@@ -92,25 +92,41 @@ Tasks:
   - Name: createMagPieBridgeServiceLinkedRole
     OnError: createEcsFileBackUp
     IsCritical: false
-    Action: 'ACS::ExecuteAPI'
+    Action: ACS::ExecuteAPI
     Properties:
       Service: resourcemanager
       API: CreateServiceLinkedRole
       Parameters:
         ServiceName: magpiebridge.hbr.aliyuncs.com
   - Name: createEcsFileBackUp
-    Action: 'ACS::Loop'
+    Action: ACS::Loop
     Properties:
       LoopItems:
-        'Fn::If':
+        Fn::If:
           - 'Fn::Equals':
               - '{{ orderId }}'
               - ''
           - '{{ getInstanceFromTargets.instanceIds }}'
           - '{{ getInstanceFromOrderId.instanceIds }}'
       LoopTasks:
+        - Name: waitForEcsReady
+          Action: 'ACS::WaitFor'
+          Description:
+            en: Check if the ECS instance exists
+            zh-cn: 检查ECS实例是否存在
+          MaxRetryInterval: 180
+          Properties:
+            Service: ECS
+            API: DescribeInstances
+            Parameters:
+              RegionId: '{{ regionId }}'
+              InstanceIds:
+                - '{{ ACS::TaskLoopItem }}'
+            DesiredValues:
+              - 1
+            PropertySelector: 'TotalCount'
         - Name: createBackUp
-          Action: 'ACS::ExecuteAPI'
+          Action: ACS::ExecuteAPI
           Properties:
             Service: HBR
             API: CreateBackupPlan
@@ -122,4 +138,3 @@ Tasks:
         Mode: Concurrency
         MaxErrors: 0
         Concurrency: 10
-

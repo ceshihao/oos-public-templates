@@ -105,6 +105,7 @@ Parameters:
       - ACS::Eflo::ElasticNetworkInterface
       - ACS::Eflo::NetworkInterface
       - ACS::Eflo::Er
+      - ACS::Eflo::HighDensityElasticNetworkInterface
       - ACS::EMR::Cluster
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
@@ -162,6 +163,7 @@ Parameters:
       - ACS::RDS::Custom
       - ACS::RDS::CustomDeploymentSet
       - ACS::RDS::CustomDisk
+      - ACS::RDS::CustomSnapshot
       - ACS::ROS::Template
       - ACS::SLB::AccessControlList
       - ACS::SLB::CACertificate

@@ -1,8 +1,8 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Invoke the function and return the result
-  zh-cn: 执行函数计算，并返回函数计算的结果
-  name-en: ACS-FC-InvokeFunction
+  zh-cn: 执行函数计算的函数，并返回函数执行的结果
+  name-en: ACS-FC3-InvokeFunction
   name-zh-cn: 执行函数计算
 Parameters:
   regionId:
@@ -12,23 +12,14 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  serviceName:
-    Label:
-      en: ServiceName
-      zh-cn: 服务名称
-    Type: String
-    AssociationProperty: 'ALIYUN::FC::Service::ServiceName'
-    AssociationPropertyMetadata:
-      RegionId: regionId
   functionName:
     Label:
       en: FunctionName
       zh-cn: 函数名称
     Type: String
-    AssociationProperty: 'ALIYUN::FC::Function::FunctionName'
+    AssociationProperty: ALIYUN::FC3::Function::FunctionName
     AssociationPropertyMetadata:
       RegionId: regionId
-      ServiceName: serviceName
   parameters:
     Label:
       en: Parameters
@@ -37,9 +28,7 @@ Parameters:
     Default: ''
   invocationType:
     Description:
-      en: >-
-        If your function execution time may exceed 60s, choose asynchronous call
-        (Async).
+      en: 'If your function execution time may exceed 60s, choose asynchronous call (Async).'
       zh-cn: 如果您的函数执行时间可能超过60s，请选择异步调用（Async）。
     Label:
       en: InvocationType
@@ -58,13 +47,12 @@ Parameters:
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: invokeFunction
-    Action: 'ACS::FC::InvokeFunction'
+    Action: ACS::FC3::InvokeFunction
     Description:
       en: Invoke the function
       zh-cn: 执行函数计算
     Properties:
       functionName: '{{ functionName }}'
-      serviceName: '{{ serviceName }}'
       invocationType: '{{ invocationType }}'
       regionId: '{{ regionId }}'
       event: '{{ parameters }}'

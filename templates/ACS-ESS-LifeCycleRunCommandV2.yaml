@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Use lifecycleHook to run command in the specified scaling activity instance and skip nonexistent Instances
-  zh-cn: 使用生命周期挂钩到实例中执行命令，跳过不存在的实例。
+  en: Use lifecycleHook to run command in the specified scaling activity instance
+  zh-cn: 使用生命周期挂钩到实例中执行命令(V2)。
   name-en: ACS-ESS-LifeCycleRunCommandV2
-  name-zh-cn: 使用生命周期挂钩到实例中执行命令，跳过不存在的实例。
+  name-zh-cn: 使用生命周期挂钩到实例中执行命令(V2)。
   categories:
     - elastic_manage
 Parameters:

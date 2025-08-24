@@ -1,0 +1,93 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Bulky modify the parameters of RDS instances
+  zh-cn: 批量修改RDS实例的参数值
+  name-en: ACS-RDS-BulkyModifyParameter
+  name-zh-cn: 批量修改RDS实例的参数值
+  categories:
+    - security
+    - rds
+Tasks:
+  - Name: modifyParameter
+    Action: ACS::ExecuteApi
+    Description: '{"en":"modify the parameters of RDS instances","zh-cn":"修改RDS实例的参数值"}'
+    Properties:
+      Service: RDS
+      API: ModifyParameter
+      Parameters:
+        DBInstanceId: '{{ ACS::TaskLoopItem }}'
+        RegionId: '{{ regionId }}'
+        Parameters: '{{ parameters }}'
+        Forcerestart: '{{ forcerestart }}'
+        SwitchTimeMode: '{{ switchTimeMode }}'
+        SwitchTime: '{{ switchTime }}'
+    Loop:
+      Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+    Outputs: {}
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: RDS实例Id列表
+    Type: List
+  parameters:
+    Label:
+      en: Parameters
+      zh-cn: 参数及其值的JSON串
+    Description:
+      en: JSON string of parameters and their values, where parameter values are all of string type. Format{\"param1\":\"v1\",\"param2\":\"v2\"}. You can call DescribeParameterTemplates to query parameter names and parameter values.
+      zh-cn: 参数及其值的 JSON 串，参数的值都是字符串类型。格式{\"param1\":\"v1\",\"param2\":\"v2\"}。可调用 DescribeParameterTemplates 查询参数名称和参数值。
+    Type: String
+    Default: {"synchronous_commit":"on"}
+  forcerestart:
+    Label:
+      en: Forcerestart
+      zh-cn: 修改参数是否重启数据库
+    Description:
+      en: Modify whether to restart the database. Values true (force restart - if there are parameters among the modified ones that require a restart, true must be passed in, otherwise the modification will not take effect). false (no force restart). Default value is false.
+      zh-cn: 修改参数是否重启数据库，取值，true强制重启（若修改的参数当中，有需要重启的参数，则必须传入 true，否则修改将不生效）。false不强制重启。默认值false。
+    Type: Boolean
+    Default: false
+  switchTimeMode:
+    Label:
+      en: SwitchTimeMode
+      zh-cn: 修改参数的执行时间
+    Description:
+      en: Execution time for modifying parameters. Values, Immediate (default) - execute immediately; MaintainTime - execute within the instance's maintenance window; you can call the ModifyDBInstanceMaintainTime interface to modify the maintenance window; ScheduleTime - manually specify execution time, when passing this value you must also pass the SwitchTime parameter.
+      zh-cn: 修改参数的执行时间，取值，Immediate默认值，立即执行；MaintainTime实例可运维时间段内执行；可调用 ModifyDBInstanceMaintainTime 接口修改可运维时间段；ScheduleTime手动指定执行时间，传入该值需要同时传入 SwitchTime 参数。
+    Type: String
+    Default: 'Immediate'
+  switchTime:
+    Label:
+      en: SwitchTime
+      zh-cn: 指定修改参数的执行时间
+    Description:
+      en: 'When SwitchTimeMode is ScheduleTime you need to fill this parameter. Specify the execution time for modifying parameters. Format, yyyy-MM-ddTHH:mm:ssZ (UTC time). Note: This time must be later than the current time (the time when the call is executed).'
+      zh-cn: "当SwitchTimeMode设置为ScheduleTime需要指定该参数。指定修改参数的执行时间。格式yyyy-MM-ddTHH:mm:ssZ（UTC 时间）。说明 该时间必须大于当前时间（执行调用的时间）。"
+    Type: String
+    Default: ''
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'

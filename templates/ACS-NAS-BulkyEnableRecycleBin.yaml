@@ -1,0 +1,66 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Bulky enable the recycle bin feature for general-purpose NAS file systems
+  zh-cn: 批量开启通用型NAS文件系统回收站功能
+  name-en: ACS-NAS-BulkyEnableRecycleBin
+  name-zh-cn: 批量开启通用型NAS文件系统回收站功能
+  categories:
+    - security
+    - nas
+Tasks:
+  - Name: enableRecycleBin
+    Action: ACS::ExecuteApi
+    Description:
+      en: Enable the recycle bin feature for general-purpose NAS file systems in bulk
+      zh-cn: 开启通用型NAS文件系统回收站功能
+    Properties:
+      Service: nas
+      API: EnableRecycleBin
+      Parameters:
+        FileSystemId: '{{ ACS::TaskLoopItem }}'
+        RegionId: '{{ regionId }}'
+        ReservedDays: '{{ reservedDays }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ fileSystemIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  fileSystemIds:
+    Label:
+      en: fileSystemIds
+      zh-cn: 待开启回收站功能的文件系统ID列表
+    Type: List
+  reservedDays:
+    Label:
+      en: ReservedDays
+      zh-cn: 主备切换设置
+    Description:
+      en: File retention time in the recycle bin. Unit days. Value range 1-180, default value 3.
+      zh-cn: 回收站中文件的保留时间。单位天。取值范围1~180,默认值3
+    Type: String
+    Default: 3
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 10
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
