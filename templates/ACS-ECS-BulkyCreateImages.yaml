@@ -1,0 +1,159 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Batch creation of ECS custom images, suitable for users to create custom images and migrate ECS across accounts in batches.
+  zh-cn: 批量创建自定义镜像，适用于用户通过创建自定义镜像，批量跨账号迁移ECS。
+  name-en: ACS-ECS-BulkyCreateImages
+  name-zh-cn: 批量创建自定义镜像
+  categories:
+    - image_manage
+    - application_manage
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceIdParameters:
+    Type: List
+    Label:
+      en: Image Configure
+      zh-cn: 镜像配置
+    AssociationProperty: List[Parameter]
+    AssociationPropertyMetadata:
+      Parameter:
+        Type: Json
+        AssociationPropertyMetadata:
+          Parameters:
+            instanceId:
+              Label: 实例Id
+              Type: String
+              AssociationProperty: ALIYUN::ECS::Instance::InstanceId
+            imageName:
+              Label: 镜像的名称
+              Type: String
+              Default: ''
+              Description:
+                en: <p class="p">Note:</p> <ul class="ul"> <li class="li">Length is 2~128 English or Chinese characters</li> <li class="li"><font color='red'>must start with big or small letters or Chinese, not http:// and https://. </font></li> <li class="li">Can contain numbers, colons (:), underscores (_), or dashes (-). </li> </ul>
+                zh-cn: <p class="p">注意：</p> <ul class="ul"> <li class="li">镜像名称不填默认为Created_from_i-xxxx,可修改镜像名称前缀</li><li class="li">长度为2~128个英文或中文字符</li> <li class="li"><font color='red'>必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li class="li">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>
+            detectionStrategy:
+              Label:
+                en: DetectionStrategy
+                zh-cn: 镜像检测策略
+              Description:
+                en: Mirror detection strategy, do not trigger detection when this parameter is not configured. Only supports Standard detection mode.
+                zh-cn: 镜像检测策略，不配置此参数时不触发检测。仅支持标准（Standard）检测模式，默认Standard。
+              Type: String
+              AllowedValues:
+                - Standard
+                - ''
+              Default: Standard
+            imageFamily:
+              Label: 镜像族系
+              Type: String
+              AssociationProperty: ALIYUN::ECS::Image::ImageFamily
+              Default: ''
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 速率控制
+    Description:
+      en: Concurrency ratio of task execution.
+      zh-cn: 任务执行的并发比率。
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: createImage
+    Action: ACS::ECS::CreateImage
+    Description:
+      en: Create new image with the specified image name and instance ID
+      zh-cn: 通过指定实例ID和镜像名称创建新的镜像
+    Properties:
+      regionId: '{{ regionId }}'
+      imageName:
+        Fn::If:
+          - Fn::Equals:
+              - ''
+              - Fn::Select:
+                  - imageName
+                  - '{{ ACS::TaskLoopItem }}'
+          - Fn::Jq:
+              - First
+              - .instanceId | "Created_from_" + .
+              - '{{ ACS::TaskLoopItem }}'
+          - Fn::Select:
+              - imageName
+              - '{{ ACS::TaskLoopItem }}'
+      instanceId:
+        Fn::Select:
+          - instanceId
+          - '{{ ACS::TaskLoopItem }}'
+      tags: []
+      imageFamily:
+        Fn::Select:
+          - imageFamily
+          - '{{ ACS::TaskLoopItem }}'
+      imageDescription: ''
+      resourceGroupId: ''
+      maxRetryInterval: 300
+      detectionStrategy:
+        Fn::If:
+          - Fn::Equals:
+              - ''
+              - Fn::Select:
+                  - detectionStrategy
+                  - '{{ ACS::TaskLoopItem }}'
+          - Standard
+          - Fn::Select:
+              - detectionStrategy
+              - '{{ ACS::TaskLoopItem }}'
+    Outputs:
+      imageId:
+        Type: String
+        ValueSelector: imageId
+    Loop:
+      Items: '{{ instanceIdParameters }}'
+      RateControl: '{{ rateControl }}'
+      Outputs:
+        imageIds:
+          AggregateType: Fn::ListJoin
+          AggregateField: imageId
+Outputs:
+  imageIds:
+    Type: List
+    Value: '{{ createImage.imageIds }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+        Label:
+          default:
+            zh-cn: 选择地域
+            en: Select Ecs InstanceIds
+      - Parameters:
+          - instanceIdParameters
+        Label:
+          default:
+            zh-cn: 实例镜像设置
+            en: Image Configure
+      - Parameters:
+          - rateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
+

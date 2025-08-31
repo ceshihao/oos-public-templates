@@ -141,6 +141,24 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: 'ScalingInstances.ScalingInstance | map({"InstanceId": (.InstanceId), "LifecycleState": (.LifecycleState)})[]'
+  - Name: getInstanceDescribe
+    Description:
+      en: Views the ECS instances.
+      zh-cn: 获取ECS实例详情
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::ECS::Instance
+      Filters:
+        - Type: ResourceIds
+          ResourceIds:
+            Fn::Jq:
+              - All
+              - .[].InstanceId
+              - '{{ getInstance.instanceIds }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: whetherTheScalingGroupInstanceIsEmpty
     Action: 'ACS::Choice'
     Description:
@@ -219,7 +237,11 @@ Tasks:
       imageId: '{{ imageId }}'
       scalingGroupId: '{{ scalingGroupId }}'
     Loop:
-      Items: '{{ getInstance.instanceIds }}'
+      Items:
+        Fn::Jq:
+          - First
+          - map(select(.InstanceId as $id | {{ getInstanceDescribe.instanceIds }} | index($id)))
+          - '{{ getInstance.instanceIds }}'
       BatchPauseOption: '{{ batchPauseOption }}'
       MaxErrors: '{{ maxErrors }}'
       Concurrency:
@@ -252,7 +274,11 @@ Tasks:
         - Key: 'ess:rollingupdate'
           Value: 'oos:{{ ACS::ExecutionId }}'
     Loop:
-      Items: '{{ getInstance.instanceIds }}'
+      Items:
+        Fn::Jq:
+          - First
+          - map(select(.InstanceId as $id | {{ getInstanceDescribe.instanceIds }} | index($id)))
+          - '{{ getInstance.instanceIds }}'
       Mode: Concurrency
       MaxErrors: 0
       Concurrency: 10

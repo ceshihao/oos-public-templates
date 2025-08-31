@@ -80,24 +80,6 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: 'Instances.Instance[].InstanceId'
-  - Name: createEcsBackUpServiceLinkedRole
-    OnError: createMagPieBridgeServiceLinkedRole
-    IsCritical: false
-    Action: ACS::ExecuteAPI
-    Properties:
-      Service: resourcemanager
-      API: CreateServiceLinkedRole
-      Parameters:
-        ServiceName: ecsbackup.hbr.aliyuncs.com
-  - Name: createMagPieBridgeServiceLinkedRole
-    OnError: createEcsFileBackUp
-    IsCritical: false
-    Action: ACS::ExecuteAPI
-    Properties:
-      Service: resourcemanager
-      API: CreateServiceLinkedRole
-      Parameters:
-        ServiceName: magpiebridge.hbr.aliyuncs.com
   - Name: createEcsFileBackUp
     Action: ACS::Loop
     Properties:

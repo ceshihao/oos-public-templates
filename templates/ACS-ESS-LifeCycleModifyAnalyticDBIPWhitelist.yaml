@@ -99,6 +99,7 @@ Tasks:
         RegionId: '{{ regionId }}'
         ModifyMode: '{{ modifyMode }}'
         DBClusterId: '{{ dbClusterId }}'
+        DBClusterIPArrayName: default
         SecurityIps:
           'Fn::Join':
             - ','

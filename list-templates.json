@@ -510,7 +510,7 @@
       "CreatedDate": "2020-04-03T09:56:39Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by replace system disk\", \"zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup\", \"name-zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "eab3cf001badf9928bca03ea3aca9d2a722714f72f199b96624df5b1c8164d7e",
+      "Hash": "31f148ab045ad7d214712ce64e9f68f85c88e95e0a7f786e6d469307d8b50c9b",
       "IsFavorite": false,
       "Popularity": 7.2,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -520,10 +520,10 @@
       "TemplateId": "t-5d45c19fed154e24a602",
       "TemplateName": "ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v18",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:25Z"
+      "UpdatedDate": "2025-08-27T09:52:50Z"
     },
     {
       "Category": "Other",
@@ -2106,7 +2106,7 @@
       "CreatedDate": "2020-09-03T12:57:36Z",
       "Description": "{\"en\": \"Use lifecycleHook to modify the IP whitelist of the AnalyticDB instance\", \"zh-cn\": \"使用生命周期挂钩设置AnalyticDB实例的IP白名单\", \"name-en\": \"ACS-ESS-LifeCycleModifyAnalyticDBIPWhitelist\", \"name-zh-cn\": \"使用生命周期挂钩设置AnalyticDB实例的IP白名单\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "81d567faeba34bbef0f1f7fce16626b52d968693cac74bb50cecfaf7039ed084",
+      "Hash": "2594ee3258a1925e8677b3eb571628ddecb93465349768d268c1794a60364ee0",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2116,10 +2116,10 @@
       "TemplateId": "t-9eff4e3ce07c4300b2c1",
       "TemplateName": "ACS-ESS-LifeCycleModifyAnalyticDBIPWhitelist",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2022-07-14T11:11:03Z"
+      "UpdatedDate": "2025-08-25T10:01:56Z"
     },
     {
       "Category": "Other",
@@ -5610,6 +5610,27 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2025-08-25T01:56:12Z",
+      "Description": "{\"en\": \"Batch creation of ECS custom images, suitable for users to create custom images and migrate ECS across accounts in batches.\", \"zh-cn\": \"批量创建自定义镜像，适用于用户通过创建自定义镜像，批量跨账号迁移ECS。\", \"name-en\": \"ACS-ECS-BulkyCreateImages\", \"name-zh-cn\": \"批量创建自定义镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "8589e8061a03f5be5410dd62deeb7f470a7cff6f824ad192f88c4861e517f2b5",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-a076b239caa9472eb5b5",
+      "TemplateName": "ACS-ECS-BulkyCreateImages",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-08-28T09:38:55Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T10:10:52Z",
       "Description": "{\"en\": \"Bulky tag ECS instances using Linux kernel version as tag value by specifying instance IDs\", \"zh-cn\": \"批量通过指定实例IDs将Linux内核版本用作标记值标记ECS实例\", \"name-en\": \"ACS-ECS-BulkyTagInstanceByLinuxKernelVersion\", \"name-zh-cn\": \"批量根据Linux内核版本标记ECS实例\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
@@ -7230,7 +7251,7 @@
       "CreatedDate": "2025-08-15T05:53:16Z",
       "Description": "{\"en\": \"create ECS file backup basic edition\", \"zh-cn\": \"创建ECS文件备份基础版\", \"name-en\": \"ACS-ECS-CreateBasicEditionEcsFileBackUp\", \"name-zh-cn\": \"创建ECS文件备份基础版\"}",
       "HasTrigger": false,
-      "Hash": "ed5f5bdecff5e0d3b5a7308ea4bd31386aa825fc37beaf4cbc300ae5dcfc8071",
+      "Hash": "dbc4aa61dceadd5911435229c727b8cac2c483b7fe2b98dc81e5cf466767ac4e",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7240,10 +7261,10 @@
       "TemplateId": "t-46d8e0e2c8f9450fad97",
       "TemplateName": "ACS-ECS-CreateBasicEditionEcsFileBackUp",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-19T09:18:58Z"
+      "UpdatedDate": "2025-08-27T02:29:48Z"
     },
     {
       "Category": "Other",
