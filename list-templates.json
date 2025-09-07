@@ -2376,27 +2376,6 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2021-02-04T02:35:41Z",
-      "Description": "{\"name-en\": \"ACS-EventBridge-PutEvents\", \"name-zh-cn\": \"EventBridge发布事件\", \"en\": \"Put one or more events\", \"zh-cn\": \"发布一个或多个事件\", \"categories\": [\"security\"]}",
-      "HasTrigger": false,
-      "Hash": "317716b9f2139b26c175c3f5d262cc63d5e26d96c87b4e30ffc016ba7412f76a",
-      "IsFavorite": false,
-      "Popularity": 5,
-      "ResourceGroupId": "rg-acfmz4wrjukykdy",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-8fa5a1d3bc3f4898bd96",
-      "TemplateName": "ACS-EventBridge-PutEvents",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v6",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:26Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
       "CreatedDate": "2021-02-18T08:47:17Z",
       "Description": "{\"en\": \"Sleep control plane, make etcd snapshot and upload it to oss bucket\", \"zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"name-en\": \"ACS-CS-DedicatedMigration\", \"name-zh-cn\": \"ACK专属版master休眠&etcd备份上传\", \"categories\": [\"others\"]}",
       "HasTrigger": false,
@@ -3744,7 +3723,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "0fd38c197b4315a2fe4cc1c38ed0261f9104ed16c1c6b6030ff439cd2b2c4e56",
+      "Hash": "160d9033f86d7192cbb1f64a20091115d022803672dc079813346ec7d47c0225",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3754,10 +3733,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-15T06:19:01Z"
+      "UpdatedDate": "2025-09-05T10:37:37Z"
     },
     {
       "Category": "Other",
@@ -5799,6 +5778,27 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2021-02-04T02:35:41Z",
+      "Description": "{\"name-en\": \"ACS-EventBridge-PutEvents\", \"name-zh-cn\": \"EventBridge发布事件\", \"en\": \"Put one or more events\", \"zh-cn\": \"发布一个事件\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "83c938fc50d46147743de53d6ecad376ebdea91f447b8a68fba9db322db9fd51",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "rg-acfmz4wrjukykdy",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-8fa5a1d3bc3f4898bd96",
+      "TemplateName": "ACS-EventBridge-PutEvents",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v7",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-09-04T07:38:11Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2021-04-07T08:30:56Z",
       "Description": "{\"en\": \"Use lifecycleHook to install AAS(Additional application server) in the specified scaling activity instance.\", \"zh-cn\": \"使用生命周期挂钩在实例中安装AAS(Additional application server)\", \"name-en\": \"ACS-SAP-LifeCycleInstallAAS\", \"name-zh-cn\": \"使用生命周期挂钩在实例中安装AAS\"}",
       "HasTrigger": false,
@@ -7020,7 +7020,7 @@
       "CreatedDate": "2025-07-18T09:42:16Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "b89d6fcafe008bfcb6b3d245ebc49e9d300ba2b953f56fedd3a5201d7c7ec731",
+      "Hash": "96d9932f5a259359424e10a2897225b65d92073a8c65af21a425f78cf6fc64f8",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7030,10 +7030,10 @@
       "TemplateId": "t-0dd82fbd0d5744d28bd4",
       "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-07-28T06:19:42Z"
+      "UpdatedDate": "2025-09-05T07:30:55Z"
     },
     {
       "Category": "Other",
@@ -7041,7 +7041,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "53c18c8498440d225cbc4e1f2e2017fe6c945470d3695bab69afac797512f311",
+      "Hash": "e4f9485e39e2f2d0b7f57caeb5f54ac30a3757b5abd2509b788f961cf40977f5",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7051,10 +7051,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-07-29T06:38:59Z"
+      "UpdatedDate": "2025-09-05T07:30:55Z"
     },
     {
       "Category": "Other",
@@ -7062,7 +7062,7 @@
       "CreatedDate": "2025-07-28T06:51:28Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnEssApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "f189bd9c9fb28b270b4ed345c3fce1f86c10c91f9152920cb07ba8dd4ea3759b",
+      "Hash": "48676d5d3ab19b74f8081110b3390dc85739b66b0704bd76b85e3d352291b240",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7072,10 +7072,10 @@
       "TemplateId": "t-f8022c0448444d33b0f2",
       "TemplateName": "ACS-ECS-DeployRevisionOnEssApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-07-28T09:02:32Z"
+      "UpdatedDate": "2025-09-05T07:30:55Z"
     },
     {
       "Category": "Other",
@@ -7251,7 +7251,7 @@
       "CreatedDate": "2025-08-15T05:53:16Z",
       "Description": "{\"en\": \"create ECS file backup basic edition\", \"zh-cn\": \"创建ECS文件备份基础版\", \"name-en\": \"ACS-ECS-CreateBasicEditionEcsFileBackUp\", \"name-zh-cn\": \"创建ECS文件备份基础版\"}",
       "HasTrigger": false,
-      "Hash": "dbc4aa61dceadd5911435229c727b8cac2c483b7fe2b98dc81e5cf466767ac4e",
+      "Hash": "2346146b1d4b7b90fbbad98f7e71dd03da6b235d0ca647764aa65fad1d3a442f",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7261,10 +7261,10 @@
       "TemplateId": "t-46d8e0e2c8f9450fad97",
       "TemplateName": "ACS-ECS-CreateBasicEditionEcsFileBackUp",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-27T02:29:48Z"
+      "UpdatedDate": "2025-09-01T07:08:51Z"
     },
     {
       "Category": "Other",
@@ -7349,6 +7349,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-08-21T09:27:04Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-09-03T05:57:30Z",
+      "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
+      "HasTrigger": false,
+      "Hash": "bca84ec250659fc938f767761dd3b4c74fb520c7fc2805b5c72b78ef40660509",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-9ed646d2c9c943e7ab79",
+      "TemplateName": "ACS-ECS-CodeDeployConsole",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-09-03T07:33:01Z"
     }
   ]
 }

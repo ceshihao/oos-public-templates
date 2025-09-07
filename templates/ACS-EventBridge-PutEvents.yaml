@@ -3,7 +3,7 @@ Description:
   name-en: ACS-EventBridge-PutEvents
   name-zh-cn: EventBridge发布事件
   en: Put one or more events
-  zh-cn: 发布一个或多个事件
+  zh-cn: 发布一个事件
   categories:
     - security
 Parameters:
@@ -19,15 +19,43 @@ Parameters:
       en: EventBusName
       zh-cn: 事件总线的名称
     Type: String
-  eventList:
-    Label:
-      en: EventListField
-      zh-cn: 事件列表字段
-    Description:
-      en: For other types, please refer to the document:https://help.aliyun.com/document_detail/181428.html
-      zh-cn: 其它类型请参考文档：https://help.aliyun.com/document_detail/181428.html
+  id:
     Type: String
-    Default: '[{"aliyunaccountid":"{{ACS::AccountId}}","data":{"meetingName":"meetingName","groupId":"456","action":"camera_off","time":1590592527490,"userId":"199525","meetingUUID":"hz-20864c8f-b10d-45cd-9935-884bca1b****"},"aliyunpublishtime":"{{ACS::CurrentDate}}","subject":"acs.aliyuncvc:cn-hangzhou:{{ACS::AccountId}}:215672","specversion":"1.0","aliyuneventbusname":"eventBusName","id":"{{ACS::ExecutionId}}","source":"acs:aliyuncvc","time":"2020-11-19T21:04:41+08:00","type":"aliyuncvc:MeetingEvent:MemberOperate"}]'
+    Label:
+      en: Event ID
+      zh-cn: 事件ID
+    Description:
+      en: Event ID. A unique value that identifies an event. The sender must ensure that source + id is unique.
+      zh-cn: 事件ID。标识事件的唯一值。发送端必须确保source+id是唯一的
+    Default: '{{ ACS::ExecutionId }}'
+  source:
+    Type: String
+    Label:
+      en: Source
+      zh-cn: 事件源
+    Description:
+      en: Event source. A service that provides events. Identifies the context of the event. This typically includes the type of event source, the mechanism for publishing events, or the process that produced the event.
+      zh-cn: 事件源。提供事件的服务。标识事件发生的内容。一般会包含事件源的类型，发布事件的机制或生产事件的过程。
+  type:
+    Type: String
+    Label:
+      en: Type
+      zh-cn: 事件类型
+    Description:
+      en: Event type. Describes the event type associated with the event source. This parameter is used for routing, event querying, and policy execution.
+      zh-cn: 事件类型。描述事件源相关的事件类型。该参数用于路由、事件查询和策略执行等。
+    Default: 'aliyunoos:Execution:Success'
+  data:
+    Type: Json
+    Label:
+      en: Data
+      zh-cn: 事件内容
+    Description:
+      en: Event content. A JSON object whose content is determined by the service that initiates the event.
+      zh-cn: 事件内容。JSON对象，内容由发起事件的服务决定。
+    Default:
+      name: Eventbridge
+      number: 100
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -39,18 +67,19 @@ Tasks:
   - Name: putEvents
     Action: 'ACS::ExecuteAPI'
     Description:
-      en: Put the bucket referer
-      zh-cn: 发布一个或多个事件
+      en: Publish an event
+      zh-cn: 发布一个事件
     Properties:
       Service: EVENTBRIDGE
-      API: PutEvents
-      Method: POST
-      URI: /openapi/putEvents
-      Headers: {}
+      API: TestPutEvents
       Parameters:
-        AccountId: '{{ ACS::AccountId }}'
         RegionId: '{{ regionId }}'
-      Body: '{"EventBusName":"{{ eventBusName }}", "EventList":{{eventList}}}'
+        Event:
+          Id: '{{ id }}'
+          Type: '{{ type }}'
+          Data: '{{ Data }}'
+          Source: '{{ source }}'
+          AliyunEventbusName: '{{ eventBusName }}'
     Outputs:
       response:
         Type: List

@@ -35,7 +35,7 @@ Tasks:
   - Name: sleepForEcsReady
     Action: ACS::Sleep
     Properties:
-      Duration: 3s
+      Duration: 10s
   - Name: getInstanceFromOrderId
     Action: ACS::WaitFor
     Retries: 57

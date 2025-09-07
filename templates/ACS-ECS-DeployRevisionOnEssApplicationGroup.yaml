@@ -20,6 +20,9 @@ Parameters:
       en: DeployRevisionId
       zh-cn: 部署物ID
     Type: String
+    AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
   deployMethod:
     Label:
       en: DeployMethod
@@ -34,14 +37,22 @@ Parameters:
       - partial
     AssociationPropertyMetadata:
       ValueLabelMapping:
-        all: 全量发布
-        partial: 灰度发布
+        all:
+          zh-cn: 全量发布
+          en: Full-scale publishing
+        partial:
+          zh-cn: 灰度发布
+          en: Grayscale publishing
   instanceIds:
     Label:
       en: instanceIds
       zh-cn: ECS实例ID
     Type: List
+    AssociationProperty: Targets
     AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      Application: ${applicationName}
+      ApplicationGroup: ${applicationGroupName}
       Visible:
         Condition:
           Fn::Equals:
@@ -130,6 +141,18 @@ Tasks:
       tagKey: '{{ getApplicationGroupDetail.tagKey }}'
       tagValue: '{{ getApplicationGroupDetail.tagValue }}'
       deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+  - Name: getApplicationParameters
+    Action: ACS::CICD::ListApplicationParameters
+    Description:
+      en: GetApplicationParameters
+      zh-cn: 获取应用参数
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      applicationParameters:
+        Type: List
+        ValueSelector: .applicationParameters
   - Name: bulkyDeployRevisions
     Action: 'ACS::Loop'
     Description:
@@ -155,7 +178,8 @@ Tasks:
             regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
             instanceId: '{{ ACS::TaskLoopItem }}'
             deployRevisionId: '{{ deployRevisionId }}'
+            applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
     Outputs:
       deployCommandOutput:
         Type: String
-        ValueSelector: '{{ DeployRevisions.commandOutput }}'
+        ValueSelector: DeployRevisions.commandOutput

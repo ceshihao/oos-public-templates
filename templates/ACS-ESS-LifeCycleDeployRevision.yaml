@@ -93,6 +93,18 @@ Tasks:
       lastDeployRevisionId:
         Type: String
         ValueSelector: .ApplicationGroup.DeployedRevisionIds[]
+  - Name: getApplicationParameters
+    Action: ACS::CICD::ListApplicationParameters
+    Description:
+      en: GetApplicationParameters
+      zh-cn: 获取应用参数
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      applicationParameters:
+        Type: List
+        ValueSelector: .applicationParameters
   - Name: DeployRevision
     Action: 'ACS::CICD::DeployRevisionOnEcs'
     When:
@@ -101,6 +113,7 @@ Tasks:
         - scale_out
     Properties:
       instanceId: '{{ ACS::TaskLoopItem }}'
+      applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
       deployRevisionId:
         Fn::If:
           - Fn::Equals:
@@ -129,6 +142,7 @@ Tasks:
       applicationName: '{{ applicationName }}'
       applicationGroupName: '{{ applicationGroupName }}'
       regionId: '{{ regionId }}'
+      applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
     Loop:
       Items: '{{ instanceIds }}'
   - Name: CompleteLifecycleActionForContinue

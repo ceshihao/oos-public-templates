@@ -10,16 +10,23 @@ Parameters:
       en: ApplicationName
       zh-cn: 应用名称
     Type: String
+    AssociationProperty: ALIYUN::OOS::Application::ApplicationName
   applicationGroupName:
     Label:
       en: ApplicationGroupName
       zh-cn: 应用分组名称
     Type: String
+    AssociationProperty: ALIYUN::OOS::ApplicationGroup::ApplicationGroupName
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
   deployRevisionId:
     Label:
       en: DeployRevisionId
       zh-cn: 部署物ID
     Type: String
+    AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
   deployMethod:
     Label:
       en: DeployMethod
@@ -34,8 +41,12 @@ Parameters:
       - partial
     AssociationPropertyMetadata:
       ValueLabelMapping:
-        all: 全量发布
-        partial: 灰度发布
+        all:
+          zh-cn: 全量发布
+          en: Full-scale publishing
+        partial:
+          zh-cn: 灰度发布
+          en: Grayscale publishing
   instanceIds:
     Label:
       en: Deploy on partial instanceIds
@@ -44,7 +55,11 @@ Parameters:
       en: You can select to publish only part of ECS in current application group. Note- When publishing part of ECS, the baseline of the application will not be managed! Only when publishing all ECS, the baseline of the application will be recorded.
       zh-cn: 您可以选择仅发布应用分组下的部分ECS。注意：发布部分ECS，应用的基线将不会被管理！只有全量发布时，应用的基线会被记录。
     Type: String
+    AssociationProperty: Targets
     AssociationPropertyMetadata:
+      ResourceType: 'ALIYUN::ECS::Instance'
+      Application: ${applicationName}
+      ApplicationGroup: ${applicationGroupName}
       Visible:
         Condition:
           Fn::Equals:
@@ -91,6 +106,10 @@ Tasks:
     Description:
       en: Suspend ESS application group scaling process
       zh-cn: 暂停待发布ESS应用分组的伸缩活动
+    When:
+      Fn::Equals:
+        - '{{ getApplicationGroupDetail.tagKey }}'
+        - acs:autoscaling:scalingGroupId
     Action: ACS::CICD::SuspendEssProcess
     Properties:
       applicationName: '{{ applicationName }}'
@@ -119,6 +138,19 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: getApplicationParameters
+    Action: ACS::CICD::ListApplicationParameters
+    OnError: resumeProcesses
+    Description:
+      en: GetApplicationParameters
+      zh-cn: 获取应用参数
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      applicationParameters:
+        Type: List
+        ValueSelector: .applicationParameters
   - Name: bulkyDeployRevisions
     Action: 'ACS::Loop'
     OnError: resumeProcesses
@@ -141,10 +173,11 @@ Tasks:
             regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
             instanceId: '{{ ACS::TaskLoopItem }}'
             deployRevisionId: '{{ deployRevisionId }}'
+            applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
     Outputs:
       deployCommandOutput:
         Type: String
-        ValueSelector: '{{ deployRevisions.commandOutput }}'
+        ValueSelector: deployRevisions.commandOutput
   - Name: updateDeployedRevision
     Action: ACS::ExecuteAPI
     OnError: resumeProcesses
@@ -187,5 +220,6 @@ Tasks:
       Service: ESS
       API: ResumeProcesses
       Parameters:
+        RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
         ScalingGroupId: '{{ getApplicationGroupDetail.tagValue }}'
         Process: '{{ suspendEssProcess.processesToSuspend }}'
