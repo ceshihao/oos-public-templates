@@ -280,8 +280,8 @@ Tasks:
           - map(select(.InstanceId as $id | {{ getInstanceDescribe.instanceIds }} | index($id)))
           - '{{ getInstance.instanceIds }}'
       Mode: Concurrency
-      MaxErrors: 0
-      Concurrency: 10
+      MaxErrors: '{{ maxErrors }}'
+      Concurrency: 100
   - Name: whetherToResumeProcesses
     Action: 'ACS::Choice'
     Description:

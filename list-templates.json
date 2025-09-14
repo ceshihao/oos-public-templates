@@ -195,7 +195,7 @@
       "CreatedDate": "2020-11-24T06:21:49Z",
       "Description": "{\"en\": \"Schedule to clean up disks, applicable to scenarios that require periodic management and cleaning of disk space on ECS instances, such as automatic log file cleanup and deletion of temporary files. During configuration, users need to provide the following required parameter information: Timer Trigger (timerTrigger), which defines when the cleanup task is triggered, Region ID (regionId), which specifies the region of the ECS instances where the disks will be cleaned, Target Instances (targets), which defines the specific ECS instances to be operated on, and Cleanup Rule (cleanUpInfos), which specifies the specific disk cleanup rules. Upon execution, the template will return a list of the output results of the cleanup command, enabling users to verify the status of the disk cleanup operations.\", \"zh-cn\": \"定时清理磁盘，适用于需要定期管理和清理ECS实例中的磁盘空间的场景，例如日志文件的自动清理和临时文件的删除。在配置过程中，用户需要提供以下必填参数信息，定时类型（timerTrigger）：用于定义清理任务何时触发，地域ID（regionId）：用于指定需要清理磁盘的ECS实例所在的区域，目标实例（targets）：用于定义具体需要操作的ECS实例，清理规则（cleanUpInfos）：用于指定具体的磁盘清理规则。模板在执行后会返回清理命令的输出结果列表，方便用户验证磁盘清理操作的状态。\", \"name-en\": \"Cleanup Disks\", \"name-zh-cn\": \"清理磁盘\", \"categories\": [\"time_trigger\", \"application_manage\", \"computenest\"]}",
       "HasTrigger": true,
-      "Hash": "a0b45fb36932232d87d2719a2fbf2e9fbe271306d89bd533166fb217fd7ffc9f",
+      "Hash": "6dad520cdaba982b89655c19a9e474961e0b1a88168742f6a1699218fd4b53a7",
       "IsFavorite": false,
       "Popularity": 8.44,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -205,10 +205,10 @@
       "TemplateId": "t-ba9eef0913e24cc081c6",
       "TemplateName": "ACS-ECS-ScheduleToCleanUpDisks",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:24Z"
+      "UpdatedDate": "2025-09-08T02:22:14Z"
     },
     {
       "Category": "TimerTrigger",
@@ -510,7 +510,7 @@
       "CreatedDate": "2020-04-03T09:56:39Z",
       "Description": "{\"en\": \"Rolling update ECS instances that in scaling group by replace system disk\", \"zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"name-en\": \"ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup\", \"name-zh-cn\": \"通过更换系统盘的方式滚动更新伸缩组内的ECS实例\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "31f148ab045ad7d214712ce64e9f68f85c88e95e0a7f786e6d469307d8b50c9b",
+      "Hash": "437de22d8dbeea8e6a431866521a1f6e47365cc59c811554c1350475802eb4e1",
       "IsFavorite": false,
       "Popularity": 7.2,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -520,10 +520,10 @@
       "TemplateId": "t-5d45c19fed154e24a602",
       "TemplateName": "ACS-ESS-RollingUpdateByReplaceSystemDiskInScalingGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-27T09:52:50Z"
+      "UpdatedDate": "2025-09-12T12:10:21Z"
     },
     {
       "Category": "Other",
@@ -1980,7 +1980,7 @@
       "CreatedDate": "2020-08-19T11:19:29Z",
       "Description": "{\"en\": \"Set domain server certificate\", \"zh-cn\": \"启用指定域名下证书功能\", \"name-en\": \"ACS-CDN-SetDomainServerCertificate\", \"name-zh-cn\": \"启用指定域名下证书功能\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "b5bdf5cab9bcf776b46dea73cfcf21ab12f40e8fba2b991122b8daaf5245ecd4",
+      "Hash": "04db266c91715628f99e1bc41fedbf2e67d72f01be92d3c29720f8f030245f3d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1990,10 +1990,10 @@
       "TemplateId": "t-056477e349be4b54ad63",
       "TemplateName": "ACS-CDN-SetDomainServerCertificate",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-25T10:53:02Z"
+      "UpdatedDate": "2025-09-08T07:00:28Z"
     },
     {
       "Category": "Other",
@@ -2292,27 +2292,6 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2020-12-25T08:25:47Z",
-      "Description": "{\"en\": \"Publish a message to the specified MNS topic. After the message is published to the topic, it will be pushed to Endpoint for consumption\", \"zh-cn\": \"向指定的MNS主题发布消息，消息发布到主题后随即会被推送给Endpoint消费\", \"name-en\": \"ACS-MNS-PublishMessage\", \"name-zh-cn\": \"发布消息至MNS主题\", \"categories\": [\"security\"]}",
-      "HasTrigger": false,
-      "Hash": "399dae54d30512e3c1a4066ac6fe7e504163c6efe58a63e281ac54a9392684b7",
-      "IsFavorite": false,
-      "Popularity": 5,
-      "ResourceGroupId": "rg-acfmz4wrjukykdy",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-a9670d10a39949f6abe0",
-      "TemplateName": "ACS-MNS-PublishMessage",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v8",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:27Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
       "CreatedDate": "2021-01-08T02:33:46Z",
       "Description": "{\"en\": \"Attach ECS instances to cluster\", \"zh-cn\": \"添加已有ECS节点到集群\", \"name-en\": \"ACS-CS-AttackInstancesToClusterByRunAttachScript\", \"name-zh-cn\": \"添加已有ECS节点到集群\", \"categories\": [\"ACK_manage\"]}",
       "HasTrigger": false,
@@ -2372,6 +2351,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-08-05T08:58:15Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2021-02-04T02:35:41Z",
+      "Description": "{\"name-en\": \"ACS-EventBridge-PutEvents\", \"name-zh-cn\": \"EventBridge发布事件\", \"en\": \"Put one or more events\", \"zh-cn\": \"发布一个事件\", \"categories\": [\"security\"]}",
+      "HasTrigger": false,
+      "Hash": "ba3423e37f0a798dfa1f85e1d8bf39499f258427b0fcb15e659f4843e614a7de",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "rg-acfmz4wrjukykdy",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-8fa5a1d3bc3f4898bd96",
+      "TemplateName": "ACS-EventBridge-PutEvents",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v8",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-09-09T02:49:25Z"
     },
     {
       "Category": "Other",
@@ -2589,7 +2589,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在指定ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "b38d8bfce141fd64423eb4cb01df8bd3db76fff16567980e6efb8246be7a00f7",
+      "Hash": "73bc4c53e20b18fdddec9f8dfdbd33200f9090230c700541b27a23d535e40cb4",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2599,10 +2599,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-13T09:43:02Z"
+      "UpdatedDate": "2025-09-08T02:22:14Z"
     },
     {
       "Category": "Other",
@@ -3681,7 +3681,7 @@
       "CreatedDate": "2022-05-11T07:40:54Z",
       "Description": "{\"en\": \"Schedule bulky create snapshot\", \"zh-cn\": \"定时批量给磁盘创建快照\", \"name-en\": \"ACS-ECS-ScheduleToBulkyCreateSnapshot\", \"name-zh-cn\": \"定时批量创建快照\"}",
       "HasTrigger": true,
-      "Hash": "c98db0a1be1f04c2c0961a7925d9d78a438f8bea7395a5d0dcf161517a16a4d3",
+      "Hash": "3fca1a504f8e69d919323b96d65d843873c471af8bf82b2149527f69bfa302ee",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3691,10 +3691,10 @@
       "TemplateId": "t-0ac55b649ad44a46b9bd",
       "TemplateName": "ACS-ECS-ScheduleToBulkyCreateSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-03T07:59:50Z"
+      "UpdatedDate": "2025-09-08T02:22:14Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4143,7 +4143,7 @@
       "CreatedDate": "2023-04-23T07:04:10Z",
       "Description": "{\"en\": \"<p>Regularly accept and authorize the execution of system event operations. Template process：<ol><li>Stop ECS instance</li><li>Accept inquired system event</li><li>Start ECS instance</li</ol></p>\", \"zh-cn\": \"<p>定时接受并授权执行系统事件操作。模板流程：<ol><li>停止ECS实例</li><li>接受并授权执行系统事件操作</li><li>启动ECS实例</li</ol></p>\", \"name-en\": \"ACS-ECS-ScheduleToAcceptInquiredSystemEvent\", \"name-zh-cn\": \"定时接受并授权执行系统事件操作\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "bf105bf99be4281833ac3f248e7f1e6675fae2e6fb5001c952a8c0c9500e48a3",
+      "Hash": "779c254be72993b421bf5aa155d62835cae079a4c4cb7e04859d7443e71eb6df",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4153,10 +4153,10 @@
       "TemplateId": "t-5a05f91f73604ae6aaa2",
       "TemplateName": "ACS-ECS-ScheduleToAcceptInquiredSystemEvent",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-04-24T06:35:31Z"
+      "UpdatedDate": "2025-09-08T02:22:14Z"
     },
     {
       "Category": "Other",
@@ -4815,7 +4815,7 @@
       "CreatedDate": "2024-02-27T07:47:11Z",
       "Description": "{\"en\": \"Schedule to reboots the ECS instances\", \"zh-cn\": \"定时重启ECS实例\", \"name-en\": \"ACS-ECS-ScheduleToRebootInstancesWithSLR\", \"name-zh-cn\": \"定时重启ECS实例\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "e809addee5ece824c73d9d24800f9c1c2af1e7e105ba25525c486bdcb8077f1e",
+      "Hash": "818827df111098084e65b514441d0ab05cf0b3b7f8a7807ac4a962d19a0d6efb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4825,10 +4825,10 @@
       "TemplateId": "t-80b15248b7f1423a98ff",
       "TemplateName": "ACS-ECS-ScheduleToRebootInstancesWithSLR",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-27T07:47:11Z"
+      "UpdatedDate": "2025-09-08T02:22:15Z"
     },
     {
       "Category": "Other",
@@ -4962,7 +4962,7 @@
       "CreatedDate": "2024-04-10T02:12:01Z",
       "Description": "{\"en\": \"Scheduled upgrade of the temporary bandwidth of a Redis instance\", \"zh-cn\": \"定时升级Redis实例临时带宽\", \"name-en\": \"ACS-Redis-ScheduleToUpgradeInstanceBandwidth\", \"name-zh-cn\": \"定时升级Redis实例临时带宽\", \"categories\": [\"tair\"]}",
       "HasTrigger": true,
-      "Hash": "2a411d355a54832cf04a1b25bc6fe7c83ae9765f510056cc16a17f01d19534ca",
+      "Hash": "3875fcf0b44e4f82ff74590fdc210eb2c288f23aec37f273a5d1e694ddcc39db",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4972,10 +4972,10 @@
       "TemplateId": "t-3700a39f12944e7e83b3",
       "TemplateName": "ACS-Redis-ScheduleToUpgradeInstanceBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-07-14T08:58:35Z"
+      "UpdatedDate": "2025-09-08T02:22:15Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4983,7 +4983,7 @@
       "CreatedDate": "2024-04-10T02:12:02Z",
       "Description": "{\"en\": \"Schedule to upgrade EIP bandwidth\", \"zh-cn\": \"定时升级EIP实例临时带宽\", \"name-en\": \"ACS-VPC-ScheduleToUpgradeEipBandwidth\", \"name-zh-cn\": \"定时升级EIP实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "162c13525cc84e8edfcd636f8b1a6702d877bb021a7e84198834dacb7cbb0631",
+      "Hash": "d8776540e4cfd0ad803703ad47c1a9da4fb4d7dd4fa8056f180d677afea9cde7",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4993,10 +4993,10 @@
       "TemplateId": "t-ea5c84904d7f466890ad",
       "TemplateName": "ACS-VPC-ScheduleToUpgradeEipBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-13T09:46:56Z"
+      "UpdatedDate": "2025-09-08T02:22:16Z"
     },
     {
       "Category": "Other",
@@ -5046,7 +5046,7 @@
       "CreatedDate": "2024-04-11T07:21:09Z",
       "Description": "{\"en\": \"Schedules to execute ECS diagnostic reports in bulk\", \"zh-cn\": \"定时运行ECS健康诊断\", \"name-en\": \"ACS-ECS-ScheduleToExecuteDiagnosticReports\", \"name-zh-cn\": \"定时执行ECS健康诊断\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "62b76d92ea9d46316d9b0c57fc36155de073ed65bfdccdbdfa1eab299f529f15",
+      "Hash": "3c273a6241a6dc0873854eb239be80a2f0231b04330bbdfedc8b839724d05cbe",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5056,10 +5056,10 @@
       "TemplateId": "t-4620055003224a9fb1bc",
       "TemplateName": "ACS-ECS-ScheduleToExecuteDiagnosticReports",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-17T06:01:57Z"
+      "UpdatedDate": "2025-09-08T02:22:15Z"
     },
     {
       "Category": "Other",
@@ -5340,7 +5340,7 @@
       "CreatedDate": "2024-09-23T08:04:28Z",
       "Description": "{\"en\": \"Schedule to cleanup of buckets in a specified resource group\", \"zh-cn\": \"定时删除指定资源组中的bucket\", \"name-en\": \"ACS-OSS-ScheduleToBulkyDeleteBuckets\", \"name-zh-cn\": \"定时删除指定资源组中的bucket\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "0eddd8d65a71241ee249d0b2931a2fbd5be2d7441008cfa842ca0a685fd6fdc9",
+      "Hash": "1b8a6e7d9015025146f8ac04a770eced5c9c5d46e423be6568688324eca7f4b5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-adfc696997a4465193c2",
       "TemplateName": "ACS-OSS-ScheduleToBulkyDeleteBuckets",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-09-23T08:04:28Z"
+      "UpdatedDate": "2025-09-08T02:22:15Z"
     },
     {
       "Category": "Other",
@@ -5778,23 +5778,23 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2021-02-04T02:35:41Z",
-      "Description": "{\"name-en\": \"ACS-EventBridge-PutEvents\", \"name-zh-cn\": \"EventBridge发布事件\", \"en\": \"Put one or more events\", \"zh-cn\": \"发布一个事件\", \"categories\": [\"security\"]}",
+      "CreatedDate": "2020-12-25T08:25:47Z",
+      "Description": "{\"en\": \"Publish a message to the specified MNS topic. After the message is published to the topic, it will be pushed to Endpoint for consumption\", \"zh-cn\": \"向指定的MNS主题发布消息，消息发布到主题后随即会被推送给Endpoint消费\", \"name-en\": \"ACS-MNS-PublishMessage\", \"name-zh-cn\": \"发布消息至MNS主题\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "83c938fc50d46147743de53d6ecad376ebdea91f447b8a68fba9db322db9fd51",
+      "Hash": "399dae54d30512e3c1a4066ac6fe7e504163c6efe58a63e281ac54a9392684b7",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
       "ShareType": "Public",
       "Tags": {},
       "TemplateFormat": "YAML",
-      "TemplateId": "t-8fa5a1d3bc3f4898bd96",
-      "TemplateName": "ACS-EventBridge-PutEvents",
+      "TemplateId": "t-a9670d10a39949f6abe0",
+      "TemplateName": "ACS-MNS-PublishMessage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-04T07:38:11Z"
+      "UpdatedDate": "2024-02-22T03:18:27Z"
     },
     {
       "Category": "Other",

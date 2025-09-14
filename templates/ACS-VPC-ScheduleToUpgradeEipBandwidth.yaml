@@ -79,6 +79,10 @@ Tasks:
         Fn::Select:
           - expression
           - '{{timerTrigger}}'
+      StartDate:
+        Fn::Select:
+          - startDate
+          - '{{ timerTrigger }}'
       EndDate:
         Fn::Select:
           - endDate

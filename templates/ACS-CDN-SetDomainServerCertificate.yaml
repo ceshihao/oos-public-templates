@@ -104,15 +104,6 @@ Parameters:
       zn-cn: 证书所在地域，只有**CertType=cas**时生效。支持**cn-hangzhou**和**ap-southeast-1**，默认**cn-hangzhou**。国际站用户建议使用**ap-southeast-1**。 示例值：cn-hangzhou
       en: Certificate region. Only valid when CertType=cas. Supports cn-hangzhou and ap-southeast-1. Default is cn-hangzhou.
     Default: cn-hangzhou
-  env:
-    Type: String
-    Label:
-      zh-cn: 是否灰度下发证书
-      en: Whether to gray release certificate
-    Description:
-      zh-cn: 是否灰度下发证书。 取值：**staging**：灰度下发证书。 不传或者传任何其他值，都是正式下发证书。 示例值：staging
-      en: 'Whether to issue the certificate in grayscale. Value: **staging**: Issue the certificate in grayscale. No value or any other value means the certificate is officially issued. Example value: staging'
-    Default: ''
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -173,7 +164,6 @@ Tasks:
       SSLPub: '{{ serverCertificate }}'
       SSLPri: '{{ privateKey }}'
       CertRegion: '{{ certRegion }}'
-      Env: '{{ env }}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:

@@ -10,8 +10,8 @@ Parameters:
   regionId:
     Type: String
     Label:
-      en: RegionId
-      zh-cn: 地域ID
+      en: Region Id
+      zh-cn: 地域 ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   eventBusName:
