@@ -51,8 +51,8 @@ Parameters:
       LocaleKey: AliyunSoftwareName
       Visible:
         Condition:
-          Fn::Equals:
-            - ${softwareType}
+          'Fn::Equals':
+            - '${softwareType}'
             - Aliyun
   communitySoftwareName:
     Type: String
@@ -67,11 +67,13 @@ Parameters:
       LocaleKey: CommunitySoftwareName
       Visible:
         Condition:
-          Fn::Equals:
-            - ${softwareType}
+          'Fn::Equals':
+            - '${softwareType}'
             - Community
     Description:
-      en: Baota Panel only supports to be installed on Linux. Information can be found in execution outputs.
+      en: >-
+        Baota Panel only supports to be installed on Linux. Information can be
+        found in execution outputs.
       zh-cn: 宝塔面板仅支持Linux操作系统安装，安装后可以在执行输出中查看访问信息。
   installer:
     Type: String
@@ -85,8 +87,8 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-          Fn::Equals:
-            - ${softwareType}
+          'Fn::Equals':
+            - '${softwareType}'
             - SystemRepository
   softwareName:
     Type: String
@@ -97,9 +99,9 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-          Fn::Equals:
-            - ${softwareType}
-            - SystemRepository    
+          'Fn::Equals':
+            - '${softwareType}'
+            - SystemRepository
   targets:
     Type: Json
     Label:
@@ -107,7 +109,7 @@ Parameters:
       zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: regionId
       Status: Running
   rateControl:
@@ -132,115 +134,153 @@ Tasks:
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
-    Action: ACS::SelectTargets
+    Action: 'ACS::SelectTargets'
     Properties:
-      ResourceType: ALIYUN::ECS::Instance
+      ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: Instances.Instance[].InstanceId
+        ValueSelector: 'Instances.Instance[].InstanceId'
       instanceInfos:
         Type: List
-        ValueSelector: .Instances.Instance[] | {"osType":.OSType, "instanceId":.InstanceId}
+        ValueSelector: '.Instances.Instance[] | {"osType":.OSType, "instanceId":.InstanceId}'
   - Name: runCommand
-    Action: ACS::ECS::RunCommand
+    Action: 'ACS::ECS::RunCommand'
     Properties:
       commandContent:
-        Fn::If:
-          - Fn::Equals:
-              - Fn::Jq:
+        'Fn::If':
+          - 'Fn::Equals':
+              - 'Fn::Jq':
                   - First
-                  - .|map(select(.instanceId == "{{ ACS::TaskLoopItem }}").osType)[]
+                  - >-
+                    .|map(select(.instanceId == "{{ ACS::TaskLoopItem
+                    }}").osType)[]
                   - '{{ getInstance.instanceInfos }}'
               - linux
-          - Fn::If:
-              - Fn::Equals:
+          - 'Fn::If':
+              - 'Fn::Equals':
                   - '{{ softwareType }}'
-                  - 'Aliyun'
-              - Fn::If:
-                  - Fn::Equals:
+                  - Aliyun
+              - 'Fn::If':
+                  - 'Fn::Equals':
                       - '{{ aliyunSoftwareName }}'
-                      - 'Logtail'
-                  - '{{ oos:aliyun/services/oos/commands/install_logtail_for_linux }}'
-                  - Fn::If:
-                      - Fn::Equals:
+                      - Logtail
+                  - >-
+                    {{
+                    oos:aliyun/services/oos/commands/install_logtail_for_linux
+                    }}
+                  - 'Fn::If':
+                      - 'Fn::Equals':
                           - '{{ aliyunSoftwareName }}'
-                          - 'CloudMonitorAgent'
-                      - '{{ oos:aliyun/services/oos/commands/install_CloudMonitorAgent_for_linux }}'
-                      - |-
-                        echo "Aliyun software ({{ aliyunSoftwareName }}) is not supported"
+                          - CloudMonitorAgent
+                      - >-
+                        {{
+                        oos:aliyun/services/oos/commands/install_CloudMonitorAgent_for_linux
+                        }}
+                      - >-
+                        echo "Aliyun software ({{ aliyunSoftwareName }}) is not
+                        supported"
+
                         exit 1
-              - Fn::If:
-                  - Fn::Equals:
+              - 'Fn::If':
+                  - 'Fn::Equals':
                       - '{{ softwareType }}'
-                      - 'Community'
-                  - Fn::If:
-                      - Fn::Equals:
+                      - Community
+                  - 'Fn::If':
+                      - 'Fn::Equals':
                           - '{{ communitySoftwareName }}'
-                          - 'DockerCE'
-                      - '{{ oos:aliyun/services/oos/commands/install_DockerCE_for_linux }}'
-                      - Fn::If:
-                          - Fn::Equals:
+                          - DockerCE
+                      - >-
+                        {{
+                        oos:aliyun/services/oos/commands/install_DockerCE_for_linux
+                        }}
+                      - 'Fn::If':
+                          - 'Fn::Equals':
                               - '{{ communitySoftwareName }}'
-                              - 'BaotaPanelFree'
-                          - '{{ oos:aliyun/services/oos/commands/install_BaoTaPanelFree_for_linux }}'
-                          - |-
-                            echo "Community software ({{ communitySoftwareName }}) is not supported"
+                              - BaotaPanelFree
+                          - >-
+                            {{
+                            oos:aliyun/services/oos/commands/install_BaoTaPanelFree_for_linux
+                            }}
+                          - >-
+                            echo "Community software ({{ communitySoftwareName
+                            }}) is not supported"
+
                             exit 1
-                  - '{{ oos:aliyun/services/oos/commands/install_from_linux_repository }}'
-          - Fn::If:
-              - Fn::Equals:
+                  - >-
+                    {{
+                    oos:aliyun/services/oos/commands/install_from_linux_repository
+                    }}
+          - 'Fn::If':
+              - 'Fn::Equals':
                   - '{{ softwareType }}'
-                  - 'Aliyun'
-              - Fn::If:
-                  - Fn::Equals:
+                  - Aliyun
+              - 'Fn::If':
+                  - 'Fn::Equals':
                       - '{{ aliyunSoftwareName }}'
-                      - 'Logtail'
-                  - '{{ oos:aliyun/services/oos/commands/install_logtail_for_windows }}'
-                  - Fn::If:
-                      - Fn::Equals:
+                      - Logtail
+                  - >-
+                    {{
+                    oos:aliyun/services/oos/commands/install_logtail_for_windows
+                    }}
+                  - 'Fn::If':
+                      - 'Fn::Equals':
                           - '{{ aliyunSoftwareName }}'
-                          - 'CloudMonitorAgent'
-                      - '{{ oos:aliyun/services/oos/commands/install_CloudMonitorAgent_for_windows }}'
-                      - |-
-                        echo "Aliyun software ({{ aliyunSoftwareName }}) is not supported"
+                          - CloudMonitorAgent
+                      - >-
+                        {{
+                        oos:aliyun/services/oos/commands/install_CloudMonitorAgent_for_windows
+                        }}
+                      - >-
+                        echo "Aliyun software ({{ aliyunSoftwareName }}) is not
+                        supported"
+
                         exit 1
-              - Fn::If:
-                  - Fn::Equals:
+              - 'Fn::If':
+                  - 'Fn::Equals':
                       - '{{ softwareType }}'
-                      - 'Community'
-                  - Fn::If:
-                      - Fn::Equals:
+                      - Community
+                  - 'Fn::If':
+                      - 'Fn::Equals':
                           - '{{ communitySoftwareName }}'
-                          - 'DockerCE'
-                      - '{{ oos:aliyun/services/oos/commands/install_DockerCE_for_windows }}'
-                      - |-
-                        echo "Community software ({{ communitySoftwareName }}) is not supported"
+                          - DockerCE
+                      - >-
+                        {{
+                        oos:aliyun/services/oos/commands/install_DockerCE_for_windows
+                        }}
+                      - >-
+                        echo "Community software ({{ communitySoftwareName }})
+                        is not supported"
+
                         exit 1
-                  - |-
-                    echo "Windows system does not support SystemRepository {{ installer }}"
+                  - >-
+                    echo "Windows system does not support SystemRepository {{
+                    installer }}"
+
                     exit 1
       instanceId: '{{ ACS::TaskLoopItem }}'
       regionId: '{{ regionId }}'
       commandType:
-        Fn::If:
-          - Fn::Equals:
-              - Fn::Jq:
+        'Fn::If':
+          - 'Fn::Equals':
+              - 'Fn::Jq':
                   - First
-                  - .|map(select(.instanceId == "{{ ACS::TaskLoopItem }}").osType)[]
+                  - >-
+                    .|map(select(.instanceId == "{{ ACS::TaskLoopItem
+                    }}").osType)[]
                   - '{{ getInstance.instanceInfos }}'
               - linux
           - RunShellScript
           - RunPowerShellScript
       enableParameter: true
       parameters:
-        Fn::If:
-          - Fn::Equals:
+        'Fn::If':
+          - 'Fn::Equals':
               - '{{softwareType }}'
-              - 'SystemRepository'
+              - SystemRepository
           - action: '{{ action }}'
             installer: '{{ installer }}'
             softwareName: '{{ softwareName }}'
@@ -250,7 +290,7 @@ Tasks:
       RateControl: '{{ rateControl }}'
       Outputs:
         commandOutputs:
-          AggregateType: Fn::ListJoin
+          AggregateType: 'Fn::ListJoin'
           AggregateField: commandOutput
     Outputs:
       commandOutput:
@@ -261,7 +301,7 @@ Outputs:
     Type: String
     Value: '{{ runCommand.commandOutputs }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - softwareType

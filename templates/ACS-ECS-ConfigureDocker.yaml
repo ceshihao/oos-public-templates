@@ -1,7 +1,7 @@
 FormatVersion: OOS-2019-06-01
 Description:
   en: Use this template to install or unistall docker on ecs
-  zh-cn: '使用这个模板批量的在ECS安装或卸载docker'
+  zh-cn: 使用这个模板批量的在ECS安装或卸载docker
   name-en: ACS-ECS-ConfigureDocker
   name-zh-cn: 批量安装或卸载Docker
   categories:
@@ -20,8 +20,8 @@ Parameters:
       en: Action
       zh-cn: 操作类型
     AllowedValues:
-       - install
-       - uninstall
+      - install
+      - uninstall
   targets:
     Type: Json
     Label:
@@ -130,7 +130,7 @@ Outputs:
     Type: String
     Value: '{{ runCommand.commandOutputs }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - action
@@ -152,3 +152,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

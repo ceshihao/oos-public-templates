@@ -47,7 +47,7 @@ Parameters:
     Label:
       en: instanceIds
       zh-cn: ECS实例ID
-    Type: List
+    Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       ResourceType: 'ALIYUN::ECS::Instance'
@@ -58,7 +58,7 @@ Parameters:
           Fn::Equals:
             - '${deployMethod}'
             - partial
-    Default: []
+    Default: {}
   whetherStartApplicationWhenScaleOut:
     Label:
       en: whetherStartApplicationWhenScaleOut
@@ -112,17 +112,18 @@ Tasks:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
     Action: 'ACS::SelectTargets'
-    When:
-      Fn::Equals:
-        - '{{ deployMethod }}'
-        - all
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
       Filters:
-        - Type: ApplicationGroup
-          ApplicationName: '{{ applicationName }}'
-          ApplicationGroupName: '{{ applicationGroupName }}'
+        Fn::If:
+          - Fn::Equals:
+              - '{{ deployMethod }}'
+              - all
+          - - Type: ApplicationGroup
+              ApplicationName: '{{ applicationName }}'
+              ApplicationGroupName: '{{ applicationGroupName }}'
+          - - '{{ instanceIds }}'
     Outputs:
       instanceIds:
         Type: List
@@ -163,13 +164,7 @@ Tasks:
         - '{{ getApplicationGroupDetail.tagKey }}'
         - acs:autoscaling:scalingGroupId
     Properties:
-      LoopItems:
-        Fn::If:
-          - Fn::Equals:
-            - '{{ deployMethod }}'
-            - all
-          - '{{ getInstanceFromTargets.instanceIds }}'
-          - '{{ instanceIds }}'
+      LoopItems: '{{ getInstanceFromTargets.instanceIds }}'
       LoopRateControl: '{{ rateControl }}'
       LoopTasks:
         - Name: DeployRevisions

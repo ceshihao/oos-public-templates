@@ -22,7 +22,7 @@ Parameters:
     Default: apt-get
     AllowedValues:
       - apt-get
-      - yum 
+      - yum
   action:
     Type: String
     Label:
@@ -139,7 +139,7 @@ Outputs:
     Type: String
     Value: '{{ runCommand.commandOutputs }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - installer
@@ -163,3 +163,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

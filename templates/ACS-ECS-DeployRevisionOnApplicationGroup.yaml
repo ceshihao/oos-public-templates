@@ -54,9 +54,10 @@ Parameters:
     Description:
       en: You can select to publish only part of ECS in current application group. Note- When publishing part of ECS, the baseline of the application will not be managed! Only when publishing all ECS, the baseline of the application will be recorded.
       zh-cn: 您可以选择仅发布应用分组下的部分ECS。注意：发布部分ECS，应用的基线将不会被管理！只有全量发布时，应用的基线会被记录。
-    Type: String
+    Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
+      HideTypes: ["Tags", "ResourceGroup",  "UploadFile",  "All", "Inventory"]
       ResourceType: 'ALIYUN::ECS::Instance'
       Application: ${applicationName}
       ApplicationGroup: ${applicationGroupName}
@@ -65,7 +66,7 @@ Parameters:
           Fn::Equals:
             - '${deployMethod}'
             - partial
-    Default: []
+    Default: {}
   rateControl:
     Label:
       en: RateControl
@@ -123,17 +124,18 @@ Tasks:
       zh-cn: 获取ECS实例
     OnError: resumeProcesses
     Action: 'ACS::SelectTargets'
-    When:
-      Fn::Equals:
-        - '{{ deployMethod }}'
-        - all
     Properties:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
       Filters:
-        - Type: ApplicationGroup
-          ApplicationName: '{{ applicationName }}'
-          ApplicationGroupName: '{{ applicationGroupName }}'
+        Fn::If:
+          - Fn::Equals:
+              - '{{ deployMethod }}'
+              - all
+          - - Type: ApplicationGroup
+              ApplicationName: '{{ applicationName }}'
+              ApplicationGroupName: '{{ applicationGroupName }}'
+          - - '{{ instanceIds }}'
     Outputs:
       instanceIds:
         Type: List
@@ -158,13 +160,7 @@ Tasks:
       en: BulkyDeployRevisions
       zh-cn: 批量发布部署物
     Properties:
-      LoopItems:
-        Fn::If:
-          - Fn::Equals:
-              - '{{ deployMethod }}'
-              - all
-          - '{{ getInstanceFromTargets.instanceIds }}'
-          - '{{ instanceIds }}'
+      LoopItems: '{{ getInstanceFromTargets.instanceIds }}'
       LoopRateControl: '{{ rateControl }}'
       LoopTasks:
         - Name: deployRevisions

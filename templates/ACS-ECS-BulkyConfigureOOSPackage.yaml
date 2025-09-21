@@ -40,7 +40,7 @@ Parameters:
     Type: String
     AssociationProperty: 'ALIYUN::OOS::Package::PackageVersion'
     AssociationPropertyMetadata:
-      TemplateName: ${packageName}
+      TemplateName: '${packageName}'
     Default: ''
   targets:
     Type: Json
@@ -104,13 +104,15 @@ Tasks:
     Outputs:
       commandOutput:
         Type: String
-        ValueSelector: '.|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult": .commandOutput}'
+        ValueSelector: >-
+          .|{"InstanceId": "{{ ACS::TaskLoopItem }}", "ConfigureResult":
+          .commandOutput}
 Outputs:
   commandOutput:
     Type: List
     Value: '{{ configurePackage.commandOutputs }}'
 Metadata:
-  ALIYUN::OOS::Interface:
+  'ALIYUN::OOS::Interface':
     ParameterGroups:
       - Parameters:
           - packageName

@@ -41,10 +41,10 @@ Parameters:
         Command:
           zh-cn: 仅执行命令
           en: Execute command
-  regionIdOss:
+  regionIdOSS:
     Label:
-      en: Oss RegionId
-      zh-cn: Oss地域
+      en: OSS RegionId
+      zh-cn: OSS地域
     Type: String
     Default: '{{ ACS::RegionId }}'
     AssociationProperty: RegionId
@@ -61,13 +61,13 @@ Parameters:
             - Oss
   bucketName:
     Label:
-      en: Bucket Name
-      zh-cn: OSS bucket 名称
+      en: OSS Bucket
+      zh-cn: OSS Bucket
     Type: String
     Default: ''
     AssociationProperty: ALIYUN::OSS::Bucket::BucketName
     AssociationPropertyMetadata:
-      RegionId: regionIdOss
+      RegionId: regionIdOSS
       Visible:
         Condition:
           Fn::Equals:
@@ -81,12 +81,12 @@ Parameters:
   objectName:
     Label:
       en: ObjectName
-      zh-cn: OSS object 文件名称
+      zh-cn: OSS文件
     Type: String
     Default: ''
     AssociationProperty: ALIYUN::OSS::Object::ObjectName
     AssociationPropertyMetadata:
-      RegionId: regionIdOss
+      RegionId: regionIdOSS
       BucketName: bucketName
       ValueType: bucketName
       Visible:
@@ -102,12 +102,15 @@ Parameters:
   versionId:
     Label:
       en: VersionId
-      zh-cn: OSS object 版本
+      zh-cn: OSS文件版本
+    Description:
+      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS版本控制</a>
+      zh-cn: 只有OSS已开启版本控制才能选择，否则请忽略。参考文档：<a href="https://help.aliyun.com/zh/oss/overview-78/?spm=a2c4g.11174283.help-menu-search-31815.d_2" target="_blank">OSS版本控制</a>
     Default: ''
     Type: String
     AssociationProperty: ALIYUN::OSS::Object::ObjectVersionId
     AssociationPropertyMetadata:
-      RegionId: regionIdOss
+      RegionId: regionIdOSS
       BucketName: bucketName
       ObjectName: objectName
       Visible:
@@ -115,13 +118,13 @@ Parameters:
           Fn::Equals:
             - ${revisionType}
             - Oss
-  isInternalOss:
+  isInternalOSS:
     Label:
       en: Intranet download
       zh-cn: 内网下载
     Description:
-      en: Whether to download the oss file through the intranet. Note that If you choose to download the intranet, you must ensure that the ECS and OSS you want to deploy must be in the same region.
-      zh-cn: 是否通过内网下载oss文件。注意：如果选择内网下载，必须保证要部署的ECS和OSS同地域
+      en: Whether to download the OSS file through the intranet. Note that If you choose to download the intranet, you must ensure that the ECS and OSS you want to deploy must be in the same region.
+      zh-cn: 是否通过内网下载OSS文件。注意：如果选择内网下载，必须保证要部署的ECS和OSS同地域
     Type: Boolean
     Default: false
     AssociationPropertyMetadata:
@@ -434,10 +437,11 @@ Parameters:
       en: WorkingDir
       zh-cn: 工作目录
     Type: String
-    Default: '/root/aliyun_deploy'
+    Default: '/root/deploy'
+    AllowedPattern: '^\/'
     Description:
-      en: The working directory of the application. <strong>Oss file</strong>, will be directly downloaded to this directory. <strong>Git code</strong>, will be cloned to the code_deploy_application folder under the current directory, i.e. {workingDir}/code_deploy_application.
-      zh-cn: 应用的启动/停止脚本会以该目录作为执行的工作目录。<br> <strong>Oss文件：</strong>会被直接下载到该目录。<br> <strong>Git仓库代码：</strong>会被clone到当前目录下的code_deploy_application文件夹,即 {工作目录}/code_deploy_application。
+      en: The working directory of the application, <strong>please fill in the absolute path</strong>.
+      zh-cn: 应用的启动/停止脚本会以该目录作为执行的工作目录，<strong>请填写绝对路径</strong>。
     AssociationPropertyMetadata:
       Visible:
         Condition:
@@ -455,6 +459,9 @@ Parameters:
     Label:
       en: applicationStartScript
       zh-cn: 应用启动脚本
+    Description:
+      en: Attention-- Every time before executing the application start script, <strong>the application stop script will be executed first</strong> to ensure that the previous deployed application is stopped correctly. Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>.
+      zh-cn: 注意-- 每次执行应用启动脚本前都会<strong>默认先执行一下应用停止脚本</strong>，以确保之前部署的应用被正常停止。请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
@@ -487,71 +494,54 @@ Parameters:
               - ${revisionType}
               - DockerImage
           Value: |-
-            ### 停止上一个版本的容器（如果有）
-            ### Stop the previous version of the container (if any)
-            container_name="my-container"
-            container_id=$(docker ps -aq -f name=${container_name}) 
-            if [ -n "$container_id" ]; then
-              docker stop $container_id
-              docker rm $container_id
-            fi
-            
             ### 启动当前版本的容器
             ### Start the current version of the container
-            image_name="myapp:latest"
-            docker run -d -p 8080:8080 --name ${container_name} ${image_name}
+            
+            function start_application() {
+            #   image_name="myapp:latest"
+            #   container_name="my-container"
+            #   docker run -d -p 8080:8080 --name ${container_name} ${image_name}
+            }
+            
+            start_application
         - Condition:
             Fn::Equals:
               - ${revisionType}
               - GitRepo
           Value: |-
-            ### 注意：请确保脚本不会因为与上次部署的应用冲突而失败，您可能需要做一些前置检查和清理
-            ### Please make sure that the script will not fail due to conflicts with the last deployed application, you may need to do some pre-checking and cleanup
-            
-            ### 停止上一个版本的应用（如果有）
-            ### Stop the previous version of the application (if any)
-            PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
-            if [ -n "$PID" ]; then
-              kill -9 $PID
-            fi
-            
+            ### 注意：Git仓库代码会自动下载到工作目录下的code_deploy_application文件夹，即 {工作目录}/code_deploy_application
+            ### Attention: The Git repository code will be automatically downloaded to the code_deploy_application folder under the working directory, i.e. {workingDir}/code_deploy_application
+
             ### 启动当前版本的应用
-            ### Start the current version of the application
-            cd ./code_deploy_application
-            yum install -y maven-3.5.4
-            mvn package
-            java -jar sample-spring-1.0-SNAPSHOT.jar &
+            ### Start the current version of the application            
+            function start_application() {
+            #  cd ./code_deploy_application
+            #  java -jar sample-spring-1.0-SNAPSHOT.jar &
+            }
+            
+            start_application
         - Condition:
             Fn::Equals:
               - ${revisionType}
               - Oss
           Value: |-
-            ### 注意：请确保脚本不会因为与上次部署的文件冲突或者应用冲突而失败，您可能需要做一些前置检查和清理
-            ### Please make sure that the script will not fail due to file conflicts or application conflicts, you may need to do some pre-checking and cleanup
+            ### 注意：OSS文件会被直接下载到工作目录，如OSS文件是sample-spring-1.0-SNAPSHOT.jar，您可以使用相对路径./sample-spring-1.0-SNAPSHOT.jar访问并操作。
+            ### Attention: The OSS file will be directly downloaded to the working directory。Like if the OSS file is sample-spring-1.0-SNAPSHOT.jar, you can use the relative path ./sample-spring-1.0-SNAPSHOT.jar to access and operate.
             
-            ### 删除上一个版本的文件（如果有），并解压当前版本的文件
-            ### Delete the previous version of the file (if any), and unzip the current version of the file
-            if [ -d "./application_dir" ]; then
-              rm -rf ./application_dir
-            fi
-            mkdir application_dir
-            tar zxvf ./oss_file.tar.gz -C ./application_dir
-            ### 停止上一个版本的应用（如果有）
-            ### Stop the previous version of the application (if any)
-            PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
-            if [ -n "$PID" ]; then
-              kill -9 $PID
-            fi
             ### 启动当前版本的应用
             ### Start the current version of the application
-            cd application_dir
-            yum install -y maven-3.5.4
-            mvn package
-            java -jar sample-spring-1.0-SNAPSHOT.jar &
+            function start_application() {
+            #   java -jar ./sample-spring-1.0-SNAPSHOT.jar &
+            }
+            
+            start_application
   applicationStop:
     Label:
       en: applicationStopScript
       zh-cn: 应用停止脚本
+    Description:
+      en: Attention-- Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>.
+      zh-cn: 注意-- 请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
@@ -578,36 +568,46 @@ Parameters:
               - ${revisionType}
               - DockerImage
           Value: |-
-            ### 停止容器
-            ### Stop the container
-            container_name="my-container"
-            container_id=$(docker ps -aq -f name=${container_name}) 
-            if [ -n "$container_id" ]; then
-              docker stop $container_id
-              docker rm $container_id
-            fi
+            ### 停止上一个版本的容器（如果有）
+            ### Stop the previous version of the container (if any)
+            
+            function stop_application() {
+            #   container_name="my-container"
+            #   docker rm -f ${container_name} || true
+            }
+            
+            stop_application
         - Condition:
             Fn::Equals:
               - ${revisionType}
               - GitRepo
-          Value: |-
-            ### 停止应用
-            ### Stop the application
-            PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
-            if [ -n "$PID" ]; then
-              kill -9 $PID
-            fi
+          Value: |-            
+            ### 停止上一个版本的应用（如果有）
+            ### Stop the previous version of the application (if any)
+            
+            function stop_application() {
+            #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
+            #   if [ -n "$PID" ]; then
+            #     kill -9 $PID
+            #   fi
+            }
+            
+            stop_application
         - Condition:
             Fn::Equals:
               - ${revisionType}
               - Oss
           Value: |-
-            ### 停止应用
-            ### Stop the application
-            PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
-            if [ -n "$PID" ]; then
-              kill -9 $PID
-            fi
+            ### 停止上一个版本的应用（如果有）
+            ### Stop the previous version of the application (if any)
+            function stop_application() {
+            #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
+            #   if [ -n "$PID" ]; then
+            #     kill -9 $PID
+            #   fi
+            }
+            
+            stop_application
 Tasks:
   - Name: CodeDeployConsole
     Action: ACS::Sleep
@@ -624,11 +624,11 @@ Metadata:
             en: Version Description
       - Parameters:
           - revisionType
-          - regionIdOss
+          - regionIdOSS
           - bucketName
           - objectName
           - versionId
-          - isInternalOss
+          - isInternalOSS
           - platform
           - owner
           - organization
@@ -652,5 +652,5 @@ Metadata:
           - applicationStop
         Label:
           default:
-            zh-cn: 启动停止脚本
+            zh-cn: 启动/停止脚本
             en: Start/Stop Script
