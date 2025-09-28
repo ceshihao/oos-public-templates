@@ -49,6 +49,14 @@ Parameters:
                 - Standard
                 - ''
               Default: Standard
+              AssociationPropertyMetadata:
+                ValueLabelMapping:
+                  Standard:
+                    zh-cn: Standard检测
+                    en: Standard detection
+                  '':
+                    zh-cn: 不检测
+                    en: not detection
             imageFamily:
               Label: 镜像族系
               Type: String

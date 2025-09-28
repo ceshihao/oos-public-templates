@@ -32,8 +32,8 @@ Parameters:
       en: DeployMethod
       zh-cn: 发布模式
     Description:
-      en: The full-scale publishing mode will publish all instances under the current application group. For grayscale publishing mode, you can select some instances to publish.
-      zh-cn: 全量发布模式下会发布当前应用分组下所有实例，灰度发布模式下您可以选择部分实例发布
+      en: The full-scale publishing mode will publish all instances under the current application group (only support Linux system instances). <br>For grayscale publishing mode, you can select some instances to publish (only support Linux system instances).
+      zh-cn: <strong>全量发布模式下</strong>会发布当前应用分组下所有ECS实例（<strong>仅支持Linux系统实例</strong>）。<br><strong>灰度发布模式下</strong>您可以选择部分ECS实例发布（<strong>仅支持Linux系统实例</strong>）。
     Type: String
     Default: all
     AllowedValues:
@@ -192,19 +192,6 @@ Tasks:
         ApplicationName: '{{ applicationName }}'
         Name: '{{ applicationGroupName }}'
         DeployedRevisionId: '{{ deployRevisionId }}'
-  - Name: manageDeployLifeCycleHook
-    OnError: resumeProcesses
-    Description:
-      en: ManageDeployLifeCycleHook
-      zh-cn: 管理部署相关生命周期挂钩
-    Action: ACS::CICD::ManageDeployLifeCycleHook
-    Properties:
-      applicationName: '{{ applicationName }}'
-      applicationGroupName: '{{ applicationGroupName }}'
-      deployMethod: '{{ deployMethod }}'
-      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
-      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
-      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
   - Name: resumeProcesses
     Action: ACS::ExecuteAPI
     When:

@@ -1,0 +1,144 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ECS-DownloadFileFromECSByPublicOss
+  name-zh-cn: 通过公共OSS从ECS实例下载文件
+  en: Upload ECS files to common used OSS and generate temporary download links
+  zh-cn: 将ECS文件上传到公共OSS，并生成临时下载链接
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: ALIYUN::ECS::RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceId:
+    Type: String
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
+    Label:
+      en: ECS Instance Id
+      zh-cn: ECS实例
+    AssociationPropertyMetadata:
+      RegionId: regionId
+  fileName:
+    Type: String
+    Label:
+      en: File to be downloaded
+      zh-cn: 要下载的文件
+    Description:
+      en: The path of the file to be downloaded on the ecs, such as /root/your_file.zip (linux), C:\\Users\\Administrator\\your_file.zip (windows)
+      zh-cn: 要下载的文件在ecs上的路径，如/root/your_file.zip (linux), C:\\Users\\Administrator\\your_file.zip (windows 请使用双反斜杠)
+Tasks:
+  - Name: queryInstanceOSType
+    Action: 'ACS::ExecuteApi'
+    Description:
+      en: Queries ECS instance OS type
+      zh-cn: 获取ECS实例操作系统类型
+    Properties:
+      Service: ECS
+      API: DescribeInstances
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceIds:
+          - '{{ instanceId }}'
+    Outputs:
+      OSType:
+        Type: String
+        ValueSelector: 'Instances.Instance[].OSType'
+  - Name: generateUrl
+    Action: ACS::GenerateTemporaryOssUrl
+    Properties:
+      RegionId: '{{ regionId }}'
+      ObjectName:
+        Fn::Select:
+          - -1
+          - Fn::If:
+              - Fn::ContainsSubString:
+                  - '{{ fileName }}'
+                  - /
+              - Fn::Split:
+                  - /
+                  - '{{ fileName }}'
+              - Fn::Split:
+                  - \\
+                  - '{{ fileName }}'
+    Outputs:
+      temporaryUploadUrl:
+        Type: String
+        ValueSelector: .TemporaryUploadUrl
+      temporaryDownloadUrl:
+        Type: String
+        ValueSelector: .TemporaryDownloadUrl
+  - Name: uploadFile
+    Description:
+      en: Upload file to OSS
+      zh-cn: 上传文件到OSS
+    Action: ACS::ECS::RunCommand
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ instanceId }}'
+      timeout: 3600
+      commandType:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ queryInstanceOSType.OSType }}'
+              - 'linux'
+          - RunShellScript
+          - RunPowerShellScript
+      commandContent:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ queryInstanceOSType.OSType }}'
+              - 'linux'
+          - |-
+            if [ ! -f "{{fileName}}" ]; then
+              echo "File not exists!(文件不存在): {{fileName}}"
+              exit 1
+            fi
+            
+            # 检查文件大小
+            file_size=$(stat -c%s "{{fileName}}")
+            file_size_mb=$(($file_size / 1024 / 1024))
+            
+            # 如果文件大小超过500MB，输出提示信息
+            if [ $file_size_mb -gt 500 ]; then
+                echo "File size ($file_size_mb MB) exceeds 500MB, not supported!"
+                exit 1
+            fi
+            
+            response=$(curl -X PUT -T "{{fileName}}" -w "%{http_code}" -v "{{generateUrl.temporaryUploadUrl}}")
+            # 检查响应
+            if [ "$response" -ne 200 ]; then
+              echo "Curl Failed."
+              exit 1
+            fi
+          - |-
+            $localFilePath = "{{fileName}}"
+            $uploadUrl = "{{generateUrl.temporaryUploadUrl}}"
+            
+            if (-not (Test-Path $localFilePath)) {
+                Write-Output "File not exists!(文件不存在): $localFilePath"
+                exit 1
+            }
+            
+            # 如果文件大小超过100MB，输出提示信息
+            $fileInfo = Get-Item $localFilePath
+            $fileSize = $fileInfo.Length
+            
+            $fileSizeMB = [math]::Round($fileSize / (1024 * 1024), 2)
+            
+            if ($fileSizeMB -gt 100) {
+                Write-Host "File size ($fileSizeMB MB) exceeds 100MB, not supported!"
+                exit 1
+            }
+            
+            $response = Invoke-WebRequest -Uri $uploadUrl -Method Put -InFile $localFilePath -UseBasicParsing -ErrorAction Stop
+            # 检查响应内容是否包含 "AccessDenied"
+            if ($response.StatusCode -ne 200) {
+              Write-Host "Invoke-WebRequest Failed."
+              exit 1
+            }
+Outputs:
+  temporaryUrl:
+    Type: String
+    Value: '{{ GenerateUrl.temporaryDownloadUrl }}'

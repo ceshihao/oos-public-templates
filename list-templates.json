@@ -5508,7 +5508,7 @@
       "CreatedDate": "2025-08-25T01:56:12Z",
       "Description": "{\"en\": \"Batch creation of ECS custom images, suitable for users to create custom images and migrate ECS across accounts in batches.\", \"zh-cn\": \"批量创建自定义镜像，适用于用户通过创建自定义镜像，批量跨账号迁移ECS。\", \"name-en\": \"ACS-ECS-BulkyCreateImages\", \"name-zh-cn\": \"批量创建自定义镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "8589e8061a03f5be5410dd62deeb7f470a7cff6f824ad192f88c4861e517f2b5",
+      "Hash": "668c7c01bcdd4a098a578d16ff3201ce501d75c6465c6abe6c20d1efaae098de",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5518,10 +5518,10 @@
       "TemplateId": "t-a076b239caa9472eb5b5",
       "TemplateName": "ACS-ECS-BulkyCreateImages",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-28T09:38:55Z"
+      "UpdatedDate": "2025-09-23T07:48:40Z"
     },
     {
       "Category": "Other",
@@ -7041,7 +7041,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "32ba9112c5fc0a20f1e369140245995908a9b036da1de4ae5a1e59d0c9b5c6d3",
+      "Hash": "c35433a145cd4910ead246fd31a36af4fb51ba57737f2e7b25bcc3a8fb0a74a7",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7051,10 +7051,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-19T03:15:04Z"
+      "UpdatedDate": "2025-09-23T01:53:45Z"
     },
     {
       "Category": "Other",
@@ -7356,7 +7356,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "a51b63a2aba07d5e5ddcf97959e908f38bbedbefc79422d08d2e40ffc239e98b",
+      "Hash": "e96410c1275c2167378a805fa2902319768fdf56978cc1981429bfd31476f39f",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7366,10 +7366,31 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-19T06:10:16Z"
+      "UpdatedDate": "2025-09-22T07:21:27Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-09-24T02:15:43Z",
+      "Description": "{\"name-en\": \"ACS-ECS-DownloadFileFromECSByPublicOss\", \"name-zh-cn\": \"通过公共OSS从ECS实例下载文件\", \"en\": \"Upload ECS files to common used OSS and generate temporary download links\", \"zh-cn\": \"将ECS文件上传到公共OSS，并生成临时下载链接\"}",
+      "HasTrigger": false,
+      "Hash": "e1da4ccbf3a084526d2af9fd96898c81b3d0f1b71a777887f03037a124242c79",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-c33000fb75de44e8a42e",
+      "TemplateName": "ACS-ECS-DownloadFileFromECSByPublicOss",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-09-24T02:15:43Z"
     }
   ]
 }

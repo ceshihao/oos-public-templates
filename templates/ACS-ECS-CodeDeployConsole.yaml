@@ -124,7 +124,7 @@ Parameters:
       zh-cn: 内网下载
     Description:
       en: Whether to download the OSS file through the intranet. Note that If you choose to download the intranet, you must ensure that the ECS and OSS you want to deploy must be in the same region.
-      zh-cn: 是否通过内网下载OSS文件。注意：如果选择内网下载，必须保证要部署的ECS和OSS同地域
+      zh-cn: 是否通过内网下载OSS文件。注意：如果选择内网下载，必须保证要部署的ECS和OSS同地域。
     Type: Boolean
     Default: false
     AssociationPropertyMetadata:
@@ -249,6 +249,9 @@ Parameters:
     Label:
       en: CommitId
       zh-cn: CommitId
+    Description:
+      en: After entering a branch, it will automatically get the latest Commit Hash of the branch, you do not need to enter it manually.
+      zh-cn: 输入分支后自动获取分支最新的Commit Hash，您无需手动输入。
     Type: String
     Default: ''
     AssociationProperty: ACS::OOS::GitBranch::LatestCommitId
@@ -271,6 +274,9 @@ Parameters:
     Label:
       en: ImageId
       zh-cn: ECS镜像ID
+    Description:
+      en: You can select different ECS images for different regions. When publishing, the corresponding image will be selected according to the region.
+      zh-cn: 您可以为不同地域选择不同的ECS镜像。发布时，会根据ECS所在地域选择对应的镜像进行发布。
     Type: String
     Default: ''
     AssociationProperty: Map
@@ -440,8 +446,8 @@ Parameters:
     Default: '/root/deploy'
     AllowedPattern: '^\/'
     Description:
-      en: The working directory of the application, <strong>please fill in the absolute path</strong>.
-      zh-cn: 应用的启动/停止脚本会以该目录作为执行的工作目录，<strong>请填写绝对路径</strong>。
+      en: 1) The working directory of the application, <strong>please fill in the absolute path</strong>. <br>2) You can fill in a non-existent directory, and it will be automatically created when executed.
+      zh-cn: 1) 应用的启动/停止脚本会以该目录作为执行的工作目录，<strong>请填写绝对路径</strong>。<br>2) 您可以填写尚不存在的目录，执行时会自动创建。
     AssociationPropertyMetadata:
       Visible:
         Condition:
@@ -460,8 +466,8 @@ Parameters:
       en: applicationStartScript
       zh-cn: 应用启动脚本
     Description:
-      en: Attention-- Every time before executing the application start script, <strong>the application stop script will be executed first</strong> to ensure that the previous deployed application is stopped correctly. Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>.
-      zh-cn: 注意-- 每次执行应用启动脚本前都会<strong>默认先执行一下应用停止脚本</strong>，以确保之前部署的应用被正常停止。请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。
+      en: Attention-- <br>1) Every time before executing the application start script, <strong>the application stop script will be executed first</strong> to ensure that the previous deployed application is stopped correctly. Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>. <br>2) only support shell script
+      zh-cn: 注意-- <br>1) 每次执行应用启动脚本前都会<strong>默认先执行一下应用停止脚本</strong>，以确保之前部署的应用被正常停止。请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。 <br>2) 仅支持shell脚本
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
@@ -540,8 +546,8 @@ Parameters:
       en: applicationStopScript
       zh-cn: 应用停止脚本
     Description:
-      en: Attention-- Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>.
-      zh-cn: 注意-- 请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。
+      en: Attention-- <br>1) Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>. <br>2) only support shell script
+      zh-cn: 注意-- <br>1) 请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。<br>2) 仅支持shell脚本
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
@@ -568,8 +574,8 @@ Parameters:
               - ${revisionType}
               - DockerImage
           Value: |-
-            ### 停止上一个版本的容器（如果有）
-            ### Stop the previous version of the container (if any)
+            ### 停止容器（如果有）
+            ### Stop the container (if any)
             
             function stop_application() {
             #   container_name="my-container"
@@ -582,8 +588,8 @@ Parameters:
               - ${revisionType}
               - GitRepo
           Value: |-            
-            ### 停止上一个版本的应用（如果有）
-            ### Stop the previous version of the application (if any)
+            ### 停止应用（如果有）
+            ### Stop the application (if any)
             
             function stop_application() {
             #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
@@ -598,8 +604,8 @@ Parameters:
               - ${revisionType}
               - Oss
           Value: |-
-            ### 停止上一个版本的应用（如果有）
-            ### Stop the previous version of the application (if any)
+            ### 停止应用（如果有）
+            ### Stop the application (if any)
             function stop_application() {
             #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
             #   if [ -n "$PID" ]; then
