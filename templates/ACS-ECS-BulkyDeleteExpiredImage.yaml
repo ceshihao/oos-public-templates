@@ -30,7 +30,7 @@ Parameters:
       en: Name Field Used To Filter Images
       zh-cn: 用于过滤镜像的名称字段
     Type: String
-    Default: " "
+    Default: ""
   tags:
     Label:
       en: Image Tags

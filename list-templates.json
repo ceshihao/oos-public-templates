@@ -4479,7 +4479,7 @@
       "CreatedDate": "2023-11-16T01:46:48Z",
       "Description": "{\"en\": \"Bulky delete expired image\", \"zh-cn\": \"批量删除过期的镜像\", \"name-en\": \"ACS-ECS-BulkyDeleteExpiredImage\", \"name-zh-cn\": \"批量删除过期的镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "1e2563793c471b0fd7010a7a1cae56f27f7dc30f8c2e891ba1a5771863162c31",
+      "Hash": "be3219111da57473f2c8f87c09ea829dc20ad27c9453f2385f8bf3b66ca894e2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4489,10 +4489,10 @@
       "TemplateId": "t-848f8cd0b91f42af91d3",
       "TemplateName": "ACS-ECS-BulkyDeleteExpiredImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-16T01:46:48Z"
+      "UpdatedDate": "2025-09-30T06:57:34Z"
     },
     {
       "Category": "Other",
@@ -6390,7 +6390,7 @@
       "CreatedDate": "2024-11-19T02:48:58Z",
       "Description": "{\"en\": \"Red Hat Enterprise Linux template activation\", \"zh-cn\": \"RHEL模板激活\", \"name-en\": \"ACS-ECS-BulkyActivateRedHatEnterpriseLinux\", \"name-zh-cn\": \"RHEL模板激活\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2e6b8246fccfbec255dcacd41aef2c6d9aa9c9c4f709ff03f52a5aeb18f4b284",
+      "Hash": "dbe9498cd43ed322d095a5612f9e090c822544cc6fa7a26856d6f1dbe1626fce",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6400,10 +6400,10 @@
       "TemplateId": "t-2a53c9a230b241f9bf5a",
       "TemplateName": "ACS-ECS-BulkyActivateRedHatEnterpriseLinux",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-19T02:43:09Z"
+      "UpdatedDate": "2025-09-28T02:02:14Z"
     },
     {
       "Category": "Other",
@@ -7020,7 +7020,7 @@
       "CreatedDate": "2025-07-18T09:42:16Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "96d9932f5a259359424e10a2897225b65d92073a8c65af21a425f78cf6fc64f8",
+      "Hash": "76aee7f242e29ace907fefe94554f841aca821ee6c5535db9173b32120ef692c",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7030,10 +7030,10 @@
       "TemplateId": "t-0dd82fbd0d5744d28bd4",
       "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-05T07:30:55Z"
+      "UpdatedDate": "2025-09-29T07:26:27Z"
     },
     {
       "Category": "Other",
@@ -7041,7 +7041,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "c35433a145cd4910ead246fd31a36af4fb51ba57737f2e7b25bcc3a8fb0a74a7",
+      "Hash": "f6152882f646b27fcd11d464fb8f62cfdfb3f76fe2290e457baf207cbbdfe594",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7051,10 +7051,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-23T01:53:45Z"
+      "UpdatedDate": "2025-09-29T07:26:26Z"
     },
     {
       "Category": "Other",
@@ -7062,7 +7062,7 @@
       "CreatedDate": "2025-07-28T06:51:28Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnEssApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "da0dd50f80e4b616b73e5043d6cade15f088d8fc92829455e6106cbca413f4c4",
+      "Hash": "21789c064f3c3142cbab4f939b09cf76c637f6e7396e3a5e4b09728ae752ba82",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7072,10 +7072,10 @@
       "TemplateId": "t-f8022c0448444d33b0f2",
       "TemplateName": "ACS-ECS-DeployRevisionOnEssApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-19T03:15:04Z"
+      "UpdatedDate": "2025-09-29T07:26:26Z"
     },
     {
       "Category": "Other",

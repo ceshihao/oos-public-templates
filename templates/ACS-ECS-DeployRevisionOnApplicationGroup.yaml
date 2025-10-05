@@ -149,6 +149,7 @@ Tasks:
     Properties:
       applicationName: '{{ applicationName }}'
       applicationGroupName: '{{ applicationGroupName }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
     Outputs:
       applicationParameters:
         Type: List
