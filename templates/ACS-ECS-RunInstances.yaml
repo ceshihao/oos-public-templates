@@ -7,6 +7,13 @@ Description:
   categories:
     - cost_manage
 Parameters:
+  regionId:
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    Type: String
+    AssociationProperty: ALIYUN::ECS::RegionId
+    Default: '{{ ACS::RegionId }}'
   imageId:
     Label:
       en: ImageId
@@ -35,6 +42,15 @@ Parameters:
     AssociationPropertyMetadata:
       Filters:
         - SecurityGroupId: securityGroupId
+  internetMaxBandwidthOut:
+    Label:
+      en: InternetMaxBandwidthOut
+      zh-cn: 公网带宽
+    Description:
+      zh-cn: 公网出带宽最大值，单位为 Mbit/s。取值范围：0~100。
+      en: 'The maximum outbound bandwidth of the instance. Unit: Mbit/s. Valid values: 0 to 100.'
+    Type: Number
+    Default: 0
   amount:
     Label:
       en: Amount
@@ -61,10 +77,12 @@ Tasks:
     en: Creates one or more ECS instances
     zh-cn: 创建实例
   Properties:
+    regionId: '{{ regionId }}'
     imageId: '{{ imageId }}'
     instanceType: '{{ instanceType }}'
     securityGroupId: '{{ securityGroupId }}'
     vSwitchId: '{{ vSwitchId }}'
+    internetMaxBandwidthOut: '{{ internetMaxBandwidthOut }}'
     amount: '{{ amount }}'
     instanceName: '{{ instanceName }}'
   Outputs:

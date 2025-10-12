@@ -18,7 +18,7 @@ Tasks:
       API: DescribeSecurityIps
       Parameters:
         DBInstanceId: '{{ dbInstanceId }}'
-        regionId: '{{ regionId }}'
+        RegionId: '{{ regionId }}'
     Outputs:
       securityIpGroups:
         Type: List
@@ -32,7 +32,7 @@ Tasks:
       Service: dds
       API: ModifySecurityIps
       Parameters:
-        regionId: '{{ regionId }}'
+        RegionId: '{{ regionId }}'
         DBInstanceId: '{{ dbInstanceId }}'
         ModifyMode: Delete
         SecurityIps: '{{ securityIp }}'

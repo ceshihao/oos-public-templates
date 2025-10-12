@@ -5361,7 +5361,7 @@
       "CreatedDate": "2025-04-16T02:27:35Z",
       "Description": "{\"en\": \"Creates one or more ECS instances\", \"zh-cn\": \"创建ECS实例\", \"name-en\": \"ACS-ECS-RunInstances\", \"name-zh-cn\": \"创建ECS实例\", \"categories\": [\"cost_manage\"]}",
       "HasTrigger": false,
-      "Hash": "159e20a250aaea509e43dd94b758c9231d019bf282a9d6446e69840aa1d6a6f9",
+      "Hash": "2e66aedc857d00746fc1af7b53b7cc92e3fc8afd4b436a71036f729a9e1bbe31",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5371,10 +5371,10 @@
       "TemplateId": "t-7d31620d8af14e4faf0f",
       "TemplateName": "ACS-ECS-RunInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-04-17T07:13:56Z"
+      "UpdatedDate": "2025-10-11T08:31:36Z"
     },
     {
       "Category": "Other",
@@ -6516,7 +6516,7 @@
       "CreatedDate": "2024-12-06T09:44:11Z",
       "Description": "{\"en\": \"Modify mongoDB instance ip whitelist\", \"zh-cn\": \"删除mongoDB集群IP白名单中的0.0.0.0/0\", \"name-en\": \"ACS-MongoDB-ModifyAccessWhiteList\", \"name-zh-cn\": \"删除mongoDB集群IP白名单中的0.0.0.0/0\", \"categories\": [\"security\", \"mongodb\"]}",
       "HasTrigger": false,
-      "Hash": "a2cc0e959d04f579b012859499d08be1d08a6f161968917ac7b59ebe20df6632",
+      "Hash": "32e6804c3c7b3eae6c99fb58fb3bbb2b633e07f7ddc2351cafe45377074b03eb",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6526,10 +6526,10 @@
       "TemplateId": "t-16d426c795cc49b3bfe4",
       "TemplateName": "ACS-MongoDB-ModifyAccessWhiteList",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:33Z"
+      "UpdatedDate": "2025-10-11T03:41:10Z"
     },
     {
       "Category": "Other",
