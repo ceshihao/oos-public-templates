@@ -106,6 +106,7 @@ Parameters:
       - ACS::Eflo::NetworkInterface
       - ACS::Eflo::Er
       - ACS::Eflo::HighDensityElasticNetworkInterface
+      - ACS::Eflo::HyperNode
       - ACS::EMR::Cluster
       - ACS::FC::Service
       - ACS::GPDB::DBInstance
