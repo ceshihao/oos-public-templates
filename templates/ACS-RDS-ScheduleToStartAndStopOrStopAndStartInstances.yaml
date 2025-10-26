@@ -24,6 +24,7 @@ Parameters:
     AssociationPropertyMetadata:
       ResourceType: ALIYUN::RDS::Instance
       RegionId: regionId
+      ChargeType: PostPaid
   startFirstOrStopFirst:
     Type: String
     Label:

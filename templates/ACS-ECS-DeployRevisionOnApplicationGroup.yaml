@@ -196,9 +196,14 @@ Tasks:
   - Name: resumeProcesses
     Action: ACS::ExecuteAPI
     When:
-      Fn::Equals:
-        - '{{ getApplicationGroupDetail.tagKey }}'
-        - acs:autoscaling:scalingGroupId
+      Fn::And:
+        - Fn::Not:
+            Fn::Equals:
+              - '{{ suspendEssProcess.processesToSuspend }}'
+              - []
+        - Fn::Equals:
+            - '{{ getApplicationGroupDetail.tagKey }}'
+            - acs:autoscaling:scalingGroupId
     Description: 恢复伸缩组流程
     Properties:
       Service: ESS

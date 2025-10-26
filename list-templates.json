@@ -604,10 +604,10 @@
       "TemplateId": "t-57900f64c9f54d6a8bf2",
       "TemplateName": "ACS-ESS-CreateImageAndUpdateScalingConfiguration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:24Z"
+      "UpdatedDate": "2025-10-20T07:33:12Z"
     },
     {
       "Category": "Other",
@@ -4248,7 +4248,7 @@
       "CreatedDate": "2023-06-30T02:07:36Z",
       "Description": "{\"en\": \"Schedule to start and stop RDS instances\", \"zh-cn\": \"RDS定时开关机或者关开机\", \"name-en\": \"ACS-RDS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"RDS定时开关机或者关开机\", \"categories\": [\"time_trigger\", \"rds\"]}",
       "HasTrigger": true,
-      "Hash": "ec78d6b27da037830a8ecb3e6f77f0373253d052fc131095701ebd30f8e0bbf0",
+      "Hash": "5d8841fa035dec00df31ef13c0699597e1db8630da576170564b6470d688ff91",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4258,10 +4258,10 @@
       "TemplateId": "t-83d99815f0b14078b665",
       "TemplateName": "ACS-RDS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:36Z"
+      "UpdatedDate": "2025-10-24T01:41:47Z"
     },
     {
       "Category": "Other",
@@ -4458,7 +4458,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d0332936eb77e4d7469d16ea58d558512c97f51d41a9e285d6debfd33b63bd08",
+      "Hash": "df52c7ba633d2bb011966d18505c6c21ae1265b148e48a314b32d0551f04dc6b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4468,10 +4468,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v28",
+      "TemplateVersion": "v29",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-10-17T06:01:56Z"
+      "UpdatedDate": "2025-10-24T01:19:50Z"
     },
     {
       "Category": "Other",
@@ -7041,7 +7041,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "f6152882f646b27fcd11d464fb8f62cfdfb3f76fe2290e457baf207cbbdfe594",
+      "Hash": "5bad688fa7d830d52c3bf178f9d364fed23ce1ed50cc95d9cfc21a35c578a9d5",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7051,10 +7051,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-29T07:26:26Z"
+      "UpdatedDate": "2025-10-24T02:36:25Z"
     },
     {
       "Category": "Other",
