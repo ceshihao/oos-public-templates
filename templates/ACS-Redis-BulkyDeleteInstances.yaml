@@ -14,11 +14,31 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Type: List
     Label:
       en: RedisInstanceIds
       zh-cn: Redis实例ID列表
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   rateControl:
     Label:
       en: RateControl
@@ -36,19 +56,45 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
-- Name: deleteInstance
-  Action: ACS::ExecuteAPI
-  Description:
-    en: Deletes Redis instance
-    zh-cn: 删除Redis实例
-  Properties:
-    Service: R-kvstore
-    API: DeleteInstance
-    Parameters:
-      RegionId: '{{ regionId }}'
-      InstanceId: '{{ ACS::TaskLoopItem }}'
-  Loop:
-    RateControl: '{{ rateControl }}'
-    Items: '{{ instanceIds }}'
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the Redis instances
+      zh-cn: 获取Redis实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: deleteInstance
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Deletes Redis instance
+      zh-cn: 删除Redis实例
+    Properties:
+      Service: R-kvstore
+      API: DeleteInstance
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceId: '{{ ACS::TaskLoopItem }}'
+    Loop:
+      RateControl: '{{ rateControl }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
 

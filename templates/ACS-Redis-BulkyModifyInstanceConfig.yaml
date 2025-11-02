@@ -15,11 +15,31 @@ Parameters:
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
-  instanceIds:
+  targets:
+    Type: Json
     Label:
-      en: The id of redis instances
-      zh-cn: redis实例ID
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  instanceIds:
     Type: List
+    Label:
+      en: RedisInstanceIds
+      zh-cn: Redis实例ID列表
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   config:
     Label:
       en: The configuration of the instance in the JSON format
@@ -42,7 +62,27 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the Redis instances
+      zh-cn: 获取Redis实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: ModifyInstanceConfig
     Action: ACS::ExecuteAPI
     Description:
@@ -57,7 +97,13 @@ Tasks:
         Config: '{{ config }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ instanceIds }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -70,6 +116,7 @@ Metadata:
       - Parameters:
           - regionId
           - instanceIds
+          - targets
         Label:
           default:
             zh-cn: 选择实例

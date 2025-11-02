@@ -1,0 +1,87 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Remove 0.0.0.0/0 from Kibana public IP whitelist groups of Elasticsearch instances.
+  zh-cn: 从Elasticsearch实例的Kibana公网白名单分组中移除0.0.0.0/0。
+  name-en: ACS-ElasticSearch-ModifyWhiteIps
+  name-zh-cn: 移除ES Kibana白名单中的0.0.0.0/0
+  categories:
+    - security
+    - elasticsearch
+Parameters:
+  regionId:
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceId:
+    Label:
+      en: The id of instance
+      zh-cn: 实例id列表
+    Type: String
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: describeESInstance
+    Action: ACS::ExecuteApi
+    Description:
+      en: Get Elasticsearch instance details.
+      zh-cn: 获取Elasticsearch实例详情。
+    Properties:
+      Service: Elasticsearch
+      API: DescribeInstance
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceId: '{{ instanceId }}'
+    Outputs:
+      whiteIpGroups:
+        Type: List
+        ValueSelector: '.Result.networkConfig.whiteIpGroupList | map(select(.whiteIpType == "PUBLIC_KIBANA")) | map(select(.ips[] == "0.0.0.0/0")) | {"GroupName": .[].groupName}'
+  - Name: modifyWhiteIps
+    Action: ACS::ExecuteApi
+    Description:
+      en: Modify Kibana Public IP whitelist.
+      zh-cn: 修改Kibana公网白名单。
+    Properties:
+      Service: elasticsearch
+      API: ModifyWhiteIps
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceId: '{{ instanceId }}'
+      Body:
+        nodeType: Kibana
+        networkType: PUBLIC
+        modifyMode: Delete
+        whiteIpGroup:
+          groupName:
+            Fn::Select:
+              - GroupName
+              - '{{ ACS::TaskLoopItem }}'
+          ips:
+            - 0.0.0.0/0
+          whiteIpType: PUBLIC_KIBANA
+    Outputs: {}
+    Loop:
+      Items: '{{ describeESInstance.whiteIpGroups }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+      Outputs: {}
+

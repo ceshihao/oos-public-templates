@@ -15,11 +15,31 @@ Parameters:
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Label:
       en: The ids of rds instance
       zh-cn: 实例ID列表
     Type: List
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   rateControl:
     Label:
       en: RateControl
@@ -36,7 +56,27 @@ Parameters:
       zh-cn: OOS扮演的RAM角色
     Type: String
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the RDS instances
+      zh-cn: 获取RDS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: enableBackupPolicyForLog
     Action: ACS::ExecuteAPI
     Description:
@@ -52,13 +92,20 @@ Tasks:
         EnableBackupLog: '1'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ instanceIds }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - regionId
           - instanceIds
+          - targets
         Label:
           default:
             zh-cn: 选择实例

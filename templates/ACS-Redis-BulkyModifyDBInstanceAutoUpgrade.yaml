@@ -1,18 +1,18 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: Modify SQL collector policy
-  zh-cn: 开启RDS实例的SQL洞察（SQL审计）功能
-  name-en: ACS-RDS-BulkyModifySQLCollectorPolicy
-  name-zh-cn: 开启RDS实例的SQL洞察（SQL审计）功能
+  en: Bulk modify the minor version auto-upgrade switch for Redis instances
+  zh-cn: 批量修改Redis实例的小版本自动升级开关
+  name-en: ACS-Redis-BulkyModifyDBInstanceAutoUpgrade
+  name-zh-cn: 批量修改Redis实例的小版本自动升级开关
   categories:
     - security
-    - rds
+    - tair
 Parameters:
   regionId:
-    Type: String
     Label:
       en: RegionId
       zh-cn: 地域ID
+    Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
   targets:
@@ -22,26 +22,12 @@ Parameters:
       zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: ALIYUN::RDS::Instance
+      ResourceType: ALIYUN::Redis::Instance
       RegionId: regionId
     Default:
       Type: ResourceIds
       ResourceIds: []
       RegionId: '{{ regionId }}'
-  instanceIds:
-    Label:
-      en: InstanceIds
-      zh-cn: RDS实例ID列表
-    Type: List
-    Default: []
-    AssociationProperty: ALIYUN::RDS::Instance::InstanceId
-    AssociationPropertyMetadata:
-      RegionId: regionId
-      Visible:
-        Condition:
-          Fn::Equals:
-            - ${targets}
-            - {}
   rateControl:
     Label:
       en: RateControl
@@ -59,20 +45,14 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
-Conditions:
-  instanceId:
-    Fn::Equals:
-      - '{{ instanceIds }}'
-      - []
 Tasks:
   - Name: getInstance
-    When: instanceId
     Description:
-      en: Get the RDS instances
-      zh-cn: 获取RDS实例
+      en: Get the Redis instances
+      zh-cn: 获取Redis实例
     Action: ACS::SelectTargets
     Properties:
-      ResourceType: ALIYUN::RDS::Instance
+      ResourceType: ALIYUN::Redis::Instance
       RegionId: '{{regionId}}'
       Filters:
         - '{{ targets }}'
@@ -80,25 +60,21 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: Instances.Instance[].InstanceId
-  - Name: modifySQLCollectorPolicy
-    Action: 'ACS::ExecuteAPI'
+  - Name: modifyDBInstanceAutoUpgrade
+    Action: ACS::ExecuteAPI
     Description:
-      en: Modify SQL collector policy
-      zh-cn: 开启RDS实例的SQL洞察（SQL审计）功能
+      en: Modify the minor version auto-upgrade switch for Redis instance
+      zh-cn: 修改实例的小版本自动升级开关
     Properties:
-      Service: RDS
-      API: ModifySQLCollectorPolicy
+      Service: r-kvstore
+      API: ModifyDBInstanceAutoUpgrade
       Parameters:
-        RegionId: '{{ regionId }}'
         DBInstanceId: '{{ ACS::TaskLoopItem }}'
-        SQLCollectorStatus: Enable
+        RegionId: '{{ regionId }}'
+        Value: '1'
+    Outputs: {}
     Loop:
+      Items: '{{ getInstance.instanceIds }}'
       RateControl: '{{ rateControl }}'
-      Items:
-        Fn::If:
-          - Fn::Equals:
-              - '{{instanceIds}}'
-              - []
-          - '{{ getInstance.instanceIds }}'
-          - '{{ instanceIds}}'
+      Outputs: {}
 

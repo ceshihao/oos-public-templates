@@ -10,7 +10,7 @@ Description:
 Tasks:
   - Name: modifyParameter
     Action: ACS::ExecuteApi
-    Description: '{"en":"modify the parameters of RDS instances","zh-cn":"修改RDS实例的参数值"}'
+    Description: '{"en":"modify the parameters of RDS instances","zh-cn": "修改RDS实例的参数值"}'
     Properties:
       Service: RDS
       API: ModifyParameter

@@ -3,7 +3,7 @@ Description:
   en: FC runs script(Only support python), To use this template, you must first <a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target="_blank">activate the function computing service< /a>
   zh-cn: FC运行脚本（仅支持python），使用此功能必须<a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target="_blank">开通函数计算服务</a>
   name-en: ACS-FC-RunScript
-  name-zh-cn: FC运行脚本
+  name-zh-cn: FC 运行脚本
 Parameters:
   Runtime:
     Type: String

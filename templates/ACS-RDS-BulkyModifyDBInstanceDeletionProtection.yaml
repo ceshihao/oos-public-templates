@@ -15,11 +15,31 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Label:
       en: InstanceIds
       zh-cn: RDS实例Id列表
     Type: List
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   rateControl:
     Label:
       en: RateControl
@@ -36,7 +56,27 @@ Parameters:
       zh-cn: OOS扮演的RAM角色
     Type: String
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the RDS instances
+      zh-cn: 获取RDS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: enableDBInstanceDeletionProtection
     Action: ACS::ExecuteApi
     Description: '{"en":"Enables deletion protection for rds instance","zh-cn":"开启实例释放保护"}'
@@ -48,9 +88,14 @@ Tasks:
         DeletionProtection: true
         RegionId: '{{ regionId }}'
     Loop:
-      Items: '{{ instanceIds }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
       RateControl: '{{ rateControl }}'
-    Outputs: {}
     OnError: ACS::END
     OnSuccess: ACS::NEXT
 Metadata:
@@ -59,6 +104,7 @@ Metadata:
       - Parameters:
           - regionId
           - instanceIds
+          - targets
         Label:
           default:
             zh-cn: 选择实例

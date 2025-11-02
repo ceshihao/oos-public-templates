@@ -15,20 +15,39 @@ Parameters:
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Label:
       en: The ids of rds instance
       zh-cn: 实例ID列表
     Type: List
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   maintainTime:
     Description:
-      en: Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in UTC.
-      zh-cn: 格式：HH:mmZ-HH:mmZ（UTC时间）。
+      en: "Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in UTC. Example Value: 04:00Z-05:00Z."
+      zh-cn: "格式：HH:mmZ-HH:mmZ（UTC时间），示例：04:00Z-05:00Z"
     Label:
       en: The maintenance time of the instance.
-      zh-cn: 实例的可维护时间段。
+      zh-cn: 实例的可维护时间段
     Type: String
-
   rateControl:
     Label:
       en: RateControl
@@ -45,7 +64,27 @@ Parameters:
       zh-cn: OOS扮演的RAM角色
     Type: String
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the RDS instances
+      zh-cn: 获取RDS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: ModifyDBInstanceMaintainTime
     Action: ACS::ExecuteAPI
     Description:
@@ -60,7 +99,13 @@ Tasks:
         MaintainTime: '{{ maintainTime }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ instanceIds }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -73,6 +118,7 @@ Metadata:
       - Parameters:
           - regionId
           - instanceIds
+          - targets
         Label:
           default:
             zh-cn: 选择实例

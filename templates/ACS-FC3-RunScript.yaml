@@ -1,0 +1,196 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: FC runs script(support python, nodejs, shell), To use this template, you must first <a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target="_blank">activate the function computing service< /a>
+  zh-cn: 执行脚本（支持python, nodejs, shell），使用此功能必须<a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target="_blank">开通函数计算服务</a>
+  name-en: ACS-FC3-RunScript
+  name-zh-cn: 执行脚本
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  runtime:
+    Type: String
+    Label:
+      en: Runtime
+      zh-cn: 运行环境
+    AllowedValues:
+      - python3.9
+      - python3.10
+      - python3.12
+      - shell
+      - nodejs16
+    Default: python3.10
+  script:
+    Type: String
+    Label:
+      en: Script
+      zh-cn: 脚本代码
+    AssociationProperty: ALIYUN::OOS::Command::CommandContent
+    AssociationPropertyMetadata:
+      Value:
+        - Condition:
+            Fn::Contains:
+              - - python3.9
+                - python3.10
+                - python3.12
+              - ${runtime}
+          Value: |-
+                  import json
+
+                  def handler(event, context):
+                    # 解析传入的调用参数
+                    # data = json.loads(event)
+                    # handler_name = data.get('handler_name')
+                    # print(f'My name is {handler_name}')
+                    return 'Hello World'
+        - Condition:
+            Fn::Equals:
+              - ${runtime}
+              - shell
+          Value: |-
+            echo hello
+        - Condition:
+            Fn::Equals:
+              - ${runtime}
+              - nodejs16
+          Value: |-
+            'use strict';
+            /*
+            To enable the initializer feature (https://help.aliyun.com/document_detail/2512970.html)
+            please implement the initializer function as below：
+            exports.initializer = (context, callback) => {
+              console.log('initializing');
+              callback(null, '');
+            };
+            */
+            exports.handler = (event, context, callback) => {
+              // const eventObj = JSON.parse(event.toString());
+              console.log('hello world');
+              callback(null, 'hello world');
+            }
+    Default: ''
+  invokeConfig:
+    Type: String
+    Label:
+      en: Invoke Config
+      zh-cn: 执行配置
+    Description:
+      en: 'Function execution configuration: sync invoke, async invoke'
+      zh-cn: 函数的执行配置：同步执行，异步执行
+    AllowedValues:
+      - sync
+      - async
+    Default: sync
+  networkConfig:
+    Type: Boolean
+    Label:
+      en: Network Config
+      zh-cn: 网络配置（是否需要访问VPC资源）
+    Description:
+      en: Whether to  access VPC resources, By default - access public network. If need to access VPC resources, configure VPC, security groups, and VSwitch.
+      zh-cn: 是否需要访问VPC资源，默认访问公网，若希望访问VPC资源则需要配置VPC、安全组和VSwitch。
+    Default: false
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${runtime}
+            - shell
+  vpcId:
+    Type: String
+    Label:
+      en: VPC ID
+      zh-cn: VPC ID
+    Default: ''
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${RegionId}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${networkConfig}
+            - true
+  securityGroupId:
+    Type: String
+    Label:
+      en: Security Group ID
+      zh-cn: Security Group ID
+    Default: ''
+    AssociationProperty: ALIYUN::ECS::SecurityGroup::SecurityGroupId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      VpcId: ${vpcId}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${networkConfig}
+            - true
+  vSwitchId:
+    Type: String
+    Label:
+      en: VSwitch ID
+      zh-cn: VSwitch ID
+    Default: ''
+    AssociationProperty: ALIYUN::ECS::VSwitch
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      VpcId: ${vpcId}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${NetworkConfig}
+            - true
+  FCAssumeRole:
+    Label:
+      en: FCAssumeRole
+      zh-cn: FC扮演的RAM角色
+    Description:
+      en: The Function Compute platform will use this RAM role to generate a temporary key for accessing your Alibaba Cloud resources and pass it to your code. For details, please see <a href="https://help.aliyun.com/zh/functioncompute/user-guide/grant-function-compute-permissions-to-access-other-alibaba-cloud-services" target="_blank ">Grant Function Compute permissions to access other cloud services</a>
+      zh-cn: 函数计算平台会使用这个 RAM 角色（Role）来生成访问您的阿里云资源的临时密钥，并传递给您的代码。详情请查看<a href="https://help.aliyun.com/zh/functioncompute/user-guide/grant-function-compute-permissions-to-access-other-alibaba-cloud-services" target="_blank">授予函数计算访问其他云服务的权限</a>
+    Type: String
+    AssociationProperty: ALIYUN::RAM::Service::Role
+    AssociationPropertyMetadata:
+      Service: fc.aliyuncs.com
+    Default: ''
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Action: ACS::FC3::ExecuteScript
+    Name: ExecuteScript
+    Description:
+      en: Run the script
+      zh-cn: 运行脚本
+    Properties:
+      runtime: '{{ runtime }}'
+      script: '{{ script }}'
+      inputPayload:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ runtime }}'
+              - shell
+          - '{"command": "{{ script }}"}'
+          - ''
+      regionId: '{{ regionId }}'
+      invokeConfig: '{{ invokeConfig }}'
+      networkConfig: '{{ networkConfig }}'
+      vpcId: '{{ vpcId }}'
+      securityGroupId: '{{ securityGroupId }}'
+      vSwitchId: '{{ vSwitchId }}'
+      role: '{{ FCAssumeRole }}'
+    Outputs:
+      result:
+        Type: String
+        ValueSelector: .Result | if type == "array" then .[-1].eventDetail else . end
+Outputs:
+  output:
+    Type: String
+    Value: '{{ ExecuteScript.result }}'

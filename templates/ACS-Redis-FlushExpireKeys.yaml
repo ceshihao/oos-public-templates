@@ -74,14 +74,8 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
-          - config
-        Label:
-          default:
-            zh-cn: 设置参数
-            en: Configure Parameters
-      - Parameters:
           - regionId
-          - instanceIds
+          - Targets
         Label:
           default:
             zh-cn: 选择实例

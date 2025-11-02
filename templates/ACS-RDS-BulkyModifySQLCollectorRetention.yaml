@@ -15,14 +15,33 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Label:
       en: InstanceIds
       zh-cn: RDS实例ID列表
+    Type: List
+    Default: []
     AssociationProperty: ALIYUN::RDS::Instance::InstanceId
     AssociationPropertyMetadata:
       RegionId: regionId
-    Type: List
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   rateControl:
     Label:
       en: RateControl
@@ -40,7 +59,27 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the RDS instances
+      zh-cn: 获取RDS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: modifySQLCollectorRetention
     Action: ACS::ExecuteAPI
     Description:
@@ -55,5 +94,11 @@ Tasks:
         ConfigValue: 180
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ instanceIds }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
 

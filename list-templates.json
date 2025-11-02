@@ -2463,7 +2463,7 @@
       "CreatedDate": "2021-05-18T12:06:42Z",
       "Description": "{\"en\": \"Bulky delete Redis postpaid instances\", \"zh-cn\": \"批量删除Redis按量付费实例\", \"name-en\": \"ACS-Redis-BulkyDeleteInstances\", \"name-zh-cn\": \"批量删除Redis按量付费实例\", \"categories\": [\"tair\"]}",
       "HasTrigger": false,
-      "Hash": "8d3f409653b2153bbc1640e72023b0e35df5035de1cb17749d30a31aea44fa3a",
+      "Hash": "c1a28410ebec3eac9714d9a208a8f4290bb19c483e167a10b92a967b18b38095",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2473,10 +2473,10 @@
       "TemplateId": "t-fefac66a772e4244991d",
       "TemplateName": "ACS-Redis-BulkyDeleteInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:36Z"
+      "UpdatedDate": "2025-10-27T01:33:47Z"
     },
     {
       "Category": "Other",
@@ -2904,7 +2904,7 @@
       "CreatedDate": "2021-11-18T12:10:45Z",
       "Description": "{\"en\": \"Migrate security ip mode\", \"zh-cn\": \"切换RDS白名单为高安全模式\", \"name-en\": \"ACS-RDS-BulkyMigrateSecurityIPMode\", \"name-zh-cn\": \"切换RDS白名单为高安全模式\", \"categories\": [\"security\", \"rds\"]}",
       "HasTrigger": false,
-      "Hash": "99c309a00abafc68256ab2ccd8216fd67e0f17feecc57bcf1b40b244bc544a00",
+      "Hash": "8b139042c7d9df0a45e0312fb8645643c2d3467105915ed3319fec5c5a6c9275",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2914,10 +2914,10 @@
       "TemplateId": "t-4e480fecf62d49d38713",
       "TemplateName": "ACS-RDS-BulkyMigrateSecurityIPMode",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:34Z"
+      "UpdatedDate": "2025-10-27T02:05:37Z"
     },
     {
       "Category": "Other",
@@ -2946,7 +2946,7 @@
       "CreatedDate": "2021-11-18T12:11:52Z",
       "Description": "{\"en\": \"Modify SQL collector policy\", \"zh-cn\": \"开启RDS实例的SQL洞察（SQL审计）功能\", \"name-en\": \"ACS-RDS-BulkyModifySQLCollectorPolicy\", \"name-zh-cn\": \"开启RDS实例的SQL洞察（SQL审计）功能\", \"categories\": [\"security\", \"rds\"]}",
       "HasTrigger": false,
-      "Hash": "5846a43aa9280efb650d64258b7dd51008f0127da8b29c928a3f2faa9f44b967",
+      "Hash": "e2f2ad3a0775935abeb742d1df7f57ea608b97541344bf9b28c1cf00138c9817",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2956,10 +2956,10 @@
       "TemplateId": "t-8a7ff165b95f4d56b202",
       "TemplateName": "ACS-RDS-BulkyModifySQLCollectorPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:34Z"
+      "UpdatedDate": "2025-10-27T01:33:47Z"
     },
     {
       "Category": "Other",
@@ -2967,7 +2967,7 @@
       "CreatedDate": "2021-11-18T12:12:25Z",
       "Description": "{\"en\": \"Modify audit log config\", \"zh-cn\": \"开启redis审计日志，保留时长180天\", \"name-en\": \"ACS-REDIS-BulkyModifyAuditLogConfig\", \"name-zh-cn\": \"开启redis审计日志，保留时长180天\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "64ecd1f8a19c76e949b93683d6bf24e44e7b40e7e8716bf774f53f8121e37bbf",
+      "Hash": "79742905394ccb3ba09cbbf07026044b36c589b84a9e731c349e710ba9fc2e23",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2977,10 +2977,10 @@
       "TemplateId": "t-df20c03f32eb4d8d9d16",
       "TemplateName": "ACS-REDIS-BulkyModifyAuditLogConfig",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:36Z"
+      "UpdatedDate": "2025-10-27T01:33:47Z"
     },
     {
       "Category": "Other",
@@ -3072,7 +3072,7 @@
       "CreatedDate": "2021-11-19T05:18:04Z",
       "Description": "{\"en\": \"Modify SQL collector retention\", \"zh-cn\": \"设置RDS实例的SQL洞察日志保存时长为180天\", \"name-en\": \"ACS-RDS-BulkyModifySQLCollectorRetention\", \"name-zh-cn\": \"设置RDS实例的SQL洞察日志保存时长为180天\", \"categories\": [\"security\", \"rds\"]}",
       "HasTrigger": false,
-      "Hash": "4a6d3a8cfa782e8d99bf3676be1caea89e8c96f9b68c0b4e72bdfa11d9bcf303",
+      "Hash": "772a98f198552c03fc23ed0f20baf170b8be1fc1c57d15d7a887c2f0507f48cb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3082,10 +3082,10 @@
       "TemplateId": "t-1d0373ec716a44c3a942",
       "TemplateName": "ACS-RDS-BulkyModifySQLCollectorRetention",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:34Z"
+      "UpdatedDate": "2025-10-27T01:33:47Z"
     },
     {
       "Category": "Other",
@@ -3282,7 +3282,7 @@
       "CreatedDate": "2021-12-15T03:38:31Z",
       "Description": "{\"en\": \"Modifies configuration parameters of redis instances\", \"zh-cn\": \"更改Redis实例的参数配置\", \"name-en\": \"ACS-Redis-BulkyModifyInstanceConfig\", \"name-zh-cn\": \"更改Redis实例的参数配置\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "eaa3de385b684ab46f3c5e7a3c1fd590ac561fa320796916fe208c7fd2dbb4b5",
+      "Hash": "57be1523b8398f8157c1e6530dad498e6f7020640d016d7c52d4fe6bed5571ea",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3292,10 +3292,10 @@
       "TemplateId": "t-56d22e4cd4f2457da692",
       "TemplateName": "ACS-Redis-BulkyModifyInstanceConfig",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:37Z"
+      "UpdatedDate": "2025-10-27T01:33:48Z"
     },
     {
       "Category": "Other",
@@ -3975,7 +3975,7 @@
       "CreatedDate": "2023-03-30T09:09:58Z",
       "Description": "{\"en\": \"Modifies maintain time of rds instance\", \"zh-cn\": \"修改实例可维护时间段\", \"name-en\": \"ACS-RDS-BulkyModifyDBInstanceMaintainTime\", \"name-zh-cn\": \"修改可维护时间段\", \"categories\": [\"security\", \"rds\"]}",
       "HasTrigger": false,
-      "Hash": "6bf466422a0a11ae65e0146905a0200267036933e4d9ad90352108a923af2709",
+      "Hash": "3ac4ae5ede599328ce11f37400dde916201458824228b5ee2d99d2b1ab51bfa3",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3985,10 +3985,10 @@
       "TemplateId": "t-6ff9046365dd4b4ea846",
       "TemplateName": "ACS-RDS-BulkyModifyDBInstanceMaintainTime",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:34Z"
+      "UpdatedDate": "2025-10-27T08:37:49Z"
     },
     {
       "Category": "Other",
@@ -3996,7 +3996,7 @@
       "CreatedDate": "2023-03-30T09:09:58Z",
       "Description": "{\"en\": \"Modifies maintain time of redis instances\", \"zh-cn\": \"修改可维护时间段\", \"name-en\": \"ACS-Redis-BulkyModifyInstanceMaintainTime\", \"name-zh-cn\": \"修改可维护时间段\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "d1dee5d7fda2303c434f18e82601390dd1b4bd0ec3c095adfe13bbab3ca7ff75",
+      "Hash": "286025c94b0f0cf7c40bb153da5d4e0be649e279a2322e789ce31c5a545c6018",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4006,10 +4006,10 @@
       "TemplateId": "t-829cd26aa0e942bfb78e",
       "TemplateName": "ACS-Redis-BulkyModifyInstanceMaintainTime",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:37Z"
+      "UpdatedDate": "2025-10-27T01:33:48Z"
     },
     {
       "Category": "Other",
@@ -4185,7 +4185,7 @@
       "CreatedDate": "2023-05-30T02:12:48Z",
       "Description": "{\"en\": \"Bulky enable deletion protection for instances\", \"zh-cn\": \"批量开启RDS实例保护\", \"name-en\": \"ACS-RDS-BulkyModifyDBInstanceDeletionProtection\", \"name-zh-cn\": \"批量开启RDS实例保护\", \"categories\": [\"security\", \"rds\"]}",
       "HasTrigger": false,
-      "Hash": "68aa4190201496d05443e9a6e00932bd2ea33253b451b6258604899a42b3d891",
+      "Hash": "00d3b5cb07335c31c9f8cb9ac6286509d05ec3a9f2956272c29333413bb9685e",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4195,10 +4195,10 @@
       "TemplateId": "t-4eede07834df4d5d97ca",
       "TemplateName": "ACS-RDS-BulkyModifyDBInstanceDeletionProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:34Z"
+      "UpdatedDate": "2025-10-27T01:33:47Z"
     },
     {
       "Category": "Other",
@@ -4206,7 +4206,7 @@
       "CreatedDate": "2023-05-30T02:12:48Z",
       "Description": "{\"name-en\": \"ACS-Redis-BulkyModifyInstanceBackupTime\", \"name-zh-cn\": \"Redis实例开启增量备份\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "1ba77c0931d87af67dd2d8d2e54e76a98f6669bbb92f790f3c6c18888a049df9",
+      "Hash": "e9965f460b95a21826e00662559f705eb972ce50ca0e8f4ef2b850f02962584b",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4216,10 +4216,10 @@
       "TemplateId": "t-5d518fc636d54e44abbb",
       "TemplateName": "ACS-Redis-BulkyModifyInstanceBackupTime",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:37Z"
+      "UpdatedDate": "2025-10-27T01:33:48Z"
     },
     {
       "Category": "Other",
@@ -4290,7 +4290,7 @@
       "CreatedDate": "2023-09-26T12:00:35Z",
       "Description": "{\"name-en\": \"ACS-Mongodb-BulkyModifyBackupPolicy\", \"name-zh-cn\": \"修改MongoDB实例的备份策略\", \"en\": \"Update mongodb instance backup policy\", \"zh-cn\": \"修改MongoDB实例的备份策略\", \"categories\": [\"mongodb\"]}",
       "HasTrigger": false,
-      "Hash": "349d9a2fe90d497d7b026b3498adccff56479e44fec1503ee20696a0f19492ed",
+      "Hash": "c2fded251a6ca3fe524c426735c4bc462e6d81cae25762a7c04e35eaf392ab5f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4300,10 +4300,10 @@
       "TemplateId": "t-14acb1aaee5b443bb1c8",
       "TemplateName": "ACS-Mongodb-BulkyModifyBackupPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:33Z"
+      "UpdatedDate": "2025-10-27T01:33:46Z"
     },
     {
       "Category": "Other",
@@ -4332,7 +4332,7 @@
       "CreatedDate": "2023-09-26T12:00:35Z",
       "Description": "{\"en\": \"Enable rds instance backup policy log backup setting\", \"zh-cn\": \"开启RDS实例备份策略的日志备份设置\", \"name-en\": \"ACS-RDS-BulkyEnableBackupLogPolicy\", \"name-zh-cn\": \"开启RDS实例备份策略的日志备份设置\", \"categories\": [\"security\", \"rds\"]}",
       "HasTrigger": false,
-      "Hash": "f47f7ad9ec190b64e106b7ea5720e1e1c1a2c210f7c92e50fea1ddd94ebe6dc4",
+      "Hash": "f18614441c6218c3a02e9cae3ba4c4216ba4984d5a69fabf941a30a1578269f8",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4342,10 +4342,10 @@
       "TemplateId": "t-4778162b9af54655bd7f",
       "TemplateName": "ACS-RDS-BulkyEnableBackupLogPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:34Z"
+      "UpdatedDate": "2025-10-27T01:33:46Z"
     },
     {
       "Category": "Other",
@@ -4353,7 +4353,7 @@
       "CreatedDate": "2023-09-26T12:00:35Z",
       "Description": "{\"en\": \"Modify redis instance's backup policy.\", \"zh-cn\": \"修改Redis实例的自动备份策略。\", \"name-en\": \"ACS-Redis-BulkyModifyBackupPolicy\", \"name-zh-cn\": \"修改Redis实例的自动备份策略\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "e1f340e8e287ec7d14c6da7ba61ff6b553f1644749925a2c989d98eae97268ac",
+      "Hash": "fe782d932fbea16cb0c8002b1b9cfdc7f9a7c28ec07264f388e726781a9ec721",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4363,10 +4363,10 @@
       "TemplateId": "t-5bbb177ea05947588eb0",
       "TemplateName": "ACS-Redis-BulkyModifyBackupPolicy",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:36Z"
+      "UpdatedDate": "2025-10-27T01:33:48Z"
     },
     {
       "Category": "Other",
@@ -4437,7 +4437,7 @@
       "CreatedDate": "2023-10-23T08:44:51Z",
       "Description": "{\"en\": \"Enable release protection\", \"zh-cn\": \"Redis实例开启实例释放保护\", \"name-en\": \"ACS-Redis-BulkyEnableReleaseProtection\", \"name-zh-cn\": \"Redis实例开启实例释放保护\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "b3f363802cfe6e944f4f2a95ea5c46ca57717d6bb03c46c538efffa08dcc649b",
+      "Hash": "aed06aa92aa174b623d644447b02e585e4df4cf4bd632917a09de1c48e45b872",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4447,10 +4447,10 @@
       "TemplateId": "t-20272f1f2120410aa1d7",
       "TemplateName": "ACS-Redis-BulkyEnableReleaseProtection",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:36Z"
+      "UpdatedDate": "2025-10-27T01:33:48Z"
     },
     {
       "Category": "Other",
@@ -4584,7 +4584,7 @@
       "CreatedDate": "2023-12-12T06:55:09Z",
       "Description": "{\"en\": \"FlushExpireKeys of redis instances\", \"zh-cn\": \"清理Redis过期key\", \"name-en\": \"ACS-Redis-FlushExpireKeys\", \"name-zh-cn\": \"清理Redis过期key\", \"categories\": [\"security\", \"tair\"]}",
       "HasTrigger": false,
-      "Hash": "e0a96d73e65fbf0fe9ce4c9f68bb0cf1c6227a40445f53cb1b416ca4263522e5",
+      "Hash": "10c512a38beafb9900e0768e056731a9f5927c2ec9cda05ceb014739dedb4d56",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4594,10 +4594,10 @@
       "TemplateId": "t-5724fc31f3e943788b1c",
       "TemplateName": "ACS-Redis-FlushExpireKeys",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-05T08:15:37Z"
+      "UpdatedDate": "2025-10-27T01:33:48Z"
     },
     {
       "Category": "Other",
@@ -4913,27 +4913,6 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-09-08T02:22:16Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
-      "CreatedDate": "2024-04-10T08:55:20Z",
-      "Description": "{\"en\": \"FC runs script(Only support python), To use this template, you must first <a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target=\\\"_blank\\\">activate the function computing service< /a>\", \"zh-cn\": \"FC运行脚本（仅支持python），使用此功能必须<a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target=\\\"_blank\\\">开通函数计算服务</a>\", \"name-en\": \"ACS-FC-RunScript\", \"name-zh-cn\": \"FC运行脚本\"}",
-      "HasTrigger": false,
-      "Hash": "2df96e04e2cfb4d9c752e9c5e8730e96d0702e1b92d5fe649946447d1ef3c488",
-      "IsFavorite": false,
-      "Popularity": 5,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-ab74fcc6a8ac46748fc4",
-      "TemplateName": "ACS-FC-RunScript",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v2",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-04-29T10:51:43Z"
     },
     {
       "Category": "Other",
@@ -5484,6 +5463,27 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
+      "CreatedDate": "2025-08-20T07:51:38Z",
+      "Description": "{\"en\": \"Bulky modify the parameters of RDS instances\", \"zh-cn\": \"批量修改RDS实例的参数值\", \"name-en\": \"ACS-RDS-BulkyModifyParameter\", \"name-zh-cn\": \"批量修改RDS实例的参数值\", \"categories\": [\"security\", \"rds\"]}",
+      "HasTrigger": false,
+      "Hash": "6725fdfa95952832112b81cf9b0feb084f0380b7683cfc541eb92c9909e76b3b",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-d8a3ad5d992c4b208846",
+      "TemplateName": "ACS-RDS-BulkyModifyParameter",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v3",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-10-29T08:19:55Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
       "CreatedDate": "2025-08-21T09:34:16Z",
       "Description": "{\"en\": \"Invoke the function and return the result\", \"zh-cn\": \"执行函数计算的函数，并返回函数执行的结果\", \"name-en\": \"ACS-FC3-InvokeFunction\", \"name-zh-cn\": \"执行函数计算\"}",
       "HasTrigger": false,
@@ -5522,6 +5522,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-09-23T07:48:40Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-10-29T09:04:30Z",
+      "Description": "{\"en\": \"FC runs script(support python, nodejs, shell), To use this template, you must first <a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target=\\\"_blank\\\">activate the function computing service< /a>\", \"zh-cn\": \"执行脚本（支持python, nodejs, shell），使用此功能必须<a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target=\\\"_blank\\\">开通函数计算服务</a>\", \"name-en\": \"ACS-FC3-RunScript\", \"name-zh-cn\": \"执行脚本\"}",
+      "HasTrigger": false,
+      "Hash": "f3eca8ca8e6e66a677d2542f07e60ad0086300509c6c0b27b4c12bec52f074f7",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-7fa9339b50ad45019b10",
+      "TemplateName": "ACS-FC3-RunScript",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-10-29T09:04:30Z"
     },
     {
       "Category": "Other",
@@ -6215,6 +6236,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-07-15T08:16:49Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2024-04-10T08:55:20Z",
+      "Description": "{\"en\": \"FC runs script(Only support python), To use this template, you must first <a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target=\\\"_blank\\\">activate the function computing service< /a>\", \"zh-cn\": \"FC运行脚本（仅支持python），使用此功能必须<a href='https://help.aliyun.com/zh/functioncompute/getting-started/quickly-create-a-function#p-t79-y7o-68z' target=\\\"_blank\\\">开通函数计算服务</a>\", \"name-en\": \"ACS-FC-RunScript\", \"name-zh-cn\": \"FC 运行脚本\"}",
+      "HasTrigger": false,
+      "Hash": "7b6492596297d62f9bed0962330187c12755bba047f872e5d763b490f52f8bd1",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-ab74fcc6a8ac46748fc4",
+      "TemplateName": "ACS-FC-RunScript",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v3",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-10-29T09:04:29Z"
     },
     {
       "Category": "Other",
@@ -7332,27 +7374,6 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2025-08-20T07:51:38Z",
-      "Description": "{\"en\": \"Bulky modify the parameters of RDS instances\", \"zh-cn\": \"批量修改RDS实例的参数值\", \"name-en\": \"ACS-RDS-BulkyModifyParameter\", \"name-zh-cn\": \"批量修改RDS实例的参数值\", \"categories\": [\"security\", \"rds\"]}",
-      "HasTrigger": false,
-      "Hash": "7db47a4a6f3d7b3bbd12828dea127891b45042e0141f53e0216164caf7a1bc9e",
-      "IsFavorite": false,
-      "Popularity": 0,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-d8a3ad5d992c4b208846",
-      "TemplateName": "ACS-RDS-BulkyModifyParameter",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v2",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-21T09:27:04Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
@@ -7391,6 +7412,69 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-09-24T02:15:43Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-10-31T10:35:33Z",
+      "Description": "{\"en\": \"Remove 0.0.0.0/0 from Kibana public IP whitelist groups of Elasticsearch instances.\", \"zh-cn\": \"从Elasticsearch实例的Kibana公网白名单分组中移除0.0.0.0/0。\", \"name-en\": \"ACS-ElasticSearch-ModifyWhiteIps\", \"name-zh-cn\": \"移除ES Kibana白名单中的0.0.0.0/0\", \"categories\": [\"security\", \"elasticsearch\"]}",
+      "HasTrigger": false,
+      "Hash": "ab02b354b35307de60745268eeff844d63c35083245aca851f41ba5e0a470e8c",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-665888e0f7474171b54e",
+      "TemplateName": "ACS-ElasticSearch-ModifyWhiteIps",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-10-31T10:35:33Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-10-31T10:35:33Z",
+      "Description": "{\"en\": \"Set backup policies for AnalyticDB PostgreSQL instances in bulk\", \"zh-cn\": \"批量设置AnalyticDB PostgreSQL版实例的备份策略\", \"name-en\": \"ACS-GPDB-BulkyModifyBackupPolicy\", \"name-zh-cn\": \"批量设置AnalyticDB PostgreSQL版实例的备份策略\", \"categories\": [\"security\", \"gpdb\"]}",
+      "HasTrigger": false,
+      "Hash": "74a737f6868efc190226bb3cb466567cc9670d852d7f9fe6c5181b103a9bba82",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-32c4709c0dd94eb59b43",
+      "TemplateName": "ACS-GPDB-BulkyModifyBackupPolicy",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-10-31T10:35:33Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-10-31T10:35:33Z",
+      "Description": "{\"en\": \"Bulk modify the minor version auto-upgrade switch for Redis instances\", \"zh-cn\": \"批量修改Redis实例的小版本自动升级开关\", \"name-en\": \"ACS-Redis-BulkyModifyDBInstanceAutoUpgrade\", \"name-zh-cn\": \"批量修改Redis实例的小版本自动升级开关\", \"categories\": [\"security\", \"tair\"]}",
+      "HasTrigger": false,
+      "Hash": "8263b14aa786739bd731c56126bebb63bd43e7dbcf6c66946a799b7ccb2114d2",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-24df772c0ed941f0b005",
+      "TemplateName": "ACS-Redis-BulkyModifyDBInstanceAutoUpgrade",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-10-31T10:35:33Z"
     }
   ]
 }

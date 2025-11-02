@@ -15,11 +15,31 @@ Parameters:
     Type: String
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Label:
       en: The Ids of redis instances
       zh-cn: redis实例ID列表
     Type: List
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   preferredBackupTime:
     Label:
       en: Preferred Backup Time
@@ -70,7 +90,27 @@ Parameters:
       zh-cn: OOS扮演的RAM角色
     Type: String
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the Redis instances
+      zh-cn: 获取Redis实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: ModifyBackupPolicy
     Action: ACS::ExecuteAPI
     Description:
@@ -90,13 +130,20 @@ Tasks:
         EnableBackupLog: '{{ enableBackupLog }}'
     Loop:
       RateControl: '{{ rateControl }}'
-      Items: '{{ instanceIds }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
           - regionId
           - instanceIds
+          - targets
         Label:
           default:
             zh-cn: 选择实例

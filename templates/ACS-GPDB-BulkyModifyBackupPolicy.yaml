@@ -1,0 +1,107 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Set backup policies for AnalyticDB PostgreSQL instances in bulk
+  zh-cn: 批量设置AnalyticDB PostgreSQL版实例的备份策略
+  name-en: ACS-GPDB-BulkyModifyBackupPolicy
+  name-zh-cn: 批量设置AnalyticDB PostgreSQL版实例的备份策略
+  categories:
+    - security
+    - gpdb
+Parameters:
+  regionId:
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: 实例Id列表
+    Type: List
+  preferredBackupTime:
+    Label:
+      en: PreferredBackupTime
+      zh-cn: 数据备份时间
+    Description:
+      en: Data backup time. The default value is 00:00Z-01:00Z, format HH:mmZ-HH:mmZ (UTC time).
+      zh-cn: 数据备份时间。默认值为 00:00Z-01:00Z，格式：HH:mmZ-HH:mmZ（UTC 时间）。
+    Type: String
+    Default: '00:00Z-01:00Z'
+  preferredBackupPeriod:
+    Label:
+      en: PreferredBackupPeriod
+      zh-cn: 数据备份周期
+    Description:
+      en: Data backup period. Multiple values are separated by commas (,). Value descriptions Monday to Sunday.
+      zh-cn: 数据备份周期，多个取值用英文逗号（,）隔开。取值说明：Monday：周一。Tuesday：周二。Wednesday：周三。Thursday：周四。Friday：周五。Saturday：周六。Sunday：周日。
+    Type: String
+    Default: 'Saturday'
+  backupRetentionPeriod:
+    Label:
+      en: BackupRetentionPeriod
+      zh-cn: 数据备份保留天数
+    Description:
+      en: Data backup retention period. Default is 7 days, with a maximum value of 7 days. The value range is 1-7.
+      zh-cn: 数据备份保留天数。默认 7 天，最大值定为 7 天，取值范围 1~7。
+    Type: Number
+    Default: 7
+  enableRecoveryPoint:
+    Label:
+      en: EnableRecoveryPoint
+      zh-cn: 是否开启自动打恢复点
+    Description:
+      en: Whether to enable automatic recovery point creation. Value description true (default) to enable, false to disable.
+      zh-cn: 是否开启自动打恢复点。取值说明,true（默认）开启。false关闭。
+    Type: Boolean
+    Default: true
+  recoveryPointPeriod:
+    Label:
+      en: RecoveryPointPeriod
+      zh-cn: 恢复点频次
+    Description:
+      en: Recovery point frequency. Value descriptions, 1 (default) hourly, 2 every two hours, 4 every four hours, 8 every eight hours.
+      zh-cn: 恢复点频次。取值说明,1（默认）：每小时。2,每两小时。4,每四小时。8,每八小时。
+    Type: String
+    Default: '1'
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: modifyBackupPolicy
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Set backup policies for AnalyticDB PostgreSQL instance
+      zh-cn: 设置AnalyticDB PostgreSQL版实例的备份策略
+    Properties:
+      Service: gpdb
+      API: ModifyBackupPolicy
+      Parameters:
+        DBInstanceId: '{{ ACS::TaskLoopItem }}'
+        RegionId: '{{ regionId }}'
+        PreferredBackupTime: '{{ preferredBackupTime }}'
+        PreferredBackupPeriod: '{{ preferredBackupPeriod }}'
+        BackupRetentionPeriod: '{{ backupRetentionPeriod }}'
+        EnableRecoveryPoint: '{{ enableRecoveryPoint }}'
+        RecoveryPointPeriod: '{{ recoveryPointPeriod }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+
