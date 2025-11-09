@@ -1,0 +1,89 @@
+FormatVersion: OOS-2019-06-01
+Description: 批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)
+Parameters:
+  lifecycleActionResult:
+    Label: 生命周期挂钩等待状态结束后的下一步动作
+    Description: 命令执行失败后，生命周期挂钩等待状态结束后的下一步动作
+    Type: String
+    AllowedValues:
+      - ABANDON
+      - ROLLBACK
+      - CONTINUE
+    Default: ABANDON
+  regionId:
+    Label: 地域ID
+    Description: 地域ID，请使用弹性伸缩系统默认值 ${regionId}
+    Type: String
+    Default: ${regionId}
+  bandwidthPackageId:
+    Label: 共享带宽包ID
+    Type: String
+  instanceIds:
+    Label: ECS实例ID列表
+    Description: ECS实例ID列表,请使用弹性伸缩系统默认值 ["${instanceId}"]
+    Type: List
+    Default:
+      - ${instanceIds}
+  lifecycleHookId:
+    Label: 生命周期挂钩ID
+    Description: 生命周期挂钩ID,请使用弹性伸缩系统默认值 ${lifecycleHookId}
+    Type: String
+    Default: ${lifecycleHookId}
+  lifecycleActionToken:
+    Label: 实例关联的特定伸缩活动的令牌
+    Description: 实例关联的特定伸缩活动的令牌,请使用弹性伸缩系统默认值 ${lifecycleActionToken}
+    Type: String
+    Default: ${lifecycleActionToken}
+  rateControl:
+    Label: 速率控制
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 5
+  OOSAssumeRole:
+    Label: OOS扮演的RAM角色
+    Type: String
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: convertsPublicIPToEIPAndAddItToCommonBandwidthPackage
+    Action: ACS::ECS::ConvertPublicToEIPAndAddToCommonBandwidthPackage
+    Description: 批量把公网IP转换为EIP并加入到共享带宽包中
+    OnError: CompleteLifecycleActionForAbandon
+    OnSuccess: CompleteLifecycleActionForContinue
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      bandwidthPackageId: '{{ bandwidthPackageId }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}
+  - Name: CompleteLifecycleActionForContinue
+    Action: ACS::ExecuteAPI
+    Description: 修改伸缩活动的等待状态为继续完成
+    OnSuccess: ACS::END
+    Properties:
+      Service: ESS
+      API: CompleteLifecycleAction
+      Parameters:
+        RegionId: '{{ regionId }}'
+        LifecycleHookId: '{{ lifecycleHookId }}'
+        LifecycleActionToken: '{{ lifecycleActionToken }}'
+        LifecycleActionResult: CONTINUE
+    Outputs: {}
+  - Name: CompleteLifecycleActionForAbandon
+    Action: ACS::ExecuteAPI
+    Description: 修改伸缩活动的等待状态为弃用
+    Properties:
+      Service: ESS
+      API: CompleteLifecycleAction
+      Parameters:
+        RegionId: '{{ regionId }}'
+        LifecycleHookId: '{{ lifecycleHookId }}'
+        LifecycleActionToken: '{{ lifecycleActionToken }}'
+        LifecycleActionResult: '{{ lifecycleActionResult }}'
+    Outputs: {}
+

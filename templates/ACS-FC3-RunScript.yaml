@@ -135,14 +135,14 @@ Parameters:
       en: VSwitch ID
       zh-cn: VSwitch ID
     Default: ''
-    AssociationProperty: ALIYUN::ECS::VSwitch
+    AssociationProperty: ALIYUN::VPC::VSwitch::VSwitchId
     AssociationPropertyMetadata:
       RegionId: ${regionId}
       VpcId: ${vpcId}
       Visible:
         Condition:
           Fn::Equals:
-            - ${NetworkConfig}
+            - ${networkConfig}
             - true
   FCAssumeRole:
     Label:
@@ -172,13 +172,6 @@ Tasks:
     Properties:
       runtime: '{{ runtime }}'
       script: '{{ script }}'
-      inputPayload:
-        Fn::If:
-          - Fn::Equals:
-              - '{{ runtime }}'
-              - shell
-          - '{"command": "{{ script }}"}'
-          - ''
       regionId: '{{ regionId }}'
       invokeConfig: '{{ invokeConfig }}'
       networkConfig: '{{ networkConfig }}'

@@ -8,6 +8,21 @@ Description:
     - security
     - rds
 Tasks:
+  - Name: getInstance
+    When: instanceId
+    Description:
+      en: Get the RDS instances
+      zh-cn: 获取RDS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{regionId}}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: modifyParameter
     Action: ACS::ExecuteApi
     Description: '{"en":"modify the parameters of RDS instances","zh-cn": "修改RDS实例的参数值"}'
@@ -22,8 +37,14 @@ Tasks:
         SwitchTimeMode: '{{ switchTimeMode }}'
         SwitchTime: '{{ switchTime }}'
     Loop:
-      Items: '{{ instanceIds }}'
       RateControl: '{{ rateControl }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{instanceIds}}'
+              - []
+          - '{{ getInstance.instanceIds }}'
+          - '{{ instanceIds}}'
     Outputs: {}
 Parameters:
   regionId:
@@ -33,11 +54,31 @@ Parameters:
       zh-cn: 地域ID
     AssociationProperty: RegionId
     Default: '{{ ACS::RegionId }}'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
   instanceIds:
     Label:
-      en: InstanceIds
-      zh-cn: RDS实例Id列表
+      en: The ids of rds instance
+      zh-cn: 实例ID列表
     Type: List
+    Default: []
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${targets}
+            - {}
   parameters:
     Label:
       en: Parameters
@@ -91,3 +132,8 @@ Parameters:
     Type: String
     Default: ''
 RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  instanceId:
+    Fn::Equals:
+      - '{{ instanceIds }}'
+      - []
