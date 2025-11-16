@@ -5340,7 +5340,7 @@
       "CreatedDate": "2025-04-16T02:27:35Z",
       "Description": "{\"en\": \"Creates one or more ECS instances\", \"zh-cn\": \"创建ECS实例\", \"name-en\": \"ACS-ECS-RunInstances\", \"name-zh-cn\": \"创建ECS实例\", \"categories\": [\"cost_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2e66aedc857d00746fc1af7b53b7cc92e3fc8afd4b436a71036f729a9e1bbe31",
+      "Hash": "9d50af258cb4bc7f0ab8d9d13e40109337b8d1c71d37da23992d9506afd30388",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-7d31620d8af14e4faf0f",
       "TemplateName": "ACS-ECS-RunInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-10-11T08:31:36Z"
+      "UpdatedDate": "2025-11-14T05:47:39Z"
     },
     {
       "Category": "Other",
@@ -7356,7 +7356,7 @@
       "CreatedDate": "2025-08-19T09:14:08Z",
       "Description": "{\"name-en\": \"ACS-NLB-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询NLB实例属性\", \"en\": \"Bulky query NLB instance attributes\", \"zh-cn\": \"批量查询NLB实例属性\"}",
       "HasTrigger": false,
-      "Hash": "941e451b48a29c4fb7e381413d502174cdc5564ea69965bd7db3f781127059db",
+      "Hash": "ddc83c0da32e5df7b64ea8d2f82f4aa5dbced78102a33a78e5e4a38638fbf04f",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7366,10 +7366,10 @@
       "TemplateId": "t-b63fe5cfa6ac41b59446",
       "TemplateName": "ACS-NLB-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-19T09:14:08Z"
+      "UpdatedDate": "2025-11-12T06:16:04Z"
     },
     {
       "Category": "Other",
@@ -7440,7 +7440,7 @@
       "CreatedDate": "2025-09-24T02:15:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-DownloadFileFromECSByPublicOss\", \"name-zh-cn\": \"通过公共OSS从ECS实例下载文件\", \"en\": \"Upload ECS files to common used OSS and generate temporary download links\", \"zh-cn\": \"将ECS文件上传到公共OSS，并生成临时下载链接\"}",
       "HasTrigger": false,
-      "Hash": "e1da4ccbf3a084526d2af9fd96898c81b3d0f1b71a777887f03037a124242c79",
+      "Hash": "67663fec6dda05e10e1c7b716b0c1edbcfac2bbff47163e20bbdb5baba09c903",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7450,10 +7450,10 @@
       "TemplateId": "t-c33000fb75de44e8a42e",
       "TemplateName": "ACS-ECS-DownloadFileFromECSByPublicOss",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-24T02:15:43Z"
+      "UpdatedDate": "2025-11-10T11:29:43Z"
     },
     {
       "Category": "Other",
@@ -7517,6 +7517,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-10-31T10:35:33Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-11-13T06:42:37Z",
+      "Description": "{\"name-en\": \"ACS-ALB-BulkyQueryServerGroupAttributes\", \"name-zh-cn\": \"批量查询ALB ServerGroup实例属性\", \"en\": \"Bulky query ALB ServerGroup attributes\", \"zh-cn\": \"批量查询ALB ServerGroup实例属性\"}",
+      "HasTrigger": false,
+      "Hash": "f6be7b94ecc414b844338e824b2ff701b729ace817d202b6b8ee34192f3cefad",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-3d33b80debeb4d26acdf",
+      "TemplateName": "ACS-ALB-BulkyQueryServerGroupAttributes",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-11-13T06:42:37Z"
     }
   ]
 }

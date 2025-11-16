@@ -63,6 +63,68 @@ Parameters:
       zh-cn: 实例名称
     Type: String
     Default: ''
+  systemDiskCategory:
+    Label:
+      en: SystemDiskCategory
+      zh-cn: 系统盘的云盘种类
+    Type: String
+    AssociationProperty: ALIYUN::ECS::Disk::SystemDiskCategory
+    AssociationPropertyMetadata:
+      RegionId: regionId
+      InstanceType: instanceType
+      InstanceChargeType: instanceChargeType
+    AllowedValues:
+      - cloud_efficiency
+      - cloud_ssd
+      - cloud_essd
+      - cloud_auto
+      - cloud
+      - cloud_essd_entry
+    Default: cloud_essd
+  systemDiskSize:
+    Label:
+      en: SystemDiskSize
+      zh-cn: 系统盘大小
+    Type: String
+    Default: ''
+  systemDiskName:
+    Label:
+      en: systemDiskName
+      zh-cn: 系统盘名称
+    Type: String
+    Default: ''
+  systemDiskDescription:
+    Label:
+      en: systemDiskDescription
+      zh-cn: 系统盘描述
+    Type: String
+    Default: ''
+  systemDiskPerformanceLevel:
+    Label:
+      en: systemDiskPerformanceLevel
+      zh-cn: 系统盘云盘的性能等级
+    Type: String
+    AllowedValues:
+      - PL0
+      - PL1
+      - PL2
+      - PL3
+    Default: PL1
+  privateIpAddress:
+    Type: String
+    Label:
+      zh-cn: 实例私网IP地址
+      en: Private IP Address
+    Description:
+      zh-cn: '实例私网 IP 地址。专有网络 VPC 类型 ECS 实例设置私网 IP 地址时，必须从虚拟交换机（VSwitchId）的空闲网段中选择。'
+      en: 'Private IP address of an instance. When setting a private IP address for an ECS instance of the Virtual Private Cloud (VPC) type, it must be selected from the available subnet of the virtual switch (VSwitchId).'
+    Default: ''
+  systemDiskAutoSnapshotPolicyId:
+    Label:
+      en: SystemDiskAutoSnapshotPolicyId
+      zh-cn: 系统盘采用的自动快照策略ID
+    Type: String
+    Default: ''
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -85,6 +147,13 @@ Tasks:
     internetMaxBandwidthOut: '{{ internetMaxBandwidthOut }}'
     amount: '{{ amount }}'
     instanceName: '{{ instanceName }}'
+    systemDiskSize: '{{ systemDiskSize }}'
+    systemDiskCategory: '{{ systemDiskCategory }}'
+    systemDiskName: '{{ systemDiskName }}'
+    systemDiskDescription: '{{ systemDiskDescription }}'
+    systemDiskPerformanceLevel: '{{ systemDiskPerformanceLevel }}'
+    systemDiskAutoSnapshotPolicyId: '{{ systemDiskAutoSnapshotPolicyId }}'
+    privateIpAddress: '{{ privateIpAddress }}'
   Outputs:
     instanceId:
       ValueSelector: instanceIds
@@ -108,6 +177,13 @@ Metadata:
           - securityGroupId
           - vSwitchId
           - amount
+          - SystemDiskDiskName
+          - systemDiskCategory
+          - systemDiskSize
+          - SystemDiskDescription
+          - SystemDiskPerformanceLevel
+          - SystemDiskAutoSnapshotPolicyId
+          - PrivateIpAddress
         Label:
           default:
             zh-cn: 创建实例选型

@@ -1,9 +1,9 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  name-en: ACS-NLB-BulkyQueryInstanceAttributes
-  name-zh-cn: 批量查询NLB实例属性
-  en: Bulky query NLB instance attributes
-  zh-cn: 批量查询NLB实例属性
+  name-en: ACS-ALB-BulkyQueryServerGroupAttributes
+  name-zh-cn: 批量查询ALB ServerGroup实例属性
+  en: Bulky query ALB ServerGroup attributes
+  zh-cn: 批量查询ALB ServerGroup实例属性
 Parameters:
   regionId:
     Type: String
@@ -16,7 +16,7 @@ Parameters:
     Type: List
     Label:
       en: ResourceIds
-      zh-cn: NLB实例ID列表
+      zh-cn: ALB ServerGroup实例ID列表
     Default: []
   resourceGroupId:
     Type: String
@@ -27,7 +27,7 @@ Parameters:
   targetInfos:
     Label:
       en: TargetInfos
-      zh-cn: 要导出的NLB信息
+      zh-cn: 要导出的ALB ServerGroup信息
     Type: List
   rateControl:
     Label:
@@ -49,36 +49,39 @@ RamRole: '{{ OOSAssumeRole }}'
 Tasks:
   - Name: queryInstances
     Description:
-      en: Query NLB instances
-      zh-cn: 获取NLB实例列表
+      en: Query ALB ServerGroup instances
+      zh-cn: 获取ALB ServerGroup实例列表
     Action: ACS::ExecuteApi
     Properties:
-      Service: NLB
-      API: ListLoadBalancers
+      Service: ALB
+      API: ListServerGroups
       Parameters:
         RegionId: '{{ regionId }}'
         ResourceGroupId: '{{ resourceGroupId }}'
     Outputs:
-      loadBalancerIds:
+      serverGroupIds:
         Type: List
-        ValueSelector: .LoadBalancers[].LoadBalancerId
+        ValueSelector: .ServerGroups[].ServerGroupId
   - Name: queryInstanceAttributes
     Description:
-      en: Query NLB instance attributes
-      zh-cn: 获取NLB属性
-    Action: ACS::NLB::QueryInstanceAttributes
+      en: Query ACSLB instance attributes
+      zh-cn: 获取ALB ServerGroup属性
+    Action: ACS::ALB::QueryServerGroupAttributes
     Properties:
       regionId: '{{ regionId }}'
-      loadBalancerId: '{{ ACS::TaskLoopItem }}'
+      serverGroupId: '{{ ACS::TaskLoopItem }}'
+      resourceGroupId: '{{ resourceGroupId }}'
+    Outputs: {}
     Loop:
       Items:
         Fn::If:
           - Fn::Equals:
               - '{{ resourceIds }}'
               - []
-          - '{{ queryInstances.loadBalancerIds }}'
+          - '{{ queryInstances.serverGroupIds }}'
           - '{{ resourceIds }}'
       RateControl: '{{ rateControl }}'
+      Outputs: {}
 Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
@@ -94,8 +97,8 @@ Metadata:
           - resourceGroupId
         Label:
           default:
-            zh-cn: 选择NLB
-            en: Select NLB
+            zh-cn: 选择ALB ServerGroup
+            en: Select ALB ServerGroup
       - Parameters:
           - rateControl
           - OOSAssumeRole

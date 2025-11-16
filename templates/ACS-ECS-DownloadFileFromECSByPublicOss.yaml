@@ -138,7 +138,14 @@ Tasks:
               Write-Host "Invoke-WebRequest Failed."
               exit 1
             }
+    Outputs:
+      commandOutput:
+        Type: String
+        ValueSelector: invocationOutput
 Outputs:
   temporaryUrl:
     Type: String
     Value: '{{ GenerateUrl.temporaryDownloadUrl }}'
+  commandOutput:
+    Type: String
+    Value: '{{ UploadFile.commandOutput }}'
