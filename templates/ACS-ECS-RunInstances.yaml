@@ -125,6 +125,65 @@ Parameters:
       zh-cn: 系统盘采用的自动快照策略ID
     Type: String
     Default: ''
+  dataDiskParameters:
+    Type: List
+    Default: []
+    Label:
+      en: DataDisk Configure
+      zh-cn: 数据盘配置
+    AssociationProperty: List[Parameter]
+    AssociationPropertyMetadata:
+      Parameter:
+        Type: Json
+        AssociationPropertyMetadata:
+          Parameters:
+            Size:
+              Label:
+                en: Size
+                zh-cn: 数据盘大小
+              Type: String
+              Default: ''
+            DiskName:
+              Label:
+                en: DiskName
+                zh-cn: 数据盘名称
+              Type: String
+              Default: ''
+            Description:
+              Label:
+                en: Description
+                zh-cn: 数据盘描述
+              Type: String
+              Default: ''
+            Category:
+              Label:
+                en: Category
+                zh-cn: 数据盘云盘种类
+              Type: String
+              AllowedValues:
+                - cloud_efficiency
+                - cloud_ssd
+                - cloud_essd
+                - cloud_auto
+                - cloud
+                - cloud_essd_entry
+                - cloud_regional_disk_auto
+                - elastic_ephemeral_disk_standard
+                - elastic_ephemeral_disk_premium
+              Default: cloud_essd
+            PerformanceLevel:
+              Label: 云盘的性能等级
+              Type: String
+              AllowedValues:
+                - PL0
+                - PL1
+                - PL2
+                - PL3
+              Default: PL1
+            AutoSnapshotPolicyId:
+              Label: 自动快照策略ID
+              Type: String
+              Default: ''
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -154,6 +213,7 @@ Tasks:
     systemDiskPerformanceLevel: '{{ systemDiskPerformanceLevel }}'
     systemDiskAutoSnapshotPolicyId: '{{ systemDiskAutoSnapshotPolicyId }}'
     privateIpAddress: '{{ privateIpAddress }}'
+    dataDiskParameters: '{{ dataDiskParameters }}'
   Outputs:
     instanceId:
       ValueSelector: instanceIds
@@ -166,28 +226,46 @@ Metadata:
   ALIYUN::OOS::Interface:
     ParameterGroups:
       - Parameters:
-          - accessToken
+          - regionId
         Label:
           default:
-            zh-cn: 钉钉访问令牌
-            en: Dingtalk Access Token
+            en: Select Region
+            zh-cn: 选择地域
       - Parameters:
+          - vSwitchId
+          - securityGroupId
           - imageId
           - instanceType
-          - securityGroupId
-          - vSwitchId
-          - amount
-          - SystemDiskDiskName
-          - systemDiskCategory
-          - systemDiskSize
-          - SystemDiskDescription
-          - SystemDiskPerformanceLevel
-          - SystemDiskAutoSnapshotPolicyId
-          - PrivateIpAddress
+          - instanceName
         Label:
           default:
             zh-cn: 创建实例选型
             en: Run Command Options
+      - Parameters:
+          - systemDiskName
+          - systemDiskCategory
+          - systemDiskSize
+          - systemDiskDescription
+          - systemDiskPerformanceLevel
+          - systemDiskAutoSnapshotPolicyId
+          - dataDiskParameters
+        Label:
+          default:
+            zh-cn: 块存储配置
+            en: SystemDiskDisk Configure
+      - Parameters:
+          - internetMaxBandwidthOut
+          - privateIpAddress
+        Label:
+          default:
+            zh-cn: 网络配置
+            en: internet Configure
+      - Parameters:
+          - amount
+        Label:
+          default:
+            en: Instance Count
+            zh-cn: 实例数量
       - Parameters:
           - OOSAssumeRole
         Label:

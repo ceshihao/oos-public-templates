@@ -1,0 +1,68 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Batch delete resource stacks.
+  zh-cn: 批量删除资源栈。
+  name-en: ACS-ROS-BulkyDeleteStack
+  name-zh-cn: 批量删除资源栈
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  tags:
+    Label:
+      en: Tags
+      zh-cn: 资源栈标签
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      ShowSystem: false
+    Default: []
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 100
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Action: ACS::ExecuteApi
+    Name: listStack
+    Description:
+      en: List the stack
+      zh-cn: 资源栈列表
+    Properties:
+      Service: ros
+      API: ListStacks
+      Parameters:
+        RegionId: '{{ regionId  }}'
+        Tag: '{{ tags }}'
+    Outputs:
+      stacksIds:
+        Type: List
+        ValueSelector: .Stacks[].StackId
+  - Name: deleteStack
+    Action: ACS::ROS::DeleteStack
+    Description:
+      en: Delete the stack
+      zh-cn: 删除资源栈
+    Properties:
+      stackId: '{{ ACS::TaskLoopItem }}'
+      regionId: '{{ regionId  }}'
+    Loop:
+      Items: '{{ listStack.stacksIds }}'
+      RateControl: '{{ rateControl }}'
+

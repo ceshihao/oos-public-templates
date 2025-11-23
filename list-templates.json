@@ -5340,7 +5340,7 @@
       "CreatedDate": "2025-04-16T02:27:35Z",
       "Description": "{\"en\": \"Creates one or more ECS instances\", \"zh-cn\": \"创建ECS实例\", \"name-en\": \"ACS-ECS-RunInstances\", \"name-zh-cn\": \"创建ECS实例\", \"categories\": [\"cost_manage\"]}",
       "HasTrigger": false,
-      "Hash": "9d50af258cb4bc7f0ab8d9d13e40109337b8d1c71d37da23992d9506afd30388",
+      "Hash": "3e536143cf7637ba6ca66dca8e2c1cdc070935303f43ee5606712453094d53e0",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5350,10 +5350,10 @@
       "TemplateId": "t-7d31620d8af14e4faf0f",
       "TemplateName": "ACS-ECS-RunInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-11-14T05:47:39Z"
+      "UpdatedDate": "2025-11-21T06:23:02Z"
     },
     {
       "Category": "Other",
@@ -5585,6 +5585,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-11-03T08:39:38Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-11-18T11:04:27Z",
+      "Description": "{\"en\": \"Batch delete resource stacks.\", \"zh-cn\": \"批量删除资源栈。\", \"name-en\": \"ACS-ROS-BulkyDeleteStack\", \"name-zh-cn\": \"批量删除资源栈\"}",
+      "HasTrigger": false,
+      "Hash": "030fc384d9f4c6cd3e1c48975a901d6dbed745c34935a6a1ec454872c2aed7fc",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-c12382cac87846bc99d9",
+      "TemplateName": "ACS-ROS-BulkyDeleteStack",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-11-18T11:04:27Z"
     },
     {
       "Category": "Other",
@@ -7125,7 +7146,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "5bad688fa7d830d52c3bf178f9d364fed23ce1ed50cc95d9cfc21a35c578a9d5",
+      "Hash": "9c025daa5b70be382bb9f5cf4323d3d0d08f9fd36aa1e584a43ce4a983ee21f5",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7135,10 +7156,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v16",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-10-24T02:36:25Z"
+      "UpdatedDate": "2025-11-20T02:35:41Z"
     },
     {
       "Category": "Other",

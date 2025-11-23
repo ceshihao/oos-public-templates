@@ -212,3 +212,7 @@ Tasks:
         RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
         ScalingGroupId: '{{ getApplicationGroupDetail.tagValue }}'
         Process: '{{ suspendEssProcess.processesToSuspend }}'
+Outputs:
+  deployCommandOutput:
+    Type: String
+    Value: '{{ bulkyDeployRevisions.deployCommandOutput }}'
