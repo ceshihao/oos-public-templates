@@ -67,19 +67,38 @@ Parameters:
             - '${deployMethod}'
             - partial
     Default: {}
-  rateControl:
+  batchNumber:
     Label:
-      en: RateControl
-      zh-cn: 部署的并发比率
-    Type: Json
-    AssociationProperty: RateControl
-    Default:
-      Mode: Batch
-      MaxErrors: 0
-      Batch:
-        - 50%
-        - 50%
-      BatchPauseOption: EveryBatchPause
+      en: BatchNumber
+      zh-cn: 执行批次
+    Description:
+      en: For example, 10 ECS instances are to be released, and the BatchNumber is set to 2, then 5 are released in each batch.
+      zh-cn: 例如一共发布10台ECS实例，执行批次设为2，则每批发布5台。
+    Type: Number
+    MinValue: 1
+    MaxValue: 100
+    Default: 2
+  batchPauseOption:
+    Label:
+      en: BatchPauseOption
+      zh-cn: 分批模式
+    Type: String
+    AllowedValues:
+      - Automatic
+      - FirstBatchPause
+      - EveryBatchPause
+    Default: Automatic
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        Automatic:
+          zh-cn: 不暂停
+          en: No pause
+        FirstBatchPause:
+          zh-cn: 第一批暂停
+          en: First batch pause
+        EveryBatchPause:
+          zh-cn: 每批暂停
+          en: Every batch pause
 Tasks:
   - Name: getApplicationGroupDetail
     Action: ACS::ExecuteApi
@@ -106,7 +125,7 @@ Tasks:
   - Name: suspendEssProcess
     Description:
       en: Suspend ESS application group scaling process
-      zh-cn: 暂停待发布ESS应用分组的伸缩活动
+      zh-cn: 暂停伸缩组流程
     When:
       Fn::Equals:
         - '{{ getApplicationGroupDetail.tagKey }}'
@@ -155,26 +174,34 @@ Tasks:
         Type: List
         ValueSelector: .applicationParameters
   - Name: bulkyDeployRevisions
-    Action: 'ACS::Loop'
+    Action: 'ACS::CICD::DeployRevisionOnEcs'
     OnError: resumeProcesses
     Description:
       en: BulkyDeployRevisions
       zh-cn: 批量发布部署物
+    Loop:
+      Items: '{{ getInstanceFromTargets.instanceIds }}'
+      RateControl:
+        Mode: Batch
+        MaxErrors: 0
+        BatchPauseOption: '{{ batchPauseOption }}'
+        Batch:
+          'Fn::CalculateBatch':
+            - '{{ batchNumber }}'
+            - '{{ getInstanceFromTargets.instanceIds }}'
+      Outputs:
+        deployCommandOutputs:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: deployCommandOutput
     Properties:
-      LoopItems: '{{ getInstanceFromTargets.instanceIds }}'
-      LoopRateControl: '{{ rateControl }}'
-      LoopTasks:
-        - Name: deployRevisions
-          Action: 'ACS::CICD::DeployRevisionOnEcs'
-          Properties:
-            regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
-            instanceId: '{{ ACS::TaskLoopItem }}'
-            deployRevisionId: '{{ deployRevisionId }}'
-            applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
+      regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+      applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
     Outputs:
       deployCommandOutput:
         Type: String
-        ValueSelector: deployRevisions.commandOutput
+        ValueSelector: commandOutput
   - Name: updateDeployedRevision
     Action: ACS::ExecuteAPI
     OnError: resumeProcesses
@@ -215,4 +242,4 @@ Tasks:
 Outputs:
   deployCommandOutput:
     Type: String
-    Value: '{{ bulkyDeployRevisions.deployCommandOutput }}'
+    Value: '{{ bulkyDeployRevisions.deployCommandOutputs }}'

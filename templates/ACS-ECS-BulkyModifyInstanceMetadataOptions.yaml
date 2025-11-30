@@ -1,0 +1,107 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Bulky modify ECS instance metadata options
+  zh-cn: 批量修改指定地域下实例内的元数据访问设置
+  name-en: ACS-ECS-BulkyModifyInstanceMetadataOptions
+  name-zh-cn: 批量修改指定地域下实例内的元数据访问设置
+  categories:
+    - instance_manage
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  HttpEndpoint:
+    Label:
+      en: Specifies whether to enable the access channel for instance metadata
+      zh-cn: 是否启用实例元数据的访问通道
+    Description:
+      en: Valid values are enabled or disabled.
+      zh-cn: 取值范围，enabled为启用。disabled为禁用。
+    Type: String
+    Default: enabled
+  HttpTokens:
+    Label:
+      en: Specifies whether to forcefully use the security hardening mode (IMDSv2) to access instance metadata.
+      zh-cn: 访问实例元数据时是否强制使用加固模式
+    Description:
+      en: Valid values are optional, does not forcefully use the security hardening mode (IMDSv2); required, forcefully uses the security hardening mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+      zh-cn: 取值范围 optional为不强制使用。required为强制使用。设置该取值后，普通模式无法访问实例元数据。
+    Type: String
+    Default: required
+  InstanceMetadataTags:
+    Label:
+      en: Specifies whether to enable the access channel for instance metadata.
+      zh-cn: 是否启用实例元数据的访问标签能力
+    Description:
+      en: Valid values are enabled or disabled.
+      zh-cn: 取值范围，enabled为启用。disabled为禁用。
+    Type: String
+    Default: ''
+  targets:
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    Type: Json
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstance
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: ACS::SelectTargets
+    Properties:
+      RegionId: '{{ regionId }}'
+      ResourceType: ALIYUN::ECS::Instance
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: modifyInstanceMetadataOptions
+    Action: ACS::ExecuteApi
+    Description:
+      en: ModifyInstanceMetadataOptions
+      zh-cn: 修改指定地域下实例内的元数据访问设置
+    Properties:
+      Service: ECS
+      API: ModifyInstanceMetadataOptions
+      Parameters:
+        RegionId: '{{ regionId }}'
+        HttpEndpoint: '{{ HttpEndpoint }}'
+        HttpTokens: '{{ HttpTokens }}'
+        InstanceMetadataTags: '{{ InstanceMetadataTags }}'
+        InstanceId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ getInstance.instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}

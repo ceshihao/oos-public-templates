@@ -1,0 +1,66 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Set white list for maxcompute project in bulk
+  zh-cn: 批量修改MaxCompute项目IP白名单
+  name-en: ACS-MaxCompute-BulkyUpdateProjectIpWhiteList
+  name-zh-cn: 批量修改MaxCompute项目IP白名单
+  categories:
+    - security
+    - maxcompute
+Parameters:
+  regionId:
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  projectNames:
+    Label:
+      en: projectNames
+      zh-cn: 项目名称列表
+    Type: List
+  body:
+    Label:
+      en: white ip List
+      zh-cn: ip白名单列表
+    Description:
+      en: Supports comma-separated values.
+      zh-cn: 支持逗号分隔。
+    Type: String
+    Default: '{"ipWhiteList":{"ipList": "x.x.x.x,y.y.y.y","vpcIpList": "x.x.x.x"}}'
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: updateProjectIpWhiteList
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Update white ip list for maxcompute project
+      zh-cn: 修改MaxCompute项目IP白名单
+    Properties:
+      Service: maxcompute
+      API: UpdateProjectIpWhiteList
+      Parameters:
+        RegionId: '{{ regionId }}'
+        projectName: '{{ ACS::TaskLoopItem }}'
+      Body: '{{ body }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ projectNames }}'
+      RateControl: '{{ rateControl }}'
+      Outputs: {}

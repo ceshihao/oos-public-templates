@@ -80,7 +80,7 @@ Tasks:
       Duration: 3s
   - Name: getInstanceFromOrderId
     Action: ACS::WaitFor
-    Retries: 57
+    Retries: 30
     When:
       Fn::Not:
         'Fn::Equals':

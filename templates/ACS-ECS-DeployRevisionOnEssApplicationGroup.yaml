@@ -50,6 +50,7 @@ Parameters:
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
+      HideTypes: ["Tags", "ResourceGroup",  "UploadFile",  "All", "Inventory"]
       ResourceType: 'ALIYUN::ECS::Instance'
       Application: ${applicationName}
       ApplicationGroup: ${applicationGroupName}
@@ -62,28 +63,53 @@ Parameters:
   whetherStartApplicationWhenScaleOut:
     Label:
       en: whetherStartApplicationWhenScaleOut
-      zh-cn: 是否在扩容时启动应用
+      zh-cn: 扩容时自动发布
+    Description:
+      en: Yes, it will be automatically released on the expanded ECS machine. No, don't publish.
+      zh-cn: 是，在扩容出的ECS机器上自动发布应用。否，不发布。
     Type: Boolean
     Default: true
   whetherStopApplicationWhenScaleIn:
     Label:
       en: whetherStopApplicationWhenScaleIn
-      zh-cn: 是否在缩容时停止应用
+      zh-cn: 缩容时优雅下线
+    Description:
+      en: Yes, execute the deployment application stop script on the scaled-down ECS machine. No, reduce the size directly.
+      zh-cn: 是，在缩容的ECS机器上执行部署物应用停止脚本。否，直接缩容。
     Type: Boolean
     Default: true
-  rateControl:
+  batchNumber:
     Label:
-      en: RateControl
-      zh-cn: 部署的并发比率
-    Type: Json
-    AssociationProperty: RateControl
-    Default:
-      MaxErrors: 0
-      Mode: Batch
-      Batch:
-        - 50%
-        - 50%
-      BatchPauseOption: EveryBatchPause
+      en: BatchNumber
+      zh-cn: 执行批次
+    Description:
+      en: For example, 10 ECS instances are to be released, and the BatchNumber is set to 2, then 5 are released in each batch.
+      zh-cn: 例如一共发布10台ECS实例，执行批次设为2，则每批发布5台。
+    Type: Number
+    MinValue: 1
+    MaxValue: 100
+    Default: 2
+  batchPauseOption:
+    Label:
+      en: BatchPauseOption
+      zh-cn: 分批模式
+    Type: String
+    AllowedValues:
+      - Automatic
+      - FirstBatchPause
+      - EveryBatchPause
+    Default: Automatic
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        Automatic:
+          zh-cn: 不暂停
+          en: No pause
+        FirstBatchPause:
+          zh-cn: 第一批暂停
+          en: First batch pause
+        EveryBatchPause:
+          zh-cn: 每批暂停
+          en: Every batch pause
 Tasks:
   - Name: getApplicationGroupDetail
     Description:
@@ -156,7 +182,7 @@ Tasks:
         Type: List
         ValueSelector: .applicationParameters
   - Name: bulkyDeployRevisions
-    Action: 'ACS::Loop'
+    Action: 'ACS::CICD::DeployRevisionOnEcs'
     Description:
       en: BulkyDeployRevisions
       zh-cn: 批量发布部署物
@@ -164,18 +190,30 @@ Tasks:
       Fn::Equals:
         - '{{ getApplicationGroupDetail.tagKey }}'
         - acs:autoscaling:scalingGroupId
+    Loop:
+      Items: '{{ getInstanceFromTargets.instanceIds }}'
+      RateControl:
+        Mode: Batch
+        MaxErrors: 0
+        BatchPauseOption: '{{ batchPauseOption }}'
+        Batch:
+          'Fn::CalculateBatch':
+            - '{{ batchNumber }}'
+            - '{{ getInstanceFromTargets.instanceIds }}'
+      Outputs:
+        deployCommandOutputs:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: deployCommandOutput
     Properties:
-      LoopItems: '{{ getInstanceFromTargets.instanceIds }}'
-      LoopRateControl: '{{ rateControl }}'
-      LoopTasks:
-        - Name: DeployRevisions
-          Action: 'ACS::CICD::DeployRevisionOnEcs'
-          Properties:
-            regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
-            instanceId: '{{ ACS::TaskLoopItem }}'
-            deployRevisionId: '{{ deployRevisionId }}'
-            applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
+      regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+      applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
     Outputs:
       deployCommandOutput:
         Type: String
-        ValueSelector: DeployRevisions.commandOutput
+        ValueSelector: commandOutput
+Outputs:
+  deployCommandOutput:
+    Type: String
+    Value: '{{ bulkyDeployRevisions.deployCommandOutputs }}'

@@ -18,29 +18,24 @@ Parameters:
       en: RevisionType
       zh-cn: 部署物类型
     Default: Oss
-    AllowedValues:
-      - Oss
-      - GitRepo
-      - EcsImage
-      - DockerImage
-      - Command
+    AssociationProperty: ALIYUN::OOS::Component::SectionType
     AssociationPropertyMetadata:
-      ValueLabelMapping:
-        Oss:
-          zh-cn: OSS文件
-          en: OSS file
-        GitRepo:
-          zh-cn: Git仓库代码
-          en: Git repository code
-        EcsImage:
-          zh-cn: ECS镜像
-          en: ECS image
-        DockerImage:
-          zh-cn: Docker镜像
-          en: Docker image
-        Command:
-          zh-cn: 仅执行命令
-          en: Execute command
+      Sections:
+        - name: Oss
+          title: OSS文件
+          description: 适用于应用源文件是OSS文件的场景。
+        - name: GitRepo
+          title: Git仓库代码
+          description: 适用于应用源文件是存储在Git仓库中代码的场景。
+        - name: EcsImage
+          title: ECS镜像
+          description: 适用于应用源文件是ECS镜像的场景。
+        - name: DockerImage
+          title: Docker镜像
+          description: 适用于应用源文件是企业版ACR仓库中Docker镜像的场景。
+        - name: Command
+          title: 仅执行命令
+          description: 适用于没有源文件，仅执行命令完成应用发布的场景。
   regionIdOSS:
     Label:
       en: OSS RegionId
@@ -155,13 +150,14 @@ Parameters:
           Fn::Equals:
             - ${revisionType}
             - GitRepo
-    Default: github
+    Default: gitee
     Description:
-      en: ECS in mainland China may experience unstable GitHub connection. It is recommended to use Gitee first.
-      zh-cn: 中国内地ECS可能会出现GitHub连接不稳定，建议优先使用Gitee。
+      en: Attention! ECS in mainland China may experience unstable GitHub connection.
+      zh-cn: 注意：中国内地ECS可能会出现GitHub连接不稳定。
     AllowedValues:
-      - github
       - gitee
+      - github
+      - gitlab
   owner:
     Type: String
     Label:
@@ -276,7 +272,7 @@ Parameters:
       zh-cn: ECS镜像ID
     Description:
       en: You can select different ECS images for different regions. When publishing, the corresponding image will be selected according to the region.
-      zh-cn: 您可以为不同地域选择不同的ECS镜像。发布时，会根据ECS所在地域选择对应的镜像进行发布。
+      zh-cn: 您可以为不同地域选择不同的ECS镜像。发布时，会根据ECS所在地域选择对应地域的镜像进行发布。
     Type: String
     Default: ''
     AssociationProperty: Map
@@ -438,6 +434,51 @@ Parameters:
           Fn::Equals:
             - ${revisionType}
             - DockerImage
+  alertDockerImage:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title: 发布时，Docker镜像会在脚本执行前被自动拉取到ECS实例上，脚本中无需做拉取镜像相关操作。
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  alertOss:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title: 发布时，OSS文件会在脚本执行前被自动下载到工作目录，脚本中无需做下载OSS文件相关操作。
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  alertGit:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title: 发布时，代码会在脚本执行前被自动下载到工作目录下的code_deploy_application文件夹，脚本中无需做git clone相关操作。code_deploy_application文件夹会自动创建，如果已存在会被覆盖。
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
   workingDir:
     Label:
       en: WorkingDir
@@ -466,8 +507,8 @@ Parameters:
       en: applicationStartScript
       zh-cn: 应用启动脚本
     Description:
-      en: Attention-- <br>1) Every time before executing the application start script, <strong>the application stop script will be executed first</strong> to ensure that the previous deployed application is stopped correctly. Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>. <br>2) only support shell script
-      zh-cn: 注意-- <br>1) 每次执行应用启动脚本前都会<strong>默认先执行一下应用停止脚本</strong>，以确保之前部署的应用被正常停止。请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。 <br>2) 仅支持shell脚本
+      en: Attention-- <br>1) The deployment process follows the principle of "stop first and then start". Each deployment will first execute the stop script to ensure that the last deployed application is stopped normally, and then execute the startup script. <br>If you really do not need to stop application-related operations, you can leave the stop script blank and it will be skipped during deployment. <br>2) only support shell script
+      zh-cn: 注意-- <br>1) 部署流程遵循“先停后启”的原则。每次部署都会先执行停止脚本，确保上一次部署的应用版本被正常停止，再执行启动脚本。<br>如果确实不需要停止应用相关操作，可将停止脚本置空，部署时会跳过。 <br>2) 仅支持shell脚本
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
@@ -515,11 +556,9 @@ Parameters:
               - ${revisionType}
               - GitRepo
           Value: |-
-            ### 注意：Git仓库代码会自动下载到工作目录下的code_deploy_application文件夹，即 {工作目录}/code_deploy_application
-            ### Attention: The Git repository code will be automatically downloaded to the code_deploy_application folder under the working directory, i.e. {workingDir}/code_deploy_application
-
             ### 启动当前版本的应用
-            ### Start the current version of the application            
+            ### Start the current version of the application    
+            
             function start_application() {
             #  cd ./code_deploy_application
             #  java -jar sample-spring-1.0-SNAPSHOT.jar &
@@ -530,12 +569,10 @@ Parameters:
             Fn::Equals:
               - ${revisionType}
               - Oss
-          Value: |-
-            ### 注意：OSS文件会被直接下载到工作目录，如OSS文件是sample-spring-1.0-SNAPSHOT.jar，您可以使用相对路径./sample-spring-1.0-SNAPSHOT.jar访问并操作。
-            ### Attention: The OSS file will be directly downloaded to the working directory。Like if the OSS file is sample-spring-1.0-SNAPSHOT.jar, you can use the relative path ./sample-spring-1.0-SNAPSHOT.jar to access and operate.
-            
+          Value: |-            
             ### 启动当前版本的应用
             ### Start the current version of the application
+            
             function start_application() {
             #   java -jar ./sample-spring-1.0-SNAPSHOT.jar &
             }
@@ -546,8 +583,8 @@ Parameters:
       en: applicationStopScript
       zh-cn: 应用停止脚本
     Description:
-      en: Attention-- <br>1) Please ensure that the application stop script <strong>can correctly stop the current version of the application and the previous version of the application</strong>. <br>2) only support shell script
-      zh-cn: 注意-- <br>1) 请确保应用停止脚本可以正确停止<strong>当前版本的应用以及历史版本的应用</strong>。<br>2) 仅支持shell脚本
+      en: <br>1)When no application is running, the stop script should be able to execute normally and exit without reporting an error. <br>2)only support shell script
+      zh-cn: <br>1)当没有应用在运行时，停止脚本也应能正常执行完退出且不报错。<br>2)仅支持shell脚本
     Type: String
     MaxLength: 16384
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
@@ -653,6 +690,9 @@ Metadata:
             zh-cn: 部署物源
             en: Deployment Source
       - Parameters:
+          - alertDockerImage
+          - alertGit
+          - alertOss
           - workingDir
           - applicationStart
           - applicationStop

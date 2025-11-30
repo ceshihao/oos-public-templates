@@ -19,7 +19,7 @@ Tasks:
         bucket: '{{ ACS::TaskLoopItem }}'
       Method: PUT
       URI: '?logging'
-      Body: <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus> <LoggingEnabled> <TargetBucket>{{ targetBucket }}</TargetBucket> <TargetPrefix>{{ logPrefix }}</TargetPrefix> </LoggingEnabled> </BucketLoggingStatus>
+      Body: <?xml version="1.0" encoding="UTF-8"?> <BucketLoggingStatus> <LoggingEnabled> <TargetBucket>{{ targetBucket }}</TargetBucket> <TargetPrefix>{{ logPrefix }}</TargetPrefix> <LoggingRole>{{ loggingRole }}</LoggingRole> </LoggingEnabled> </BucketLoggingStatus>
     Outputs: {}
     Loop:
       Items: '{{ bucketNames }}'
@@ -44,6 +44,11 @@ Parameters:
     Description: 指定保存的日志文件前缀，可以为空
     Type: String
     Default: ''
+  loggingRole:
+    Label: 日志转存授权角色
+    Description: 日志转存授权角色
+    Type: String
+    Default: 'AliyunOSSLoggingDefaultRole'
   rateControl:
     Label:
       en: RateControl
