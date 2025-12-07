@@ -1,0 +1,699 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ESS-CodeDeployConsole
+  name-zh-cn: CodeDeploy ESS控制台渲染
+Parameters:
+  description:
+    Type: String
+    Label:
+      en: Description
+      zh-cn: 描述
+    Description:
+      en: Description of the current deployment version
+      zh-cn: 当前部署物版本的描述
+    Default: ''
+  revisionType:
+    Type: String
+    Label:
+      en: RevisionType
+      zh-cn: 部署物类型
+    Default: Oss
+    AssociationProperty: ALIYUN::OOS::Component::SectionType
+    AssociationPropertyMetadata:
+      Sections:
+        - name: Oss
+          title: OSS文件
+          description: 适用于应用源文件是OSS文件的场景。
+        - name: EcsImage
+          title: ECS镜像
+          description: 适用于应用源文件是ECS镜像的场景。
+        - name: DockerImage
+          title: Docker镜像
+          description: 适用于应用源文件是企业版ACR仓库中Docker镜像的场景。
+        - name: Command
+          title: 仅执行命令
+          description: 适用于没有源文件，仅执行命令完成应用发布的场景。
+  regionIdOSS:
+    Label:
+      en: OSS RegionId
+      zh-cn: OSS地域
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    AssociationProperty: RegionId
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+          - ${revisionType}
+          - Oss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  bucketName:
+    Label:
+      en: OSS Bucket
+      zh-cn: OSS Bucket
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OSS::Bucket::BucketName
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  objectName:
+    Label:
+      en: ObjectName
+      zh-cn: OSS文件
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OSS::Object::ObjectName
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      BucketName: bucketName
+      ValueType: bucketName
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  versionId:
+    Label:
+      en: VersionId
+      zh-cn: OSS文件版本
+    Description:
+      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS版本控制</a>
+      zh-cn: 只有OSS已开启版本控制才能选择，否则请忽略。参考文档：<a href="https://help.aliyun.com/zh/oss/overview-78/?spm=a2c4g.11174283.help-menu-search-31815.d_2" target="_blank">OSS版本控制</a>
+    Default: ''
+    Type: String
+    AssociationProperty: ALIYUN::OSS::Object::ObjectVersionId
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      BucketName: bucketName
+      ObjectName: objectName
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  isInternalOSS:
+    Label:
+      en: Intranet download
+      zh-cn: 内网下载
+    Description:
+      en: Whether to download the OSS file through the intranet. Note that If you choose to download the intranet, you must ensure that the ECS and OSS you want to deploy must be in the same region.
+      zh-cn: 是否通过内网下载OSS文件。注意：如果选择内网下载，必须保证要部署的ECS和OSS同地域。
+    Type: Boolean
+    Default: false
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  platform:
+    Type: String
+    Label:
+      en: Platform
+      zh-cn: 平台
+    AssociationProperty: ALIYUN::OOS::GitPlatform::Name
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+    Default: gitee
+    Description:
+      en: Attention! ECS in mainland China may experience unstable GitHub connection.
+      zh-cn: 注意：中国内地ECS可能会出现GitHub连接不稳定。
+    AllowedValues:
+      - gitee
+      - github
+      - gitlab
+  owner:
+    Type: String
+    Label:
+      en: Owner
+      zh-cn: 所有者
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitAccount::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      ShowUnbindCom: true
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+  organization:
+    Type: String
+    Label:
+      en: Organization
+      zh-cn: 组织
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitOrganization::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Owner: ${owner}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+  repository:
+    Type: String
+    Label:
+      en: Repository
+      zh-cn: 仓库
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitRepository::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+  branch:
+    Label:
+      en: Branch
+      zh-cn: 分支
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitBranch::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
+      RepoFullName: ${repository}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+  commitId:
+    Label:
+      en: CommitId
+      zh-cn: CommitId
+    Description:
+      en: After entering a branch, it will automatically get the latest Commit Hash of the branch, you do not need to enter it manually.
+      zh-cn: 输入分支后自动获取分支最新的Commit Hash，您无需手动输入。
+    Type: String
+    Default: ''
+    AssociationProperty: ACS::OOS::GitBranch::LatestCommitId
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Branch: ${branch}
+      Owner: ${owner}
+      RepoFullName: ${repository}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+  imageId:
+    Label:
+      en: ImageId
+      zh-cn: ECS镜像ID
+    Description:
+      en: You can select different ECS images for different regions. When publishing, the corresponding image will be selected according to the region.
+      zh-cn: 您可以为不同地域选择不同的ECS镜像。发布时，会根据ECS所在地域选择对应地域的镜像进行发布。
+    Type: String
+    Default: ''
+    AssociationProperty: Map
+    AssociationPropertyMetadata:
+      ParameterKey:
+        Type: String
+        Label:
+          en: Region
+          zh-cn: 地域
+        AssociationProperty: RegionId
+      ParameterValue:
+        Type: String
+        Label:
+          en: ImageId
+          zh-cn: 镜像ID
+        AssociationProperty: ALIYUN::ECS::Image::ImageId
+        AssociationPropertyMetadata:
+          RegionId: ${.ParameterKey}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - EcsImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - EcsImage
+  acrRegion:
+    Label:
+      en: ACR Region
+      zh-cn: 容器镜像服务地域
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    AssociationProperty: RegionId
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  acrId:
+    Label:
+      en: ACR Instance ID
+      zh-cn: 容器镜像服务实例ID
+    Description:
+      en: ACR ID, represents the ID of the cloud container registry
+      zh-cn: 容器镜像服务实例ID
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::CR::Instance::InstanceId
+    AssociationPropertyMetadata:
+      RegionId: ${acrRegion}
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  namespace:
+    Label:
+      en: NameSpace
+      zh-cn: 命名空间
+    Description:
+      en: namespace, represents the namespace of the container image
+      zh-cn: 容器镜像仓库命名空间
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::CR::NameSpace::Name
+    AssociationPropertyMetadata:
+      RegionId: ${acrRegion}
+      InstanceId: ${acrId}
+      Attribute: NamespaceName
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  repoName:
+    Label:
+      en: Repo Name
+      zh-cn: 仓库名称
+    Description:
+      en: Repo Name, represents the repository name of the container image
+      zh-cn: 容器镜像仓库名称
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::CR::Repository::RepoName
+    AssociationPropertyMetadata:
+      AcrType: ${acrType}
+      RegionId: ${acrRegion}
+      InstanceId: ${acrId}
+      RepoNamespaceName: ${namespace}
+      RepoStatus: ALL
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  imageVersion:
+    Label:
+      en: Image Version
+      zh-cn: 镜像版本
+    Type: String
+    AssociationProperty: ALIYUN::CR::Repository::Tag
+    AssociationPropertyMetadata:
+      RegionId: ${acrRegion}
+      InstanceId: ${acrId}
+      RepoNamespaceName: ${namespace}
+      RepoName: ${repoName}
+      ShowImageRepositoryPath: true
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+    Default: ''
+  isInternalAcr:
+    Label:
+      en: whether to use internal link to pull image
+      zh-cn: 是否通过内网拉取镜像
+    Description:
+      en: If you want to use internal link to pull image, please ensure that your image repository and ECS instance are in the same VPC, please refer to <a href="https://help.aliyun.com/zh/acr/user-guide/configure-access-over-vpcs/?spm=a2c4g.11186623.0.0.3af016be83KUhr" target="_blank">acr configuration access VPC</a>.
+      zh-cn: 如果要使用内网链接拉取镜像，请确保您的镜像仓库和ECS实例在同一个VPC内，具体请参考<a href="https://help.aliyun.com/zh/acr/user-guide/configure-access-over-vpcs/?spm=a2c4g.11186623.0.0.3af016be83KUhr" target="_blank">acr配置访问VPC</a>。
+    Type: Boolean
+    Default: false
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  alertDockerImage:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title: 发布时，Docker镜像会在脚本执行前被自动拉取到ECS实例上，脚本中无需做拉取镜像相关操作。
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+  alertOss:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title: 发布时，OSS文件会在脚本执行前被自动下载到工作目录，脚本中无需做下载OSS文件相关操作。
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Oss
+  alertGit:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title: 发布时，代码会在脚本执行前被自动下载到工作目录下的code_deploy_application文件夹，脚本中无需做git clone相关操作。code_deploy_application文件夹会自动创建，如果已存在会被覆盖。
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - GitRepo
+  workingDir:
+    Label:
+      en: WorkingDir
+      zh-cn: 工作目录
+    Type: String
+    Default: '/root/deploy'
+    AllowedPattern: '^\/'
+    Description:
+      en: 1) The working directory of the application, <strong>please fill in the absolute path</strong>. <br>2) You can fill in a non-existent directory, and it will be automatically created when executed.
+      zh-cn: 1) 应用的启动/停止脚本会以该目录作为执行的工作目录，<strong>请填写绝对路径</strong>。<br>2) 您可以填写尚不存在的目录，执行时会自动创建。
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Not:
+            Fn::Equals:
+              - ${revisionType}
+              - EcsImage
+      Required:
+        Condition:
+          Fn::Not:
+            Fn::Equals:
+              - ${revisionType}
+              - EcsImage
+  applicationStart:
+    Label:
+      en: applicationStartScript
+      zh-cn: 应用启动脚本
+    Description:
+      en: Attention-- <br>1) The deployment process follows the principle of "stop first and then start". Each deployment will first execute the stop script to ensure that the last deployed application is stopped normally, and then execute the startup script. <br>If you really do not need to stop application-related operations, you can leave the stop script blank and it will be skipped during deployment. <br>2) only support shell script
+      zh-cn: 注意-- <br>1) 部署流程遵循“先停后启”的原则。每次部署都会先执行停止脚本，确保上一次部署的应用版本被正常停止，再执行启动脚本。<br>如果确实不需要停止应用相关操作，可将停止脚本置空，部署时会跳过。 <br>2) 仅支持shell脚本
+    Type: String
+    MaxLength: 16384
+    AssociationProperty: ALIYUN::OOS::Command::CommandContent
+    Default: ''
+    AssociationPropertyMetadata:
+      CommandType: RunShellScript
+      ShowFullScreen: true
+      Visible:
+        Condition:
+          Fn::Not:
+            Fn::Equals:
+              - ${revisionType}
+              - EcsImage
+      Required:
+        Condition:
+          Fn::Not:
+            Fn::Equals:
+              - ${revisionType}
+              - EcsImage
+      Value:
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - Command
+          Value: |-
+            ### 启动应用
+            ### Start the application
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - DockerImage
+          Value: |-
+            ### 启动当前版本的容器
+            ### Start the current version of the container
+            
+            function start_application() {
+            #   image_name="myapp:latest"
+            #   container_name="my-container"
+            #   docker run -d -p 8080:8080 --name ${container_name} ${image_name}
+            }
+            
+            start_application
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - GitRepo
+          Value: |-
+            ### 启动当前版本的应用
+            ### Start the current version of the application    
+            
+            function start_application() {
+            #  cd ./code_deploy_application
+            #  java -jar sample-spring-1.0-SNAPSHOT.jar &
+            }
+            
+            start_application
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - Oss
+          Value: |-            
+            ### 启动当前版本的应用
+            ### Start the current version of the application
+            
+            function start_application() {
+            #   java -jar ./sample-spring-1.0-SNAPSHOT.jar &
+            }
+            
+            start_application
+  applicationStop:
+    Label:
+      en: applicationStopScript
+      zh-cn: 应用停止脚本
+    Description:
+      en: <br>1)When no application is running, the stop script should be able to execute normally and exit without reporting an error. <br>2)only support shell script
+      zh-cn: <br>1)当没有应用在运行时，停止脚本也应能正常执行完退出且不报错。<br>2)仅支持shell脚本
+    Type: String
+    MaxLength: 16384
+    AssociationProperty: ALIYUN::OOS::Command::CommandContent
+    Default: ''
+    AssociationPropertyMetadata:
+      CommandType: RunShellScript
+      ShowFullScreen: true
+      Visible:
+        Condition:
+          Fn::Not:
+            Fn::Equals:
+              - ${revisionType}
+              - EcsImage
+      Value:
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - Command
+          Value: |-
+            ### 停止应用
+            ### Stop the application
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - DockerImage
+          Value: |-
+            ### 停止容器（如果有）
+            ### Stop the container (if any)
+            
+            function stop_application() {
+            #   container_name="my-container"
+            #   docker rm -f ${container_name} || true
+            }
+            
+            stop_application
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - GitRepo
+          Value: |-            
+            ### 停止应用（如果有）
+            ### Stop the application (if any)
+            
+            function stop_application() {
+            #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
+            #   if [ -n "$PID" ]; then
+            #     kill -9 $PID
+            #   fi
+            }
+            
+            stop_application
+        - Condition:
+            Fn::Equals:
+              - ${revisionType}
+              - Oss
+          Value: |-
+            ### 停止应用（如果有）
+            ### Stop the application (if any)
+            function stop_application() {
+            #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
+            #   if [ -n "$PID" ]; then
+            #     kill -9 $PID
+            #   fi
+            }
+            
+            stop_application
+Tasks:
+  - Name: CodeDeployConsole
+    Action: ACS::Sleep
+    Properties:
+      Duration: 10s
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - description
+        Label:
+          default:
+            zh-cn: 版本描述
+            en: Version Description
+      - Parameters:
+          - revisionType
+          - regionIdOSS
+          - bucketName
+          - objectName
+          - versionId
+          - isInternalOSS
+          - platform
+          - owner
+          - organization
+          - repository
+          - branch
+          - commitId
+          - imageId
+          - acrRegion
+          - acrId
+          - namespace
+          - repoName
+          - imageVersion
+          - isInternalAcr
+        Label:
+          default:
+            zh-cn: 部署物源
+            en: Deployment Source
+      - Parameters:
+          - alertDockerImage
+          - alertGit
+          - alertOss
+          - workingDir
+          - applicationStart
+          - applicationStop
+        Label:
+          default:
+            zh-cn: 启动/停止脚本
+            en: Start/Stop Script
