@@ -1,0 +1,129 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: ECS Cloud Security Postpaid Initialization Configuration
+  zh-cn: ECS云安后付费初始化配置
+  name-en: ACS-ECS-InitSasPostPaidAsync
+  name-zh-cn: ECS云安后付费初始化配置
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  cores:
+    Type: String
+    Label:
+      en: cores
+      zh-cn: 数量
+    Default: '8'
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: regionId
+  orderId:
+    Description:
+      en: The ID of Order
+      zh-cn: 订单ID
+    Type: String
+    Default: ''
+  isTrial:
+    Type: Boolean
+    Default: true
+  autoBind:
+    Type: Number
+    Default: 1
+  OOSAssumeRole:
+    Description: The RAM role to be assumed by OOS.
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: sleepForEcsReady
+    Action: ACS::Sleep
+    Properties:
+      Duration: 10s
+    Outputs: {}
+  - Name: getInstanceFromOrderId
+    Action: ACS::WaitFor
+    When:
+      Fn::Not:
+        Fn::Equals:
+          - '{{ orderId }}'
+          - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 通过订单ID获取ECS实例
+    Retries: 10
+    Properties:
+      Service: BssOpenApi
+      API: GetOrderDetail
+      PropertySelector: Data.OrderList.Order[].PaymentStatus
+      DesiredValues:
+        - Paid
+      NotDesiredValues: []
+      StopRetryValues:
+        - Cancelled
+      Parameters:
+        RegionId: '{{ regionId }}'
+        OrderId: '{{ orderId }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Data.OrderList.Order[].InstanceIDs | fromjson | .[]
+  - Name: getInstanceFromTargets
+    When:
+      Fn::Equals:
+        - '{{ orderId }}'
+        - ''
+    Description:
+      en: Views the ECS instances
+      zh-cn: 获取ECS实例
+    Action: ACS::SelectTargets
+    Properties:
+      ResourceType: ALIYUN::ECS::Instance
+      Filters:
+        - '{{ targets }}'
+      RegionId: '{{ regionId }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: RefreshAssets
+    Action: ACS::ExecuteApi
+    Description: 同步ECS资产
+    Properties:
+      Service: sas
+      API: RefreshAssets
+    Outputs: {}
+  - Name: InitSasPostPaidAsync
+    Action: ACS::ExecuteApi
+    Description: sas_postpaid开通+配置初始化
+    Properties:
+      Service: sas
+      API: InitSasPostPaidAsync
+      Parameters:
+        IsTrial: '{{ isTrial }}'
+        AutoBind: '{{ autoBind }}'
+        Instances:
+          Fn::Jq:
+            - First
+            - 'map(select(. != null) | {"InstanceId": ., "Cores": "{{ cores }}", "RegionId": "{{ regionId }}"})'
+            - Fn::If:
+                - Fn::Equals:
+                    - '{{ orderId }}'
+                    - ''
+                - '{{ getInstanceFromTargets.instanceIds }}'
+                - '{{ getInstanceFromOrderId.instanceIds }}'
+    Outputs: {}
+

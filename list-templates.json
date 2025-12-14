@@ -7706,6 +7706,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-11-28T07:35:42Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-12-08T06:23:28Z",
+      "Description": "{\"en\": \"ECS Cloud Security Postpaid Initialization Configuration\", \"zh-cn\": \"ECS云安后付费初始化配置\", \"name-en\": \"ACS-ECS-InitSasPostPaidAsync\", \"name-zh-cn\": \"ECS云安后付费初始化配置\"}",
+      "HasTrigger": false,
+      "Hash": "60c7a4e23e017d97325c275321772bf395ea059154980299e64c7d0bf331927e",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-fb0c38b164e4438bad1b",
+      "TemplateName": "ACS-ECS-InitSasPostPaidAsync",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-12-08T06:23:28Z"
     }
   ]
 }
