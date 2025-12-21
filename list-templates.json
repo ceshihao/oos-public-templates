@@ -237,7 +237,7 @@
       "CreatedDate": "2020-01-16T12:05:25Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances, applicable to scenarios where regular and scheduled management of ECS instances is required, such as automated operations of development environments and cost optimization. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances to be operated on, Daily Start Time (dailyStartTime), Daily Stop Time (dailyStopTime), and the Days of Week (weekdays), which define the schedule for the tasks. Upon execution, the template will start and stop the ECS instances according to the configured schedule.\", \"zh-cn\": \"定时开启和停止ECS实例，适用于需要定期管理和调度ECS实例的场景，例如开发环境的自动化运维和成本优化。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定操作实例的地域，每天开启实例的时间（dailyStartTime）、每天停止实例的时间（dailyStopTime）、任务执行的周期（weekdays）：用于定义任务的定时触发规则。模板在执行后会根据设置的时间表开启和停止ECS实例。\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopInstances\", \"name-zh-cn\": \"定时开启和停止ECS实例\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "627dfc0fdf12b8d1fd505e2d21a5a110f5e4f9deb29e36dde9cf47229a3a5152",
+      "Hash": "a02e60b0b10a34f120083dbab5e3864f40eaca898eef47de6e6a966b13f59358",
       "IsFavorite": false,
       "Popularity": 8.3,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -247,10 +247,10 @@
       "TemplateId": "t-202a218472bb4ac0b779",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v23",
+      "TemplateVersion": "v24",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:24Z"
+      "UpdatedDate": "2025-12-18T06:58:08Z"
     },
     {
       "Category": "TimerTrigger",
@@ -361,9 +361,9 @@
       "Category": "TimerTrigger",
       "CreatedBy": "ACS",
       "CreatedDate": "2020-09-21T07:02:34Z",
-      "Description": "{\"en\": \"Schedules to stop and start ECS instances, applicable to scenarios that require automatically stopping and starting ECS instances at specific times, such as automated maintenance tasks and resource management. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances to be operated on, Daily Stop Time (dailyStopTime) and Daily Start Time (dailyStartTime), and Days of Week (weekdays), which define the schedule for the tasks, as well as Target Instances (targets), which define the specific ECS instances to be operated on. Users can also choose whether to stop or hibernate the instances. The template will stop and start the ECS instances according to the configured schedule.\", \"zh-cn\": \"定时停止和开启ECS实例，适用于需要在特定时间段自动停止和启动ECS实例的场景，如自动化运维任务和资源管理。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要操作的ECS实例所在的地域，每天停止实例的时间（dailyStopTime）和每天开启实例的时间（dailyStartTime）、任务执行的周期（weekdays）：用于定义任务的定时触发规则，以及目标实例（targets）：用于定义具体需要操作的ECS实例。用户还可以选择是否停止或休眠实例。模板会根据设置的时间表定时停止和启动ECS实例。\", \"name-en\": \"ACS-ECS-ScheduleToStopAndStartInstances\", \"name-zh-cn\": \"定时停止和开启ECS实例\", \"categories\": [\"time_trigger\"]}",
+      "Description": "{\"en\": \"Schedules to stop and start ECS instances, applicable to scenarios that require automatically stopping and starting ECS instances at specific times, such as automated maintenance tasks and resource management. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances to be operated on, Daily Stop Time (dailyStopTime) and Daily Start Time (dailyStartTime), and Days of Week (weekdays), which define the schedule for the tasks, as well as Target Instances (targets), which define the specific ECS instances to be operated on. Users can also choose whether to stop the instances. The template will stop and start the ECS instances according to the configured schedule.\", \"zh-cn\": \"定时停止和开启ECS实例，适用于需要在特定时间段自动停止和启动ECS实例的场景，如自动化运维任务和资源管理。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定需要操作的ECS实例所在的地域，每天停止实例的时间（dailyStopTime）和每天开启实例的时间（dailyStartTime）、任务执行的周期（weekdays）：用于定义任务的定时触发规则，以及目标实例（targets）：用于定义具体需要操作的ECS实例。用户还可以选择是否停止实例。模板会根据设置的时间表定时停止和启动ECS实例。\", \"name-en\": \"ACS-ECS-ScheduleToStopAndStartInstances\", \"name-zh-cn\": \"定时停止和开启ECS实例\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "69893b9ea627c6b686907f0e7128ffff3a2639f3f093f290497c1ae30f680b8b",
+      "Hash": "8e5954138bb87bd3ae98812d500efd296cc01e04b243d69ab2cc578692e18c95",
       "IsFavorite": false,
       "Popularity": 8.15,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -373,10 +373,10 @@
       "TemplateId": "t-2162d9ff688747dfa819",
       "TemplateName": "ACS-ECS-ScheduleToStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-20T07:30:25Z"
+      "UpdatedDate": "2025-12-18T06:58:09Z"
     },
     {
       "Category": "TimerTrigger",
@@ -3639,7 +3639,7 @@
       "CreatedDate": "2022-05-11T07:57:06Z",
       "Description": "{\"en\": \"Schedule to start and stop ECS instances\", \"zh-cn\": \"定时开关机或者关开机\", \"name-en\": \"ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances\", \"name-zh-cn\": \"定时开关机或者关开机\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "c86cf1300810026a87fefb18f1f7135e9aaa584511521ea6b93d0b94fe42338c",
+      "Hash": "c3389e1dffe667a46e91a0f2d3c9d6f0effcef7ad712d0fb681019c3519a8aa2",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3649,10 +3649,10 @@
       "TemplateId": "t-e2502339692040a483b3",
       "TemplateName": "ACS-ECS-ScheduleToStartAndStopOrStopAndStartInstances",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-12T03:10:27Z"
+      "UpdatedDate": "2025-12-18T06:58:09Z"
     },
     {
       "Category": "TimerTrigger",
@@ -4458,7 +4458,7 @@
       "CreatedDate": "2023-11-06T11:13:49Z",
       "Description": "{\"en\": \"Use this template to install oos package on ecs\", \"zh-cn\": \"安装/卸载扩展程序\", \"name-en\": \"ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序\", \"categories\": [\"run_command\", \"application_manage\"]}",
       "HasTrigger": false,
-      "Hash": "df52c7ba633d2bb011966d18505c6c21ae1265b148e48a314b32d0551f04dc6b",
+      "Hash": "7d94befe19a72728c648c7618b8d6a9f46114f9cb02329124f1f61d32646785d",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4468,10 +4468,10 @@
       "TemplateId": "t-dbec4cab2eda4e90a40c",
       "TemplateName": "ACS-ECS-BulkyConfigureOOSPackageWithTemporaryURL",
       "TemplateType": "Automation",
-      "TemplateVersion": "v29",
+      "TemplateVersion": "v30",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-10-24T01:19:50Z"
+      "UpdatedDate": "2025-12-15T06:39:39Z"
     },
     {
       "Category": "Other",
@@ -5610,31 +5610,10 @@
     {
       "Category": "Other",
       "CreatedBy": "ACS",
-      "CreatedDate": "2025-12-02T08:50:28Z",
-      "Description": "{\"name-en\": \"ACS-ESS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ESS控制台渲染\"}",
-      "HasTrigger": false,
-      "Hash": "790f190da1f54176703476b574ae9dcb70465031495255de42f8cd14fb27738b",
-      "IsFavorite": false,
-      "Popularity": 5,
-      "ResourceGroupId": "",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-cd28dfbd8e0f474fac7f",
-      "TemplateName": "ACS-ESS-CodeDeployConsole",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v1",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-02T08:50:28Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
       "CreatedDate": "2025-12-02T09:12:55Z",
       "Description": "{\"name-en\": \"ACS-ESS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "eaae59de55d355a431633a64b11c2d94ba4b976ccaff04ed4d41ac9327ca1ce9",
+      "Hash": "414f79127e80d6b37a99d8068aa63800fbf9a63314d28f0237b4484ad626ddeb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5644,10 +5623,10 @@
       "TemplateId": "t-e6a4805658394d358ef1",
       "TemplateName": "ACS-ESS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-02T09:12:55Z"
+      "UpdatedDate": "2025-12-19T08:57:20Z"
     },
     {
       "Category": "Other",
@@ -7167,7 +7146,7 @@
       "CreatedDate": "2025-07-18T09:42:16Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "2912f329d2fd8abb9ff278f215b1687cf6a1bec043b6445cfcd9bc7f5fe8fcb2",
+      "Hash": "1cddfb1f40ea76e0505d759775ae509a728a35471161bcec1db3be4da3084164",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7177,10 +7156,10 @@
       "TemplateId": "t-0dd82fbd0d5744d28bd4",
       "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-02T10:06:55Z"
+      "UpdatedDate": "2025-12-17T08:51:04Z"
     },
     {
       "Category": "Other",
@@ -7188,7 +7167,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "fa4026523d6e97a182dc091dff45f74a411da9eedd526d2d42b951812f60299a",
+      "Hash": "b34908038a9375b1c6f6678b3ec5a1f5cbe8052310d58b07345bf93d9e347346",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7198,10 +7177,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-05T08:00:44Z"
+      "UpdatedDate": "2025-12-19T08:57:20Z"
     },
     {
       "Category": "Other",
@@ -7482,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "bbcab68191ed59c473ef7f259cc83b9da15592d2c0c356801d20aa37c847c587",
+      "Hash": "1f5dafdb949e3fcdb2a26b16e9e93ee0a098ac04d42545251f99ce397131d886",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7492,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-11-27T07:01:36Z"
+      "UpdatedDate": "2025-12-17T08:51:02Z"
     },
     {
       "Category": "Other",
@@ -7706,6 +7685,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-11-28T07:35:42Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2025-12-02T08:50:28Z",
+      "Description": "{\"name-en\": \"ACS-ESS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ESS控制台渲染\"}",
+      "HasTrigger": false,
+      "Hash": "0570f1dfd02338845d71383a8c71acae2810604bbdf7c57e035156c68c73d978",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-cd28dfbd8e0f474fac7f",
+      "TemplateName": "ACS-ESS-CodeDeployConsole",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2025-12-17T08:51:03Z"
     },
     {
       "Category": "Other",

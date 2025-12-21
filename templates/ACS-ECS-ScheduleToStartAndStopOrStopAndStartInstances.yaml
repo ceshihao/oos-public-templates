@@ -87,12 +87,6 @@ Parameters:
     Default: KeepCharging
     AssociationPropertyMetadata:
       LocaleKey: ECSStoppedMode
-  hibernate:
-    Label:
-      en: WhetherToHibernateTheInstance
-      zh-cn: 实例是否休眠
-    Type: Boolean
-    Default: false
   rateControl:
     Label:
       en: RateControl
@@ -203,7 +197,6 @@ Tasks:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
       stoppedMode: '{{ stoppedMode }}'
-      hibernate: '{{ hibernate }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
@@ -221,7 +214,6 @@ Tasks:
       regionId: '{{ regionId }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
       stoppedMode: '{{ stoppedMode }}'
-      hibernate: '{{ hibernate }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'

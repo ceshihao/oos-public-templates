@@ -91,6 +91,7 @@ Parameters:
       TemplateName: packageName
       TemplateVersion: packageVersion
       TemplateType: Package
+      PackageUsage: action
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole

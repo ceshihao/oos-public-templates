@@ -20,18 +20,15 @@ Parameters:
       en: DeployRevisionId
       zh-cn: 部署物ID
     Type: String
-    AssociationProperty: 'ALIYUN::OOS::Application::DeployRevisionId'
+    AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
     AssociationPropertyMetadata:
-      ApplicationName: '${applicationName}'
+      ApplicationName: ${applicationName}
   deployMethod:
     Label:
       en: DeployMethod
       zh-cn: 发布模式
     Description:
-      en: >-
-        The full-scale publishing mode will publish all instances under the
-        current scaling group. For grayscale publishing mode, you can select
-        some instances to publish.
+      en: The full-scale publishing mode will publish all instances under the current scaling group. For grayscale publishing mode, you can select some instances to publish.
       zh-cn: 全量发布模式会发布当前伸缩组下所有实例，对于灰度发布模式，您可以选择部分实例发布
     Type: String
     Default: all
@@ -53,18 +50,13 @@ Parameters:
     Type: Json
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      HideTypes:
-        - Tags
-        - ResourceGroup
-        - UploadFile
-        - All
-        - Inventory
+      HideTypes: ["Tags", "ResourceGroup",  "UploadFile",  "All", "Inventory"]
       ResourceType: 'ALIYUN::ECS::Instance'
-      Application: '${applicationName}'
-      ApplicationGroup: '${applicationGroupName}'
+      Application: ${applicationName}
+      ApplicationGroup: ${applicationGroupName}
       Visible:
         Condition:
-          'Fn::Equals':
+          Fn::Equals:
             - '${deployMethod}'
             - partial
     Default: {}
@@ -73,9 +65,7 @@ Parameters:
       en: whetherStartApplicationWhenScaleOut
       zh-cn: 扩容时自动发布
     Description:
-      en: >-
-        Yes, it will be automatically released on the expanded ECS machine. No,
-        don't publish.
+      en: Yes, it will be automatically released on the expanded ECS machine. No, don't publish.
       zh-cn: 是，在扩容出的ECS机器上自动发布应用。否，不发布。
     Type: Boolean
     Default: true
@@ -84,9 +74,7 @@ Parameters:
       en: whetherStopApplicationWhenScaleIn
       zh-cn: 缩容时优雅下线
     Description:
-      en: >-
-        Yes, execute the deployment application stop script on the scaled-down
-        ECS machine. No, reduce the size directly.
+      en: Yes, execute the deployment application stop script on the scaled-down ECS machine. No, reduce the size directly.
       zh-cn: 是，在缩容的ECS机器上执行部署物应用停止脚本。否，直接缩容。
     Type: Boolean
     Default: true
@@ -95,9 +83,7 @@ Parameters:
       en: BatchNumber
       zh-cn: 执行批次
     Description:
-      en: >-
-        For example, 10 ECS instances are to be released, and the BatchNumber is
-        set to 2, then 5 are released in each batch.
+      en: For example, 10 ECS instances are to be released, and the BatchNumber is set to 2, then 5 are released in each batch.
       zh-cn: 例如一共发布10台ECS实例，执行批次设为2，则每批发布5台。
     Type: Number
     MinValue: 1
@@ -129,7 +115,7 @@ Tasks:
     Description:
       en: Get the application group detail
       zh-cn: 获取应用分组详情
-    Action: 'ACS::ExecuteApi'
+    Action: ACS::ExecuteApi
     Properties:
       Service: oos
       API: GetApplicationGroup
@@ -156,8 +142,8 @@ Tasks:
       ResourceType: 'ALIYUN::ECS::Instance'
       RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
       Filters:
-        'Fn::If':
-          - 'Fn::Equals':
+        Fn::If:
+          - Fn::Equals:
               - '{{ deployMethod }}'
               - all
           - - Type: ApplicationGroup
@@ -168,22 +154,8 @@ Tasks:
       instanceIds:
         Type: List
         ValueSelector: 'Instances.Instance[].InstanceId'
-  - Name: deployRevisionOnEssPre
-    Description:
-      en: PreDeployRevision
-      zh-cn: 部署准备
-    Action: 'ACS::CICD::PreDeployRevisionEss'
-    Properties:
-      applicationName: '{{ applicationName }}'
-      applicationGroupName: '{{ applicationGroupName }}'
-      deployRevisionId: '{{ deployRevisionId }}'
-      whetherStartApplicationWhenScaleOut: '{{ whetherStartApplicationWhenScaleOut }}'
-      whetherStopApplicationWhenScaleIn: '{{ whetherStopApplicationWhenScaleIn }}'
-      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
-      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
-      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
   - Name: getApplicationParameters
-    Action: 'ACS::CICD::ListApplicationParameters'
+    Action: ACS::CICD::ListApplicationParameters
     Description:
       en: GetApplicationParameters
       zh-cn: 获取应用参数
@@ -201,9 +173,9 @@ Tasks:
       en: BulkyDeployRevisions
       zh-cn: 批量发布部署物
     When:
-      'Fn::Equals':
+      Fn::Equals:
         - '{{ getApplicationGroupDetail.tagKey }}'
-        - 'acs:autoscaling:scalingGroupId'
+        - acs:autoscaling:scalingGroupId
     Loop:
       Items: '{{ getInstanceFromTargets.instanceIds }}'
       RateControl:
@@ -227,8 +199,21 @@ Tasks:
       deployCommandOutput:
         Type: String
         ValueSelector: commandOutput
+  - Name: modifyLifecycle
+    Description:
+      en: modifyLifecycle
+      zh-cn: 修改生命周期挂钩
+    Action: ACS::CICD::PreDeployRevisionEss
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+      whetherStartApplicationWhenScaleOut: '{{ whetherStartApplicationWhenScaleOut }}'
+      whetherStopApplicationWhenScaleIn: '{{ whetherStopApplicationWhenScaleIn }}'
+      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
+      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
 Outputs:
   deployCommandOutput:
     Type: String
     Value: '{{ bulkyDeployRevisions.deployCommandOutputs }}'
-

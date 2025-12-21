@@ -137,30 +137,6 @@ Tasks:
       tagKey: '{{ getApplicationGroupDetail.tagKey }}'
       tagValue: '{{ getApplicationGroupDetail.tagValue }}'
       deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
-  - Name: updateEssLifecycleHook
-    OnError: resumeProcesses
-    OnCancel: resumeProcesses
-    When:
-      Fn::And:
-        - Fn::Equals:
-            - '{{ deployMethod }}'
-            - all
-        - Fn::Equals:
-            - '{{ getApplicationGroupDetail.tagKey }}'
-            - acs:autoscaling:scalingGroupId
-    Description:
-      en: Update Ess lifecycle hook
-      zh-cn: 更新伸缩组生命周期挂钩
-    Action: ACS::CICD::PreDeployRevisionEss
-    Properties:
-      applicationName: '{{ applicationName }}'
-      applicationGroupName: '{{ applicationGroupName }}'
-      deployRevisionId: '{{ deployRevisionId }}'
-      whetherStartApplicationWhenScaleOut: true
-      whetherStopApplicationWhenScaleIn: true
-      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
-      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
-      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
   - Name: getInstanceFromTargets
     Description:
       en: Views the ECS instances
@@ -229,6 +205,30 @@ Tasks:
       deployCommandOutput:
         Type: String
         ValueSelector: commandOutput
+  - Name: updateEssLifecycleHook
+    OnError: resumeProcesses
+    OnCancel: resumeProcesses
+    When:
+      Fn::And:
+        - Fn::Equals:
+            - '{{ deployMethod }}'
+            - all
+        - Fn::Equals:
+            - '{{ getApplicationGroupDetail.tagKey }}'
+            - acs:autoscaling:scalingGroupId
+    Description:
+      en: Update Ess lifecycle hook
+      zh-cn: 更新伸缩组生命周期挂钩
+    Action: ACS::CICD::PreDeployRevisionEss
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+      whetherStartApplicationWhenScaleOut: true
+      whetherStopApplicationWhenScaleIn: true
+      tagKey: '{{ getApplicationGroupDetail.tagKey }}'
+      tagValue: '{{ getApplicationGroupDetail.tagValue }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
   - Name: updateDeployedRevision
     Action: ACS::ExecuteAPI
     OnError: resumeProcesses
