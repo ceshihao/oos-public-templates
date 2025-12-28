@@ -5613,7 +5613,7 @@
       "CreatedDate": "2025-12-02T09:12:55Z",
       "Description": "{\"name-en\": \"ACS-ESS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "414f79127e80d6b37a99d8068aa63800fbf9a63314d28f0237b4484ad626ddeb",
+      "Hash": "196849f94dbc934e26fe245072c44c8a463caab0aa40e3f711ee5e10e66bb3c5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5623,10 +5623,10 @@
       "TemplateId": "t-e6a4805658394d358ef1",
       "TemplateName": "ACS-ESS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-19T08:57:20Z"
+      "UpdatedDate": "2025-12-26T02:40:17Z"
     },
     {
       "Category": "Other",
@@ -6012,7 +6012,7 @@
       "CreatedDate": "2021-12-06T08:12:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "d4de7bf266e1b4160112c2eecff2261549a9020e8fa82a47977b20ad7bc3d5a9",
+      "Hash": "e7d308f1d41a2a3a1c43e6e213f129f4d138521c723cede8040f32a57539045d",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6022,10 +6022,10 @@
       "TemplateId": "t-28fa369cb3994e71b4b4",
       "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-11-25T06:01:17Z"
+      "UpdatedDate": "2025-12-25T05:52:32Z"
     },
     {
       "Category": "Other",
@@ -7461,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "1f5dafdb949e3fcdb2a26b16e9e93ee0a098ac04d42545251f99ce397131d886",
+      "Hash": "f81154ff8881a97d4623654c10a393ac05bd69f61ad3e7d4069fa9fbe75e71e2",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7471,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-17T08:51:02Z"
+      "UpdatedDate": "2025-12-23T08:39:06Z"
     },
     {
       "Category": "Other",
@@ -7692,7 +7692,7 @@
       "CreatedDate": "2025-12-02T08:50:28Z",
       "Description": "{\"name-en\": \"ACS-ESS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ESS控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "0570f1dfd02338845d71383a8c71acae2810604bbdf7c57e035156c68c73d978",
+      "Hash": "eaf71cce73cfa5c16556dbd44b71faceb535840af589dfb835e39d2fbba511a1",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7702,10 +7702,10 @@
       "TemplateId": "t-cd28dfbd8e0f474fac7f",
       "TemplateName": "ACS-ESS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-17T08:51:03Z"
+      "UpdatedDate": "2025-12-26T02:40:16Z"
     },
     {
       "Category": "Other",

@@ -60,6 +60,27 @@ Parameters:
             - '${deployMethod}'
             - partial
     Default: {}
+  alertAutoScaling:
+    Type: String
+    Label: ''
+    Default: ''
+    AssociationProperty: Alert
+    AssociationPropertyMetadata:
+      ShowLabel: false
+      Type: warning
+      ShowIcon: true
+      Title:
+        zh-cn: 如设置扩容时自动发布或缩容时优雅下线，首次使用前请先完成发布角色的创建和授权。<a href="https://ram.console.aliyun.com/authorize?request=%7B%22payloads%22%3A%5B%7B%22missionId%22%3A%22OOS.RoleForOOSApplicationDeploy%22%7D%5D%2C%22callback%22%3A%22https%3A%2F%2Foos.console.aliyun.com%2F%22%2C%22referrer%22%3A%22OOS%22%7D" target="_blank">一键授权</a>
+        en: If you set up automatic publishing during expansion or graceful offline when shrinking, please complete the creation and authorization of the publishing role before using it for the first time. <a href="https://ram.console.aliyun.com/authorize?request=%7B%22payloads%22%3A%5B%7B%22missionId%22%3A%22OOS.RoleForOOSApplicationDeploy%22%7D%5D%2C%22callback%22%3A%22https%3A%2F%2Foos.console.aliyun.com%2F%22%2C%22referrer%22%3A%22OOS%22%7D" target="_blank">One-click authorization</a>
+      Visible:
+        Condition:
+          Fn::Or:
+            - Fn::Equals:
+                - ${whetherStartApplicationWhenScaleOut}
+                - true
+            - Fn::Equals:
+                - ${whetherStopApplicationWhenScaleIn}
+                - true
   whetherStartApplicationWhenScaleOut:
     Label:
       en: whetherStartApplicationWhenScaleOut
@@ -74,8 +95,8 @@ Parameters:
       en: whetherStopApplicationWhenScaleIn
       zh-cn: 缩容时优雅下线
     Description:
-      en: Yes, execute the deployment application stop script on the scaled-down ECS machine. No, reduce the size directly.
-      zh-cn: 是，在缩容的ECS机器上执行部署物应用停止脚本。否，直接缩容。
+      en: Yes, execute the deployment application stop script on the scaled-down ECS machine before reducing the size. No, reduce the size directly.
+      zh-cn: 是，在缩容的ECS机器上执行部署物应用停止脚本后再完成缩容。否，直接缩容。
     Type: Boolean
     Default: true
   batchNumber:

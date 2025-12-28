@@ -119,7 +119,7 @@ Parameters:
       en: VersionId
       zh-cn: OSS文件版本
     Description:
-      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS版本控制</a>
+      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS Version Control</a>
       zh-cn: 只有OSS已开启版本控制才能选择，否则请忽略。参考文档：<a href="https://help.aliyun.com/zh/oss/overview-78/?spm=a2c4g.11174283.help-menu-search-31815.d_2" target="_blank">OSS版本控制</a>
     Default: ''
     Type: String
@@ -498,7 +498,7 @@ Parameters:
       Type: warning
       ShowIcon: true
       Title:
-        zh-cn: 发布时，代码会在脚本执行前被自动下载到工作目录下的code_deploy_application文件夹，脚本中无需做git clone相关操作。code_deploy_application文件夹会自动创建，如果已存在会被覆盖。
+        zh-cn: 发布时，Git仓库代码会在脚本执行前被自动下载到工作目录下的code_deploy_application文件夹，脚本中无需做git clone相关操作。code_deploy_application文件夹会自动创建，如果已存在会被覆盖。
         en: When publishing, the code will be automatically downloaded to the working directory under the code_deploy_application folder, and the script does not need to perform the git clone related operation. The code_deploy_application folder will be automatically created, and it will be overwritten if it already exists.
       Visible:
         Condition:
@@ -574,6 +574,7 @@ Parameters:
             #   image_name="myapp:latest"
             #   container_name="my-container"
             #   docker run -d -p 8080:8080 --name ${container_name} ${image_name}
+            echo "== Finish Start Application =="
             }
             
             start_application
@@ -588,6 +589,7 @@ Parameters:
             function start_application() {
             #  cd ./code_deploy_application
             #  java -jar sample-spring-1.0-SNAPSHOT.jar &
+            echo "== Finish Start Application =="
             }
             
             start_application
@@ -601,6 +603,7 @@ Parameters:
             
             function start_application() {
             #   java -jar ./sample-spring-1.0-SNAPSHOT.jar &
+            echo "== Finish Start Application =="
             }
             
             start_application
@@ -643,6 +646,7 @@ Parameters:
             function stop_application() {
             #   container_name="my-container"
             #   docker rm -f ${container_name} || true
+            echo "== Finish Stop Application =="
             }
             
             stop_application
@@ -659,6 +663,7 @@ Parameters:
             #   if [ -n "$PID" ]; then
             #     kill -9 $PID
             #   fi
+            echo "== Finish Stop Application =="
             }
             
             stop_application
@@ -674,6 +679,7 @@ Parameters:
             #   if [ -n "$PID" ]; then
             #     kill -9 $PID
             #   fi
+            echo "== Finish Stop Application =="
             }
             
             stop_application

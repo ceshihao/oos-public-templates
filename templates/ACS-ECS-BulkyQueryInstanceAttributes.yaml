@@ -67,6 +67,7 @@ Tasks:
     Action: 'ACS::ECS::QueryInstanceAttributes'
     Properties:
       regionId: '{{ regionId }}'
+      targetInfos: '{{ targetInfos }}'
       instanceId: '{{ ACS::TaskLoopItem }}'
     Loop:
       Items: '{{ getInstance.instanceIds }}'

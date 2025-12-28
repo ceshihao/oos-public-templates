@@ -26,28 +26,28 @@ Parameters:
             zh-cn: OSS文件
             en: OSS File
           description:
-            zh-cn: 适用于应用源文件是OSS文件的场景。<br><a href="https://help.aliyun.com/zh/ecs/user-guide/oss-objects?spm=a2c4g.11186623.help-menu-25365.d_0_6_1_5_0_0.6a6a5a7dCmrBio&scm=20140722.H_3000807._.OR_help-T_cn~zh-V_1" target="_blank">帮助文档</a>
+            zh-cn: 适用于应用源文件是OSS文件的场景。
             en: Applicable to the scenario where the application source file is an OSS file.
         - name: EcsImage
           title:
             zh-cn: ECS镜像
             en: ECS Image
           description:
-            zh-cn: 适用于应用源文件是ECS镜像的场景。<br><a href="https://help.aliyun.com/zh/ecs/user-guide/ecs-image-deployment-object?spm=a2c4g.11186623.help-menu-25365.d_0_6_1_5_0_2.280f5ff5PvdNpX" target="_blank">帮助文档</a>
+            zh-cn: 适用于应用源文件是ECS镜像的场景。
             en: Applicable to the scenario where the application source file is an ECS image.
         - name: DockerImage
           title:
             zh-cn: Docker镜像
             en: Docker Image
           description:
-            zh-cn: 适用于应用源文件是企业版ACR仓库中Docker镜像的场景。<br><a href="https://help.aliyun.com/zh/ecs/user-guide/docker-image-object?spm=a2c4g.11186623.help-menu-25365.d_0_6_1_5_0_3.396320044psefv" target="_blank">帮助文档</a>
+            zh-cn: 适用于应用源文件是企业版ACR仓库中Docker镜像的场景。
             en: Applicable to the scenario where the application source file is a Docker image in the enterprise version of ACR repository.
         - name: Command
           title:
             zh-cn: 仅执行命令
             en: Execute Command
           description:
-            zh-cn: 适用于没有源文件，仅执行命令完成应用发布的场景。<br><a href="https://help.aliyun.com/zh/ecs/user-guide/execute-command-only-deployments?spm=a2c4g.11186623.help-menu-25365.d_0_6_1_5_0_4.57753af37pA6uC" target="_blank">帮助文档</a>
+            zh-cn: 适用于没有源文件，仅执行命令完成应用发布的场景。
             en: Applicable to the scenario where there is no source file and only the command is executed to complete the application release.
   regionIdOSS:
     Label:
@@ -112,7 +112,7 @@ Parameters:
       en: VersionId
       zh-cn: OSS文件版本
     Description:
-      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS版本控制</a>
+      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS Version Control</a>
       zh-cn: 只有OSS已开启版本控制才能选择，否则请忽略。参考文档：<a href="https://help.aliyun.com/zh/oss/overview-78/?spm=a2c4g.11174283.help-menu-search-31815.d_2" target="_blank">OSS版本控制</a>
     Default: ''
     Type: String
@@ -491,7 +491,7 @@ Parameters:
       Type: warning
       ShowIcon: true
       Title:
-        zh-cn: 发布时，代码会在脚本执行前被自动下载到工作目录下的code_deploy_application文件夹，脚本中无需做git clone相关操作。code_deploy_application文件夹会自动创建，如果已存在会被覆盖。
+        zh-cn: 发布时，Git仓库代码会在脚本执行前被自动下载到工作目录下的code_deploy_application文件夹，脚本中无需做git clone相关操作。code_deploy_application文件夹会自动创建，如果已存在会被覆盖。
         en: When publishing, the code will be automatically downloaded to the working directory under the code_deploy_application folder, and the script does not need to perform the git clone related operation. The code_deploy_application folder will be automatically created, and it will be overwritten if it already exists.
       Visible:
         Condition:
@@ -567,6 +567,7 @@ Parameters:
             #   image_name="myapp:latest"
             #   container_name="my-container"
             #   docker run -d -p 8080:8080 --name ${container_name} ${image_name}
+            echo "== Finish Start Application =="
             }
             
             start_application
@@ -581,6 +582,7 @@ Parameters:
             function start_application() {
             #  cd ./code_deploy_application
             #  java -jar sample-spring-1.0-SNAPSHOT.jar &
+            echo "== Finish Start Application =="
             }
             
             start_application
@@ -594,6 +596,7 @@ Parameters:
             
             function start_application() {
             #   java -jar ./sample-spring-1.0-SNAPSHOT.jar &
+            echo "== Finish Start Application =="
             }
             
             start_application
@@ -636,6 +639,7 @@ Parameters:
             function stop_application() {
             #   container_name="my-container"
             #   docker rm -f ${container_name} || true
+            echo "== Finish Stop Application =="
             }
             
             stop_application
@@ -652,6 +656,7 @@ Parameters:
             #   if [ -n "$PID" ]; then
             #     kill -9 $PID
             #   fi
+            echo "== Finish Stop Application =="
             }
             
             stop_application
@@ -667,6 +672,7 @@ Parameters:
             #   if [ -n "$PID" ]; then
             #     kill -9 $PID
             #   fi
+            echo "== Finish Stop Application =="
             }
             
             stop_application
