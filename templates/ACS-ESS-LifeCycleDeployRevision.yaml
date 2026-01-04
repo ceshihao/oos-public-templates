@@ -68,6 +68,16 @@ Parameters:
       zh-cn: '实例关联的特定伸缩活动的令牌,请使用弹性伸缩系统默认值 ${lifecycleActionToken}'
     Type: String
     Default: '${lifecycleActionToken}'
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 速率控制
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 5
   OOSAssumeRole:
     Label:
       en: OOSAssumeRole
@@ -123,8 +133,17 @@ Tasks:
           - '{{ getLastDeployedRevision.lastDeployRevisionId }}'
           - '{{ revisionId }}'
       regionId: '{{ regionId }}'
+    Outputs:
+      deployCommandOutput:
+        Type: String
+        ValueSelector: commandOutput
     Loop:
       Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs:
+        deployCommandOutputs:
+          AggregateType: Fn::ListJoin
+          AggregateField: deployCommandOutput
   - Name: StopDeployedRevision
     Action: 'ACS::CICD::StopDeployedRevisionOnEcs'
     When:
@@ -144,8 +163,17 @@ Tasks:
       applicationGroupName: '{{ applicationGroupName }}'
       regionId: '{{ regionId }}'
       applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
+    Outputs:
+      deployCommandOutput:
+        Type: String
+        ValueSelector: commandOutput
     Loop:
       Items: '{{ instanceIds }}'
+      RateControl: '{{ rateControl }}'
+      Outputs:
+        deployCommandOutputs:
+          AggregateType: Fn::ListJoin
+          AggregateField: deployCommandOutput
   - Name: CompleteLifecycleActionForContinue
     Action: 'ACS::ExecuteAPI'
     Description:
@@ -159,3 +187,10 @@ Tasks:
         LifecycleHookId: '{{ lifecycleHookId }}'
         LifecycleActionToken: '{{ lifecycleActionToken }}'
         LifecycleActionResult: CONTINUE
+Outputs:
+  deployRevisionCommandOutputs:
+    Type: List
+    Value: '{{ DeployRevision.deployCommandOutputs }}'
+  stopRevisionCommandOutputs:
+    Type: List
+    Value: '{{ StopDeployedRevision.deployCommandOutputs }}'
