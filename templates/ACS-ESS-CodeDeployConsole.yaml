@@ -284,8 +284,8 @@ Parameters:
       en: ImageId
       zh-cn: ECS镜像ID
     Description:
-      en: You can select different ECS images for different regions. When publishing, the corresponding image will be selected according to the region.
-      zh-cn: 您可以为不同地域选择不同的ECS镜像。发布时，会根据ECS所在地域选择对应地域的镜像进行发布。
+      en: For imageID's Region，please select the region of the scaling group.
+      zh-cn: 新增ECS镜像ID，地域请选择伸缩组所在地域。
     Type: String
     Default: ''
     AssociationProperty: Map
@@ -457,8 +457,8 @@ Parameters:
       Type: warning
       ShowIcon: true
       Title:
-        zh-cn: 发布时，Docker镜像会在脚本执行前被自动拉取到ECS实例上，脚本中无需做拉取镜像相关操作。
-        en: When publishing, the Docker image will be automatically pulled to the ECS instance before the script is executed, and the script does not need to perform the pull image related operation.
+        zh-cn: 1）请确保待发布机器上已安装Docker。<br> 2）发布时，Docker镜像会在脚本执行前被自动拉取到ECS实例上，脚本中无需做拉取镜像相关操作。
+        en: 1）Please ensure that Docker is installed on the machine to be published. <br> 2）When publishing, the Docker image will be automatically pulled to the ECS instance before the script is executed, and the script does not need to perform the pull image related operation.
       Visible:
         Condition:
           Fn::Equals:

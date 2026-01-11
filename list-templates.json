@@ -5548,9 +5548,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2025-11-03T08:39:38Z",
-      "Description": "批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)",
+      "Description": "{\"en\": \"Batch convert public IP addresses to EIPs and add them to shared bandwidth packets (only supports elastic expansion activities)\", \"zh-cn\": \"批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)\", \"name-en\": \"ACS-ESS-LifeCycleBulkyConvertPublicToEIPAndAddToCommonBandwidthPackage\", \"name-zh-cn\": \"批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "4d8b7ffa45673873e2badb66bf55ed430c58a7243444b15362653442396ae956",
+      "Hash": "f7ebaae22925825d71b3557058288f1463df8e6c3bc6de0a48c1d0073cd7f0bd",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5560,18 +5560,18 @@
       "TemplateId": "t-ee1c5a6dba5748d78d13",
       "TemplateName": "ACS-ESS-LifeCycleBulkyConvertPublicToEIPAndAddToCommonBandwidthPackage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-11-03T08:39:38Z"
+      "UpdatedDate": "2026-01-08T02:19:58Z"
     },
     {
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2025-11-03T08:39:38Z",
-      "Description": "使用生命周期挂钩批量将EIP移出共享带宽包并释放EIP（仅支持弹性收缩活动）",
+      "Description": "{\"en\": \"Use lifecycle hooks to batch remove EIPs from shared bandwidth packets and release EIPs (only supports elastic contraction activities)\", \"zh-cn\": \"使用生命周期挂钩批量将EIP移出共享带宽包并释放EIP（仅支持弹性收缩活动）\", \"name-en\": \"ACS-ESS-LifeCycleBulkyRemoveCommonBandwidthPackageIpAndReleaseEIP\", \"name-zh-cn\": \"使用生命周期挂钩批量将EIP移出共享带宽包并释放EIP（仅支持弹性收缩活动）\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "fc89f1247786eb347a2a63f67421302d376a36f5c6835832596a32f57f639a30",
+      "Hash": "74ae1792be32485c30cb4235a15b86398c2dc1d51ee7e1479a46402248e83dfc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5581,10 +5581,10 @@
       "TemplateId": "t-fa9305d910a64db889fb",
       "TemplateName": "ACS-ESS-LifeCycleBulkyRemoveCommonBandwidthPackageIpAndReleaseEIP",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-11-03T08:39:38Z"
+      "UpdatedDate": "2026-01-08T02:19:58Z"
     },
     {
       "Category": "Other",
@@ -5613,7 +5613,7 @@
       "CreatedDate": "2025-12-02T09:12:55Z",
       "Description": "{\"name-en\": \"ACS-ESS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "196849f94dbc934e26fe245072c44c8a463caab0aa40e3f711ee5e10e66bb3c5",
+      "Hash": "2b260837f4f3c66b5140d57e48f7cb65a60fc71e14eb179f526b04efdcf18db7",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5623,10 +5623,10 @@
       "TemplateId": "t-e6a4805658394d358ef1",
       "TemplateName": "ACS-ESS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-26T02:40:17Z"
+      "UpdatedDate": "2026-01-09T09:11:38Z"
     },
     {
       "Category": "Other",
@@ -7461,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "f81154ff8881a97d4623654c10a393ac05bd69f61ad3e7d4069fa9fbe75e71e2",
+      "Hash": "2d86313ae3aa66efbc0d4fcf5eb3023dc850d4132997250c85cf9844b0b5e4cc",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7471,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v14",
+      "TemplateVersion": "v15",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-23T08:39:06Z"
+      "UpdatedDate": "2026-01-09T03:40:50Z"
     },
     {
       "Category": "Other",
@@ -7692,7 +7692,7 @@
       "CreatedDate": "2025-12-02T08:50:28Z",
       "Description": "{\"name-en\": \"ACS-ESS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ESS控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "eaf71cce73cfa5c16556dbd44b71faceb535840af589dfb835e39d2fbba511a1",
+      "Hash": "d7f125439f13dfd54d5e583fd95a61c19ae2d304f1be3030439d09bb32fcc3df",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7702,10 +7702,10 @@
       "TemplateId": "t-cd28dfbd8e0f474fac7f",
       "TemplateName": "ACS-ESS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-26T02:40:16Z"
+      "UpdatedDate": "2026-01-09T08:37:08Z"
     },
     {
       "Category": "Other",

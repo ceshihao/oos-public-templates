@@ -47,8 +47,8 @@ Parameters:
             zh-cn: Docker镜像
             en: Docker Image
           description:
-            zh-cn: 适用于应用源文件是企业版ACR仓库中Docker镜像的场景。<br><a href="https://help.aliyun.com/zh/ecs/user-guide/docker-image-object?spm=a2c4g.11186623.help-menu-25365.d_0_6_1_5_0_3.396320044psefv" target="_blank">帮助文档</a>
-            en: Applicable to the scenario where the application source file is a Docker image in the enterprise version of ACR repository.
+            zh-cn: 适用于应用源文件是阿里云ACR仓库中Docker镜像的场景。<br><a href="https://help.aliyun.com/zh/ecs/user-guide/docker-image-object?spm=a2c4g.11186623.help-menu-25365.d_0_6_1_5_0_3.396320044psefv" target="_blank">帮助文档</a>
+            en: Applicable to the scenario where the application source file is a Docker image in ACR repository.
         - name: Command
           title:
             zh-cn: 仅执行命令
@@ -339,6 +339,33 @@ Parameters:
           Fn::Equals:
             - ${revisionType}
             - DockerImage
+  acrType:
+    Label:
+      en: ACR Type
+      zh-cn: 容器镜像服务类型
+    Type: String
+    Default: Personal
+    AllowedValues:
+      - Personal
+      - Enterprise
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        Personal:
+          en: Personal
+          zh-cn: 个人版
+        Enterprise:
+          en: Enterprise
+          zh-cn: 企业版
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - DockerImage
   acrId:
     Label:
       en: ACR Instance ID
@@ -353,14 +380,22 @@ Parameters:
       RegionId: ${acrRegion}
       Visible:
         Condition:
-          Fn::Equals:
-            - ${revisionType}
-            - DockerImage
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - DockerImage
+            - Fn::Equals:
+                - ${acrType}
+                - Enterprise
       Required:
         Condition:
-          Fn::Equals:
-            - ${revisionType}
-            - DockerImage
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - DockerImage
+            - Fn::Equals:
+                - ${acrType}
+                - Enterprise
   namespace:
     Label:
       en: NameSpace
@@ -377,14 +412,22 @@ Parameters:
       Attribute: NamespaceName
       Visible:
         Condition:
-          Fn::Equals:
-            - ${revisionType}
-            - DockerImage
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - DockerImage
+            - Fn::Equals:
+                - ${acrType}
+                - Enterprise
       Required:
         Condition:
-          Fn::Equals:
-            - ${revisionType}
-            - DockerImage
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - DockerImage
+            - Fn::Equals:
+                - ${acrType}
+                - Enterprise
   repoName:
     Label:
       en: Repo Name
@@ -415,14 +458,11 @@ Parameters:
     Label:
       en: Image Version
       zh-cn: 镜像版本
+    Description:
+      en: Please fill in the version of the image to be published.
+      zh-cn: 请填写待发布镜像的版本。
     Type: String
-    AssociationProperty: ALIYUN::CR::Repository::Tag
     AssociationPropertyMetadata:
-      RegionId: ${acrRegion}
-      InstanceId: ${acrId}
-      RepoNamespaceName: ${namespace}
-      RepoName: ${repoName}
-      ShowImageRepositoryPath: true
       Visible:
         Condition:
           Fn::Equals:
@@ -439,8 +479,8 @@ Parameters:
       en: whether to use internal link to pull image
       zh-cn: 是否通过内网拉取镜像
     Description:
-      en: If you want to use internal link to pull image, please ensure that your image repository and ECS instance are in the same VPC, please refer to <a href="https://help.aliyun.com/zh/acr/user-guide/configure-access-over-vpcs/?spm=a2c4g.11186623.0.0.3af016be83KUhr" target="_blank">acr configuration access VPC</a>.
-      zh-cn: 如果要使用内网链接拉取镜像，请确保您的镜像仓库和ECS实例在同一个VPC内，具体请参考<a href="https://help.aliyun.com/zh/acr/user-guide/configure-access-over-vpcs/?spm=a2c4g.11186623.0.0.3af016be83KUhr" target="_blank">acr配置访问VPC</a>。
+      en: For enterprise version ACR instance, please complete <a href="https://help.aliyun.com/zh/acr/user-guide/configure-access-over-vpcs/?spm=a2c4g.11186623.0.0.3af016be83KUhr" target="_blank">VPC access control configuration</a> to ensure that the ECS instance and ACR instance are in the same VPC, and the image can be pulled through the internal network.<br>For personal version ACR instance, the ECS instance in the same region can directly pull the image through the internal network, and the ECS instance in different regions needs to use the public network to pull the image.
+      zh-cn: 对于企业版ACR实例，需完成<a href="https://help.aliyun.com/zh/acr/user-guide/configure-access-over-vpcs/?spm=a2c4g.11186623.0.0.3af016be83KUhr" target="_blank">VPC访问控制配置</a>，使得待发布的ECS实例和ACR实例处于同一VPC内，才可通过内网拉取镜像。<br>对于个人版ACR实例，同地域的ECS实例无须配置即可直接内网拉取镜像，不同地域的ECS实例请使用公网拉取镜像。
     Type: Boolean
     Default: false
     AssociationPropertyMetadata:
@@ -464,8 +504,8 @@ Parameters:
       Type: warning
       ShowIcon: true
       Title:
-        zh-cn: 发布时，Docker镜像会在脚本执行前被自动拉取到ECS实例上，脚本中无需做拉取镜像相关操作。
-        en: When publishing, the Docker image will be automatically pulled to the ECS instance before the script is executed, and the script does not need to perform the pull image related operation.
+        zh-cn: 1）请确保待发布机器上已安装Docker。<br> 2）发布时，Docker镜像会在脚本执行前被自动拉取到ECS实例上，脚本中无需做拉取镜像相关操作。
+        en: 1）Please ensure that Docker is installed on the machine to be published. <br> 2）When publishing, the Docker image will be automatically pulled to the ECS instance before the script is executed, and the script does not need to perform the pull image related operation.
       Visible:
         Condition:
           Fn::Equals:
@@ -711,6 +751,7 @@ Metadata:
           - branch
           - commitId
           - imageId
+          - acrType
           - acrRegion
           - acrId
           - namespace

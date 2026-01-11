@@ -1,5 +1,11 @@
 FormatVersion: OOS-2019-06-01
-Description: 使用生命周期挂钩批量将EIP移出共享带宽包并释放EIP（仅支持弹性收缩活动）
+Description:
+  en: Use lifecycle hooks to batch remove EIPs from shared bandwidth packets and release EIPs (only supports elastic contraction activities)
+  zh-cn: 使用生命周期挂钩批量将EIP移出共享带宽包并释放EIP（仅支持弹性收缩活动）
+  name-en: ACS-ESS-LifeCycleBulkyRemoveCommonBandwidthPackageIpAndReleaseEIP
+  name-zh-cn: 使用生命周期挂钩批量将EIP移出共享带宽包并释放EIP（仅支持弹性收缩活动）
+  categories:
+    - elastic_manage
 Parameters:
   regionId:
     Label: 地域ID

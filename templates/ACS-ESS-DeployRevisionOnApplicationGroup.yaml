@@ -29,7 +29,7 @@ Parameters:
       zh-cn: 发布模式
     Description:
       en: The full-scale publishing mode will publish all instances under the current scaling group. For grayscale publishing mode, you can select some instances to publish.
-      zh-cn: 全量发布模式会发布当前伸缩组下所有实例，对于灰度发布模式，您可以选择部分实例发布
+      zh-cn: 全量发布模式会发布当前伸缩组下所有ECS实例，对于灰度发布模式，您可以选择伸缩组下的部分ECS实例发布。
     Type: String
     Default: all
     AllowedValues:
@@ -60,6 +60,38 @@ Parameters:
             - '${deployMethod}'
             - partial
     Default: {}
+  batchNumber:
+    Label:
+      en: BatchNumber
+      zh-cn: 执行批次
+    Description:
+      en: For example, 10 ECS instances are to be released, and the BatchNumber is set to 2, then 5 are released in each batch.
+      zh-cn: 例如一共发布10台ECS实例，执行批次设为2，则每批发布5台。
+    Type: Number
+    MinValue: 1
+    MaxValue: 100
+    Default: 2
+  batchPauseOption:
+    Label:
+      en: BatchPauseOption
+      zh-cn: 分批模式
+    Type: String
+    AllowedValues:
+      - Automatic
+      - FirstBatchPause
+      - EveryBatchPause
+    Default: Automatic
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        Automatic:
+          zh-cn: 不暂停
+          en: No pause
+        FirstBatchPause:
+          zh-cn: 第一批暂停
+          en: First batch pause
+        EveryBatchPause:
+          zh-cn: 每批暂停
+          en: Every batch pause
   alertAutoScaling:
     Type: String
     Label: ''
@@ -99,43 +131,11 @@ Parameters:
       zh-cn: 是，在缩容的ECS机器上执行部署物应用停止脚本后再完成缩容。否，直接缩容。
     Type: Boolean
     Default: true
-  batchNumber:
-    Label:
-      en: BatchNumber
-      zh-cn: 执行批次
-    Description:
-      en: For example, 10 ECS instances are to be released, and the BatchNumber is set to 2, then 5 are released in each batch.
-      zh-cn: 例如一共发布10台ECS实例，执行批次设为2，则每批发布5台。
-    Type: Number
-    MinValue: 1
-    MaxValue: 100
-    Default: 2
-  batchPauseOption:
-    Label:
-      en: BatchPauseOption
-      zh-cn: 分批模式
-    Type: String
-    AllowedValues:
-      - Automatic
-      - FirstBatchPause
-      - EveryBatchPause
-    Default: Automatic
-    AssociationPropertyMetadata:
-      ValueLabelMapping:
-        Automatic:
-          zh-cn: 不暂停
-          en: No pause
-        FirstBatchPause:
-          zh-cn: 第一批暂停
-          en: First batch pause
-        EveryBatchPause:
-          zh-cn: 每批暂停
-          en: Every batch pause
 Tasks:
   - Name: getApplicationGroupDetail
     Description:
-      en: Get the application group detail
-      zh-cn: 获取应用分组详情
+      en: Get the scaling group detail
+      zh-cn: 获取伸缩组详情
     Action: ACS::ExecuteApi
     Properties:
       Service: oos

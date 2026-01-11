@@ -1,5 +1,11 @@
 FormatVersion: OOS-2019-06-01
-Description: 批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)
+Description:
+  en: Batch convert public IP addresses to EIPs and add them to shared bandwidth packets (only supports elastic expansion activities)
+  zh-cn: 批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)
+  name-en: ACS-ESS-LifeCycleBulkyConvertPublicToEIPAndAddToCommonBandwidthPackage
+  name-zh-cn: 批量把公网IP转换为EIP并加入到共享带宽包中(仅支持弹性扩张活动)
+  categories:
+    - elastic_manage
 Parameters:
   lifecycleActionResult:
     Label: 生命周期挂钩等待状态结束后的下一步动作
