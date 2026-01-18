@@ -21,7 +21,7 @@ Parameters:
       zh-cn: 目标实例
     AssociationProperty: Targets
     AssociationPropertyMetadata:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
   targetInfos:
     Label:
@@ -50,21 +50,21 @@ Tasks:
     Description:
       en: Views the ECS instances
       zh-cn: 获取ECS实例
-    Action: 'ACS::SelectTargets'
+    Action: ACS::SelectTargets
     Properties:
-      ResourceType: 'ALIYUN::ECS::Instance'
+      ResourceType: ALIYUN::ECS::Instance
       RegionId: '{{ regionId }}'
       Filters:
         - '{{ targets }}'
     Outputs:
       instanceIds:
         Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
+        ValueSelector: Instances.Instance[].InstanceId
   - Name: queryInstanceAttributes
     Description:
       en: Query ECS instance info
       zh-cn: 获取ECS实例信息
-    Action: 'ACS::ECS::QueryInstanceAttributes'
+    Action: ACS::ECS::QueryInstanceAttributes
     Properties:
       regionId: '{{ regionId }}'
       targetInfos: '{{ targetInfos }}'
@@ -95,3 +95,4 @@ Metadata:
           default:
             zh-cn: 高级选项
             en: Control Options
+

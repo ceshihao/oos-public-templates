@@ -1,0 +1,117 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ACK-DeployRevisionOnApplicationGroup
+  name-zh-cn: 在单个ACK应用分组上部署部署物
+  en: Deploy deployments on single ACK application group
+  zh-cn: 在单个ACK应用分组上部署部署物
+Parameters:
+  applicationName:
+    Label:
+      en: ApplicationName
+      zh-cn: 应用名称
+    Type: String
+    AssociationProperty: ALIYUN::OOS::Application::ApplicationName
+  applicationGroupName:
+    Label:
+      en: ApplicationGroupName
+      zh-cn: 应用分组名称
+    Type: String
+    AssociationProperty: ALIYUN::OOS::ApplicationGroup::ApplicationGroupName
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
+  deployRevisionId:
+    Label:
+      en: DeployRevisionId
+      zh-cn: 部署物ID
+    Type: String
+    AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
+Tasks:
+  - Name: getApplicationGroupDetail
+    Action: ACS::ExecuteApi
+    Description:
+      en: GetApplicationGroupDetail
+      zh-cn: 获取应用分组详情
+    Properties:
+      Service: oos
+      API: GetApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+    Outputs:
+      tagKey:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagKey
+      tagValue:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagValue
+      deployRegionId:
+        Type: String
+        ValueSelector: .ApplicationGroup.DeployRegionId
+  - Name: getClusterList
+    Action: 'ACS::SelectTargets'
+    Description:
+      en: GetClusterList
+      zh-cn: 获取集群列表
+    Properties:
+      ResourceType: 'ALIYUN::CS::Cluster'
+      RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      Filters:
+        - Type: ApplicationGroup
+          ApplicationName: '{{ applicationName }}'
+          ApplicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      clusterList:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: DeployRevision
+    Action: 'ACS::CICD::DeployRevisionOnAck'
+    Description:
+      en: DeployRevision
+      zh-cn: 发布部署物
+    Properties:
+      regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      clusterId: '{{ ACS::TaskLoopItem }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+    Loop:
+      Items: '{{ getClusterList.clusterList }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 5
+      Outputs:
+        stackOutputsList:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: stackOutputs
+        stackStatusList:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: stackStatus
+    Outputs:
+      stackOutputs:
+        Type: String
+        ValueSelector: stackOutputs
+      stackStatus:
+        Type: String
+        ValueSelector: StackStatus
+  - Name: updateDeployedRevision
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Update the deployed revision
+      zh-cn: 更新部署的版本
+    Properties:
+      Service: OOS
+      API: UpdateApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+        DeployedRevisionId: '{{ deployRevisionId }}'
+Outputs:
+  stackOutputs:
+    Type: String
+    Value: '{{DeployRevision.stackOutputsList}}'
+  stackStatus:
+    Type: String
+    Value: '{{DeployRevision.StackStatusList}}'

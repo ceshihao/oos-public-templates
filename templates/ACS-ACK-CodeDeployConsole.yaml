@@ -1,0 +1,481 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ACK-CodeDeployConsole
+  name-zh-cn: CodeDeploy ACK类型控制台渲染
+Parameters:
+  description:
+    Type: String
+    Label:
+      en: Description
+      zh-cn: 描述
+    Description:
+      en: Description of the current deployment version
+      zh-cn: 当前部署物版本的描述
+    Default: ''
+  revisionType:
+    Type: String
+    Label:
+      en: RevisionType
+      zh-cn: 部署物类型
+    Default: Yaml
+    AssociationProperty: ALIYUN::OOS::Component::SectionType
+    AssociationPropertyMetadata:
+      Sections:
+        - name: Yaml
+          title: YAML文件
+          description: 适用于应用源文件是YAML文件的场景。
+        - name: HelmChart
+          title: Helm Charts
+          description: 适用于应用源文件是Helm Chart的场景。
+  yaml:
+    Type: String
+    Label:
+      en: YAML file
+      zh-cn: YAML文件
+    Default: |-
+      # Example YAML file
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: my-app
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: my-app
+        template:
+          metadata:
+            labels:
+              app: my-app
+          spec:
+            containers:
+              - name: my-container
+                image: <your-registry-url>/my-image:tag
+            imagePullSecrets:
+              - name: <your-credentials-secret-name>
+    AssociationProperty: ALIYUN::OOS::Command::CommandContent
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Yaml
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - Yaml
+  chartLocationType:
+    Type: String
+    Label:
+      en: ChartLocationType
+      zh-cn: Helm Chart存储方式
+    Default: Oss
+    AllowedValues:
+      - Oss
+      - GitRepo
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        Oss: OSS文件
+        GitRepo: Git仓库
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - HelmChart
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - HelmChart
+  regionIdOSS:
+    Label:
+      en: OSS RegionId
+      zh-cn: OSS地域
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    AssociationProperty: RegionId
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+              - ${revisionType}
+              - HelmChart
+            - Fn::Equals:
+              - ${chartLocationType}
+              - Oss
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - Oss
+  bucketName:
+    Label:
+      en: OSS Bucket
+      zh-cn: OSS Bucket
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OSS::Bucket::BucketName
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+              - ${revisionType}
+              - HelmChart
+            - Fn::Equals:
+              - ${chartLocationType}
+              - Oss
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - Oss
+  objectName:
+    Label:
+      en: ObjectName
+      zh-cn: OSS文件
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OSS::Object::ObjectName
+    Description:
+      en: Please fill in the complete path of the file in the Bucket, for example： mydir/file/test.zip. (Do not start with /)
+      zh-cn: 请填写文件在Bucket中的完整路径，示例：mydir/file/test.zip。（请勿以/开头）
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      BucketName: bucketName
+      ValueType: bucketName
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+              - ${revisionType}
+              - HelmChart
+            - Fn::Equals:
+              - ${chartLocationType}
+              - Oss
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - Oss
+  versionId:
+    Label:
+      en: VersionId
+      zh-cn: OSS文件版本
+    Description:
+      en: Only if version control is enabled for OSS, please ignore it. Reference Documents -- <a href="https://www.alibabacloud.com/help/en/oss/overview-78/?spm=a2c63.p38356.help-menu-31815.d_10_3.1bd27d7dEhHH8Y&scm=20140722.H_109695._.OR_help-T_intl~en-V_1" target="_blank">OSS版本控制</a>
+      zh-cn: 只有OSS已开启版本控制才能选择，否则请忽略。参考文档：<a href="https://help.aliyun.com/zh/oss/overview-78/?spm=a2c4g.11174283.help-menu-search-31815.d_2" target="_blank">OSS版本控制</a>
+    Default: ''
+    Type: String
+    AssociationProperty: ALIYUN::OSS::Object::ObjectVersionId
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      BucketName: bucketName
+      ObjectName: objectName
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+              - ${revisionType}
+              - HelmChart
+            - Fn::Equals:
+              - ${chartLocationType}
+              - Oss
+  platform:
+    Type: String
+    Label:
+      en: Platform
+      zh-cn: 平台
+    AssociationProperty: ALIYUN::OOS::GitPlatform::Name
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+    Default: gitee
+    Description:
+      en: Attention! ECS in mainland China may experience unstable GitHub connection.
+      zh-cn: 注意：中国内地ECS可能会出现GitHub连接不稳定。
+    AllowedValues:
+      - gitee
+      - github
+      - gitlab
+  owner:
+    Type: String
+    Label:
+      en: Owner
+      zh-cn: 所有者
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitAccount::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      ShowUnbindCom: true
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+  organization:
+    Type: String
+    Label:
+      en: Organization
+      zh-cn: 组织
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitOrganization::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Owner: ${owner}
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+  repository:
+    Type: String
+    Label:
+      en: Repository
+      zh-cn: 仓库
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitRepository::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+  branch:
+    Label:
+      en: Branch
+      zh-cn: 分支
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitBranch::Name
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Organization: ${organization}
+      Owner: ${owner}
+      RepoFullName: ${repository}
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+  commitId:
+    Label:
+      en: CommitId
+      zh-cn: CommitId
+    Description:
+      en: Please drop down to select the CommitId. You can also leave it blank, and the latest Commit will be pulled every time you deploy.
+      zh-cn: 请下拉选择CommitId。您也可以置空，每次部署时将直接拉取分支的最新Commit。
+    Type: String
+    Default: ''
+    AssociationProperty: ACS::OOS::GitBranch::LatestCommitId
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Branch: ${branch}
+      Owner: ${owner}
+      RepoFullName: ${repository}
+      Selectable: true
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+  chartPath:
+    Label:
+      en: ChartPath
+      zh-cn: Chart包路径
+    Description:
+      en: Please drop down to select the Chart package in the code.
+      zh-cn: 请下拉选择代码中的Chart包。
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OOS::GitContent::Content
+    AssociationPropertyMetadata:
+      Platform: ${platform}
+      Owner: ${owner}
+      OrgId: ${organization}
+      RepoFullName: ${repository}
+      Branch: ${branch}
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+      Required:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${revisionType}
+                - HelmChart
+            - Fn::Equals:
+                - ${chartLocationType}
+                - GitRepo
+  chartValues:
+    Type: Json
+    Label:
+      en: ChartValues
+      zh-cn: ChartValues
+    Default: ''
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - HelmChart
+  releaseName:
+    Type: String
+    Label:
+      en: ReleaseName
+      zh-cn: ReleaseName
+    Description:
+      en: Please specify the ReleaseName to deploy
+      zh-cn: 请指定Helm Chart发布的ReleaseName
+    Default: ''
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - HelmChart
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${revisionType}
+            - HelmChart
+  nameSpace:
+    Type: String
+    Label:
+      en: NameSpace
+      zh-cn: 命名空间
+    Description:
+      en: The namespace to deploy to
+      zh-cn: 部署到的命名空间
+Tasks:
+  - Name: CodeDeployConsole
+    Action: ACS::Sleep
+    Properties:
+      Duration: 10s
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - description
+        Label:
+          default:
+            zh-cn: 版本描述
+            en: Version Description
+      - Parameters:
+          - revisionType
+          - yaml
+          - chartLocationType
+          - regionIdOSS
+          - bucketName
+          - objectName
+          - versionId
+          - platform
+          - owner
+          - organization
+          - repository
+          - branch
+          - commitId
+          - chartPath
+          - chartValues
+          - releaseName
+          - nameSpace
+        Label:
+          default:
+            zh-cn: 部署物信息
+            en: Deployment Information

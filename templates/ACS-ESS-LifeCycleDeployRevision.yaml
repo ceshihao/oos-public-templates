@@ -118,6 +118,7 @@ Tasks:
         ValueSelector: .applicationParameters
   - Name: DeployRevision
     Action: 'ACS::CICD::DeployRevisionOnEcs'
+    OnError: CompleteLifecycleActionForContinue
     When:
       Fn::Equals:
         - '{{ type }}'
@@ -146,6 +147,7 @@ Tasks:
           AggregateField: deployCommandOutput
   - Name: StopDeployedRevision
     Action: 'ACS::CICD::StopDeployedRevisionOnEcs'
+    OnError: CompleteLifecycleActionForContinue
     When:
       Fn::Equals:
         - '{{ type }}'

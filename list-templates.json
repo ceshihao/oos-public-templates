@@ -2169,7 +2169,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "08aedef4fc77059f70ca9581fd6b7b4a50a37877691c82c84f3bb8e49f30b994",
+      "Hash": "477c6fa74223bac6c416f9bc9bb9dff684e149f2c2c538c92780241da782263c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2179,10 +2179,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v51",
+      "TemplateVersion": "v52",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-10-13T03:49:30Z"
+      "UpdatedDate": "2026-01-14T05:42:00Z"
     },
     {
       "Category": "Other",
@@ -6012,7 +6012,7 @@
       "CreatedDate": "2021-12-06T08:12:43Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyQueryInstanceAttributes\", \"name-zh-cn\": \"批量查询ECS实例属性\", \"en\": \"Bulky query ECS instance attributes\", \"zh-cn\": \"批量查询ECS实例属性\", \"categories\": [\"instance_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e7d308f1d41a2a3a1c43e6e213f129f4d138521c723cede8040f32a57539045d",
+      "Hash": "bad8e826fbcf2ca961346814bf8d788a4301a3d298b99897d50567517d1513eb",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -6022,10 +6022,10 @@
       "TemplateId": "t-28fa369cb3994e71b4b4",
       "TemplateName": "ACS-ECS-BulkyQueryInstanceAttributes",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-25T05:52:32Z"
+      "UpdatedDate": "2026-01-14T06:19:52Z"
     },
     {
       "Category": "Other",
@@ -7146,7 +7146,7 @@
       "CreatedDate": "2025-07-18T09:42:16Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "82a3a4fdec4d0c504ef3d6706a210a6f6bd4b444eff163a7d0ddfb110ed36228",
+      "Hash": "5ab791e4232cc665d06061446cac5c534fbf36ad38d5a928b129b8cf9ad4dd1e",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7156,10 +7156,10 @@
       "TemplateId": "t-0dd82fbd0d5744d28bd4",
       "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-30T03:25:00Z"
+      "UpdatedDate": "2026-01-15T03:49:53Z"
     },
     {
       "Category": "Other",
@@ -7167,7 +7167,7 @@
       "CreatedDate": "2025-07-28T06:40:42Z",
       "Description": "{\"name-en\": \"ACS-ECS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "b34908038a9375b1c6f6678b3ec5a1f5cbe8052310d58b07345bf93d9e347346",
+      "Hash": "c5b07f92459d4888489d981e97017e2957e3bc74ae29682576641e565f467b7f",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7177,10 +7177,10 @@
       "TemplateId": "t-7d346f7a68d04d498b7a",
       "TemplateName": "ACS-ECS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-12-19T08:57:20Z"
+      "UpdatedDate": "2026-01-13T05:47:41Z"
     },
     {
       "Category": "Other",
@@ -7461,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "2d86313ae3aa66efbc0d4fcf5eb3023dc850d4132997250c85cf9844b0b5e4cc",
+      "Hash": "6b3206690ab1b62fc16f0d7dc4ec7ec478cb65bfefaddfe715b0cee64a4fb5d4",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7471,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-09T03:40:50Z"
+      "UpdatedDate": "2026-01-15T07:16:43Z"
     },
     {
       "Category": "Other",
@@ -7692,7 +7692,7 @@
       "CreatedDate": "2025-12-02T08:50:28Z",
       "Description": "{\"name-en\": \"ACS-ESS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ESS控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "d7f125439f13dfd54d5e583fd95a61c19ae2d304f1be3030439d09bb32fcc3df",
+      "Hash": "d6e5cd65f67f713d4fac1b6d6a685ef78b8253e801afd6f5c8f83054288283b1",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7702,10 +7702,10 @@
       "TemplateId": "t-cd28dfbd8e0f474fac7f",
       "TemplateName": "ACS-ESS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-09T08:37:08Z"
+      "UpdatedDate": "2026-01-15T07:16:43Z"
     },
     {
       "Category": "Other",
@@ -7727,6 +7727,69 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2025-12-08T06:23:28Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-01-12T03:36:12Z",
+      "Description": "{\"name-en\": \"ACS-SWAS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个应用分组上部署部署物(SWAS)\", \"en\": \"Deploy deployments on single application group (SWAS)\", \"zh-cn\": \"在单个应用分组上部署部署物(SWAS)\"}",
+      "HasTrigger": false,
+      "Hash": "e871a072a3b07f102dec8ee5a988ae810c96d2f0452f86677a21c6da49950f05",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-fdbae75bd3884128aa69",
+      "TemplateName": "ACS-SWAS-DeployRevisionOnApplicationGroup",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-01-12T03:36:12Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-01-15T09:24:01Z",
+      "Description": "{\"name-en\": \"ACS-ACK-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ACK类型控制台渲染\"}",
+      "HasTrigger": false,
+      "Hash": "47cff3762d4817d9bd2c0b015dbd1a04ebe0aa59a840fd1ba5245c4d54af5dcd",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-591b2e6489944194a316",
+      "TemplateName": "ACS-ACK-CodeDeployConsole",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-01-15T10:44:30Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-01-15T10:44:30Z",
+      "Description": "{\"name-en\": \"ACS-ACK-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个ACK应用分组上部署部署物\", \"en\": \"Deploy deployments on single ACK application group\", \"zh-cn\": \"在单个ACK应用分组上部署部署物\"}",
+      "HasTrigger": false,
+      "Hash": "75aceeaeffa5614ce10e6940145b121931cd9fb2d1aff7b436dc629d70e0a37a",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-e27024dfcec5494eb111",
+      "TemplateName": "ACS-ACK-DeployRevisionOnApplicationGroup",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-01-15T10:44:30Z"
     }
   ]
 }

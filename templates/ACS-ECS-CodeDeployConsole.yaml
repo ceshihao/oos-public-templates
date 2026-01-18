@@ -99,6 +99,9 @@ Parameters:
       zh-cn: OSS文件
     Type: String
     Default: ''
+    Description:
+      en: Please fill in the complete path of the file in the Bucket, for example： mydir/file/test.zip. (Do not start with /)
+      zh-cn: 请填写文件在Bucket中的完整路径，示例：mydir/file/test.zip。（请勿以/开头）
     AssociationProperty: ALIYUN::OSS::Object::ObjectName
     AssociationPropertyMetadata:
       RegionId: regionIdOSS
@@ -345,6 +348,9 @@ Parameters:
       zh-cn: 容器镜像服务类型
     Type: String
     Default: Personal
+    Description:
+      en: <strong>Note!</strong> If you are using the personal version type for the first time, please return to the application details page and configure the personal version ACR user name and password in the <strong>advanced settings</strong>!
+      zh-cn: <strong>注意!</strong> 如您是首次使用个人版类型，请先返回到应用详情页，在<strong>高级设置</strong>中配置个人版ACR的用户名和密码！
     AllowedValues:
       - Personal
       - Enterprise

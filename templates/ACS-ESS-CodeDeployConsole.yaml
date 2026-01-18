@@ -92,6 +92,9 @@ Parameters:
       zh-cn: OSS文件
     Type: String
     Default: ''
+    Description:
+      en: Please fill in the complete path of the file in the Bucket, for example： mydir/file/test.zip. (Do not start with /)
+      zh-cn: 请填写文件在Bucket中的完整路径，示例：mydir/file/test.zip。（请勿以/开头）
     AssociationProperty: ALIYUN::OSS::Object::ObjectName
     AssociationPropertyMetadata:
       RegionId: regionIdOSS
