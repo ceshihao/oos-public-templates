@@ -1,0 +1,108 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-FC-DeployRevisionOnApplicationGroup
+  name-zh-cn: 在单个FC应用分组上部署部署物
+  en: Deploy deployments on single FC application group
+  zh-cn: 在单个FC应用分组上部署部署物
+Parameters:
+  applicationName:
+    Label:
+      en: ApplicationName
+      zh-cn: 应用名称
+    Type: String
+    AssociationProperty: ALIYUN::OOS::Application::ApplicationName
+  applicationGroupName:
+    Label:
+      en: ApplicationGroupName
+      zh-cn: 应用分组名称
+    Type: String
+    AssociationProperty: ALIYUN::OOS::ApplicationGroup::ApplicationGroupName
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
+  deployRevisionId:
+    Label:
+      en: DeployRevisionId
+      zh-cn: 部署物ID
+    Type: String
+    AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
+    AssociationPropertyMetadata:
+      ApplicationName: ${applicationName}
+Tasks:
+  - Name: getApplicationGroupDetail
+    Action: ACS::ExecuteApi
+    Description:
+      en: GetApplicationGroupDetail
+      zh-cn: 获取应用分组详情
+    Properties:
+      Service: oos
+      API: GetApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+    Outputs:
+      tagKey:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagKey
+      tagValue:
+        Type: String
+        ValueSelector: .ApplicationGroup.ImportTagValue
+      deployRegionId:
+        Type: String
+        ValueSelector: .ApplicationGroup.DeployRegionId
+  - Name: getFCList
+    Action: 'ACS::SelectTargets'
+    Description:
+      en: GetFCList
+      zh-cn: 获取FC列表
+    Properties:
+      ResourceType: 'ALIYUN::FC::Function'
+      RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      Filters:
+        - Type: ApplicationGroup
+          ApplicationName: '{{ applicationName }}'
+          ApplicationGroupName: '{{ applicationGroupName }}'
+    Outputs:
+      fcList:
+        Type: List
+        ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: deployRevision
+    Action: 'ACS::CICD::DeployRevisionOnFC'
+    Description:
+      en: DeployRevision
+      zh-cn: 发布部署物
+    Properties:
+      regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+      functionName: '{{ ACS::TaskLoopItem }}'
+      deployRevisionId: '{{ deployRevisionId }}'
+    Loop:
+      Items: '{{ getFCList.fcList }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 5
+      Outputs:
+        invokeOutputList:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: invokeOutput
+    Outputs:
+      invokeOutput:
+        Type: String
+        ValueSelector: invokeOutput
+  - Name: updateDeployedRevision
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Update the deployed revision
+      zh-cn: 更新部署的版本
+    Properties:
+      Service: OOS
+      API: UpdateApplicationGroup
+      Parameters:
+        RegionId: cn-hangzhou
+        ApplicationName: '{{ applicationName }}'
+        Name: '{{ applicationGroupName }}'
+        DeployedRevisionId: '{{ deployRevisionId }}'
+Outputs:
+  invokeOutputList:
+    Type: String
+    Value: '{{deployRevision.invokeOutputList}}'

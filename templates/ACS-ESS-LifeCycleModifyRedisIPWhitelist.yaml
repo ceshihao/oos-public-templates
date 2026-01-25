@@ -17,10 +17,11 @@ Parameters:
       en: ModifyMode
       zh-cn: 修改IP白名单的方式
     Description:
-      en: The method of modifying the IP whitelist, Append and AppendDup are used for elastic expansion activities, and Delete is used for elastic contraction activities
-      zh-cn: 修改IP白名单的方式，Append和AppendDup用于弹性扩张活动，Delete用于弹性收缩活动
+      en: How to modify the IP whitelist,Cover (default) to overwrite the original whitelist,Append to add whitelist,Delete to delete the whitelist
+      zh-cn: 修改IP白名单的方式，Cover（默认）覆盖原白名单，Append追加白名单，Delete删除该白名单
     Type: String
     AllowedValues:
+      - Cover
       - Append
       - Delete
       - AppendDup

@@ -353,15 +353,11 @@ Parameters:
       zh-cn: <strong>注意!</strong> 如您是首次使用个人版类型，请先返回到应用详情页，在<strong>高级设置</strong>中配置个人版ACR的用户名和密码！
     AllowedValues:
       - Personal
-      - Enterprise
     AssociationPropertyMetadata:
       ValueLabelMapping:
         Personal:
           en: Personal
           zh-cn: 个人版
-        Enterprise:
-          en: Enterprise
-          zh-cn: 企业版
       Visible:
         Condition:
           Fn::Equals:
@@ -616,7 +612,7 @@ Parameters:
             ### 启动当前版本的容器
             ### Start the current version of the container
             
-            function start_application() {
+            start_application() {
             #   image_name="myapp:latest"
             #   container_name="my-container"
             #   docker run -d -p 8080:8080 --name ${container_name} ${image_name}
@@ -632,7 +628,7 @@ Parameters:
             ### 启动当前版本的应用
             ### Start the current version of the application    
             
-            function start_application() {
+            start_application() {
             #  cd ./code_deploy_application
             #  java -jar sample-spring-1.0-SNAPSHOT.jar &
             echo "== Finish Start Application =="
@@ -647,7 +643,7 @@ Parameters:
             ### 启动当前版本的应用
             ### Start the current version of the application
             
-            function start_application() {
+            start_application() {
             #   java -jar ./sample-spring-1.0-SNAPSHOT.jar &
             echo "== Finish Start Application =="
             }
@@ -689,7 +685,7 @@ Parameters:
             ### 停止容器（如果有）
             ### Stop the container (if any)
             
-            function stop_application() {
+            stop_application() {
             #   container_name="my-container"
             #   docker rm -f ${container_name} || true
             echo "== Finish Stop Application =="
@@ -704,7 +700,7 @@ Parameters:
             ### 停止应用（如果有）
             ### Stop the application (if any)
             
-            function stop_application() {
+            stop_application() {
             #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
             #   if [ -n "$PID" ]; then
             #     kill -9 $PID
@@ -720,7 +716,7 @@ Parameters:
           Value: |-
             ### 停止应用（如果有）
             ### Stop the application (if any)
-            function stop_application() {
+            stop_application() {
             #   PID=$(ps -ef | grep "sample-spring-1.0-SNAPSHOT.jar" | grep -v "grep" | awk '{print $2}')
             #   if [ -n "$PID" ]; then
             #     kill -9 $PID

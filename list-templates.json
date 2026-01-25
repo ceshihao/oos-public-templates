@@ -720,7 +720,7 @@
       "CreatedDate": "2019-08-19T02:14:50Z",
       "Description": "{\"en\": \"Use lifecycleHook to modify the IP whitelist of the redis instance\", \"zh-cn\": \"使用生命周期挂钩设置Redis实例的IP白名单\", \"name-en\": \"ACS-ESS-LifeCycleModifyRedisIPWhitelist\", \"name-zh-cn\": \"使用生命周期挂钩设置Redis实例的IP白名单\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "98d13cc3a8dfa042f49fd881a44fc3895a572aca635a376123095cbb98c306e1",
+      "Hash": "976f5e096d7dd719b53cf24f8cbe9f305743d568df1f4a93d994b6f368f1ff7a",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -730,10 +730,10 @@
       "TemplateId": "t-b189352dbc7e421ba5dc",
       "TemplateName": "ACS-ESS-LifeCycleModifyRedisIPWhitelist",
       "TemplateType": "Automation",
-      "TemplateVersion": "v15",
+      "TemplateVersion": "v17",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-06-26T09:30:45Z"
+      "UpdatedDate": "2026-01-19T03:22:20Z"
     },
     {
       "Category": "Other",
@@ -4689,7 +4689,7 @@
       "CreatedDate": "2024-02-01T09:14:15Z",
       "Description": "{\"zh-cn\": \"镜像修复, 镜像修复是基于镜像检测的结果对镜像进行离线修复, 关于镜像检测 https://help.aliyun.com/zh/ecs/user-guide/overview-18, 修复流程会首先基于Alibaba cloud linux镜像创建一台修复实例,将您的镜像的快照创建云盘挂载到修复实例上,离线修复数据盘，然后将修复后的数据盘创建新的镜像。 一些限制 1)当您的镜像的系统类型是如ubuntu 22.04 64位等公共镜像系统类型时,修复后生成的镜像类型会是如ubuntu_64位自定义镜像系统类型。\", \"en\": \"Image repair, which is an offline repair of an image based on the results of image check, Please refer to this document for image check https://www.alibabacloud.com/help/en/ecs/user-guide/overview-18 The repair process will first create a repair instance based on the Alibaba cloud Linux image, create a cloud disk snapshot of your image, mount it to the repair instance, repair the data disk offline, and then create a new image of the repaired data disk.\", \"name-en\": \"ACS-ECS-RepairImage\", \"name-zh-cn\": \"修复镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "b568e0baa59471abb3cc0a7a5f52d009f948531dbb131aec5aed626cfa56dd8d",
+      "Hash": "2f5778463777bac6331d120a5efd17141c45ca4f212c441c06cdadead8c6a967",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4699,10 +4699,10 @@
       "TemplateId": "t-edcdfb2703b24211aa4f",
       "TemplateName": "ACS-ECS-RepairImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-08-13T02:55:52Z"
+      "UpdatedDate": "2026-01-21T08:32:54Z"
     },
     {
       "Category": "Other",
@@ -5109,7 +5109,7 @@
       "CreatedDate": "2024-07-24T08:02:40Z",
       "Description": "{\"en\": \"Use lifecycleHook to modify the IP whitelist of the redis instance\", \"zh-cn\": \"ECI使用生命周期挂钩设置Redis实例的IP白名单\", \"name-en\": \"ACS-ESS-ECILifeCycleModifyRedisIPWhitelist\", \"name-zh-cn\": \"ECI使用生命周期挂钩设置Redis实例的IP白名单\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "88ab8507672ba817eca02ed6f81e9c154c6915688f3ef298e5ce322162258d13",
+      "Hash": "93802473de03db295d5112f788bc5057b2c491a513e8392e1cbd3b5822c0ed25",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5119,10 +5119,10 @@
       "TemplateId": "t-74bb35c7f2ce47e78423",
       "TemplateName": "ACS-ESS-ECILifeCycleModifyRedisIPWhitelist",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v2",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-24T08:02:40Z"
+      "UpdatedDate": "2026-01-19T02:45:37Z"
     },
     {
       "Category": "Other",
@@ -5613,7 +5613,7 @@
       "CreatedDate": "2025-12-02T09:12:55Z",
       "Description": "{\"name-en\": \"ACS-ESS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "2b260837f4f3c66b5140d57e48f7cb65a60fc71e14eb179f526b04efdcf18db7",
+      "Hash": "3047ef3f14410f786324365403c2cacf9782660b16c34215bb335ce0a1991e7c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5623,10 +5623,10 @@
       "TemplateId": "t-e6a4805658394d358ef1",
       "TemplateName": "ACS-ESS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v7",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-09T09:11:38Z"
+      "UpdatedDate": "2026-01-23T10:09:29Z"
     },
     {
       "Category": "Other",
@@ -7146,7 +7146,7 @@
       "CreatedDate": "2025-07-18T09:42:16Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "5ab791e4232cc665d06061446cac5c534fbf36ad38d5a928b129b8cf9ad4dd1e",
+      "Hash": "5bfe85b0d42bd2d1e1fc8e968b81d928b90d5779c6db57f8b3ac515c01ccadd4",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7156,10 +7156,10 @@
       "TemplateId": "t-0dd82fbd0d5744d28bd4",
       "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
       "TemplateType": "Automation",
-      "TemplateVersion": "v12",
+      "TemplateVersion": "v13",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-15T03:49:53Z"
+      "UpdatedDate": "2026-01-23T11:17:17Z"
     },
     {
       "Category": "Other",
@@ -7461,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "6b3206690ab1b62fc16f0d7dc4ec7ec478cb65bfefaddfe715b0cee64a4fb5d4",
+      "Hash": "f0525a19f9713ab8a18deb43ac2e2846af2e87e634763c2ac0d1c9e413d34fad",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7471,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v17",
+      "TemplateVersion": "v19",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-15T07:16:43Z"
+      "UpdatedDate": "2026-01-23T10:41:42Z"
     },
     {
       "Category": "Other",
@@ -7692,7 +7692,7 @@
       "CreatedDate": "2025-12-02T08:50:28Z",
       "Description": "{\"name-en\": \"ACS-ESS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ESS控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "d6e5cd65f67f713d4fac1b6d6a685ef78b8253e801afd6f5c8f83054288283b1",
+      "Hash": "abb1bcf5b6b06231b7ccb5a23e23c1c96c1f67a8f022b09bff24063e03b9bc1a",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7702,10 +7702,10 @@
       "TemplateId": "t-cd28dfbd8e0f474fac7f",
       "TemplateName": "ACS-ESS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-15T07:16:43Z"
+      "UpdatedDate": "2026-01-23T03:18:58Z"
     },
     {
       "Category": "Other",
@@ -7790,6 +7790,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-01-15T10:44:30Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-01-19T08:49:13Z",
+      "Description": "{\"name-en\": \"ACS-FC-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个FC应用分组上部署部署物\", \"en\": \"Deploy deployments on single FC application group\", \"zh-cn\": \"在单个FC应用分组上部署部署物\"}",
+      "HasTrigger": false,
+      "Hash": "792f8db94daff1999013fd60d02f5299aa4e58cc809cd1e4670c18f65517c085",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-a7f84b8db3374ffd8c11",
+      "TemplateName": "ACS-FC-DeployRevisionOnApplicationGroup",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-01-19T08:49:13Z"
     }
   ]
 }

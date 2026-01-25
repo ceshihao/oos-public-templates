@@ -189,7 +189,7 @@ Tasks:
         Type: List
         ValueSelector: .applicationParameters
   - Name: bulkyDeployRevisions
-    Action: 'ACS::CICD::DeployRevisionOnEcs'
+    Action: 'ACS::CICD::DeployRevisionOnEss'
     Description:
       en: BulkyDeployRevisions
       zh-cn: 批量发布部署物

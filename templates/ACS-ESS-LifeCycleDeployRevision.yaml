@@ -117,7 +117,7 @@ Tasks:
         Type: List
         ValueSelector: .applicationParameters
   - Name: DeployRevision
-    Action: 'ACS::CICD::DeployRevisionOnEcs'
+    Action: 'ACS::CICD::DeployRevisionOnEss'
     OnError: CompleteLifecycleActionForContinue
     When:
       Fn::Equals:
