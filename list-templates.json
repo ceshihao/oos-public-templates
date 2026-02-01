@@ -426,7 +426,7 @@
       "CreatedDate": "2019-09-23T11:52:52Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidth\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "78dad16cc87bfc0373fe6902201cc6b4bf62a895edb02f1f8a782abdfc771c8c",
+      "Hash": "7bae535fbf86e9c9a7e313dacb508eefe6066d6068a3a631dbf6dfd3ac99725d",
       "IsFavorite": false,
       "Popularity": 8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -436,10 +436,10 @@
       "TemplateId": "t-75eabaf5ba1d4b5a95e4",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidth",
       "TemplateType": "Automation",
-      "TemplateVersion": "v38",
+      "TemplateVersion": "v39",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-11-07T06:55:08Z"
+      "UpdatedDate": "2026-01-30T10:43:43Z"
     },
     {
       "Category": "Other",
@@ -776,27 +776,6 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2024-02-22T03:18:22Z"
-    },
-    {
-      "Category": "Other",
-      "CreatedBy": "ACS",
-      "CreatedDate": "2019-09-23T09:59:47Z",
-      "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装日志服务插件\", \"name-en\": \"ACS-ECS-BulkyInstallLogAgent\", \"name-zh-cn\": \"批量安装日志服务插件\", \"categories\": [\"run_command\"]}",
-      "HasTrigger": false,
-      "Hash": "ec550dc3c1d866b39346ec066e9507f3e6ef66611f0b0852a3aecdbcac6e71f2",
-      "IsFavorite": false,
-      "Popularity": 5,
-      "ResourceGroupId": "rg-acfmz4wrjukykdy",
-      "ShareType": "Public",
-      "Tags": {},
-      "TemplateFormat": "YAML",
-      "TemplateId": "t-7d7cca42bbd54b0885b3",
-      "TemplateName": "ACS-ECS-BulkyInstallLogAgent",
-      "TemplateType": "Automation",
-      "TemplateVersion": "v21",
-      "TotalExecutionCount": -1,
-      "UpdatedBy": "ACS",
-      "UpdatedDate": "2023-11-17T08:29:24Z"
     },
     {
       "Category": "Other",
@@ -2526,7 +2505,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在指定ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "73bc4c53e20b18fdddec9f8dfdbd33200f9090230c700541b27a23d535e40cb4",
+      "Hash": "4d68f17bfd15ce5e9cdad8c3a64652f680f7f9bfd8f40082c113505104b27994",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2536,10 +2515,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-08T02:22:14Z"
+      "UpdatedDate": "2026-01-30T10:43:43Z"
     },
     {
       "Category": "Other",
@@ -3618,7 +3597,7 @@
       "CreatedDate": "2022-05-11T07:40:54Z",
       "Description": "{\"en\": \"Schedule bulky create snapshot\", \"zh-cn\": \"定时批量给磁盘创建快照\", \"name-en\": \"ACS-ECS-ScheduleToBulkyCreateSnapshot\", \"name-zh-cn\": \"定时批量创建快照\"}",
       "HasTrigger": true,
-      "Hash": "3fca1a504f8e69d919323b96d65d843873c471af8bf82b2149527f69bfa302ee",
+      "Hash": "f7b8fb8245d39f1694f114014c73216c17b84f457bb6208f42ec3e0eb4399003",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3628,10 +3607,10 @@
       "TemplateId": "t-0ac55b649ad44a46b9bd",
       "TemplateName": "ACS-ECS-ScheduleToBulkyCreateSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-08T02:22:14Z"
+      "UpdatedDate": "2026-01-30T10:43:43Z"
     },
     {
       "Category": "TimerTrigger",
@@ -5613,7 +5592,7 @@
       "CreatedDate": "2025-12-02T09:12:55Z",
       "Description": "{\"name-en\": \"ACS-ESS-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个Ess应用分组上部署部署物\", \"en\": \"Deploy deployments on single application group\", \"zh-cn\": \"在单个Ess应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "3047ef3f14410f786324365403c2cacf9782660b16c34215bb335ce0a1991e7c",
+      "Hash": "83c76a335b5f2fb3e269391b7f959548cb5c1357c2b0736860f9a9ffe0896634",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5623,10 +5602,31 @@
       "TemplateId": "t-e6a4805658394d358ef1",
       "TemplateName": "ACS-ESS-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-23T10:09:29Z"
+      "UpdatedDate": "2026-01-28T09:09:22Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2019-09-23T09:59:47Z",
+      "Description": "{\"en\": \"Use this template to install sls agent on ecs\", \"zh-cn\": \"使用这个模板批量的在ECS安装日志服务插件\", \"name-en\": \"ACS-ECS-BulkyInstallLogAgent\", \"name-zh-cn\": \"批量安装日志服务插件\", \"categories\": [\"run_command\"]}",
+      "HasTrigger": false,
+      "Hash": "06059636d333496801746a2eb9b97e34ad8c386f2f9917d757c7f593174fb4ad",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "rg-acfmz4wrjukykdy",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-7d7cca42bbd54b0885b3",
+      "TemplateName": "ACS-ECS-BulkyInstallLogAgent",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v22",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-01-27T11:10:59Z"
     },
     {
       "Category": "Other",
@@ -7146,7 +7146,7 @@
       "CreatedDate": "2025-07-18T09:42:16Z",
       "Description": "{\"en\": \"Use lifecycleHook to download file and run command in the specified scaling activity instance\", \"zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"name-en\": \"ACS-ESS-LifeCycleDeployRevision\", \"name-zh-cn\": \"使用生命周期挂钩下载文件到实例并执行命令\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "5bfe85b0d42bd2d1e1fc8e968b81d928b90d5779c6db57f8b3ac515c01ccadd4",
+      "Hash": "5ab791e4232cc665d06061446cac5c534fbf36ad38d5a928b129b8cf9ad4dd1e",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7156,10 +7156,10 @@
       "TemplateId": "t-0dd82fbd0d5744d28bd4",
       "TemplateName": "ACS-ESS-LifeCycleDeployRevision",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-23T11:17:17Z"
+      "UpdatedDate": "2026-01-27T02:42:11Z"
     },
     {
       "Category": "Other",
@@ -7461,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "f0525a19f9713ab8a18deb43ac2e2846af2e87e634763c2ac0d1c9e413d34fad",
+      "Hash": "aa31fc9e373e8d3c45709c49d9cadffdc6ec291d1c2a4a827d99137dcb6465c5",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7471,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v19",
+      "TemplateVersion": "v20",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-23T10:41:42Z"
+      "UpdatedDate": "2026-01-27T02:42:10Z"
     },
     {
       "Category": "Other",

@@ -51,6 +51,7 @@ Parameters:
     AssociationProperty: Targets
     AssociationPropertyMetadata:
       HideTypes: ["Tags", "ResourceGroup",  "UploadFile",  "All", "Inventory"]
+      HideTargetsConditionDisplay: ["applicationGroup"]
       ResourceType: 'ALIYUN::ECS::Instance'
       Application: ${applicationName}
       ApplicationGroup: ${applicationGroupName}
@@ -189,7 +190,7 @@ Tasks:
         Type: List
         ValueSelector: .applicationParameters
   - Name: bulkyDeployRevisions
-    Action: 'ACS::CICD::DeployRevisionOnEss'
+    Action: 'ACS::CICD::DeployRevisionOnEcs'
     Description:
       en: BulkyDeployRevisions
       zh-cn: 批量发布部署物
