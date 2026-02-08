@@ -7461,7 +7461,7 @@
       "CreatedDate": "2025-09-03T05:57:30Z",
       "Description": "{\"name-en\": \"ACS-ECS-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "aa31fc9e373e8d3c45709c49d9cadffdc6ec291d1c2a4a827d99137dcb6465c5",
+      "Hash": "de1d64d5b23343b6acb6c63af405e95a7c74cbd2e81a116fb47713bc7377ddd7",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7471,10 +7471,10 @@
       "TemplateId": "t-9ed646d2c9c943e7ab79",
       "TemplateName": "ACS-ECS-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v21",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-27T02:42:10Z"
+      "UpdatedDate": "2026-02-03T07:24:57Z"
     },
     {
       "Category": "Other",

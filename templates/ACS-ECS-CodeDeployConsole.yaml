@@ -464,11 +464,15 @@ Parameters:
     Label:
       en: Image Version
       zh-cn: 镜像版本
-    Description:
-      en: Please fill in the version of the image to be published.
-      zh-cn: 请填写待发布镜像的版本。
     Type: String
+    AssociationProperty: ALIYUN::CR::Repository::Tag
     AssociationPropertyMetadata:
+      RegionId: ${acrRegion}
+      AcrType: ${acrType}
+      InstanceId: ${acrId}
+      RepoNamespaceName: ${namespace}
+      RepoName: ${repoName}
+      ShowImageRepositoryPath: true
       Visible:
         Condition:
           Fn::Equals:
