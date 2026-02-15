@@ -50,6 +50,19 @@ Tasks:
       deployRegionId:
         Type: String
         ValueSelector: .ApplicationGroup.DeployRegionId
+  - Name: getApplicationParameters
+    Action: ACS::CICD::ListApplicationParameters
+    Description:
+      en: GetApplicationParameters
+      zh-cn: 获取应用参数
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+    Outputs:
+      applicationParameters:
+        Type: List
+        ValueSelector: .applicationParameters
   - Name: getClusterList
     Action: 'ACS::SelectTargets'
     Description:
@@ -74,6 +87,7 @@ Tasks:
     Properties:
       regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
       clusterId: '{{ ACS::TaskLoopItem }}'
+      applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
       deployRevisionId: '{{ deployRevisionId }}'
     Loop:
       Items: '{{ getClusterList.clusterList }}'
