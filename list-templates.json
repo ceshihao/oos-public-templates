@@ -930,7 +930,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "4cbda462ee373435691e0738131febb5a1fe105a7cd0b2aed742614ecbac40e3",
+      "Hash": "86e0521fdd2006a3d8df17cf5a7dae9ca0df8c3a32d827e5524d3e90e7d4024f",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -940,10 +940,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-06-19T10:04:11Z"
+      "UpdatedDate": "2026-02-27T08:29:32Z"
     },
     {
       "Category": "Other",
@@ -2148,7 +2148,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "477c6fa74223bac6c416f9bc9bb9dff684e149f2c2c538c92780241da782263c",
+      "Hash": "95f76d9e20ca5698aae46f3163edbd663e0cb2b77612666a68ded7f40680ebdd",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2158,10 +2158,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v52",
+      "TemplateVersion": "v53",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-14T05:42:00Z"
+      "UpdatedDate": "2026-02-25T02:28:52Z"
     },
     {
       "Category": "Other",
@@ -2484,7 +2484,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "c45c96a5850deb4035e225e492185a25219b79c6f0855c4ebf9a96c08c46deff",
+      "Hash": "6a808894eb870f4d2d9ddd97ad04d87fd1cd78371da9b0ae92f20ba50a2a1250",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2494,10 +2494,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v20",
+      "TemplateVersion": "v22",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-01-29T07:26:58Z"
+      "UpdatedDate": "2026-02-24T08:56:13Z"
     },
     {
       "Category": "TimerTrigger",
@@ -3534,7 +3534,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "bf7c89a02c1e79afe5ff182c7c0c4ccad47744d224b1b26a879b07ef6de9e0a2",
+      "Hash": "145f10a107d757533fb5c9cfcda33dc88c429e21c65710c01f1bf7ed3022a6fc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3544,10 +3544,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v41",
+      "TemplateVersion": "v42",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-10-13T03:49:30Z"
+      "UpdatedDate": "2026-02-25T02:28:52Z"
     },
     {
       "Category": "Other",
@@ -5606,6 +5606,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-01-28T09:09:22Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-02-28T09:16:25Z",
+      "Description": "{\"name-en\": \"ACS-ECS-UploadFileToOss\", \"name-zh-cn\": \"上传ECS文件到OSS\", \"en\": \"Upload files from ECS instances to the specified OSS bucket\", \"zh-cn\": \"将ECS实例中的文件上传到指定的OSS存储桶中\"}",
+      "HasTrigger": false,
+      "Hash": "150da017c9a193b135ecefd494e935180ee0438c4e1e61172416ff4deecbf7c3",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-d06bbb47826649d4bb62",
+      "TemplateName": "ACS-ECS-UploadFileToOss",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-02-28T09:16:25Z"
     },
     {
       "Category": "Other",

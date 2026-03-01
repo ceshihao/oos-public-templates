@@ -1,0 +1,94 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ECS-UploadFileToOss
+  name-zh-cn: 上传ECS文件到OSS
+  en: Upload files from ECS instances to the specified OSS bucket
+  zh-cn: 将ECS实例中的文件上传到指定的OSS存储桶中 
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: ALIYUN::ECS::RegionId
+    Default: '{{ ACS::RegionId }}'
+  instanceId:
+    Type: String
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
+    Label:
+      en: ECS Instance Id
+      zh-cn: ECS实例
+    AssociationPropertyMetadata:
+      RegionId: regionId
+  fileName:
+    Type: String
+    Description:
+      en: The path of the file to be uploaded on the ecs, such as /root/your_file.zip (linux), C:\\Users\\Administrator\\your_file.zip (windows)
+      zh-cn: 要上传的文件在ecs上的路径，如/root/your_file.zip (linux), C:\\Users\\Administrator\\your_file.zip (windows 请使用双反斜杠)
+    Label:
+      en: File to be uploaded
+      zh-cn: 要上传的文件
+  ossRegion:
+    Type: String
+    Label:
+      en: OSS RegionId
+      zh-cn: OSS地域
+    Default: '{{ ACS::RegionId }}'
+    AssociationProperty: ALIYUN::ECS::RegionId
+  bucketName:
+    Type: String
+    AssociationProperty: ALIYUN::OSS::Bucket::BucketName
+    AssociationPropertyMetadata:
+      RegionId: ossRegion
+    Label:
+      en: OSS bucket
+      zh-cn: OSS Bucket
+    Description:
+      en: The OSS bucket to upload to.
+      zh-cn: 要上传到的OSS存储桶。
+  objectName:
+    Type: String
+    Label:
+      en: OSS object
+      zh-cn: OSS object
+    Description:
+      en: The name of the object to be uploaded to the OSS bucket， such as mydir/your_file.zip.
+      zh-cn: 上传到OSS存储桶中的对象名称，如 mydir/your_file.zip。
+Tasks:
+  - Action: ACS::ECS::UploadOssFile
+    Name: UploadOssFile
+    Description:
+      en: Upload OSS file
+      zh-cn: 上传OSS文件
+    Properties:
+      regionId: '{{ regionId }}'
+      ossRegion: '{{ ossRegion }}'
+      validTime: 900
+      uploadWaitingTime: 3600
+      objectName: '{{ objectName }}'
+      bucketName: '{{ bucketName }}'
+      fileToUpload: '{{ fileName }}'
+      instanceId: '{{ instanceId }}'
+Outputs:
+  commandOutput:
+    Type: String
+    Value: '{{ UploadOssFile.commandOutput }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - instanceId
+          - fileName
+        Label:
+          default:
+            zh-cn: ECS上文件的信息
+            en: Ecs File Information
+      - Parameters:
+          - ossRegion
+          - bucketName
+          - objectName
+        Label:
+          default:
+            zh-cn: OSS存储桶信息
+            en: Oss Bucket Information

@@ -75,6 +75,7 @@ Parameters:
       - me-central-1
       - na-south-1
       - us-southeast-1
+      - cn-zhongwei
     Default:
       - all-regions
   rateControl:

@@ -82,6 +82,22 @@ Parameters:
             'Fn::Equals':
               - '${action}'
               - install
+  tags:
+    Description:
+      en: Set tags for snapshots
+      zh-cn: 为快照设置标签
+    Label:
+      en: Tags
+      zh-cn: 快照标签
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${whetherCreateSnapshot}'
+            - true
+    Default: []
   rateControl:
     Label:
       en: RateControl
@@ -137,6 +153,7 @@ Tasks:
       retentionDays: '{{ retentionDays }}'
       rebootIfNeed: '{{ rebootIfNeed }}'
       timeout: '{{ timeout }}'
+      tags: '{{ tags }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'
@@ -224,6 +241,7 @@ Metadata:
           - retentionDays
           - rebootIfNeed
           - timeout
+          - tags
         Label:
           default:
             zh-cn: 配置参数

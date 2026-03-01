@@ -129,6 +129,7 @@ Parameters:
       - ACS::MongoDB::DBInstance
       - ACS::MSE::Gateway
       - ACS::MSE::Cluster
+      - ACS::NAS::AccessPoint
       - ACS::NAS::FileSystem
       - ACS::NAT::NatGateway
       - ACS::NLB::Listener
