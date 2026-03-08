@@ -27,6 +27,39 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
     AssociationPropertyMetadata:
       ApplicationName: ${applicationName}
+  importApplicationParameters:
+    Label:
+      en: importApplicationParameters
+      zh-cn: 将应用参数导入集群
+    Description:
+      en: Ordinary parameters are imported as ConfigMap, and encrypted parameters are imported as Secret. Please ensure that the value of the encrypted parameter is Base64 encoded.
+      zh-cn: 普通参数导入为ConfigMap，加密参数导入为Secret。请确保加密参数的值为Base64编码。
+    Type: Boolean
+    Default: false
+  configMapName:
+    Label:
+      en: ConfigMapName
+      zh-cn: ConfigMap名称
+    Type: String
+    Default: app-config
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${importApplicationParameters}
+            - true
+  secretName:
+    Label:
+      en: SecretName
+      zh-cn: Secret名称
+    Type: String
+    Default: app-secret
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${importApplicationParameters}
+            - true
 Tasks:
   - Name: getApplicationGroupDetail
     Action: ACS::ExecuteApi
@@ -89,6 +122,9 @@ Tasks:
       clusterId: '{{ ACS::TaskLoopItem }}'
       applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
       deployRevisionId: '{{ deployRevisionId }}'
+      importApplicationParameters: '{{ importApplicationParameters }}'
+      configMapName: '{{ configMapName }}'
+      secretName: '{{ secretName }}'
     Loop:
       Items: '{{ getClusterList.clusterList }}'
       RateControl:

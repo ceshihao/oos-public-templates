@@ -5311,7 +5311,7 @@
       "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-12-26T10:34:06Z"
+      "UpdatedDate": "2026-03-04T08:37:57Z"
     },
     {
       "Category": "Other",
@@ -6385,7 +6385,7 @@
       "UpdatedDate": "2024-11-05T02:10:38Z"
     },
     {
-      "Category": "Other",
+      "Category": "TimerTrigger",
       "CreatedBy": "ACS",
       "CreatedDate": "2024-05-20T07:40:09Z",
       "Description": "{\"name-en\": \"ACS::OOS::BuildDockerImage\", \"name-zh-cn\": \"构建Docker镜像\", \"en\": \"Build Docker Image and Upload to ACR\", \"zh-cn\": \"构建Docker镜像并上传至阿里云镜像仓库\"}",
@@ -6403,7 +6403,7 @@
       "TemplateVersion": "v1",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-05-20T07:40:09Z"
+      "UpdatedDate": "2026-03-04T08:35:26Z"
     },
     {
       "Category": "Other",
@@ -7797,7 +7797,7 @@
       "CreatedDate": "2026-01-15T10:44:30Z",
       "Description": "{\"name-en\": \"ACS-ACK-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个ACK应用分组上部署部署物\", \"en\": \"Deploy deployments on single ACK application group\", \"zh-cn\": \"在单个ACK应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "dcc09cd836e27c6cc5c751f5a2bba64f4f267b42ac6fac9cc7f5d4b7e2873767",
+      "Hash": "b20448050352740ca511b60524b8586707c7be02159bf09770970a1ecaaa4b41",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7807,10 +7807,10 @@
       "TemplateId": "t-e27024dfcec5494eb111",
       "TemplateName": "ACS-ACK-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-02-09T08:05:17Z"
+      "UpdatedDate": "2026-03-04T06:51:11Z"
     },
     {
       "Category": "Other",
