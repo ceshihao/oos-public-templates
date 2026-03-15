@@ -3639,7 +3639,7 @@
       "CreatedDate": "2022-05-11T07:58:12Z",
       "Description": "{\"en\": \"Schedule to upgrades internet bandwidth for ECS instances\", \"zh-cn\": \"定时升级ECS实例临时带宽\", \"name-en\": \"ACS-ECS-ScheduleToUpgradeInternetBandwidthNew\", \"name-zh-cn\": \"定时升级ECS实例临时带宽\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "160d9033f86d7192cbb1f64a20091115d022803672dc079813346ec7d47c0225",
+      "Hash": "7183c7e1642286ed4999f0a628cd55733c0e1e4088fd26e24d73afc3c9a187fc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3649,10 +3649,10 @@
       "TemplateId": "t-19bfdce86a58497d8538",
       "TemplateName": "ACS-ECS-ScheduleToUpgradeInternetBandwidthNew",
       "TemplateType": "Automation",
-      "TemplateVersion": "v13",
+      "TemplateVersion": "v14",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-05T10:37:37Z"
+      "UpdatedDate": "2026-03-10T06:14:27Z"
     },
     {
       "Category": "Other",

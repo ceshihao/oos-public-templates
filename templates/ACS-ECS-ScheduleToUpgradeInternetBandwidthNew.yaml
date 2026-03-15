@@ -38,11 +38,11 @@ Parameters:
       en: The maximum public network bandwidth for out-direction
       zh-cn: 公网最大出带宽
     Description:
-      en: 'Unit: Mbit/s, range：0~100'
-      zh-cn: 单位：Mbit/s, 取值范围：0~100
+      en: 'Unit: Mbit/s, range：0~200'
+      zh-cn: 单位：Mbit/s, 取值范围：0~200
     Type: Number
     MinValue: 0
-    MaxValue: 100
+    MaxValue: 200
     Default: 10
   durationHour:
     Label:
