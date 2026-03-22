@@ -930,7 +930,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "86e0521fdd2006a3d8df17cf5a7dae9ca0df8c3a32d827e5524d3e90e7d4024f",
+      "Hash": "2f9ace9ad3590240b02e47d5bb1c22559e7bb2e8415549a4592079ceb1872fea",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -940,10 +940,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v23",
+      "TemplateVersion": "v24",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-02-27T08:29:32Z"
+      "UpdatedDate": "2026-03-21T00:30:07Z"
     },
     {
       "Category": "Other",
@@ -7832,6 +7832,48 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-01-19T08:49:13Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-03-20T08:53:04Z",
+      "Description": "{\"en\": \"Pull the code from git, build docker image, upload it to ACR, and deploy it to multiple ECS in batches.\", \"zh-cn\": \"从git拉取代码，构建docker镜像上传至ACR，并批量部署到多台ECS <a href=\\\"https://help.aliyun.com/document_detail/2839792.html\\\" target=\\\"_blank\\\">说明文档</a>\", \"name-en\": \"ACS-ECS-ExampleDockerBuildAndDeployFromGit\", \"name-zh-cn\": \"构建镜像至ACR并部署\", \"categories\": [\"cicd\"]}",
+      "HasTrigger": false,
+      "Hash": "fa8b75b8661225a298c933ba004a2a24198ff0e43bc2fb77f219eb1498f440ef",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-fc300139de8e437ba079",
+      "TemplateName": "ACS-ECS-ExampleDockerBuildAndDeployFromGit0",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-03-20T08:53:04Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-03-20T09:08:37Z",
+      "Description": "{\"en\": \"Pull the code from git, build docker image, upload it to ACR, and deploy it to multiple ECS in batches.\", \"zh-cn\": \"从git拉取代码，构建docker镜像上传至ACR，并批量部署到多台ECS <a href=\\\"https://help.aliyun.com/document_detail/2839792.html\\\" target=\\\"_blank\\\">说明文档</a>\", \"name-en\": \"ACS-ECS-ExampleDockerBuildAndDeployFromGit\", \"name-zh-cn\": \"构建镜像至ACR并部署\", \"categories\": [\"cicd\"]}",
+      "HasTrigger": false,
+      "Hash": "fa8b75b8661225a298c933ba004a2a24198ff0e43bc2fb77f219eb1498f440ef",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-213ec417f5d642eca940",
+      "TemplateName": "ACS-ECS-ExampleDockerBuildAndDeployFromGit01",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-03-20T09:08:37Z"
     }
   ]
 }

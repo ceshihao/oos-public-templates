@@ -76,6 +76,7 @@ Parameters:
       - na-south-1
       - us-southeast-1
       - cn-zhongwei
+      - ap-southeast-8
     Default:
       - all-regions
   rateControl:
