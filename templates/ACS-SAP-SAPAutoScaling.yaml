@@ -1,6 +1,6 @@
 FormatVersion: OOS-2019-06-01
 Description:
-  en: ''
+  en: SAP AAS (Additional Application Server) is an automatic scaling service that creates elastic scaling groups based on the existing PAS (Primary Application Server) of the SAP system. It automatically or manually scales ECS instances and deploys AAS, and automatically adds AAS to SAP Logon groups.
   zh-cn: SAP AAS(Additional application server)自动扩展服务，基于已有SAP系统的PAS(Primary application server)创建弹性伸缩组，自动或手动扩展ECS实例并部署AAS，并将AAS自动加入SAP Logon groups
   name-en: ACS-SAP-SAPAutoScaling
   name-zh-cn: SAP AAS自动扩展

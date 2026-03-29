@@ -23,6 +23,9 @@ Parameters:
       en: PolicyName
       zh-cn: 权限策略名称
     Type: String
+    AssociationProperty: ALIYUN::RAM::Policy::PolicyName
+    AssociationPropertyMetadata:
+      PolicyType: ${policyType}
   webHookUrl:
     Label:
       en: WebHookUrl

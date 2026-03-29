@@ -1,0 +1,71 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Pull the code from git, build docker image, upload it to ACR, and deploy it to multiple ECS in batches.
+  zh-cn: 从git拉取代码，构建docker镜像上传至ACR，并批量部署到多台ECS <a href="https://help.aliyun.com/document_detail/2839792.html" target="_blank">说明文档</a>
+  name-en: ACS-ECS-ExampleDockerBuildAndDeployFromGit
+  name-zh-cn: 构建镜像至ACR并部署
+  categories:
+    - cicd
+Tasks:
+  - Name: GitCodeRepo
+    Action: ACS::CICD::GitCodeRepo
+    Description:
+      en: Specify the code source, generate a temporary authorization link
+      zh-cn: 指定代码源，生成临时授权链接
+    Properties:
+      organization: ''
+      platform: gitee
+      owner: ''
+      repository: ''
+      branch: ''
+  - Name: DockerBuild
+    Action: ACS::CICD::DockerBuild
+    Description:
+      en: Build docker image and upload it to ACR.
+      zh-cn: 构建docker镜像，上传到ACR
+    Properties:
+      buildType: ExistingEcs
+      instanceId: ''
+      zoneId: ''
+      ecsInstanceType: ecs.g6.large
+      imageId: centos_7
+      allocatePublicIP: true
+      buildScript: |-
+        ##### 您可以在这里做一些docker build之前的准备工作
+        ##### You may do some work you needed here before docker build
+        ### Example
+        # Check whether the Dockerfile exists
+        # if [ ! -f "Dockerfile" ]; then
+        #    echo "Error: Dockerfile not found!"
+        #    exit 1
+        # fi
+      dockerFilePath: Dockerfile
+      contextPath: ''
+      imageVersion: v-{{ACS::CurrentDate}}-{{ACS::ExecutionId}}
+      isInternal: false
+      codeSource: git
+      codeSourceUrl: '{{ GitCodeRepo.authorizedUrl }}'
+      acrId: ''
+      namespace: ''
+      repoName: ''
+      acrType: Personal
+  - Name: DockerDeploy
+    Action: ACS::CICD::DockerDeploy
+    Description:
+      en: Pull the image from ACR, and deploy it.
+      zh-cn: 从ACR拉取镜像，并部署
+    Properties:
+      dockerRunOptions: ''
+      isInternal: false
+      acrId: '{{ DockerBuild.acrId }}'
+      namespace: '{{ DockerBuild.namespace }}'
+      repoName: '{{ DockerBuild.repoName }}'
+      imageVersion: '{{ DockerBuild.imageVersion }}'
+      username: '{{ DockerBuild.username }}'
+      password: '{{ DockerBuild.password }}'
+      acrType: Personal
+      targets: {}
+      rateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 10

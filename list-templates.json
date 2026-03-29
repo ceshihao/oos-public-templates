@@ -802,9 +802,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-09-23T11:27:44Z",
-      "Description": "{\"en\": \"Run shell script.\", \"zh-cn\": \"运行shell脚本\", \"title\": \"ACS-ECS-RunShellScript\", \"name-zh-cn\": \"运行shell脚本\", \"categories\": [\"run_command\"]}",
+      "Description": "{\"en\": \"Run shell script.\", \"zh-cn\": \"运行shell脚本\", \"name-en\": \"ACS-ECS-RunShellScript\", \"name-zh-cn\": \"运行shell脚本\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "00eef10a1daf60763546ef3c32ab4c33c5385b9f05c79fad340e33e8ab6b509e",
+      "Hash": "35393a5976f0a799e79576da2d4c1a56cd2672833347cfa246038edcc8b0e9ef",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -814,10 +814,10 @@
       "TemplateId": "t-ad02ab38034f4768a2ac",
       "TemplateName": "ACS-ECS-RunShellScript",
       "TemplateType": "Automation",
-      "TemplateVersion": "v11",
+      "TemplateVersion": "v12",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-02-27T11:30:49Z"
+      "UpdatedDate": "2026-03-24T05:33:45Z"
     },
     {
       "Category": "Other",
@@ -1833,7 +1833,7 @@
       "CreatedDate": "2020-07-24T03:40:23Z",
       "Description": "{\"en\": \"Attach policy to user that template executed by after approving\", \"zh-cn\": \"审批通过后授权给创建执行的子用户\", \"name-en\": \"ACS-RAM-ApproveAttachPolicyToUser\", \"name-zh-cn\": \"审批通过后授权给创建执行的子用户\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "15c1959255b22595593fcfb7287af56d1713fe05056a51b95c5d11b6d65820d4",
+      "Hash": "57c0ca09517cd9790726c598c5014b80ff378d7123ce66fa05b1502e58c7f987",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1843,10 +1843,10 @@
       "TemplateId": "t-dd813ba5a55e42988128",
       "TemplateName": "ACS-RAM-ApproveAttachPolicyToUser",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-02-22T03:18:28Z"
+      "UpdatedDate": "2026-03-26T03:28:13Z"
     },
     {
       "Category": "Other",
@@ -2335,9 +2335,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2021-03-24T02:30:28Z",
-      "Description": "{\"en\": \"\", \"zh-cn\": \"SAP AAS(Additional application server)自动扩展服务，基于已有SAP系统的PAS(Primary application server)创建弹性伸缩组，自动或手动扩展ECS实例并部署AAS，并将AAS自动加入SAP Logon groups\", \"name-en\": \"ACS-SAP-SAPAutoScaling\", \"name-zh-cn\": \"SAP AAS自动扩展\"}",
+      "Description": "{\"en\": \"SAP AAS (Additional Application Server) is an automatic scaling service that creates elastic scaling groups based on the existing PAS (Primary Application Server) of the SAP system. It automatically or manually scales ECS instances and deploys AAS, and automatically adds AAS to SAP Logon groups.\", \"zh-cn\": \"SAP AAS(Additional application server)自动扩展服务，基于已有SAP系统的PAS(Primary application server)创建弹性伸缩组，自动或手动扩展ECS实例并部署AAS，并将AAS自动加入SAP Logon groups\", \"name-en\": \"ACS-SAP-SAPAutoScaling\", \"name-zh-cn\": \"SAP AAS自动扩展\"}",
       "HasTrigger": false,
-      "Hash": "a1ae756fc468c4453ed7bf9fb63d471503f189fb77fd8b71da2790c5b344abf1",
+      "Hash": "faa1024f7de8dd6e319380b36154e2a8d96451a9ee31405d7a7eb80abf0716ac",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2347,10 +2347,10 @@
       "TemplateId": "t-f477fe4417ea4d2ca451",
       "TemplateName": "ACS-SAP-SAPAutoScaling",
       "TemplateType": "Automation",
-      "TemplateVersion": "v7",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-07-25T01:39:13Z"
+      "UpdatedDate": "2026-03-24T05:33:45Z"
     },
     {
       "Category": "Other",
@@ -6403,7 +6403,7 @@
       "TemplateVersion": "v1",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-03-04T08:35:26Z"
+      "UpdatedDate": "2026-03-24T05:41:54Z"
     },
     {
       "Category": "Other",
@@ -7874,6 +7874,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-03-20T09:08:37Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-03-23T09:40:22Z",
+      "Description": "{\"en\": \"Pull the code from git, build docker image, upload it to ACR, and deploy it to multiple ECS in batches.\", \"zh-cn\": \"从git拉取代码，构建docker镜像上传至ACR，并批量部署到多台ECS <a href=\\\"https://help.aliyun.com/document_detail/2839792.html\\\" target=\\\"_blank\\\">说明文档</a>\", \"name-en\": \"ACS-ECS-ExampleDockerBuildAndDeployFromGit\", \"name-zh-cn\": \"构建镜像至ACR并部署\", \"categories\": [\"cicd\"]}",
+      "HasTrigger": false,
+      "Hash": "fa8b75b8661225a298c933ba004a2a24198ff0e43bc2fb77f219eb1498f440ef",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-186c1a70ab074758bcd0",
+      "TemplateName": "ACS-ECS-ExampleDockerBuildAndDeployFromGit011",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-03-23T09:40:22Z"
     }
   ]
 }

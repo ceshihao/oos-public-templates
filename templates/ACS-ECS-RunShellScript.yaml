@@ -2,7 +2,7 @@ FormatVersion: OOS-2019-06-01
 Description:
   en: Run shell script.
   zh-cn: 运行shell脚本
-  title: ACS-ECS-RunShellScript
+  name-en: ACS-ECS-RunShellScript
   name-zh-cn: 运行shell脚本
   categories:
     - run_command
