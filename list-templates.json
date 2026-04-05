@@ -1035,7 +1035,7 @@
       "CreatedDate": "2019-11-07T04:26:58Z",
       "Description": "{\"en\": \"Bulky delete snapshot\", \"zh-cn\": \"批量删除快照\", \"name-en\": \"ACS-ECS-BulkyDeleteSnapshot\", \"name-zh-cn\": \"批量删除快照\", \"categories\": [\"data_backup\"]}",
       "HasTrigger": false,
-      "Hash": "1d1a7bfe98c5680acb1ccd1e1dc39af00c7d7392d54df0df6df9825b4d59a36a",
+      "Hash": "fd7f626b7fb737c8d7946043ad7072207c1e5c707c4066b44ff62c65b7d29d42",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -1045,10 +1045,10 @@
       "TemplateId": "t-1795a62074f045509873",
       "TemplateName": "ACS-ECS-BulkyDeleteSnapshot",
       "TemplateType": "Automation",
-      "TemplateVersion": "v10",
+      "TemplateVersion": "v11",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-03-13T09:43:01Z"
+      "UpdatedDate": "2026-04-02T09:40:52Z"
     },
     {
       "Category": "Other",
