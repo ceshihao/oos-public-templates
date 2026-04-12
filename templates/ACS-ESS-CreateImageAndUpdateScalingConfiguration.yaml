@@ -41,6 +41,31 @@ Parameters:
       zh-cn: OOS扮演的RAM角色
     Type: String
     Default: ''
+  dataDiskCategories:
+    Label:
+      en: DataDiskCategories
+      zh-cn: 伸缩配置的数据盘类型
+    Description:
+      en: <p class="p">Note:</p> <ul class="ul"> <li class="li">This parameter is only valid when the instance contains at least one data disk.</li> </ul>
+      zh-cn: <p class="p">注意：</p> <ul class="ul"> <li class="li">该参数仅在实例包含数据盘时有效。</li> </ul>
+    Type: List
+    AllowedValues:
+      - cloud
+      - cloud_efficiency
+      - cloud_ssd
+      - cloud_essd
+      - cloud_auto
+      - cloud_essd_entry
+    Default: [ ]
+  dataDiskSize:
+    Label:
+      en: DataDiskSize
+      zh-cn: 伸缩配置的数据盘大小
+    Description:
+      en: <p class="p">Note:</p> <ul class="ul"> <li class="li">This parameter is only valid when the instance contains at least one data disk and DataDiskCategories is not empty.</li> </ul>
+      zh-cn: <p class="p">注意：</p> <ul class="ul"> <li class="li">该参数仅在实例包含数据盘且DataDiskCategories不为空时有效。</li> </ul>
+    Type: Number
+    Default: 20
 RamRole: '{{ OOSAssumeRole }}'
 Tasks:
 - Name: createImage
@@ -56,6 +81,20 @@ Tasks:
     imageId:
       ValueSelector: imageId
       Type: String
+- Name: describeImages
+  Action: ACS::ExecuteApi
+  Description:
+    en: Describe image
+    zh-cn: 查询镜像信息
+  Properties:
+    Service: ecs
+    API: DescribeImages
+    Parameters:
+      ImageId: '{{ createImage.imageId }}'
+  Outputs:
+    dataDisks:
+      Type: Json
+      ValueSelector: '.Images.Image[0].DiskDeviceMappings.DiskDeviceMapping|map( select(.Type == "data")|{"Device": (.Device),"SnapshotId":(.SnapshotId)})'
 - Name: modifyScalingConfiguration
   Action: ACS::ExecuteAPI
   Description:
@@ -67,6 +106,17 @@ Tasks:
     Parameters:
       ScalingConfigurationId: '{{ ACS::TaskLoopItem }}'
       ImageId: '{{ createImage.imageId }}'
+      DataDisk:
+        Fn::If:
+          - Fn::Not:
+              Fn::Equals:
+                - '{{ dataDiskCategories }}'
+                - [ ]
+          - Fn::Jq:
+              - First
+              - 'map({ Categories: {{ dataDiskCategories }}, Size: {{ dataDiskSize }}, Device, SnapshotId })'
+              - '{{ describeImages.dataDisks }}'
+          - Null
   Loop:
     Items: '{{ scalingConfigurationIds }}'
 Outputs:

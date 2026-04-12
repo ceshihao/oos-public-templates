@@ -594,7 +594,7 @@
       "CreatedDate": "2020-02-18T08:12:15Z",
       "Description": "{\"en\": \"Creates an ECS image and updates scaling configuration image ID\", \"zh-cn\": \"创建一个新ECS镜像并更新伸缩配置中的镜像ID\", \"name-en\": \"ACS-ESS-CreateImageAndUpdateScalingConfiguration\", \"name-zh-cn\": \"创建一个新ECS镜像并更新弹性伸缩配置\", \"categories\": [\"elastic_manage\"]}",
       "HasTrigger": false,
-      "Hash": "eb52fd9de97a37a49ff2b5a88c628ff57465be9fcfd031003e9d9b22f889e70e",
+      "Hash": "6d7a3f77eadc2ac62e6a9df9a6bc97e22676bd35f32f71759abb92ca0c3b98d4",
       "IsFavorite": false,
       "Popularity": 7.05,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -604,10 +604,10 @@
       "TemplateId": "t-57900f64c9f54d6a8bf2",
       "TemplateName": "ACS-ESS-CreateImageAndUpdateScalingConfiguration",
       "TemplateType": "Automation",
-      "TemplateVersion": "v21",
+      "TemplateVersion": "v22",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-10-20T07:33:12Z"
+      "UpdatedDate": "2026-04-09T02:21:29Z"
     },
     {
       "Category": "Other",
