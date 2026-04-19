@@ -1,0 +1,152 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en:
+    - Delete snapshots and their associated resources across all regions,
+      - Query and revoke snapshot sharing permissions
+      - Query and revoke image sharing permissions
+      - Query and delete custom images associated with snapshots
+      - Query and delete snapshots
+      - Query and delete consistent snapshot groups
+      - Query and disassociate automatic snapshot policies from disks
+  zh-cn:
+    - 删除全网快照及其关联资源。会按照如下顺序对所有地域生效：
+      - 查询被共享快照并解除共享关系
+      - 查询被共享镜像并解除共享关系
+      - 查询并删除被快照关联的自定义镜像
+      - 查询并删除快照
+      - 查询并删除一致性快照组
+      - 查询并解除自动快照策略磁盘绑定关系
+  name-en: ACS::ECS::BulkyDeleteSnapshotsAndAssociatedResources
+  name-zh-cn: 批量删除用户快照及其关联资源
+Parameters:
+  rateControl:
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 10
+Tasks:
+  - Name: describeRegionIds
+    Action: ACS::ExecuteApi
+    Description:
+      en: Get region id list
+      zh-cn: 获取地域ID列表
+    Properties:
+      Service: ECS
+      API: DescribeRegions
+      Parameters: {}
+    Outputs:
+      regionIds:
+        Type: List
+        ValueSelector: .Regions.Region[].RegionId
+  - Name: disassociateSharedSnapshots
+    Action: ACS::ECS::DisassociateSharedSnapshots
+    Description:
+      en: Disassociate shared snapshots
+      zh-cn: 解除快照共享关系（资源共享）
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+  - Name: disassociateSharedImages
+    Action: ACS::ECS::DisassociateSharedImages
+    Description:
+      en: Disassociate shared images
+      zh-cn: 解除镜像共享关系（资源共享）
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+  - Name: modifySharedImageSharePermission
+    Action: ACS::ECS::ModifySharedImageSharePermission
+    Description:
+      en: Modify shared image share permission
+      zh-cn: 修改共享镜像共享权限（弹性计算）
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+  - Name: deleteCustomImagesLinkedToSnapshot
+    Action: ACS::ECS::DeleteCustomImagesLinkedToSnapshot
+    Description:
+      en: Delete custom images linked to snapshot
+      zh-cn: 删除关联快照的自定义镜像
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+  - Name: deleteSnapshotsExceptSharedFromOthers
+    Action: ACS::ECS::DeleteSnapshotsExceptSharedFromOthers
+    Description:
+      en: Delete snapshots except shared from others
+      zh-cn: 删除快照（排除来自其他用户的共享快照）
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+  - Name: deleteSnapshotGroups
+    Action: ACS::ECS::DeleteSnapshotGroups
+    Description:
+      en: Delete snapshot groups
+      zh-cn: 删除一致性快照组
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+  - Name: cancelDiskAutoSnapshotPolicies
+    Action: ACS::ECS::CancelDiskAutoSnapshotPolicies
+    Description:
+      en: Cancel disk auto snapshot policies
+      zh-cn: 取消磁盘自动快照策略
+    Properties:
+      regionId: '{{ ACS::TaskLoopItem }}'
+    Outputs: {}
+    Loop:
+      Items: '{{ describeRegionIds.regionIds }}'
+      RateControl:
+        MaxErrors: 0
+        Mode: Concurrency
+        Concurrency: 5
+      Outputs: {}
+Outputs: {}
+

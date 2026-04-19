@@ -7895,6 +7895,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-03-23T09:40:22Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-04-13T08:43:15Z",
+      "Description": "{\"en\": [\"Delete snapshots and their associated resources across all regions, - Query and revoke snapshot sharing permissions - Query and revoke image sharing permissions - Query and delete custom images associated with snapshots - Query and delete snapshots - Query and delete consistent snapshot groups - Query and disassociate automatic snapshot policies from disks\"], \"zh-cn\": [\"删除全网快照及其关联资源。会按照如下顺序对所有地域生效： - 查询被共享快照并解除共享关系 - 查询被共享镜像并解除共享关系 - 查询并删除被快照关联的自定义镜像 - 查询并删除快照 - 查询并删除一致性快照组 - 查询并解除自动快照策略磁盘绑定关系\"], \"name-en\": \"ACS::ECS::BulkyDeleteSnapshotsAndAssociatedResources\", \"name-zh-cn\": \"批量删除用户快照及其关联资源\"}",
+      "HasTrigger": false,
+      "Hash": "b6794ef009d7071c28d3bae8753c774fc26456533e7cd0169676d5ad6665f30d",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-215dc858200c4e678cd1",
+      "TemplateName": "ACS-ECS-BulkyDeleteSnapshotsAndAssociatedResources",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v2",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-04-14T09:15:27Z"
     }
   ]
 }
