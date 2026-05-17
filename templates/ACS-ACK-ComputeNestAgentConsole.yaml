@@ -1,0 +1,151 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ACK-ComputeNestAgentConsole
+  name-zh-cn: 计算巢Agents部署 CodeDeploy 集群类型控制台渲染
+Parameters:
+  description:
+    Type: String
+    Label:
+      en: Description
+      zh-cn: 描述
+    Description:
+      en: Description of the current deployment version
+      zh-cn: 当前部署物版本的描述
+    Default: ''
+  revisionType:
+    Type: String
+    Label:
+      en: RevisionType
+      zh-cn: 部署物类型
+    Default: Yaml
+    AssociationProperty: ALIYUN::OOS::Component::SectionType
+    AssociationPropertyMetadata:
+      Sections:
+        - name: Yaml
+          title: YAML文件
+          description: 适用于应用源文件是YAML文件的场景。
+  content:
+    Type: String
+    Label:
+      en: YAML file
+      zh-cn: YAML文件
+    Default: |-
+      # Example YAML file
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: compute-nest-agent-scope
+          labels:
+            app: agent-scope
+            alibabacloud.com/compute-class: general-purpose
+            alibabacloud.com/compute-qos: default
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: agent-scope
+          template:
+            metadata:
+              labels:
+                app: agent-scope
+                alibabacloud.com/compute-class: general-purpose
+                alibabacloud.com/compute-qos: default
+            spec:
+              volumes:
+                - name: work
+                  emptyDir: {}
+              imagePullSecrets:
+                - name: app-secret
+              containers:
+                - name: app
+                  image: ${AcrImage}
+                  envFrom:
+                    - configMapRef:
+                        name: app-config
+                  ports:
+                    - name: http
+                      containerPort: ${Port}
+                  readinessProbe:
+                    tcpSocket:
+                      port: http
+                    initialDelaySeconds: 30
+                    periodSeconds: 20
+                    failureThreshold: 60
+                    timeoutSeconds: 20
+                  resources:
+                    requests:
+                      cpu: ${CPU}
+                      memory: ${Memory}
+                    limits:
+                      cpu: "2"
+                      memory: 4Gi
+                  volumeMounts:
+                    - mountPath: /workspace
+                      name: work
+    AssociationProperty: ALIYUN::OOS::Command::CommandContent
+  namespace:
+    Type: String
+    Default: 'default'
+    Label:
+      en: NameSpace
+      zh-cn: 命名空间
+    Description:
+      en: The namespace to deploy to
+      zh-cn: 部署到的命名空间
+  variables:
+    Type: String
+    Label:
+      en: Env
+      zh-cn: 环境变量
+    AssociationProperty: ALIYUN::OOS::CodeDeploy::Variables
+    AssociationPropertyMetadata:
+      CustomVariables: false # 不允许新增环境变量，
+      Variables:            # 允许修改环境变量，但不能改Key
+        - key: AcrImage
+          title:
+            en: AcrImageId
+            zh-cn: 容器镜像ID
+          description: 请填写容器镜像ID。
+        - key: Port
+          title:
+            en: Port
+            zh-cn: 端口
+          default: '8090'
+        - key: CPU
+          title:
+            en: CPU
+            zh-cn: CPU
+          default: '0.5'
+        - key: Memory
+          title:
+            en: Memory
+            zh-cn: Memory
+          default: 1Gi
+Tasks:
+  - Name: CodeDeployConsole
+    Action: ACS::Sleep
+    Properties:
+      Duration: 10s
+Metadata:
+  ALIYUN::OOS::Interface:
+    Hidden:
+      - revisionType
+      - nameSpace
+      - yaml
+    ParameterGroups:
+      - Parameters:
+          - description
+        Label:
+          default:
+            zh-cn: 版本描述
+            en: Version Description
+      - Parameters:
+          - revisionType
+          - yaml
+          - chartLocationType
+          - nameSpace
+          - variables
+        Label:
+          default:
+            zh-cn: 部署物信息
+            en: Deployment Information

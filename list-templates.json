@@ -7916,6 +7916,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-04-14T09:15:27Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-05-13T08:25:45Z",
+      "Description": "{\"name-en\": \"ACS-ACK-ComputeNestAgentConsole\", \"name-zh-cn\": \"计算巢Agents部署 CodeDeploy 集群类型控制台渲染\"}",
+      "HasTrigger": false,
+      "Hash": "b5b7f411fa1676e04793043ce10a065534382a6c0f570de40d67e2e2a5f2e8ec",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-e10fedbca7594588b7cb",
+      "TemplateName": "ACS-ACK-ComputeNestAgentConsole",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v3",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-05-15T08:27:05Z"
     }
   ]
 }
