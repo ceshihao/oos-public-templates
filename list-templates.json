@@ -2484,7 +2484,7 @@
       "CreatedDate": "2021-05-19T03:41:14Z",
       "Description": "{\"name-en\": \"ACS-ECS-BulkyApplyPatchBaseline\", \"name-zh-cn\": \"批量在ECS实例中配置补丁基线\", \"en\": \"Bulky apply patch baseline on ECS instance\", \"zh-cn\": \"批量在ECS实例中配置补丁基线\"}",
       "HasTrigger": false,
-      "Hash": "6a808894eb870f4d2d9ddd97ad04d87fd1cd78371da9b0ae92f20ba50a2a1250",
+      "Hash": "0bd7146d5bb0e482aceff49964b6fed1e0f68fc728cf9df44fb977c09e92a9a1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2494,10 +2494,10 @@
       "TemplateId": "t-8343540e09f74ce086ca",
       "TemplateName": "ACS-ECS-BulkyApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v22",
+      "TemplateVersion": "v24",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-02-24T08:56:13Z"
+      "UpdatedDate": "2026-05-21T09:41:01Z"
     },
     {
       "Category": "TimerTrigger",
@@ -2505,7 +2505,7 @@
       "CreatedDate": "2021-05-19T03:43:50Z",
       "Description": "{\"name-en\": \"ACS-ECS-ScheduleApplyPatchBaseline\", \"name-zh-cn\": \"定时在指定ECS实例中配置补丁基线\", \"en\": \"Schedule to apply patch baseline on ECS instance\", \"zh-cn\": \"定时在ECS实例中配置补丁基线\"}",
       "HasTrigger": true,
-      "Hash": "4d68f17bfd15ce5e9cdad8c3a64652f680f7f9bfd8f40082c113505104b27994",
+      "Hash": "f2c96ffd17696cfd3fdf19ac38ba17836b2ee7b7143450a343dca525cc2a8cfe",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -2515,10 +2515,10 @@
       "TemplateId": "t-9243f2ebc6d54f7aaf8b",
       "TemplateName": "ACS-ECS-ScheduleApplyPatchBaseline",
       "TemplateType": "Automation",
-      "TemplateVersion": "v21",
+      "TemplateVersion": "v23",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-30T10:43:43Z"
+      "UpdatedDate": "2026-05-21T09:41:01Z"
     },
     {
       "Category": "Other",
@@ -7923,7 +7923,7 @@
       "CreatedDate": "2026-05-13T08:25:45Z",
       "Description": "{\"name-en\": \"ACS-ACK-ComputeNestAgentConsole\", \"name-zh-cn\": \"计算巢Agents部署 CodeDeploy 集群类型控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "b5b7f411fa1676e04793043ce10a065534382a6c0f570de40d67e2e2a5f2e8ec",
+      "Hash": "6f5aabd45be8b6057962945e5d8f832752594b31391ccffa5c01f686d56b0281",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7933,10 +7933,10 @@
       "TemplateId": "t-e10fedbca7594588b7cb",
       "TemplateName": "ACS-ACK-ComputeNestAgentConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v3",
+      "TemplateVersion": "v4",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-05-15T08:27:05Z"
+      "UpdatedDate": "2026-05-18T07:25:52Z"
     }
   ]
 }

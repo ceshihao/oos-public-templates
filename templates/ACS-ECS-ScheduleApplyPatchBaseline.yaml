@@ -62,9 +62,14 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-            'Fn::Equals':
-              - '${action}'
-              - install
+          Fn::And:
+            - Fn::Equals:
+                - ${action}
+                - install
+            - Fn::Not:
+                Fn::Equals:
+                  - ${resourceType}
+                  - ALIYUN::ECS::ManagedInstance
   retentionDays:
     Label:
       en: RetentionDays
@@ -76,9 +81,16 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-            'Fn::Equals':
-              - '${whetherCreateSnapshot}'
-              - true
+          Fn::And:
+            - Fn::Equals:
+                - ${whetherCreateSnapshot}
+                - true
+            - Fn::Equals:
+                - ${action}
+                - install
+            - Fn::Equals:
+                - ${resourceType}
+                - ALIYUN::ECS::Instance
   rebootIfNeed:
     Label:
       en: RebootIfNeed
@@ -88,9 +100,34 @@ Parameters:
     AssociationPropertyMetadata:
       Visible:
         Condition:
-            'Fn::Equals':
-              - '${action}'
-              - install
+          Fn::And:
+            - Fn::Equals:
+                - ${action}
+                - install
+            - Fn::Not:
+                Fn::Equals:
+                  - ${resourceType}
+                  - ALIYUN::ECS::ManagedInstance
+  tags:
+    Description:
+      en: Set tags for snapshots
+      zh-cn: 为快照设置标签
+    Label:
+      en: Tags
+      zh-cn: 快照标签
+    Type: Json
+    AssociationProperty: Tags
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::And:
+            - Fn::Equals:
+                - ${whetherCreateSnapshot}
+                - true
+            - Fn::Equals:
+                - ${resourceType}
+                - ALIYUN::ECS::Instance
+    Default: []
   timeout:
     Label:
       en: Timeout
@@ -184,6 +221,7 @@ Tasks:
       retentionDays: '{{ retentionDays }}'
       rebootIfNeed: '{{ rebootIfNeed }}'
       timeout: '{{ timeout }}'
+      tags: '{{ tags }}'
     Loop:
       RateControl: '{{ rateControl }}'
       Items: '{{ getInstance.instanceIds }}'

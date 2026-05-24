@@ -54,8 +54,6 @@ Parameters:
               volumes:
                 - name: work
                   emptyDir: {}
-              imagePullSecrets:
-                - name: app-secret
               containers:
                 - name: app
                   image: ${AcrImage}
@@ -130,8 +128,8 @@ Metadata:
   ALIYUN::OOS::Interface:
     Hidden:
       - revisionType
-      - nameSpace
-      - yaml
+      - namespace
+      - content
     ParameterGroups:
       - Parameters:
           - description
