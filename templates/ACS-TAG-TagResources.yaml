@@ -40,6 +40,7 @@ Parameters:
       - ACS::AliKafka::Topic
       - ACS::ApiGateway::Api
       - ACS::ApiGateway::ApiGroup
+      - ACS::APIG::Gateway
       - ACS::ARMS::TraceApp
       - ACS::ARMS::RetcodeApp
       - ACS::ARMS::Prometheus

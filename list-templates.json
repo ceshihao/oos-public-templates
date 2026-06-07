@@ -2148,7 +2148,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "95f76d9e20ca5698aae46f3163edbd663e0cb2b77612666a68ded7f40680ebdd",
+      "Hash": "f5306607a8a44c9a2f1e785977f574781b6ab182a5b89d7f76806bbffd5c31bb",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2158,10 +2158,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v53",
+      "TemplateVersion": "v54",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-02-25T02:28:52Z"
+      "UpdatedDate": "2026-06-01T02:39:33Z"
     },
     {
       "Category": "Other",
@@ -3534,7 +3534,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "145f10a107d757533fb5c9cfcda33dc88c429e21c65710c01f1bf7ed3022a6fc",
+      "Hash": "9d55df5584f0f46aaa078ba9fe677c0f6371c1f8b9ff00d77856ac7eb55c2732",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3544,10 +3544,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v42",
+      "TemplateVersion": "v43",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-02-25T02:28:52Z"
+      "UpdatedDate": "2026-06-01T02:39:34Z"
     },
     {
       "Category": "Other",
