@@ -30,7 +30,6 @@ Parameters:
       en: YAML file
       zh-cn: YAML文件
     Default: |-
-      # Example YAML file
         apiVersion: apps/v1
         kind: Deployment
         metadata:
@@ -83,13 +82,12 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
   namespace:
     Type: String
-    Default: 'default'
     Label:
       en: NameSpace
       zh-cn: 命名空间
     Description:
       en: The namespace to deploy to
-      zh-cn: 部署到的命名空间
+      zh-cn: 部署到的命名空间，请确保该命名空间为当前Agent所在命名空间
   variables:
     Type: String
     Label:
@@ -128,8 +126,6 @@ Metadata:
   ALIYUN::OOS::Interface:
     Hidden:
       - revisionType
-      - namespace
-      - content
     ParameterGroups:
       - Parameters:
           - description
@@ -139,11 +135,17 @@ Metadata:
             en: Version Description
       - Parameters:
           - revisionType
-          - yaml
           - chartLocationType
-          - nameSpace
+          - namespace
           - variables
         Label:
           default:
             zh-cn: 部署物信息
             en: Deployment Information
+      - Parameters:
+          - content
+        DefaultExpand: false
+        Label:
+          default:
+            zh-cn: 高级配置
+            en: Configuration

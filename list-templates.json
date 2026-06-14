@@ -88,9 +88,9 @@
       "Category": "Other",
       "CreatedBy": "ACS",
       "CreatedDate": "2019-11-20T03:57:45Z",
-      "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.\", \"zh-cn\": \"通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。\", \"categories\": [\"image_manage\"]}",
+      "Description": "{\"name-en\": \"ACS-ECS-UpdateAndCopyImage\", \"name-zh-cn\": \"更新ECS镜像并同步到其它地域\", \"en\": \"Updates an existing ECS image via ECS Cloud Assistant then creates an ECS image and copies the new image to other regions. This is applicable to scenarios requiring update and synchronization of ECS images across multiple regions, such as software upgrade and system configuration. During configuration, users need to provide the following required parameter information: Region ID (regionId), which specifies the region of the ECS instances for the update and creation operations, Source Image ID (sourceImageId), which identifies the original ECS image that needs updating, and Target Image Name (targetImageName), for naming the newly created ECS image. Additionally, users need to configure the Instance Type (instanceType) for installing and configuring the new image, and Target Region IDs (targetRegionIds), which specify the other regions to clone the new image to. Upon execution, the template will return the IDs of the newly created and cloned images, facilitating the verification of the image update and cloning status.Please be aware that this process will create temporary instances and incur additional computing resource costs.\", \"zh-cn\": \"通过运行命令更新一个已存在ECS镜像后创建一个新ECS镜像并且克隆新镜像到其他地域，适用于需要对多个地域的ECS镜像进行更新和同步的场景，例如软件升级和系统配置等。在配置过程中，用户需要提供以下必填参数信息，地域ID（regionId）：用于指定更新和创建镜像的操作区域，源镜像ID（sourceImageId）：用于指定需要更新的原始ECS镜像，目标镜像名称（targetImageName）：用于为新创建的ECS镜像命名。此外，用户还需配置目标实例类型（instanceType）：用于安装和配置新镜像的实例类型，以及目标地域ID（targetRegionIds）：用于指定克隆新镜像的其他地域。模板在执行后会返回新创建和克隆的镜像ID列表，方便用户验证镜像更新和克隆的状态。此过程会创建临时实例，会产生额外的计算资源费用，请知悉。\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "e7c7cf2d7e7ccd3bc83fcafdcba0295826a0fe7b945e05bbab712bda7c2a61ce",
+      "Hash": "74245d34df336aa993823521f960e4a481b56892d01f4429f900fe524961472c",
       "IsFavorite": false,
       "Popularity": 9.8,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -100,10 +100,10 @@
       "TemplateId": "t-364cd7c848214fd0a621",
       "TemplateName": "ACS-ECS-UpdateAndCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v42",
+      "TemplateVersion": "v44",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-05-15T11:34:03Z"
+      "UpdatedDate": "2026-06-09T09:03:55Z"
     },
     {
       "Category": "Other",
@@ -7797,7 +7797,7 @@
       "CreatedDate": "2026-01-15T10:44:30Z",
       "Description": "{\"name-en\": \"ACS-ACK-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个ACK应用分组上部署部署物\", \"en\": \"Deploy deployments on single ACK application group\", \"zh-cn\": \"在单个ACK应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "b20448050352740ca511b60524b8586707c7be02159bf09770970a1ecaaa4b41",
+      "Hash": "2c7255b3447ccfcbc030bb285d74a50abce1e1aa013a5656242ee80e84fdcf3b",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7807,10 +7807,10 @@
       "TemplateId": "t-e27024dfcec5494eb111",
       "TemplateName": "ACS-ACK-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-03-04T06:51:11Z"
+      "UpdatedDate": "2026-06-09T06:35:03Z"
     },
     {
       "Category": "Other",
@@ -7923,7 +7923,7 @@
       "CreatedDate": "2026-05-13T08:25:45Z",
       "Description": "{\"name-en\": \"ACS-ACK-ComputeNestAgentConsole\", \"name-zh-cn\": \"计算巢Agents部署 CodeDeploy 集群类型控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "6f5aabd45be8b6057962945e5d8f832752594b31391ccffa5c01f686d56b0281",
+      "Hash": "2fcf129cab5d627572e35084e1de131da5cc3677cf98002e32d834e5c1f197c3",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7933,10 +7933,10 @@
       "TemplateId": "t-e10fedbca7594588b7cb",
       "TemplateName": "ACS-ACK-ComputeNestAgentConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-05-18T07:25:52Z"
+      "UpdatedDate": "2026-06-10T05:55:56Z"
     }
   ]
 }
