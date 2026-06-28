@@ -27,7 +27,6 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
     AssociationPropertyMetadata:
       ApplicationName: ${applicationName}
-
 Tasks:
   - Name: getApplicationGroupDetail
     Action: ACS::ExecuteApi
@@ -112,7 +111,7 @@ Tasks:
         ValueSelector: stackOutputs
       stackStatus:
         Type: String
-        ValueSelector: StackStatus
+        ValueSelector: stackStatus
   - Name: updateDeployedRevision
     Action: ACS::ExecuteAPI
     Description:
@@ -132,4 +131,4 @@ Outputs:
     Value: '{{DeployRevision.stackOutputsList}}'
   stackStatus:
     Type: String
-    Value: '{{DeployRevision.StackStatusList}}'
+    Value: '{{DeployRevision.stackStatusList}}'

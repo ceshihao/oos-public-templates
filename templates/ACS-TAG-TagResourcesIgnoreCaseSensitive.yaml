@@ -41,6 +41,7 @@ Parameters:
       - ACS::ApiGateway::Api
       - ACS::ApiGateway::ApiGroup
       - ACS::APIG::Gateway
+      - ACS::Amqp::Instance
       - ACS::ARMS::TraceApp
       - ACS::ARMS::RetcodeApp
       - ACS::ARMS::Prometheus

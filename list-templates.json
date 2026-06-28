@@ -2148,7 +2148,7 @@
       "CreatedDate": "2020-11-18T02:04:59Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理给其管理的资源打标签\", \"name-en\": \"ACS-TAG-TagResources\", \"name-zh-cn\": \"通过资源管理给资源打标签\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "f5306607a8a44c9a2f1e785977f574781b6ab182a5b89d7f76806bbffd5c31bb",
+      "Hash": "6c4578a8bd5a4e60f7669baa2d25dbaaa13df69903e919f9e23b13374f3a6eb1",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -2158,10 +2158,10 @@
       "TemplateId": "t-205569c046e64e7ab0d4",
       "TemplateName": "ACS-TAG-TagResources",
       "TemplateType": "Automation",
-      "TemplateVersion": "v54",
+      "TemplateVersion": "v55",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-06-01T02:39:33Z"
+      "UpdatedDate": "2026-06-26T02:02:54Z"
     },
     {
       "Category": "Other",
@@ -3534,7 +3534,7 @@
       "CreatedDate": "2022-03-04T08:09:32Z",
       "Description": "{\"en\": \"Tag the resources it manages through resource management\", \"zh-cn\": \"通过资源管理批量给其管理的资源打多个标签\", \"name-en\": \"ACS-TAG-TagResourcesIgnoreCaseSensitive\", \"name-zh-cn\": \"通过资源管理给资源打标签(忽略标签大小写)\", \"categories\": [\"security\"]}",
       "HasTrigger": false,
-      "Hash": "9d55df5584f0f46aaa078ba9fe677c0f6371c1f8b9ff00d77856ac7eb55c2732",
+      "Hash": "dfb676e63591142cb9a88547b565781807e16c12e764df13e166dc9058cd17c5",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3544,10 +3544,10 @@
       "TemplateId": "t-b1649fe9c4e4494fa334",
       "TemplateName": "ACS-TAG-TagResourcesIgnoreCaseSensitive",
       "TemplateType": "Automation",
-      "TemplateVersion": "v43",
+      "TemplateVersion": "v44",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-06-01T02:39:34Z"
+      "UpdatedDate": "2026-06-26T02:02:55Z"
     },
     {
       "Category": "Other",
@@ -7797,7 +7797,7 @@
       "CreatedDate": "2026-01-15T10:44:30Z",
       "Description": "{\"name-en\": \"ACS-ACK-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个ACK应用分组上部署部署物\", \"en\": \"Deploy deployments on single ACK application group\", \"zh-cn\": \"在单个ACK应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "2c7255b3447ccfcbc030bb285d74a50abce1e1aa013a5656242ee80e84fdcf3b",
+      "Hash": "0590066f1cee178c1cbee06809d042fb4090bd3a964bd49d532896591afd12c7",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7807,10 +7807,10 @@
       "TemplateId": "t-e27024dfcec5494eb111",
       "TemplateName": "ACS-ACK-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v6",
+      "TemplateVersion": "v8",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-06-09T06:35:03Z"
+      "UpdatedDate": "2026-06-26T09:55:10Z"
     },
     {
       "Category": "Other",
