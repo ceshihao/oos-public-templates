@@ -7797,7 +7797,7 @@
       "CreatedDate": "2026-01-15T10:44:30Z",
       "Description": "{\"name-en\": \"ACS-ACK-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个ACK应用分组上部署部署物\", \"en\": \"Deploy deployments on single ACK application group\", \"zh-cn\": \"在单个ACK应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "0590066f1cee178c1cbee06809d042fb4090bd3a964bd49d532896591afd12c7",
+      "Hash": "2662219880318e96cfbc8214279c10cb8d348ff2d8ecf61673bc2a56fb012a17",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7807,10 +7807,10 @@
       "TemplateId": "t-e27024dfcec5494eb111",
       "TemplateName": "ACS-ACK-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v8",
+      "TemplateVersion": "v9",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-06-26T09:55:10Z"
+      "UpdatedDate": "2026-07-03T02:46:29Z"
     },
     {
       "Category": "Other",

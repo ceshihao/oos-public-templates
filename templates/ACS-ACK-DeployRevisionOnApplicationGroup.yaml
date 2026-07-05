@@ -27,6 +27,24 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
     AssociationPropertyMetadata:
       ApplicationName: ${applicationName}
+  clusterId:
+    Label:
+      en: ClusterId
+      zh-cn: ACK集群ID
+    Description:
+      en: If specified, the deployment will be performed on this cluster directly without fetching the cluster list from the application group.
+      zh-cn: 如果指定了该参数，将直接在该集群上执行部署，不再从应用分组获取集群列表。
+    Type: String
+    Default: ''
+  nameSpace:
+    Label:
+      en: NameSpace
+      zh-cn: 命名空间
+    Description:
+      en: If specified, this namespace will be used instead of the one from the deploy revision detail.
+      zh-cn: 如果指定了该参数，将使用该命名空间替代部署物版本详情中的命名空间。
+    Type: String
+    Default: ''
 Tasks:
   - Name: getApplicationGroupDetail
     Action: ACS::ExecuteApi
@@ -68,6 +86,10 @@ Tasks:
     Description:
       en: GetClusterList
       zh-cn: 获取集群列表
+    When:
+      Fn::Equals:
+        - '{{ clusterId }}'
+        - ''
     Properties:
       ResourceType: 'ALIYUN::CS::Cluster'
       RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
@@ -92,8 +114,15 @@ Tasks:
       importApplicationParameters: true
       configMapName: app-config
       secretName: app-secret
+      nameSpace: '{{ nameSpace }}'
     Loop:
-      Items: '{{ getClusterList.clusterList }}'
+      Items:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ clusterId }}'
+              - ''
+          - '{{ getClusterList.clusterList }}'
+          - - '{{ clusterId }}'
       RateControl:
         Mode: Concurrency
         MaxErrors: 0
