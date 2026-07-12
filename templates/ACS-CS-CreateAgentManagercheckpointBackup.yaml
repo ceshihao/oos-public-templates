@@ -1,0 +1,384 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Create Agent Manager checkpoint backup on k8s cluster
+  zh-cn: 在 k8s 集群中创建 Agent Manager Checkpoint 备份
+  name-en: ACS-CS-CreateAgentManagercheckpointBackup
+  name-zh-cn: 创建 Agent Manager Checkpoint 备份
+Parameters:
+  RegionId:
+    Type: String
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  ClusterId:
+    Type: String
+    Label:
+      en: ClusterId
+      zh-cn: 集群ID
+  Namespace:
+    Type: String
+    Label:
+      en: Namespace
+      zh-cn: 命名空间
+  Targets:
+    Type: Json
+    Label:
+      en: Targets
+      zh-cn: 目标对象列表
+    Description: JSON array of target objects with instanceId, sandboxName, principalId, backupId and backupIdPrefix.
+  RunMode:
+    Type: String
+    Label:
+      en: RunMode
+      zh-cn: 运行模式
+    Default: immediate
+    AllowedValues:
+      - immediate
+      - scheduled
+  Scope:
+    Type: String
+    Label:
+      en: Scope
+      zh-cn: 备份范围
+    Default: all
+  RetentionCount:
+    Type: Number
+    Label:
+      en: RetentionCount
+      zh-cn: 保留数量
+    Default: 5
+  BackupRunId:
+    Type: String
+    Label:
+      en: BackupRunId
+      zh-cn: 备份运行ID
+    Default: '{{ACS::ExecutionId}}'
+  BackupIdSuffix:
+    Type: String
+    Label:
+      en: BackupIdSuffix
+      zh-cn: 备份ID后缀
+    Default: '{{ACS::ExecutionId}}'
+  OOSAssumeRole:
+    Type: String
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Default: AgentManagerOOSServiceRole
+  RateControl:
+    Type: Json
+    AssociationProperty: RateControl
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发比率
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 5
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Action: ACS::Kubectl
+    Name: GetSandbox
+    Properties:
+      Operation: Get
+      ClusterId: '{{ ClusterId }}'
+      RegionId: '{{ RegionId }}'
+      Kind: Sandbox
+      Name:
+        Fn::Select:
+          - sandboxName
+          - Fn::Select:
+            - '{{ ACS::TaskLoopItem }}'
+            - '{{ Targets }}'
+      Namespace: '{{ Namespace }}'
+      ApiVersion: agents.kruise.io/v1alpha1
+    Outputs:
+      SandboxJson:
+        Type: String
+        ValueSelector: . | tojson
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - '.|length|range(.)'
+          - '{{ Targets }}'
+      RateControl: '{{ RateControl }}'
+      Outputs:
+        SandboxJsons:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: SandboxJson
+  - Action: ACS::Kubectl
+    Name: ApplySnapshot
+    Properties:
+      Operation: Apply
+      ClusterId: '{{ ClusterId }}'
+      RegionId: '{{ RegionId }}'
+      YamlContent:
+        Fn::Sub:
+          - |
+            apiVersion: v1
+            kind: ConfigMap
+            metadata:
+              name: '${BackupId}-snapshot'
+              namespace: '${Namespace}'
+              labels:
+                agent-manager.io/managed-by: "agent-manager"
+                agent-manager.io/backup-kind: "spec-snapshot"
+                agent-manager.io/source-instance-id: "${InstanceId}"
+                agent-manager.io/source-sandbox-name: "${SandboxName}"
+                agent-manager.io/backup-id: "${BackupId}"
+                agent-manager.io/backup-run-id: "${BackupRunId}"
+                agent-manager.io/backup-trigger: "${RunMode}"
+              annotations:
+                agent-manager.io/backup-scope: "${Scope}"
+                agent-manager.io/source-principal-id: "${PrincipalId}"
+            data:
+              sandbox-template.json: |
+                ${SandboxJson}
+          - Namespace: '{{ Namespace }}'
+            BackupId:
+              Fn::If:
+                - Fn::Equals:
+                  - ""
+                  - Fn::Select:
+                      - backupId
+                      - Fn::Select:
+                        - '{{ ACS::TaskLoopItem }}'
+                        - '{{ Targets }}'
+                - Fn::Sub:
+                  - '${BackupIdPrefix}${BackupIdSuffix}'
+                  - BackupIdPrefix:
+                      Fn::Select:
+                        - backupIdPrefix
+                        - Fn::Select:
+                          - '{{ ACS::TaskLoopItem }}'
+                          - '{{ Targets }}'
+                    BackupIdSuffix: '{{ BackupIdSuffix }}'
+                - Fn::Select:
+                    - backupId
+                    - Fn::Select:
+                      - '{{ ACS::TaskLoopItem }}'
+                      - '{{ Targets }}'
+            BackupRunId: '{{ BackupRunId }}'
+            RunMode: '{{ RunMode }}'
+            Scope: '{{ Scope }}'
+            BackupIdPrefix:
+              Fn::Select:
+                - backupIdPrefix
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            InstanceId:
+              Fn::Select:
+                - instanceId
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            SandboxName:
+              Fn::Select:
+                - sandboxName
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            PrincipalId:
+              Fn::Select:
+                - principalId
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            SandboxJson:
+              Fn::Select:
+                - '{{ ACS::TaskLoopItem }}'
+                - '{{ GetSandbox.SandboxJsons }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - '.|length|range(.)'
+          - '{{ Targets }}'
+      RateControl: '{{ RateControl }}'
+  - Action: ACS::Kubectl
+    Name: ApplyCheckpoint
+    Properties:
+      Operation: Apply
+      ClusterId: '{{ ClusterId }}'
+      RegionId: '{{ RegionId }}'
+      YamlContent:
+        Fn::Sub:
+          - |
+            apiVersion: agents.kruise.io/v1alpha1
+            kind: Checkpoint
+            metadata:
+              name: '${BackupId}'
+              namespace: '${Namespace}'
+              labels:
+                agent-manager.io/managed-by: "agent-manager"
+                agent-manager.io/backup-kind: "checkpoint"
+                agent-manager.io/source-instance-id: "${InstanceId}"
+                agent-manager.io/source-sandbox-name: "${SandboxName}"
+                agent-manager.io/backup-id: "${BackupId}"
+                agent-manager.io/backup-run-id: "${BackupRunId}"
+                agent-manager.io/backup-trigger: "${RunMode}"
+              annotations:
+                agent-manager.io/spec-snapshot-name: "${BackupId}-snapshot"
+                agent-manager.io/spec-snapshot-key: "sandbox-template.json"
+                agent-manager.io/backup-scope: "${Scope}"
+                agent-manager.io/source-principal-id: "${PrincipalId}"
+            spec:
+              sandboxName: '${SandboxName}'
+              podName: '${SandboxName}'
+              keepRunning: true
+              persistentContents:
+                - filesystem
+          - Namespace: '{{ Namespace }}'
+            BackupId:
+              Fn::If:
+                - Fn::Equals:
+                  - ""
+                  - Fn::Select:
+                      - backupId
+                      - Fn::Select:
+                        - '{{ ACS::TaskLoopItem }}'
+                        - '{{ Targets }}'
+                - Fn::Sub:
+                  - '${BackupIdPrefix}${BackupIdSuffix}'
+                  - BackupIdPrefix:
+                      Fn::Select:
+                        - backupIdPrefix
+                        - Fn::Select:
+                          - '{{ ACS::TaskLoopItem }}'
+                          - '{{ Targets }}'
+                    BackupIdSuffix: '{{ BackupIdSuffix }}'
+                - Fn::Select:
+                    - backupId
+                    - Fn::Select:
+                      - '{{ ACS::TaskLoopItem }}'
+                      - '{{ Targets }}'
+            BackupRunId: '{{ BackupRunId }}'
+            RunMode: '{{ RunMode }}'
+            Scope: '{{ Scope }}'
+            BackupIdPrefix:
+              Fn::Select:
+                - backupIdPrefix
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            InstanceId:
+              Fn::Select:
+                - instanceId
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            SandboxName:
+              Fn::Select:
+                - sandboxName
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+            PrincipalId:
+              Fn::Select:
+                - principalId
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - '.|length|range(.)'
+          - '{{ Targets }}'
+      RateControl: '{{ RateControl }}'
+  - Action: ACS::Kubectl
+    Name: GetCheckpoint
+    Properties:
+      Operation: Get
+      ClusterId: '{{ ClusterId }}'
+      RegionId: '{{ RegionId }}'
+      Kind: Checkpoint
+      Name:
+        Fn::If:
+          - Fn::Equals:
+            - ""
+            - Fn::Select:
+                - backupId
+                - Fn::Select:
+                  - '{{ ACS::TaskLoopItem }}'
+                  - '{{ Targets }}'
+          - Fn::Sub:
+            - '${BackupIdPrefix}${BackupIdSuffix}'
+            - BackupIdPrefix:
+                Fn::Select:
+                  - backupIdPrefix
+                  - Fn::Select:
+                    - '{{ ACS::TaskLoopItem }}'
+                    - '{{ Targets }}'
+              BackupIdSuffix: '{{ BackupIdSuffix }}'
+          - Fn::Select:
+              - backupId
+              - Fn::Select:
+                - '{{ ACS::TaskLoopItem }}'
+                - '{{ Targets }}'
+      Namespace: '{{ Namespace }}'
+      ApiVersion: agents.kruise.io/v1alpha1
+    Outputs:
+      CheckpointId:
+        Type: String
+        ValueSelector: .status.checkpointId
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - '.|length|range(.)'
+          - '{{ Targets }}'
+      RateControl: '{{ RateControl }}'
+      Outputs:
+        CheckpointIds:
+          AggregateType: 'Fn::ListJoin'
+          AggregateField: CheckpointId
+Outputs:
+  RunMode:
+    Type: String
+    Value: '{{ RunMode }}'
+  Scope:
+    Type: String
+    Value: '{{ Scope }}'
+  BackupRunId:
+    Type: String
+    Value: '{{ BackupRunId }}'
+  RetentionCount:
+    Type: Number
+    Value: '{{ RetentionCount }}'
+  CheckpointIds:
+    Type: List
+    Value: '{{ GetCheckpoint.CheckpointIds }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - RegionId
+          - ClusterId
+          - Namespace
+          - Targets
+        Label:
+          default:
+            zh-cn: 选择集群
+            en: Select Cluster
+      - Parameters:
+          - RunMode
+          - Scope
+          - RetentionCount
+          - BackupRunId
+          - BackupIdSuffix
+        Label:
+          default:
+            zh-cn: 备份选项
+            en: Backup Options
+      - Parameters:
+          - RateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options

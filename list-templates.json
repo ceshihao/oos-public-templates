@@ -7937,6 +7937,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-06-10T05:55:56Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-07-09T01:57:28Z",
+      "Description": "{\"en\": \"Create Agent Manager checkpoint backup on k8s cluster\", \"zh-cn\": \"在 k8s 集群中创建 Agent Manager Checkpoint 备份\", \"name-en\": \"ACS-CS-CreateAgentManagercheckpointBackup\", \"name-zh-cn\": \"创建 Agent Manager Checkpoint 备份\"}",
+      "HasTrigger": false,
+      "Hash": "e07f4cd95ff47ac40f5959173cbb45eda0b908dd34a6dbbd1ea9c0f2ec2df8e6",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-d4b792fca26e4ac48adc",
+      "TemplateName": "ACS-CS-CreateAgentManagercheckpointBackup",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-07-09T01:57:28Z"
     }
   ]
 }
