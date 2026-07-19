@@ -80,14 +80,6 @@ Parameters:
                     - mountPath: /workspace
                       name: work
     AssociationProperty: ALIYUN::OOS::Command::CommandContent
-  namespace:
-    Type: String
-    Label:
-      en: NameSpace
-      zh-cn: 命名空间
-    Description:
-      en: The namespace to deploy to
-      zh-cn: 部署到的命名空间，请确保该命名空间为当前Agent所在命名空间
   variables:
     Type: String
     Label:
@@ -135,8 +127,6 @@ Metadata:
             en: Version Description
       - Parameters:
           - revisionType
-          - chartLocationType
-          - namespace
           - variables
         Label:
           default:

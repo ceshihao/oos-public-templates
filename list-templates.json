@@ -5235,7 +5235,7 @@
       "CreatedDate": "2024-09-26T03:04:37Z",
       "Description": "{\"en\": \"ACS-ECS-SetDiskEncryption\", \"zh-cn\": \"设置云盘默认加密操作\", \"name-en\": \"ACS-ECS-SetDiskEncryption\", \"name-zh-cn\": \"设置云盘默认加密操作\"}",
       "HasTrigger": false,
-      "Hash": "dd193b885ff7c7237b93870ad4246f09299f56405afefe31c3b20b4b95edc037",
+      "Hash": "472336dbfc26140968c9ee0e47261765d6757ed48f3401db670ab72a1237a51c",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -5245,10 +5245,10 @@
       "TemplateId": "t-6f47c01e82c046258acb",
       "TemplateName": "ACS-ECS-SetDiskEncryption",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2024-09-26T06:37:16Z"
+      "UpdatedDate": "2026-07-16T08:25:47Z"
     },
     {
       "Category": "Other",
@@ -7776,7 +7776,7 @@
       "CreatedDate": "2026-01-15T09:24:01Z",
       "Description": "{\"name-en\": \"ACS-ACK-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy ACK类型控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "47cff3762d4817d9bd2c0b015dbd1a04ebe0aa59a840fd1ba5245c4d54af5dcd",
+      "Hash": "ec5bb4dad5bf0ff2560d18228d5854531af0beb00b45e11ad3e84a764e3791c5",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7786,10 +7786,10 @@
       "TemplateId": "t-591b2e6489944194a316",
       "TemplateName": "ACS-ACK-CodeDeployConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v2",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-15T10:44:30Z"
+      "UpdatedDate": "2026-07-13T01:45:25Z"
     },
     {
       "Category": "Other",
@@ -7797,7 +7797,7 @@
       "CreatedDate": "2026-01-15T10:44:30Z",
       "Description": "{\"name-en\": \"ACS-ACK-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个ACK应用分组上部署部署物\", \"en\": \"Deploy deployments on single ACK application group\", \"zh-cn\": \"在单个ACK应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "2662219880318e96cfbc8214279c10cb8d348ff2d8ecf61673bc2a56fb012a17",
+      "Hash": "3a466553b1c0ff3fc0025aa3c3bd931dbdc6d2d0f5072bd9f412a16ce13f1551",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7807,10 +7807,10 @@
       "TemplateId": "t-e27024dfcec5494eb111",
       "TemplateName": "ACS-ACK-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v9",
+      "TemplateVersion": "v10",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-07-03T02:46:29Z"
+      "UpdatedDate": "2026-07-13T01:45:26Z"
     },
     {
       "Category": "Other",
@@ -7923,7 +7923,7 @@
       "CreatedDate": "2026-05-13T08:25:45Z",
       "Description": "{\"name-en\": \"ACS-ACK-ComputeNestAgentConsole\", \"name-zh-cn\": \"计算巢Agents部署 CodeDeploy 集群类型控制台渲染\"}",
       "HasTrigger": false,
-      "Hash": "2fcf129cab5d627572e35084e1de131da5cc3677cf98002e32d834e5c1f197c3",
+      "Hash": "d748e82b25cf196d4ebebf99b2b7d8aa1003ea0919b811ebf58df5c57bd24039",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7933,10 +7933,10 @@
       "TemplateId": "t-e10fedbca7594588b7cb",
       "TemplateName": "ACS-ACK-ComputeNestAgentConsole",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-06-10T05:55:56Z"
+      "UpdatedDate": "2026-07-13T01:45:25Z"
     },
     {
       "Category": "Other",
@@ -7944,7 +7944,7 @@
       "CreatedDate": "2026-07-09T01:57:28Z",
       "Description": "{\"en\": \"Create Agent Manager checkpoint backup on k8s cluster\", \"zh-cn\": \"在 k8s 集群中创建 Agent Manager Checkpoint 备份\", \"name-en\": \"ACS-CS-CreateAgentManagercheckpointBackup\", \"name-zh-cn\": \"创建 Agent Manager Checkpoint 备份\"}",
       "HasTrigger": false,
-      "Hash": "e07f4cd95ff47ac40f5959173cbb45eda0b908dd34a6dbbd1ea9c0f2ec2df8e6",
+      "Hash": "65616abcf87911e4ef0152bf6e12a7fe8f885dcf266c956c76ca3b4d2be667e0",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7954,10 +7954,10 @@
       "TemplateId": "t-d4b792fca26e4ac48adc",
       "TemplateName": "ACS-CS-CreateAgentManagercheckpointBackup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-07-09T01:57:28Z"
+      "UpdatedDate": "2026-07-13T10:52:07Z"
     }
   ]
 }

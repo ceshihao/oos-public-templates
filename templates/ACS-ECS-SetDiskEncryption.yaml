@@ -74,7 +74,11 @@ Tasks:
           - RegionId
           - '{{ ACS::TaskLoopItem }}'
     Loop:
-      Items: '{{ disableDiskEncryptions }}'
+      Items:
+        Fn::Jq:
+          - All
+          - .[] | select(length > 0)
+          - '{{ disableDiskEncryptions }}'
       RateControl: '{{ rateControl }}'
   - Name: ModifyDiskDefaultKMSKeyId
     Action: ACS::ECS::ModifyDiskDefaultKMSKeyId
@@ -89,7 +93,11 @@ Tasks:
           - KMSKeyId
           - '{{ ACS::TaskLoopItem }}'
     Loop:
-      Items: '{{ modifyDiskEncryptions }}'
+      Items:
+        Fn::Jq:
+          - All
+          - .[] | select(length > 0)
+          - '{{ modifyDiskEncryptions }}'
       RateControl: '{{ rateControl }}'
   - Name: EnableDiskEncryptionByDefault
     Action: ACS::ECS::EnableDiskEncryptionByDefault
@@ -104,6 +112,10 @@ Tasks:
           - KMSKeyId
           - '{{ ACS::TaskLoopItem }}'
     Loop:
-      Items: '{{ createDiskEncryptions }}'
+      Items:
+        Fn::Jq:
+          - All
+          - .[] | select(length > 0)
+          - '{{ createDiskEncryptions }}'
       RateControl: '{{ rateControl }}'
 

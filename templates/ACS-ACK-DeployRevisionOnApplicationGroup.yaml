@@ -81,26 +81,6 @@ Tasks:
       applicationParameters:
         Type: List
         ValueSelector: .applicationParameters
-  - Name: getClusterList
-    Action: 'ACS::SelectTargets'
-    Description:
-      en: GetClusterList
-      zh-cn: 获取集群列表
-    When:
-      Fn::Equals:
-        - '{{ clusterId }}'
-        - ''
-    Properties:
-      ResourceType: 'ALIYUN::CS::Cluster'
-      RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
-      Filters:
-        - Type: ApplicationGroup
-          ApplicationName: '{{ applicationName }}'
-          ApplicationGroupName: '{{ applicationGroupName }}'
-    Outputs:
-      clusterList:
-        Type: List
-        ValueSelector: 'Instances.Instance[].InstanceId'
   - Name: DeployRevision
     Action: 'ACS::CICD::DeployRevisionOnAck'
     Description:
@@ -108,32 +88,25 @@ Tasks:
       zh-cn: 发布部署物
     Properties:
       regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
-      clusterId: '{{ ACS::TaskLoopItem }}'
+      clusterId:
+        Fn::If:
+          - Fn::Equals:
+              - ''
+              - '{{ clusterId }}'
+          - '{{ getApplicationGroupDetail.tagKey }}'
+          - '{{ clusterId }}'
       applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
       deployRevisionId: '{{ deployRevisionId }}'
       importApplicationParameters: true
       configMapName: app-config
       secretName: app-secret
-      nameSpace: '{{ nameSpace }}'
-    Loop:
-      Items:
+      nameSpace:
         Fn::If:
           - Fn::Equals:
-              - '{{ clusterId }}'
               - ''
-          - '{{ getClusterList.clusterList }}'
-          - - '{{ clusterId }}'
-      RateControl:
-        Mode: Concurrency
-        MaxErrors: 0
-        Concurrency: 5
-      Outputs:
-        stackOutputsList:
-          AggregateType: 'Fn::ListJoin'
-          AggregateField: stackOutputs
-        stackStatusList:
-          AggregateType: 'Fn::ListJoin'
-          AggregateField: stackStatus
+              - '{{ nameSpace }}'
+          - '{{ getApplicationGroupDetail.tagValue }}'
+          - '{{ nameSpace }}'
     Outputs:
       stackOutputs:
         Type: String
@@ -157,7 +130,12 @@ Tasks:
 Outputs:
   stackOutputs:
     Type: String
-    Value: '{{DeployRevision.stackOutputsList}}'
+    Value: '{{DeployRevision.stackOutputs}}'
   stackStatus:
     Type: String
-    Value: '{{DeployRevision.stackStatusList}}'
+    Value: '{{DeployRevision.stackStatus}}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    Hidden:
+      - clusterId
+      - nameSpace

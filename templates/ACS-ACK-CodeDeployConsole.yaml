@@ -27,7 +27,7 @@ Parameters:
         - name: HelmChart
           title: Helm Charts
           description: 适用于应用源文件是Helm Chart的场景。
-  yaml:
+  content:
     Type: String
     Label:
       en: YAML file
@@ -65,7 +65,7 @@ Parameters:
           Fn::Equals:
             - ${revisionType}
             - Yaml
-  chartLocationType:
+  chartLocation:
     Type: String
     Label:
       en: ChartLocationType
@@ -103,7 +103,7 @@ Parameters:
               - ${revisionType}
               - HelmChart
             - Fn::Equals:
-              - ${chartLocationType}
+              - ${chartLocation}
               - Oss
       Required:
         Condition:
@@ -112,7 +112,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - Oss
   bucketName:
     Label:
@@ -130,7 +130,7 @@ Parameters:
               - ${revisionType}
               - HelmChart
             - Fn::Equals:
-              - ${chartLocationType}
+              - ${chartLocation}
               - Oss
       Required:
         Condition:
@@ -139,7 +139,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - Oss
   objectName:
     Label:
@@ -162,7 +162,7 @@ Parameters:
               - ${revisionType}
               - HelmChart
             - Fn::Equals:
-              - ${chartLocationType}
+              - ${chartLocation}
               - Oss
       Required:
         Condition:
@@ -171,7 +171,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - Oss
   versionId:
     Label:
@@ -194,7 +194,7 @@ Parameters:
               - ${revisionType}
               - HelmChart
             - Fn::Equals:
-              - ${chartLocationType}
+              - ${chartLocation}
               - Oss
   platform:
     Type: String
@@ -210,7 +210,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
       Required:
         Condition:
@@ -219,7 +219,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
     Default: gitee
     Description:
@@ -246,7 +246,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
       Required:
         Condition:
@@ -255,7 +255,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
   organization:
     Type: String
@@ -274,7 +274,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
       Required:
         Condition:
@@ -283,7 +283,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
   repository:
     Type: String
@@ -303,7 +303,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
       Required:
         Condition:
@@ -312,7 +312,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
   branch:
     Label:
@@ -333,7 +333,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
       Required:
         Condition:
@@ -342,7 +342,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
   commitId:
     Label:
@@ -367,7 +367,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
   chartPath:
     Label:
@@ -392,7 +392,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
       Required:
         Condition:
@@ -401,7 +401,7 @@ Parameters:
                 - ${revisionType}
                 - HelmChart
             - Fn::Equals:
-                - ${chartLocationType}
+                - ${chartLocation}
                 - GitRepo
   chartValues:
     Type: Json
@@ -435,14 +435,6 @@ Parameters:
           Fn::Equals:
             - ${revisionType}
             - HelmChart
-  nameSpace:
-    Type: String
-    Label:
-      en: NameSpace
-      zh-cn: 命名空间
-    Description:
-      en: The namespace to deploy to
-      zh-cn: 部署到的命名空间
 Tasks:
   - Name: CodeDeployConsole
     Action: ACS::Sleep
@@ -459,8 +451,8 @@ Metadata:
             en: Version Description
       - Parameters:
           - revisionType
-          - yaml
-          - chartLocationType
+          - content
+          - chartLocation
           - regionIdOSS
           - bucketName
           - objectName
@@ -474,7 +466,6 @@ Metadata:
           - chartPath
           - chartValues
           - releaseName
-          - nameSpace
         Label:
           default:
             zh-cn: 部署物信息
