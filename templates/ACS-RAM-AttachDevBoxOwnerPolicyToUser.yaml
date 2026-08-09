@@ -1,0 +1,212 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Create and attach a custom RAM policy for DevBox resources owned by a RAM user
+  zh-cn: 为RAM用户创建并授予其名下DevBox资源的自定义权限策略
+  name-en: ACS-RAM-AttachDevBoxOwnerPolicyToUser
+  name-zh-cn: 为RAM用户授予其名下DevBox资源权限
+Parameters:
+  RamUserName:
+    Label:
+      en: RamUserName
+      zh-cn: RAM用户PrincipalName
+    Description:
+      en: The UserPrincipalName of the RAM user, such as user001@example.onaliyun.com. The custom policy name is OOS-DevBoxOwner-{{ RamUserName }}.
+      zh-cn: RAM用户的UserPrincipalName，例如user001@example.onaliyun.com。自定义权限策略名称为OOS-DevBoxOwner-{{ RamUserName }}。
+    Type: String
+    AssociationProperty: ALIYUN::RAM::User
+Tasks:
+  - Name: createPolicyAndAttachToUser
+    Action: ACS::Template
+    Description:
+      en: Create the custom DevBox RAM policy if it does not exist and attach it to the RAM user
+      zh-cn: 创建不存在的DevBox自定义RAM权限策略并授权给RAM用户
+    Properties:
+      TemplateName: ACS::ROS::CreateStack
+      Parameters:
+        stackName:
+          Fn::Replace:
+            - .: _
+              '@': _
+            - OOS-{{ ACS::ExecutionId }}-CreatePolicy-{{ RamUserName }}
+        disableRollback: true
+        parameters:
+          - ParameterKey: RamUserName
+            ParameterValue: '{{ RamUserName }}'
+          - ParameterKey: PolicyName
+            ParameterValue: OOS-DevBoxOwner-{{ RamUserName }}
+        templateBody: |
+          {
+            "ROSTemplateFormatVersion": "2015-09-01",
+            "Parameters": {
+              "RamUserName": {
+                "Type": "String",
+                "Description": "The UserPrincipalName of the RAM user."
+              },
+              "PolicyName": {
+                "Type": "String",
+                "Description": "The custom RAM policy name."
+              }
+            },
+            "Resources": {
+              "Policy": {
+                "Type": "ALIYUN::RAM::ManagedPolicy",
+                "Properties": {
+                  "PolicyName": {
+                    "Ref": "PolicyName"
+                  },
+                  "PolicyDocument": {
+                    "Version": "1",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "computenest:*"
+                        ],
+                        "Resource": [
+                          "*"
+                        ],
+                        "Condition": {
+                          "StringEquals": {
+                            "acs:ResourceTag/devboxOwner": {
+                              "Ref": "RamUserName"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "computenest:*"
+                        ],
+                        "Resource": [
+                          "*"
+                        ],
+                        "Condition": {
+                          "StringEquals": {
+                            "acs:RequestTag/devboxOwner": {
+                              "Ref": "RamUserName"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "ecs:*"
+                        ],
+                        "Resource": [
+                          "*"
+                        ],
+                        "Condition": {
+                          "StringEquals": {
+                            "acs:ResourceTag/devboxOwner": {
+                              "Ref": "RamUserName"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "ecs:*"
+                        ],
+                        "Resource": [
+                          "*"
+                        ],
+                        "Condition": {
+                          "StringEquals": {
+                            "acs:RequestTag/devboxOwner": {
+                              "Ref": "RamUserName"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "oos:*"
+                        ],
+                        "Resource": [
+                          "*"
+                        ],
+                        "Condition": {
+                          "StringEquals": {
+                            "acs:ResourceTag/devboxOwner": {
+                              "Ref": "RamUserName"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "oos:*"
+                        ],
+                        "Resource": [
+                          "*"
+                        ],
+                        "Condition": {
+                          "StringEquals": {
+                            "acs:RequestTag/devboxOwner": {
+                              "Ref": "RamUserName"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "oos:StartExecution",
+                          "ecs:RunCommand"
+                        ],
+                        "Resource": [
+                          "*"
+                        ]
+                      }
+                    ]
+                  },
+                  "IgnoreExisting": true
+                }
+              },
+              "AttachPolicyToUser": {
+                "DependsOn": "Policy",
+                "Type": "ALIYUN::RAM::AttachPolicyToUser",
+                "Properties": {
+                  "PolicyType": "Custom",
+                  "UserName": {
+                    "Ref": "RamUserName"
+                  },
+                  "PolicyName": {
+                    "Ref": "PolicyName"
+                  }
+                }
+              }
+            },
+            "Outputs": {
+              "PolicyName": {
+                "Description": "The custom RAM policy name.",
+                "Value": {
+                  "Fn::GetAtt": [
+                    "Policy",
+                    "PolicyName"
+                  ]
+                }
+              }
+            },
+            "Metadata": {
+              "ALIYUN::ROS::Interface": {
+                "TemplateTags": [
+                  "acs:integrate:oos:ram_attach_devbox_owner_policy_to_user"
+                ]
+              }
+            }
+          }
+    Outputs:
+      stackId:
+        Type: String
+        ValueSelector: stackId
+Outputs:
+  policyName:
+    Type: String
+    Value: OOS-DevBoxOwner-{{ RamUserName }}
+

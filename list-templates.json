@@ -7958,6 +7958,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-07-13T10:52:07Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-08-03T09:56:50Z",
+      "Description": "{\"en\": \"Create and attach a custom RAM policy for DevBox resources owned by a RAM user\", \"zh-cn\": \"为RAM用户创建并授予其名下DevBox资源的自定义权限策略\", \"name-en\": \"ACS-RAM-AttachDevBoxOwnerPolicyToUser\", \"name-zh-cn\": \"为RAM用户授予其名下DevBox资源权限\"}",
+      "HasTrigger": false,
+      "Hash": "94f9e668aaf2a23b19d6a20dbc93a2bec04cc92fe198d1f7dbf8dd689d3b7ddd",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-675769b32cc949b5827b",
+      "TemplateName": "ACS-RAM-AttachDevBoxOwnerPolicyToUser",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-08-03T09:56:50Z"
     }
   ]
 }
