@@ -27,6 +27,73 @@ Parameters:
     AssociationProperty: ALIYUN::OOS::Application::DeployRevisionId
     AssociationPropertyMetadata:
       ApplicationName: ${applicationName}
+  deployMethod:
+    Label:
+      en: DeployMethod
+      zh-cn: 发布模式
+    Description:
+      en: Full-scale publishing：publish all functions under the current application group. <br>Grayscale publishing：you can select some functions to publish.
+      zh-cn: 全量发布：会发布当前应用分组下所有函数。<br>灰度发布：您可以选择部分函数发布。
+    Type: String
+    Default: all
+    AllowedValues:
+      - all
+      - partial
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        all:
+          zh-cn: 全量发布
+          en: Full-scale publishing
+        partial:
+          zh-cn: 灰度发布
+          en: Grayscale publishing
+  functionNames:
+    Label:
+      en: FunctionNames
+      zh-cn: 函数名称
+    Description:
+      en: 'The names of functions to publish in grayscale mode, format example： {"Type": "ResourceIds", "ResourceIds": ["function-a", "function-b"]}. Note- When publishing part of functions, the baseline of the application will not be managed! Only when publishing all functions, the baseline of the application will be recorded.'
+      zh-cn: '灰度发布时指定要发布的函数名称，格式示例：{"Type": "ResourceIds", "ResourceIds": ["function-a", "function-b"]}。注意：发布部分函数，应用的基线将不会被管理！只有全量发布时，应用的基线会被记录。'
+    Type: Json
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - '${deployMethod}'
+            - partial
+    Default: {}
+  batchNumber:
+    Label:
+      en: BatchNumber
+      zh-cn: 执行批次
+    Description:
+      en: For example, 10 functions are to be released, and the BatchNumber is set to 2, then 5 are released in each batch.
+      zh-cn: 例如一共发布10个函数，执行批次设为2，则每批发布5个。
+    Type: Number
+    MinValue: 1
+    MaxValue: 100
+    Default: 2
+  batchPauseOption:
+    Label:
+      en: BatchPauseOption
+      zh-cn: 分批模式
+    Type: String
+    AllowedValues:
+      - Automatic
+      - FirstBatchPause
+      - EveryBatchPause
+    Default: Automatic
+    AssociationPropertyMetadata:
+      ValueLabelMapping:
+        Automatic:
+          zh-cn: 不暂停
+          en: No pause
+        FirstBatchPause:
+          zh-cn: 第一批暂停
+          en: First batch pause
+        EveryBatchPause:
+          zh-cn: 每批暂停
+          en: Every batch pause
 Tasks:
   - Name: getApplicationGroupDetail
     Action: ACS::ExecuteApi
@@ -59,13 +126,31 @@ Tasks:
       ResourceType: 'ALIYUN::FC::Function'
       RegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
       Filters:
-        - Type: ApplicationGroup
-          ApplicationName: '{{ applicationName }}'
-          ApplicationGroupName: '{{ applicationGroupName }}'
+        Fn::If:
+          - Fn::Equals:
+              - '{{ deployMethod }}'
+              - all
+          - - Type: ApplicationGroup
+              ApplicationName: '{{ applicationName }}'
+              ApplicationGroupName: '{{ applicationGroupName }}'
+          - - '{{ functionNames }}'
     Outputs:
       fcList:
         Type: List
         ValueSelector: 'Instances.Instance[].InstanceId'
+  - Name: getApplicationParameters
+    Action: ACS::CICD::ListApplicationParameters
+    Description:
+      en: GetApplicationParameters
+      zh-cn: 获取应用参数
+    Properties:
+      applicationName: '{{ applicationName }}'
+      applicationGroupName: '{{ applicationGroupName }}'
+      deployRegionId: '{{ getApplicationGroupDetail.deployRegionId }}'
+    Outputs:
+      applicationParameters:
+        Type: List
+        ValueSelector: .applicationParameters
   - Name: deployRevision
     Action: 'ACS::CICD::DeployRevisionOnFC'
     Description:
@@ -75,12 +160,17 @@ Tasks:
       regionId: '{{ getApplicationGroupDetail.deployRegionId }}'
       functionName: '{{ ACS::TaskLoopItem }}'
       deployRevisionId: '{{ deployRevisionId }}'
+      applicationParameters: '{{ getApplicationParameters.applicationParameters }}'
     Loop:
       Items: '{{ getFCList.fcList }}'
       RateControl:
-        Mode: Concurrency
+        Mode: Batch
         MaxErrors: 0
-        Concurrency: 5
+        BatchPauseOption: '{{ batchPauseOption }}'
+        Batch:
+          'Fn::CalculateBatch':
+            - '{{ batchNumber }}'
+            - '{{ getFCList.fcList }}'
       Outputs:
         invokeOutputList:
           AggregateType: 'Fn::ListJoin'
@@ -91,6 +181,10 @@ Tasks:
         ValueSelector: invokeOutput
   - Name: updateDeployedRevision
     Action: ACS::ExecuteAPI
+    When:
+      Fn::Equals:
+        - '{{ deployMethod }}'
+        - all
     Description:
       en: Update the deployed revision
       zh-cn: 更新部署的版本

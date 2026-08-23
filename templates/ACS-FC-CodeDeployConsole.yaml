@@ -1,0 +1,200 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-FC-CodeDeployConsole
+  name-zh-cn: CodeDeploy FC类型控制台渲染
+Parameters:
+  description:
+    Type: String
+    Label:
+      en: Description
+      zh-cn: 描述
+    Description:
+      en: Description of the current deployment version
+      zh-cn: 当前部署物版本的描述
+    Default: ''
+  codeLocation:
+    Type: String
+    Label:
+      en: CodeLocationType
+      zh-cn: 代码来源
+    Default: PublicOss
+    AssociationProperty: ALIYUN::OOS::Component::SectionType
+    AssociationPropertyMetadata:
+      Sections:
+        - name: PublicOss
+          title:
+            zh-cn: 公开OSS
+            en: Public OSS
+          description:
+            zh-cn: 适用于应用代码包存储在公共读权限OSS Bucket中的场景。
+            en: Applicable to the scenario where the application code package is stored in a public-read OSS bucket.
+        - name: PersonalOss
+          title:
+            zh-cn: 个人OSS
+            en: Personal OSS
+          description:
+            zh-cn: 适用于应用代码包存储在您当前账号个人OSS Bucket中的场景。
+            en: Applicable to the scenario where the application code package is stored in the personal OSS bucket of your current account.
+  regionIdOSS:
+    Label:
+      en: OSS RegionId
+      zh-cn: OSS地域
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    AssociationProperty: RegionId
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PersonalOss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PersonalOss
+  personalOssBucketName:
+    Label:
+      en: Personal OSS Bucket
+      zh-cn: 个人OSS Bucket
+    Type: String
+    Default: ''
+    AssociationProperty: ALIYUN::OSS::Bucket::BucketName
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PersonalOss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PersonalOss
+  personalOssObjectName:
+    Label:
+      en: Personal OSS ObjectName
+      zh-cn: 个人OSS文件
+    Type: String
+    Default: ''
+    Description:
+      en: Please fill in the complete path of the file in the Bucket, for example： mydir/file/test.zip. (Do not start with /)
+      zh-cn: 请填写文件在Bucket中的完整路径，示例：mydir/file/test.zip。（请勿以/开头）
+    AssociationProperty: ALIYUN::OSS::Object::ObjectName
+    AssociationPropertyMetadata:
+      RegionId: regionIdOSS
+      BucketName: personalOssBucketName
+      ValueType: bucketName
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PersonalOss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PersonalOss
+  publicOssBucketName:
+    Label:
+      en: Public OSS Bucket
+      zh-cn: 公开OSS Bucket
+    Type: String
+    Default: ''
+    Description:
+      en: Please fill in the name of the public-read OSS bucket where the application code package is stored, for example： my-public-bucket
+      zh-cn: 请填写应用代码包所在的公共读权限OSS Bucket名称，示例：my-public-bucket
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PublicOss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PublicOss
+  publicOssObjectName:
+    Label:
+      en: Public OSS ObjectName
+      zh-cn: 公开OSS文件
+    Type: String
+    Default: ''
+    Description:
+      en: Please fill in the complete path of the file in the Bucket, for example： mydir/file/test.zip. (Do not start with /)
+      zh-cn: 请填写文件在Bucket中的完整路径，示例：mydir/file/test.zip。（请勿以/开头）
+    AssociationPropertyMetadata:
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PublicOss
+      Required:
+        Condition:
+          Fn::Equals:
+            - ${codeLocation}
+            - PublicOss
+  layerArn:
+    Label:
+      en: LayerArn
+      zh-cn: 层ARN
+    Description:
+      en: The ARN of the Function Compute layer, for example： acs:fc:cn-hangzhou:official:layers/Python3-Requests/versions/1
+      zh-cn: 函数计算层的ARN，示例：acs:fc:cn-hangzhou:official:layers/Python3-Requests/versions/1
+    Type: String
+    Default: ''
+  startCommand:
+    Type: String
+    Default: ''
+    Label:
+      en: StartCommand
+      zh-cn: 启动命令
+    Description:
+      en: The start command of the application, for example： python3 app.py
+      zh-cn: 应用的启动命令，示例：python3 app.py
+  serverPort:
+    Type: Number
+    Label:
+      en: ServerPort
+      zh-cn: 服务端口
+    Description:
+      en: The port that the HTTP server of the application listens on.
+      zh-cn: 应用HTTP Server监听的端口。
+    Default: 9000
+Tasks:
+  - Name: CodeDeployConsole
+    Action: ACS::Sleep
+    Properties:
+      Duration: 10s
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - description
+        Label:
+          default:
+            zh-cn: 版本描述
+            en: Version Description
+      - Parameters:
+          - codeLocation
+          - regionIdOSS
+          - personalOssBucketName
+          - personalOssObjectName
+          - publicOssBucketName
+          - publicOssObjectName
+        Label:
+          default:
+            zh-cn: 部署物信息
+            en: Deployment Information
+      - Parameters:
+          - layerArn
+          - startCommand
+          - serverPort
+        DefaultExpand: false
+        Label:
+          default:
+            zh-cn: 函数配置
+            en: Function Configuration
+

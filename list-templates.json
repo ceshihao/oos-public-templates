@@ -7818,7 +7818,7 @@
       "CreatedDate": "2026-01-19T08:49:13Z",
       "Description": "{\"name-en\": \"ACS-FC-DeployRevisionOnApplicationGroup\", \"name-zh-cn\": \"在单个FC应用分组上部署部署物\", \"en\": \"Deploy deployments on single FC application group\", \"zh-cn\": \"在单个FC应用分组上部署部署物\"}",
       "HasTrigger": false,
-      "Hash": "792f8db94daff1999013fd60d02f5299aa4e58cc809cd1e4670c18f65517c085",
+      "Hash": "75b1c37eed1c3cba7ec2241815de858ee39bf729e267fe861bd88a12980b2781",
       "IsFavorite": false,
       "Popularity": 0,
       "ResourceGroupId": "",
@@ -7828,10 +7828,10 @@
       "TemplateId": "t-a7f84b8db3374ffd8c11",
       "TemplateName": "ACS-FC-DeployRevisionOnApplicationGroup",
       "TemplateType": "Automation",
-      "TemplateVersion": "v1",
+      "TemplateVersion": "v3",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-01-19T08:49:13Z"
+      "UpdatedDate": "2026-08-19T08:32:12Z"
     },
     {
       "Category": "Other",
@@ -7979,6 +7979,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-08-03T09:56:50Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-08-18T02:44:35Z",
+      "Description": "{\"name-en\": \"ACS-FC-CodeDeployConsole\", \"name-zh-cn\": \"CodeDeploy FC类型控制台渲染\"}",
+      "HasTrigger": false,
+      "Hash": "0c592285cae9ddc9a005ff9c719afa1d5f9773e91c4e7e3e85c7114aa0888dfb",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-74a7b9a97a1d4a6fa8d8",
+      "TemplateName": "ACS-FC-CodeDeployConsole",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-08-18T02:44:35Z"
     }
   ]
 }
