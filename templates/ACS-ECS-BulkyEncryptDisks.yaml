@@ -41,6 +41,15 @@ Parameters:
       - data
     Default:
       - system
+  instantAccess:
+    Label:
+      en: InstantAccess
+      zh-cn: 快照极速可用
+    Description:
+      en: 'Whether to use the instant access feature of the snapshot. Valid values: false (default), waits until the snapshot is accomplished; true, waits only until the snapshot is available, which shortens the execution time. Only ESSD series disks support this feature.'
+      zh-cn: 是否使用快照极速可用功能。取值为false（默认值）时，等待快照创建完成；取值为true时，仅等待快照可用，可缩短执行耗时。仅ESSD系列云盘支持该功能
+    Type: Boolean
+    Default: false
   rateControl:
     Label:
       en: RateControl
@@ -89,6 +98,7 @@ Tasks:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
     KMSKeyId: '{{ KMSKeyId }}'
+    instantAccess: '{{ instantAccess }}'
   Outputs:
     systemDiskEncryptedInstance:
       Type: String
@@ -116,6 +126,7 @@ Tasks:
     regionId: '{{ regionId }}'
     instanceId: '{{ ACS::TaskLoopItem }}'
     KMSKeyId: '{{ KMSKeyId }}'
+    instantAccess: '{{ instantAccess }}'
   Loop:
     RateControl: '{{ rateControl }}'
     Items: '{{ getInstance.instanceIds }}'
@@ -135,6 +146,7 @@ Metadata:
           - targets
           - instancePassword
           - diskType
+          - instantAccess
         Label:
           default:
             zh-cn: 选择实例
