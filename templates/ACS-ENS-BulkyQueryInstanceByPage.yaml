@@ -1,0 +1,240 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-ENS-BulkyQueryInstanceByPage
+  name-zh-cn: 分页查询ENS实例
+  en: >-
+    Query filtered ENS instances by explicit page numbers. Each page is an
+    independent task execution and returns only the specified instance columns.
+  zh-cn: >-
+    通过显式页码查询筛选后的ENS实例。每一页对应一次独立任务执行，
+    并只返回指定的实例字段，适用于控制台大批量导出。
+Parameters:
+  instancePageNumbers:
+    Label:
+      en: InstancePageNumbers
+      zh-cn: 实例页码列表
+    Description:
+      en: Page numbers of DescribeInstances. Each page becomes an independent task execution.
+      zh-cn: DescribeInstances的页码列表，每一页对应一次独立任务执行
+    Type: List
+    Default:
+      - 1
+  instancePageSize:
+    Label:
+      en: InstancePageSize
+      zh-cn: 实例每页大小
+    Description:
+      en: Number of instances queried by each task execution
+      zh-cn: 每次任务执行查询的实例数量
+    Type: Number
+    MinValue: 1
+    MaxValue: 100
+    Default: 100
+  columnNames:
+    Label:
+      en: ColumnNames
+      zh-cn: 列字段表达式
+    Description:
+      en: >-
+        A comma-separated JQ object field expression. InstanceId is always included. For
+        example: "InstanceName": (.InstanceName), "Status": (.Status)
+      zh-cn: >-
+        JQ对象字段表达式，多个字段用英文逗号分隔。
+        InstanceId始终返回。例如："InstanceName": (.InstanceName), "Status": (.Status)
+    Type: String
+    Default: ''
+  InstanceName:
+    Label:
+      en: InstanceName
+      zh-cn: 实例名称
+    Type: String
+    Default: ''
+  Status:
+    Label:
+      en: Status
+      zh-cn: 实例状态
+    Type: String
+    Default: ''
+  EnsServiceId:
+    Label:
+      en: EnsServiceId
+      zh-cn: ENS服务ID
+    Type: String
+    Default: ''
+  InstanceResourceType:
+    Label:
+      en: InstanceResourceType
+      zh-cn: 实例资源类型
+    Type: String
+    Default: ''
+  InstanceIds:
+    Label:
+      en: InstanceIds
+      zh-cn: 实例ID列表
+    Description:
+      en: >-
+        A list of instance IDs. Leave it empty to disable this filter.
+      zh-cn: >-
+        实例ID列表。留空表示不启用该过滤条件。
+    Type: List
+    Default: []
+  InstanceType:
+    Label:
+      en: InstanceType
+      zh-cn: 实例规格
+    Type: String
+    Default: ''
+  SearchKey:
+    Label:
+      en: SearchKey
+      zh-cn: 搜索关键字
+    Type: String
+    Default: ''
+  IntranetIp:
+    Label:
+      en: IntranetIp
+      zh-cn: 内网IP
+    Type: String
+    Default: ''
+  SecurityGroupId:
+    Label:
+      en: SecurityGroupId
+      zh-cn: 安全组ID
+    Type: String
+    Default: ''
+  NetworkId:
+    Label:
+      en: NetworkId
+      zh-cn: 网络ID
+    Type: String
+    Default: ''
+  VSwitchId:
+    Label:
+      en: VSwitchId
+      zh-cn: 交换机ID
+    Type: String
+    Default: ''
+  ImageId:
+    Label:
+      en: ImageId
+      zh-cn: 镜像ID
+    Type: String
+    Default: ''
+  EnsRegionIds:
+    Label:
+      en: EnsRegionIds
+      zh-cn: ENS节点ID列表
+    Type: List
+    Default: []
+  Tags:
+    Label:
+      en: Tags
+      zh-cn: 标签
+    Type: List
+    Default: []
+  instanceRateControl:
+    Label:
+      en: InstanceRateControl
+      zh-cn: 实例分页任务并发控制
+    Type: Json
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 5
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: queryInstancePages
+    Action: ACS::ExecuteApi
+    Description:
+      en: Query one page of filtered ENS instances for every loop item
+      zh-cn: 为每个Loop项查询一页筛选后的ENS实例
+    Properties:
+      Service: ens
+      API: DescribeInstances
+      AutoPaging: false
+      Parameters:
+        PageNumber: '{{ ACS::TaskLoopItem }}'
+        PageSize: '{{ instancePageSize }}'
+        EnsRegionIds: '{{ EnsRegionIds }}'
+        InstanceIds: '{{ InstanceIds }}'
+        InstanceName: '{{ InstanceName }}'
+        ImageId: '{{ ImageId }}'
+        SearchKey: '{{ SearchKey }}'
+        NetworkId: '{{ NetworkId }}'
+        VSwitchId: '{{ VSwitchId }}'
+        SecurityGroupId: '{{ SecurityGroupId }}'
+        IntranetIp: '{{ IntranetIp }}'
+        Tags: '{{ Tags }}'
+        InstanceType: '{{ InstanceType }}'
+        Status: '{{ Status }}'
+        EnsServiceId: '{{ EnsServiceId }}'
+        InstanceResourceType: '{{ InstanceResourceType }}'
+    Outputs:
+      pageNumber:
+        Type: Number
+        ValueSelector: '.PageNumber'
+      pageSize:
+        Type: Number
+        ValueSelector: '.PageSize'
+      totalCount:
+        Type: Number
+        ValueSelector: '.TotalCount'
+      rows:
+        Type: Json
+        ValueSelector: '.Instances.Instance|map( {"InstanceId": (.InstanceId), {{ columnNames }} } )'
+    Loop:
+      Items: '{{ instancePageNumbers }}'
+      RateControl: '{{ instanceRateControl }}'
+      Outputs:
+        maxTotalCount:
+          AggregateType: Fn::Max
+          AggregateField: totalCount
+Outputs:
+  instanceTotalCount:
+    Type: Number
+    Value: '{{ queryInstancePages.maxTotalCount }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - instancePageNumbers
+          - instancePageSize
+          - columnNames
+        Label:
+          default:
+            en: Export Settings
+            zh-cn: 导出设置
+      - Parameters:
+          - InstanceName
+          - Status
+          - EnsServiceId
+          - InstanceResourceType
+          - InstanceIds
+          - InstanceType
+          - SearchKey
+          - IntranetIp
+          - SecurityGroupId
+          - NetworkId
+          - VSwitchId
+          - ImageId
+          - EnsRegionIds
+          - Tags
+        Label:
+          default:
+            en: Filters
+            zh-cn: 过滤条件
+      - Parameters:
+          - instanceRateControl
+          - OOSAssumeRole
+        Label:
+          default:
+            en: Control Options
+            zh-cn: 高级选项
+
