@@ -1,0 +1,81 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Enable SSL on one existing supported instance. Preserve network configuration and skip a compliant instance.
+    Run in a maintenance window; verify clients support SSL before execution. MySQL with Alibaba Cloud CA only;
+    custom certificates are rejected.
+  zh-cn: 为已有RDS MySQL实例开启SSL加密，保留网络配置；已合规则跳过。仅支持阿里云CA证书，不支持自定义证书。请在维护窗口执行，并事先确认客户端支持SSL。
+  name-en: ACS-RDS-EnableInstanceSSL
+  name-zh-cn: 开启RDS实例SSL加密
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例（仅限一个）
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  connectionString:
+    Type: String
+    AllowedPattern: ^[a-zA-Z0-9.-]+$
+    Label:
+      en: ConnectionString
+      zh-cn: 数据库连接地址
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstances
+    Action: ACS::SelectTargets
+    Description:
+      en: Select target instances
+      zh-cn: 选择目标实例
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: remediateInstances
+    Action: ACS::RDS::EnableInstanceSSL
+    Description:
+      en: Validate the selected target count and run the full remediation workflow
+      zh-cn: 校验所选目标数量并执行完整的修正流程
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      connectionString: '{{ connectionString }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - if length == 1 then .[] else error("ExpectedExactlyOneTarget") end
+          - '{{ getInstances.instanceIds }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+Outputs:
+  instanceIds:
+    Type: List
+    Value: '{{ getInstances.instanceIds }}'
+

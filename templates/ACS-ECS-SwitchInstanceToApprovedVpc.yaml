@@ -1,0 +1,256 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Move one isolated running ECS instance into an approved VPC and same-zone vSwitch with an approved target
+    security group. Explicit downtime acknowledgement required. Failures or cancellation trigger a guarded restart on the verified original or complete target network;
+    failed remediation remains failed. Unverifiable states require manual recovery.
+  zh-cn: 将一个隔离的运行中ECS实例迁移至已批准的专有网络、同可用区交换机及目标安全组。执行前必须明确确认停机影响。失败或取消后仅在确认原网络或完整目标网络时尝试恢复启动；原修正失败仍保留，无法确认状态时需人工恢复。
+  name-en: ACS-ECS-SwitchInstanceToApprovedVpc
+  name-zh-cn: 将ECS实例迁移至指定专有网络
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例（仅限一个）
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  expectedSourceVpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: ExpectedSourceVpcId
+      zh-cn: 预期的源专有网络ID
+  targetVpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: TargetVpcId
+      zh-cn: 目标专有网络ID
+  targetVSwitchId:
+    AssociationProperty: ALIYUN::VPC::VSwitch::VSwitchId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      VpcId: ${targetVpcId}
+    Type: String
+    Label:
+      en: TargetVSwitchId
+      zh-cn: 目标交换机ID
+  targetSecurityGroupId:
+    AssociationProperty: ALIYUN::ECS::SecurityGroup::SecurityGroupId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      VpcId: ${targetVpcId}
+    Type: String
+    Label:
+      en: TargetSecurityGroupId
+      zh-cn: 目标安全组ID
+  acknowledgeDowntime:
+    Type: String
+    AllowedValues:
+      - 'true'
+    Label:
+      en: AcknowledgeDowntime
+      zh-cn: 确认接受停机影响
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstances
+    Action: ACS::SelectTargets
+    Description:
+      en: Select target instances
+      zh-cn: 选择目标实例
+    Properties:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: captureRecoveryBaseline
+    Action: ACS::ExecuteAPI
+    Description:
+      en: Capture the unique instance state before starting the child workflow for parent cancellation recovery.
+      zh-cn: 在执行子流程前记录唯一实例的原状态，用于父执行取消后的恢复。
+    Properties:
+      Service: ECS
+      API: DescribeInstances
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceIds: '{{ getInstances.instanceIds }}'
+    Outputs:
+      instanceId:
+        Type: String
+        ValueSelector: .Instances.Instance | if length == 1 then .[0].InstanceId else error("ExpectedExactlyOneTarget") end
+      status:
+        Type: String
+        ValueSelector: Instances.Instance[0].Status
+      vpcId:
+        Type: String
+        ValueSelector: Instances.Instance[0].VpcAttributes.VpcId
+      sourceSwitchId:
+        Type: String
+        ValueSelector: Instances.Instance[0].VpcAttributes.VSwitchId
+      sourceGroupIds:
+        Type: String
+        ValueSelector: .Instances.Instance[0].SecurityGroupIds.SecurityGroupId | sort | join(",")
+  - Name: remediateInstances
+    Action: ACS::ECS::SwitchInstanceToApprovedVpc
+    OnCancel: checkCancelOwnership
+    OnSuccess: ACS::END
+    Description:
+      en: Validate the selected target count and run the full remediation workflow
+      zh-cn: 校验所选目标数量并执行完整的修正流程
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      expectedSourceVpcId: '{{ expectedSourceVpcId }}'
+      targetVpcId: '{{ targetVpcId }}'
+      targetVSwitchId: '{{ targetVSwitchId }}'
+      targetSecurityGroupId: '{{ targetSecurityGroupId }}'
+      acknowledgeDowntime: '{{ acknowledgeDowntime }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - if length == 1 then .[] else error("ExpectedExactlyOneTarget") end
+          - '{{ getInstances.instanceIds }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+  - Name: checkCancelOwnership
+    Action: ACS::Choice
+    Description:
+      en: Do not start an instance that was already stopped before this execution.
+      zh-cn: 不启动本次执行前已处于停止状态的实例。
+    Properties:
+      DefaultTask: ACS::END
+      Choices:
+        - When:
+            Fn::And:
+              - Fn::Equals:
+                  - '{{ captureRecoveryBaseline.status }}'
+                  - Running
+              - Fn::Equals:
+                  - '{{ captureRecoveryBaseline.vpcId }}'
+                  - '{{ expectedSourceVpcId }}'
+              - Fn::Not:
+                  Fn::Equals:
+                    - '{{ captureRecoveryBaseline.vpcId }}'
+                    - '{{ targetVpcId }}'
+          NextTask: waitRecoveryStable
+  - Name: waitRecoveryStable
+    Action: ACS::WaitFor
+    Description:
+      en: Wait for a stable state before attempting recovery; never repeat the VPC migration.
+      zh-cn: 等待实例状态稳定后再尝试恢复，不重复提交专有网络迁移。
+    Properties:
+      Service: ECS
+      API: DescribeInstances
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceIds:
+          - '{{ captureRecoveryBaseline.instanceId }}'
+      PropertySelector: Instances.Instance[0].Status
+      DesiredValues:
+        - Running
+        - Stopped
+    Retries: 60
+    DelayType: Constant
+    Delay: 10
+  - Name: checkRecoveryNetwork
+    Action: ACS::CheckFor
+    Description:
+      en: Only recover an instance on its captured original network or the complete approved target network, without a public
+        IP.
+      zh-cn: 仅允许恢复处于原网络或完整已批准目标网络且无公网地址的实例。
+    Properties:
+      Service: ECS
+      API: DescribeInstances
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceIds:
+          - '{{ captureRecoveryBaseline.instanceId }}'
+      PropertySelector: .Instances.Instance | if length != 1 then false else .[0] | ((.EipAddress.IpAddress // "") == "" and
+        (.PublicIpAddress.IpAddress | length) == 0) and ((.VpcAttributes.VpcId == "{{ captureRecoveryBaseline.vpcId }}" and .VpcAttributes.VSwitchId
+        == "{{ captureRecoveryBaseline.sourceSwitchId }}" and (.SecurityGroupIds.SecurityGroupId | sort | join(",")) == "{{ captureRecoveryBaseline.sourceGroupIds
+        }}") or (.VpcAttributes.VpcId == "{{ targetVpcId }}" and .VpcAttributes.VSwitchId == "{{ targetVSwitchId }}" and (.SecurityGroupIds.SecurityGroupId
+        | sort | join(",")) == "{{ targetSecurityGroupId }}")) end
+      DesiredValues:
+        - true
+  - Name: readRecoveryStatus
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: ECS
+      API: DescribeInstances
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceIds:
+          - '{{ captureRecoveryBaseline.instanceId }}'
+    Outputs:
+      status:
+        Type: String
+        ValueSelector: Instances.Instance[0].Status
+  - Name: skipRecoveryStart
+    Action: ACS::Choice
+    Properties:
+      DefaultTask: recoverStart
+      Choices:
+        - When:
+            Fn::Equals:
+              - '{{ readRecoveryStatus.status }}'
+              - Running
+          NextTask: ACS::END
+  - Name: recoverStart
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: ECS
+      API: StartInstance
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceId: '{{ captureRecoveryBaseline.instanceId }}'
+  - Name: waitRecoveryRunning
+    Action: ACS::WaitFor
+    OnSuccess: ACS::END
+    Properties:
+      Service: ECS
+      API: DescribeInstances
+      Parameters:
+        RegionId: '{{ regionId }}'
+        InstanceIds:
+          - '{{ captureRecoveryBaseline.instanceId }}'
+      PropertySelector: Instances.Instance[0].Status
+      DesiredValues:
+        - Running
+    Retries: 60
+    DelayType: Constant
+    Delay: 10
+Outputs:
+  instanceIds:
+    Type: List
+    Value: '{{ getInstances.instanceIds }}'
+

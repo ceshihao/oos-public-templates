@@ -1,0 +1,101 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Move one existing RDS instance to an explicitly approved VPC and same-zone vSwitch. Requires a maintenance
+    window and prevalidated connectivity. Keeps the DB instance identity.
+  zh-cn: 将已有RDS实例迁移至明确批准的专有网络及同可用区交换机，保留实例ID。请在维护窗口执行，并事先验证迁移后的连接可用性。
+  name-en: ACS-RDS-SwitchInstanceToApprovedVpc
+  name-zh-cn: 将RDS实例迁移至指定专有网络
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例（仅限一个）
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  expectedSourceVpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: ExpectedSourceVpcId
+      zh-cn: 预期的源专有网络ID
+  targetVpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: TargetVpcId
+      zh-cn: 目标专有网络ID
+  targetVSwitchId:
+    AssociationProperty: ALIYUN::VPC::VSwitch::VSwitchId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      VpcId: ${targetVpcId}
+    Type: String
+    Label:
+      en: TargetVSwitchId
+      zh-cn: 目标交换机ID
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstances
+    Action: ACS::SelectTargets
+    Description:
+      en: Select target instances
+      zh-cn: 选择目标实例
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: remediateInstances
+    Action: ACS::RDS::SwitchInstanceToApprovedVpc
+    Description:
+      en: Validate the selected target count and run the full remediation workflow
+      zh-cn: 校验所选目标数量并执行完整的修正流程
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      expectedSourceVpcId: '{{ expectedSourceVpcId }}'
+      targetVpcId: '{{ targetVpcId }}'
+      targetVSwitchId: '{{ targetVSwitchId }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - if length == 1 then .[] else error("ExpectedExactlyOneTarget") end
+          - '{{ getInstances.instanceIds }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+Outputs:
+  instanceIds:
+    Type: List
+    Value: '{{ getInstances.instanceIds }}'
+

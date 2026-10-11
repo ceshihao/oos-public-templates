@@ -1,0 +1,82 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Detach the explicitly selected ECS EIP only; reject fixed public IP, preserve the EIP allocation, skip already
+    private instances. Public connectivity will be interrupted.
+  zh-cn: 仅解绑ECS实例上明确指定的弹性公网IP，保留该弹性公网IP资源。存在固定公网IP时停止执行；实例已无公网IP则跳过。解绑将中断对应的公网连接。
+  name-en: ACS-ECS-UnassociateInstanceEip
+  name-zh-cn: 解绑ECS实例的指定弹性公网IP
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例（仅限一个）
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  allocationId:
+    AssociationProperty: ALIYUN::VPC::EIP::AllocationId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: AllocationId
+      zh-cn: 弹性公网IP实例ID
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstances
+    Action: ACS::SelectTargets
+    Description:
+      en: Select target instances
+      zh-cn: 选择目标实例
+    Properties:
+      ResourceType: ALIYUN::ECS::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: remediateInstances
+    Action: ACS::ECS::UnassociateInstanceEip
+    Description:
+      en: Validate the selected target count and run the full remediation workflow
+      zh-cn: 校验所选目标数量并执行完整的修正流程
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      allocationId: '{{ allocationId }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - if length == 1 then .[] else error("ExpectedExactlyOneTarget") end
+          - '{{ getInstances.instanceIds }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+Outputs:
+  instanceIds:
+    Type: List
+    Value: '{{ getInstances.instanceIds }}'
+

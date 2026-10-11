@@ -33,12 +33,24 @@ Parameters:
     Default: '{{ ACS::RegionId }}'
   bucketNames:
     Label: 要处理的OSS bucket名称列表
+    Description: 仅支持选择与当前地域相同的OSS Bucket
     Type: List
+    AssociationProperty: List[Parameter]
+    AssociationPropertyMetadata:
+      Parameter:
+        Type: String
+        AssociationProperty: ALIYUN::OSS::Bucket::BucketName
+        AssociationPropertyMetadata:
+          RegionId: ${regionId}
   targetBucket:
     Label:
       en: specific bucket to store logs
       zh-cn: 指定存储访问日志的Bucket
+    Description: 仅支持选择与当前地域相同的OSS Bucket
     Type: String
+    AssociationProperty: ALIYUN::OSS::Bucket::BucketName
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
   logPrefix:
     Label: 日志文件前缀
     Description: 指定保存的日志文件前缀，可以为空

@@ -1,0 +1,80 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Enable SSL on one existing supported instance. Preserve network configuration and skip a compliant instance.
+    Run in a maintenance window; verify clients support SSL before execution.
+  zh-cn: 为已有且受支持的Redis实例开启SSL加密，保留网络配置；已合规则跳过。请在维护窗口执行，并事先确认客户端支持SSL。
+  name-en: ACS-Redis-EnableInstanceSSL
+  name-zh-cn: 开启Redis实例SSL加密
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+  rateControl:
+    Type: Json
+    Label:
+      en: RateControl
+      zh-cn: 任务执行的并发控制
+    AssociationProperty: RateControl
+    Default:
+      Mode: Concurrency
+      MaxErrors: 0
+      Concurrency: 1
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstances
+    Action: ACS::SelectTargets
+    Description:
+      en: Select target instances
+      zh-cn: 选择目标实例
+    Properties:
+      ResourceType: ALIYUN::Redis::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: remediateInstances
+    Action: ACS::Redis::EnableInstanceSSL
+    Description:
+      en: Validate the selected target count and run the full remediation workflow
+      zh-cn: 校验所选目标数量并执行完整的修正流程
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - if length > 0 then .[] else error("ExpectedNonEmptyTargets") end
+          - '{{ getInstances.instanceIds }}'
+      RateControl: '{{ rateControl }}'
+Outputs:
+  instanceIds:
+    Type: List
+    Value: '{{ getInstances.instanceIds }}'
+

@@ -1,0 +1,111 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Migrate the standby of one existing MySQL HA ESSD instance to an explicitly approved different zone, preserving
+    primary zone and VPC. Requires maintenance approval. The private IP may change; applications must use the connection endpoint.
+  zh-cn: 将已有MySQL高可用ESSD实例的备节点迁移至明确批准的不同可用区，保留主可用区及专有网络。迁移可能改变私网IP，应用需使用连接域名；执行前需取得维护授权。
+  name-en: ACS-RDS-MigrateStandbyToApprovedZone
+  name-zh-cn: 迁移RDS备节点至指定可用区
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  targets:
+    Type: Json
+    Label:
+      en: TargetInstance
+      zh-cn: 目标实例（仅限一个）
+    AssociationProperty: Targets
+    AssociationPropertyMetadata:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: regionId
+    Default:
+      Type: ResourceIds
+      ResourceIds: []
+      RegionId: '{{ regionId }}'
+  expectedVpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: ExpectedVpcId
+      zh-cn: 预期的专有网络ID
+  expectedPrimaryZoneId:
+    Type: String
+    Label:
+      en: ExpectedPrimaryZoneId
+      zh-cn: 预期的主可用区ID
+  expectedPrimaryVSwitchId:
+    AssociationProperty: ALIYUN::VPC::VSwitch::VSwitchId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+      VpcId: ${expectedVpcId}
+      ZoneId: ${expectedPrimaryZoneId}
+    Type: String
+    Label:
+      en: ExpectedPrimaryVSwitchId
+      zh-cn: 预期的主交换机ID
+  targetSecondaryZoneId:
+    Type: String
+    Label:
+      en: TargetSecondaryZoneId
+      zh-cn: 目标备可用区ID
+  approveMigration:
+    Type: Boolean
+    Default: false
+    Label:
+      en: ApproveMigration
+      zh-cn: 确认维护窗口并允许迁移期间私网IP变更
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getInstances
+    Action: ACS::SelectTargets
+    Description:
+      en: Select target instances
+      zh-cn: 选择目标实例
+    Properties:
+      ResourceType: ALIYUN::RDS::Instance
+      RegionId: '{{ regionId }}'
+      Filters:
+        - '{{ targets }}'
+    Outputs:
+      instanceIds:
+        Type: List
+        ValueSelector: Instances.Instance[].InstanceId
+  - Name: remediateInstances
+    Action: ACS::RDS::MigrateStandbyToApprovedZone
+    Description:
+      en: Validate the selected target count and run the full remediation workflow
+      zh-cn: 校验所选目标数量并执行完整的修正流程
+    Properties:
+      regionId: '{{ regionId }}'
+      instanceId: '{{ ACS::TaskLoopItem }}'
+      expectedVpcId: '{{ expectedVpcId }}'
+      expectedPrimaryZoneId: '{{ expectedPrimaryZoneId }}'
+      expectedPrimaryVSwitchId: '{{ expectedPrimaryVSwitchId }}'
+      targetSecondaryZoneId: '{{ targetSecondaryZoneId }}'
+      approveMigration: '{{ approveMigration }}'
+    Loop:
+      Items:
+        Fn::Jq:
+          - All
+          - if length == 1 then .[] else error("ExpectedExactlyOneTarget") end
+          - '{{ getInstances.instanceIds }}'
+      RateControl:
+        Mode: Concurrency
+        MaxErrors: 0
+        Concurrency: 1
+Outputs:
+  instanceIds:
+    Type: List
+    Value: '{{ getInstances.instanceIds }}'
+

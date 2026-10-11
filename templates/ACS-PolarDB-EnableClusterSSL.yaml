@@ -1,0 +1,123 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Enable SSL on one existing supported instance. Preserve network configuration and skip a compliant instance.
+    Run in a maintenance window; verify clients support SSL before execution. Supports MySQL private cluster endpoints
+    only; reject a target endpoint with a public address before any write. Reject other disabled SSL endpoints so partial repair cannot be reported as compliant.
+  zh-cn: 为已有PolarDB集群开启SSL加密，保留网络配置；已合规则跳过。仅支持MySQL引擎的私网集群地址；目标地址同时存在公网连接时在写入前拒绝执行；存在其他未开启SSL的地址时停止执行，避免将部分修复误报为合规。请在维护窗口执行，并事先确认客户端支持SSL。
+  name-en: ACS-PolarDB-EnableClusterSSL
+  name-zh-cn: 开启PolarDB集群SSL加密
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  instanceId:
+    AssociationProperty: ALIYUN::POLARDB::DBCluster::DBClusterId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    AllowedPattern: ^[a-zA-Z0-9-]+$
+    Label:
+      en: InstanceId
+      zh-cn: PolarDB集群ID
+  dbEndpointId:
+    Type: String
+    AllowedPattern: ^pe-[a-zA-Z0-9]+$
+    Label:
+      en: DBEndpointId
+      zh-cn: 数据库集群地址ID
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: checkEngine
+    Action: ACS::CheckFor
+    Properties:
+      Service: POLARDB
+      API: DescribeDBClusterAttribute
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBClusterId: '{{ instanceId }}'
+      PropertySelector: . | .DBType
+      DesiredValues:
+      - MySQL
+  - Name: checkEndpoint
+    Action: ACS::CheckFor
+    Properties:
+      Service: POLARDB
+      API: DescribeDBClusterEndpoints
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBClusterId: '{{ instanceId }}'
+      PropertySelector: . | [.Items[] | select(.DBEndpointId == "{{ dbEndpointId }}" and .EndpointType == "Cluster")]
+        | length == 1 and (.[0].AddressItems | length == 1 and .[0].NetType == "Private")
+      DesiredValues:
+      - true
+  - Name: checkOtherEndpoints
+    Action: ACS::CheckFor
+    Properties:
+      Service: POLARDB
+      API: DescribeDBClusterSSL
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBClusterId: '{{ instanceId }}'
+      PropertySelector: . | [.Items[] | select(.DBEndpointId != "{{ dbEndpointId }}" and .SSLEnabled == "Disabled")]
+        | length == 0
+      DesiredValues:
+      - true
+  - Name: getSSL
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: POLARDB
+      API: DescribeDBClusterSSL
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBClusterId: '{{ instanceId }}'
+    Outputs:
+      value:
+        Type: String
+        ValueSelector: . | ((.Items | length) > 0 and ([.Items[] | select(.SSLEnabled == "Disabled")] | length) ==
+          0) | tostring
+  - Name: skipCompliant
+    Action: ACS::Choice
+    Properties:
+      DefaultTask: enableSSL
+      Choices:
+      - When:
+          Fn::Equals:
+          - '{{ getSSL.value }}'
+          - 'true'
+        NextTask: ACS::END
+  - Name: enableSSL
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: POLARDB
+      API: ModifyDBClusterSSL
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBClusterId: '{{ instanceId }}'
+        DBEndpointId: '{{ dbEndpointId }}'
+        NetType: Private
+        SSLEnabled: Enable
+  - Name: verifySSL
+    Action: ACS::WaitFor
+    Properties:
+      Service: POLARDB
+      API: DescribeDBClusterSSL
+      Parameters:
+        RegionId: '{{ regionId }}'
+        DBClusterId: '{{ instanceId }}'
+      PropertySelector: . | (.Items | length) > 0 and ([.Items[] | select(.SSLEnabled == "Disabled")] | length) ==
+        0
+      DesiredValues:
+      - true
+    Retries: 60
+Outputs: {}
+

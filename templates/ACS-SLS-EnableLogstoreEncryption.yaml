@@ -1,0 +1,139 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Enable Logstore encryption. Initialize an unconfigured Logstore with the SLS service key; preserve the existing
+    key and algorithm otherwise. Skip enabled Logstores and verify the result. Do not change encryption configuration
+    concurrently.
+  zh-cn: 开启日志库加密。首次配置使用SLS服务密钥；已有配置仅开启原加密机制，不更换密钥或算法。已开启则跳过，写入后独立读回验证。执行期间请勿并发修改加密配置。
+  name-en: ACS-SLS-EnableLogstoreEncryption
+  name-zh-cn: 开启日志库加密
+  categories:
+  - security
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  resourceId:
+    Type: String
+    AllowedPattern: ^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]:[a-z0-9][a-z0-9_-]{0,61}[a-z0-9]$
+    Label:
+      en: LogstoreResourceId
+      zh-cn: 日志库资源ID（项目名称:日志库名称）
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: getEncryptionState
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: SLS
+      API: GetLogStore
+      Parameters:
+        RegionId: '{{ regionId }}'
+        project:
+          Fn::Select:
+          - 0
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+        logstore:
+          Fn::Select:
+          - 1
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+    Outputs:
+      state:
+        Type: String
+        ValueSelector: . | if .encrypt_conf.enable == true then "enabled" elif .encrypt_conf == null then "unconfigured"
+          else "disabled" end
+  - Name: chooseEncryptionAction
+    Action: ACS::Choice
+    Properties:
+      DefaultTask: enableExistingEncryption
+      Choices:
+      - When:
+          Fn::Equals:
+          - '{{ getEncryptionState.state }}'
+          - enabled
+        NextTask: ACS::END
+      - When:
+          Fn::Equals:
+          - '{{ getEncryptionState.state }}'
+          - unconfigured
+        NextTask: initializeServiceKeyEncryption
+  - Name: enableExistingEncryption
+    Action: ACS::ExecuteAPI
+    OnSuccess: verifyEncryption
+    Properties:
+      Service: SLS
+      API: UpdateLogStoreEncryption
+      Parameters:
+        RegionId: '{{ regionId }}'
+        project:
+          Fn::Select:
+          - 0
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+        logstore:
+          Fn::Select:
+          - 1
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+      Body:
+        enable: true
+  - Name: initializeServiceKeyEncryption
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: SLS
+      API: UpdateLogStoreEncryption
+      Parameters:
+        RegionId: '{{ regionId }}'
+        project:
+          Fn::Select:
+          - 0
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+        logstore:
+          Fn::Select:
+          - 1
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+      Body:
+        enable: true
+        encryptType: default
+  - Name: verifyEncryption
+    Action: ACS::CheckFor
+    Properties:
+      Service: SLS
+      API: GetLogStore
+      Parameters:
+        RegionId: '{{ regionId }}'
+        project:
+          Fn::Select:
+          - 0
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+        logstore:
+          Fn::Select:
+          - 1
+          - Fn::Split:
+            - ':'
+            - '{{ resourceId }}'
+      PropertySelector: .encrypt_conf.enable
+      DesiredValues:
+      - true
+Outputs: {}
+

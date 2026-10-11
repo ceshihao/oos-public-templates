@@ -1,0 +1,130 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: Activate one existing VPC flow log with an existing working SLS destination. No destination, RAM policy, or
+    other flow log is modified.
+  zh-cn: 启用一条已有的专有网络流日志，其日志服务投递目标必须已存在且可用。不修改投递目标、RAM权限策略或其他流日志。
+  name-en: ACS-VPC-ActivateExistingFlowLog
+  name-zh-cn: 启用已有的专有网络流日志
+Parameters:
+  regionId:
+    AssociationProperty: RegionId
+    Type: String
+    Default: '{{ ACS::RegionId }}'
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+  vpcId:
+    AssociationProperty: ALIYUN::ECS::VPC::VPCId
+    AssociationPropertyMetadata:
+      RegionId: ${regionId}
+    Type: String
+    Label:
+      en: VpcId
+      zh-cn: 专有网络ID
+  flowLogId:
+    Type: String
+    Label:
+      en: FlowLogId
+      zh-cn: 流日志ID
+  OOSAssumeRole:
+    Type: String
+    Default: ''
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS执行使用的RAM角色名称
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+  - Name: checkTarget
+    Action: ACS::CheckFor
+    Properties:
+      Service: VPC
+      API: DescribeFlowLogs
+      Parameters:
+        RegionId: '{{ regionId }}'
+        ResourceId: '{{ vpcId }}'
+        FlowLogId: '{{ flowLogId }}'
+      PropertySelector: .FlowLogs.FlowLog | length
+      DesiredValues:
+      - 1
+  - Name: checkVpcIdentity
+    Action: ACS::CheckFor
+    Properties:
+      Service: VPC
+      API: DescribeFlowLogs
+      Parameters:
+        RegionId: '{{ regionId }}'
+        FlowLogId: '{{ flowLogId }}'
+      PropertySelector: .FlowLogs.FlowLog[0].ResourceId
+      DesiredValues:
+      - '{{ vpcId }}'
+  - Name: checkVpcType
+    Action: ACS::CheckFor
+    Properties:
+      Service: VPC
+      API: DescribeFlowLogs
+      Parameters:
+        RegionId: '{{ regionId }}'
+        FlowLogId: '{{ flowLogId }}'
+      PropertySelector: .FlowLogs.FlowLog[0].ResourceType
+      DesiredValues:
+      - VPC
+  - Name: readState
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: VPC
+      API: DescribeFlowLogs
+      Parameters:
+        RegionId: '{{ regionId }}'
+        ResourceId: '{{ vpcId }}'
+        FlowLogId: '{{ flowLogId }}'
+    Outputs:
+      status:
+        Type: String
+        ValueSelector: .FlowLogs.FlowLog[0].Status
+      project:
+        Type: String
+        ValueSelector: .FlowLogs.FlowLog[0].ProjectName
+      store:
+        Type: String
+        ValueSelector: .FlowLogs.FlowLog[0].LogStoreName
+  - Name: checkDestination
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: SLS
+      API: GetLogStore
+      Parameters:
+        RegionId: '{{ regionId }}'
+        project: '{{ readState.project }}'
+        logstore: '{{ readState.store }}'
+  - Name: skipActive
+    Action: ACS::Choice
+    Properties:
+      DefaultTask: activate
+      Choices:
+      - When:
+          Fn::Equals:
+          - '{{ readState.status }}'
+          - Active
+        NextTask: ACS::END
+  - Name: activate
+    Action: ACS::ExecuteAPI
+    Properties:
+      Service: VPC
+      API: ActiveFlowLog
+      Parameters:
+        RegionId: '{{ regionId }}'
+        FlowLogId: '{{ flowLogId }}'
+  - Name: waitActive
+    Action: ACS::WaitFor
+    Properties:
+      Service: VPC
+      API: DescribeFlowLogs
+      Parameters:
+        RegionId: '{{ regionId }}'
+        ResourceId: '{{ vpcId }}'
+        FlowLogId: '{{ flowLogId }}'
+      PropertySelector: .FlowLogs.FlowLog[0].Status
+      DesiredValues:
+      - Active
+    Retries: 30
+
