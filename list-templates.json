@@ -3429,7 +3429,7 @@
       "CreatedDate": "2022-02-18T08:12:22Z",
       "Description": "{\"en\": \"Use this template to install the observability collection component LoongCollector (formerly Logtail) in batches on ECS.\", \"zh-cn\": \"使用这个模板批量的在ECS安装可观测采集组件 LoongCollector（原 Logtail）\", \"name-en\": \"ACS-LOG-BulkyInstallLogtail\", \"name-zh-cn\": \"批量安装可观测采集组件 LoongCollector（原 Logtail）\", \"categories\": [\"run_command\"]}",
       "HasTrigger": false,
-      "Hash": "ca30da281334201c3c4c436c2976a752e78d301cbba06dda546315466894668e",
+      "Hash": "5c68d57efd2f33c3a36bab59b586a8f7bec9739dc286bba21b01ff95a99cd560",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -3439,10 +3439,10 @@
       "TemplateId": "t-d4c978b64ef24c3b95d2",
       "TemplateName": "ACS-LOG-BulkyInstallLogtail",
       "TemplateType": "Automation",
-      "TemplateVersion": "v5",
+      "TemplateVersion": "v6",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-01-08T02:29:42Z"
+      "UpdatedDate": "2026-10-15T06:59:09Z"
     },
     {
       "Category": "Other",

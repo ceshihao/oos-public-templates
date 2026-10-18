@@ -27,19 +27,21 @@ Parameters:
   version:
     Type: String
     Description:
-      en: This parameter is currently only effective for Linux systems (Windows systems will temporarily install the latest version by default)
-      zh-cn: 此参数目前仅对 Linux 系统生效（Windows 系统暂时默认安装最新版本）
+      en: Installed agent version. Effective for Linux (both Logtail and LoongCollector) and Windows LoongCollector. Windows Logtail always installs the latest version
+      zh-cn: 安装的Agent版本。对 Linux（Logtail 和 LoongCollector）及 Windows LoongCollector 生效，Windows Logtail 始终安装最新版本
     Label:
       en: Installed agent version
       zh-cn: 安装的Agent版本
     Default: latest
     AllowedPattern: (^latest$)|(^\d+\.\d+\.\d+\.\d+$)|(^\d+\.\d+\.\d+$)
-    ConstraintDescription: 'An error has been detected with the version. '
+    ConstraintDescription:
+      en: 'Invalid version format. Note: on Windows instances with agentType Logtail, this parameter is ignored and the latest version is always installed.'
+      zh-cn: '版本格式错误。注意：Windows 实例且 agentType 为 Logtail 时，此参数不生效，始终安装最新版本。'
   agentType:
     Type: String
     Description:
-      en: This parameter is currently only effective for Linux systems (Windows systems currently do not support LoongCollector and will be installed as Logtail by default)
-      zh-cn: 此参数目前仅对 Linux 系统生效（Windows 系统暂时不支持LoongCollector，目前默认安装为Logtail）
+      en: Installed agent type, effective for both Linux and Windows systems
+      zh-cn: 安装的Agent类型，对 Linux 和 Windows 系统均生效
     Label:
       en: Installed agent type
       zh-cn: 安装的Agent类型
@@ -47,6 +49,19 @@ Parameters:
       - LoongCollector
       - Logtail
     Default: LoongCollector
+  ossUrl:
+    Type: String
+    Description:
+      en: OSS download URL. If provided, will be used to build the download address of the Logtail or LoongCollector binary package
+      zh-cn: OSS下载地址。如果提供，将用于构建 Logtail 或者 LoongCollector 二进制包的下载地址
+    Label:
+      en: OSS Download URL
+      zh-cn: OSS下载地址
+    Default: ''
+    AllowedPattern: '^(https?://.+)?$'
+    ConstraintDescription:
+      en: 'ossUrl must be empty or start with http:// or https://.'
+      zh-cn: 'ossUrl 必须为空，或以 http:// 或 https:// 开头。'
   targets:
     Type: Json
     Label:
@@ -97,19 +112,11 @@ Tasks:
       instanceId: '{{ ACS::TaskLoopItem }}'
       regionId: '{{ regionId }}'
       parameters:
-        Fn::If:
-          - Fn::Equals:
-              - Fn::Jq:
-                  - First
-                  - .|map(select(.instanceId == "{{ ACS::TaskLoopItem }}").osType)[]
-                  - '{{ getInstance.instanceInfos }}'
-              - linux
-          - regionid: '{{ regionId }}'
-            action: '{{ action }}'
-            agentType: '{{agentType}}'
-            version: '{{version}}'
-          - regionid: '{{ regionId }}'
-            action: '{{ action }}'
+        regionid: '{{ regionId }}'
+        action: '{{ action }}'
+        agentType: '{{agentType}}'
+        version: '{{version}}'
+        ossUrl: '{{ossUrl}}'
       commandId:
         Fn::If:
           - Fn::Equals:
@@ -142,6 +149,7 @@ Metadata:
           - action
           - agentType
           - version
+          - ossUrl
         Label:
           default:
             zh-cn: 设置参数
