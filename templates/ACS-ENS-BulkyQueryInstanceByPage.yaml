@@ -55,6 +55,12 @@ Parameters:
       zh-cn: 实例状态
     Type: String
     Default: ''
+  ServiceStatus:
+    Label:
+      en: ServiceStatus
+      zh-cn: 服务状态
+    Type: List
+    Default: []
   EnsServiceId:
     Label:
       en: EnsServiceId
@@ -96,6 +102,12 @@ Parameters:
       zh-cn: 内网IP
     Type: String
     Default: ''
+  EipAddresses:
+    Label:
+      en: EipAddresses
+      zh-cn: EIP地址列表
+    Type: List
+    Default: []
   SecurityGroupId:
     Label:
       en: SecurityGroupId
@@ -112,6 +124,18 @@ Parameters:
     Label:
       en: VSwitchId
       zh-cn: 交换机ID
+    Type: String
+    Default: ''
+  VpdId:
+    Label:
+      en: VpdId
+      zh-cn: 灵算网络ID
+    Type: String
+    Default: ''
+  VpdVSwitchId:
+    Label:
+      en: VpdVSwitchId
+      zh-cn: 灵算交换机ID
     Type: String
     Default: ''
   ImageId:
@@ -176,6 +200,10 @@ Tasks:
         Status: '{{ Status }}'
         EnsServiceId: '{{ EnsServiceId }}'
         InstanceResourceType: '{{ InstanceResourceType }}'
+        ServiceStatus: '{{ ServiceStatus }}'
+        VpdId: '{{ VpdId }}'
+        VpdVSwitchId: '{{ VpdVSwitchId }}'
+        EipAddresses: '{{ EipAddresses }}'
     Outputs:
       pageNumber:
         Type: Number
@@ -226,6 +254,10 @@ Metadata:
           - ImageId
           - EnsRegionIds
           - Tags
+          - ServiceStatus
+          - EipAddresses
+          - VpdId
+          - VpdVSwitchId
         Label:
           default:
             en: Filters

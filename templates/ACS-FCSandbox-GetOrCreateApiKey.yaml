@@ -1,0 +1,107 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  name-en: ACS-FCSandbox-GetOrCreateApiKey
+  name-zh-cn: 获取指定Team下第一个FC云沙箱API Key（不存在则创建）
+  en: Get the first FC Sandbox API key under the specified Team; create one if it does not exist.
+  zh-cn: 获取指定Team下第一个FC云沙箱API Key，不存在则创建。
+Parameters:
+  teamID:
+    Type: String
+    Description:
+      en: FC Sandbox Team ID.
+      zh-cn: FC云沙箱Team ID。
+  apiKeyName:
+    Type: String
+    Description:
+      en: Name for the new API key.
+      zh-cn: 新创建的API Key名称。
+  OOSAssumeRole:
+    Label: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Conditions:
+  noApiKey:
+    Fn::Equals:
+      - '{{ listApiKeys.keyCount }}'
+      - '0'
+  hasApiKey:
+    Fn::Not:
+      Fn::Equals:
+        - '{{ listApiKeys.keyCount }}'
+        - '0'
+Tasks:
+  - Name: listApiKeys
+    Action: ACS::ExecuteApi
+    Description:
+      en: List existing API keys under the team.
+      zh-cn: 查询Team下已有的API Key列表。
+    Properties:
+      Service: fcsandbox
+      API: ListApiKeys
+      Parameters:
+        teamID: '{{ teamID }}'
+        PageSize: 100
+    Outputs:
+      firstApiKeyID:
+        Type: String
+        ValueSelector: 'apiKeys[0].apiKeyID'
+      keyCount:
+        Type: String
+        ValueSelector: 'apiKeys | length | tostring'
+  - Name: describeApiKey
+    When: hasApiKey
+    Action: ACS::ExecuteApi
+    Description:
+      en: Get the plaintext of the existing API key.
+      zh-cn: 查询已有API Key的明文。
+    Properties:
+      Service: fcsandbox
+      API: DescribeApiKey
+      Parameters:
+        apiKeyID: '{{ listApiKeys.firstApiKeyID }}'
+    Outputs:
+      apiKeyID:
+        Type: String
+        ValueSelector: apiKey.apiKeyID
+      apiKeyValue:
+        Type: String
+        ValueSelector: apiKey.apiKeyValue
+  - Name: createApiKey
+    When: noApiKey
+    Action: ACS::ExecuteApi
+    Description:
+      en: Create a new API key.
+      zh-cn: 创建新的API Key。
+    Properties:
+      Service: fcsandbox
+      API: CreateApiKey
+      Body:
+        apiKeyName: '{{ apiKeyName }}'
+        teamID: '{{ teamID }}'
+    Outputs:
+      apiKeyID:
+        Type: String
+        ValueSelector: apiKey.apiKeyID
+      apiKeyValue:
+        Type: String
+        ValueSelector: apiKey.apiKeyValue
+Outputs:
+  apiKeyID:
+    Type: String
+    Value:
+      Fn::If:
+        - Fn::Equals:
+            - '{{ listApiKeys.keyCount }}'
+            - '0'
+        - '{{ createApiKey.apiKeyID }}'
+        - '{{ describeApiKey.apiKeyID }}'
+  apiKeyValue:
+    Type: String
+    Value:
+      Fn::If:
+        - Fn::Equals:
+            - '{{ listApiKeys.keyCount }}'
+            - '0'
+        - '{{ createApiKey.apiKeyValue }}'
+        - '{{ describeApiKey.apiKeyValue }}'
