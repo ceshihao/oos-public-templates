@@ -8294,6 +8294,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-10-09T11:47:27Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-11-12T07:15:46Z",
+      "Description": "{\"en\": \"Use this template to install oos package on SWAS\", \"zh-cn\": \"安装/卸载扩展程序(SWAS)\", \"name-en\": \"ACS-SWAS-BulkyConfigureOOSPackageWithTemporaryURL\", \"name-zh-cn\": \"安装/卸载扩展程序(SWAS)\", \"categories\": [\"run_command\", \"application_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "bb29d130a8a860da3a191bf6a57071040629acb8756aef83b4a26468d40e055f",
+      "IsFavorite": false,
+      "Popularity": 0,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-f811ce2c333641c78e0e",
+      "TemplateName": "ACS-SWAS-BulkyConfigureOOSPackageWithTemporaryURL",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-11-12T07:15:46Z"
     }
   ]
 }
