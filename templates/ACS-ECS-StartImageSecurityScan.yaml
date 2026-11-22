@@ -1,0 +1,139 @@
+FormatVersion: OOS-2019-06-01
+Description:
+  en: 'Enable the Agentic agentless detection service in Security Center before use. Provide regionId and imageId to scan an existing custom ECS image owned by the current account; public, shared, and Marketplace images are not supported. Waits for Available with up to 120 retries at 30-second intervals (approximately 60 minutes, excluding API request time). An empty query result stops retries with NotFound, without proving deletion. Submits an asynchronous scan without building a new image and returns the pipeline ID and execution ID; successful submission does not mean the image passed the scan. Each execution creates and retains a pipeline that counts toward the quota. Manually clean up unneeded pipelines in the Image Builder console after all related tasks reach a terminal state'
+  zh-cn: 镜像安全扫描依赖 Agentic 无代理检测服务开启后方能使用，请先在云安全中心开通对应功能。填写regionId和imageId，仅扫描当前账号已有的ECS自定义镜像，不支持公共、共享及镜像市场镜像。每30秒重试，最多120次（约60分钟，不含API请求耗时），等待镜像可用；查询结果为空时以NotFound停止，不代表一定被删除。仅异步提交扫描，不构建新镜像，返回镜像构建模板ID和任务执行ID；提交成功不代表扫描通过。每次执行创建并保留镜像构建模板，占用配额；相关任务均达到终态后，请在镜像构建控制台手动清理不再需要的模板。
+  name-en: Image Security Scan
+  name-zh-cn: 镜像安全扫描
+  categories:
+    - image_manage
+Parameters:
+  regionId:
+    Type: String
+    Label:
+      en: RegionId
+      zh-cn: 地域ID
+    AssociationProperty: RegionId
+    Default: '{{ ACS::RegionId }}'
+  imageId:
+    Label:
+      en: ImageId
+      zh-cn: 镜像ID
+    Description:
+      en: The ID of a custom ECS image owned by the current account. Public, shared, and Marketplace images are not supported.
+      zh-cn: 当前账号拥有的ECS自定义镜像ID，不支持公共、共享及镜像市场镜像。
+    Type: String
+  OOSAssumeRole:
+    Label:
+      en: OOSAssumeRole
+      zh-cn: OOS扮演的RAM角色
+    Type: String
+    Default: ''
+RamRole: '{{ OOSAssumeRole }}'
+Tasks:
+- Name: checkImageExists
+  Action: ACS::CheckFor
+  Description:
+    en: Checks whether the custom image exists
+    zh-cn: 检查自定义镜像是否存在
+  Properties:
+    Service: ECS
+    API: DescribeImages
+    Parameters:
+      RegionId: '{{ regionId }}'
+      ImageId: '{{ imageId }}'
+      # self 仅查询当前账号的自定义镜像，排除公共、共享及镜像市场镜像。
+      ImageOwnerAlias: self
+      Status: ALL
+    DesiredValues:
+    - 1
+    PropertySelector: .Images.Image | length
+- Name: untilImageReady
+  Action: ACS::WaitFor
+  Description:
+    en: Waits for the custom image to be available (approximately 60 minutes)
+    zh-cn: 等待自定义镜像可用（约60分钟）
+  Retries: 120
+  DelayType: Constant
+  Delay: 30
+  Properties:
+    Service: ECS
+    API: DescribeImages
+    Parameters:
+      RegionId: '{{ regionId }}'
+      ImageId: '{{ imageId }}'
+      # self 仅查询当前账号的自定义镜像，排除公共、共享及镜像市场镜像。
+      ImageOwnerAlias: self
+      Status: ALL
+    DesiredValues:
+    - Available
+    StopRetryValues:
+    - UnAvailable
+    - CreateFailed
+    - Deprecated
+    - NotFound
+    # 查询成功但查不到镜像时返回NotFound，停止等待；API请求异常不视为镜像被删除。
+    PropertySelector: '.Images.Image[0].Status // "NotFound"'
+- Name: createImagePipeline
+  Action: ACS::ExecuteAPI
+  Description:
+    en: 'Creates an image builder pipeline which enables agentless security scan and skips building a new image. If CreateImagePipeline returns Forbidden.SecurityScanNotActivated, the current account has not enabled the Agentic agentless detection service. Image security scanning requires this service to be enabled. Enable the corresponding service in Security Center before retrying.'
+    zh-cn: '创建开启无代理安全扫描并跳过构建新镜像的镜像构建模板。若 CreateImagePipeline 返回 Forbidden.SecurityScanNotActivated：当前账号未开通 Agentic 无代理检测服务，镜像安全扫描依赖 Agentic 无代理检测服务开启后方能使用。请先在云安全中心开通对应功能后重试。'
+  Properties:
+    Service: ECS
+    API: CreateImagePipeline
+    Parameters:
+      RegionId: '{{ regionId }}'
+      # 同次OOS执行重试使用相同令牌，防止重复创建；不同执行之间不去重。
+      ClientToken: '{{ ACS::ExecutionId }}'
+      BaseImageType: IMAGE
+      BaseImage: '{{ imageId }}'
+      Name: 'OOS-SecurityScan-{{ imageId }}-{{ ACS::ExecutionId }}'
+      Description: 'Auto-generated pipeline for image security scan.'
+      ImageSecurityOptions.SecurityScanMode: agentless
+      AdvancedOptions.SkipBuildImage: true
+  Outputs:
+    imagePipelineId:
+      Type: String
+      ValueSelector: ImagePipelineId
+- Name: startImagePipelineExecution
+  Action: ACS::ExecuteAPI
+  Description:
+    en: Starts the image pipeline execution to trigger the security scan
+    zh-cn: 启动镜像构建任务以触发安全扫描
+  # 启动成功保留管道供异步扫描；失败直接结束，不自动删除管道。
+  OnSuccess: ACS::END
+  OnError: ACS::END
+  Properties:
+    Service: ECS
+    API: StartImagePipelineExecution
+    Parameters:
+      RegionId: '{{ regionId }}'
+      ImagePipelineId: '{{ createImagePipeline.imagePipelineId }}'
+  Outputs:
+    executionId:
+      Type: String
+      ValueSelector: ExecutionId
+Outputs:
+  imagePipelineId:
+    Type: String
+    Value: '{{ createImagePipeline.imagePipelineId }}'
+  executionId:
+    Type: String
+    Value: '{{ startImagePipelineExecution.executionId }}'
+Metadata:
+  ALIYUN::OOS::Interface:
+    ParameterGroups:
+      - Parameters:
+          - regionId
+          - imageId
+        Label:
+          default:
+            zh-cn: 选择镜像
+            en: Select Image
+      - Parameters:
+          - OOSAssumeRole
+        Label:
+          default:
+            zh-cn: 高级选项
+            en: Control Options
+

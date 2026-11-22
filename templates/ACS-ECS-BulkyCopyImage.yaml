@@ -78,6 +78,8 @@ Parameters:
       - cn-zhongwei
       - ap-southeast-8
       - eu-west-2
+      - sa-east-1
+      - eu-west-3
     Default:
       - all-regions
   rateControl:

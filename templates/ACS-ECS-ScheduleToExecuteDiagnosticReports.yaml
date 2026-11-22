@@ -37,6 +37,51 @@ Parameters:
     AssociationPropertyMetadata:
       ResourceType: ALIYUN::ECS::Instance
       RegionId: regionId
+  diagnosticTimeRangeHours:
+    Label:
+      en: DiagnosticTimeRangeHours
+      zh-cn: 诊断时间范围（小时）
+    Description:
+      en: 'Diagnose the last N hours before each execution, value range 1-168. Set to 0 to use DiagnosticStartTime/DiagnosticEndTime or the ECS default window. Use this parameter for scheduled executions.'
+      zh-cn: '每次执行时诊断最近 N 小时，取值范围 1-168。设置为 0 时使用自定义起止时间或 ECS 默认窗口。定时执行请使用该相对窗口。'
+    Type: Number
+    MinValue: 0
+    MaxValue: 168
+    Default: 0
+  diagnosticStartTime:
+    Label:
+      en: DiagnosticStartTime
+      zh-cn: 诊断开始时间
+    Description:
+      en: 'ISO 8601 UTC format, for example 2026-11-04T00:00Z. Takes effect only when DiagnosticTimeRangeHours is 0. For scheduled executions use DiagnosticTimeRangeHours instead, because a fixed time window expires.'
+      zh-cn: 'ISO 8601 UTC 格式，例如 2026-11-04T00:00Z。仅在诊断时间范围（小时）为 0 时生效。定时执行请使用相对小时数，固定时间窗口会过期。'
+    Type: String
+    AssociationProperty: DateTime
+    AssociationPropertyMetadata:
+      Format: 'YYYY-MM-DDTHH:mmZ'
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${diagnosticTimeRangeHours}
+            - 0
+    Default: ''
+  diagnosticEndTime:
+    Label:
+      en: DiagnosticEndTime
+      zh-cn: 诊断结束时间
+    Description:
+      en: 'ISO 8601 UTC format, for example 2026-11-04T01:00Z. Takes effect only when DiagnosticTimeRangeHours is 0. For scheduled executions use DiagnosticTimeRangeHours instead, because a fixed time window expires.'
+      zh-cn: 'ISO 8601 UTC 格式，例如 2026-11-04T01:00Z。仅在诊断时间范围（小时）为 0 时生效。定时执行请使用相对小时数，固定时间窗口会过期。'
+    Type: String
+    AssociationProperty: DateTime
+    AssociationPropertyMetadata:
+      Format: 'YYYY-MM-DDTHH:mmZ'
+      Visible:
+        Condition:
+          Fn::Equals:
+            - ${diagnosticTimeRangeHours}
+            - 0
+    Default: ''
   whetherNotify:
     Type: Boolean
     Description: 是否通知
@@ -138,6 +183,27 @@ Tasks:
       regionId: '{{ regionId }}'
       resourceId: '{{ ACS::TaskLoopItem }}'
       metricSetId: dms-instancedefault
+      startTime:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ diagnosticTimeRangeHours }}'
+              - 0
+          - '{{ diagnosticStartTime }}'
+          - Fn::FormatUTCTime:
+              - Fn::AddHour:
+                  - '{{ ACS::CurrentUTCTime }}'
+                  - Fn::Eval:
+                      - '-{{ diagnosticTimeRangeHours }}'
+              - '%Y-%m-%dT%H:%MZ'
+      endTime:
+        Fn::If:
+          - Fn::Equals:
+              - '{{ diagnosticTimeRangeHours }}'
+              - 0
+          - '{{ diagnosticEndTime }}'
+          - Fn::FormatUTCTime:
+              - '{{ ACS::CurrentUTCTime }}'
+              - '%Y-%m-%dT%H:%MZ'
     Loop:
       Items: '{{ getInstances.instanceIds }}'
       Outputs:
@@ -202,6 +268,14 @@ Metadata:
           default:
             zh-cn: 设置地域、所选实例、并发个数（必填）
             en: Configure Parameters
+      - Parameters:
+          - diagnosticTimeRangeHours
+          - diagnosticStartTime
+          - diagnosticEndTime
+        Label:
+          default:
+            zh-cn: 设置诊断时间范围（选填）
+            en: Configure Diagnostic Time Range (Optional)
       - Parameters:
           - OOSAssumeRole
         Label:

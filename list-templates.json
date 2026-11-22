@@ -930,7 +930,7 @@
       "CreatedDate": "2019-10-25T09:48:04Z",
       "Description": "{\"en\": \"Cross Regions copy image\", \"zh-cn\": \"批量跨地域克隆镜像\", \"name-en\": \"ACS-ECS-BulkyCopyImage\", \"name-zh-cn\": \"批量跨地域克隆镜像\", \"categories\": [\"image_manage\"]}",
       "HasTrigger": false,
-      "Hash": "6364617fec862eb7f46e91f4a42bdc1afafd1c02deac712a638a178ba82f6e36",
+      "Hash": "b5312035b6d33b7f76bb891ec8d2f1ce6aa6599ec0bb0869cad47d4ff666eddd",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "rg-acfmz4wrjukykdy",
@@ -940,10 +940,10 @@
       "TemplateId": "t-0db4bc7230a64725b631",
       "TemplateName": "ACS-ECS-BulkyCopyImage",
       "TemplateType": "Automation",
-      "TemplateVersion": "v25",
+      "TemplateVersion": "v26",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2026-05-07T01:57:50Z"
+      "UpdatedDate": "2026-11-18T02:17:01Z"
     },
     {
       "Category": "Other",
@@ -4920,7 +4920,7 @@
       "CreatedDate": "2024-04-11T07:21:09Z",
       "Description": "{\"en\": \"Schedules to execute ECS diagnostic reports in bulk\", \"zh-cn\": \"定时运行ECS健康诊断\", \"name-en\": \"ACS-ECS-ScheduleToExecuteDiagnosticReports\", \"name-zh-cn\": \"定时执行ECS健康诊断\", \"categories\": [\"time_trigger\"]}",
       "HasTrigger": true,
-      "Hash": "3c273a6241a6dc0873854eb239be80a2f0231b04330bbdfedc8b839724d05cbe",
+      "Hash": "2e6c61c24d5be8c33aec49243c32b620f038bf5e54b76c3103344b96fa714bfc",
       "IsFavorite": false,
       "Popularity": 5,
       "ResourceGroupId": "",
@@ -4930,10 +4930,10 @@
       "TemplateId": "t-4620055003224a9fb1bc",
       "TemplateName": "ACS-ECS-ScheduleToExecuteDiagnosticReports",
       "TemplateType": "Automation",
-      "TemplateVersion": "v4",
+      "TemplateVersion": "v5",
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
-      "UpdatedDate": "2025-09-08T02:22:15Z"
+      "UpdatedDate": "2026-11-16T09:38:37Z"
     },
     {
       "Category": "Other",
@@ -5669,6 +5669,27 @@
       "TotalExecutionCount": -1,
       "UpdatedBy": "ACS",
       "UpdatedDate": "2026-10-22T07:59:44Z"
+    },
+    {
+      "Category": "Other",
+      "CreatedBy": "ACS",
+      "CreatedDate": "2026-11-16T05:40:02Z",
+      "Description": "{\"en\": \"Enable the Agentic agentless detection service in Security Center before use. Provide regionId and imageId to scan an existing custom ECS image owned by the current account; public, shared, and Marketplace images are not supported. Waits for Available with up to 120 retries at 30-second intervals (approximately 60 minutes, excluding API request time). An empty query result stops retries with NotFound, without proving deletion. Submits an asynchronous scan without building a new image and returns the pipeline ID and execution ID; successful submission does not mean the image passed the scan. Each execution creates and retains a pipeline that counts toward the quota. Manually clean up unneeded pipelines in the Image Builder console after all related tasks reach a terminal state\", \"zh-cn\": \"镜像安全扫描依赖 Agentic 无代理检测服务开启后方能使用，请先在云安全中心开通对应功能。填写regionId和imageId，仅扫描当前账号已有的ECS自定义镜像，不支持公共、共享及镜像市场镜像。每30秒重试，最多120次（约60分钟，不含API请求耗时），等待镜像可用；查询结果为空时以NotFound停止，不代表一定被删除。仅异步提交扫描，不构建新镜像，返回镜像构建模板ID和任务执行ID；提交成功不代表扫描通过。每次执行创建并保留镜像构建模板，占用配额；相关任务均达到终态后，请在镜像构建控制台手动清理不再需要的模板。\", \"name-en\": \"Image Security Scan\", \"name-zh-cn\": \"镜像安全扫描\", \"categories\": [\"image_manage\"]}",
+      "HasTrigger": false,
+      "Hash": "6ca920b7adf1ad9cf09590036d4fdf9bda07c669c9554e63bb86a04a47ee47cf",
+      "IsFavorite": false,
+      "Popularity": 5,
+      "ResourceGroupId": "",
+      "ShareType": "Public",
+      "Tags": {},
+      "TemplateFormat": "YAML",
+      "TemplateId": "t-5b804d04ea854c088ea9",
+      "TemplateName": "ACS-ECS-StartImageSecurityScan",
+      "TemplateType": "Automation",
+      "TemplateVersion": "v1",
+      "TotalExecutionCount": -1,
+      "UpdatedBy": "ACS",
+      "UpdatedDate": "2026-11-16T05:40:02Z"
     },
     {
       "Category": "Other",
